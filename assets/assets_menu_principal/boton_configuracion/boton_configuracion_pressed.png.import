@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw08fv77nfc71"
-path="res://.godot/imported/boton_configuracion.png-3e7eaae418e36820167d2d0e67b8cec2.ctex"
+uid="uid://rj1ou2jrr33d"
+path="res://.godot/imported/boton_configuracion_pressed.png-2cebfef9607dc78cb2cb90385615f24f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets_menu_principal/boton_configuracion.png"
-dest_files=["res://.godot/imported/boton_configuracion.png-3e7eaae418e36820167d2d0e67b8cec2.ctex"]
+source_file="res://assets/assets_menu_principal/boton_configuracion/boton_configuracion_pressed.png"
+dest_files=["res://.godot/imported/boton_configuracion_pressed.png-2cebfef9607dc78cb2cb90385615f24f.ctex"]
 
 [params]
 
