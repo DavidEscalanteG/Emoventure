@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://co64vr8dggawo"]
+
+[ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play.png" id="2_jylg6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1tgsf"]
+bg_color = Color(0.36906034, 0.5947861, 0.9685467, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53ly4"]
+bg_color = Color(2.0214916e-06, 0.70078224, 0.5737953, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jylg6"]
+bg_color = Color(0.7317416, 0.5802149, 3.85046e-07, 1)
+
+[node name="MenuPrincipal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Iniciar" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.441
+anchor_top = 0.43100002
+anchor_right = 0.55600005
+anchor_bottom = 0.63600004
+offset_left = -0.03201294
+offset_top = -0.2880249
+offset_right = 0.48791504
+offset_bottom = -0.12802124
+theme_override_styles/normal = SubResource("StyleBoxFlat_1tgsf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_53ly4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jylg6")
+icon = ExtResource("2_jylg6")
+flat = true
