@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://co64vr8dggawo"]
 
-[ext_resource type="Script" uid="uid://bihm465x22oy4" path="res://escenas/menu_principal/menu_principal.gd" id="1_7mlcq"]
 [ext_resource type="Texture2D" uid="uid://cvrhj3gc8u4g2" path="res://assets/assets_menu_principal/fondo/fondo_menu.png" id="1_hkuy5"]
 [ext_resource type="Texture2D" uid="uid://b414bmu8meery" path="res://assets/assets_menu_principal/boton_play/boton_play_pressed.png" id="2_00m27"]
 [ext_resource type="Texture2D" uid="uid://c1csicswuxs24" path="res://assets/assets_menu_principal/boton_play/boton_play_hover.png" id="2_53ly4"]
 [ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="2_jylg6"]
 [ext_resource type="Texture2D" uid="uid://dw08fv77nfc71" path="res://assets/assets_menu_principal/boton_configuracion/boton_configuracion.png" id="4_lbtcn"]
 [ext_resource type="Texture2D" uid="uid://rj1ou2jrr33d" path="res://assets/assets_menu_principal/boton_configuracion/boton_configuracion_pressed.png" id="5_hkuy5"]
+[ext_resource type="Script" uid="uid://cf3jyo61tfxs5" path="res://escenas/menu_principal/comenzar.gd" id="5_otvbs"]
 [ext_resource type="Texture2D" uid="uid://b87q6e1n2dt21" path="res://assets/assets_menu_principal/boton_configuracion/boton_configuracion_hover.png" id="6_7mlcq"]
 [ext_resource type="Script" uid="uid://cyrtus6bnppfb" path="res://escenas/menu_principal/configuracion.gd" id="9_otvbs"]
 
@@ -17,41 +17,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7mlcq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
+offset_right = 1918.0
+offset_bottom = 1072.0
 texture = ExtResource("1_hkuy5")
 
 [node name="Comenzar" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.446
-anchor_top = 0.63900006
-anchor_right = 0.61
-anchor_bottom = 0.92800003
-offset_left = -10.791992
-offset_top = -0.072052
-offset_right = -66.72003
-offset_bottom = -62.343994
-scale = Vector2(1.5, 1.5)
+anchor_left = 0.46800002
+anchor_top = 0.675
+anchor_right = 0.59800005
+anchor_bottom = 0.906
+offset_left = -0.5600586
+offset_right = -125.16016
+offset_bottom = -124.48004
+scale = Vector2(2, 2)
 texture_normal = ExtResource("2_jylg6")
 texture_pressed = ExtResource("2_00m27")
 texture_hover = ExtResource("2_53ly4")
+script = ExtResource("5_otvbs")
 
 [node name="Configuracion" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.91600007
 anchor_top = 0.85200006
-anchor_right = 0.99100006
-anchor_bottom = 0.98600006
+anchor_right = 0.961
+anchor_bottom = 0.93200004
 offset_left = -0.23205566
 offset_top = -0.0960083
-offset_right = -28.63208
-offset_bottom = -28.92804
+offset_right = -28.631958
+offset_bottom = -28.496033
 grow_horizontal = 2
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 texture_normal = ExtResource("4_lbtcn")
 texture_pressed = ExtResource("5_hkuy5")
 texture_hover = ExtResource("6_7mlcq")
