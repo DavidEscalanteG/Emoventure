@@ -230,3 +230,7 @@ func _on_color_picker_button_cabeza_color_changed(color_elegido):
 
 func _on_color_picker_button_ojos_color_changed(color_elegido):
 	$Node2D/Ojos.self_modulate = color_elegido
+
+
+func _on_comenzar_pressed() -> void:
+	get_tree().change_scene_to_file("res://escenas/escena_1/escena_1.tscn")

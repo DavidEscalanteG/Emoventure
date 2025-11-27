@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://dlfpd1a8lfh5"]
+
+[ext_resource type="Script" uid="uid://drx7lt3mhojre" path="res://escenas/escena_1/escena_1.gd" id="1_avmbo"]
+[ext_resource type="Texture2D" uid="uid://6qtwykxeov1l" path="res://assets/assets_escena_1/fondo/Fondo_Feria_Emoventure.png" id="1_gwnrk"]
+[ext_resource type="Texture2D" uid="uid://d16ns3k6g5hjh" path="res://assets/personajes/gitana/gitana neutral.png" id="2_kgfb6"]
+[ext_resource type="Texture2D" uid="uid://df0d687koh1fi" path="res://assets/personajes/gitana/gitana prediciendo.png" id="3_avmbo"]
+[ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="4_kgfb6"]
+
+[sub_resource type="Animation" id="Animation_byxo4"]
+resource_name = "Desvanecido_Fuera"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n1516"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2krm"]
+_data = {
+&"Desvanecido_Fuera": SubResource("Animation_byxo4"),
+&"RESET": SubResource("Animation_n1516")
+}
+
+[node name="escena_1" type="Node2D"]
+script = ExtResource("1_avmbo")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(961, 541.00006)
+scale = Vector2(1.25, 1.05)
+texture = ExtResource("1_gwnrk")
+
+[node name="personajes" type="Node2D" parent="."]
+
+[node name="protagonista" type="Node2D" parent="personajes"]
+
+[node name="gitana" type="Node2D" parent="personajes"]
+position = Vector2(431, 503)
+
+[node name="exp_neutral" type="Sprite2D" parent="personajes/gitana"]
+scale = Vector2(2.85, 2.85)
+texture = ExtResource("2_kgfb6")
+
+[node name="exp_adivina" type="Sprite2D" parent="personajes/gitana"]
+visible = false
+scale = Vector2(2.6, 2.6)
+texture = ExtResource("3_avmbo")
+
+[node name="FondoNegro" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("4_kgfb6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FondoNegro"]
+libraries = {
+&"": SubResource("AnimationLibrary_v2krm")
+}
+autoplay = "Desvanecido_Fuera"
