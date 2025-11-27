@@ -1,0 +1,194 @@
+[gd_scene load_steps=13 format=3 uid="uid://cxv23v4515m48"]
+
+[ext_resource type="Script" uid="uid://dr80qquf74i7m" path="res://jugador.gd" id="1_vk7co"]
+[ext_resource type="Texture2D" uid="uid://cnpmtkadh2s6i" path="res://assets/assets_personaje/Cabello.PNG" id="2_f36qb"]
+[ext_resource type="Texture2D" uid="uid://de3ir88mktion" path="res://assets/assets_personaje/Cabello2.PNG" id="3_ojilw"]
+[ext_resource type="Texture2D" uid="uid://qlhpnejrpnlm" path="res://assets/assets_personaje/ojos.PNG" id="4_417pi"]
+[ext_resource type="Texture2D" uid="uid://bfrt1hm5o7b84" path="res://assets/assets_personaje/ojos2.PNG" id="5_ykn6a"]
+[ext_resource type="Texture2D" uid="uid://cgmo3n733k5r5" path="res://assets/assets_personaje/Boca2.PNG" id="6_hjj1j"]
+[ext_resource type="Texture2D" uid="uid://bj3nnb4e20oig" path="res://assets/assets_personaje/Boca.PNG" id="7_5t2k1"]
+[ext_resource type="Texture2D" uid="uid://dx2mln11chg5f" path="res://assets/assets_personaje/cuerpo.png" id="8_a4ilf"]
+[ext_resource type="Texture2D" uid="uid://cajljihs8nsaq" path="res://assets/assets_personaje/nariz2.PNG" id="9_5cynf"]
+[ext_resource type="Texture2D" uid="uid://joj1svphpl4k" path="res://assets/assets_personaje/nariz .PNG" id="10_aqdwh"]
+[ext_resource type="Texture2D" uid="uid://ckmkvsco6sqhv" path="res://assets/assets_personaje/cabeza2.PNG" id="11_417pi"]
+[ext_resource type="Texture2D" uid="uid://c6w6fit07kbau" path="res://assets/assets_personaje/cabeza.PNG" id="12_ykn6a"]
+
+[node name="Selección de personaje" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BtnCabelloAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+text = "<"
+
+[node name="Cabello" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+text = "Cabello"
+
+[node name="BtnCabelloSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+text = ">"
+
+[node name="ColorPickerButtonCabello" type="ColorPickerButton" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="BoxContainer2" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BtnCabezaAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+text = "<"
+
+[node name="Cabeza" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+text = "Cabeza"
+
+[node name="BtnCabezaSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+text = ">"
+
+[node name="ColorPickerButtonCabeza" type="ColorPickerButton" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+
+[node name="BoxContainer3" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BtnOjosAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+text = "<"
+
+[node name="Ojos" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+text = "Ojos"
+
+[node name="BtnOjosSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+text = ">"
+
+[node name="ColorPickerButtonOjos" type="ColorPickerButton" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+
+[node name="BoxContainer4" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BtnNarizAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer4"]
+layout_mode = 2
+text = "<"
+
+[node name="Nariz" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer4"]
+layout_mode = 2
+text = "Nariz"
+
+[node name="BtnNarizSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer4"]
+layout_mode = 2
+text = ">"
+
+[node name="BoxContainer5" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BtnBocaAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5"]
+layout_mode = 2
+text = "<"
+
+[node name="Boca" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5"]
+layout_mode = 2
+text = "Boca"
+
+[node name="BtnBocaSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5"]
+layout_mode = 2
+text = ">"
+
+[node name="BoxContainer6" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BtnCuerpoAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6"]
+layout_mode = 2
+text = "<"
+
+[node name="Cuerpo" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6"]
+layout_mode = 2
+text = "Cuerpo"
+
+[node name="BtnCuerpoSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6"]
+layout_mode = 2
+text = ">"
+
+[node name="BoxContainer7" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Altura" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer7"]
+layout_mode = 2
+text = "Altura"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer7"]
+layout_mode = 2
+min_value = 0.8
+max_value = 1.2
+value = 0.8
+
+[node name="BoxContainer8" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Peso" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer8"]
+layout_mode = 2
+text = "Peso"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer8"]
+layout_mode = 2
+min_value = 0.8
+max_value = 1.2
+value = 0.8
+
+[node name="Jugador" type="CharacterBody2D" parent="."]
+script = ExtResource("1_vk7co")
+coleccion_cabellos = Array[Texture2D]([ExtResource("2_f36qb"), ExtResource("3_ojilw")])
+coleccion_ojos = Array[Texture2D]([ExtResource("4_417pi"), ExtResource("5_ykn6a")])
+coleccion_boca = Array[Texture2D]([ExtResource("6_hjj1j"), ExtResource("7_5t2k1")])
+coleccion_cuerpo = Array[Texture2D]([ExtResource("8_a4ilf")])
+coleccion_nariz = Array[Texture2D]([ExtResource("9_5cynf"), ExtResource("10_aqdwh")])
+coleccion_cabeza = Array[Texture2D]([ExtResource("11_417pi"), ExtResource("12_ykn6a")])
+
+[node name="Node2D" type="Node2D" parent="Jugador"]
+position = Vector2(232, 129)
+
+[node name="Cuerpo" type="Sprite2D" parent="Jugador/Node2D"]
+centered = false
+offset = Vector2(-151.8, -120.005)
+
+[node name="Cabeza" type="Sprite2D" parent="Jugador/Node2D"]
+
+[node name="Boca" type="Sprite2D" parent="Jugador/Node2D"]
+
+[node name="Cabello" type="Sprite2D" parent="Jugador/Node2D"]
+
+[node name="Nariz" type="Sprite2D" parent="Jugador/Node2D"]
+
+[node name="Ojos" type="Sprite2D" parent="Jugador/Node2D"]
+
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer/BtnCabelloAtras" to="Jugador" method="_on_btn_cabello_atras_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer/BtnCabelloSiguiente" to="Jugador" method="_on_btn_cabello_siguiente_pressed"]
+[connection signal="color_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer/ColorPickerButtonCabello" to="Jugador" method="_on_color_picker_button_color_changed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2/BtnCabezaAtras" to="Jugador" method="_on_btn_cabeza_atras_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2/BtnCabezaSiguiente" to="Jugador" method="_on_btn_cabeza_siguiente_pressed"]
+[connection signal="color_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2/ColorPickerButtonCabeza" to="Jugador" method="_on_color_picker_button_cabeza_color_changed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3/BtnOjosAtras" to="Jugador" method="_on_btn_ojos_atras_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3/BtnOjosSiguiente" to="Jugador" method="_on_btn_ojos_siguiente_pressed"]
+[connection signal="color_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3/ColorPickerButtonOjos" to="Jugador" method="_on_color_picker_button_ojos_color_changed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer4/BtnNarizAtras" to="Jugador" method="_on_btn_nariz_atras_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer4/BtnNarizSiguiente" to="Jugador" method="_on_btn_nariz_siguiente_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5/BtnBocaAtras" to="Jugador" method="_on_btn_boca_atras_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5/BtnBocaSiguiente" to="Jugador" method="_on_btn_boca_siguiente_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6/BtnCuerpoAtras" to="Jugador" method="_on_btn_cuerpo_atras_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6/BtnCuerpoSiguiente" to="Jugador" method="_on_btn_cuerpo_siguiente_pressed"]
+[connection signal="value_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer7/HSlider" to="Jugador" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer8/HSlider" to="Jugador" method="_on_h_slider_value_changed"]
