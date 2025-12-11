@@ -1,10 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlfpd1a8lfh5"]
+[gd_scene load_steps=21 format=3 uid="uid://dlfpd1a8lfh5"]
 
 [ext_resource type="Script" uid="uid://drx7lt3mhojre" path="res://escenas/escena_1/escena_1.gd" id="1_avmbo"]
 [ext_resource type="Texture2D" uid="uid://6qtwykxeov1l" path="res://assets/assets_escena_1/fondo/Fondo_Feria_Emoventure.png" id="1_gwnrk"]
 [ext_resource type="Texture2D" uid="uid://d16ns3k6g5hjh" path="res://assets/personajes/gitana/gitana neutral.png" id="2_kgfb6"]
 [ext_resource type="Texture2D" uid="uid://df0d687koh1fi" path="res://assets/personajes/gitana/gitana prediciendo.png" id="3_avmbo"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="4_kgfb6"]
+[ext_resource type="Script" uid="uid://dr80qquf74i7m" path="res://escenas/personalizacion/jugador.gd" id="5_ngdnf"]
+[ext_resource type="Texture2D" uid="uid://cnpmtkadh2s6i" path="res://assets/assets_personaje/Cabello.PNG" id="6_hjdwk"]
+[ext_resource type="Texture2D" uid="uid://de3ir88mktion" path="res://assets/assets_personaje/Cabello2.PNG" id="7_0lpr0"]
+[ext_resource type="Texture2D" uid="uid://qlhpnejrpnlm" path="res://assets/assets_personaje/ojos.PNG" id="8_m0awr"]
+[ext_resource type="Texture2D" uid="uid://bfrt1hm5o7b84" path="res://assets/assets_personaje/ojos2.PNG" id="9_rlq0g"]
+[ext_resource type="Texture2D" uid="uid://bj3nnb4e20oig" path="res://assets/assets_personaje/Boca.PNG" id="10_varyw"]
+[ext_resource type="Texture2D" uid="uid://cgmo3n733k5r5" path="res://assets/assets_personaje/Boca2.PNG" id="11_vf8fw"]
+[ext_resource type="Texture2D" uid="uid://dx2mln11chg5f" path="res://assets/assets_personaje/cuerpo.png" id="12_pgcv5"]
+[ext_resource type="Texture2D" uid="uid://joj1svphpl4k" path="res://assets/assets_personaje/nariz .PNG" id="13_n1jrj"]
+[ext_resource type="Texture2D" uid="uid://cajljihs8nsaq" path="res://assets/assets_personaje/nariz2.PNG" id="14_fw7kd"]
+[ext_resource type="Texture2D" uid="uid://c6w6fit07kbau" path="res://assets/assets_personaje/cabeza.PNG" id="15_lovvx"]
+[ext_resource type="Texture2D" uid="uid://ckmkvsco6sqhv" path="res://assets/assets_personaje/cabeza2.PNG" id="16_tmx21"]
 
 [sub_resource type="Animation" id="Animation_byxo4"]
 resource_name = "Desvanecido_Fuera"
@@ -54,8 +66,6 @@ texture = ExtResource("1_gwnrk")
 
 [node name="personajes" type="Node2D" parent="."]
 
-[node name="protagonista" type="Node2D" parent="personajes"]
-
 [node name="gitana" type="Node2D" parent="personajes"]
 position = Vector2(431, 503)
 
@@ -68,7 +78,35 @@ visible = false
 scale = Vector2(2.6, 2.6)
 texture = ExtResource("3_avmbo")
 
+[node name="Jugador" type="CharacterBody2D" parent="personajes"]
+position = Vector2(712, 375)
+script = ExtResource("5_ngdnf")
+coleccion_cabellos = Array[Texture2D]([null, ExtResource("7_0lpr0"), ExtResource("6_hjdwk")])
+coleccion_ojos = Array[Texture2D]([ExtResource("9_rlq0g"), ExtResource("8_m0awr")])
+coleccion_boca = Array[Texture2D]([ExtResource("11_vf8fw"), ExtResource("10_varyw")])
+coleccion_cuerpo = Array[Texture2D]([ExtResource("12_pgcv5")])
+coleccion_nariz = Array[Texture2D]([ExtResource("14_fw7kd"), ExtResource("13_n1jrj")])
+coleccion_cabeza = Array[Texture2D]([ExtResource("16_tmx21"), ExtResource("15_lovvx")])
+
+[node name="Node2D" type="Node2D" parent="personajes/Jugador"]
+position = Vector2(232, 129)
+
+[node name="Cuerpo" type="Sprite2D" parent="personajes/Jugador/Node2D"]
+centered = false
+offset = Vector2(-151.8, -120.005)
+
+[node name="Cabeza" type="Sprite2D" parent="personajes/Jugador/Node2D"]
+
+[node name="Boca" type="Sprite2D" parent="personajes/Jugador/Node2D"]
+
+[node name="Cabello" type="Sprite2D" parent="personajes/Jugador/Node2D"]
+
+[node name="Nariz" type="Sprite2D" parent="personajes/Jugador/Node2D"]
+
+[node name="Ojos" type="Sprite2D" parent="personajes/Jugador/Node2D"]
+
 [node name="FondoNegro" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(960, 540)
 texture = ExtResource("4_kgfb6")
 

@@ -101,6 +101,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="FondoNegro" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(960, 540)
 texture = ExtResource("11_cceyl")
 
