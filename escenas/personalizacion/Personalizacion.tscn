@@ -1,17 +1,17 @@
 [gd_scene load_steps=21 format=3 uid="uid://cxv23v4515m48"]
 
-[ext_resource type="Script" uid="uid://dr80qquf74i7m" path="res://escenas/personalizacion/jugador.gd" id="1_70rkc"]
-[ext_resource type="Texture2D" uid="uid://cnpmtkadh2s6i" path="res://assets/assets_personaje/Cabello.PNG" id="2_qeg4c"]
-[ext_resource type="Texture2D" uid="uid://de3ir88mktion" path="res://assets/assets_personaje/Cabello2.PNG" id="3_gbqfp"]
-[ext_resource type="Texture2D" uid="uid://qlhpnejrpnlm" path="res://assets/assets_personaje/ojos.PNG" id="4_4fmof"]
-[ext_resource type="Texture2D" uid="uid://bfrt1hm5o7b84" path="res://assets/assets_personaje/ojos2.PNG" id="5_mt61v"]
-[ext_resource type="Texture2D" uid="uid://cgmo3n733k5r5" path="res://assets/assets_personaje/Boca2.PNG" id="6_tydmf"]
-[ext_resource type="Texture2D" uid="uid://bj3nnb4e20oig" path="res://assets/assets_personaje/Boca.PNG" id="7_3x2dh"]
-[ext_resource type="Texture2D" uid="uid://dx2mln11chg5f" path="res://assets/assets_personaje/cuerpo.png" id="8_gvyea"]
-[ext_resource type="Texture2D" uid="uid://cajljihs8nsaq" path="res://assets/assets_personaje/nariz2.PNG" id="9_55ggu"]
-[ext_resource type="Texture2D" uid="uid://joj1svphpl4k" path="res://assets/assets_personaje/nariz .PNG" id="10_nr06l"]
-[ext_resource type="Texture2D" uid="uid://ckmkvsco6sqhv" path="res://assets/assets_personaje/cabeza2.PNG" id="11_pdfn3"]
-[ext_resource type="Texture2D" uid="uid://c6w6fit07kbau" path="res://assets/assets_personaje/cabeza.PNG" id="12_pbn1m"]
+[ext_resource type="Script" uid="uid://6uymohbocc55" path="res://escenas/personalizacion/Personalizador.gd" id="1_n5qyn"]
+[ext_resource type="Texture2D" uid="uid://de3ir88mktion" path="res://assets/assets_personaje/Cabello2.PNG" id="2_tydmf"]
+[ext_resource type="Texture2D" uid="uid://cnpmtkadh2s6i" path="res://assets/assets_personaje/Cabello.PNG" id="3_3x2dh"]
+[ext_resource type="Texture2D" uid="uid://bfrt1hm5o7b84" path="res://assets/assets_personaje/ojos2.PNG" id="4_gvyea"]
+[ext_resource type="Texture2D" uid="uid://qlhpnejrpnlm" path="res://assets/assets_personaje/ojos.PNG" id="5_55ggu"]
+[ext_resource type="Texture2D" uid="uid://cgmo3n733k5r5" path="res://assets/assets_personaje/Boca2.PNG" id="6_nr06l"]
+[ext_resource type="Texture2D" uid="uid://bj3nnb4e20oig" path="res://assets/assets_personaje/Boca.PNG" id="7_pdfn3"]
+[ext_resource type="Texture2D" uid="uid://dx2mln11chg5f" path="res://assets/assets_personaje/cuerpo.png" id="8_pbn1m"]
+[ext_resource type="Texture2D" uid="uid://cajljihs8nsaq" path="res://assets/assets_personaje/nariz2.PNG" id="9_fpvnl"]
+[ext_resource type="Texture2D" uid="uid://joj1svphpl4k" path="res://assets/assets_personaje/nariz .PNG" id="10_atam4"]
+[ext_resource type="Texture2D" uid="uid://ckmkvsco6sqhv" path="res://assets/assets_personaje/cabeza2.PNG" id="11_jbx7w"]
+[ext_resource type="Texture2D" uid="uid://c6w6fit07kbau" path="res://assets/assets_personaje/cabeza.PNG" id="12_yspyb"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="13_qeg4c"]
 [ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="14_tydmf"]
 [ext_resource type="Texture2D" uid="uid://b414bmu8meery" path="res://assets/assets_menu_principal/boton_play/boton_play_pressed.png" id="15_3x2dh"]
@@ -60,8 +60,12 @@ _data = {
 layer = -1
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(0.535, 0)
+offset_left = 64.0
+offset_top = 60.0
+offset_right = 178.0
+offset_bottom = 320.0
+scale = Vector2(3.7199998, 3.7199998)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
@@ -150,6 +154,9 @@ text = "Boca"
 layout_mode = 2
 text = ">"
 
+[node name="ColorPickerButtonBoca" type="ColorPickerButton" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5"]
+layout_mode = 2
+
 [node name="BoxContainer6" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -164,6 +171,9 @@ text = "Cuerpo"
 [node name="BtnCuerpoSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6"]
 layout_mode = 2
 text = ">"
+
+[node name="ColorPickerButtonCuerpo" type="ColorPickerButton" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6"]
+layout_mode = 2
 
 [node name="BoxContainer7" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -192,16 +202,18 @@ max_value = 1.2
 value = 0.8
 
 [node name="Jugador" type="CharacterBody2D" parent="."]
-script = ExtResource("1_70rkc")
-coleccion_cabellos = Array[Texture2D]([ExtResource("2_qeg4c"), ExtResource("3_gbqfp")])
-coleccion_ojos = Array[Texture2D]([ExtResource("4_4fmof"), ExtResource("5_mt61v")])
-coleccion_boca = Array[Texture2D]([ExtResource("6_tydmf"), ExtResource("7_3x2dh")])
-coleccion_cuerpo = Array[Texture2D]([ExtResource("8_gvyea")])
-coleccion_nariz = Array[Texture2D]([ExtResource("9_55ggu"), ExtResource("10_nr06l")])
-coleccion_cabeza = Array[Texture2D]([ExtResource("11_pdfn3"), ExtResource("12_pbn1m")])
+scale = Vector2(1, 0.83955127)
+script = ExtResource("1_n5qyn")
+coleccion_cabellos = Array[Texture2D]([null, ExtResource("2_tydmf"), ExtResource("3_3x2dh")])
+coleccion_ojos = Array[Texture2D]([ExtResource("4_gvyea"), ExtResource("5_55ggu")])
+coleccion_boca = Array[Texture2D]([ExtResource("6_nr06l"), ExtResource("7_pdfn3")])
+coleccion_cuerpo = Array[Texture2D]([ExtResource("8_pbn1m")])
+coleccion_nariz = Array[Texture2D]([ExtResource("9_fpvnl"), ExtResource("10_atam4")])
+coleccion_cabeza = Array[Texture2D]([ExtResource("11_jbx7w"), ExtResource("12_yspyb")])
 
 [node name="Node2D" type="Node2D" parent="Jugador"]
-position = Vector2(232, 129)
+position = Vector2(888.99994, 276.33813)
+scale = Vector2(2.1911137, 2.1911137)
 
 [node name="Cuerpo" type="Sprite2D" parent="Jugador/Node2D"]
 centered = false
@@ -218,11 +230,10 @@ offset = Vector2(-151.8, -120.005)
 [node name="Ojos" type="Sprite2D" parent="Jugador/Node2D"]
 
 [node name="Comenzar" type="TextureButton" parent="."]
-anchors_preset = -1
-offset_left = 1661.0001
-offset_top = 850.0
-offset_right = 1786.0001
-offset_bottom = 975.0
+offset_left = 1688.0001
+offset_top = 395.0
+offset_right = 1813.0001
+offset_bottom = 520.0
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("14_tydmf")
 texture_pressed = ExtResource("15_3x2dh")
@@ -230,6 +241,7 @@ texture_hover = ExtResource("16_gvyea")
 script = ExtResource("17_tydmf")
 
 [node name="FondoNegro" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(960, 540)
 texture = ExtResource("13_qeg4c")
 
@@ -252,8 +264,10 @@ autoplay = "Desvanecido_Fuera"
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer4/BtnNarizSiguiente" to="Jugador" method="_on_btn_nariz_siguiente_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5/BtnBocaAtras" to="Jugador" method="_on_btn_boca_atras_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5/BtnBocaSiguiente" to="Jugador" method="_on_btn_boca_siguiente_pressed"]
+[connection signal="color_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5/ColorPickerButtonBoca" to="Jugador" method="_on_color_picker_button_boca_color_changed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6/BtnCuerpoAtras" to="Jugador" method="_on_btn_cuerpo_atras_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6/BtnCuerpoSiguiente" to="Jugador" method="_on_btn_cuerpo_siguiente_pressed"]
+[connection signal="color_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6/ColorPickerButtonCuerpo" to="Jugador" method="_on_color_picker_button_cuerpo_color_changed"]
 [connection signal="value_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer7/HSlider" to="Jugador" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer8/HSlider" to="Jugador" method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Comenzar" to="Jugador" method="_on_comenzar_pressed"]
