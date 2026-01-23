@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://xirhg56731lh"]
+
+[ext_resource type="Script" uid="uid://l6wswws2bnvk" path="res://assets/assets_escena_3/UI/nivel_completado_ui.gd" id="1_2e01h"]
+[ext_resource type="Texture2D" uid="uid://qtect2yegfev" path="res://assets/emociones/sprites/felicidad.png" id="2_po2aj"]
+[ext_resource type="Texture2D" uid="uid://dxxy4k6ht2k6i" path="res://assets/emociones/sprites/tristeza.png" id="3_n5g63"]
+[ext_resource type="Texture2D" uid="uid://cpqa724qpfdg7" path="res://assets/emociones/sprites/enojo.png" id="4_vj3d1"]
+[ext_resource type="Texture2D" uid="uid://be2m12ilqfwyk" path="res://assets/emociones/sprites/desagrado.png" id="5_tg12r"]
+[ext_resource type="Texture2D" uid="uid://dbeo324lgnb8p" path="res://assets/emociones/sprites/miedo.png" id="6_6w4pf"]
+[ext_resource type="Texture2D" uid="uid://dakbba4p8b1b3" path="res://pruebas/assets_temporales/corazon_lleno.png" id="7_3m343"]
+[ext_resource type="Texture2D" uid="uid://diko1vyjoakh1" path="res://pruebas/assets_temporales/serpiente png.png" id="8_cj4g5"]
+[ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="9_bmrmj"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_2e01h")
+siguiente_escena = "res://escenas/cuestionario/EscenaCuestionario.tscn"
+
+[node name="FondoOscuro" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 589.0
+offset_bottom = 1054.0
+
+[node name="Panel" type="PanelContainer" parent="Control"]
+layout_mode = 1
+offset_right = 589.0
+offset_bottom = 1054.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 2
+
+[node name="Titulo" type="Label" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Nivel Superado"
+horizontal_alignment = 1
+
+[node name="Emociones" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Alegria" type="TextureRect" parent="Control/Panel/VBoxContainer/Emociones"]
+layout_mode = 2
+texture = ExtResource("2_po2aj")
+
+[node name="Tristeza" type="TextureRect" parent="Control/Panel/VBoxContainer/Emociones"]
+layout_mode = 2
+texture = ExtResource("3_n5g63")
+
+[node name="Enojo" type="TextureRect" parent="Control/Panel/VBoxContainer/Emociones"]
+layout_mode = 2
+texture = ExtResource("4_vj3d1")
+
+[node name="Desagrado" type="TextureRect" parent="Control/Panel/VBoxContainer/Emociones"]
+layout_mode = 2
+texture = ExtResource("5_tg12r")
+
+[node name="Miedo" type="TextureRect" parent="Control/Panel/VBoxContainer/Emociones"]
+layout_mode = 2
+texture = ExtResource("6_6w4pf")
+
+[node name="Separador" type="HSeparator" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Vidas" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Vida_1" type="TextureRect" parent="Control/Panel/VBoxContainer/Vidas"]
+layout_mode = 2
+texture = ExtResource("7_3m343")
+
+[node name="Vida_2" type="TextureRect" parent="Control/Panel/VBoxContainer/Vidas"]
+layout_mode = 2
+texture = ExtResource("7_3m343")
+
+[node name="Vida_3" type="TextureRect" parent="Control/Panel/VBoxContainer/Vidas"]
+layout_mode = 2
+texture = ExtResource("7_3m343")
+
+[node name="JugadorGrande" type="TextureRect" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_cj4g5")
+
+[node name="BotonContinuar" type="Button" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("9_bmrmj")
+icon_alignment = 1

@@ -1,27 +1,45 @@
 extends Node2D
 
-const dialogo = preload("res://dialogos/escena_1.dialogue")
+const DIALOGO_ESCENA_1 := preload("res://dialogos/escena_1.dialogue")
+const SIGUIENTE_ESCENA := "res://escenas/escena_2/escena_2.tscn"
+
+@onready var personajes := $personajes
 
 func _ready() -> void:
-	# Espera un poco y lanza el diálogo
+	# Conectamos la señal UNA SOLA VEZ
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+
+	# Pequeña pausa antes de iniciar el diálogo
 	await get_tree().create_timer(1.0).timeout
-	DialogueManager.show_dialogue_balloon(dialogo)
-	
-# Esta función es la que llama el archivo de diálogo
-func set_expr(personaje: String, expresion: String):
-	var p = $personajes.get_node(personaje)
-	
-	# 1. Si es el Jugador, usa su método especial (esto ya lo tienes)
+	DialogueManager.show_dialogue_balloon(DIALOGO_ESCENA_1)
+
+
+# 🔔 Se llama automáticamente cuando termina cualquier diálogo
+func _on_dialogue_ended(resource: Resource) -> void:
+	if resource == DIALOGO_ESCENA_1:
+		get_tree().change_scene_to_file(SIGUIENTE_ESCENA)
+
+# 🎭 Esta función la llama el archivo .dialogue
+func set_expr(personaje: String, expresion: String) -> void:
+	if not personajes.has_node(personaje):
+		push_warning("Personaje no encontrado: %s" % personaje)
+		return
+
+	var p = personajes.get_node(personaje)
+
+	# 1️⃣ Caso especial: jugador
 	if p.has_method("cambiar_gesto"):
 		p.cambiar_gesto(expresion)
 		return
 
-	# 2. Si es un NPC, apaga SOLO las expresiones, no todo lo demás
+	# 2️⃣ NPCs: apagar solo expresiones
 	for s in p.get_children():
-		# BLINDAJE: Solo apaga si el nodo se llama "exp_..."
 		if s.name.begins_with("exp_"):
 			s.visible = false
-			
-	# Enciende la correcta
-	if p.has_node("exp_" + expresion):
-		p.get_node("exp_" + expresion).visible = true
+
+	# 3️⃣ Activar la expresión correcta (si existe)
+	var nombre_expr := "exp_" + expresion
+	if p.has_node(nombre_expr):
+		p.get_node(nombre_expr).visible = true
+	else:
+		push_warning("Expresión no encontrada: %s en %s" % [expresion, personaje])

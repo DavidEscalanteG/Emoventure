@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dlfpd1a8lfh5"]
+[gd_scene load_steps=22 format=3 uid="uid://dlfpd1a8lfh5"]
 
 [ext_resource type="Script" uid="uid://drx7lt3mhojre" path="res://escenas/escena_1/escena_1.gd" id="1_avmbo"]
 [ext_resource type="Texture2D" uid="uid://6qtwykxeov1l" path="res://assets/assets_escena_1/fondo/Fondo_Feria_Emoventure.png" id="1_gwnrk"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://cajljihs8nsaq" path="res://assets/assets_personaje/nariz2.PNG" id="14_fw7kd"]
 [ext_resource type="Texture2D" uid="uid://c6w6fit07kbau" path="res://assets/assets_personaje/cabeza.PNG" id="15_lovvx"]
 [ext_resource type="Texture2D" uid="uid://ckmkvsco6sqhv" path="res://assets/assets_personaje/cabeza2.PNG" id="16_tmx21"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjdwk"]
+size = Vector2(212, 473)
 
 [sub_resource type="Animation" id="Animation_byxo4"]
 resource_name = "Desvanecido_Fuera"
@@ -89,11 +92,9 @@ coleccion_nariz = Array[Texture2D]([ExtResource("14_fw7kd"), ExtResource("13_n1j
 coleccion_cabeza = Array[Texture2D]([ExtResource("16_tmx21"), ExtResource("15_lovvx")])
 
 [node name="Node2D" type="Node2D" parent="personajes/Jugador"]
-position = Vector2(232, 129)
 
 [node name="Cuerpo" type="Sprite2D" parent="personajes/Jugador/Node2D"]
-centered = false
-offset = Vector2(-151.8, -120.005)
+offset = Vector2(0, 250)
 
 [node name="Cabeza" type="Sprite2D" parent="personajes/Jugador/Node2D"]
 
@@ -104,6 +105,10 @@ offset = Vector2(-151.8, -120.005)
 [node name="Nariz" type="Sprite2D" parent="personajes/Jugador/Node2D"]
 
 [node name="Ojos" type="Sprite2D" parent="personajes/Jugador/Node2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="personajes/Jugador"]
+position = Vector2(5, 190.5)
+shape = SubResource("RectangleShape2D_hjdwk")
 
 [node name="FondoNegro" type="Sprite2D" parent="."]
 visible = false
