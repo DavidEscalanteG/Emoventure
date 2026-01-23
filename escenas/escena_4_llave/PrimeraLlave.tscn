@@ -1,0 +1,115 @@
+[gd_scene load_steps=7 format=3 uid="uid://1qd5o2iv27o7"]
+
+[ext_resource type="Script" uid="uid://b6e2rxp4u2e7u" path="res://escenas/escena_4_llave/primera_llave.gd" id="1_tei6f"]
+[ext_resource type="Texture2D" uid="uid://bberwoc2of0kp" path="res://pruebas/assets_temporales/llave_temporal.jpg" id="2_xt1j8"]
+[ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="3_lxnae"]
+
+[sub_resource type="Animation" id="Animation_xt1j8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Contenido:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contenido/BotonContinuar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tei6f"]
+resource_name = "mostrar_llave"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Contenido:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contenido/BotonContinuar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxnae"]
+_data = {
+&"RESET": SubResource("Animation_xt1j8"),
+&"mostrar_llave": SubResource("Animation_tei6f")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_tei6f")
+siguiente_escena = "res://escenas/escena_5/escena_5.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(2.117753e-06, 0.51306957, 0.51369035, 1)
+
+[node name="Contenido" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 600.0
+offset_right = 1226.0
+offset_bottom = 836.0
+scale = Vector2(1e-05, 1e-05)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Contenido"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+text = "¡Felicidades!"
+fit_content = true
+tab_size = 24
+horizontal_alignment = 1
+
+[node name="Llave" type="TextureRect" parent="Contenido"]
+layout_mode = 2
+texture = ExtResource("2_xt1j8")
+
+[node name="BotonContinuar" type="Button" parent="Contenido"]
+layout_mode = 2
+icon = ExtResource("3_lxnae")
+icon_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lxnae")
+}
+
+[connection signal="pressed" from="Contenido/BotonContinuar" to="." method="_on_boton_continuar_pressed"]
