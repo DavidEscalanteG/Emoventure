@@ -42,7 +42,7 @@ func tiene_todas_las_emociones() -> bool:
 	return emociones_recolectadas.size() == EMOCIONES_TOTALES.size()
 
 var apariencia = {
-	"indice_cabello": 1,
+	"indice_cabello": 0,
 	"indice_ojos": 0,
 	"indice_boca": 0,
 	"indice_cuerpo": 0,

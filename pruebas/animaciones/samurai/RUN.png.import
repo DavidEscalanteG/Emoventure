@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gsl57godj0ge"
-path="res://.godot/imported/happy-smile-055-png.png-380c1070ae7388ad52f89eeed16b3f74.ctex"
+uid="uid://colqeg40rlu0t"
+path="res://.godot/imported/RUN.png-4a70196142acded3a583b6ae19efb6a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets_personaje/happy-smile-055-png.png"
-dest_files=["res://.godot/imported/happy-smile-055-png.png-380c1070ae7388ad52f89eeed16b3f74.ctex"]
+source_file="res://pruebas/animaciones/samurai/RUN.png"
+dest_files=["res://.godot/imported/RUN.png-4a70196142acded3a583b6ae19efb6a8.ctex"]
 
 [params]
 

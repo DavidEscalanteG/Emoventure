@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://c14jtphj2d6kf"]
+[gd_scene load_steps=15 format=3 uid="uid://c14jtphj2d6kf"]
 
 [ext_resource type="Script" uid="uid://dr80qquf74i7m" path="res://escenas/personalizacion/jugador.gd" id="1_ahroc"]
+[ext_resource type="Script" uid="uid://de5fxgit5ggna" path="res://jugador/player_appearance.gd" id="2_5vouv"]
 [ext_resource type="Texture2D" uid="uid://de3ir88mktion" path="res://assets/assets_personaje/Cabello2.PNG" id="2_slyet"]
 [ext_resource type="Texture2D" uid="uid://cnpmtkadh2s6i" path="res://assets/assets_personaje/Cabello.PNG" id="3_mk724"]
 [ext_resource type="Texture2D" uid="uid://bfrt1hm5o7b84" path="res://assets/assets_personaje/ojos2.PNG" id="4_vmphg"]
@@ -21,28 +22,40 @@ scale = Vector2(0.2, 0.2)
 collision_mask = 8
 platform_floor_layers = 4294967294
 script = ExtResource("1_ahroc")
-coleccion_cabellos = Array[Texture2D]([null, ExtResource("2_slyet"), ExtResource("3_mk724")])
-coleccion_ojos = Array[Texture2D]([ExtResource("4_vmphg"), ExtResource("5_5iu33")])
-coleccion_boca = Array[Texture2D]([ExtResource("6_llqwg"), ExtResource("7_ifo1j")])
-coleccion_cuerpo = Array[Texture2D]([ExtResource("8_jcs7t")])
-coleccion_nariz = Array[Texture2D]([ExtResource("9_s00yy"), ExtResource("10_f7jpx")])
-coleccion_cabeza = Array[Texture2D]([ExtResource("11_1dy1v"), ExtResource("12_n8rau")])
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="PlayerAppearance" type="Node2D" parent="."]
 position = Vector2(0, -200)
+script = ExtResource("2_5vouv")
+coleccion_cabellos = Array[Dictionary]([{
+"": null,
+"down": ExtResource("3_mk724"),
+"left": ExtResource("3_mk724"),
+"right": ExtResource("3_mk724"),
+"up": ExtResource("3_mk724")
+}, {
+"down": ExtResource("2_slyet"),
+"left": ExtResource("2_slyet"),
+"right": ExtResource("2_slyet"),
+"up": ExtResource("2_slyet")
+}])
+coleccion_ojos = Array[Texture2D]([ExtResource("5_5iu33"), ExtResource("4_vmphg")])
+coleccion_boca = Array[Texture2D]([ExtResource("7_ifo1j"), ExtResource("6_llqwg")])
+coleccion_cuerpo = Array[Texture2D]([ExtResource("8_jcs7t")])
+coleccion_nariz = Array[Texture2D]([ExtResource("10_f7jpx"), ExtResource("9_s00yy")])
+coleccion_cabeza = Array[Texture2D]([ExtResource("12_n8rau"), ExtResource("11_1dy1v")])
 
-[node name="Cuerpo" type="Sprite2D" parent="Node2D"]
+[node name="Cuerpo" type="Sprite2D" parent="PlayerAppearance"]
 offset = Vector2(0, 250)
 
-[node name="Cabeza" type="Sprite2D" parent="Node2D"]
+[node name="Cabeza" type="Sprite2D" parent="PlayerAppearance"]
 
-[node name="Boca" type="Sprite2D" parent="Node2D"]
+[node name="Boca" type="Sprite2D" parent="PlayerAppearance"]
 
-[node name="Cabello" type="Sprite2D" parent="Node2D"]
+[node name="Cabello" type="Sprite2D" parent="PlayerAppearance"]
 
-[node name="Nariz" type="Sprite2D" parent="Node2D"]
+[node name="Nariz" type="Sprite2D" parent="PlayerAppearance"]
 
-[node name="Ojos" type="Sprite2D" parent="Node2D"]
+[node name="Ojos" type="Sprite2D" parent="PlayerAppearance"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.9999998, 0.9999998)

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Global="*res://Scripts/Globales/DatosJugador.gd"
 GameManager="*res://Scripts/Globales/GameManager.gd"
+DialogueActors="*res://Scripts/Globales/DialogueActors.gd"
 
 [dialogue_manager]
 
@@ -70,7 +71,7 @@ move_right={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogos/escena_1.dialogue", "res://dialogos/escena__2.dialogue", "res://dialogos/escena_3.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogos/escena_1.dialogue", "res://dialogos/escena__2.dialogue", "res://dialogos/escena_3.dialogue", "res://dialogos/escena_5.dialogue")
 
 [layer_names]
 
