@@ -1,25 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://ojuxji1qnqno"]
+[gd_scene load_steps=10 format=3 uid="uid://ojuxji1qnqno"]
 
 [ext_resource type="Script" uid="uid://b5celn7qra5dj" path="res://escenas/escena_2/escena_2.gd" id="1_wnj6t"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="2_d78l7"]
 [ext_resource type="Texture2D" uid="uid://de1slo8qjtesq" path="res://assets/assets_escena_2/fondo/dentro_carpa.jpg" id="2_k1oe6"]
 [ext_resource type="Texture2D" uid="uid://d16ns3k6g5hjh" path="res://assets/personajes/gitana/gitana neutral.png" id="3_k1oe6"]
 [ext_resource type="Texture2D" uid="uid://df0d687koh1fi" path="res://assets/personajes/gitana/gitana prediciendo.png" id="4_wdmfg"]
-[ext_resource type="Script" uid="uid://dr80qquf74i7m" path="res://escenas/personalizacion/jugador.gd" id="5_t6nje"]
-[ext_resource type="Texture2D" uid="uid://de3ir88mktion" path="res://assets/assets_personaje/Cabello2.PNG" id="6_nsjm7"]
-[ext_resource type="Texture2D" uid="uid://cnpmtkadh2s6i" path="res://assets/assets_personaje/Cabello.PNG" id="7_7qepc"]
-[ext_resource type="Texture2D" uid="uid://bfrt1hm5o7b84" path="res://assets/assets_personaje/ojos2.PNG" id="8_8i8ch"]
-[ext_resource type="Texture2D" uid="uid://qlhpnejrpnlm" path="res://assets/assets_personaje/ojos.PNG" id="9_8f84d"]
-[ext_resource type="Texture2D" uid="uid://cgmo3n733k5r5" path="res://assets/assets_personaje/Boca2.PNG" id="10_xlg01"]
-[ext_resource type="Texture2D" uid="uid://bj3nnb4e20oig" path="res://assets/assets_personaje/Boca.PNG" id="11_8bjb2"]
-[ext_resource type="Texture2D" uid="uid://dx2mln11chg5f" path="res://assets/assets_personaje/cuerpo.png" id="12_sqd4m"]
-[ext_resource type="Texture2D" uid="uid://cajljihs8nsaq" path="res://assets/assets_personaje/nariz2.PNG" id="13_q17oc"]
-[ext_resource type="Texture2D" uid="uid://joj1svphpl4k" path="res://assets/assets_personaje/nariz .PNG" id="14_ts4du"]
-[ext_resource type="Texture2D" uid="uid://ckmkvsco6sqhv" path="res://assets/assets_personaje/cabeza2.PNG" id="15_5l6wh"]
-[ext_resource type="Texture2D" uid="uid://c6w6fit07kbau" path="res://assets/assets_personaje/cabeza.PNG" id="16_8g38g"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fuqye"]
-size = Vector2(212, 473)
+[ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="5_bu4yu"]
 
 [sub_resource type="Animation" id="Animation_byxo4"]
 resource_name = "Desvanecido_Fuera"
@@ -79,34 +65,9 @@ visible = false
 scale = Vector2(2.6, 2.6)
 texture = ExtResource("4_wdmfg")
 
-[node name="Jugador" type="CharacterBody2D" parent="personajes"]
-position = Vector2(712, 375)
-script = ExtResource("5_t6nje")
-coleccion_cabellos = Array[Texture2D]([null, ExtResource("6_nsjm7"), ExtResource("7_7qepc")])
-coleccion_ojos = Array[Texture2D]([ExtResource("8_8i8ch"), ExtResource("9_8f84d")])
-coleccion_boca = Array[Texture2D]([ExtResource("10_xlg01"), ExtResource("11_8bjb2")])
-coleccion_cuerpo = Array[Texture2D]([ExtResource("12_sqd4m")])
-coleccion_nariz = Array[Texture2D]([ExtResource("13_q17oc"), ExtResource("14_ts4du")])
-coleccion_cabeza = Array[Texture2D]([ExtResource("15_5l6wh"), ExtResource("16_8g38g")])
-
-[node name="Node2D" type="Node2D" parent="personajes/Jugador"]
-
-[node name="Cuerpo" type="Sprite2D" parent="personajes/Jugador/Node2D"]
-offset = Vector2(0, 250)
-
-[node name="Cabeza" type="Sprite2D" parent="personajes/Jugador/Node2D"]
-
-[node name="Boca" type="Sprite2D" parent="personajes/Jugador/Node2D"]
-
-[node name="Cabello" type="Sprite2D" parent="personajes/Jugador/Node2D"]
-
-[node name="Nariz" type="Sprite2D" parent="personajes/Jugador/Node2D"]
-
-[node name="Ojos" type="Sprite2D" parent="personajes/Jugador/Node2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="personajes/Jugador"]
-position = Vector2(5, 190.5)
-shape = SubResource("RectangleShape2D_fuqye")
+[node name="Jugador" parent="personajes" instance=ExtResource("5_bu4yu")]
+position = Vector2(1209, 699)
+scale = Vector2(1, 1)
 
 [node name="FondoNegro" type="Sprite2D" parent="."]
 visible = false

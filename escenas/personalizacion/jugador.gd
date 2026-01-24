@@ -1,72 +1,58 @@
 extends CharacterBody2D
 
-@export var speed := 300
-var puede_moverse := false
+# --- CONFIGURACIÓN ---
+@export var speed: int = 300
+@export var vidas_maximas: int = 3
 
-var emocion_actual := ""
+# --- ESTADO ---
+var puede_moverse: bool = false
+var emocion_actual: String = ""
+var controles_invertidos: bool = false
+var congelando: bool = false
+var invulnerable: bool = false
+var nivel_terminado: bool = false
+
+var vidas_actuales: int = 0
+var velocidad_base: int = 0
+
+# --- TIMERS ---
 var timer_emocion: Timer
-
-var controles_invertidos := false
-
 var timer_congelar: Timer
-var congelando := false
 
-@export var vidas_maximas := 3
-var vidas_actuales := 3
+# --- REFERENCIAS ---
+@onready var apariencia: Node = $PlayerAppearance
 
-var velocidad_base := 300
-var invulnerable := false
-
-var nivel_terminado := false
-
-# --- REFERENCIAS (Asegúrate de tener los mismos nombres de nodos en esta escena) ---
-@onready var sprite_cabello = $Node2D/Cabello
-@onready var sprite_ojos = $Node2D/Ojos
-@onready var sprite_boca = $Node2D/Boca
-@onready var sprite_cuerpo = $Node2D/Cuerpo
-@onready var sprite_nariz = $Node2D/Nariz
-@onready var sprite_cabeza = $Node2D/Cabeza
-
-# --- INVENTARIO (Copia y pega las mismas listas del otro script en el inspector) ---
-@export var coleccion_cabellos: Array[Texture2D]
-@export var coleccion_ojos: Array[Texture2D]
-@export var coleccion_boca: Array[Texture2D]
-@export var coleccion_cuerpo: Array[Texture2D]
-@export var coleccion_nariz: Array[Texture2D]
-@export var coleccion_cabeza: Array[Texture2D]
-
-# Diccionario para expresiones (Opcional, para diálogos)
-@export var expresiones_ojos: Dictionary 
-
-func _ready():
-	
+func _ready() -> void:
 	velocidad_base = speed
 	vidas_actuales = vidas_maximas
-	
-	Global.jugador = self
-	cargar_apariencia_desde_global()
 
+	Global.jugador = self
+
+	# Aplicar apariencia inicial
+	apariencia.aplicar_apariencia_desde_global()
+
+	# Timer emoción
 	timer_emocion = Timer.new()
-	
+	timer_emocion.one_shot = true
+	add_child(timer_emocion)
+	timer_emocion.timeout.connect(_terminar_emocion)
+
+	# Timer congelamiento
 	timer_congelar = Timer.new()
 	timer_congelar.wait_time = 0.6
 	timer_congelar.one_shot = false
 	add_child(timer_congelar)
 	timer_congelar.timeout.connect(_alternar_congelamiento)
 
-	timer_emocion.one_shot = true
-	add_child(timer_emocion)
-	timer_emocion.timeout.connect(_terminar_emocion)
-
-func recibir_danio():
-	print("💀​💀​ Danio recibido")
+# --------------------------------------------------
+# VIDA / DAÑO
+# --------------------------------------------------
+func recibir_danio() -> void:
 	if invulnerable:
 		return
 
 	vidas_actuales -= 1
-	print("Vidas restantes:", vidas_actuales)
 
-	# Actualizar UI
 	if Global.lives_ui:
 		Global.lives_ui.actualizar_vidas(vidas_actuales)
 
@@ -76,57 +62,42 @@ func recibir_danio():
 
 	_activar_invulnerabilidad()
 
-func _activar_invulnerabilidad():
+func _activar_invulnerabilidad() -> void:
 	invulnerable = true
-
-	# Boost de velocidad
 	speed = velocidad_base + 150
 
-	# Parpadeo
-	var tween := create_tween()
+	var tween: Tween = create_tween()
 	tween.set_loops(6)
 	tween.tween_property(self, "modulate:a", 0.2, 0.1)
 	tween.tween_property(self, "modulate:a", 1.0, 0.1)
 
 	await tween.finished
 
-	# Restaurar estado
 	speed = velocidad_base
 	invulnerable = false
 
-func _morir():
-	print("​☠️​ Jugador muerto")
+func _morir() -> void:
 	bloquear_movimiento()
+	print("☠️ Jugador muerto")
 
-	# Aquí el nivel decide:
-	# get_tree().reload_current_scene()
-	# o emitir señal
-
-func aplicar_emocion(tipo: String, color: Color, duracion: float):
+# --------------------------------------------------
+# EMOCIONES
+# --------------------------------------------------
+func aplicar_emocion(tipo: String, color: Color, duracion: float) -> void:
 	_terminar_emocion()
 
 	emocion_actual = tipo
-	_aplicar_color(color)
 	_aplicar_efecto(tipo)
-	
-	# 📌 Registrar emoción
+
 	Global.registrar_emocion(tipo)
-	
-	# 🔔 Avisar al UI
+
 	if Global.emotions_ui:
 		Global.emotions_ui.unlock_emotion(tipo)
-	
-	# 🏁 ¿Ya están todas?
-#	if Global.tiene_todas_las_emociones():
-#		_on_todas_las_emociones_recolectadas()
-		
+
+	apariencia.aplicar_color_emocion(color)
 	timer_emocion.start(duracion)
 
-func _aplicar_color(color: Color):
-	sprite_cuerpo.self_modulate = color
-	sprite_cabeza.self_modulate = color
-
-func _aplicar_efecto(tipo: String):
+func _aplicar_efecto(tipo: String) -> void:
 	match tipo:
 		"alegria":
 			speed = 400
@@ -134,80 +105,37 @@ func _aplicar_efecto(tipo: String):
 			speed = 200
 		"enojo":
 			speed = 300
-			_invertir_controles()
+			controles_invertidos = true
 		"desagrado":
-			_congelar_intermitente()
+			congelando = true
+			timer_congelar.start()
 		"sorpresa":
 			speed = 450
 
-func _invertir_controles():
-	controles_invertidos = true
-
-func _congelar_intermitente():
-	congelando = true
-	timer_congelar.start()
-
-func _alternar_congelamiento():
+func _alternar_congelamiento() -> void:
 	puede_moverse = not puede_moverse
 
-func _terminar_emocion():
+func _terminar_emocion() -> void:
 	emocion_actual = ""
 	speed = velocidad_base
 	controles_invertidos = false
 
 	congelando = false
 	timer_congelar.stop()
-	
-	if not nivel_terminado:
-		puede_moverse = true
-	else:
-		puede_moverse = false
 
-	_restablecer_color()
+	puede_moverse = not nivel_terminado
+	apariencia.restaurar_colores()
 
-func _restablecer_color():
-	sprite_cuerpo.self_modulate = Global.apariencia.color_cuerpo
-	sprite_cabeza.self_modulate = Global.apariencia.color_cabeza
-
-func cargar_apariencia_desde_global():
-	# RECONSTRUCCIÓN: Usamos los datos guardados en "Global"
-	
-	# 1. Texturas
-	if coleccion_cabellos.size() > 0:
-		sprite_cabello.texture = coleccion_cabellos[Global.apariencia.indice_cabello]
-	if coleccion_cabeza.size() > 0:
-		sprite_cabeza.texture = coleccion_cabeza[Global.apariencia.indice_cabeza]
-	if coleccion_ojos.size() > 0:
-		sprite_ojos.texture = coleccion_ojos[Global.apariencia.indice_ojos]
-	if coleccion_boca.size() > 0:
-		sprite_boca.texture = coleccion_boca[Global.apariencia.indice_boca]
-	if coleccion_nariz.size() > 0:
-		sprite_nariz.texture = coleccion_nariz[Global.apariencia.indice_nariz]
-	if coleccion_cuerpo.size() > 0:
-		sprite_cuerpo.texture = coleccion_cuerpo[Global.apariencia.indice_cuerpo]
-		
-	# 2. Colores
-	sprite_cabello.self_modulate = Global.apariencia.color_cabello
-	sprite_cabeza.self_modulate = Global.apariencia.color_cabeza
-	sprite_ojos.self_modulate = Global.apariencia.color_ojos
-	sprite_boca.self_modulate = Global.apariencia.color_boca
-	sprite_nariz.self_modulate = Global.apariencia.color_nariz
-	sprite_cuerpo.self_modulate = Global.apariencia.color_cuerpo
-
-# Función para diálogos (Mantiene el color de ojos original)
-func cambiar_gesto(nombre_emocion: String):
-	if expresiones_ojos.has(nombre_emocion):
-		sprite_ojos.texture = expresiones_ojos[nombre_emocion]
-		# IMPORTANTE: Re-aplicar el color guardado, o la expresión saldrá blanca
-		sprite_ojos.self_modulate = Global.apariencia.color_ojos
-
-func _physics_process(_delta):
+# --------------------------------------------------
+# MOVIMIENTO
+# --------------------------------------------------
+func _physics_process(_delta: float) -> void:
 	if not puede_moverse:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		return
 
-	var direction := Vector2.ZERO
+	var direction: Vector2 = Vector2.ZERO
 
 	if Input.is_action_pressed("move_up"):
 		direction.y -= 1
@@ -224,12 +152,25 @@ func _physics_process(_delta):
 		direction = -direction
 
 	velocity = direction * speed
+	
+	if direction != Vector2.ZERO:
+		if abs(direction.x) > abs(direction.y):
+			$PlayerAppearance.set_direccion(
+				"right" if direction.x > 0 else "left"
+			)
+		else:
+			$PlayerAppearance.set_direccion(
+				"down" if direction.y > 0 else "up"
+			)
+
 	move_and_slide()
 
-
-func bloquear_movimiento():
+# --------------------------------------------------
+# CONTROL EXTERNO
+# --------------------------------------------------
+func bloquear_movimiento() -> void:
 	puede_moverse = false
 	velocity = Vector2.ZERO
 
-func permitir_movimiento():
+func permitir_movimiento() -> void:
 	puede_moverse = true
