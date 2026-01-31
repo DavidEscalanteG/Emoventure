@@ -5,7 +5,7 @@ extends Node2D
 # --------------------------------------------------
 
 @onready var apariencia: Node2D = $Jugador/PlayerAppearance
-
+@onready var mascota: Node2D = $Mascota
 
 # --------------------------------------------------
 # ESTADO TEMPORAL (índices del menú)
@@ -26,6 +26,8 @@ var indice_cabeza: int = 0
 func _ready() -> void:
 	cargar_desde_global()
 	refrescar_preview()
+	
+	mascota.aplicar_mascota_desde_global()
 
 
 # --------------------------------------------------
@@ -85,11 +87,11 @@ func _on_btn_cabello_atras_pressed() -> void:
 
 
 func _on_btn_cabeza_siguiente_pressed() -> void:
-	indice_cabeza = _siguiente(indice_cabeza, apariencia.coleccion_cabeza)
+	indice_cabeza = _siguiente(indice_cabeza, apariencia.coleccion_cabezas)
 	refrescar_preview()
 
 func _on_btn_cabeza_atras_pressed() -> void:
-	indice_cabeza = _anterior(indice_cabeza, apariencia.coleccion_cabeza)
+	indice_cabeza = _anterior(indice_cabeza, apariencia.coleccion_cabezas)
 	refrescar_preview()
 
 
@@ -103,29 +105,28 @@ func _on_btn_ojos_atras_pressed() -> void:
 
 
 func _on_btn_nariz_siguiente_pressed() -> void:
-	indice_nariz = _siguiente(indice_nariz, apariencia.coleccion_nariz)
+	indice_nariz = _siguiente(indice_nariz, apariencia.coleccion_narices)
 	refrescar_preview()
 
 func _on_btn_nariz_atras_pressed() -> void:
-	indice_nariz = _anterior(indice_nariz, apariencia.coleccion_nariz)
+	indice_nariz = _anterior(indice_nariz, apariencia.coleccion_narices)
 	refrescar_preview()
 
 
 func _on_btn_boca_siguiente_pressed() -> void:
-	indice_boca = _siguiente(indice_boca, apariencia.coleccion_boca)
+	indice_boca = _siguiente(indice_boca, apariencia.coleccion_bocas)
 	refrescar_preview()
 
 func _on_btn_boca_atras_pressed() -> void:
-	indice_boca = _anterior(indice_boca, apariencia.coleccion_boca)
+	indice_boca = _anterior(indice_boca, apariencia.coleccion_bocas)
 	refrescar_preview()
 
 
 func _on_btn_cuerpo_siguiente_pressed() -> void:
-	indice_cuerpo = _siguiente(indice_cuerpo, apariencia.coleccion_cuerpo)
+	indice_cuerpo = _siguiente(indice_cuerpo, apariencia.coleccion_cuerpos)
 	refrescar_preview()
-
 func _on_btn_cuerpo_atras_pressed() -> void:
-	indice_cuerpo = _anterior(indice_cuerpo, apariencia.coleccion_cuerpo)
+	indice_cuerpo = _anterior(indice_cuerpo, apariencia.coleccion_cuerpos)
 	refrescar_preview()
 
 
@@ -133,25 +134,21 @@ func _on_btn_cuerpo_atras_pressed() -> void:
 # COLOR PICKERS
 # --------------------------------------------------
 
-func _on_color_picker_button_cabello_color_changed(color: Color) -> void:
-	Global.apariencia.color_cabello = color
-	apariencia.restaurar_colores()
-
 func _on_color_picker_button_cabeza_color_changed(color: Color) -> void:
 	Global.apariencia.color_cabeza = color
-	apariencia.restaurar_colores()
+	apariencia._restaurar_colores()
 
 func _on_color_picker_button_ojos_color_changed(color: Color) -> void:
 	Global.apariencia.color_ojos = color
-	apariencia.restaurar_colores()
+	apariencia._restaurar_colores()
 
 func _on_color_picker_button_boca_color_changed(color: Color) -> void:
 	Global.apariencia.color_boca = color
-	apariencia.restaurar_colores()
+	apariencia._restaurar_colores()
 
 func _on_color_picker_button_cuerpo_color_changed(color: Color) -> void:
 	Global.apariencia.color_cuerpo = color
-	apariencia.restaurar_colores()
+	apariencia._restaurar_colores()
 
 # --------------------------------------------------
 # BOTÓN FINAL
@@ -160,3 +157,42 @@ func _on_color_picker_button_cuerpo_color_changed(color: Color) -> void:
 func _on_comenzar_pressed() -> void:
 	guardar_en_global()
 	get_tree().change_scene_to_file("res://escenas/escena_1/escena_1.tscn")
+
+
+func _on_mascota_siguiente_pressed() -> void:
+	if mascota.coleccion_mascotas.is_empty():
+		return
+
+	var indice: int = int(Global.mascota["indice"])
+	indice = (indice + 1) % mascota.coleccion_mascotas.size()
+
+	Global.mascota["indice"] = indice
+	mascota.aplicar_mascota_desde_global()
+
+
+func mascota_anterior() -> void:
+	if mascota.coleccion_mascotas.is_empty():
+		return
+
+	var indice: int = int(Global.mascota["indice"])
+	indice -= 1
+
+	if indice < 0:
+		indice = mascota.coleccion_mascotas.size() - 1
+
+	Global.mascota["indice"] = indice
+	mascota.aplicar_mascota_desde_global()
+
+
+func _on_mascota_anterior_pressed() -> void:
+	if mascota.coleccion_mascotas.is_empty():
+		return
+
+	var indice: int = int(Global.mascota["indice"])
+	indice -= 1
+
+	if indice < 0:
+		indice = mascota.coleccion_mascotas.size() - 1
+
+	Global.mascota["indice"] = indice
+	mascota.aplicar_mascota_desde_global()

@@ -1,20 +1,16 @@
 extends Node2D
 
-const DIALOGO_ESCENA_3 := preload("res://dialogos/escena_3.dialogue")
-#const SIGUIENTE_ESCENA := "res://escenas/escena_3/escena_3.tscn"
-
 #@onready var personajes := $personajes
 @onready var level_complete_ui := $NivelCompletadoUI/Control
 
-func _ready() -> void:
-	print("Enemigos encontrados:", get_tree().get_nodes_in_group("enemigos").size())
+func _ready():
 
+	Global.jugador.permitir_movimiento()
+
+	print("Enemigos encontrados:", get_tree().get_nodes_in_group("enemigos").size())
 	print(level_complete_ui)
 	Global.emociones_recolectadas.clear()
 	Global.todas_las_emociones_recolectadas.connect(_on_todas_las_emociones_recolectadas)
-
-	await get_tree().create_timer(1.0).timeout
-	DialogueManager.show_dialogue_balloon(DIALOGO_ESCENA_3)
 
 func _on_todas_las_emociones_recolectadas():
 	

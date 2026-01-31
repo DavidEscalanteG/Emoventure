@@ -1,6 +1,6 @@
 extends Control
 
-@onready var label_pregunta := $Panel/Label
+@onready var label_pregunta := %PreguntaRichTextLabel
 
 var preguntas := [
 	"Presto mucha atención a los sentimientos.",

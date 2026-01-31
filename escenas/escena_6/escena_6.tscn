@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0tuj3njkfr0j"]
+
+[ext_resource type="Texture2D" uid="uid://dr5p17d810x6d" path="res://escenas/escena_6/fondo/fondo_escena_6.jpg" id="1_egauy"]
+[ext_resource type="Script" uid="uid://bagngse3npmbr" path="res://escenas/escena_6/escena_6.gd" id="1_sby86"]
+[ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="2_vcoxn"]
+[ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui_3.tscn" id="4_3ixbf"]
+
+[node name="Escena6" type="Node2D"]
+script = ExtResource("1_sby86")
+
+[node name="FondoEscena6" type="Sprite2D" parent="."]
+position = Vector2(956.75, 545.25)
+scale = Vector2(3.6920905, 3.4602447)
+texture = ExtResource("1_egauy")
+
+[node name="Personajes" type="Node2D" parent="."]
+
+[node name="JugadorCinematico" parent="Personajes" instance=ExtResource("2_vcoxn")]
+position = Vector2(1442, 778)
+
+[node name="DialogueUI" parent="." instance=ExtResource("4_3ixbf")]

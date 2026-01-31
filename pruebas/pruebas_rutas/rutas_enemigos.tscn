@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://centuumfvpc1w" path="res://pruebas/pruebas_rutas/rutas_enemigos.gd" id="1_ke7r8"]
 [ext_resource type="Texture2D" uid="uid://coq3u4o4mvnf0" path="res://assets/assets_escena_3/paredes/Terrain (32x32).png" id="2_qeh7m"]
 [ext_resource type="Script" uid="uid://bmohdnj1rq7it" path="res://escenas/escena_3/interseccion.gd" id="3_ke7r8"]
-[ext_resource type="PackedScene" uid="uid://d14ky0d5wqhvm" path="res://assets/enemigos/Enemigo.tscn" id="4_krifn"]
+[ext_resource type="PackedScene" uid="uid://d14ky0d5wqhvm" path="res://assets/enemigos/serpiente/Enemigo.tscn" id="4_krifn"]
 [ext_resource type="Texture2D" uid="uid://qa0vcapsrqnd" path="res://pruebas/assets_temporales/num1.jpg" id="5_3iexa"]
 [ext_resource type="Texture2D" uid="uid://b33wmnqselxk3" path="res://pruebas/assets_temporales/num2.jpg" id="6_f88cc"]
 [ext_resource type="Script" uid="uid://dr80qquf74i7m" path="res://escenas/personalizacion/jugador.gd" id="6_krifn"]

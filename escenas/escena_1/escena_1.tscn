@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://drx7lt3mhojre" path="res://escenas/escena_1/escena_1.gd" id="1_avmbo"]
 [ext_resource type="Texture2D" uid="uid://6qtwykxeov1l" path="res://assets/assets_escena_1/fondo/Fondo_Feria_Emoventure.png" id="1_gwnrk"]
-[ext_resource type="Texture2D" uid="uid://d16ns3k6g5hjh" path="res://assets/personajes/gitana/gitana neutral.png" id="2_kgfb6"]
-[ext_resource type="Texture2D" uid="uid://df0d687koh1fi" path="res://assets/personajes/gitana/gitana prediciendo.png" id="3_avmbo"]
+[ext_resource type="PackedScene" uid="uid://dgbvgfgvxkfgn" path="res://assets/personajes/gitana/gitana.tscn" id="3_avmbo"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="4_kgfb6"]
-[ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="5_ngdnf"]
+[ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="5_xucjc"]
+[ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui_3.tscn" id="6_ngdnf"]
 
 [sub_resource type="Animation" id="Animation_byxo4"]
 resource_name = "Desvanecido_Fuera"
@@ -55,21 +55,11 @@ texture = ExtResource("1_gwnrk")
 
 [node name="personajes" type="Node2D" parent="."]
 
-[node name="gitana" type="Node2D" parent="personajes"]
+[node name="gitana" parent="personajes" instance=ExtResource("3_avmbo")]
 position = Vector2(431, 503)
 
-[node name="exp_neutral" type="Sprite2D" parent="personajes/gitana"]
-scale = Vector2(2.85, 2.85)
-texture = ExtResource("2_kgfb6")
-
-[node name="exp_adivina" type="Sprite2D" parent="personajes/gitana"]
-visible = false
-scale = Vector2(2.6, 2.6)
-texture = ExtResource("3_avmbo")
-
-[node name="Jugador" parent="personajes" instance=ExtResource("5_ngdnf")]
-position = Vector2(1108.9999, 619.99994)
-scale = Vector2(1, 1)
+[node name="JugadorCinematico" parent="personajes" instance=ExtResource("5_xucjc")]
+position = Vector2(1407, 633)
 
 [node name="FondoNegro" type="Sprite2D" parent="."]
 visible = false
@@ -81,3 +71,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_v2krm")
 }
 autoplay = "Desvanecido_Fuera"
+
+[node name="DialogueUI" parent="." instance=ExtResource("6_ngdnf")]

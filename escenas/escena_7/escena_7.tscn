@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7ncdodlaop87"]
+
+[ext_resource type="Texture2D" uid="uid://dwedhuqfydvc" path="res://escenas/escena_7/fondo/fondo_escena_7.jpg" id="1_jlhpl"]
+[ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="2_8jlpt"]
+[ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui_3.tscn" id="3_vov1m"]
+
+[node name="escena_7" type="Node2D"]
+
+[node name="FondoEscena7" type="Sprite2D" parent="."]
+position = Vector2(956.00006, 545.00006)
+scale = Vector2(3.3251274, 2.5158372)
+texture = ExtResource("1_jlhpl")
+
+[node name="Personajes" type="Node2D" parent="."]
+
+[node name="JugadorCinematico" parent="Personajes" instance=ExtResource("2_8jlpt")]
+position = Vector2(256, 579)
+scale = Vector2(3, 3)
+
+[node name="DialogueUI" parent="." instance=ExtResource("3_vov1m")]

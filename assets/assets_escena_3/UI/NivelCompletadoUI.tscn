@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://xirhg56731lh"]
+[gd_scene load_steps=11 format=3 uid="uid://xirhg56731lh"]
 
 [ext_resource type="Script" uid="uid://l6wswws2bnvk" path="res://assets/assets_escena_3/UI/nivel_completado_ui.gd" id="1_2e01h"]
 [ext_resource type="Texture2D" uid="uid://qtect2yegfev" path="res://assets/emociones/sprites/felicidad.png" id="2_po2aj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dakbba4p8b1b3" path="res://pruebas/assets_temporales/corazon_lleno.png" id="7_3m343"]
 [ext_resource type="Texture2D" uid="uid://diko1vyjoakh1" path="res://pruebas/assets_temporales/serpiente png.png" id="8_cj4g5"]
 [ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="9_bmrmj"]
+[ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="9_n5g63"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -85,10 +86,27 @@ layout_mode = 2
 texture = ExtResource("7_3m343")
 
 [node name="JugadorGrande" type="TextureRect" parent="Control/Panel/VBoxContainer"]
+visible = false
 layout_mode = 2
 texture = ExtResource("8_cj4g5")
 
-[node name="BotonContinuar" type="Button" parent="Control/Panel/VBoxContainer"]
+[node name="ControlJugador" type="Control" parent="Control/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 611)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="JugadorEstetico" parent="Control/Panel/VBoxContainer/ControlJugador" instance=ExtResource("9_n5g63")]
+position = Vector2(0, 305)
+scale = Vector2(3, 3)
+
+[node name="ControlBoton" type="Control" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="BotonContinuar" type="Button" parent="Control/Panel/VBoxContainer/ControlBoton"]
+layout_mode = 0
+offset_top = 4.0
+offset_right = 589.0
+offset_bottom = 137.0
 icon = ExtResource("9_bmrmj")
 icon_alignment = 1

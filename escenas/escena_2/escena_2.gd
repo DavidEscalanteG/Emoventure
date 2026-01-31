@@ -3,43 +3,16 @@ extends Node2D
 const DIALOGO_ESCENA_2 := preload("res://dialogos/escena__2.dialogue")
 const SIGUIENTE_ESCENA := "res://escenas/escena_3/escena_3.tscn"
 
-@onready var personajes := $personajes
+#@onready var personajes := $personajes
+@onready var dialogue_ui := $DialogueUI/Balloon
 
 func _ready() -> void:
-	# Conectamos la señal UNA SOLA VEZ
-	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	
+	DialogueActors.register_actor("gitana", $personajes/gitana)
+	dialogue_ui.dialogue_finished.connect(_on_dialogue_finished)
 
-	# Pequeña pausa antes de iniciar el diálogo
-	await get_tree().create_timer(1.0).timeout
-	DialogueManager.show_dialogue_balloon(DIALOGO_ESCENA_2)
+	#await get_tree().create_timer(1.0).timeout
+	dialogue_ui.start_dialogue(DIALOGO_ESCENA_2)
 
-
-# 🔔 Se llama automáticamente cuando termina cualquier diálogo
-func _on_dialogue_ended(resource: Resource) -> void:
-	if resource == DIALOGO_ESCENA_2:
-		get_tree().change_scene_to_file(SIGUIENTE_ESCENA)
-
-# 🎭 Esta función la llama el archivo .dialogue
-func set_expr(personaje: String, expresion: String) -> void:
-	if not personajes.has_node(personaje):
-		push_warning("Personaje no encontrado: %s" % personaje)
-		return
-
-	var p = personajes.get_node(personaje)
-
-	# 1️⃣ Caso especial: jugador
-	if p.has_method("cambiar_gesto"):
-		p.cambiar_gesto(expresion)
-		return
-
-	# 2️⃣ NPCs: apagar solo expresiones
-	for s in p.get_children():
-		if s.name.begins_with("exp_"):
-			s.visible = false
-
-	# 3️⃣ Activar la expresión correcta (si existe)
-	var nombre_expr := "exp_" + expresion
-	if p.has_node(nombre_expr):
-		p.get_node(nombre_expr).visible = true
-	else:
-		push_warning("Expresión no encontrada: %s en %s" % [expresion, personaje])
+func _on_dialogue_finished():
+	get_tree().change_scene_to_file(SIGUIENTE_ESCENA)

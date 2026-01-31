@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgbvgfgvxkfgn"]
+
+[ext_resource type="SpriteFrames" uid="uid://eijnnn8gf7sp" path="res://pruebas/animaciones/conejo/animaciones/gitana.tres" id="1_ir1xb"]
+
+[node name="gitana" type="Node2D"]
+scale = Vector2(10, 10)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_ir1xb")
+animation = &"adivina"

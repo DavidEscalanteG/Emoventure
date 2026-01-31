@@ -1,12 +1,38 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxv23v4515m48"]
+[gd_scene load_steps=19 format=3 uid="uid://cxv23v4515m48"]
 
 [ext_resource type="Script" uid="uid://6uymohbocc55" path="res://escenas/personalizacion/Personalizador.gd" id="1_n5qyn"]
+[ext_resource type="Script" uid="uid://dck5qqh46f0cm" path="res://escenas/personalizacion/hsv_color_editor.gd" id="2_rysy1"]
+[ext_resource type="PackedScene" uid="uid://b4t1ghb0ibdtf" path="res://assets/personajes/mascota/mascota.tscn" id="4_ngfm0"]
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="13_3x2dh"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="13_qeg4c"]
 [ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="14_tydmf"]
 [ext_resource type="Texture2D" uid="uid://b414bmu8meery" path="res://assets/assets_menu_principal/boton_play/boton_play_pressed.png" id="15_3x2dh"]
 [ext_resource type="Texture2D" uid="uid://c1csicswuxs24" path="res://assets/assets_menu_principal/boton_play/boton_play_hover.png" id="16_gvyea"]
 [ext_resource type="Script" uid="uid://c46nol38d8qcv" path="res://escenas/personalizacion/comenzar.gd" id="17_tydmf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rysy1"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjs3j"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70rkc"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qeg4c"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbqfp"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fmof"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0, 0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_byxo4"]
 resource_name = "Desvanecido_Fuera"
@@ -63,6 +89,7 @@ layout_mode = 2
 
 [node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="BtnCabelloAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
 layout_mode = 2
@@ -76,11 +103,9 @@ text = "Cabello"
 layout_mode = 2
 text = ">"
 
-[node name="ColorPickerButtonCabello" type="ColorPickerButton" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
-layout_mode = 2
-
 [node name="BoxContainer2" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="BtnCabezaAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2"]
 layout_mode = 2
@@ -88,7 +113,7 @@ text = "<"
 
 [node name="Cabeza" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2"]
 layout_mode = 2
-text = "Cabeza"
+text = "Gorro"
 
 [node name="BtnCabezaSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2"]
 layout_mode = 2
@@ -98,6 +123,7 @@ text = ">"
 layout_mode = 2
 
 [node name="BoxContainer3" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="BtnOjosAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3"]
@@ -116,6 +142,7 @@ text = ">"
 layout_mode = 2
 
 [node name="BoxContainer4" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="BtnNarizAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer4"]
@@ -132,6 +159,7 @@ text = ">"
 
 [node name="BoxContainer5" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="BtnBocaAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5"]
 layout_mode = 2
@@ -139,7 +167,7 @@ text = "<"
 
 [node name="Boca" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5"]
 layout_mode = 2
-text = "Boca"
+text = "Ropa"
 
 [node name="BtnBocaSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5"]
 layout_mode = 2
@@ -150,6 +178,7 @@ layout_mode = 2
 
 [node name="BoxContainer6" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="BtnCuerpoAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6"]
 layout_mode = 2
@@ -157,7 +186,7 @@ text = "<"
 
 [node name="Cuerpo" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6"]
 layout_mode = 2
-text = "Cuerpo"
+text = "Color"
 
 [node name="BtnCuerpoSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6"]
 layout_mode = 2
@@ -167,6 +196,7 @@ text = ">"
 layout_mode = 2
 
 [node name="BoxContainer7" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Altura" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer7"]
@@ -180,6 +210,7 @@ max_value = 1.2
 value = 0.8
 
 [node name="BoxContainer8" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Peso" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer8"]
@@ -192,15 +223,260 @@ min_value = 0.8
 max_value = 1.2
 value = 0.8
 
+[node name="HSVColorEditor" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HSVEditorCabello" type="Control" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
+anchors_preset = 0
+offset_left = 700.0
+offset_right = 740.0
+offset_bottom = 40.0
+script = ExtResource("2_rysy1")
+clave_color_global = "color_cabello"
+apariencia = NodePath("../../../Jugador/PlayerAppearance")
+
+[node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 64.0
+offset_right = 678.0
+offset_bottom = 80.0
+scale = Vector2(2.5, 2.5)
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
+max_value = 1.0
+step = 0.01
+
+[node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 112.0
+offset_right = 678.0
+offset_bottom = 128.0
+scale = Vector2(2.5, 2.5)
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
+max_value = 1.0
+step = 0.01
+
+[node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 160.0
+offset_right = 678.0
+offset_bottom = 176.0
+scale = Vector2(2.5, 2.5)
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
+min_value = 0.125
+max_value = 1.0
+step = 0.01
+value = 0.125
+
+[node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 64.0
+offset_right = 1204.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 35
+text = "Color de cabello"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSVEditorGorro" type="Control" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
+anchors_preset = 0
+offset_left = 700.0
+offset_top = 200.0
+offset_right = 740.0
+offset_bottom = 240.0
+script = ExtResource("2_rysy1")
+clave_color_global = "color_cabeza"
+apariencia = NodePath("../../../Jugador/PlayerAppearance")
+
+[node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 64.0
+offset_right = 678.0
+offset_bottom = 80.0
+scale = Vector2(2.5, 2.5)
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
+max_value = 1.0
+step = 0.01
+
+[node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 112.0
+offset_right = 678.0
+offset_bottom = 128.0
+scale = Vector2(2.5, 2.5)
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
+max_value = 1.0
+step = 0.01
+
+[node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 160.0
+offset_right = 678.0
+offset_bottom = 176.0
+scale = Vector2(2.5, 2.5)
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
+min_value = 0.125
+max_value = 1.0
+step = 0.01
+value = 0.125
+
+[node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 64.0
+offset_right = 1204.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 35
+text = "Color de gorro"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSVEditorRopa" type="Control" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
+anchors_preset = 0
+offset_left = 700.0
+offset_top = 400.0
+offset_right = 740.0
+offset_bottom = 440.0
+script = ExtResource("2_rysy1")
+clave_color_global = "color_boca"
+apariencia = NodePath("../../../Jugador/PlayerAppearance")
+
+[node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 64.0
+offset_right = 678.0
+offset_bottom = 80.0
+scale = Vector2(2.5, 2.5)
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
+max_value = 1.0
+step = 0.01
+
+[node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 112.0
+offset_right = 678.0
+offset_bottom = 128.0
+scale = Vector2(2.5, 2.5)
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
+max_value = 1.0
+step = 0.01
+
+[node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 160.0
+offset_right = 678.0
+offset_bottom = 176.0
+scale = Vector2(2.5, 2.5)
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
+min_value = 0.125
+max_value = 1.0
+step = 0.01
+value = 0.125
+
+[node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 64.0
+offset_right = 1204.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 35
+text = "Color de ropa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSVEditorPiel" type="Control" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
+anchors_preset = 0
+offset_left = 700.0
+offset_top = 600.0
+offset_right = 740.0
+offset_bottom = 640.0
+script = ExtResource("2_rysy1")
+clave_color_global = "color_cuerpo"
+apariencia = NodePath("../../../Jugador/PlayerAppearance")
+
+[node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 64.0
+offset_right = 678.0
+offset_bottom = 80.0
+scale = Vector2(2.5, 2.5)
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
+max_value = 1.0
+step = 0.01
+
+[node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 112.0
+offset_right = 678.0
+offset_bottom = 128.0
+scale = Vector2(2.5, 2.5)
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
+max_value = 1.0
+step = 0.01
+
+[node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 160.0
+offset_right = 678.0
+offset_bottom = 176.0
+scale = Vector2(2.5, 2.5)
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
+min_value = 0.125
+max_value = 1.0
+step = 0.01
+value = 0.125
+
+[node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 64.0
+offset_right = 1204.0
+offset_bottom = 192.0
+theme_override_font_sizes/font_size = 35
+text = "Color de piel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Jugador" parent="." instance=ExtResource("13_3x2dh")]
-position = Vector2(1027, 587)
+position = Vector2(950, 400)
 scale = Vector2(2, 2)
 
+[node name="Mascota" parent="." instance=ExtResource("4_ngfm0")]
+position = Vector2(1568, 895)
+scale = Vector2(6, 6)
+
 [node name="Comenzar" type="TextureButton" parent="."]
-offset_left = 1688.0001
-offset_top = 395.0
-offset_right = 1813.0001
-offset_bottom = 520.0
+offset_left = 917.0001
+offset_top = 867.0
+offset_right = 1042.0001
+offset_bottom = 992.0
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("14_tydmf")
 texture_pressed = ExtResource("15_3x2dh")
@@ -218,9 +494,24 @@ libraries = {
 }
 autoplay = "Desvanecido_Fuera"
 
+[node name="MascotaSiguiente" type="Button" parent="."]
+offset_left = 1719.0001
+offset_top = 878.0
+offset_right = 1737.0001
+offset_bottom = 909.0
+scale = Vector2(5, 5)
+text = ">"
+
+[node name="MascotaAnterior" type="Button" parent="."]
+offset_left = 1276.0
+offset_top = 879.0
+offset_right = 1294.0
+offset_bottom = 910.0
+scale = Vector2(5, 5)
+text = "<"
+
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer/BtnCabelloAtras" to="." method="_on_btn_cabello_atras_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer/BtnCabelloSiguiente" to="." method="_on_btn_cabello_siguiente_pressed"]
-[connection signal="color_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer/ColorPickerButtonCabello" to="." method="_on_color_picker_button_cabello_color_changed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2/BtnCabezaAtras" to="." method="_on_btn_cabeza_atras_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2/BtnCabezaSiguiente" to="." method="_on_btn_cabeza_siguiente_pressed"]
 [connection signal="color_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2/ColorPickerButtonCabeza" to="." method="_on_color_picker_button_cabeza_color_changed"]
@@ -235,6 +526,8 @@ autoplay = "Desvanecido_Fuera"
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6/BtnCuerpoAtras" to="." method="_on_btn_cuerpo_atras_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6/BtnCuerpoSiguiente" to="." method="_on_btn_cuerpo_siguiente_pressed"]
 [connection signal="color_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6/ColorPickerButtonCuerpo" to="." method="_on_color_picker_button_cuerpo_color_changed"]
-[connection signal="value_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer7/HSlider" to="." method="_on_h_slider_value_changed"]
-[connection signal="value_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer8/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="Comenzar" to="." method="_on_comenzar_pressed"]
+[connection signal="pressed" from="MascotaSiguiente" to="." method="_on_mascota_siguiente_pressed"]
+[connection signal="pressed" from="MascotaAnterior" to="." method="_on_mascota_anterior_pressed"]
+
+[editable path="Mascota"]

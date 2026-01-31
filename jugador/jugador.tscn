@@ -1,62 +1,64 @@
-[gd_scene load_steps=15 format=3 uid="uid://c14jtphj2d6kf"]
+[gd_scene load_steps=20 format=3 uid="uid://c14jtphj2d6kf"]
 
 [ext_resource type="Script" uid="uid://dr80qquf74i7m" path="res://escenas/personalizacion/jugador.gd" id="1_ahroc"]
 [ext_resource type="Script" uid="uid://de5fxgit5ggna" path="res://jugador/player_appearance.gd" id="2_5vouv"]
-[ext_resource type="Texture2D" uid="uid://de3ir88mktion" path="res://assets/assets_personaje/Cabello2.PNG" id="2_slyet"]
-[ext_resource type="Texture2D" uid="uid://cnpmtkadh2s6i" path="res://assets/assets_personaje/Cabello.PNG" id="3_mk724"]
-[ext_resource type="Texture2D" uid="uid://bfrt1hm5o7b84" path="res://assets/assets_personaje/ojos2.PNG" id="4_vmphg"]
-[ext_resource type="Texture2D" uid="uid://qlhpnejrpnlm" path="res://assets/assets_personaje/ojos.PNG" id="5_5iu33"]
-[ext_resource type="Texture2D" uid="uid://cgmo3n733k5r5" path="res://assets/assets_personaje/Boca2.PNG" id="6_llqwg"]
-[ext_resource type="Texture2D" uid="uid://bj3nnb4e20oig" path="res://assets/assets_personaje/Boca.PNG" id="7_ifo1j"]
-[ext_resource type="Texture2D" uid="uid://dx2mln11chg5f" path="res://assets/assets_personaje/cuerpo.png" id="8_jcs7t"]
-[ext_resource type="Texture2D" uid="uid://cajljihs8nsaq" path="res://assets/assets_personaje/nariz2.PNG" id="9_s00yy"]
-[ext_resource type="Texture2D" uid="uid://joj1svphpl4k" path="res://assets/assets_personaje/nariz .PNG" id="10_f7jpx"]
-[ext_resource type="Texture2D" uid="uid://ckmkvsco6sqhv" path="res://assets/assets_personaje/cabeza2.PNG" id="11_1dy1v"]
-[ext_resource type="Texture2D" uid="uid://c6w6fit07kbau" path="res://assets/assets_personaje/cabeza.PNG" id="12_n8rau"]
+[ext_resource type="SpriteFrames" uid="uid://ddjsrh778g6rm" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cabello/cabello_00.tres" id="3_frsvm"]
+[ext_resource type="SpriteFrames" uid="uid://xoy1vcui0y7u" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cabello/cabello_01.tres" id="3_xreb1"]
+[ext_resource type="SpriteFrames" uid="uid://bw4jsrbggfegr" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/sombrero/sobrero_01.tres" id="4_tkcrs"]
+[ext_resource type="SpriteFrames" uid="uid://dklhb2vd3a6pv" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cabello/cabello_02.tres" id="4_xmq2a"]
+[ext_resource type="SpriteFrames" uid="uid://kx0l0egxsded" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/ropa/ropa_01.tres" id="5_yl2o6"]
+[ext_resource type="SpriteFrames" uid="uid://dgslvkv7rsktt" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/sombrero/sobrero_00.tres" id="6_ahroc"]
+[ext_resource type="SpriteFrames" uid="uid://ekebet145v3e" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/sombrero/sobrero_02.tres" id="6_frsvm"]
+[ext_resource type="SpriteFrames" uid="uid://da1cf5pybf7m4" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cuerpo/cuerpo_01.tres" id="6_uo3ig"]
+[ext_resource type="SpriteFrames" uid="uid://b1sblwi8esp6h" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/ropa/ropa_02.tres" id="8_ahroc"]
+[ext_resource type="SpriteFrames" uid="uid://g2msfyj00js8" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cuerpo/cuerpo_02.tres" id="10_slyet"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a407c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xreb1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_frsvm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vu2ya"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tkcrs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yl2o6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjo0t"]
-size = Vector2(212, 268.49988)
+size = Vector2(42, 53)
 
 [node name="Jugador" type="CharacterBody2D"]
-scale = Vector2(0.2, 0.2)
 collision_mask = 8
 platform_floor_layers = 4294967294
 script = ExtResource("1_ahroc")
 
 [node name="PlayerAppearance" type="Node2D" parent="."]
-position = Vector2(0, -200)
+scale = Vector2(5, 5)
 script = ExtResource("2_5vouv")
-coleccion_cabellos = Array[Dictionary]([{
-"": null,
-"down": ExtResource("3_mk724"),
-"left": ExtResource("3_mk724"),
-"right": ExtResource("3_mk724"),
-"up": ExtResource("3_mk724")
-}, {
-"down": ExtResource("2_slyet"),
-"left": ExtResource("2_slyet"),
-"right": ExtResource("2_slyet"),
-"up": ExtResource("2_slyet")
-}])
-coleccion_ojos = Array[Texture2D]([ExtResource("5_5iu33"), ExtResource("4_vmphg")])
-coleccion_boca = Array[Texture2D]([ExtResource("7_ifo1j"), ExtResource("6_llqwg")])
-coleccion_cuerpo = Array[Texture2D]([ExtResource("8_jcs7t")])
-coleccion_nariz = Array[Texture2D]([ExtResource("10_f7jpx"), ExtResource("9_s00yy")])
-coleccion_cabeza = Array[Texture2D]([ExtResource("12_n8rau"), ExtResource("11_1dy1v")])
+coleccion_cabellos = Array[SpriteFrames]([ExtResource("3_frsvm"), ExtResource("3_xreb1"), ExtResource("4_xmq2a")])
+coleccion_cabezas = Array[SpriteFrames]([ExtResource("6_ahroc"), ExtResource("4_tkcrs"), ExtResource("6_frsvm")])
+coleccion_bocas = Array[SpriteFrames]([ExtResource("5_yl2o6"), ExtResource("8_ahroc")])
+coleccion_cuerpos = Array[SpriteFrames]([ExtResource("6_uo3ig"), ExtResource("10_slyet")])
 
-[node name="Cuerpo" type="Sprite2D" parent="PlayerAppearance"]
-offset = Vector2(0, 250)
+[node name="Cuerpo" type="AnimatedSprite2D" parent="PlayerAppearance"]
+sprite_frames = SubResource("SpriteFrames_a407c")
 
-[node name="Cabeza" type="Sprite2D" parent="PlayerAppearance"]
+[node name="Boca" type="AnimatedSprite2D" parent="PlayerAppearance"]
+sprite_frames = SubResource("SpriteFrames_xreb1")
 
-[node name="Boca" type="Sprite2D" parent="PlayerAppearance"]
+[node name="Cabello" type="AnimatedSprite2D" parent="PlayerAppearance"]
+sprite_frames = SubResource("SpriteFrames_frsvm")
 
-[node name="Cabello" type="Sprite2D" parent="PlayerAppearance"]
+[node name="Cabeza" type="AnimatedSprite2D" parent="PlayerAppearance"]
+scale = Vector2(0.99999994, 0.99999994)
+sprite_frames = SubResource("SpriteFrames_vu2ya")
 
-[node name="Nariz" type="Sprite2D" parent="PlayerAppearance"]
+[node name="Nariz" type="AnimatedSprite2D" parent="PlayerAppearance"]
+sprite_frames = SubResource("SpriteFrames_tkcrs")
 
-[node name="Ojos" type="Sprite2D" parent="PlayerAppearance"]
+[node name="Ojos" type="AnimatedSprite2D" parent="PlayerAppearance"]
+sprite_frames = SubResource("SpriteFrames_yl2o6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_bjo0t")
