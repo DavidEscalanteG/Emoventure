@@ -1,78 +1,152 @@
 extends Node2D
 
+# ==================================================
+# ESTADO
+# ==================================================
 var direccion_actual: String = "down"
+var estado_actual: String = "idle" # idle | walk
 
-# --- REFERENCIAS A SPRITES ---
-@onready var sprite_cabello: Sprite2D = $Cabello
-@onready var sprite_ojos: Sprite2D = $Ojos
-@onready var sprite_boca: Sprite2D = $Boca
-@onready var sprite_cuerpo: Sprite2D = $Cuerpo
-@onready var sprite_nariz: Sprite2D = $Nariz
-@onready var sprite_cabeza: Sprite2D = $Cabeza
 
-# --- INVENTARIO VISUAL ---
-@export var coleccion_cabellos: Array[Dictionary]
+# ==================================================
+# REFERENCIAS A PARTES DEL CUERPO
+# ==================================================
+@onready var cabello: AnimatedSprite2D = $Cabello
+@onready var cabeza: AnimatedSprite2D = $Cabeza
+@onready var ojos: AnimatedSprite2D = $Ojos
+@onready var boca: AnimatedSprite2D = $Boca
+@onready var nariz: AnimatedSprite2D = $Nariz
+@onready var cuerpo: AnimatedSprite2D = $Cuerpo
 
-@export var coleccion_ojos: Array[Texture2D]
-@export var coleccion_boca: Array[Texture2D]
-@export var coleccion_cuerpo: Array[Texture2D]
-@export var coleccion_nariz: Array[Texture2D]
-@export var coleccion_cabeza: Array[Texture2D]
 
-# --- EXPRESIONES ---
+# ==================================================
+# INVENTARIO VISUAL (SpriteFrames)
+# Cada índice representa un "estilo"
+# ==================================================
+@export var coleccion_cabellos: Array[SpriteFrames]
+@export var coleccion_cabezas: Array[SpriteFrames]
+@export var coleccion_ojos: Array[SpriteFrames]
+@export var coleccion_bocas: Array[SpriteFrames]
+@export var coleccion_narices: Array[SpriteFrames]
+@export var coleccion_cuerpos: Array[SpriteFrames]
+
+
+# ==================================================
+# EXPRESIONES (lógicas, no animaciones)
+# ==================================================
 @export var expresiones_ojos: Dictionary
+# ejemplo:
+# "neutral" -> "neutral"
+# "feliz"   -> "happy"
+# "enojado" -> "angry"
 
-# --- DIRECCIONES ---
-func set_direccion(dir: String) -> void:
+
+func _process(_delta):
+	_sincronizar_partes()
+
+func _sincronizar_partes() -> void:
+	var anim := cuerpo.animation
+	var frame := cuerpo.frame
+	var flip_h := cuerpo.flip_h
+	var flip_v := cuerpo.flip_v
+
+	for sprite in [cabello, cabeza, ojos, boca, nariz]:
+		if sprite.sprite_frames == null:
+			continue
+		if not sprite.sprite_frames.has_animation(anim):
+			continue
+	
+		sprite.animation = anim
+		sprite.frame = frame
+		sprite.flip_h = flip_h
+		sprite.flip_v = flip_v
+
+# ==================================================
+# API PÚBLICA (para DialogueActors)
+# ==================================================
+
+func set_direction(dir: String) -> void:
 	if direccion_actual == dir:
 		return
+
 	direccion_actual = dir
-	aplicar_apariencia_desde_global()
+	_actualizar_animacion()
 
-# --------------------------------------------------
-# APLICAR APARIENCIA
-# --------------------------------------------------
+
+func set_expression(nombre: String) -> void:
+	if expresiones_ojos.has(nombre):
+		var anim: String = expresiones_ojos[nombre]
+		if ojos.sprite_frames and ojos.sprite_frames.has_animation(anim + "_" + direccion_actual):
+			ojos.play(anim + "_" + direccion_actual)
+
+
+func set_estado_movimiento(estado: String) -> void:
+	if estado_actual == estado:
+		return
+
+	estado_actual = estado
+	_actualizar_animacion()
+
+
+# ==================================================
+# APLICAR APARIENCIA DESDE GLOBAL
+# ==================================================
+
 func aplicar_apariencia_desde_global() -> void:
-	
-	# --- CABELLO CON DIRECCIÓN ---
-	if coleccion_cabellos.size() > 0:
-		var estilo := coleccion_cabellos[Global.apariencia.indice_cabello]
-		if estilo.has(direccion_actual):
-			sprite_cabello.texture = estilo[direccion_actual]
-		
-		
-	if coleccion_cabeza.size() > 0:
-		sprite_cabeza.texture = coleccion_cabeza[Global.apariencia.indice_cabeza]
-	if coleccion_ojos.size() > 0:
-		sprite_ojos.texture = coleccion_ojos[Global.apariencia.indice_ojos]
-	if coleccion_boca.size() > 0:
-		sprite_boca.texture = coleccion_boca[Global.apariencia.indice_boca]
-	if coleccion_nariz.size() > 0:
-		sprite_nariz.texture = coleccion_nariz[Global.apariencia.indice_nariz]
-	if coleccion_cuerpo.size() > 0:
-		sprite_cuerpo.texture = coleccion_cuerpo[Global.apariencia.indice_cuerpo]
+	_aplicar_spriteframes(cabello, coleccion_cabellos, Global.apariencia.indice_cabello)
+	_aplicar_spriteframes(cabeza,  coleccion_cabezas,  Global.apariencia.indice_cabeza)
+	_aplicar_spriteframes(ojos,     coleccion_ojos,     Global.apariencia.indice_ojos)
+	_aplicar_spriteframes(boca,     coleccion_bocas,    Global.apariencia.indice_boca)
+	_aplicar_spriteframes(nariz,    coleccion_narices,  Global.apariencia.indice_nariz)
+	_aplicar_spriteframes(cuerpo,   coleccion_cuerpos,  Global.apariencia.indice_cuerpo)
 
-	restaurar_colores()
+	_restaurar_colores()
+	_actualizar_animacion()
 
+
+func _aplicar_spriteframes(
+	sprite: AnimatedSprite2D,
+	coleccion: Array[SpriteFrames],
+	indice: int
+) -> void:
+	if coleccion.is_empty():
+		return
+	if indice < 0 or indice >= coleccion.size():
+		return
+
+	sprite.sprite_frames = coleccion[indice]
+
+
+# ==================================================
+# ANIMACIONES
+# ==================================================
+func _actualizar_animacion() -> void:
+	var nombre_anim: String = estado_actual + "_" + direccion_actual
+
+	if cuerpo.sprite_frames and cuerpo.sprite_frames.has_animation(nombre_anim):
+		cuerpo.play(nombre_anim)
+
+
+func _reproducir(sprite: AnimatedSprite2D, anim: String) -> void:
+	if sprite.sprite_frames == null:
+		return
+	if not sprite.sprite_frames.has_animation(anim):
+		return
+	sprite.play(anim)
+
+
+# ==================================================
+# COLORES
+# ==================================================
 
 func aplicar_color_emocion(color: Color) -> void:
-	sprite_cuerpo.self_modulate = color
-	sprite_cabeza.self_modulate = color
+	cuerpo.self_modulate = color
+	cabeza.self_modulate = color
 
 
-func restaurar_colores() -> void:
-	sprite_cabello.self_modulate = Global.apariencia.color_cabello
-	sprite_cabeza.self_modulate = Global.apariencia.color_cabeza
-	sprite_ojos.self_modulate = Global.apariencia.color_ojos
-	sprite_boca.self_modulate = Global.apariencia.color_boca
-	sprite_nariz.self_modulate = Global.apariencia.color_nariz
-	sprite_cuerpo.self_modulate = Global.apariencia.color_cuerpo
-
-
-# --------------------------------------------------
-# EXPRESIONES / DIÁLOGOS
-# --------------------------------------------------
-func cambiar_gesto(nombre_emocion: String) -> void:
-	if expresiones_ojos.has(nombre_emocion):
-		sprite_ojos.texture = expresiones_ojos[nombre_emocion]
-		sprite_ojos.self_modulate = Global.apariencia.color_ojos
+func _restaurar_colores() -> void:
+	cabello.self_modulate = Global.apariencia.color_cabello
+	cabeza.self_modulate  = Global.apariencia.color_cabeza
+	ojos.self_modulate    = Global.apariencia.color_ojos
+	boca.self_modulate    = Global.apariencia.color_boca
+	nariz.self_modulate   = Global.apariencia.color_nariz
+	cuerpo.self_modulate  = Global.apariencia.color_cuerpo

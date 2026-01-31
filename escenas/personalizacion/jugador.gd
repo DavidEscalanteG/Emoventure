@@ -1,10 +1,16 @@
 extends CharacterBody2D
 
-# --- CONFIGURACIÓN ---
+# --------------------------------------------------
+# CONFIGURACIÓN
+# --------------------------------------------------
 @export var speed: int = 300
 @export var vidas_maximas: int = 3
 
-# --- ESTADO ---
+
+# --------------------------------------------------
+# ESTADO
+# --------------------------------------------------
+var ultima_direccion: Vector2 = Vector2.DOWN
 var puede_moverse: bool = false
 var emocion_actual: String = ""
 var controles_invertidos: bool = false
@@ -15,21 +21,33 @@ var nivel_terminado: bool = false
 var vidas_actuales: int = 0
 var velocidad_base: int = 0
 
-# --- TIMERS ---
+
+# --------------------------------------------------
+# TIMERS
+# --------------------------------------------------
 var timer_emocion: Timer
 var timer_congelar: Timer
 
-# --- REFERENCIAS ---
+
+# --------------------------------------------------
+# REFERENCIAS
+# --------------------------------------------------
 @onready var apariencia: Node = $PlayerAppearance
 
+
+# --------------------------------------------------
+# CICLO DE VIDA
+# --------------------------------------------------
 func _ready() -> void:
 	velocidad_base = speed
 	vidas_actuales = vidas_maximas
 
 	Global.jugador = self
 
-	# Aplicar apariencia inicial
+	# Apariencia inicial
 	apariencia.aplicar_apariencia_desde_global()
+	apariencia.set_direction("down")
+	apariencia.set_estado_movimiento("idle")
 
 	# Timer emoción
 	timer_emocion = Timer.new()
@@ -43,6 +61,7 @@ func _ready() -> void:
 	timer_congelar.one_shot = false
 	add_child(timer_congelar)
 	timer_congelar.timeout.connect(_alternar_congelamiento)
+
 
 # --------------------------------------------------
 # VIDA / DAÑO
@@ -62,6 +81,7 @@ func recibir_danio() -> void:
 
 	_activar_invulnerabilidad()
 
+
 func _activar_invulnerabilidad() -> void:
 	invulnerable = true
 	speed = velocidad_base + 150
@@ -76,9 +96,11 @@ func _activar_invulnerabilidad() -> void:
 	speed = velocidad_base
 	invulnerable = false
 
+
 func _morir() -> void:
 	bloquear_movimiento()
 	print("☠️ Jugador muerto")
+
 
 # --------------------------------------------------
 # EMOCIONES
@@ -97,6 +119,7 @@ func aplicar_emocion(tipo: String, color: Color, duracion: float) -> void:
 	apariencia.aplicar_color_emocion(color)
 	timer_emocion.start(duracion)
 
+
 func _aplicar_efecto(tipo: String) -> void:
 	match tipo:
 		"alegria":
@@ -104,7 +127,6 @@ func _aplicar_efecto(tipo: String) -> void:
 		"tristeza":
 			speed = 200
 		"enojo":
-			speed = 300
 			controles_invertidos = true
 		"desagrado":
 			congelando = true
@@ -112,8 +134,10 @@ func _aplicar_efecto(tipo: String) -> void:
 		"sorpresa":
 			speed = 450
 
+
 func _alternar_congelamiento() -> void:
 	puede_moverse = not puede_moverse
+
 
 func _terminar_emocion() -> void:
 	emocion_actual = ""
@@ -124,7 +148,8 @@ func _terminar_emocion() -> void:
 	timer_congelar.stop()
 
 	puede_moverse = not nivel_terminado
-	apariencia.restaurar_colores()
+	apariencia._restaurar_colores()
+
 
 # --------------------------------------------------
 # MOVIMIENTO
@@ -133,6 +158,7 @@ func _physics_process(_delta: float) -> void:
 	if not puede_moverse:
 		velocity = Vector2.ZERO
 		move_and_slide()
+		apariencia.set_estado_movimiento("idle")
 		return
 
 	var direction: Vector2 = Vector2.ZERO
@@ -152,18 +178,26 @@ func _physics_process(_delta: float) -> void:
 		direction = -direction
 
 	velocity = direction * speed
-	
-	if direction != Vector2.ZERO:
-		if abs(direction.x) > abs(direction.y):
-			$PlayerAppearance.set_direccion(
-				"right" if direction.x > 0 else "left"
-			)
-		else:
-			$PlayerAppearance.set_direccion(
-				"down" if direction.y > 0 else "up"
-			)
-
 	move_and_slide()
+
+	_actualizar_apariencia(direction)
+
+
+func _actualizar_apariencia(direction: Vector2) -> void:
+	if direction != Vector2.ZERO:
+		ultima_direccion = direction
+		apariencia.set_direction(_vector_a_dir(direction))
+		apariencia.set_estado_movimiento("walk")
+	else:
+		apariencia.set_estado_movimiento("idle")
+
+
+func _vector_a_dir(dir: Vector2) -> String:
+	if abs(dir.x) > abs(dir.y):
+		return "right" if dir.x > 0 else "left"
+	else:
+		return "down" if dir.y > 0 else "up"
+
 
 # --------------------------------------------------
 # CONTROL EXTERNO
@@ -171,6 +205,8 @@ func _physics_process(_delta: float) -> void:
 func bloquear_movimiento() -> void:
 	puede_moverse = false
 	velocity = Vector2.ZERO
+	apariencia.set_estado_movimiento("idle")
+
 
 func permitir_movimiento() -> void:
 	puede_moverse = true

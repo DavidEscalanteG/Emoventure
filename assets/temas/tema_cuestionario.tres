@@ -1,0 +1,42 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cc5n1x65884ar"]
+
+[ext_resource type="Texture2D" uid="uid://x4dja336xuxl" path="res://assets/botones/boton_amarillo.png" id="1_2aa2q"]
+[ext_resource type="Texture2D" uid="uid://q2noayx4pdex" path="res://assets/botones/boton_azul.png" id="1_m1tqe"]
+[ext_resource type="FontFile" uid="uid://frkucnc5x4yc" path="res://assets/fuentes/Song of Valentine Sans.otf" id="2_xwqlt"]
+[ext_resource type="Texture2D" uid="uid://bsjiua800xbau" path="res://assets/botones/boton_morado.png" id="3_vqmqe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m1tqe"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jl4wb"]
+texture = ExtResource("1_m1tqe")
+texture_margin_left = 44.0
+texture_margin_top = 14.0
+texture_margin_right = 44.0
+texture_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m1tqe"]
+texture = ExtResource("1_2aa2q")
+texture_margin_left = 44.0
+texture_margin_top = 14.0
+texture_margin_right = 44.0
+texture_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jbr8b"]
+texture = ExtResource("3_vqmqe")
+texture_margin_left = 44.0
+texture_margin_top = 14.0
+texture_margin_right = 44.0
+texture_margin_bottom = 14.0
+
+[resource]
+Button/font_sizes/font_size = 40
+Button/styles/disabled = null
+Button/styles/focus = SubResource("StyleBoxEmpty_m1tqe")
+Button/styles/hover = SubResource("StyleBoxTexture_jl4wb")
+Button/styles/normal = SubResource("StyleBoxTexture_m1tqe")
+Button/styles/pressed = SubResource("StyleBoxTexture_jbr8b")
+Label/font_sizes/font_size = 92
+Label/fonts/font = ExtResource("2_xwqlt")
+RichTextLabel/font_sizes/bold_font_size = 88
+RichTextLabel/font_sizes/normal_font_size = 79
+RichTextLabel/fonts/normal_font = ExtResource("2_xwqlt")

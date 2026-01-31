@@ -1,8 +1,7 @@
-[gd_scene load_steps=49 format=4 uid="uid://dhr0rstqdkcin"]
+[gd_scene load_steps=48 format=4 uid="uid://dhr0rstqdkcin"]
 
 [ext_resource type="Script" uid="uid://dvjj8pf7anx04" path="res://escenas/escena_3/escena_3.gd" id="1_wcswo"]
 [ext_resource type="PackedScene" uid="uid://7coyibirj1qa" path="res://assets/assets_escena_3/otros_elementos/interseccion.tscn" id="4_uamsr"]
-[ext_resource type="Texture2D" uid="uid://diko1vyjoakh1" path="res://pruebas/assets_temporales/serpiente png.png" id="5_spp1b"]
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="13_s7qke"]
 [ext_resource type="Texture2D" uid="uid://coq3u4o4mvnf0" path="res://assets/assets_escena_3/paredes/Terrain (32x32).png" id="14_de147"]
 [ext_resource type="Texture2D" uid="uid://dk4pt704h4p0y" path="res://assets/assets_escena_3/fondos/fondos_unidos.png" id="14_s7qke"]
@@ -13,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://qtect2yegfev" path="res://assets/emociones/sprites/felicidad.png" id="19_uamsr"]
 [ext_resource type="Texture2D" uid="uid://dbeo324lgnb8p" path="res://assets/emociones/sprites/miedo.png" id="20_spp1b"]
 [ext_resource type="Texture2D" uid="uid://dxxy4k6ht2k6i" path="res://assets/emociones/sprites/tristeza.png" id="21_bjo0t"]
-[ext_resource type="PackedScene" uid="uid://d14ky0d5wqhvm" path="res://assets/enemigos/Enemigo.tscn" id="22_uamsr"]
+[ext_resource type="PackedScene" uid="uid://d14ky0d5wqhvm" path="res://assets/enemigos/serpiente/Enemigo.tscn" id="22_uamsr"]
 [ext_resource type="PackedScene" uid="uid://bjfkw43822usi" path="res://assets/assets_escena_3/UI/EmocionesUI.tscn" id="25_bjo0t"]
 [ext_resource type="PackedScene" uid="uid://lxrjfehd544h" path="res://assets/assets_escena_3/UI/VidasUI.tscn" id="26_pu42y"]
 
@@ -409,11 +408,7 @@ position = Vector2(67, 290)
 rotation = -1.5707964
 loop = false
 
-[node name="Enemigo_1" parent="Caminos/Path2D_1/PathFollow2D" groups=["enemigos"] instance=ExtResource("22_uamsr")]
-
-[node name="Sprite2D" parent="Caminos/Path2D_1/PathFollow2D/Enemigo_1" index="0"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_spp1b")
+[node name="Enemigo_1" parent="Caminos/Path2D_1/PathFollow2D" instance=ExtResource("22_uamsr")]
 
 [node name="Path2D_2" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_bjo0t")
@@ -438,11 +433,7 @@ position = Vector2(940.2298, 736)
 progress = 2243.2107
 loop = false
 
-[node name="Enemigo_2" parent="Caminos/Path2D_7/PathFollow2D" groups=["enemigos"] instance=ExtResource("22_uamsr")]
-
-[node name="Sprite2D" parent="Caminos/Path2D_7/PathFollow2D/Enemigo_2" index="0"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_spp1b")
+[node name="Enemigo_2" parent="Caminos/Path2D_7/PathFollow2D" instance=ExtResource("22_uamsr")]
 
 [node name="Path2D_8" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_pyvea")
@@ -479,11 +470,7 @@ position = Vector2(1733, 768)
 rotation = -1.5707964
 loop = false
 
-[node name="Enemigo_3" parent="Caminos/Path2D_17/PathFollow2D" groups=["enemigos"] instance=ExtResource("22_uamsr")]
-
-[node name="Sprite2D" parent="Caminos/Path2D_17/PathFollow2D/Enemigo_3" index="0"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_spp1b")
+[node name="Enemigo_3" parent="Caminos/Path2D_17/PathFollow2D" instance=ExtResource("22_uamsr")]
 
 [node name="Path2D_18" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_5f5ii")
@@ -511,11 +498,7 @@ position = Vector2(1408, 289)
 rotation = -1.5707964
 loop = false
 
-[node name="Enemigo_4" parent="Caminos/Path2D_24/PathFollow2D" groups=["enemigos"] instance=ExtResource("22_uamsr")]
-
-[node name="Sprite2D" parent="Caminos/Path2D_24/PathFollow2D/Enemigo_4" index="0"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("5_spp1b")
+[node name="Enemigo_4" parent="Caminos/Path2D_24/PathFollow2D" instance=ExtResource("22_uamsr")]
 
 [node name="Path2D_25" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_imq82")
@@ -606,8 +589,3 @@ transform = Transform2D(0.5, 0, 0, 0.5, 800, 400)
 [node name="NivelCompletadoUI" parent="." instance=ExtResource("16_311ul")]
 offset = Vector2(700, 0)
 transform = Transform2D(1, 0, 0, 1, 700, 0)
-
-[editable path="Caminos/Path2D_1/PathFollow2D/Enemigo_1"]
-[editable path="Caminos/Path2D_7/PathFollow2D/Enemigo_2"]
-[editable path="Caminos/Path2D_17/PathFollow2D/Enemigo_3"]
-[editable path="Caminos/Path2D_24/PathFollow2D/Enemigo_4"]

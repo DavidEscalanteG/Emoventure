@@ -3,54 +3,55 @@
 # Carlos sale exhausto, con la llave en la mano.
 # El ambiente de la feria se siente distinto, más inquietante.
 
-Carlos: (respira hondo) No pensé que fuera tan difícil...
-Carlos: Siento mi cuerpo cansado, pero algo dentro de mí se movió.
-
-Carlos: (mira la llave) Así que esto es lo que obtuve por enfrentarme a mis emociones...
-
-# Aparece la Mujer Lagarto desde las sombras.
-
-MujerLagarto: No todos logran salir de esa carpa.
-do DialogueActors.set_expr("mujer_lagarto", "seria")
-
-Carlos: (sobresaltado) ¿Q-qué…?
-Carlos: ¿Quién eres tú?
-
-MujerLagarto: Algunos me llaman guardiana.
-MujerLagarto: Otros… solo prefieren no mirarme a los ojos.
-
-Carlos: (traga saliva) Yo… acabo de salir de ahí dentro.
-Carlos: Fue horrible… pero necesario.
-
-MujerLagarto: (asiente lentamente)
-MujerLagarto: Reconocer tus emociones es apenas el primer paso.
-
-MujerLagarto: Esa llave que llevas no abre cualquier puerta.
-do DialogueActors.set_expr("mujer_lagarto", "sonrisa")
-
-Carlos: Entonces… ¿qué sigue ahora?
-
-MujerLagarto: Sigue enfrentar tus recuerdos.
-MujerLagarto: Aquello que guardas, incluso de ti mismo.
-
-# La mujer lagarto señala un edificio oscuro a lo lejos.
-
-MujerLagarto: La Casa del Terror te espera.
-MujerLagarto: No temas al miedo… escúchalo.
-
-Carlos: (mira la casa, nervioso)
-Carlos: No sé si estoy listo para eso…
-
-MujerLagarto: Nadie lo está.
-MujerLagarto: Pero ya comenzaste el camino.
-
-MujerLagarto: Adelante, Carlos.
-MujerLagarto: Tus memorias quieren ser vistas.
-
-# La mujer lagarto se desvanece entre la multitud de la feria.
-
-Carlos: (aprieta la llave)
-Carlos: De acuerdo…
+#do DialogueActors.set_facing("mujer_lagarto", "left")
+#Carlos: (respira hondo) No pensé que fuera tan difícil...
+#Carlos: Siento mi cuerpo cansado, pero algo dentro de mí se movió.
+#
+#Carlos: (mira la llave) Así que esto es lo que obtuve por enfrentarme a mis emociones...
+#
+## Aparece la Mujer Lagarto desde las sombras.
+#
+#MujerLagarto: No todos logran salir de esa carpa.
+#do DialogueActors.set_expr("mujer_lagarto", "seria")
+#
+#Carlos: (sobresaltado) ¿Q-qué…?
+#Carlos: ¿Quién eres tú?
+#
+#MujerLagarto: Algunos me llaman guardiana.
+#MujerLagarto: Otros… solo prefieren no mirarme a los ojos.
+#
+#Carlos: (traga saliva) Yo… acabo de salir de ahí dentro.
+#Carlos: Fue horrible… pero necesario.
+#
+#MujerLagarto: (asiente lentamente)
+#MujerLagarto: Reconocer tus emociones es apenas el primer paso.
+#
+#MujerLagarto: Esa llave que llevas no abre cualquier puerta.
+#do DialogueActors.set_expr("mujer_lagarto", "sonrisa")
+#
+#Carlos: Entonces… ¿qué sigue ahora?
+#
+#MujerLagarto: Sigue enfrentar tus recuerdos.
+#MujerLagarto: Aquello que guardas, incluso de ti mismo.
+#
+## La mujer lagarto señala un edificio oscuro a lo lejos.
+#
+#MujerLagarto: La Casa del Terror te espera.
+#MujerLagarto: No temas al miedo… escúchalo.
+#
+#Carlos: (mira la casa, nervioso)
+#Carlos: No sé si estoy listo para eso…
+#
+#MujerLagarto: Nadie lo está.
+#MujerLagarto: Pero ya comenzaste el camino.
+#
+#MujerLagarto: Adelante, Carlos.
+#MujerLagarto: Tus memorias quieren ser vistas.
+#
+## La mujer lagarto se desvanece entre la multitud de la feria.
+#
+#Carlos: (aprieta la llave)
+#Carlos: De acuerdo…
 Carlos: Sea lo que sea que haya ahí dentro… lo enfrentaré.
 
 # Aquí puedes cambiar de escena a la Casa del Terror

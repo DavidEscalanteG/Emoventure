@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://dx3lyr6opd214"]
+
+[ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="1_3i8n2"]
+[ext_resource type="SpriteFrames" uid="uid://da1cf5pybf7m4" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cuerpo/cuerpo_01.tres" id="2_iefso"]
+[ext_resource type="SpriteFrames" uid="uid://kx0l0egxsded" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/ropa/ropa_01.tres" id="3_krlbb"]
+[ext_resource type="SpriteFrames" uid="uid://xoy1vcui0y7u" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cabello/cabello_01.tres" id="4_rusv3"]
+[ext_resource type="SpriteFrames" uid="uid://bw4jsrbggfegr" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/sombrero/sobrero_01.tres" id="5_sgo64"]
+[ext_resource type="SpriteFrames" uid="uid://g2msfyj00js8" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cuerpo/cuerpo_02.tres" id="6_sgo64"]
+[ext_resource type="SpriteFrames" uid="uid://b1sblwi8esp6h" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/ropa/ropa_02.tres" id="7_b3f8t"]
+[ext_resource type="SpriteFrames" uid="uid://dklhb2vd3a6pv" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cabello/cabello_02.tres" id="8_8bf4g"]
+[ext_resource type="SpriteFrames" uid="uid://ekebet145v3e" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/sombrero/sobrero_02.tres" id="9_rnowv"]
+[ext_resource type="PackedScene" uid="uid://cxv23v4515m48" path="res://escenas/personalizacion/Personalizacion.tscn" id="10_b3f8t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3f8t"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Jugador" parent="." instance=ExtResource("1_3i8n2")]
+visible = false
+
+[node name="Personaje_1" type="CharacterBody2D" parent="."]
+position = Vector2(32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Personaje_1"]
+visible = false
+shape = SubResource("CapsuleShape2D_b3f8t")
+
+[node name="Cuerpo" type="AnimatedSprite2D" parent="Personaje_1"]
+sprite_frames = ExtResource("2_iefso")
+animation = &"idle_down"
+
+[node name="Ropa" type="AnimatedSprite2D" parent="Personaje_1"]
+sprite_frames = ExtResource("3_krlbb")
+animation = &"idle_down"
+
+[node name="Cabello" type="AnimatedSprite2D" parent="Personaje_1"]
+sprite_frames = ExtResource("4_rusv3")
+animation = &"idle_down"
+
+[node name="Sombrero" type="AnimatedSprite2D" parent="Personaje_1"]
+sprite_frames = ExtResource("5_sgo64")
+animation = &"idle_down"
+
+[node name="Personaje_2" type="CharacterBody2D" parent="."]
+position = Vector2(64, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Personaje_2"]
+visible = false
+shape = SubResource("CapsuleShape2D_b3f8t")
+
+[node name="Cuerpo" type="AnimatedSprite2D" parent="Personaje_2"]
+sprite_frames = ExtResource("6_sgo64")
+animation = &"idle_down"
+
+[node name="Ropa" type="AnimatedSprite2D" parent="Personaje_2"]
+sprite_frames = ExtResource("7_b3f8t")
+animation = &"idle_down"
+
+[node name="Cabello" type="AnimatedSprite2D" parent="Personaje_2"]
+sprite_frames = ExtResource("8_8bf4g")
+animation = &"idle_down"
+
+[node name="Sombrero" type="AnimatedSprite2D" parent="Personaje_2"]
+sprite_frames = ExtResource("9_rnowv")
+animation = &"idle_down"
+
+[node name="ColorPicker" type="ColorPicker" parent="."]
+visible = false
+offset_right = 298.0
+offset_bottom = 607.0
+
+[node name="HSlider" type="HSlider" parent="."]
+visible = false
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 221.0
+offset_bottom = 116.0
+tick_count = 10
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3, 3)
+
+[node name="Color" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 192.0
+offset_bottom = 144.0
+
+[node name="Intensidad" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 160.0
+offset_right = 192.0
+offset_bottom = 176.0
+
+[node name="Brillo" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 192.0
+offset_bottom = 208.0
+
+[node name="Selección de personaje" parent="." instance=ExtResource("10_b3f8t")]
+
+[node name="PanelContainer" parent="Selección de personaje/CanvasLayer" index="0"]
+offset_right = 320.0
+
+[node name="Jugador" parent="Selección de personaje" index="1"]
+position = Vector2(1280, 587)
+scale = Vector2(3, 3)
+
+[editable path="Jugador"]
+[editable path="Selección de personaje"]

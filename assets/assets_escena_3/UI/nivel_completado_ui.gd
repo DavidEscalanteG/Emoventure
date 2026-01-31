@@ -4,8 +4,8 @@ extends Control
 
 @onready var emociones := $Panel/VBoxContainer/Emociones.get_children()
 @onready var corazones := $Panel/VBoxContainer/Vidas.get_children()
-@onready var jugador_grande := $Panel/VBoxContainer/JugadorGrande
-@onready var boton := $Panel/VBoxContainer/BotonContinuar
+@onready var jugador_grande := $Panel/VBoxContainer/ControlJugador
+@onready var boton := $Panel/VBoxContainer/ControlBoton/BotonContinuar
 
 func _ready():
 	hide()
