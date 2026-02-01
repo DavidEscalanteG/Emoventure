@@ -1,6 +1,12 @@
 extends Node
 
 # ==================================================
+# SEÑALES
+# ==================================================
+signal cinematic_action_finished
+var cinematica_activa: bool = false
+
+# ==================================================
 # REGISTRO DE ACTORES
 # ==================================================
 var actores: Dictionary = {}
@@ -53,6 +59,68 @@ func set_anim(actor_id: String, estado: String, direccion: String) -> void:
 		apariencia.set_estado_movimiento(estado)
 		apariencia.set_direction(direccion)
 
+func play_anim_and_wait(actor_id: String, estado: String, direccion: String) -> void:
+	
+	cinematica_activa = true
+	
+	if not actores.has(actor_id):
+		push_warning("Actor no registrado: " + actor_id)
+		emit_signal("cinematic_action_finished")
+		cinematica_activa = false
+		return
+
+	var actor: Node = actores[actor_id]
+
+	# NPC clásico
+	if actor.has_node("AnimatedSprite2D"):
+		var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")
+		var anim: String = estado + "_" + direccion
+
+		if sprite.sprite_frames and sprite.sprite_frames.has_animation(anim):
+			sprite.play(anim)
+			await sprite.animation_finished
+		else:
+			push_warning("Animación no encontrada: " + anim)
+
+		emit_signal("cinematic_action_finished")
+		cinematica_activa = false
+		return
+
+	# PlayerAppearance
+	if actor.has_node("PlayerAppearance"):
+		var apariencia: Node = actor.get_node("PlayerAppearance")
+		apariencia.set_estado_movimiento(estado)
+		apariencia.set_direction(direccion)
+
+		var cuerpo: AnimatedSprite2D = apariencia.cuerpo
+		if cuerpo and cuerpo.sprite_frames:
+			await cuerpo.animation_finished
+		
+		cinematica_activa = false
+		emit_signal("cinematic_action_finished")
+
+func move_and_wait(actor_id: String, delta: Vector2, tiempo: float = 0.6) -> void:
+	
+	cinematica_activa = true
+	
+	if not actores.has(actor_id):
+		cinematica_activa = false
+		emit_signal("cinematic_action_finished")
+		return
+
+	var actor: Node2D = actores[actor_id] as Node2D
+	if actor == null:
+		cinematica_activa = false
+		emit_signal("cinematic_action_finished")
+		return
+
+	var tween: Tween = actor.create_tween()
+	tween.tween_property(actor, "global_position", actor.global_position + delta, tiempo)
+
+	await tween.finished
+	_try_set_idle(actor)
+	cinematica_activa = false
+	emit_signal("cinematic_action_finished")
 
 # ==================================================
 # MOVIMIENTO CINEMÁTICO (TWEEN)
@@ -78,7 +146,6 @@ func move_by(actor_id: String, delta: Vector2, tiempo: float = 0.6) -> void:
 	tween.finished.connect(func():
 		_try_set_idle(actor)
 	)
-
 
 func move_to(actor_id: String, destino: Vector2, tiempo: float = 0.8) -> void:
 	if not actores.has(actor_id):

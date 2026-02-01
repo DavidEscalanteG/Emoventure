@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c14jtphj2d6kf"]
+[gd_scene load_steps=23 format=3 uid="uid://c14jtphj2d6kf"]
 
 [ext_resource type="Script" uid="uid://dr80qquf74i7m" path="res://escenas/personalizacion/jugador.gd" id="1_ahroc"]
 [ext_resource type="Script" uid="uid://de5fxgit5ggna" path="res://jugador/player_appearance.gd" id="2_5vouv"]
@@ -12,6 +12,9 @@
 [ext_resource type="SpriteFrames" uid="uid://da1cf5pybf7m4" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cuerpo/cuerpo_01.tres" id="6_uo3ig"]
 [ext_resource type="SpriteFrames" uid="uid://b1sblwi8esp6h" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/ropa/ropa_02.tres" id="8_ahroc"]
 [ext_resource type="SpriteFrames" uid="uid://g2msfyj00js8" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cuerpo/cuerpo_02.tres" id="10_slyet"]
+[ext_resource type="Texture2D" uid="uid://jjtg8d0t2mrs" path="res://pruebas/animaciones/hombre_mana_seed/spritesheets/cuerpo/char_a_pONE2_0bas_humn_v00.png" id="13_vmphg"]
+[ext_resource type="Texture2D" uid="uid://c8lefdlhcclfq" path="res://pruebas/animaciones/hombre_mana_seed/spritesheets/cabello/char_a_pONE2_4har_dap1_v05.png" id="14_5iu33"]
+[ext_resource type="Texture2D" uid="uid://7krvoleurhog" path="res://pruebas/animaciones/hombre_mana_seed/spritesheets/ropa/char_a_pONE2_1out_fstr_v01.png" id="15_llqwg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a407c"]
 
@@ -26,7 +29,7 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_yl2o6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjo0t"]
-size = Vector2(42, 53)
+size = Vector2(7.5, 14)
 
 [node name="Jugador" type="CharacterBody2D"]
 collision_mask = 8
@@ -34,7 +37,6 @@ platform_floor_layers = 4294967294
 script = ExtResource("1_ahroc")
 
 [node name="PlayerAppearance" type="Node2D" parent="."]
-scale = Vector2(5, 5)
 script = ExtResource("2_5vouv")
 coleccion_cabellos = Array[SpriteFrames]([ExtResource("3_frsvm"), ExtResource("3_xreb1"), ExtResource("4_xmq2a")])
 coleccion_cabezas = Array[SpriteFrames]([ExtResource("6_ahroc"), ExtResource("4_tkcrs"), ExtResource("6_frsvm")])
@@ -59,6 +61,26 @@ sprite_frames = SubResource("SpriteFrames_tkcrs")
 
 [node name="Ojos" type="AnimatedSprite2D" parent="PlayerAppearance"]
 sprite_frames = SubResource("SpriteFrames_yl2o6")
+
+[node name="Referencia" type="Node2D" parent="."]
+visible = false
+
+[node name="Cuerpo" type="Sprite2D" parent="Referencia"]
+texture = ExtResource("13_vmphg")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="Cabello" type="Sprite2D" parent="Referencia"]
+texture = ExtResource("14_5iu33")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="Ropa" type="Sprite2D" parent="Referencia"]
+texture = ExtResource("15_llqwg")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="Sombrero" type="Sprite2D" parent="Referencia"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bjo0t")

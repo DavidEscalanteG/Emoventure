@@ -73,17 +73,27 @@ func _show_responses():
 	#responses_menu.grab_focus()
 
 func _unhandled_input(event):
+	
+	if DialogueActors.cinematica_activa:
+		return
+		
 	if event.is_action_pressed("ui_accept"):
 		_handle_advance()
 
 func _gui_input(event):
+	if DialogueActors.cinematica_activa:
+		return
+	
 	if event is InputEventMouseButton \
 	and event.button_index == MOUSE_BUTTON_LEFT \
 	and event.pressed:
 		_handle_advance()
 
 func _handle_advance():
-	# ⛔ Si hay respuestas visibles, el menú controla el input
+	
+	if DialogueActors.cinematica_activa:
+		return
+	
 	if responses_menu.visible:
 		return
 

@@ -1,14 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4t1ghb0ibdtf"]
+[gd_scene load_steps=10 format=3 uid="uid://b4t1ghb0ibdtf"]
 
 [ext_resource type="Script" uid="uid://4iyjeumb53sy" path="res://assets/personajes/mascota/MascotaAppearance.gd" id="1_h332m"]
 [ext_resource type="SpriteFrames" uid="uid://v6r44w2tnrvb" path="res://pruebas/animaciones/mascota/animaciones/perro_1.tres" id="2_o7lvc"]
 [ext_resource type="SpriteFrames" uid="uid://cnqo1687aiemx" path="res://pruebas/animaciones/mascota/animaciones/perro_2.tres" id="3_o7lvc"]
+[ext_resource type="SpriteFrames" uid="uid://m78s3f1ervx7" path="res://pruebas/animaciones/mascota/animaciones/perro_3.tres" id="4_5771d"]
+[ext_resource type="SpriteFrames" uid="uid://beblocdx2vty6" path="res://pruebas/animaciones/mascota/animaciones/gato_1.tres" id="5_vg3cs"]
+[ext_resource type="SpriteFrames" uid="uid://c35rp7cato7hp" path="res://pruebas/animaciones/mascota/animaciones/gato_2.tres" id="6_6uy61"]
+[ext_resource type="SpriteFrames" uid="uid://cqrjdhrwqg0ap" path="res://pruebas/animaciones/mascota/animaciones/gato_3.tres" id="7_xl282"]
+[ext_resource type="Texture2D" uid="uid://b23eac107eqla" path="res://pruebas/animaciones/mascota/spritesheets/perro/Dogs-Remastered-04.png" id="8_6uy61"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_h332m"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_vg3cs"]
 
 [node name="Mascota" type="Node2D"]
 script = ExtResource("1_h332m")
-coleccion_mascotas = Array[SpriteFrames]([ExtResource("2_o7lvc"), ExtResource("3_o7lvc")])
+coleccion_mascotas = Array[SpriteFrames]([ExtResource("2_o7lvc"), ExtResource("3_o7lvc"), ExtResource("4_5771d"), ExtResource("5_vg3cs"), ExtResource("6_6uy61"), ExtResource("7_xl282")])
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_h332m")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vg3cs")
+
+[node name="Referencia" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("8_6uy61")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 48)
