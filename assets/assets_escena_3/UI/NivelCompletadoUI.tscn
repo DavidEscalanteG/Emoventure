@@ -94,11 +94,9 @@ texture = ExtResource("8_cj4g5")
 custom_minimum_size = Vector2(0, 611)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 
-[node name="JugadorEstetico" parent="Control/Panel/VBoxContainer/ControlJugador" instance=ExtResource("9_n5g63")]
+[node name="JugadorCinematico" parent="Control/Panel/VBoxContainer/ControlJugador" instance=ExtResource("9_n5g63")]
 position = Vector2(0, 305)
-scale = Vector2(3, 3)
 
 [node name="ControlBoton" type="Control" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2

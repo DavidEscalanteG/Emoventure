@@ -59,7 +59,7 @@ texture = ExtResource("1_gwnrk")
 position = Vector2(431, 503)
 
 [node name="JugadorCinematico" parent="personajes" instance=ExtResource("5_xucjc")]
-position = Vector2(1407, 633)
+position = Vector2(1434, 626)
 
 [node name="FondoNegro" type="Sprite2D" parent="."]
 visible = false

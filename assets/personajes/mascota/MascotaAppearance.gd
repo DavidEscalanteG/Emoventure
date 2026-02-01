@@ -9,7 +9,7 @@ var estado_actual: String = "idle" # idle | walk | run
 # ---------------------------------------
 # REFERENCIAS
 # ---------------------------------------
-@onready var sprite: AnimatedSprite2D = $Sprite
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 # ---------------------------------------
 # COLECCIÓN VISUAL
@@ -17,6 +17,8 @@ var estado_actual: String = "idle" # idle | walk | run
 # ---------------------------------------
 @export var coleccion_mascotas: Array[SpriteFrames] = []
 
+func _ready() -> void:
+	aplicar_mascota_desde_global()
 
 # ---------------------------------------
 # API PÚBLICA
@@ -32,6 +34,11 @@ func aplicar_mascota_desde_global() -> void:
 		Global.mascota["indice"] = indice
 
 	sprite.sprite_frames = coleccion_mascotas[indice]
+
+	# 👇 FORZAMOS ESTADO INICIAL
+	estado_actual = "idle"
+	direccion_actual = "left"
+
 	_actualizar_animacion()
 
 
@@ -57,5 +64,10 @@ func set_direccion(dir: String) -> void:
 func _actualizar_animacion() -> void:
 	var anim: String = estado_actual + "_" + direccion_actual
 
-	if sprite.sprite_frames != null and sprite.sprite_frames.has_animation(anim):
-		sprite.play(anim)
+	if sprite.sprite_frames == null:
+		return
+	if not sprite.sprite_frames.has_animation(anim):
+		return
+
+	sprite.play(anim)
+	sprite.frame = 0

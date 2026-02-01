@@ -126,7 +126,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_6ig7b")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"idle_left",
 "speed": 6.0
 }, {
 "frames": [{
@@ -155,7 +155,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_7xcde")
 }],
 "loop": true,
-"name": &"run",
+"name": &"run_left",
 "speed": 12.0
 }, {
 "frames": [{
@@ -184,6 +184,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_m8ac8")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"walk_left",
 "speed": 8.0
 }]

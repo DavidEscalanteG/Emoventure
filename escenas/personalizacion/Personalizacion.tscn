@@ -465,8 +465,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Jugador" parent="." instance=ExtResource("13_3x2dh")]
-position = Vector2(950, 400)
-scale = Vector2(2, 2)
+position = Vector2(938.00006, 519)
+scale = Vector2(12, 12)
 
 [node name="Mascota" parent="." instance=ExtResource("4_ngfm0")]
 position = Vector2(1568, 895)

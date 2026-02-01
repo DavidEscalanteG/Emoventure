@@ -36,7 +36,7 @@ func responder(valor: int) -> void:
 		terminar_cuestionario()
 
 func terminar_cuestionario() -> void:
-	get_tree().change_scene_to_file("res://escenas/escena_4_llave/PrimeraLlave.tscn")
+	get_tree().change_scene_to_file("uid://1qd5o2iv27o7") #PrimeraLlave.tscn
 
 
 func _on_boton_1_pressed() -> void:
