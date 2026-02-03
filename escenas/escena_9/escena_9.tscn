@@ -184,6 +184,7 @@ libraries = {
 
 [node name="JugadorCinematico" parent="CuadrosContainer/CuadroMemoria" instance=ExtResource("5_0sevr")]
 scale = Vector2(6.9999995, 6.9999995)
+iniciar_con_emocion_neutra = true
 
 [node name="CuadroMemoria2" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
@@ -214,6 +215,7 @@ libraries = {
 
 [node name="JugadorCinematico" parent="CuadrosContainer/CuadroMemoria2" instance=ExtResource("5_0sevr")]
 scale = Vector2(6.9999995, 6.9999995)
+iniciar_con_emocion_neutra = true
 
 [node name="CuadroMemoria3" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
@@ -243,6 +245,7 @@ libraries = {
 
 [node name="JugadorCinematico" parent="CuadrosContainer/CuadroMemoria3" instance=ExtResource("5_0sevr")]
 scale = Vector2(6.9999995, 6.9999995)
+iniciar_con_emocion_neutra = true
 
 [node name="CuadroMemoria4" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
@@ -272,6 +275,7 @@ libraries = {
 
 [node name="JugadorCinematico" parent="CuadrosContainer/CuadroMemoria4" instance=ExtResource("5_0sevr")]
 scale = Vector2(6.9999995, 6.9999995)
+iniciar_con_emocion_neutra = true
 
 [node name="CuadroMemoria5" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
@@ -301,6 +305,7 @@ libraries = {
 
 [node name="JugadorCinematico" parent="CuadrosContainer/CuadroMemoria5" instance=ExtResource("5_0sevr")]
 scale = Vector2(6.9999995, 6.9999995)
+iniciar_con_emocion_neutra = true
 
 [node name="CuadroMemoria6" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
@@ -330,6 +335,7 @@ libraries = {
 
 [node name="JugadorCinematico" parent="CuadrosContainer/CuadroMemoria6" instance=ExtResource("5_0sevr")]
 scale = Vector2(6.9999995, 6.9999995)
+iniciar_con_emocion_neutra = true
 
 [node name="CuadroMemoria7" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
@@ -359,6 +365,7 @@ libraries = {
 
 [node name="JugadorCinematico" parent="CuadrosContainer/CuadroMemoria7" instance=ExtResource("5_0sevr")]
 scale = Vector2(6.9999995, 6.9999995)
+iniciar_con_emocion_neutra = true
 
 [node name="SelectorEmocion" type="Control" parent="."]
 layout_mode = 1
@@ -381,6 +388,7 @@ color = Color(0, 0, 0, 0.7058824)
 [node name="JugadorPreview" parent="SelectorEmocion" instance=ExtResource("5_0sevr")]
 z_index = 11
 position = Vector2(960, 540)
+iniciar_con_emocion_neutra = true
 
 [node name="VisorImagen" type="TextureRect" parent="SelectorEmocion"]
 z_index = 10
