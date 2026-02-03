@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b4t1ghb0ibdtf" path="res://assets/personajes/mascota/mascota.tscn" id="3_8jlpt"]
 [ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui_3.tscn" id="3_vov1m"]
 
-[node name="escena_7" type="Node2D"]
+[node name="Escena7" type="Node2D"]
 script = ExtResource("1_vov1m")
 
 [node name="FondoEscena7" type="Sprite2D" parent="."]
