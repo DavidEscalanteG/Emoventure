@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://xirhg56731lh"]
+[gd_scene load_steps=13 format=3 uid="uid://xirhg56731lh"]
 
 [ext_resource type="Script" uid="uid://l6wswws2bnvk" path="res://assets/assets_escena_3/UI/nivel_completado_ui.gd" id="1_2e01h"]
 [ext_resource type="Texture2D" uid="uid://qtect2yegfev" path="res://assets/emociones/sprites/felicidad.png" id="2_po2aj"]
+[ext_resource type="PackedScene" uid="uid://bgjfcq8bkynuh" path="res://escenas/cuestionario/EscenaCuestionario.tscn" id="2_tg12r"]
+[ext_resource type="PackedScene" uid="uid://c7gi6tyf36i4f" path="res://escenas/escena_5/escena_5.tscn" id="3_6w4pf"]
 [ext_resource type="Texture2D" uid="uid://dxxy4k6ht2k6i" path="res://assets/emociones/sprites/tristeza.png" id="3_n5g63"]
 [ext_resource type="Texture2D" uid="uid://cpqa724qpfdg7" path="res://assets/emociones/sprites/enojo.png" id="4_vj3d1"]
 [ext_resource type="Texture2D" uid="uid://be2m12ilqfwyk" path="res://assets/emociones/sprites/desagrado.png" id="5_tg12r"]
@@ -19,7 +21,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_2e01h")
-siguiente_escena = "res://escenas/cuestionario/EscenaCuestionario.tscn"
+escena_cuestionario = ExtResource("2_tg12r")
+escena_siguiente = ExtResource("3_6w4pf")
 
 [node name="FondoOscuro" type="ColorRect" parent="Control"]
 visible = false

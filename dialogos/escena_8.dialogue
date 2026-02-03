@@ -1,0 +1,44 @@
+# Characters
+Carlos
+Payaso
+Narrador
+
+~ inicio_memorias
+
+#do DialogueActors.set_anim("payaso", "idle", "izquierda")
+#Narrador: El cuarto se ilumina tenuemente. Fotografías antiguas cubren las paredes, suspendidas en el tiempo.
+#
+#do DialogueActors.set_anim("payaso", "risa", "izquierda")
+#Payaso: ¡Ja, ja, ja! Bienvenido, viajero de recuerdos.
+#do DialogueActors.set_anim("payaso", "idle", "izquierda")
+#
+#Carlos: ¿Quién eres…? ¿Y qué es este lugar?
+#
+#do DialogueActors.set_anim("payaso", "hablando", "izquierda")
+#Payaso: Estás en el Cuarto de las Memorias Eternas.
+#Payaso: Aquí se guardan momentos que nunca desaparecen… aunque intentemos olvidarlos.
+#
+#Carlos: Son… fotografías mías.
+#
+#Payaso: Exacto.
+#Payaso: Cada una encierra una emoción que alguna vez sentiste.
+#
+#Payaso: Tu misión es sencilla, pero no fácil.
+#Payaso: Observa cada fotografía con atención…
+#
+#Payaso: Y dime, ¿qué emoción vivía tu corazón en ese instante?
+#
+#Carlos: ¿Y si no estoy seguro?
+#
+#Payaso: ¡Ja! No existe una única respuesta correcta.
+#Payaso: Un recuerdo puede despertar muchas emociones distintas.
+#
+#Payaso: Lo importante no es acertar…
+#Payaso: sino reconocer lo que sientes.
+#
+#Payaso: Toca cada fotografía.
+#Payaso: Elige la emoción que resuene contigo.
+#
+#Payaso: Cuando hayas terminado, el camino continuará.
+
+Narrador: El payaso se aleja montado en su biciclo, perdiéndose entre las sombras.

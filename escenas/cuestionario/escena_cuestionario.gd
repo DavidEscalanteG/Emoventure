@@ -1,44 +1,69 @@
 extends Control
+class_name EscenaCuestionario
 
-@onready var label_pregunta := %PreguntaRichTextLabel
+# ==================================================
+# REFERENCIAS
+# ==================================================
+@onready var label_pregunta: RichTextLabel = %PreguntaRichTextLabel
+@onready var titulo_label: Label = %TituloLabel
 
-var preguntas := [
-	"Presto mucha atención a los sentimientos.",
-	"Normalmente me preocupo mucho por lo que siento.",
-	"Normalmente dedico tiempo a pensar en mis emociones.",
-	"Pienso que merece la pena prestar atención a mis emociones.",
-	"Dejo que mis sentimientos afecten a mis pensamientos.",
-	"Pienso en mi estado de ánimo constantemente.",
-	"A menudo pienso en mis sentimientos.",
-	"Presto mucha atención a cómo me siento."
-]
+@export var escena_siguiente: PackedScene
 
-var dimension := "atencion"
+# ==================================================
+# DATOS DEL CUESTIONARIO (INYECCIÓN)
+# ==================================================
+var preguntas: Array[String] = []
+var dimension: String = ""
 
-var indice := 0
-var puntaje_local := 0
 
+
+# ==================================================
+# ESTADO
+# ==================================================
+var indice: int = 0
+var puntaje_local: int = 0
+
+
+# ==================================================
+# CICLO DE VIDA
+# ==================================================
 func _ready() -> void:
+	if preguntas.is_empty():
+		push_warning("Cuestionario iniciado sin preguntas")
+		return
+
 	mostrar_pregunta()
 
+
+# ==================================================
+# LÓGICA
+# ==================================================
 func mostrar_pregunta() -> void:
 	label_pregunta.text = preguntas[indice]
+
 
 func responder(valor: int) -> void:
 	puntaje_local += valor
 	indice += 1
-	
+
 	if indice < preguntas.size():
 		mostrar_pregunta()
 	else:
-		GameManager.agregar_puntaje(dimension, puntaje_local)
-		print("Se termino el cuestionario")
-		terminar_cuestionario()
-
-func terminar_cuestionario() -> void:
-	get_tree().change_scene_to_file("uid://1qd5o2iv27o7") #PrimeraLlave.tscn
+		_finalizar()
 
 
+func _finalizar() -> void:
+	print("[DEBUG] Cuestionario terminado:", dimension, puntaje_local)
+
+	GameManager.agregar_puntaje(dimension, puntaje_local)
+
+	if escena_siguiente:
+		get_tree().change_scene_to_packed(escena_siguiente)
+
+
+# ==================================================
+# BOTONES
+# ==================================================
 func _on_boton_1_pressed() -> void:
 	responder(1)
 

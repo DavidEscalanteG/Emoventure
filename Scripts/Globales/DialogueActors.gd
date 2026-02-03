@@ -17,13 +17,30 @@ func register_actor(id: String, nodo: Node) -> void:
 func unregister_actor(id: String) -> void:
 	actores.erase(id)
 
+# ==================================================
+# DEBUG HELPERS
+# ==================================================
+func _actor_debug_name(actor_id: String, actor: Node) -> String:
+	var node_name: String = "NULL"
+	if actor != null:
+		node_name = actor.name
+
+	return "actor_id=%s (Nodo=%s)" % [actor_id, node_name]
+
+
+func _warn(actor_id: String, actor: Node, mensaje: String) -> void:
+	push_warning("[DialogueActors] %s → %s" % [
+		mensaje,
+		_actor_debug_name(actor_id, actor)
+	])
+
 
 # ==================================================
 # EXPRESIONES / ANIMACIONES
 # ==================================================
 func set_expr(actor_id: String, expresion: String) -> void:
 	if not actores.has(actor_id):
-		push_warning("Actor no registrado: " + actor_id)
+		push_warning("[DialogueActors] Actor no registrado: " + actor_id)
 		return
 
 	var actor: Node = actores[actor_id]
@@ -32,12 +49,11 @@ func set_expr(actor_id: String, expresion: String) -> void:
 		var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")
 		sprite.play(expresion)
 	else:
-		push_warning("El actor no tiene AnimatedSprite2D: " + actor_id)
-
+		_warn(actor_id, actor, "No tiene AnimatedSprite2D")
 
 func set_anim(actor_id: String, estado: String, direccion: String) -> void:
 	if not actores.has(actor_id):
-		push_warning("Actor no registrado: " + actor_id)
+		push_warning("[DialogueActors] Actor no registrado: " + actor_id)
 		return
 
 	var actor: Node = actores[actor_id]
@@ -50,28 +66,30 @@ func set_anim(actor_id: String, estado: String, direccion: String) -> void:
 		if sprite.sprite_frames and sprite.sprite_frames.has_animation(anim):
 			sprite.play(anim)
 		else:
-			push_warning("Animación no encontrada: " + anim)
+			_warn(actor_id, actor, "Animación no encontrada: " + anim)
 		return
 
-	# Jugador no jugable
+	# PlayerAppearance
 	if actor.has_node("PlayerAppearance"):
 		var apariencia: Node = actor.get_node("PlayerAppearance")
 		apariencia.set_estado_movimiento(estado)
 		apariencia.set_direction(direccion)
 
+# ==================================================
+# ANIMACIONES BLOQUEANTES
+# ==================================================
 func play_anim_and_wait(actor_id: String, estado: String, direccion: String) -> void:
-	
 	cinematica_activa = true
-	
+
 	if not actores.has(actor_id):
-		push_warning("Actor no registrado: " + actor_id)
-		emit_signal("cinematic_action_finished")
+		push_warning("[DialogueActors] Actor no registrado: " + actor_id)
 		cinematica_activa = false
+		emit_signal("cinematic_action_finished")
 		return
 
 	var actor: Node = actores[actor_id]
 
-	# NPC clásico
+	# NPC
 	if actor.has_node("AnimatedSprite2D"):
 		var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")
 		var anim: String = estado + "_" + direccion
@@ -80,10 +98,10 @@ func play_anim_and_wait(actor_id: String, estado: String, direccion: String) -> 
 			sprite.play(anim)
 			await sprite.animation_finished
 		else:
-			push_warning("Animación no encontrada: " + anim)
+			_warn(actor_id, actor, "Animación no encontrada: " + anim)
 
-		emit_signal("cinematic_action_finished")
 		cinematica_activa = false
+		emit_signal("cinematic_action_finished")
 		return
 
 	# PlayerAppearance
@@ -93,23 +111,29 @@ func play_anim_and_wait(actor_id: String, estado: String, direccion: String) -> 
 		apariencia.set_direction(direccion)
 
 		var cuerpo: AnimatedSprite2D = apariencia.cuerpo
-		if cuerpo and cuerpo.sprite_frames:
+		if cuerpo == null or cuerpo.sprite_frames == null:
+			_warn(actor_id, actor, "PlayerAppearance sin cuerpo o SpriteFrames")
+		else:
 			await cuerpo.animation_finished
-		
-		cinematica_activa = false
-		emit_signal("cinematic_action_finished")
 
+	cinematica_activa = false
+	emit_signal("cinematic_action_finished")
+
+# ==================================================
+# MOVIMIENTO BLOQUEANTE
+# ==================================================
 func move_and_wait(actor_id: String, delta: Vector2, tiempo: float = 0.6) -> void:
-	
 	cinematica_activa = true
-	
+
 	if not actores.has(actor_id):
+		push_warning("[DialogueActors] Actor no registrado: " + actor_id)
 		cinematica_activa = false
 		emit_signal("cinematic_action_finished")
 		return
 
 	var actor: Node2D = actores[actor_id] as Node2D
 	if actor == null:
+		_warn(actor_id, null, "Actor no es Node2D")
 		cinematica_activa = false
 		emit_signal("cinematic_action_finished")
 		return
@@ -119,6 +143,7 @@ func move_and_wait(actor_id: String, delta: Vector2, tiempo: float = 0.6) -> voi
 
 	await tween.finished
 	_try_set_idle(actor)
+
 	cinematica_activa = false
 	emit_signal("cinematic_action_finished")
 
@@ -207,34 +232,34 @@ func set_facing(actor_id: String, direction: String) -> void:
 
 
 # ==================================================
-# FINALIZAR MOVIMIENTO → IDLE (SEGURO)
+# FINALIZAR MOVIMIENTO → IDLE
 # ==================================================
 func _try_set_idle(actor: Node) -> void:
-	# Jugador / PlayerAppearance
+	# PlayerAppearance
 	if actor.has_node("PlayerAppearance"):
 		var apariencia: Node = actor.get_node("PlayerAppearance")
 		var cuerpo: AnimatedSprite2D = apariencia.cuerpo
 
 		if cuerpo == null or cuerpo.sprite_frames == null:
-			push_warning("PlayerAppearance sin SpriteFrames")
+			_warn("?", actor, "PlayerAppearance sin SpriteFrames")
 			return
 
 		var anim: String = "idle_" + apariencia.direccion_actual
 		if cuerpo.sprite_frames.has_animation(anim):
 			apariencia.set_estado_movimiento("idle")
 		else:
-			push_warning("Animación no encontrada: " + anim)
+			_warn("?", actor, "Animación idle no encontrada: " + anim)
 		return
 
-	# NPC clásico
+	# NPC
 	if actor.has_node("AnimatedSprite2D"):
 		var sprite: AnimatedSprite2D = actor.get_node("AnimatedSprite2D")
 
 		if sprite.sprite_frames == null:
-			push_warning("NPC sin SpriteFrames")
+			_warn("?", actor, "NPC sin SpriteFrames")
 			return
 
 		if sprite.sprite_frames.has_animation("idle"):
 			sprite.play("idle")
 		else:
-			push_warning("NPC sin animación idle")
+			_warn("?", actor, "NPC sin animación idle")
