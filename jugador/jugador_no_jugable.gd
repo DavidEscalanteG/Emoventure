@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var iniciar_con_emocion_neutra: bool = false
+
 @onready var apariencia: Node = $PlayerAppearance
 
 func _ready() -> void:
@@ -7,7 +9,10 @@ func _ready() -> void:
 	apariencia.set_direction("down")
 	apariencia.set_estado_movimiento("idle")
 	
-	set_emocion("ninguna")
+	if iniciar_con_emocion_neutra:
+		set_emocion("ninguna")
+	else:
+		_reproducir_idle_normal()
 
 
 func set_emocion(nombre: String):
@@ -31,3 +36,11 @@ func confirmar_emocion_visual():
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "scale", Vector2(1.1, 1.1), 0.2)
 	tween.tween_property(self, "scale", Vector2.ONE, 0.15)
+
+func _reproducir_idle_normal() -> void:
+	var appearance := $PlayerAppearance
+	var anim := "idle_down"
+
+	if appearance.cuerpo.sprite_frames \
+	and appearance.cuerpo.sprite_frames.has_animation(anim):
+		appearance.cuerpo.play(anim)

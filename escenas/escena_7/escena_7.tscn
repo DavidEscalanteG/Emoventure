@@ -17,8 +17,7 @@ texture = ExtResource("1_jlhpl")
 [node name="Personajes" type="Node2D" parent="."]
 
 [node name="JugadorCinematico" parent="Personajes" instance=ExtResource("2_8jlpt")]
-position = Vector2(256, 579)
-scale = Vector2(3, 3)
+position = Vector2(251.99998, 634.99994)
 
 [node name="Mascota" parent="Personajes" instance=ExtResource("3_8jlpt")]
 position = Vector2(2121, 500)
