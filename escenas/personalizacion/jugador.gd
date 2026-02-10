@@ -1,6 +1,12 @@
 extends CharacterBody2D
 
 # --------------------------------------------------
+# SEÑALES
+# --------------------------------------------------
+signal sin_vidas
+
+
+# --------------------------------------------------
 # CONFIGURACIÓN
 # --------------------------------------------------
 @export var speed: int = 300
@@ -77,6 +83,7 @@ func recibir_danio() -> void:
 
 	if vidas_actuales <= 0:
 		_morir()
+		sin_vidas.emit()
 		return
 
 	_activar_invulnerabilidad()
