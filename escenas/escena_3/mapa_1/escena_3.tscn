@@ -1,14 +1,18 @@
-[gd_scene load_steps=48 format=4 uid="uid://dhr0rstqdkcin"]
+[gd_scene load_steps=55 format=4 uid="uid://dhr0rstqdkcin"]
 
-[ext_resource type="Script" uid="uid://dvjj8pf7anx04" path="res://escenas/escena_3/escena_3.gd" id="1_wcswo"]
+[ext_resource type="Script" uid="uid://dvjj8pf7anx04" path="res://escenas/escena_3/mapa_1/escena_3.gd" id="1_wcswo"]
 [ext_resource type="PackedScene" uid="uid://7coyibirj1qa" path="res://assets/assets_escena_3/otros_elementos/interseccion.tscn" id="4_uamsr"]
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="13_s7qke"]
 [ext_resource type="Texture2D" uid="uid://coq3u4o4mvnf0" path="res://assets/assets_escena_3/paredes/Terrain (32x32).png" id="14_de147"]
 [ext_resource type="Texture2D" uid="uid://dk4pt704h4p0y" path="res://assets/assets_escena_3/fondos/fondos_unidos.png" id="14_s7qke"]
 [ext_resource type="PackedScene" uid="uid://xirhg56731lh" path="res://assets/assets_escena_3/UI/NivelCompletadoUI.tscn" id="16_311ul"]
+[ext_resource type="Script" uid="uid://cuiehsfsddrsm" path="res://escenas/escena_3/mapa_1/control_game_over.gd" id="16_pbfwe"]
 [ext_resource type="PackedScene" uid="uid://b4jiwtffqt48m" path="res://assets/emociones/emocion.tscn" id="16_wcswo"]
 [ext_resource type="Texture2D" uid="uid://be2m12ilqfwyk" path="res://assets/emociones/sprites/desagrado.png" id="17_rrsqi"]
+[ext_resource type="Texture2D" uid="uid://d1lodo36peyik" path="res://assets/botones/Blue_Buttons_Pixel.png" id="17_v1a1q"]
 [ext_resource type="Texture2D" uid="uid://cpqa724qpfdg7" path="res://assets/emociones/sprites/enojo.png" id="18_4mucj"]
+[ext_resource type="Texture2D" uid="uid://4y4gqktpfyd0" path="res://assets/botones/Red_Buttons_Pixel.png" id="18_rrsqi"]
+[ext_resource type="Texture2D" uid="uid://bishv70yvv71n" path="res://assets/botones/Yellow_Buttons_Pixel.png" id="19_4mucj"]
 [ext_resource type="Texture2D" uid="uid://qtect2yegfev" path="res://assets/emociones/sprites/felicidad.png" id="19_uamsr"]
 [ext_resource type="Texture2D" uid="uid://dbeo324lgnb8p" path="res://assets/emociones/sprites/miedo.png" id="20_spp1b"]
 [ext_resource type="Texture2D" uid="uid://dxxy4k6ht2k6i" path="res://assets/emociones/sprites/tristeza.png" id="21_bjo0t"]
@@ -351,6 +355,18 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uamsr"]
+texture = ExtResource("17_v1a1q")
+region_rect = Rect2(144, 32, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_spp1b"]
+texture = ExtResource("18_rrsqi")
+region_rect = Rect2(144, 32, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bjo0t"]
+texture = ExtResource("19_4mucj")
+region_rect = Rect2(144, 32, 16, 16)
+
 [node name="escena_3" type="Node2D"]
 script = ExtResource("1_wcswo")
 
@@ -368,32 +384,32 @@ tile_set = SubResource("TileSet_de147")
 [node name="Emociones" type="Node2D" parent="."]
 
 [node name="Emocion_Desagrado" parent="Emociones" instance=ExtResource("16_wcswo")]
-position = Vector2(995, 516)
+position = Vector2(897, 343)
 textura = ExtResource("17_rrsqi")
 tipo_emocion = "desagrado"
 color = Color(0.3647059, 0.8862745, 0.21568628, 1)
 
 [node name="Emocion_Enojo" parent="Emociones" instance=ExtResource("16_wcswo")]
-position = Vector2(934, 522)
+position = Vector2(453, 161)
 collision_layer = 0
 textura = ExtResource("18_4mucj")
 tipo_emocion = "enojo"
 color = Color(1, 0, 0, 1)
 
 [node name="Emocion_Felicidad" parent="Emociones" instance=ExtResource("16_wcswo")]
-position = Vector2(840, 514)
+position = Vector2(1217, 106)
 textura = ExtResource("19_uamsr")
 tipo_emocion = "alegria"
 color = Color(1, 1, 0.09803922, 1)
 
 [node name="Emocion_Miedo" parent="Emociones" instance=ExtResource("16_wcswo")]
-position = Vector2(782, 520)
+position = Vector2(1586, 631)
 textura = ExtResource("20_spp1b")
 tipo_emocion = "miedo"
 color = Color(1, 0.14901961, 1, 1)
 
 [node name="Emocion_Tristeza" parent="Emociones" instance=ExtResource("16_wcswo")]
-position = Vector2(515, 736)
+position = Vector2(958, 861)
 textura = ExtResource("21_bjo0t")
 tipo_emocion = "tristeza"
 color = Color(0.043137256, 0.11764706, 1, 1)
@@ -576,6 +592,7 @@ rutas_disponibles = [NodePath("../../Caminos/Path2D_10"), NodePath("../../Camino
 
 [node name="Jugador" parent="." instance=ExtResource("13_s7qke")]
 position = Vector2(1089, 511)
+scale = Vector2(2, 2)
 
 [node name="EmocionesUI" parent="." instance=ExtResource("25_bjo0t")]
 offset = Vector2(700, 575)
@@ -587,5 +604,37 @@ scale = Vector2(0.5, 0.5)
 transform = Transform2D(0.5, 0, 0, 0.5, 800, 400)
 
 [node name="NivelCompletadoUI" parent="." instance=ExtResource("16_311ul")]
+visible = false
 offset = Vector2(700, 0)
 transform = Transform2D(1, 0, 0, 1, 700, 0)
+
+[node name="GameOverUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="GameOverUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("16_pbfwe")
+
+[node name="ReiniciarButton" type="Button" parent="GameOverUI/Control"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_uamsr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_spp1b")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bjo0t")
