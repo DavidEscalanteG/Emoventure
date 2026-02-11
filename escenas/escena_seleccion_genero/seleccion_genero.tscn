@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv5b4obtr84de"]
+
+[ext_resource type="Script" uid="uid://33qc1thwqun1" path="res://escenas/escena_seleccion_genero/seleccion_genero.gd" id="1_c4syc"]
+[ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="1_eeges"]
+
+[node name="SeleccionGenero" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c4syc")
+
+[node name="Fondo" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 300
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Me identifico con"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 200
+
+[node name="ContenedorHombre" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 200
+
+[node name="JugadorHombre" parent="VBoxContainer/HBoxContainer/ContenedorHombre" instance=ExtResource("1_eeges")]
+position = Vector2(100, 0)
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/HBoxContainer/ContenedorHombre"]
+layout_mode = 2
+
+[node name="BotonHombre" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorHombre"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Hombre"
+
+[node name="ContenedorMujer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="JugadorMujer" parent="VBoxContainer/HBoxContainer/ContenedorMujer" instance=ExtResource("1_eeges")]
+position = Vector2(100, 0)
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/HBoxContainer/ContenedorMujer"]
+layout_mode = 2
+
+[node name="BotonMujer" type="Button" parent="VBoxContainer/HBoxContainer/ContenedorMujer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Mujer"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ContenedorHombre/BotonHombre" to="." method="_on_boton_hombre_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ContenedorMujer/BotonMujer" to="." method="_on_boton_mujer_pressed"]

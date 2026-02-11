@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c14jtphj2d6kf"]
+[gd_scene load_steps=54 format=3 uid="uid://c14jtphj2d6kf"]
 
 [ext_resource type="Script" uid="uid://dr80qquf74i7m" path="res://escenas/personalizacion/jugador.gd" id="1_ahroc"]
 [ext_resource type="Script" uid="uid://de5fxgit5ggna" path="res://jugador/player_appearance.gd" id="2_5vouv"]
@@ -7,15 +7,45 @@
 [ext_resource type="SpriteFrames" uid="uid://bw4jsrbggfegr" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/sombrero/sobrero_01.tres" id="4_tkcrs"]
 [ext_resource type="SpriteFrames" uid="uid://dklhb2vd3a6pv" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cabello/cabello_02.tres" id="4_xmq2a"]
 [ext_resource type="SpriteFrames" uid="uid://kx0l0egxsded" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/ropa/ropa_01.tres" id="5_yl2o6"]
+[ext_resource type="SpriteFrames" uid="uid://dagsmnpw3lgoh" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_01.tres" id="6_2jvos"]
 [ext_resource type="SpriteFrames" uid="uid://dgslvkv7rsktt" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/sombrero/sobrero_00.tres" id="6_ahroc"]
 [ext_resource type="SpriteFrames" uid="uid://ekebet145v3e" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/sombrero/sobrero_02.tres" id="6_frsvm"]
 [ext_resource type="SpriteFrames" uid="uid://da1cf5pybf7m4" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cuerpo/cuerpo_01.tres" id="6_uo3ig"]
+[ext_resource type="SpriteFrames" uid="uid://c5k3af4kb1upy" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_02.tres" id="7_ea1sv"]
 [ext_resource type="SpriteFrames" uid="uid://b1sblwi8esp6h" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/ropa/ropa_02.tres" id="8_ahroc"]
-[ext_resource type="SpriteFrames" uid="uid://g2msfyj00js8" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cuerpo/cuerpo_02.tres" id="10_slyet"]
+[ext_resource type="SpriteFrames" uid="uid://bbkg86e0jply4" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_03.tres" id="8_w6wtl"]
+[ext_resource type="SpriteFrames" uid="uid://bfhmegoy6boyi" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_04.tres" id="9_77pm8"]
+[ext_resource type="SpriteFrames" uid="uid://br24ch0rs6un0" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_05.tres" id="10_f1uac"]
+[ext_resource type="SpriteFrames" uid="uid://dm414lywn3b05" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_06.tres" id="11_xodnp"]
+[ext_resource type="SpriteFrames" uid="uid://chrt1ffsvywps" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_07.tres" id="12_qk2bj"]
+[ext_resource type="SpriteFrames" uid="uid://caw1mlinmywu1" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_08.tres" id="13_rxqp4"]
 [ext_resource type="Texture2D" uid="uid://jjtg8d0t2mrs" path="res://pruebas/animaciones/hombre_mana_seed/spritesheets/cuerpo/char_a_pONE2_0bas_humn_v00.png" id="13_vmphg"]
 [ext_resource type="Texture2D" uid="uid://c8lefdlhcclfq" path="res://pruebas/animaciones/hombre_mana_seed/spritesheets/cabello/char_a_pONE2_4har_dap1_v05.png" id="14_5iu33"]
+[ext_resource type="SpriteFrames" uid="uid://baks1fvwr0thk" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_09.tres" id="14_yncp5"]
+[ext_resource type="SpriteFrames" uid="uid://5emaxtx5jxy6" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_10.tres" id="15_i12gp"]
 [ext_resource type="Texture2D" uid="uid://7krvoleurhog" path="res://pruebas/animaciones/hombre_mana_seed/spritesheets/ropa/char_a_pONE2_1out_fstr_v01.png" id="15_llqwg"]
-[ext_resource type="Texture2D" uid="uid://dh0lhl27pnslt" path="res://pruebas/animaciones/stardew/spritesheets/cabello/hairstyles.png" id="16_5iu33"]
+[ext_resource type="SpriteFrames" uid="uid://c1kfov4olpxl7" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_11.tres" id="16_8nbpe"]
+[ext_resource type="SpriteFrames" uid="uid://drbj7r0i7va77" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_12.tres" id="17_dghyu"]
+[ext_resource type="SpriteFrames" uid="uid://dsjvlfwweo4a" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_13.tres" id="18_7vgpr"]
+[ext_resource type="SpriteFrames" uid="uid://oi6cxliqsvhb" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_14.tres" id="19_02vir"]
+[ext_resource type="SpriteFrames" uid="uid://cjn5wrnt1gy01" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_15.tres" id="20_fmk8u"]
+[ext_resource type="SpriteFrames" uid="uid://ccpumfob27txa" path="res://assets/personajes/jugador/animaciones/cabello/cabello_h_16.tres" id="21_3prtc"]
+[ext_resource type="SpriteFrames" uid="uid://jmhbnmt621a4" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_01.tres" id="22_74k3m"]
+[ext_resource type="SpriteFrames" uid="uid://bguuwmyngbnwc" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_02.tres" id="23_v17nb"]
+[ext_resource type="SpriteFrames" uid="uid://duw5c255mmwcc" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_03.tres" id="24_tgb4b"]
+[ext_resource type="SpriteFrames" uid="uid://c6hesp2gxnepj" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_04.tres" id="25_v1krg"]
+[ext_resource type="SpriteFrames" uid="uid://bbcu3hbjtrfnx" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_05.tres" id="26_cgao6"]
+[ext_resource type="SpriteFrames" uid="uid://b2278vs45akd5" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_06.tres" id="27_yt1pb"]
+[ext_resource type="SpriteFrames" uid="uid://n2xka5p03cro" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_07.tres" id="28_5nsno"]
+[ext_resource type="SpriteFrames" uid="uid://dwvvvm7xt23th" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_08.tres" id="29_vf2w5"]
+[ext_resource type="SpriteFrames" uid="uid://cohdkmmpfvrho" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_09.tres" id="30_l14op"]
+[ext_resource type="SpriteFrames" uid="uid://bd7ngp1dn0cb3" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_10.tres" id="31_dcu1a"]
+[ext_resource type="SpriteFrames" uid="uid://6ebpfl50u8k4" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_11.tres" id="32_d38hb"]
+[ext_resource type="SpriteFrames" uid="uid://0tlpa2kmwtjd" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_12.tres" id="33_4emkb"]
+[ext_resource type="SpriteFrames" uid="uid://1kqh6pd65d21" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_13.tres" id="34_2pddm"]
+[ext_resource type="SpriteFrames" uid="uid://c5vrdvgolioqv" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_14.tres" id="35_8c0hy"]
+[ext_resource type="SpriteFrames" uid="uid://bwxlppuwgwdl4" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_15.tres" id="36_vjyp7"]
+[ext_resource type="SpriteFrames" uid="uid://cack0b6yeo1cb" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_16.tres" id="37_fjdah"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a407c"]
 
@@ -39,10 +69,10 @@ script = ExtResource("1_ahroc")
 
 [node name="PlayerAppearance" type="Node2D" parent="."]
 script = ExtResource("2_5vouv")
-coleccion_cabellos = Array[SpriteFrames]([ExtResource("3_frsvm"), ExtResource("3_xreb1"), ExtResource("4_xmq2a")])
+coleccion_cabellos = Array[SpriteFrames]([ExtResource("3_frsvm"), ExtResource("3_xreb1"), ExtResource("6_2jvos"), ExtResource("7_ea1sv"), ExtResource("8_w6wtl"), ExtResource("9_77pm8"), ExtResource("10_f1uac"), ExtResource("11_xodnp"), ExtResource("12_qk2bj"), ExtResource("13_rxqp4"), ExtResource("14_yncp5"), ExtResource("15_i12gp"), ExtResource("16_8nbpe"), ExtResource("17_dghyu"), ExtResource("18_7vgpr"), ExtResource("19_02vir"), ExtResource("20_fmk8u"), ExtResource("21_3prtc"), ExtResource("4_xmq2a"), ExtResource("22_74k3m"), ExtResource("23_v17nb"), ExtResource("24_tgb4b"), ExtResource("25_v1krg"), ExtResource("26_cgao6"), ExtResource("27_yt1pb"), ExtResource("28_5nsno"), ExtResource("29_vf2w5"), ExtResource("30_l14op"), ExtResource("31_dcu1a"), ExtResource("32_d38hb"), ExtResource("33_4emkb"), ExtResource("34_2pddm"), ExtResource("35_8c0hy"), ExtResource("36_vjyp7"), ExtResource("37_fjdah")])
 coleccion_cabezas = Array[SpriteFrames]([ExtResource("6_ahroc"), ExtResource("4_tkcrs"), ExtResource("6_frsvm")])
 coleccion_bocas = Array[SpriteFrames]([ExtResource("5_yl2o6"), ExtResource("8_ahroc")])
-coleccion_cuerpos = Array[SpriteFrames]([ExtResource("6_uo3ig"), ExtResource("10_slyet")])
+coleccion_cuerpos = Array[SpriteFrames]([ExtResource("6_uo3ig")])
 
 [node name="Cuerpo" type="AnimatedSprite2D" parent="PlayerAppearance"]
 sprite_frames = SubResource("SpriteFrames_a407c")
@@ -64,8 +94,10 @@ sprite_frames = SubResource("SpriteFrames_tkcrs")
 sprite_frames = SubResource("SpriteFrames_yl2o6")
 
 [node name="Referencia" type="Node2D" parent="."]
+visible = false
 
 [node name="Cuerpo" type="Sprite2D" parent="Referencia"]
+visible = false
 texture = ExtResource("13_vmphg")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
@@ -88,9 +120,3 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_bjo0t")
-
-[node name="Cabello Stardew" type="Sprite2D" parent="."]
-position = Vector2(0, -3)
-texture = ExtResource("16_5iu33")
-region_enabled = true
-region_rect = Rect2(48, 96, 16, 32)

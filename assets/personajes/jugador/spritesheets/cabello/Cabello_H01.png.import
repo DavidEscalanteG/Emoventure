@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu3r14a6moaik"
-path="res://.godot/imported/payaso_golpeado.png-61fc0d0f068878cba035f5748ef422d9.ctex"
+uid="uid://d23v5c1ghdtlk"
+path="res://.godot/imported/Cabello_H01.png-07907813c29ee58aaf40e97987e9e4bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/payaso_golpeado.png"
-dest_files=["res://.godot/imported/payaso_golpeado.png-61fc0d0f068878cba035f5748ef422d9.ctex"]
+source_file="res://assets/personajes/jugador/spritesheets/cabello/Cabello_H01.png"
+dest_files=["res://.godot/imported/Cabello_H01.png-07907813c29ee58aaf40e97987e9e4bd.ctex"]
 
 [params]
 

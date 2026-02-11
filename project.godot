@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Emoventure"
-run/main_scene="uid://cxv23v4515m48"
+run/main_scene="uid://co64vr8dggawo"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 

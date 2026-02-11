@@ -92,6 +92,9 @@ func set_estado_movimiento(estado: String) -> void:
 # ==================================================
 
 func aplicar_apariencia_desde_global() -> void:
+	
+	_validar_indices_por_genero()
+	
 	_aplicar_spriteframes(cabello, coleccion_cabellos, Global.apariencia.indice_cabello)
 	_aplicar_spriteframes(cabeza,  coleccion_cabezas,  Global.apariencia.indice_cabeza)
 	_aplicar_spriteframes(ojos,     coleccion_ojos,     Global.apariencia.indice_ojos)
@@ -101,6 +104,16 @@ func aplicar_apariencia_desde_global() -> void:
 
 	_restaurar_colores()
 	_actualizar_animacion()
+
+func _validar_indices_por_genero():
+	if Global.genero == "":
+		return
+	
+	var rango = Global.RANGO_CABELLO[Global.genero]
+	
+	if Global.apariencia.indice_cabello < rango.inicio \
+	or Global.apariencia.indice_cabello > rango.fin:
+		Global.apariencia.indice_cabello = rango.inicio
 
 
 func _aplicar_spriteframes(

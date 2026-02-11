@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3610aie68mm4"
-path="res://.godot/imported/pngtree-clown-icon-simple-style-png-image_15810983.png-07d596929d55e6a73cd7ab2f07560943.ctex"
+uid="uid://cversed1pi2ss"
+path="res://.godot/imported/Cabello_M12.png-e82de10a1eb8bb9847ea83a2e3b7ce41.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pngtree-clown-icon-simple-style-png-image_15810983.png"
-dest_files=["res://.godot/imported/pngtree-clown-icon-simple-style-png-image_15810983.png-07d596929d55e6a73cd7ab2f07560943.ctex"]
+source_file="res://assets/personajes/jugador/spritesheets/cabello/Cabello_M12.png"
+dest_files=["res://.godot/imported/Cabello_M12.png-e82de10a1eb8bb9847ea83a2e3b7ce41.ctex"]
 
 [params]
 

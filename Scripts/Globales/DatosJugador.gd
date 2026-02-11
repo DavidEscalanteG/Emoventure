@@ -7,6 +7,13 @@ var emotions_ui: Node = null
 
 var puntaje_total := 0
 
+var genero: String = "hombre"
+
+const RANGO_CABELLO = {
+	"hombre": { "inicio": 0, "fin": 17 },
+	"mujer":  { "inicio": 18, "fin": 34 }
+}
+
 var puntajes_por_dimension := {
 	"atencion": 0,
 	"claridad": 0,
