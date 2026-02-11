@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjy1778uwb80f"
-path="res://.godot/imported/martillo.png-ec9569f24d24fe81238fac43deb094ba.ctex"
+uid="uid://42fq5ejkqi5k"
+path="res://.godot/imported/Cabello_H11.png-11f7ee92fed8bc89a0fa1b394fdacd27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/martillo.png"
-dest_files=["res://.godot/imported/martillo.png-ec9569f24d24fe81238fac43deb094ba.ctex"]
+source_file="res://assets/personajes/jugador/spritesheets/cabello/Cabello_H11.png"
+dest_files=["res://.godot/imported/Cabello_H11.png-11f7ee92fed8bc89a0fa1b394fdacd27.ctex"]
 
 [params]
 

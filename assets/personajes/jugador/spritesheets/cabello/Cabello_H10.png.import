@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxx5u85v31b5m"
-path="res://.godot/imported/martillo_pegando.png-eb172e9719fb0b75e6269f557c29fb8d.ctex"
+uid="uid://d4mddjjcwi4aj"
+path="res://.godot/imported/Cabello_H10.png-8cff484fd9fe6964b447213bc990789a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/martillo_pegando.png"
-dest_files=["res://.godot/imported/martillo_pegando.png-eb172e9719fb0b75e6269f557c29fb8d.ctex"]
+source_file="res://assets/personajes/jugador/spritesheets/cabello/Cabello_H10.png"
+dest_files=["res://.godot/imported/Cabello_H10.png-8cff484fd9fe6964b447213bc990789a.ctex"]
 
 [params]
 

@@ -4,8 +4,19 @@ extends CharacterBody2D
 
 @onready var apariencia: Node = $PlayerAppearance
 
+@export var forzar_indice_cabello: int = -1
+
 func _ready() -> void:
-	apariencia.aplicar_apariencia_desde_global()
+	if forzar_indice_cabello >= 0:
+		apariencia._aplicar_spriteframes(
+			apariencia.cabello,
+			apariencia.coleccion_cabellos,
+			forzar_indice_cabello
+		)
+		apariencia._actualizar_animacion()
+	else:
+		apariencia.aplicar_apariencia_desde_global()
+
 	apariencia.set_direction("down")
 	apariencia.set_estado_movimiento("idle")
 	

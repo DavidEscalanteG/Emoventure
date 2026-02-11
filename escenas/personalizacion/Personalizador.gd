@@ -25,6 +25,7 @@ var indice_cabeza: int = 0
 
 func _ready() -> void:
 	cargar_desde_global()
+	_validar_cabello_por_genero()
 	refrescar_preview()
 	
 	mascota.aplicar_mascota_desde_global()
@@ -78,11 +79,23 @@ func _anterior(indice: int, coleccion: Array) -> int:
 # --------------------------------------------------
 
 func _on_btn_cabello_siguiente_pressed() -> void:
-	indice_cabello = _siguiente(indice_cabello, apariencia.coleccion_cabellos)
+	var rango = Global.RANGO_CABELLO[Global.genero]
+
+	indice_cabello += 1
+	
+	if indice_cabello > rango["fin"]:
+		indice_cabello = rango["inicio"]
+		
 	refrescar_preview()
 
 func _on_btn_cabello_atras_pressed() -> void:
-	indice_cabello = _anterior(indice_cabello, apariencia.coleccion_cabellos)
+	var rango = Global.RANGO_CABELLO[Global.genero]
+
+	indice_cabello -= 1
+	
+	if indice_cabello < rango["inicio"]:
+		indice_cabello = rango["fin"]
+		
 	refrescar_preview()
 
 
@@ -196,3 +209,12 @@ func _on_mascota_anterior_pressed() -> void:
 
 	Global.mascota["indice"] = indice
 	mascota.aplicar_mascota_desde_global()
+
+func _validar_cabello_por_genero():
+	if Global.genero == "":
+		return
+	
+	var rango = Global.RANGO_CABELLO[Global.genero]
+	
+	if indice_cabello < rango["inicio"] or indice_cabello > rango["fin"]:
+		indice_cabello = rango["inicio"]
