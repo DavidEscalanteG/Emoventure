@@ -8,7 +8,7 @@ const SIGUIENTE_ESCENA := "uid://dhr0rstqdkcin" #escena_3.tscn
 
 func _ready() -> void:
 	
-	DialogueActors.registrar_actor("gitana", $personajes/gitana)
+	DialogueActors.registro_registrar_actor("gitana", $personajes/gitana)
 	dialogue_ui.dialogo_finalizado.connect(_on_dialogo_finalizado)
 
 	#await get_tree().create_timer(1.0).timeout
