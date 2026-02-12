@@ -177,20 +177,21 @@ func _actualizar_indice_mascota(delta: int) -> void:
 	if mascota.coleccion_mascotas.is_empty():
 		return
 
-	var indice: int = int(Global.mascota["indice"])
+	var indice: int = Global.obtener_indice_mascota()
 	indice = (indice + delta) % mascota.coleccion_mascotas.size()
 
 	if indice < 0:
 		indice += mascota.coleccion_mascotas.size()
 
-	Global.mascota["indice"] = indice
+	Global.set_indice_mascota(indice)
 	mascota.aplicar_mascota_desde_global()
 
 func _validar_cabello_por_genero():
 	if Global.genero == "":
 		return
 	
-	var rango = Global.RANGO_CABELLO[Global.genero]
+	var rango: Vector2i = Global.obtener_rango_cabello_por_genero(Global.genero)
 	
-	if indice_cabello < rango["inicio"] or indice_cabello > rango["fin"]:
-		indice_cabello = rango["inicio"]
+	if indice_cabello < rango.x or indice_cabello > rango.y:
+		Global.set_indice_cabello(rango.x)
+		indice_cabello = Global.apariencia.indice_cabello

@@ -4,7 +4,7 @@ extends Control
 @onready var type_sound: AudioStreamPlayer = $DialogueTypeSound
 @onready var type_timer: Timer = $TypeSoundTimer
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
-@onready var character_label: Label = %CharacterLabel
+@onready var character_label: RichTextLabel = %CharacterLabel
 
 var dialogue_resource: DialogueResource
 var current_line: DialogueLine
