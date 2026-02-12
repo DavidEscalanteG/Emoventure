@@ -37,7 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://bb4x5nsfbg57u" path="res://assets/assets_escena_9/puerta/puerta_brillante.png" id="35_rfoqg"]
 [ext_resource type="Script" uid="uid://bcnfhy88ywwax" path="res://escenas/escena_9/puerta_cuestionario.gd" id="36_t272c"]
 [ext_resource type="PackedScene" uid="uid://bgjfcq8bkynuh" path="res://escenas/cuestionario/EscenaCuestionario.tscn" id="37_t272c"]
-[ext_resource type="PackedScene" uid="uid://dghl2jv2pxg6l" path="res://escenas/escena_10/escena_10.tscn" id="38_xwnhn"]
+[ext_resource type="PackedScene" uid="uid://dghl2jv2pxg6l" path="res://escenas/escena_10_llave/escena_10.tscn" id="38_xwnhn"]
 
 [sub_resource type="Animation" id="Animation_uf5ph"]
 length = 0.001

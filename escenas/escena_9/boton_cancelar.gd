@@ -4,5 +4,5 @@ extends Button
 
 func _on_pressed() -> void:
 	if selector:
-		print("[DEBUG] Botón cancelar presionado")
+		Logs.log_debug("[DEBUG] Botón cancelar presionado")
 		selector.cancelar_seleccion()

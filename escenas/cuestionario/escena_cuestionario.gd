@@ -53,7 +53,7 @@ func responder(valor: int) -> void:
 
 
 func _finalizar() -> void:
-	print("[DEBUG] Cuestionario terminado:", dimension, puntaje_local)
+	Logs.log_debug("[DEBUG] Cuestionario terminado: %s %d" % [dimension, puntaje_local])
 
 	GameManager.agregar_puntaje(dimension, puntaje_local)
 

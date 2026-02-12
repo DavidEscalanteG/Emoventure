@@ -7,8 +7,8 @@ func _ready():
 
 	Global.jugador.permitir_movimiento()
 
-	print("Enemigos encontrados:", get_tree().get_nodes_in_group("enemigos").size())
-	print(level_complete_ui)
+	Logs.log_debug("Enemigos encontrados: %d" % get_tree().get_nodes_in_group("enemigos").size())
+	Logs.log_debug("Level complete UI listo")
 	Global.emociones_recolectadas.clear()
 	Global.todas_las_emociones_recolectadas.connect(_on_todas_las_emociones_recolectadas)
 	
@@ -17,7 +17,7 @@ func _ready():
 func _on_todas_las_emociones_recolectadas():
 	
 	Global.todas_las_emociones_recolectadas.disconnect(_on_todas_las_emociones_recolectadas)
-	print("Nivel completado")
+	Logs.log_debug("Nivel completado")
 	
 	Global.jugador.nivel_terminado = true
 	Global.jugador._terminar_emocion()

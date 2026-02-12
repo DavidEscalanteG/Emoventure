@@ -35,19 +35,13 @@ func _physics_process(delta: float) -> void:
 	# ↩ Callejón SOLO si NO hay ruta pendiente
 	if not esperando_cambio:
 		if path_follow.progress_ratio >= 1.0 and speed > 0:
-			print("↪↪Callejon de ", name, "con ratio de ", path_follow.progress_ratio, " y velocidad de ", speed, " no esperando cambio")
 			speed = -abs(speed)
-			print("↩ Callejón: invirtiendo dirección de: ", name)
 
 		elif path_follow.progress_ratio <= 0.0 and speed < 0:
-			print("↪↪Callejon de ", name, "con ratio de ", path_follow.progress_ratio, " y velocidad de ", speed, " no esperando cambio")
 			speed = abs(speed)
-			print("↪ Callejón: invirtiendo dirección de: ", name)
 
 	elif path_follow.progress_ratio <= 0.0 and speed < 0:
-		print("↪↪Callejon de ", name, "con ratio de ", path_follow.progress_ratio, " y velocidad de ", speed, " esperando cambio")
 		speed = abs(speed)
-		print("↪ Callejón: invirtiendo dirección (inicio del path) de: ", name)
 
 func _actualizar_animacion() -> void:
 	if not puede_moverse or abs(speed) < 0.01:
@@ -77,17 +71,15 @@ func _ejecutar_cambio_de_ruta() -> void:
 	var inicio: Vector2 = ruta_pendiente.to_global(curva.get_point_position(0))
 	var final: Vector2 = ruta_pendiente.to_global(curva.get_point_position(curva.point_count - 1))
 
-	print("Distancia inicio:", global_position.distance_to(inicio),
-		  "distancia final:", global_position.distance_to(final))
 
 	if global_position.distance_to(final) < global_position.distance_to(inicio):
 		nueva_follow.progress_ratio = 1.0
 		speed = -abs(speed)
-		print("↩ Entrando por final")
+		Logs.log_debug("↩ Entrando por final")
 	else:
 		nueva_follow.progress_ratio = 0.0
 		speed = abs(speed)
-		print("➡ Entrando por inicio")
+		Logs.log_debug("➡ Entrando por inicio")
 
 	# ⬅️ 3. Reparentar enemigo
 	reparent(nueva_follow)

@@ -71,7 +71,7 @@ script = ExtResource("1_bb1jh")
 
 [node name="PlayerAppearance" type="Node2D" parent="."]
 script = ExtResource("2_ji2n2")
-coleccion_cabellos = Array[SpriteFrames]([ExtResource("3_cnqs4"), ExtResource("4_u30mp"), ExtResource("13_a316i"), ExtResource("7_dltli"), ExtResource("8_p6pvl"), ExtResource("9_88yff"), ExtResource("10_ev2yx"), ExtResource("11_1fe4m"), ExtResource("12_f8bl5"), ExtResource("13_dit84"), ExtResource("14_ka0jn"), ExtResource("15_qdofq"), ExtResource("16_0p4eb"), ExtResource("17_w6yxb"), ExtResource("18_7bfl1"), ExtResource("19_5kmf8"), ExtResource("20_707pe"), ExtResource("21_13jqr"), ExtResource("5_a316i"), ExtResource("22_swafo"), ExtResource("23_ohvd8"), ExtResource("24_ilrlb"), ExtResource("25_jk7vg"), ExtResource("26_sh3ub"), ExtResource("27_2qc6t"), ExtResource("28_uu43r"), ExtResource("29_5p8ab"), ExtResource("30_ha6nc"), ExtResource("31_snl77"), ExtResource("32_efyou"), ExtResource("33_ohqu5"), ExtResource("34_c84de"), ExtResource("35_xakvu"), ExtResource("36_klcfh"), ExtResource("37_ow5h1")])
+coleccion_cabellos = Array[SpriteFrames]([ExtResource("4_u30mp"), ExtResource("13_a316i"), ExtResource("7_dltli"), ExtResource("8_p6pvl"), ExtResource("9_88yff"), ExtResource("10_ev2yx"), ExtResource("11_1fe4m"), ExtResource("12_f8bl5"), ExtResource("13_dit84"), ExtResource("14_ka0jn"), ExtResource("15_qdofq"), ExtResource("16_0p4eb"), ExtResource("17_w6yxb"), ExtResource("18_7bfl1"), ExtResource("19_5kmf8"), ExtResource("20_707pe"), ExtResource("21_13jqr"), ExtResource("3_cnqs4"), ExtResource("5_a316i"), ExtResource("22_swafo"), ExtResource("23_ohvd8"), ExtResource("24_ilrlb"), ExtResource("25_jk7vg"), ExtResource("26_sh3ub"), ExtResource("27_2qc6t"), ExtResource("28_uu43r"), ExtResource("29_5p8ab"), ExtResource("30_ha6nc"), ExtResource("31_snl77"), ExtResource("32_efyou"), ExtResource("33_ohqu5"), ExtResource("34_c84de"), ExtResource("35_xakvu"), ExtResource("36_klcfh"), ExtResource("37_ow5h1")])
 coleccion_cabezas = Array[SpriteFrames]([ExtResource("6_2hoyx"), ExtResource("7_qddrp"), ExtResource("8_76p2x")])
 coleccion_bocas = Array[SpriteFrames]([ExtResource("9_7mavr"), ExtResource("10_uruup")])
 coleccion_cuerpos = Array[SpriteFrames]([ExtResource("11_7fnqw"), ExtResource("12_7y0lq")])
@@ -95,9 +95,6 @@ sprite_frames = SubResource("SpriteFrames_tkcrs")
 [node name="Ojos" type="AnimatedSprite2D" parent="PlayerAppearance"]
 sprite_frames = SubResource("SpriteFrames_yl2o6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-
 [node name="Referencia" type="Node2D" parent="."]
 visible = false
 
@@ -119,7 +116,6 @@ region_rect = Rect2(0, 0, 64, 64)
 [node name="Sombrero" type="Sprite2D" parent="Referencia"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0.49999994, -3.4999995)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_bjo0t")
