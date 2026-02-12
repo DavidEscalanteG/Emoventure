@@ -5,7 +5,7 @@
 
 #do Global.jugador.bloquear_movimiento()
 #Gitana: [[Bienvenido|Oh, mira nada más|Al fin llegaste]], viajero de las emociones.
-#do DialogueActors.set_expr("gitana", "adivina")
+#do DialogueActors.establecer_expresion("gitana", "adivina")
 #
 #Gitana: Estaba esperándote... aunque quizás no lo sabías todavía.
 #Gitana: Algunas puertas se abren cuando uno está listo, no antes.
@@ -14,18 +14,18 @@
 #Protagonista: ...creo que un poco nervioso.
 #
 #Gitana: *Jejeje...* Los nervios son buenos. Significa que algo dentro de ti sabe que estás por comenzar un viaje importante.
-#do DialogueActors.set_expr("gitana", "neutral")
+#do DialogueActors.establecer_expresion("gitana", "neutral")
 #
 #Gitana: Antes de continuar, debo preguntarte algo.
 #Gitana: ¿Estás preparado para entrar a Emoventure y descubrir lo que se esconde dentro de ti?
 #
 #- Sí, estoy listo.
-#	do DialogueActors.set_expr("gitana", "adivina")
+#	do DialogueActors.establecer_expresion("gitana", "adivina")
 #	Gitana: Excelente. Entonces sigue mis pasos y no mires atrás.
 #	Gitana: A partir de aquí, nada vuelve a ser igual.
 #
 #- No estoy seguro…
-#	do DialogueActors.set_expr("gitana", "neutral")
+#	do DialogueActors.establecer_expresion("gitana", "neutral")
 #	Gitana: Es normal dudar. La duda también es una emoción que nos guía.
 #	Gitana: Pero si has llegado hasta aquí, es porque una parte de ti sí quiere saber la verdad.
 #	Gitana: Ven. Camina conmigo. Lo demás lo descubrirás dentro.
@@ -35,12 +35,12 @@
 #
 #Gitana: Adelante. Cruza la cortina.
 # 
-do DialogueActors.set_anim("jugador", "walk", "right")
+do DialogueActors.establecer_animacion("jugador", "walk", "right")
 Gitana: Ven para aca
 Carlos: Voy
-do DialogueActors.set_anim("jugador", "walk", "left")
-do DialogueActors.move_and_wait("jugador", Vector2(-400,0), 3)
+do DialogueActors.establecer_animacion("jugador", "walk", "left")
+do DialogueActors.mover_y_esperar("jugador", Vector2(-400,0), 3)
 Gitana: Ahora yo voy para allá
-do DialogueActors.set_expr("gitana", "adivina")
-do DialogueActors.move_right("gitana", 200)
+do DialogueActors.establecer_expresion("gitana", "adivina")
+do DialogueActors.mover_derecha("gitana", 200)
 Gitana: Y recuerda: en Emoventure, cada emoción tiene un rostro.

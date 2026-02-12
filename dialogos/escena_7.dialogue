@@ -1,9 +1,9 @@
 ~ start
 Carlos: Que es este lugar?
 Carlos: Que es eso del fondo?
-do DialogueActors.set_anim("mascota", "walk", "left")
-do DialogueActors.move_and_wait("mascota", Vector2(-621,0), 5)
-do DialogueActors.set_anim("mascota", "idle", "left")
+do DialogueActors.establecer_animacion("mascota", "walk", "left")
+do DialogueActors.mover_y_esperar("mascota", Vector2(-621,0), 5)
+do DialogueActors.establecer_animacion("mascota", "idle", "left")
 Carlos: Owwwww que lindooo
 Carlos: Ven aqui
 => END

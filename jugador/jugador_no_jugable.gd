@@ -26,15 +26,15 @@ func refrescar_preview() -> void:
 	else:
 		apariencia.aplicar_apariencia_desde_global()
 
-	apariencia.set_direction("down")
-	apariencia.set_estado_movimiento("idle")
+	apariencia.establecer_direccion("down")
+	apariencia.establecer_estado_movimiento("idle")
 
 
 func set_emocion(nombre: String):
 	var appearance := $PlayerAppearance
 
-	appearance.set_estado_movimiento("idle")
-	appearance.set_direction("down")
+	appearance.establecer_estado_movimiento("idle")
+	appearance.establecer_direccion("down")
 
 	# SOLO cuerpo por ahora
 	var anim := "emocion_" + nombre

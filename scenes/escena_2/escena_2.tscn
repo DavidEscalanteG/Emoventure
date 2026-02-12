@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://ojuxji1qnqno"]
+
+[ext_resource type="Script" uid="uid://b5celn7qra5dj" path="res://scenes/escena_2/escena_2.gd" id="1_wnj6t"]
+[ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="2_d78l7"]
+[ext_resource type="Texture2D" uid="uid://de1slo8qjtesq" path="res://assets/assets_escena_2/fondo/dentro_carpa.jpg" id="2_k1oe6"]
+[ext_resource type="PackedScene" uid="uid://dgbvgfgvxkfgn" path="res://assets/personajes/gitana/gitana.tscn" id="3_ohtjw"]
+[ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="4_bu4yu"]
+[ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui_3.tscn" id="6_bu4yu"]
+
+[sub_resource type="Animation" id="Animation_byxo4"]
+resource_name = "Desvanecido_Fuera"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n1516"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2krm"]
+_data = {
+&"Desvanecido_Fuera": SubResource("Animation_byxo4"),
+&"RESET": SubResource("Animation_n1516")
+}
+
+[node name="escena_2" type="Node2D"]
+script = ExtResource("1_wnj6t")
+
+[node name="DentroCarpa" type="Sprite2D" parent="."]
+position = Vector2(960.75, 541.25)
+scale = Vector2(3.5036564, 2.611922)
+texture = ExtResource("2_k1oe6")
+
+[node name="personajes" type="Node2D" parent="."]
+
+[node name="gitana" parent="personajes" instance=ExtResource("3_ohtjw")]
+position = Vector2(1494.9999, 555.99994)
+
+[node name="JugadorCinematico" parent="personajes" instance=ExtResource("4_bu4yu")]
+position = Vector2(492, 616)
+
+[node name="FondoNegro" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("2_d78l7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FondoNegro"]
+libraries = {
+&"": SubResource("AnimationLibrary_v2krm")
+}
+autoplay = "Desvanecido_Fuera"
+
+[node name="DialogueUI" parent="." instance=ExtResource("6_bu4yu")]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=13 format=3 uid="uid://cxpqdexnbsw3x"]
+
+[ext_resource type="Script" uid="uid://dr80qquf74i7m" path="res://scenes/personalizacion/jugador.gd" id="1_fgvys"]
+[ext_resource type="Texture2D" uid="uid://cnpmtkadh2s6i" path="res://assets/assets_personaje/Cabello.PNG" id="2_erhet"]
+[ext_resource type="Texture2D" uid="uid://de3ir88mktion" path="res://assets/assets_personaje/Cabello2.PNG" id="3_6vix7"]
+[ext_resource type="Texture2D" uid="uid://qlhpnejrpnlm" path="res://assets/assets_personaje/ojos.PNG" id="4_0nfwm"]
+[ext_resource type="Texture2D" uid="uid://bfrt1hm5o7b84" path="res://assets/assets_personaje/ojos2.PNG" id="5_rojha"]
+[ext_resource type="Texture2D" uid="uid://cgmo3n733k5r5" path="res://assets/assets_personaje/Boca2.PNG" id="6_y3mk0"]
+[ext_resource type="Texture2D" uid="uid://bj3nnb4e20oig" path="res://assets/assets_personaje/Boca.PNG" id="7_arkcp"]
+[ext_resource type="Texture2D" uid="uid://dx2mln11chg5f" path="res://assets/assets_personaje/cuerpo.png" id="8_jmj18"]
+[ext_resource type="Texture2D" uid="uid://cajljihs8nsaq" path="res://assets/assets_personaje/nariz2.PNG" id="9_8us76"]
+[ext_resource type="Texture2D" uid="uid://joj1svphpl4k" path="res://assets/assets_personaje/nariz .PNG" id="10_v031a"]
+[ext_resource type="Texture2D" uid="uid://ckmkvsco6sqhv" path="res://assets/assets_personaje/cabeza2.PNG" id="11_02wmw"]
+[ext_resource type="Texture2D" uid="uid://c6w6fit07kbau" path="res://assets/assets_personaje/cabeza.PNG" id="12_of601"]
+
+[node name="Jugador" type="CharacterBody2D"]
+script = ExtResource("1_fgvys")
+coleccion_cabellos = Array[Texture2D]([ExtResource("2_erhet"), ExtResource("3_6vix7")])
+coleccion_ojos = Array[Texture2D]([ExtResource("4_0nfwm"), ExtResource("5_rojha")])
+coleccion_boca = Array[Texture2D]([ExtResource("6_y3mk0"), ExtResource("7_arkcp")])
+coleccion_cuerpo = Array[Texture2D]([ExtResource("8_jmj18")])
+coleccion_nariz = Array[Texture2D]([ExtResource("9_8us76"), ExtResource("10_v031a")])
+coleccion_cabeza = Array[Texture2D]([ExtResource("11_02wmw"), ExtResource("12_of601")])
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(232, 129)
+
+[node name="Cuerpo" type="Sprite2D" parent="Node2D"]
+centered = false
+offset = Vector2(-151.8, -120.005)
+
+[node name="Cabeza" type="Sprite2D" parent="Node2D"]
+
+[node name="Boca" type="Sprite2D" parent="Node2D"]
+
+[node name="Cabello" type="Sprite2D" parent="Node2D"]
+
+[node name="Nariz" type="Sprite2D" parent="Node2D"]
+
+[node name="Ojos" type="Sprite2D" parent="Node2D"]
