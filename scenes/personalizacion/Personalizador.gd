@@ -36,21 +36,21 @@ func _ready() -> void:
 # --------------------------------------------------
 
 func cargar_desde_global() -> void:
-	indice_cabello = Global.apariencia.indice_cabello
-	indice_ojos = Global.apariencia.indice_ojos
-	indice_boca = Global.apariencia.indice_boca
-	indice_cuerpo = Global.apariencia.indice_cuerpo
-	indice_nariz = Global.apariencia.indice_nariz
-	indice_cabeza = Global.apariencia.indice_cabeza
+	indice_cabello = DatosJugador.apariencia.indice_cabello
+	indice_ojos = DatosJugador.apariencia.indice_ojos
+	indice_boca = DatosJugador.apariencia.indice_boca
+	indice_cuerpo = DatosJugador.apariencia.indice_cuerpo
+	indice_nariz = DatosJugador.apariencia.indice_nariz
+	indice_cabeza = DatosJugador.apariencia.indice_cabeza
 
 
 func guardar_en_global() -> void:
-	Global.set_indice_cabello(indice_cabello)
-	Global.apariencia.indice_ojos = indice_ojos
-	Global.apariencia.indice_boca = indice_boca
-	Global.apariencia.indice_cuerpo = indice_cuerpo
-	Global.apariencia.indice_nariz = indice_nariz
-	Global.apariencia.indice_cabeza = indice_cabeza
+	DatosJugador.set_indice_cabello(indice_cabello)
+	DatosJugador.apariencia.indice_ojos = indice_ojos
+	DatosJugador.apariencia.indice_boca = indice_boca
+	DatosJugador.apariencia.indice_cuerpo = indice_cuerpo
+	DatosJugador.apariencia.indice_nariz = indice_nariz
+	DatosJugador.apariencia.indice_cabeza = indice_cabeza
 
 
 func refrescar_preview() -> void:
@@ -79,11 +79,11 @@ func _anterior(indice: int, coleccion: Array) -> int:
 # --------------------------------------------------
 
 func _on_btn_cabello_siguiente_pressed() -> void:
-	indice_cabello = Global.avanzar_indice_cabello()	
+	indice_cabello = DatosJugador.avanzar_indice_cabello()
 	refrescar_preview()
 
 func _on_btn_cabello_atras_pressed() -> void:
-	indice_cabello = Global.retroceder_indice_cabello()
+	indice_cabello = DatosJugador.retroceder_indice_cabello()
 	refrescar_preview()
 
 
@@ -136,19 +136,19 @@ func _on_btn_cuerpo_atras_pressed() -> void:
 # --------------------------------------------------
 
 func _on_color_picker_button_cabeza_color_changed(color: Color) -> void:
-	Global.apariencia.color_cabeza = color
+	DatosJugador.apariencia.color_cabeza = color
 	apariencia._restaurar_colores()
 
 func _on_color_picker_button_ojos_color_changed(color: Color) -> void:
-	Global.apariencia.color_ojos = color
+	DatosJugador.apariencia.color_ojos = color
 	apariencia._restaurar_colores()
 
 func _on_color_picker_button_boca_color_changed(color: Color) -> void:
-	Global.apariencia.color_boca = color
+	DatosJugador.apariencia.color_boca = color
 	apariencia._restaurar_colores()
 
 func _on_color_picker_button_cuerpo_color_changed(color: Color) -> void:
-	Global.apariencia.color_cuerpo = color
+	DatosJugador.apariencia.color_cuerpo = color
 	apariencia._restaurar_colores()
 
 # --------------------------------------------------
@@ -177,21 +177,21 @@ func _actualizar_indice_mascota(delta: int) -> void:
 	if mascota.coleccion_mascotas.is_empty():
 		return
 
-	var indice: int = Global.obtener_indice_mascota()
+	var indice: int = DatosJugador.obtener_indice_mascota()
 	indice = (indice + delta) % mascota.coleccion_mascotas.size()
 
 	if indice < 0:
 		indice += mascota.coleccion_mascotas.size()
 
-	Global.set_indice_mascota(indice)
+	DatosJugador.set_indice_mascota(indice)
 	mascota.aplicar_mascota_desde_global()
 
 func _validar_cabello_por_genero():
-	if Global.genero == "":
+	if DatosJugador.genero == "":
 		return
 	
-	var rango: Vector2i = Global.obtener_rango_cabello_por_genero(Global.genero)
+	var rango: Vector2i = DatosJugador.obtener_rango_cabello_por_genero(DatosJugador.genero)
 	
 	if indice_cabello < rango.x or indice_cabello > rango.y:
-		Global.set_indice_cabello(rango.x)
-		indice_cabello = Global.apariencia.indice_cabello
+		DatosJugador.set_indice_cabello(rango.x)
+		indice_cabello = DatosJugador.apariencia.indice_cabello

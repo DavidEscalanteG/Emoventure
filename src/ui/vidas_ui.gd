@@ -10,7 +10,7 @@ extends Control
 ]
 
 func _ready() -> void:
-	Global.lives_ui = self
+	DatosJugador.lives_ui = self
 	actualizar_vidas(3)
 
 func actualizar_vidas(vidas_actuales: int) -> void:

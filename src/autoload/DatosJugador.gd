@@ -18,7 +18,7 @@ const RANGO_CABELLO_MUJER := Vector2i(18, 34)
 ## Mantener este wrapper evita romper scenes/scripts antiguos.
 ## ---------------------------------------------------------------------------
 func agregar_puntaje(dimension: String, valor: int) -> void:
-	push_warning("[Global] agregar_puntaje está deprecado. Usa GameManager.agregar_puntaje().")
+	push_warning("[DatosJugador] agregar_puntaje está deprecado. Usa GameManager.agregar_puntaje().")
 	GameManager.agregar_puntaje(dimension, valor)
 
 

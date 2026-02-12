@@ -27,11 +27,11 @@ func aplicar_mascota_desde_global() -> void:
 	if coleccion_mascotas.is_empty():
 		return
 
-	var indice: int = Global.obtener_indice_mascota()
+	var indice: int = DatosJugador.obtener_indice_mascota()
 
 	if indice < 0 or indice >= coleccion_mascotas.size():
 		indice = 0
-		Global.set_indice_mascota(indice)
+		DatosJugador.set_indice_mascota(indice)
 
 	sprite.sprite_frames = coleccion_mascotas[indice]
 

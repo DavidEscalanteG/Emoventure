@@ -9,7 +9,7 @@ extends Control
 }
 
 func _ready() -> void:
-	Global.emotions_ui = self
+	DatosJugador.emotions_ui = self
 	# Al inicio todas apagadas
 	for icon in icons.values():
 		_set_inactive(icon)

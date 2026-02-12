@@ -8,25 +8,25 @@ func _ready():
 
 
 func _configurar_previews():
-	jugador_hombre.forzar_indice_cabello = Global.obtener_indice_cabello_inicio(Global.GENERO_HOMBRE)
-	jugador_mujer.forzar_indice_cabello = Global.obtener_indice_cabello_inicio(Global.GENERO_MUJER)
+	jugador_hombre.forzar_indice_cabello = DatosJugador.obtener_indice_cabello_inicio(DatosJugador.GENERO_HOMBRE)
+	jugador_mujer.forzar_indice_cabello = DatosJugador.obtener_indice_cabello_inicio(DatosJugador.GENERO_MUJER)
 	
 	jugador_hombre.refrescar_preview()
 	jugador_mujer.refrescar_preview()
 
 
 func _on_boton_hombre_pressed():
-	Global.set_genero(Global.GENERO_HOMBRE)
+	DatosJugador.set_genero(DatosJugador.GENERO_HOMBRE)
 	_asignar_indices_base()
 	get_tree().change_scene_to_file("uid://cxv23v4515m48")
 
 
 
 func _on_boton_mujer_pressed():
-	Global.set_genero(Global.GENERO_MUJER)
+	DatosJugador.set_genero(DatosJugador.GENERO_MUJER)
 	_asignar_indices_base()
 	get_tree().change_scene_to_file("uid://cxv23v4515m48")
 
 func _asignar_indices_base():
-	Global.set_indice_cabello(Global.obtener_indice_cabello_inicio())
-	Global.reiniciar_indices_apariencia()
+	DatosJugador.set_indice_cabello(DatosJugador.obtener_indice_cabello_inicio())
+	DatosJugador.reiniciar_indices_apariencia()

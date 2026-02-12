@@ -13,6 +13,6 @@ func _ready():
 		sprite.texture = textura
 
 func _on_body_entered(body):
-	if body == Global.jugador:
+	if body == DatosJugador.jugador:
 		body.aplicar_emocion(tipo_emocion, color, duracion)
 		queue_free()

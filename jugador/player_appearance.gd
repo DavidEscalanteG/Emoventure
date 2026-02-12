@@ -95,18 +95,18 @@ func aplicar_apariencia_desde_global() -> void:
 	
 	_validar_indices_por_genero()
 	
-	_aplicar_spriteframes(cabello, coleccion_cabellos, Global.apariencia.indice_cabello)
-	_aplicar_spriteframes(cabeza,  coleccion_cabezas,  Global.apariencia.indice_cabeza)
-	_aplicar_spriteframes(ojos,     coleccion_ojos,     Global.apariencia.indice_ojos)
-	_aplicar_spriteframes(boca,     coleccion_bocas,    Global.apariencia.indice_boca)
-	_aplicar_spriteframes(nariz,    coleccion_narices,  Global.apariencia.indice_nariz)
-	_aplicar_spriteframes(cuerpo,   coleccion_cuerpos,  Global.apariencia.indice_cuerpo)
+	_aplicar_spriteframes(cabello, coleccion_cabellos, DatosJugador.apariencia.indice_cabello)
+	_aplicar_spriteframes(cabeza,  coleccion_cabezas,  DatosJugador.apariencia.indice_cabeza)
+	_aplicar_spriteframes(ojos,     coleccion_ojos,     DatosJugador.apariencia.indice_ojos)
+	_aplicar_spriteframes(boca,     coleccion_bocas,    DatosJugador.apariencia.indice_boca)
+	_aplicar_spriteframes(nariz,    coleccion_narices,  DatosJugador.apariencia.indice_nariz)
+	_aplicar_spriteframes(cuerpo,   coleccion_cuerpos,  DatosJugador.apariencia.indice_cuerpo)
 
 	_restaurar_colores()
 	_actualizar_animacion()
 
 func _validar_indices_por_genero():
-	Global.set_indice_cabello(Global.apariencia.indice_cabello)
+	DatosJugador.set_indice_cabello(DatosJugador.apariencia.indice_cabello)
 
 
 
@@ -151,9 +151,9 @@ func aplicar_color_emocion(color: Color) -> void:
 
 
 func _restaurar_colores() -> void:
-	cabello.self_modulate = Global.apariencia.color_cabello
-	cabeza.self_modulate  = Global.apariencia.color_cabeza
-	ojos.self_modulate    = Global.apariencia.color_ojos
-	boca.self_modulate    = Global.apariencia.color_boca
-	nariz.self_modulate   = Global.apariencia.color_nariz
-	cuerpo.self_modulate  = Global.apariencia.color_cuerpo
+	cabello.self_modulate = DatosJugador.apariencia.color_cabello
+	cabeza.self_modulate  = DatosJugador.apariencia.color_cabeza
+	ojos.self_modulate    = DatosJugador.apariencia.color_ojos
+	boca.self_modulate    = DatosJugador.apariencia.color_boca
+	nariz.self_modulate   = DatosJugador.apariencia.color_nariz
+	cuerpo.self_modulate  = DatosJugador.apariencia.color_cuerpo
