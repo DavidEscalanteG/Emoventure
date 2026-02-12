@@ -1,6 +1,6 @@
 [gd_scene load_steps=54 format=3 uid="uid://c14jtphj2d6kf"]
 
-[ext_resource type="Script" uid="uid://dr80qquf74i7m" path="res://escenas/personalizacion/jugador.gd" id="1_ahroc"]
+[ext_resource type="Script" uid="uid://dr80qquf74i7m" path="res://scenes/personalizacion/jugador.gd" id="1_ahroc"]
 [ext_resource type="Script" uid="uid://de5fxgit5ggna" path="res://jugador/player_appearance.gd" id="2_5vouv"]
 [ext_resource type="SpriteFrames" uid="uid://ddjsrh778g6rm" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cabello/cabello_00.tres" id="3_frsvm"]
 [ext_resource type="SpriteFrames" uid="uid://xoy1vcui0y7u" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cabello/cabello_01.tres" id="3_xreb1"]
