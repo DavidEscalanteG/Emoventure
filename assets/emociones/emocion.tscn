@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4jiwtffqt48m"]
 
-[ext_resource type="Script" uid="uid://b3mf1j5jr4aii" path="res://assets/emociones/emocion.gd" id="1_k0505"]
+[ext_resource type="Script" uid="uid://b3mf1j5jr4aii" path="res://src/gameplay/emociones/emocion.gd" id="1_k0505"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xk87"]
 radius = 50.0

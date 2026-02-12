@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://d14ky0d5wqhvm"]
 
-[ext_resource type="Script" uid="uid://bncqx02448f7s" path="res://assets/enemigos/serpiente/script/enemigo.gd" id="1_1rfyn"]
-[ext_resource type="Script" uid="uid://cjxvv3qo7roii" path="res://assets/enemigos/serpiente/script/EnemigoHitbox.gd" id="2_ek7e6"]
+[ext_resource type="Script" uid="uid://bncqx02448f7s" path="res://src/gameplay/enemigos/serpiente/enemigo.gd" id="1_1rfyn"]
+[ext_resource type="Script" uid="uid://cjxvv3qo7roii" path="res://src/gameplay/enemigos/serpiente/EnemigoHitbox.gd" id="2_ek7e6"]
 [ext_resource type="Texture2D" uid="uid://duxyu3k01oec3" path="res://assets/enemigos/serpiente/spritesheets/snake spritesheet calciumtrice.png" id="2_r4acm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jd5jw"]

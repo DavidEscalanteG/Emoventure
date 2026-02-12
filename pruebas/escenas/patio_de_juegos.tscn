@@ -9,7 +9,7 @@
 [ext_resource type="SpriteFrames" uid="uid://b1sblwi8esp6h" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/ropa/ropa_02.tres" id="7_b3f8t"]
 [ext_resource type="SpriteFrames" uid="uid://dklhb2vd3a6pv" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cabello/cabello_02.tres" id="8_8bf4g"]
 [ext_resource type="SpriteFrames" uid="uid://ekebet145v3e" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/sombrero/sobrero_02.tres" id="9_rnowv"]
-[ext_resource type="PackedScene" uid="uid://cxv23v4515m48" path="res://escenas/personalizacion/Personalizacion.tscn" id="10_b3f8t"]
+[ext_resource type="PackedScene" uid="uid://cxv23v4515m48" path="res://scenes/personalizacion/Personalizacion.tscn" id="10_b3f8t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3f8t"]
 
