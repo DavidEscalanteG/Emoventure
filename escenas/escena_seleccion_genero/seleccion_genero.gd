@@ -8,11 +8,8 @@ func _ready():
 
 
 func _configurar_previews():
-	# Hombre usa primer rango
-	jugador_hombre.forzar_indice_cabello = 1
-	
-	# Mujer usa primer índice femenino (16)
-	jugador_mujer.forzar_indice_cabello = 18
+	jugador_hombre.forzar_indice_cabello = Global.RANGO_CABELLO["hombre"]["inicio"]
+	jugador_mujer.forzar_indice_cabello = Global.RANGO_CABELLO["mujer"]["inicio"]
 	
 	jugador_hombre._ready()
 	jugador_mujer._ready()
@@ -32,9 +29,9 @@ func _on_boton_mujer_pressed():
 
 func _asignar_indices_base():
 	if Global.genero == "hombre":
-		Global.apariencia.indice_cabello = 1
+		Global.apariencia.indice_cabello = Global.RANGO_CABELLO["hombre"]["inicio"]
 	elif Global.genero == "mujer":
-		Global.apariencia.indice_cabello = 16
+		Global.apariencia.indice_cabello = Global.RANGO_CABELLO["mujer"]["inicio"]
 	
 	# Reiniciar otros índices si quieres
 	Global.apariencia.indice_cabeza = 0
