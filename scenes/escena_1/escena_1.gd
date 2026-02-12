@@ -8,13 +8,13 @@ const SIGUIENTE_ESCENA := "uid://ojuxji1qnqno" #escena_2.tscn
 
 func _ready() -> void:
 	
-	DialogueActors.register_actor("gitana", $personajes/gitana)
-	DialogueActors.register_actor("jugador", $personajes/JugadorCinematico)
+	DialogueActors.registrar_actor("gitana", $personajes/gitana)
+	DialogueActors.registrar_actor("jugador", $personajes/JugadorCinematico)
 
-	dialogue_ui.dialogue_finished.connect(_on_dialogue_finished)
+	dialogue_ui.dialogo_finalizado.connect(_on_dialogo_finalizado)
 
 	#await get_tree().create_timer(1.0).timeout
-	dialogue_ui.start_dialogue(DIALOGO_ESCENA_1)
+	dialogue_ui.iniciar_dialogo(DIALOGO_ESCENA_1)
 
-func _on_dialogue_finished():
+func _on_dialogo_finalizado():
 	get_tree().change_scene_to_file(SIGUIENTE_ESCENA)

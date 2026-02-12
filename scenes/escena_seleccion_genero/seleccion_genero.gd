@@ -8,34 +8,25 @@ func _ready():
 
 
 func _configurar_previews():
-	jugador_hombre.forzar_indice_cabello = Global.RANGO_CABELLO["hombre"]["inicio"]
-	jugador_mujer.forzar_indice_cabello = Global.RANGO_CABELLO["mujer"]["inicio"]
+	jugador_hombre.forzar_indice_cabello = Global.obtener_indice_cabello_inicio(Global.GENERO_HOMBRE)
+	jugador_mujer.forzar_indice_cabello = Global.obtener_indice_cabello_inicio(Global.GENERO_MUJER)
 	
 	jugador_hombre.refrescar_preview()
 	jugador_mujer.refrescar_preview()
 
 
 func _on_boton_hombre_pressed():
-	Global.genero = "hombre"
+	Global.set_genero(Global.GENERO_HOMBRE)
 	_asignar_indices_base()
 	get_tree().change_scene_to_file("uid://cxv23v4515m48")
 
 
 
 func _on_boton_mujer_pressed():
-	Global.genero = "mujer"
+	Global.set_genero(Global.GENERO_MUJER)
 	_asignar_indices_base()
 	get_tree().change_scene_to_file("uid://cxv23v4515m48")
 
 func _asignar_indices_base():
-	if Global.genero == "hombre":
-		Global.apariencia.indice_cabello = Global.RANGO_CABELLO["hombre"]["inicio"]
-	elif Global.genero == "mujer":
-		Global.apariencia.indice_cabello = Global.RANGO_CABELLO["mujer"]["inicio"]
-	
-	# Reiniciar otros índices si quieres
-	Global.apariencia.indice_cabeza = 0
-	Global.apariencia.indice_ojos = 0
-	Global.apariencia.indice_boca = 0
-	Global.apariencia.indice_cuerpo = 0
-	Global.apariencia.indice_nariz = 0
+	Global.set_indice_cabello(Global.obtener_indice_cabello_inicio())
+	Global.reiniciar_indices_apariencia()

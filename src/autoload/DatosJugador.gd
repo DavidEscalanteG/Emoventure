@@ -7,10 +7,11 @@ var emotions_ui: Node = null
 
 var genero: String = "hombre"
 
-const RANGO_CABELLO = {
-	"hombre": { "inicio": 0, "fin": 17 },
-	"mujer":  { "inicio": 18, "fin": 34 }
-}
+const GENERO_HOMBRE := "hombre"
+const GENERO_MUJER := "mujer"
+
+const RANGO_CABELLO_HOMBRE := Vector2i(0, 17)
+const RANGO_CABELLO_MUJER := Vector2i(18, 34)
 
 ## ---------------------------------------------------------------------------
 ## DEPRECADO (TRANSICIÓN): Puntajes ahora viven en GameManager
@@ -28,7 +29,7 @@ func obtener_puntaje_total() -> int:
 func obtener_puntajes_por_dimension() -> Dictionary:
 	return GameManager.obtener_puntajes_por_dimension()
 
-const EMOCIONES_TOTALES := [
+const EMOCIONES_TOTALES: Array[String] = [
 	"alegria",
 	"tristeza",
 	"enojo",
@@ -40,7 +41,7 @@ var emociones_recolectadas: Array[String] = []
 
 var lives_ui: Node = null
 
-func registrar_emocion(emocion: String):
+func registrar_emocion(emocion: String) -> void:
 	if emociones_recolectadas.has(emocion):
 		return
 
@@ -52,35 +53,137 @@ func registrar_emocion(emocion: String):
 func tiene_todas_las_emociones() -> bool:
 	return emociones_recolectadas.size() == EMOCIONES_TOTALES.size()
 
-var apariencia = {
-	"indice_cabello": 1,
-	"indice_ojos": 0,
-	"indice_boca": 0,
-	"indice_cuerpo": 0,
-	"indice_nariz": 0,
-	"indice_cabeza": 0,
-	
-	# --- AQUÍ CAMBIAS LOS COLORES DEFAULT ---
-	
-	# Opción A: Usar código Hexadecimal (Recomendado para tonos exactos)
-	"color_cabeza": Color("ffcea8"),  # Tono de piel vainilla
-	#"color_cabello": Color("ffffffff"), # Marrón muy oscuro (casi negro)
-	"color_cabello": Color.from_hsv(
-	0.08,   # Hue (marrón)
-	0.75,   # Saturation inicial 👈
-	0.35    # Value (oscuro, tipo Stardew)
-	),
+var apariencia: AparienciaJugador = AparienciaJugador.new()
+var mascota: MascotaSeleccion = MascotaSeleccion.new()
 
-	
-	# Opción B: Usar colores estándar de Godot
-	"color_ojos": Color("2b2afbff"),         # Azul
-	"color_cuerpo": Color("ffffffff"),        # Ropa roja
-	
-	# Opción C: Usar RGB (Rojo, Verde, Azul) del 0.0 al 1.0
-	"color_nariz": Color("ffcea8"),   # Igual que la piel
-	"color_boca": Color(1, 1, 1)      # Blanco (Color original del sprite)
-}
+func set_genero(nuevo_genero: String) -> void:
+	if nuevo_genero != GENERO_HOMBRE and nuevo_genero != GENERO_MUJER:
+		return
 
-var mascota = {
-	"indice": 0
-}
+	genero = nuevo_genero
+	set_indice_cabello(apariencia.indice_cabello)
+
+
+func obtener_rango_cabello_por_genero(valor_genero: String = genero) -> Vector2i:
+	if valor_genero == GENERO_MUJER:
+		return RANGO_CABELLO_MUJER
+	return RANGO_CABELLO_HOMBRE
+
+
+func obtener_indice_cabello_inicio(valor_genero: String = genero) -> int:
+	return obtener_rango_cabello_por_genero(valor_genero).x
+
+
+func obtener_indice_cabello_fin(valor_genero: String = genero) -> int:
+	return obtener_rango_cabello_por_genero(valor_genero).y
+
+
+func validar_indice_cabello_por_genero(indice: int, valor_genero: String = genero) -> int:
+	var rango := obtener_rango_cabello_por_genero(valor_genero)
+	if indice < rango.x or indice > rango.y:
+		return rango.x
+	return indice
+
+
+func set_indice_cabello(indice: int) -> void:
+	apariencia.indice_cabello = validar_indice_cabello_por_genero(indice)
+
+
+func avanzar_indice_cabello() -> int:
+	var rango := obtener_rango_cabello_por_genero()
+	var indice := apariencia.indice_cabello + 1
+	if indice > rango.y:
+		indice = rango.x
+	set_indice_cabello(indice)
+	return apariencia.indice_cabello
+
+
+func retroceder_indice_cabello() -> int:
+	var rango := obtener_rango_cabello_por_genero()
+	var indice := apariencia.indice_cabello - 1
+	if indice < rango.x:
+		indice = rango.y
+	set_indice_cabello(indice)
+	return apariencia.indice_cabello
+
+
+func set_indice_mascota(indice: int) -> void:
+	mascota.indice = max(indice, 0)
+
+
+func obtener_indice_mascota() -> int:
+	return mascota.indice
+
+
+func avanzar_indice_mascota(total_mascotas: int) -> int:
+	if total_mascotas <= 0:
+		return mascota.indice
+	mascota.indice = (mascota.indice + 1) % total_mascotas
+	return mascota.indice
+
+
+func retroceder_indice_mascota(total_mascotas: int) -> int:
+	if total_mascotas <= 0:
+		return mascota.indice
+
+	mascota.indice -= 1
+	if mascota.indice < 0:
+		mascota.indice = total_mascotas - 1
+
+	return mascota.indice
+
+
+func reiniciar_indices_apariencia() -> void:
+	apariencia.indice_cabeza = 0
+	apariencia.indice_ojos = 0
+	apariencia.indice_boca = 0
+	apariencia.indice_cuerpo = 0
+	apariencia.indice_nariz = 0
+
+
+func tiene_clave_color_apariencia(clave: String) -> bool:
+	return clave in [
+		"color_cabeza",
+		"color_cabello",
+		"color_ojos",
+		"color_cuerpo",
+		"color_nariz",
+		"color_boca"
+	]
+
+
+func obtener_color_apariencia(clave: String) -> Color:
+	match clave:
+		"color_cabeza":
+			return apariencia.color_cabeza
+		"color_cabello":
+			return apariencia.color_cabello
+		"color_ojos":
+			return apariencia.color_ojos
+		"color_cuerpo":
+			return apariencia.color_cuerpo
+		"color_nariz":
+			return apariencia.color_nariz
+		"color_boca":
+			return apariencia.color_boca
+		_:
+			return Color.WHITE
+
+
+func set_color_apariencia(clave: String, color: Color) -> bool:
+	match clave:
+		"color_cabeza":
+			apariencia.color_cabeza = color
+		"color_cabello":
+			apariencia.color_cabello = color
+		"color_ojos":
+			apariencia.color_ojos = color
+		"color_cuerpo":
+			apariencia.color_cuerpo = color
+		"color_nariz":
+			apariencia.color_nariz = color
+		"color_boca":
+			apariencia.color_boca = color
+		_:
+			return false
+	return true

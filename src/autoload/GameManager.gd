@@ -1,8 +1,8 @@
 extends Node
 
-var puntaje_total := 0
+var puntaje_total: int = 0
 
-var puntajes_por_dimension := {
+var puntajes_por_dimension: Dictionary[String, int] = {
 	"atencion": 0,
 	"claridad": 0,
 	"reparacion": 0
@@ -21,7 +21,7 @@ func obtener_puntaje_total() -> int:
 	return puntaje_total
 
 
-func obtener_puntajes_por_dimension() -> Dictionary:
+func obtener_puntajes_por_dimension() -> Dictionary[String, int]:
 	return puntajes_por_dimension.duplicate(true)
 
 

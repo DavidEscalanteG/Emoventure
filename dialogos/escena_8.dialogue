@@ -5,16 +5,16 @@ Narrador
 
 ~ inicio_memorias
 
-#do DialogueActors.set_anim("payaso", "idle", "izquierda")
+#do DialogueActors.establecer_animacion("payaso", "idle", "izquierda")
 #Narrador: El cuarto se ilumina tenuemente. Fotografías antiguas cubren las paredes, suspendidas en el tiempo.
 #
-#do DialogueActors.set_anim("payaso", "risa", "izquierda")
+#do DialogueActors.establecer_animacion("payaso", "risa", "izquierda")
 #Payaso: ¡Ja, ja, ja! Bienvenido, viajero de recuerdos.
-#do DialogueActors.set_anim("payaso", "idle", "izquierda")
+#do DialogueActors.establecer_animacion("payaso", "idle", "izquierda")
 #
 #Carlos: ¿Quién eres…? ¿Y qué es este lugar?
 #
-#do DialogueActors.set_anim("payaso", "hablando", "izquierda")
+#do DialogueActors.establecer_animacion("payaso", "hablando", "izquierda")
 #Payaso: Estás en el Cuarto de las Memorias Eternas.
 #Payaso: Aquí se guardan momentos que nunca desaparecen… aunque intentemos olvidarlos.
 #

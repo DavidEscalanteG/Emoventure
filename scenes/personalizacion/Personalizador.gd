@@ -45,7 +45,7 @@ func cargar_desde_global() -> void:
 
 
 func guardar_en_global() -> void:
-	Global.apariencia.indice_cabello = indice_cabello
+	Global.set_indice_cabello(indice_cabello)
 	Global.apariencia.indice_ojos = indice_ojos
 	Global.apariencia.indice_boca = indice_boca
 	Global.apariencia.indice_cuerpo = indice_cuerpo
@@ -79,23 +79,11 @@ func _anterior(indice: int, coleccion: Array) -> int:
 # --------------------------------------------------
 
 func _on_btn_cabello_siguiente_pressed() -> void:
-	var rango = Global.RANGO_CABELLO[Global.genero]
-
-	indice_cabello += 1
-	
-	if indice_cabello > rango["fin"]:
-		indice_cabello = rango["inicio"]
-		
+	indice_cabello = Global.avanzar_indice_cabello()	
 	refrescar_preview()
 
 func _on_btn_cabello_atras_pressed() -> void:
-	var rango = Global.RANGO_CABELLO[Global.genero]
-
-	indice_cabello -= 1
-	
-	if indice_cabello < rango["inicio"]:
-		indice_cabello = rango["fin"]
-		
+	indice_cabello = Global.retroceder_indice_cabello()
 	refrescar_preview()
 
 
@@ -173,39 +161,27 @@ func _on_comenzar_pressed() -> void:
 
 
 func _on_mascota_siguiente_pressed() -> void:
-	if mascota.coleccion_mascotas.is_empty():
-		return
-
-	var indice: int = int(Global.mascota["indice"])
-	indice = (indice + 1) % mascota.coleccion_mascotas.size()
-
-	Global.mascota["indice"] = indice
-	mascota.aplicar_mascota_desde_global()
+	_actualizar_indice_mascota(1)
 
 
 func mascota_anterior() -> void:
-	if mascota.coleccion_mascotas.is_empty():
-		return
-
-	var indice: int = int(Global.mascota["indice"])
-	indice -= 1
-
-	if indice < 0:
-		indice = mascota.coleccion_mascotas.size() - 1
-
-	Global.mascota["indice"] = indice
-	mascota.aplicar_mascota_desde_global()
+	# Compatibilidad temporal: usar _actualizar_indice_mascota(-1).
+	_actualizar_indice_mascota(-1)
 
 
 func _on_mascota_anterior_pressed() -> void:
+	mascota_anterior()
+
+
+func _actualizar_indice_mascota(delta: int) -> void:
 	if mascota.coleccion_mascotas.is_empty():
 		return
 
 	var indice: int = int(Global.mascota["indice"])
-	indice -= 1
+	indice = (indice + delta) % mascota.coleccion_mascotas.size()
 
 	if indice < 0:
-		indice = mascota.coleccion_mascotas.size() - 1
+		indice += mascota.coleccion_mascotas.size()
 
 	Global.mascota["indice"] = indice
 	mascota.aplicar_mascota_desde_global()

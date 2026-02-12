@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b24nvekjmmfdu"
-path="res://.godot/imported/fondo_escena_9.png-38c8fbc1fa7440a657a19244739c105b.ctex"
+path="res://.godot/imported/fondo_escena_9.png-a2d790df7d580fdc5e173ad330e5c6eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://escenas/escena_9/fondo_escena_9.png"
-dest_files=["res://.godot/imported/fondo_escena_9.png-38c8fbc1fa7440a657a19244739c105b.ctex"]
+source_file="res://scenes/escena_9/fondo_escena_9.png"
+dest_files=["res://.godot/imported/fondo_escena_9.png-a2d790df7d580fdc5e173ad330e5c6eb.ctex"]
 
 [params]
 

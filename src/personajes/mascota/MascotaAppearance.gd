@@ -27,11 +27,11 @@ func aplicar_mascota_desde_global() -> void:
 	if coleccion_mascotas.is_empty():
 		return
 
-	var indice: int = int(Global.mascota["indice"])
+	var indice: int = Global.obtener_indice_mascota()
 
 	if indice < 0 or indice >= coleccion_mascotas.size():
 		indice = 0
-		Global.mascota["indice"] = indice
+		Global.set_indice_mascota(indice)
 
 	sprite.sprite_frames = coleccion_mascotas[indice]
 
@@ -42,7 +42,7 @@ func aplicar_mascota_desde_global() -> void:
 	_actualizar_animacion()
 
 
-func set_estado_movimiento(estado: String) -> void:
+func establecer_estado_movimiento(estado: String) -> void:
 	if estado_actual == estado:
 		return
 

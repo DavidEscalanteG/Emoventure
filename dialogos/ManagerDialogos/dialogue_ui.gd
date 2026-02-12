@@ -4,29 +4,29 @@ extends Control
 @onready var type_sound: AudioStreamPlayer = $DialogueTypeSound
 @onready var type_timer: Timer = $TypeSoundTimer
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
-@onready var character_label = %CharacterLabel
+@onready var character_label: Label = %CharacterLabel
 
 var dialogue_resource: DialogueResource
 var current_line: DialogueLine
-var visible_chars := 0
-var line_finished := false
+var visible_chars: int = 0
+var line_finished: bool = false
 
 
-signal dialogue_finished
+signal dialogo_finalizado
 
-func _ready():
+func _ready() -> void:
 	label.bbcode_enabled = true
-	type_timer.timeout.connect(_on_type_tick)
+	type_timer.timeout.connect(_al_tictac_tipeo)
 
-	responses_menu.response_selected.connect(_on_response_selected)
+	responses_menu.response_selected.connect(_al_respuesta_seleccionada)
 	responses_menu.hide()
 
-func start_dialogue(resource: DialogueResource):
+func iniciar_dialogo(resource: DialogueResource) -> void:
 	dialogue_resource = resource
 	current_line = await DialogueManager.get_next_dialogue_line(dialogue_resource)
-	_show_line()
+	_mostrar_linea()
 
-func _show_line():
+func _mostrar_linea() -> void:
 
 	if current_line.character != "":
 		character_label.text = current_line.character
@@ -51,7 +51,7 @@ func _show_line():
 	type_timer.start()
 
 
-func _on_type_tick():
+func _al_tictac_tipeo() -> void:
 	visible_chars += 1
 	label.visible_characters = visible_chars
 
@@ -65,31 +65,31 @@ func _on_type_tick():
 
 		# 👇 Si hay respuestas, mostramos el menú
 		if current_line.responses.size() > 0:
-			_show_responses()
+			_mostrar_respuestas()
 
-func _show_responses():
+func _mostrar_respuestas() -> void:
 	responses_menu.show()
 	responses_menu.responses = current_line.responses
 	#responses_menu.grab_focus()
 
-func _unhandled_input(event):
+func _unhandled_input(event: InputEvent) -> void:
 	
 	if DialogueActors.cinematica_activa:
 		return
 		
 	if event.is_action_pressed("ui_accept"):
-		_handle_advance()
+		_gestionar_avance()
 
-func _gui_input(event):
+func _gui_input(event: InputEvent) -> void:
 	if DialogueActors.cinematica_activa:
 		return
 	
 	if event is InputEventMouseButton \
 	and event.button_index == MOUSE_BUTTON_LEFT \
 	and event.pressed:
-		_handle_advance()
+		_gestionar_avance()
 
-func _handle_advance():
+func _gestionar_avance() -> void:
 	
 	if DialogueActors.cinematica_activa:
 		return
@@ -109,13 +109,15 @@ func _handle_advance():
 		)
 
 		if current_line:
-			_show_line()
+			_mostrar_linea()
 		else:
 			hide()
-			emit_signal("dialogue_finished")
+			emit_signal("dialogo_finalizado")
 
 
-func _on_response_selected(response):
+func _al_respuesta_seleccionada(response: Variant) -> void:
+	# Dialogue Manager provee un objeto de respuesta dinámico (Variant) con `next_id`.
+	# Se mantiene Variant para compatibilidad con la API del plugin.
 	responses_menu.hide()
 
 	current_line = await DialogueManager.get_next_dialogue_line(
@@ -124,7 +126,7 @@ func _on_response_selected(response):
 	)
 
 	if current_line:
-		_show_line()
+		_mostrar_linea()
 	else:
 		hide()
-		emit_signal("dialogue_finished")
+		emit_signal("dialogo_finalizado")

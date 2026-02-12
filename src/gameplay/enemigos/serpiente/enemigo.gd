@@ -92,8 +92,8 @@ func _ejecutar_cambio_de_ruta() -> void:
 	ruta_pendiente = null
 	esperando_cambio = false
 
-func bloquear_movimiento():
+func bloquear_movimiento() -> void:
 	puede_moverse = false
 
-func permitir_movimiento():
+func permitir_movimiento() -> void:
 	puede_moverse = true

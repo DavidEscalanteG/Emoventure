@@ -1,11 +1,11 @@
 extends Node2D
 
-var cursor_normal = load("res://assets/martillo.png")
-var cursor_golpe = load("res://assets/martillo_pegando.png")
-var puntos = 0
-var topos_jugables = []
+var cursor_normal: Texture2D = load("res://assets/martillo.png")
+var cursor_golpe: Texture2D = load("res://assets/martillo_pegando.png")
+var puntos: int = 0
+var topos_jugables: Array[Node] = []
 
-func _ready():
+func _ready() -> void:
 	randomize()
 	# Cacheamos solo los nodos jugables una vez (los que aparecen y/o emiten golpe)
 	for topo in get_children():
@@ -19,7 +19,7 @@ func _ready():
 	# Establecemos el cursor inicial
 	Input.set_custom_mouse_cursor(cursor_normal)
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	# Si presionas el clic izquierdo
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
@@ -29,30 +29,30 @@ func _input(event):
 			# Cuando sueltas el clic, vuelve a la normal
 			Input.set_custom_mouse_cursor(cursor_normal)
 
-var dificultad = 1.0 # Cantidad base de payasos
-var velocidad_minima = 0.4 # El tope de rapidez del timer
+var dificultad: float = 1.0 # Cantidad base de payasos
+var velocidad_minima: float = 0.4 # El tope de rapidez del timer
 
-func _al_sumar_punto():
+func _al_sumar_punto() -> void:
 	puntos += 1
 	# Ahora sí, Main puede encontrar al Label
 	$CanvasLayer/MarcadorPuntos.text = "Puntos: " + str(puntos)
 	
-func _on_spawn_timer_timeout():
+func _on_spawn_timer_timeout() -> void:
 	if topos_jugables.is_empty():
 		return
 
 	# Evitamos repetir el mismo topo en un mismo ciclo de spawn
-	var disponibles = topos_jugables.filter(func(topo): return topo.has_method("aparecer"))
+	var disponibles: Array = topos_jugables.filter(func(topo: Node) -> bool: return topo.has_method("aparecer"))
 	if disponibles.is_empty():
 		return
 	
 	# 1. Calculamos cuántos payasos saldrán (por ejemplo, 1 cada 5 puntos)
 	# O simplemente puedes poner un número fijo para probar:
-	var cantidad_a_salir = min(int(dificultad), disponibles.size())
+	var cantidad_a_salir: int = min(int(dificultad), disponibles.size())
 	
 	for i in range(cantidad_a_salir):
-		var indice_aleatorio = randi() % disponibles.size()
-		var payaso_aleatorio = disponibles[indice_aleatorio]
+		var indice_aleatorio: int = randi() % disponibles.size()
+		var payaso_aleatorio: Node = disponibles[indice_aleatorio]
 		payaso_aleatorio.aparecer()
 		disponibles.remove_at(indice_aleatorio)
 
@@ -66,7 +66,7 @@ func _on_spawn_timer_timeout():
 
 
 
-func _on_timer_juego_timeout():
+func _on_timer_juego_timeout() -> void:
 	# Detener el juego
 	$SpawnTimer.stop()
 	Logs.log_debug("Fin del juego")

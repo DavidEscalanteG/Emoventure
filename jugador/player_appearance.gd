@@ -64,7 +64,7 @@ func _sincronizar_partes() -> void:
 # API PÚBLICA (para DialogueActors)
 # ==================================================
 
-func set_direction(dir: String) -> void:
+func establecer_direccion(dir: String) -> void:
 	if direccion_actual == dir:
 		return
 
@@ -72,14 +72,14 @@ func set_direction(dir: String) -> void:
 	_actualizar_animacion()
 
 
-func set_expression(nombre: String) -> void:
+func establecer_expresion(nombre: String) -> void:
 	if expresiones_ojos.has(nombre):
 		var anim: String = expresiones_ojos[nombre]
 		if ojos.sprite_frames and ojos.sprite_frames.has_animation(anim + "_" + direccion_actual):
 			ojos.play(anim + "_" + direccion_actual)
 
 
-func set_estado_movimiento(estado: String) -> void:
+func establecer_estado_movimiento(estado: String) -> void:
 	if estado_actual == estado:
 		return
 
@@ -106,14 +106,8 @@ func aplicar_apariencia_desde_global() -> void:
 	_actualizar_animacion()
 
 func _validar_indices_por_genero():
-	if Global.genero == "":
-		return
-	
-	var rango = Global.RANGO_CABELLO[Global.genero]
-	
-	if Global.apariencia.indice_cabello < rango.inicio \
-	or Global.apariencia.indice_cabello > rango.fin:
-		Global.apariencia.indice_cabello = rango.inicio
+	Global.set_indice_cabello(Global.apariencia.indice_cabello)
+
 
 
 func _aplicar_spriteframes(

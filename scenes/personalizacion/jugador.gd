@@ -52,8 +52,8 @@ func _ready() -> void:
 
 	# Apariencia inicial
 	apariencia.aplicar_apariencia_desde_global()
-	apariencia.set_direction("down")
-	apariencia.set_estado_movimiento("idle")
+	apariencia.establecer_direccion("down")
+	apariencia.establecer_estado_movimiento("idle")
 
 	# Timer emoción
 	timer_emocion = Timer.new()
@@ -165,7 +165,7 @@ func _physics_process(_delta: float) -> void:
 	if not puede_moverse:
 		velocity = Vector2.ZERO
 		move_and_slide()
-		apariencia.set_estado_movimiento("idle")
+		apariencia.establecer_estado_movimiento("idle")
 		return
 
 	var direction: Vector2 = Vector2.ZERO
@@ -193,10 +193,10 @@ func _physics_process(_delta: float) -> void:
 func _actualizar_apariencia(direction: Vector2) -> void:
 	if direction != Vector2.ZERO:
 		ultima_direccion = direction
-		apariencia.set_direction(_vector_a_dir(direction))
-		apariencia.set_estado_movimiento("walk")
+		apariencia.establecer_direccion(_vector_a_dir(direction))
+		apariencia.establecer_estado_movimiento("walk")
 	else:
-		apariencia.set_estado_movimiento("idle")
+		apariencia.establecer_estado_movimiento("idle")
 
 
 func _vector_a_dir(dir: Vector2) -> String:
@@ -212,7 +212,7 @@ func _vector_a_dir(dir: Vector2) -> String:
 func bloquear_movimiento() -> void:
 	puede_moverse = false
 	velocity = Vector2.ZERO
-	apariencia.set_estado_movimiento("idle")
+	apariencia.establecer_estado_movimiento("idle")
 
 
 func permitir_movimiento() -> void:

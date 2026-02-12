@@ -9,8 +9,8 @@ extends Control
 # ==================================================
 # REFERENCIAS
 # ==================================================
-@onready var emociones: Array = $Panel/VBoxContainer/Emociones.get_children()
-@onready var corazones: Array = $Panel/VBoxContainer/Vidas.get_children()
+@onready var emociones: Array[Node] = $Panel/VBoxContainer/Emociones.get_children()
+@onready var corazones: Array[Node] = $Panel/VBoxContainer/Vidas.get_children()
 @onready var jugador_grande: Control = $Panel/VBoxContainer/ControlJugador
 @onready var boton: Button = $Panel/VBoxContainer/ControlBoton/BotonContinuar
 
@@ -28,7 +28,7 @@ func _ready() -> void:
  # ==================================================
  # MOSTRAR RESULTADOS
  # ==================================================
-func mostrar(emociones_recolectadas: Array, vidas_restantes: int) -> void:
+func mostrar(emociones_recolectadas: Array[String], vidas_restantes: int) -> void:
 	show()
  
 	# Ocultar todo
@@ -50,13 +50,13 @@ func mostrar(emociones_recolectadas: Array, vidas_restantes: int) -> void:
 	Logs.log_debug("✅ Listo para continuar")
  
  
-func _mostrar_emociones(lista: Array) -> void:
+func _mostrar_emociones(lista: Array[String]) -> void:
 	for emocion in emociones:
 		if emocion.name.to_lower() in lista:
 			emocion.visible = true
 			emocion.scale = Vector2(0.5, 0.5)
  
-			var tween := create_tween()
+			var tween: Tween = create_tween()
 			tween.tween_property(emocion, "scale", Vector2.ONE, 0.25)\
 				.set_trans(Tween.TRANS_BACK)\
 				.set_ease(Tween.EASE_OUT)
@@ -74,7 +74,7 @@ func _mostrar_jugador() -> void:
 	jugador_grande.visible = true
 	jugador_grande.scale = Vector2(0.8, 0.8)
  
-	var tween := create_tween()
+	var tween: Tween = create_tween()
 	tween.tween_property(jugador_grande, "scale", Vector2.ONE, 0.4)\
 		.set_trans(Tween.TRANS_BACK)\
 		.set_ease(Tween.EASE_OUT)
@@ -110,8 +110,8 @@ func _continuar() -> void:
 	cuestionario.escena_siguiente = escena_siguiente
  
 	# Reemplazar escena actual
-	var root := get_tree().root
-	var escena_actual := get_tree().current_scene
+	var root: Window = get_tree().root
+	var escena_actual: Node = get_tree().current_scene
 
 	if escena_actual:
 		escena_actual.queue_free()
