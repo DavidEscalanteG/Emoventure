@@ -4,7 +4,7 @@ extends Control
 # CONFIGURACIÓN (Inspector)
 # ==================================================
 
-# Clave del color dentro de Global.apariencia
+# Clave del color dentro de DatosJugador.apariencia
 # Ejemplos:
 # "color_cabello"
 # "color_ojos"
@@ -67,11 +67,11 @@ func _conectar_signals() -> void:
 # ==================================================
 
 func _sincronizar_desde_global() -> void:
-	if not Global.tiene_clave_color_apariencia(clave_color_global):
-		push_warning("Clave no encontrada en Global.apariencia: " + clave_color_global)
+	if not DatosJugador.tiene_clave_color_apariencia(clave_color_global):
+		push_warning("Clave no encontrada en DatosJugador.apariencia: " + clave_color_global)
 		return
 
-	var c: Color = Global.obtener_color_apariencia(clave_color_global)
+	var c: Color = DatosJugador.obtener_color_apariencia(clave_color_global)
 
 	slider_h.value = c.h
 	slider_s.value = c.s
@@ -110,7 +110,7 @@ func _actualizar_color() -> void:
 		slider_v.value
 	)
 
-	Global.set_color_apariencia(clave_color_global, nuevo_color)
+	DatosJugador.set_color_apariencia(clave_color_global, nuevo_color)
 
 	if apariencia:
 		apariencia._restaurar_colores()
@@ -127,7 +127,7 @@ func _crear_imagen_base(ancho := 256, alto := 8) -> Image:
 func _generar_gradientes_iniciales() -> void:
 	_generar_gradiente_hue()
 
-	var c: Color = Global.obtener_color_apariencia(clave_color_global)
+	var c: Color = DatosJugador.obtener_color_apariencia(clave_color_global)
 	_generar_gradiente_saturacion(c.h, c.v)
 	_generar_gradiente_value(c.h, c.s)
 

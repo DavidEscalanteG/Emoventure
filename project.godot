@@ -18,10 +18,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-Global="*res://src/autoload/DatosJugador.gd"
+DatosJugador="*res://src/autoload/DatosJugador.gd"
 GameManager="*res://src/autoload/GameManager.gd"
 DialogueActors="*res://src/autoload/DialogueActors.gd"
-Logs="*res://src/autoload/Logger.gd"
+Logs="*res://src/autoload/Logs.gd"
 
 [dialogue_manager]
 

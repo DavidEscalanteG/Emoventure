@@ -48,7 +48,7 @@ func _ready() -> void:
 	velocidad_base = speed
 	vidas_actuales = vidas_maximas
 
-	Global.jugador = self
+	DatosJugador.jugador = self
 
 	# Apariencia inicial
 	apariencia.aplicar_apariencia_desde_global()
@@ -78,8 +78,8 @@ func recibir_danio() -> void:
 
 	vidas_actuales -= 1
 
-	if Global.lives_ui:
-		Global.lives_ui.actualizar_vidas(vidas_actuales)
+	if DatosJugador.lives_ui:
+		DatosJugador.lives_ui.actualizar_vidas(vidas_actuales)
 
 	if vidas_actuales <= 0:
 		_morir()
@@ -118,10 +118,10 @@ func aplicar_emocion(tipo: String, color: Color, duracion: float) -> void:
 	emocion_actual = tipo
 	_aplicar_efecto(tipo)
 
-	Global.registrar_emocion(tipo)
+	DatosJugador.registrar_emocion(tipo)
 
-	if Global.emotions_ui:
-		Global.emotions_ui.unlock_emotion(tipo)
+	if DatosJugador.emotions_ui:
+		DatosJugador.emotions_ui.unlock_emotion(tipo)
 
 	apariencia.aplicar_color_emocion(color)
 	timer_emocion.start(duracion)
