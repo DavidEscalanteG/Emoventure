@@ -3,7 +3,7 @@
 # El protagonista decide entrar a la carpa.
 # Introducción narrativa antes del primer gameplay.
 
-#do DialogueActors.establecer_orientacion("gitana", "left")
+#do DialogueActors.establecer_orientacion("gitana", "izquierda")
 #Gitana: [[Hoy tu vida puede cambiar|El destino te ha traído hasta aquí|No todos se atreven a acercarse]], viajero.
 #do DialogueActors.establecer_expresion("gitana", "misteriosa")
 #

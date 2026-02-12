@@ -9,6 +9,15 @@ const METHOD_SET_ESTADO_MOVIMIENTO: String = "set_estado_movimiento"
 const METHOD_SET_DIRECCION_ES: String = "set_direccion"
 const METHOD_SET_DIRECCION_EN: String = "set_direction"
 
+const ESTADO_IDLE: String = "idle"
+const ESTADO_WALK: String = "walk"
+const ESTADO_RUN: String = "run"
+
+const DIRECCION_DOWN: String = "down"
+const DIRECCION_LEFT: String = "left"
+const DIRECCION_RIGHT: String = "right"
+const DIRECCION_UP: String = "up"
+
 func actor_debug_name(actor_id: String, actor: Node) -> String:
 	var node_name: String = "NULL"
 	if actor != null:
@@ -37,8 +46,11 @@ func establecer_animacion(actor_id: String, actor: Node, estado: String, direcci
 		push_warning("%s Actor no registrado: %s" % [WARN_PREFIX, actor_id])
 		return
 
+	var estado_normalizado: String = _normalizar_estado(estado)
+	var direccion_normalizada: String = _normalizar_direccion(direccion)
+	
 	if actor.has_node(NODE_ANIMATED_SPRITE):
-		_play_npc_animation(actor_id, actor, estado, direccion)
+		_play_npc_animation(actor_id, actor, estado_normalizado, direccion_normalizada)
 		return
 
 	if actor.has_node(NODE_PLAYER_APPEARANCE):
@@ -50,9 +62,12 @@ func reproducir_animacion_y_esperar(actor_id: String, actor: Node, estado: Strin
 		push_warning("%s Actor no registrado: %s" % [WARN_PREFIX, actor_id])
 		return
 
+	var estado_normalizado: String = _normalizar_estado(estado)
+	var direccion_normalizada: String = _normalizar_direccion(direccion)
+	
 	if actor.has_node(NODE_ANIMATED_SPRITE):
 		var sprite: AnimatedSprite2D = actor.get_node(NODE_ANIMATED_SPRITE)
-		var anim: String = _anim_name(estado, direccion)
+		var anim: String = _anim_name(estado_normalizado, direccion_normalizada)
 
 		if sprite.sprite_frames and sprite.sprite_frames.has_animation(anim):
 			sprite.play(anim)
@@ -63,7 +78,7 @@ func reproducir_animacion_y_esperar(actor_id: String, actor: Node, estado: Strin
 
 	if actor.has_node(NODE_PLAYER_APPEARANCE):
 		var apariencia: Node = actor.get_node(NODE_PLAYER_APPEARANCE)
-		_apply_player_interface(actor_id, actor, apariencia, estado, direccion)
+		_apply_player_interface(actor_id, actor, apariencia, estado_normalizado, direccion_normalizada)
 
 		var cuerpo: AnimatedSprite2D = apariencia.cuerpo
 		if cuerpo == null or cuerpo.sprite_frames == null:
@@ -83,13 +98,15 @@ func establecer_orientacion(actor_id: String, actor: Node, direction: String) ->
 
 	var sprite: AnimatedSprite2D = actor.get_node(NODE_ANIMATED_SPRITE)
 
-	match direction.to_lower():
-		"right":
+	var direccion_normalizada: String = _normalizar_direccion(direction)
+
+	match direccion_normalizada:
+		DIRECCION_RIGHT:
 			sprite.flip_h = false
-		"left":
+		DIRECCION_LEFT:
 			sprite.flip_h = true
 		_:
-			push_warning("%s Dirección inválida: %s" % [WARN_PREFIX, direction])
+			push_warning("%s Dirección inválida: %s" % [WARN_PREFIX, direccion_normalizada])
 
 
 func establecer_idle(actor_id: String, actor: Node) -> void:
@@ -134,17 +151,17 @@ func set_expr(actor_id: String, actor: Node, expresion: String) -> void:
 
 # DEPRECADO: usar establecer_animacion. Retiro objetivo: 2026-06.
 func set_anim(actor_id: String, actor: Node, estado: String, direccion: String) -> void:
-	establecer_animacion(actor_id, actor, estado, direccion)
+	establecer_animacion(actor_id, actor, _normalizar_estado(estado), _normalizar_direccion(direccion))
 
 
 # DEPRECADO: usar reproducir_animacion_y_esperar. Retiro objetivo: 2026-06.
 func play_anim_and_wait(actor_id: String, actor: Node, estado: String, direccion: String) -> void:
-	await reproducir_animacion_y_esperar(actor_id, actor, estado, direccion)
+	await reproducir_animacion_y_esperar(actor_id, actor, _normalizar_estado(estado), _normalizar_direccion(direccion))
 
 
 # DEPRECADO: usar establecer_orientacion. Retiro objetivo: 2026-06.
 func set_facing(actor_id: String, actor: Node, direction: String) -> void:
-	establecer_orientacion(actor_id, actor, direction)
+	establecer_orientacion(actor_id, actor, _normalizar_direccion(direction))
 
 
 # DEPRECADO: usar establecer_idle. Retiro objetivo: 2026-06.
@@ -182,4 +199,30 @@ func _apply_player_interface(actor_id: String, actor: Node, apariencia: Node, es
 
 
 func _anim_name(estado: String, direccion: String) -> String:
-	return "%s_%s" % [estado, direccion]
+	return "%s_%s" % [_normalizar_estado(estado), _normalizar_direccion(direccion)]
+
+
+func _normalizar_direccion(direccion: String) -> String:
+	match direccion.strip_edges().to_lower():
+		"izquierda", DIRECCION_LEFT:
+			return DIRECCION_LEFT
+		"derecha", DIRECCION_RIGHT:
+			return DIRECCION_RIGHT
+		"arriba", DIRECCION_UP:
+			return DIRECCION_UP
+		"abajo", DIRECCION_DOWN:
+			return DIRECCION_DOWN
+		_:
+			return direccion.strip_edges().to_lower()
+
+
+func _normalizar_estado(estado: String) -> String:
+	match estado.strip_edges().to_lower():
+		"reposo", "quieto", ESTADO_IDLE:
+			return ESTADO_IDLE
+		"caminar", "caminando", ESTADO_WALK:
+			return ESTADO_WALK
+		"correr", "corriendo", ESTADO_RUN:
+			return ESTADO_RUN
+		_:
+			return estado.strip_edges().to_lower()

@@ -3,7 +3,7 @@
 # Carlos sale exhausto, con la llave en la mano.
 # El ambiente de la feria se siente distinto, más inquietante.
 
-#do DialogueActors.establecer_orientacion("mujer_lagarto", "left")
+#do DialogueActors.establecer_orientacion("mujer_lagarto", "izquierda")
 #Carlos: (respira hondo) No pensé que fuera tan difícil...
 #Carlos: Siento mi cuerpo cansado, pero algo dentro de mí se movió.
 #

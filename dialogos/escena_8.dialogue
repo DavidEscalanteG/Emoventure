@@ -5,12 +5,12 @@ Narrador
 
 ~ inicio_memorias
 
-#do DialogueActors.establecer_animacion("payaso", "idle", "izquierda")
+#do DialogueActors.establecer_animacion("payaso", "reposo", "izquierda")
 #Narrador: El cuarto se ilumina tenuemente. Fotografías antiguas cubren las paredes, suspendidas en el tiempo.
 #
 #do DialogueActors.establecer_animacion("payaso", "risa", "izquierda")
 #Payaso: ¡Ja, ja, ja! Bienvenido, viajero de recuerdos.
-#do DialogueActors.establecer_animacion("payaso", "idle", "izquierda")
+#do DialogueActors.establecer_animacion("payaso", "reposo", "izquierda")
 #
 #Carlos: ¿Quién eres…? ¿Y qué es este lugar?
 #
