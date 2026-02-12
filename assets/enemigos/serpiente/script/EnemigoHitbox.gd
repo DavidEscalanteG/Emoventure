@@ -5,5 +5,5 @@ func _ready():
 
 func _on_body_entered(body):
 	if body == Global.jugador:
-		print("☄️ Enemigo golpeó al jugador")
+		Logs.log_debug("☄️ Enemigo golpeó al jugador")
 		body.recibir_danio()

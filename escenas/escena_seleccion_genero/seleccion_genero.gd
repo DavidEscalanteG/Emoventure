@@ -11,8 +11,8 @@ func _configurar_previews():
 	jugador_hombre.forzar_indice_cabello = Global.RANGO_CABELLO["hombre"]["inicio"]
 	jugador_mujer.forzar_indice_cabello = Global.RANGO_CABELLO["mujer"]["inicio"]
 	
-	jugador_hombre._ready()
-	jugador_mujer._ready()
+	jugador_hombre.refrescar_preview()
+	jugador_mujer.refrescar_preview()
 
 
 func _on_boton_hombre_pressed():

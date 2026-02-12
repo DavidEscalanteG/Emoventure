@@ -106,7 +106,7 @@ func _activar_invulnerabilidad() -> void:
 
 func _morir() -> void:
 	bloquear_movimiento()
-	print("☠️ Jugador muerto")
+	Logs.log_debug("☠️ Jugador muerto")
 
 
 # --------------------------------------------------

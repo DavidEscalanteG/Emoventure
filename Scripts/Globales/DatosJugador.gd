@@ -5,8 +5,6 @@ signal todas_las_emociones_recolectadas
 var jugador: CharacterBody2D
 var emotions_ui: Node = null
 
-var puntaje_total := 0
-
 var genero: String = "hombre"
 
 const RANGO_CABELLO = {
@@ -14,15 +12,21 @@ const RANGO_CABELLO = {
 	"mujer":  { "inicio": 18, "fin": 34 }
 }
 
-var puntajes_por_dimension := {
-	"atencion": 0,
-	"claridad": 0,
-	"reparacion": 0
-}
+## ---------------------------------------------------------------------------
+## DEPRECADO (TRANSICIÓN): Puntajes ahora viven en GameManager
+## Mantener este wrapper evita romper escenas/scripts antiguos.
+## ---------------------------------------------------------------------------
+func agregar_puntaje(dimension: String, valor: int) -> void:
+	push_warning("[Global] agregar_puntaje está deprecado. Usa GameManager.agregar_puntaje().")
+	GameManager.agregar_puntaje(dimension, valor)
 
-func agregar_puntaje(dimension: String, valor: int):
-	puntaje_total += valor
-	puntajes_por_dimension[dimension] += valor
+
+func obtener_puntaje_total() -> int:
+	return GameManager.obtener_puntaje_total()
+
+
+func obtener_puntajes_por_dimension() -> Dictionary:
+	return GameManager.obtener_puntajes_por_dimension()
 
 const EMOCIONES_TOTALES := [
 	"alegria",

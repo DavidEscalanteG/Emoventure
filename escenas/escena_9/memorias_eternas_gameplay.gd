@@ -24,7 +24,7 @@ func _ready():
 
 func _on_cuadro_completado() -> void:
 	cuadros_completados += 1
-	print("[DEBUG] Cuadros completados:", cuadros_completados)
+	Logs.log_debug("[DEBUG] Cuadros completados: %d" % cuadros_completados)
 	
 	actualizar_contador()
 	
@@ -32,7 +32,7 @@ func _on_cuadro_completado() -> void:
 		_mostrar_puerta()
 
 func _mostrar_puerta() -> void:
-	print("[DEBUG] Todas las emociones reconocidas. Mostrando puerta.")
+	Logs.log_debug("[DEBUG] Todas las emociones reconocidas. Mostrando puerta.")
 
 	puerta.disabled = false
 

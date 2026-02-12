@@ -6,9 +6,6 @@ extends Area2D
 # Enemigos que ya cambiaron ruta en esta intersección
 var enemigos_bloqueados: Dictionary = {}
 
-func _ready() -> void:
-	print("🟦 Intersección lista:", name)
-
 func _on_body_entered(body: Node) -> void:
 	if not (body is CharacterBody2D):
 		return
@@ -18,11 +15,9 @@ func _on_body_entered(body: Node) -> void:
 	enemigo.en_interseccion = true
 
 	if enemigos_bloqueados.has(enemigo):
-		print("⏭ Enemigo en cooldown, ignorando a: ", enemigo.name, "en: ", name)
 		return
 
 	enemigos_bloqueados[enemigo] = true
-	print("🐍 Enemigo detectado: ", enemigo.name, "en: ", name)
 
 	var path_follow: PathFollow2D = enemigo.get_parent() as PathFollow2D
 	if path_follow == null:
@@ -38,10 +33,9 @@ func _on_body_entered(body: Node) -> void:
 		return
 
 	var nueva_ruta: Path2D = rutas_validas.pick_random()
-	print("✅ Nueva ruta elegida: ", nueva_ruta.name,"para: ", enemigo.name, "en: ", name)
+	Logs.log_debug("✅ Nueva ruta elegida: %s para: %s en: %s" % [nueva_ruta.name, enemigo.name, name])
 
 	enemigo.preparar_cambio_de_ruta(nueva_ruta)
-	print("🕒 Ruta preparada, esperando llegar al extremo: ", enemigo.name, "en: ", name)
 
 	# ⏱ Liberar bloqueo después del cooldown
 	_desbloquear_despues(enemigo)
@@ -51,7 +45,6 @@ func _desbloquear_despues(enemigo: CharacterBody2D) -> void:
 
 	if enemigos_bloqueados.has(enemigo):
 		enemigos_bloqueados.erase(enemigo)
-		print("🔓 Cooldown terminado para: ", enemigo.name, "en: ", name)
 
 func _on_body_exited(body: Node2D) -> void:
 	if not body is CharacterBody2D:
@@ -62,5 +55,3 @@ func _on_body_exited(body: Node2D) -> void:
 	enemigo.en_interseccion = false
 	enemigo.esperando_cambio = false
 	enemigo.ruta_pendiente = null
-
-	print("🚪 Enemigo salió de intersección, cancelando cambio: ", enemigo.name, "en: ", name)

@@ -39,7 +39,7 @@ var colores_emociones: Dictionary = {
 # MOSTRAR SELECTOR
 # ==================================================
 func mostrar(cuadro: Node) -> void:
-	print("[DEBUG] Mostrar selector")
+	Logs.log_debug("[DEBUG] Mostrar selector")
 
 	cuadro_actual = cuadro
 	emocion_preview = ""
@@ -86,12 +86,9 @@ func mostrar(cuadro: Node) -> void:
 # ==================================================
 func actualizar_cara(_textura: Texture2D, emocion_id: String) -> void:
 	if emocion_confirmada:
-		print("[DEBUG] Preview ignorado (confirmado)")
 		return
 
 	if emocion_id == "":
-		print("[DEBUG] Salir hover")
-
 		if emocion_seleccionada != "":
 			jugador_preview.set_emocion(emocion_seleccionada)
 		else:
@@ -100,7 +97,6 @@ func actualizar_cara(_textura: Texture2D, emocion_id: String) -> void:
 		emocion_preview = ""
 		return
 
-	print("[DEBUG] Preview emoción:", emocion_id)
 	emocion_preview = emocion_id
 	jugador_preview.set_emocion(emocion_id)
 
@@ -112,7 +108,7 @@ func seleccionar_emocion(emocion_id: String, emoji: Node) -> void:
 	if emocion_confirmada:
 		return
 
-	print("[DEBUG] Emoción seleccionada:", emocion_id)
+	Logs.log_debug("[DEBUG] Emoción seleccionada: %s" % emocion_id)
 
 	emocion_seleccionada = emocion_id
 	emoji_seleccionado = emoji
@@ -131,14 +127,14 @@ func seleccionar_emocion(emocion_id: String, emoji: Node) -> void:
 func confirmar_emocion() -> void:
 	
 	if emocion_confirmada:
-		print("[DEBUG] Confirmar ignorado: ya confirmado")
+		Logs.log_debug("[DEBUG] Confirmar ignorado: ya confirmado")
 		return
 	
 	if emocion_seleccionada == "":
-		print("[DEBUG] Confirmar ignorado: ninguna emoción seleccionada")
+		Logs.log_debug("[DEBUG] Confirmar ignorado: ninguna emoción seleccionada")
 		return
 
-	print("[DEBUG] Emoción CONFIRMADA:", emocion_seleccionada)
+	Logs.log_debug("[DEBUG] Emoción CONFIRMADA: %s" % emocion_seleccionada)
 
 	emocion_confirmada = true
 
@@ -152,7 +148,7 @@ func confirmar_emocion() -> void:
 # CANCELAR (BOTÓN ESC / VOLVER)
 # ==================================================
 func cancelar_seleccion() -> void:
-	print("[DEBUG] Selección cancelada, cerrando sin guardar")
+	Logs.log_debug("[DEBUG] Selección cancelada, cerrando sin guardar")
 
 	# Reiniciar estado interno
 	emocion_preview = ""

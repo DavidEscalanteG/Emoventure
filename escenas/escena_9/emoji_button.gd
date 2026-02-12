@@ -27,7 +27,6 @@ func _ready() -> void:
 # HOVER
 # ==================================================
 func _on_mouse_entered() -> void:
-	print("[DEBUG] Hover emoji:", emocion_id)
 	if hover_tween:
 		hover_tween.kill()
 

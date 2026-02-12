@@ -7,6 +7,15 @@ extends CharacterBody2D
 @export var forzar_indice_cabello: int = -1
 
 func _ready() -> void:
+	refrescar_preview()
+
+	if iniciar_con_emocion_neutra:
+		set_emocion("ninguna")
+	else:
+		_reproducir_idle_normal()
+
+
+func refrescar_preview() -> void:
 	if forzar_indice_cabello >= 0:
 		apariencia._aplicar_spriteframes(
 			apariencia.cabello,
@@ -19,11 +28,6 @@ func _ready() -> void:
 
 	apariencia.set_direction("down")
 	apariencia.set_estado_movimiento("idle")
-	
-	if iniciar_con_emocion_neutra:
-		set_emocion("ninguna")
-	else:
-		_reproducir_idle_normal()
 
 
 func set_emocion(nombre: String):
