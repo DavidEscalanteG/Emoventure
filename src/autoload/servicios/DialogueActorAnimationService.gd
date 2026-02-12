@@ -20,7 +20,7 @@ func warn(actor_id: String, actor: Node, mensaje: String) -> void:
 	push_warning("%s %s → %s" % [WARN_PREFIX, mensaje, actor_debug_name(actor_id, actor)])
 
 
-func set_expr(actor_id: String, actor: Node, expresion: String) -> void:
+func establecer_expresion(actor_id: String, actor: Node, expresion: String) -> void:
 	if actor == null:
 		push_warning("%s Actor no registrado: %s" % [WARN_PREFIX, actor_id])
 		return
@@ -32,7 +32,7 @@ func set_expr(actor_id: String, actor: Node, expresion: String) -> void:
 		warn(actor_id, actor, "No tiene AnimatedSprite2D")
 
 
-func set_anim(actor_id: String, actor: Node, estado: String, direccion: String) -> void:
+func establecer_animacion(actor_id: String, actor: Node, estado: String, direccion: String) -> void:
 	if actor == null:
 		push_warning("%s Actor no registrado: %s" % [WARN_PREFIX, actor_id])
 		return
@@ -45,7 +45,7 @@ func set_anim(actor_id: String, actor: Node, estado: String, direccion: String) 
 		_apply_player_appearance_animation(actor_id, actor, estado, direccion)
 
 
-func play_anim_and_wait(actor_id: String, actor: Node, estado: String, direccion: String) -> void:
+func reproducir_animacion_y_esperar(actor_id: String, actor: Node, estado: String, direccion: String) -> void:
 	if actor == null:
 		push_warning("%s Actor no registrado: %s" % [WARN_PREFIX, actor_id])
 		return
@@ -72,7 +72,7 @@ func play_anim_and_wait(actor_id: String, actor: Node, estado: String, direccion
 			await cuerpo.animation_finished
 
 
-func set_facing(actor_id: String, actor: Node, direction: String) -> void:
+func establecer_orientacion(actor_id: String, actor: Node, direction: String) -> void:
 	if actor == null:
 		push_warning("%s Actor no registrado: %s" % [WARN_PREFIX, actor_id])
 		return
@@ -92,7 +92,7 @@ func set_facing(actor_id: String, actor: Node, direction: String) -> void:
 			push_warning("%s Dirección inválida: %s" % [WARN_PREFIX, direction])
 
 
-func set_idle(actor_id: String, actor: Node) -> void:
+func establecer_idle(actor_id: String, actor: Node) -> void:
 	if actor == null:
 		return
 
@@ -125,6 +125,31 @@ func set_idle(actor_id: String, actor: Node) -> void:
 			sprite.play("idle")
 		else:
 			warn(actor_id, actor, "NPC sin animación idle")
+
+
+# DEPRECADO: usar establecer_expresion. Retiro objetivo: 2026-06.
+func set_expr(actor_id: String, actor: Node, expresion: String) -> void:
+	establecer_expresion(actor_id, actor, expresion)
+
+
+# DEPRECADO: usar establecer_animacion. Retiro objetivo: 2026-06.
+func set_anim(actor_id: String, actor: Node, estado: String, direccion: String) -> void:
+	establecer_animacion(actor_id, actor, estado, direccion)
+
+
+# DEPRECADO: usar reproducir_animacion_y_esperar. Retiro objetivo: 2026-06.
+func play_anim_and_wait(actor_id: String, actor: Node, estado: String, direccion: String) -> void:
+	await reproducir_animacion_y_esperar(actor_id, actor, estado, direccion)
+
+
+# DEPRECADO: usar establecer_orientacion. Retiro objetivo: 2026-06.
+func set_facing(actor_id: String, actor: Node, direction: String) -> void:
+	establecer_orientacion(actor_id, actor, direction)
+
+
+# DEPRECADO: usar establecer_idle. Retiro objetivo: 2026-06.
+func set_idle(actor_id: String, actor: Node) -> void:
+	establecer_idle(actor_id, actor)
 
 
 func _play_npc_animation(actor_id: String, actor: Node, estado: String, direccion: String) -> void:

@@ -23,26 +23,26 @@ var _movimiento_actores: RefCounted = MovementService.new(_animaciones_actores)
 # API DE SERVICIOS (PÚBLICA)
 # =========================
 func registro_registrar_actor(id: String, nodo: Node) -> void:
-	_registro_actores.register_actor(id, nodo)
+	_registro_actores.registrar_actor(id, nodo)
 
 
 func registro_desregistrar_actor(id: String) -> void:
-	_registro_actores.unregister_actor(id)
+	_registro_actores.desregistrar_actor(id)
 
 
-func animacion_set_expresion(actor_id: String, expresion: String) -> void:
-	_animaciones_actores.set_expr(actor_id, _registro_actores.get_actor(actor_id), expresion)
+func animacion_establecer_expresion(actor_id: String, expresion: String) -> void:
+	_animaciones_actores.establecer_expresion(actor_id, _registro_actores.obtener_actor(actor_id), expresion)
 
 
-func animacion_set_animacion(actor_id: String, estado: String, direccion: String) -> void:
-	_animaciones_actores.set_anim(actor_id, _registro_actores.get_actor(actor_id), estado, direccion)
+func animacion_establecer_animacion(actor_id: String, estado: String, direccion: String) -> void:
+	_animaciones_actores.establecer_animacion(actor_id, _registro_actores.obtener_actor(actor_id), estado, direccion)
 
 
 func animacion_reproducir_y_esperar(actor_id: String, estado: String, direccion: String) -> void:
 	cinematica_activa = true
-	await _animaciones_actores.play_anim_and_wait(
+	await _animaciones_actores.reproducir_animacion_y_esperar(
 		actor_id,
-		_registro_actores.get_actor(actor_id),
+		_registro_actores.obtener_actor(actor_id),
 		estado,
 		direccion
 	)
@@ -52,9 +52,9 @@ func animacion_reproducir_y_esperar(actor_id: String, estado: String, direccion:
 
 func movimiento_mover_y_esperar(actor_id: String, delta: Vector2, tiempo: float = 0.6) -> void:
 	cinematica_activa = true
-	await _movimiento_actores.move_and_wait(
+	await _movimiento_actores.mover_y_esperar(
 		actor_id,
-		_registro_actores.get_actor(actor_id),
+		_registro_actores.obtener_actor(actor_id),
 		delta,
 		tiempo
 	)
@@ -63,11 +63,11 @@ func movimiento_mover_y_esperar(actor_id: String, delta: Vector2, tiempo: float 
 
 
 func movimiento_mover_por(actor_id: String, delta: Vector2, tiempo: float = 0.6) -> void:
-	_movimiento_actores.move_by(actor_id, _registro_actores.get_actor(actor_id), delta, tiempo)
+	_movimiento_actores.mover_por(actor_id, _registro_actores.obtener_actor(actor_id), delta, tiempo)
 
 
 func movimiento_mover_a(actor_id: String, destino: Vector2, tiempo: float = 0.8) -> void:
-	_movimiento_actores.move_to(actor_id, _registro_actores.get_actor(actor_id), destino, tiempo)
+	_movimiento_actores.mover_a(actor_id, _registro_actores.obtener_actor(actor_id), destino, tiempo)
 
 
 func movimiento_mover_derecha(actor_id: String, distancia: float, tiempo: float = 0.6) -> void:
@@ -82,6 +82,7 @@ func movimiento_mover_izquierda(actor_id: String, distancia: float, tiempo: floa
 # API LEGACY (DEPRECADA: RETIRO OBJETIVO 2026-06)
 # ==============================================
 # Mantener temporalmente para no romper escenas/diálogos antiguos.
+# DEPRECADO: usar registro_registrar_actor. Retiro objetivo: 2026-06.
 func register_actor(id: String, nodo: Node) -> void:
 	registro_registrar_actor(id, nodo)
 
@@ -91,6 +92,7 @@ func registrar_actor(id: String, nodo: Node) -> void:
 	registro_registrar_actor(id, nodo)
  
  
+# DEPRECADO: usar registro_desregistrar_actor. Retiro objetivo: 2026-06.
 func unregister_actor(id: String) -> void:
 	registro_desregistrar_actor(id)
 
@@ -100,28 +102,32 @@ func desregistrar_actor(id: String) -> void:
 	registro_desregistrar_actor(id)
  
 
+# DEPRECADO: usar animacion_establecer_expresion. Retiro objetivo: 2026-06.
 func set_expr(actor_id: String, expresion: String) -> void:
-	animacion_set_expresion(actor_id, expresion)
+	animacion_establecer_expresion(actor_id, expresion)
 
 
-# DEPRECADO: usar animacion_set_expresion. Retiro objetivo: 2026-06.
+# DEPRECADO: usar animacion_establecer_expresion. Retiro objetivo: 2026-06.
 func establecer_expresion(actor_id: String, expresion: String) -> void:
-	animacion_set_expresion(actor_id, expresion)
+	animacion_establecer_expresion(actor_id, expresion)
  
  
+# DEPRECADO: usar animacion_establecer_animacion. Retiro objetivo: 2026-06.
 func set_anim(actor_id: String, estado: String, direccion: String) -> void:
-	animacion_set_animacion(actor_id, estado, direccion)
+	animacion_establecer_animacion(actor_id, estado, direccion)
 
 
-# DEPRECADO: usar animacion_set_animacion. Retiro objetivo: 2026-06.
+# DEPRECADO: usar animacion_establecer_animacion. Retiro objetivo: 2026-06.
 func establecer_animacion(actor_id: String, estado: String, direccion: String) -> void:
-	animacion_set_animacion(actor_id, estado, direccion)
- 
- 
+	animacion_establecer_animacion(actor_id, estado, direccion)
+
+
+# DEPRECADO: usar animacion_reproducir_y_esperar. Retiro objetivo: 2026-06.
 func play_anim_and_wait(actor_id: String, estado: String, direccion: String) -> void:
 	await animacion_reproducir_y_esperar(actor_id, estado, direccion)
 
 
+# DEPRECADO: usar movimiento_mover_y_esperar. Retiro objetivo: 2026-06.
 func move_and_wait(actor_id: String, delta: Vector2, tiempo: float = 0.6) -> void:
 	await movimiento_mover_y_esperar(actor_id, delta, tiempo)
 

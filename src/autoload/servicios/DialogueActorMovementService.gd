@@ -8,7 +8,7 @@ func _init(animation_service: RefCounted) -> void:
 	_animation_service = animation_service
 
 
-func move_and_wait(actor_id: String, actor: Node, delta: Vector2, tiempo: float = 0.6) -> void:
+func mover_y_esperar(actor_id: String, actor: Node, delta: Vector2, tiempo: float = 0.6) -> void:
 	var actor_2d: Node2D = actor as Node2D
 	if actor_2d == null:
 		push_warning("%s Actor no es Node2D: %s" % [WARN_PREFIX, actor_id])
@@ -17,10 +17,10 @@ func move_and_wait(actor_id: String, actor: Node, delta: Vector2, tiempo: float 
 	var tween: Tween = actor_2d.create_tween()
 	tween.tween_property(actor_2d, "global_position", actor_2d.global_position + delta, tiempo)
 	await tween.finished
-	_animation_service.set_idle(actor_id, actor_2d)
+	_animation_service.establecer_idle(actor_id, actor_2d)
 
 
-func move_by(actor_id: String, actor: Node, delta: Vector2, tiempo: float = 0.6) -> void:
+func mover_por(actor_id: String, actor: Node, delta: Vector2, tiempo: float = 0.6) -> void:
 	var actor_2d: Node2D = actor as Node2D
 	if actor_2d == null:
 		push_warning("%s Actor no es Node2D: %s" % [WARN_PREFIX, actor_id])
@@ -29,11 +29,11 @@ func move_by(actor_id: String, actor: Node, delta: Vector2, tiempo: float = 0.6)
 	var tween: Tween = actor_2d.create_tween()
 	tween.tween_property(actor_2d, "global_position", actor_2d.global_position + delta, tiempo)
 	tween.finished.connect(func() -> void:
-		_animation_service.set_idle(actor_id, actor_2d)
+		_animation_service.establecer_idle(actor_id, actor_2d)
 	)
 
 
-func move_to(actor_id: String, actor: Node, destino: Vector2, tiempo: float = 0.8) -> void:
+func mover_a(actor_id: String, actor: Node, destino: Vector2, tiempo: float = 0.8) -> void:
 	var actor_2d: Node2D = actor as Node2D
 	if actor_2d == null:
 		push_warning("%s Actor no es Node2D: %s" % [WARN_PREFIX, actor_id])
@@ -42,5 +42,20 @@ func move_to(actor_id: String, actor: Node, destino: Vector2, tiempo: float = 0.
 	var tween: Tween = actor_2d.create_tween()
 	tween.tween_property(actor_2d, "global_position", destino, tiempo)
 	tween.finished.connect(func() -> void:
-		_animation_service.set_idle(actor_id, actor_2d)
+		_animation_service.establecer_idle(actor_id, actor_2d)
 	)
+
+
+# DEPRECADO: usar mover_y_esperar. Retiro objetivo: 2026-06.
+func move_and_wait(actor_id: String, actor: Node, delta: Vector2, tiempo: float = 0.6) -> void:
+	await mover_y_esperar(actor_id, actor, delta, tiempo)
+
+
+# DEPRECADO: usar mover_por. Retiro objetivo: 2026-06.
+func move_by(actor_id: String, actor: Node, delta: Vector2, tiempo: float = 0.6) -> void:
+	mover_por(actor_id, actor, delta, tiempo)
+
+
+# DEPRECADO: usar mover_a. Retiro objetivo: 2026-06.
+func move_to(actor_id: String, actor: Node, destino: Vector2, tiempo: float = 0.8) -> void:
+	mover_a(actor_id, actor, destino, tiempo)
