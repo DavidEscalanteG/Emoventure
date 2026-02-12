@@ -35,12 +35,12 @@
 #
 #Gitana: Adelante. Cruza la cortina.
 # 
-do DialogueActors.set_anim("jugador", "walk", "right")
+do DialogueActors.animacion_set_animacion("jugador", "walk", "right")
 Gitana: Ven para aca
 Carlos: Voy
-do DialogueActors.set_anim("jugador", "walk", "left")
-do DialogueActors.move_and_wait("jugador", Vector2(-400,0), 3)
+do DialogueActors.animacion_set_animacion("jugador", "walk", "left")
+do DialogueActors.movimiento_mover_y_esperar("jugador", Vector2(-400,0), 3)
 Gitana: Ahora yo voy para allá
-do DialogueActors.set_expr("gitana", "adivina")
-do DialogueActors.mover_derecha("gitana", 200)
+do DialogueActors.animacion_set_expresion("gitana", "adivina")
+do DialogueActors.movimiento_mover_derecha("gitana", 200)
 Gitana: Y recuerda: en Emoventure, cada emoción tiene un rostro.

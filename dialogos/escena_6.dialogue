@@ -1,6 +1,6 @@
 ~ start
 Carlos: Tengo miedo
 Carlos: Pero aquí voy.....
-do DialogueActors.establecer_animacion("jugador", "walk", "left")
-do DialogueActors.mover_izquierda("jugador", 900, 10)
+do DialogueActors.animacion_set_animacion("jugador", "walk", "left")
+do DialogueActors.movimiento_mover_izquierda("jugador", 900, 10)
 => END
