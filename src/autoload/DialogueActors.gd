@@ -73,3 +73,23 @@ func move_and_wait(actor_id: String, delta: Vector2, tiempo: float = 0.6) -> voi
 	)
 	cinematica_activa = false
 	emit_signal(SIGNAL_CINEMATIC_ACTION_FINISHED)
+
+
+func mover_y_esperar(actor_id: String, delta: Vector2, tiempo: float = 0.6) -> void:
+	await move_and_wait(actor_id, delta, tiempo)
+
+
+func mover_izquierda(actor_id: String, distancia: float, tiempo: float = 0.6) -> void:
+	await mover_y_esperar(actor_id, Vector2(-distancia, 0), tiempo)
+
+
+func mover_derecha(actor_id: String, distancia: float, tiempo: float = 0.6) -> void:
+	await mover_y_esperar(actor_id, Vector2(distancia, 0), tiempo)
+
+
+func mover_arriba(actor_id: String, distancia: float, tiempo: float = 0.6) -> void:
+	await mover_y_esperar(actor_id, Vector2(0, -distancia), tiempo)
+
+
+func mover_abajo(actor_id: String, distancia: float, tiempo: float = 0.6) -> void:
+	await mover_y_esperar(actor_id, Vector2(0, distancia), tiempo)
