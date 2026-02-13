@@ -1,9 +1,9 @@
 extends Node2D
 
-@onready var level_complete_ui := $NivelCompletadoUI/Control
-@onready var game_over_ui := $GameOverUI/Control
+@onready var level_complete_ui: Control = $NivelCompletadoUI/Control
+@onready var game_over_ui: Control = $GameOverUI/Control
 
-func _ready():
+func _ready() -> void:
 
 	DatosJugador.jugador.permitir_movimiento()
 
@@ -14,7 +14,7 @@ func _ready():
 	
 	DatosJugador.jugador.sin_vidas.connect(_on_jugador_sin_vidas)
 
-func _on_todas_las_emociones_recolectadas():
+func _on_todas_las_emociones_recolectadas() -> void:
 	
 	DatosJugador.todas_las_emociones_recolectadas.disconnect(_on_todas_las_emociones_recolectadas)
 	Logs.log_debug("Nivel completado")
@@ -31,7 +31,7 @@ func _on_todas_las_emociones_recolectadas():
 		DatosJugador.jugador.vidas_actuales
 	)
 
-func _on_jugador_sin_vidas():
+func _on_jugador_sin_vidas() -> void:
 	DatosJugador.jugador.bloquear_movimiento()
 
 	for enemigo in get_tree().get_nodes_in_group("enemigos"):

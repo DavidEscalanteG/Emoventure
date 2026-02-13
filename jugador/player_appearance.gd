@@ -40,7 +40,7 @@ var estado_actual: String = "idle" # idle | walk
 # "enojado" -> "angry"
 
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	_sincronizar_partes()
 
 func _sincronizar_partes() -> void:
@@ -105,7 +105,7 @@ func aplicar_apariencia_desde_global() -> void:
 	_restaurar_colores()
 	_actualizar_animacion()
 
-func _validar_indices_por_genero():
+func _validar_indices_por_genero() -> void:
 	DatosJugador.set_indice_cabello(DatosJugador.apariencia.indice_cabello)
 
 

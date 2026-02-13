@@ -4,15 +4,15 @@ extends TextureButton
 @export var imagen_bn: Texture2D
 
 var emocion_asignada: String = ""
-var completado := false
+var completado: bool = false
 
-signal cuadro_seleccionado(cuadro)
+signal cuadro_seleccionado(cuadro: Node)
 signal cuadro_completado
 
 var hover_tween: Tween
 var click_tween: Tween
 
-func _ready():
+func _ready() -> void:
 	if imagen_bn:
 		texture_normal = imagen_bn
 
@@ -22,22 +22,22 @@ func _ready():
 	if $Estela.has_node("AnimationPlayer"):
 		$Estela/AnimationPlayer.play("onda_idle")
 
-func _on_mouse_entered():
+func _on_mouse_entered() -> void:
 	if completado:
 		return
 	_iniciar_pulso()
 
-func _on_mouse_exited():
+func _on_mouse_exited() -> void:
 	_detener_pulso()
 
-func _on_pressed():
+func _on_pressed() -> void:
 	if completado:
 		return
 
 	_detener_pulso()
 	_animar_click()
 
-func _animar_click():
+func _animar_click() -> void:
 	if click_tween:
 		click_tween.kill()
 
@@ -50,7 +50,7 @@ func _animar_click():
 		emit_signal("cuadro_seleccionado", self)
 	)
 
-func _iniciar_pulso():
+func _iniciar_pulso() -> void:
 	_detener_pulso()
 
 	hover_tween = create_tween()
@@ -61,13 +61,13 @@ func _iniciar_pulso():
 	hover_tween.tween_property(self, "scale", Vector2(1.05, 1.05), 0.6)
 	hover_tween.tween_property(self, "scale", Vector2.ONE, 0.6)
 
-func _detener_pulso():
+func _detener_pulso() -> void:
 	if hover_tween:
 		hover_tween.kill()
 
 	scale = Vector2.ONE
 
-func marcar_completado(color_estela: Color):
+func marcar_completado(color_estela: Color) -> void:
 	completado = true
 	texture_normal = imagen_color
 

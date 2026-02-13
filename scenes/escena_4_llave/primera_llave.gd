@@ -2,10 +2,10 @@ extends Control
 
 @export var siguiente_escena: String
 
-@onready var anim := $AnimationPlayer
-@onready var boton := $Contenido/BotonContinuar
+@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var boton: Button = $Contenido/BotonContinuar
 
-func _ready():
+func _ready() -> void:
 	boton.visible = false
 	anim.play("mostrar_llave")
 

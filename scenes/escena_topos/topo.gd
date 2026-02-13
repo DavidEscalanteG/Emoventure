@@ -1,8 +1,8 @@
 extends Control
 
 # Variables para las imágenes
-var img_normal: Texture2D = load("res://assets/pngtree-clown-icon-simple-style-png-image_15810983.png")
-var img_golpeado: Texture2D = load("res://assets/payaso_golpeado.png")
+var img_normal: Texture2D = load("res://assets/assets_escena_payaso/pngtree-clown-icon-simple-style-png-image_15810983.png")
+var img_golpeado: Texture2D = load("res://assets/assets_escena_payaso/payaso_golpeado.png")
 
 # Variables de movimiento
 var pos_escondido: Vector2 = Vector2(0, 50)

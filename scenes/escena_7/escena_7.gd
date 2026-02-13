@@ -3,7 +3,7 @@ extends Node2D
 const DIALOGO_ESCENA_7 := preload("uid://b5t1y0j0xbtoe") #escena_7.dialogue")
 const SIGUIENTE_ESCENA := "uid://607ynm435j8g" #escena_8.tcsn
 
-@onready var dialogue_ui := $DialogueUI/Balloon
+@onready var dialogue_ui: Node = $DialogueUI/Balloon
 
 func _ready() -> void:
 	
@@ -15,5 +15,5 @@ func _ready() -> void:
 	dialogue_ui.iniciar_dialogo(DIALOGO_ESCENA_7)
 	
 
-func _on_dialogo_finalizado():
+func _on_dialogo_finalizado() -> void:
 	get_tree().change_scene_to_file(SIGUIENTE_ESCENA)

@@ -1,7 +1,7 @@
 extends Node2D
 
-var cursor_normal: Texture2D = load("res://assets/martillo.png")
-var cursor_golpe: Texture2D = load("res://assets/martillo_pegando.png")
+var cursor_normal: Texture2D = load("res://assets/assets_escena_payaso/martillo.png")
+var cursor_golpe: Texture2D = load("res://assets/assets_escena_payaso/martillo_pegando.png")
 var puntos: int = 0
 var topos_jugables: Array[Node] = []
 

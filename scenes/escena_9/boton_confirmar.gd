@@ -1,7 +1,7 @@
 extends Button
 
-@onready var selector := find_parent("SelectorEmocion")
+@onready var selector: Node = find_parent("SelectorEmocion")
 
-func _on_pressed():
+func _on_pressed() -> void:
 	disabled = true
 	selector.confirmar_emocion()

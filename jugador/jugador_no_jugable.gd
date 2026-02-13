@@ -30,7 +30,7 @@ func refrescar_preview() -> void:
 	apariencia.establecer_estado_movimiento("idle")
 
 
-func set_emocion(nombre: String):
+func set_emocion(nombre: String) -> void:
 	var appearance := $PlayerAppearance
 
 	appearance.establecer_estado_movimiento("idle")
@@ -43,7 +43,7 @@ func set_emocion(nombre: String):
 	and appearance.cuerpo.sprite_frames.has_animation(anim):
 		appearance.cuerpo.play(anim)
 
-func confirmar_emocion_visual():
+func confirmar_emocion_visual() -> void:
 	scale = Vector2(1, 1)
 
 	var tween = create_tween()

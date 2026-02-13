@@ -1,14 +1,14 @@
 extends Control
 
-@onready var selector := $SelectorEmocion
-@onready var cuadros_container := $CuadrosContainer
+@onready var selector: Control = $SelectorEmocion
+@onready var cuadros_container: Node = $CuadrosContainer
 @onready var puerta: TextureButton = $PuertaCuestionario
-@onready var texto_contador := $Contador
+@onready var texto_contador: Label = $Contador
 
 var cuadros_completados: int = 0
 const TOTAL_CUADROS: int = 7
 
-func _ready():
+func _ready() -> void:
 	
 	actualizar_contador()
 	
@@ -40,7 +40,7 @@ func _mostrar_puerta() -> void:
 	tween.tween_property(puerta, "modulate:a", 1.0, 0.8)
 
 
-func _on_cuadro_seleccionado(cuadro):
+func _on_cuadro_seleccionado(cuadro: Node) -> void:
 	selector.mostrar(cuadro)
 
 func actualizar_contador() -> void:

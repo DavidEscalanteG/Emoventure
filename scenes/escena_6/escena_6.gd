@@ -4,7 +4,7 @@ const DIALOGO_ESCENA_6 := preload("uid://4uhkfxb2ak8d") #escena_6.dialogue
 const SIGUIENTE_ESCENA := "uid://c7ncdodlaop87" #escena_7.tscn
 
 #@onready var personajes := $personajes
-@onready var dialogue_ui := $DialogueUI/Balloon
+@onready var dialogue_ui: Node = $DialogueUI/Balloon
 
 func _ready() -> void:
 	
@@ -15,5 +15,5 @@ func _ready() -> void:
 	#await get_tree().create_timer(1.0).timeout
 	dialogue_ui.iniciar_dialogo(DIALOGO_ESCENA_6)
 	
-func _on_dialogo_finalizado():
+func _on_dialogo_finalizado() -> void:
 	get_tree().change_scene_to_file(SIGUIENTE_ESCENA)

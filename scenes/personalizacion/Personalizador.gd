@@ -186,7 +186,7 @@ func _actualizar_indice_mascota(delta: int) -> void:
 	DatosJugador.set_indice_mascota(indice)
 	mascota.aplicar_mascota_desde_global()
 
-func _validar_cabello_por_genero():
+func _validar_cabello_por_genero() -> void:
 	if DatosJugador.genero == "":
 		return
 	
