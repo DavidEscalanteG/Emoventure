@@ -20,7 +20,7 @@ func _ready() -> void:
 	
 	for cuadro in cuadros_container.get_children():
 		cuadro.cuadro_seleccionado.connect(_on_cuadro_seleccionado)
-		cuadro.connect("cuadro_completado", Callable(self, "_on_cuadro_completado"))
+		cuadro.cuadro_completado.connect(_on_cuadro_completado)
 
 func _on_cuadro_completado() -> void:
 	cuadros_completados += 1
@@ -40,7 +40,7 @@ func _mostrar_puerta() -> void:
 	tween.tween_property(puerta, "modulate:a", 1.0, 0.8)
 
 
-func _on_cuadro_seleccionado(cuadro: Node) -> void:
+func _on_cuadro_seleccionado(cuadro: TextureButton) -> void:
 	selector.mostrar(cuadro)
 
 func actualizar_contador() -> void:

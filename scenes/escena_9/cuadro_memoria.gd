@@ -6,7 +6,7 @@ extends TextureButton
 var emocion_asignada: String = ""
 var completado: bool = false
 
-signal cuadro_seleccionado(cuadro: Node)
+signal cuadro_seleccionado(cuadro: TextureButton)
 signal cuadro_completado
 
 var hover_tween: Tween
@@ -47,7 +47,7 @@ func _animar_click() -> void:
 
 	click_tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.35)
 	click_tween.tween_callback(func():
-		emit_signal("cuadro_seleccionado", self)
+		cuadro_seleccionado.emit(self)
 	)
 
 func _iniciar_pulso() -> void:
@@ -81,7 +81,7 @@ func marcar_completado(color_estela: Color) -> void:
 	tween.tween_property($Estela, "scale", Vector2.ONE, 0.2)
 
 	scale = Vector2.ONE
-	emit_signal("cuadro_completado")
+	cuadro_completado.emit()
 
 	if has_node("JugadorCinematico"):
 		$JugadorCinematico.set_emocion(emocion_asignada)

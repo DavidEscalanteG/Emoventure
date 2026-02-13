@@ -34,7 +34,7 @@ func aparecer() -> void:
 
 func golpeado() -> void:
 	if visible:
-		emit_signal("golpe_recibido") # Avisamos que hubo un punto
+		golpe_recibido.emit() # Avisamos que hubo un punto
 		$Timer.stop()
 		$Sprite2D.texture = img_golpeado
 		# REPRODUCIR SONIDO

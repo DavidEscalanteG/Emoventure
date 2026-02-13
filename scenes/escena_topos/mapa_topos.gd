@@ -15,7 +15,7 @@ func _ready() -> void:
 	# Conectamos señales únicamente para la lista cacheada
 	for topo in topos_jugables:
 		if topo.has_signal("golpe_recibido"):
-			topo.connect("golpe_recibido", _al_sumar_punto)
+			topo.golpe_recibido.connect(_al_sumar_punto)
 	# Establecemos el cursor inicial
 	Input.set_custom_mouse_cursor(cursor_normal)
 

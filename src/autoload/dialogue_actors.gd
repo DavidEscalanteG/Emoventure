@@ -4,8 +4,6 @@ const RegistryService = preload("res://src/autoload/servicios/dialogue_actor_reg
 const AnimationService = preload("res://src/autoload/servicios/dialogue_actor_animation_service.gd")
 const MovementService = preload("res://src/autoload/servicios/dialogue_actor_movement_service.gd")
 
-const SIGNAL_CINEMATIC_ACTION_FINISHED: String = "cinematic_action_finished"
- 
 # Plan de deprecación (temporal):
 # 1) Mantener esta fachada para scripts existentes.
 # 2) Migrar llamadas gradualmente a servicios específicos.
@@ -47,7 +45,7 @@ func animacion_reproducir_y_esperar(actor_id: String, estado: String, direccion:
 		direccion
 	)
 	cinematica_activa = false
-	emit_signal(SIGNAL_CINEMATIC_ACTION_FINISHED)
+	cinematic_action_finished.emit()
 
 
 func movimiento_mover_y_esperar(actor_id: String, delta: Vector2, tiempo: float = 0.6) -> void:
@@ -59,7 +57,7 @@ func movimiento_mover_y_esperar(actor_id: String, delta: Vector2, tiempo: float 
 		tiempo
 	)
 	cinematica_activa = false
-	emit_signal(SIGNAL_CINEMATIC_ACTION_FINISHED)
+	cinematic_action_finished.emit()
 
 
 func movimiento_mover_por(actor_id: String, delta: Vector2, tiempo: float = 0.6) -> void:
