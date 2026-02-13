@@ -17,12 +17,12 @@ func _ready() -> void:
 
 func refrescar_preview() -> void:
 	if forzar_indice_cabello >= 0:
-		apariencia._aplicar_spriteframes(
+		apariencia.aplicar_spriteframes_por_indice(
 			apariencia.cabello,
 			apariencia.coleccion_cabellos,
 			forzar_indice_cabello
 		)
-		apariencia._actualizar_animacion()
+		apariencia.actualizar_animacion_visual()
 	else:
 		apariencia.aplicar_apariencia_desde_global()
 

@@ -102,8 +102,8 @@ func aplicar_apariencia_desde_global() -> void:
 	_aplicar_spriteframes(nariz,    coleccion_narices,  DatosJugador.apariencia.indice_nariz)
 	_aplicar_spriteframes(cuerpo,   coleccion_cuerpos,  DatosJugador.apariencia.indice_cuerpo)
 
-	_restaurar_colores()
-	_actualizar_animacion()
+	restaurar_colores()
+	actualizar_animacion_visual()
 
 func _validar_indices_por_genero() -> void:
 	DatosJugador.set_indice_cabello(DatosJugador.apariencia.indice_cabello)
@@ -111,6 +111,14 @@ func _validar_indices_por_genero() -> void:
 
 
 func _aplicar_spriteframes(
+	sprite: AnimatedSprite2D,
+	coleccion: Array[SpriteFrames],
+	indice: int
+) -> void:
+	aplicar_spriteframes_por_indice(sprite, coleccion, indice)
+
+
+func aplicar_spriteframes_por_indice(
 	sprite: AnimatedSprite2D,
 	coleccion: Array[SpriteFrames],
 	indice: int
@@ -127,6 +135,10 @@ func _aplicar_spriteframes(
 # ANIMACIONES
 # ==================================================
 func _actualizar_animacion() -> void:
+	actualizar_animacion_visual()
+
+
+func actualizar_animacion_visual() -> void:
 	var nombre_anim: String = estado_actual + "_" + direccion_actual
 
 	if cuerpo.sprite_frames and cuerpo.sprite_frames.has_animation(nombre_anim):
@@ -151,6 +163,10 @@ func aplicar_color_emocion(color: Color) -> void:
 
 
 func _restaurar_colores() -> void:
+	restaurar_colores()
+
+
+func restaurar_colores() -> void:
 	cabello.self_modulate = DatosJugador.apariencia.color_cabello
 	cabeza.self_modulate  = DatosJugador.apariencia.color_cabeza
 	ojos.self_modulate    = DatosJugador.apariencia.color_ojos

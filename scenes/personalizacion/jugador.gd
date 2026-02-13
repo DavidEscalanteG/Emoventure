@@ -59,7 +59,7 @@ func _ready() -> void:
 	timer_emocion = Timer.new()
 	timer_emocion.one_shot = true
 	add_child(timer_emocion)
-	timer_emocion.timeout.connect(_terminar_emocion)
+	timer_emocion.timeout.connect(terminar_emocion)
 
 	# Timer congelamiento
 	timer_congelar = Timer.new()
@@ -113,7 +113,7 @@ func _morir() -> void:
 # EMOCIONES
 # --------------------------------------------------
 func aplicar_emocion(tipo: String, color: Color, duracion: float) -> void:
-	_terminar_emocion()
+	terminar_emocion()
 
 	emocion_actual = tipo
 	_aplicar_efecto(tipo)
@@ -147,6 +147,10 @@ func _alternar_congelamiento() -> void:
 
 
 func _terminar_emocion() -> void:
+	terminar_emocion()
+
+
+func terminar_emocion() -> void:
 	emocion_actual = ""
 	speed = velocidad_base
 	controles_invertidos = false
@@ -155,7 +159,7 @@ func _terminar_emocion() -> void:
 	timer_congelar.stop()
 
 	puede_moverse = not nivel_terminado
-	apariencia._restaurar_colores()
+	apariencia.restaurar_colores()
 
 
 # --------------------------------------------------
