@@ -4,10 +4,10 @@ Convención vigente para autoloads en `project.godot`:
 
 | Nombre de singleton | Ruta |
 | --- | --- |
-| `DatosJugador` | `res://src/autoload/DatosJugador.gd` |
-| `GameManager` | `res://src/autoload/GameManager.gd` |
-| `DialogueActors` | `res://src/autoload/DialogueActors.gd` |
-| `Logs` | `res://src/autoload/Logs.gd` |
+| `DatosJugador` | `res://src/autoload/datos_jugador.gd` |
+| `GameManager` | `res://src/autoload/game_manager.gd` |
+| `DialogueActors` | `res://src/autoload/dialogue_actors.gd` |
+| `Logs` | `res://src/autoload/logs.gd` |
 
 ## Notas de mantenimiento
 

@@ -1,9 +1,9 @@
 extends Node
  
-const RegistryService = preload("res://src/autoload/servicios/DialogueActorRegistryService.gd")
-const AnimationService = preload("res://src/autoload/servicios/DialogueActorAnimationService.gd")
-const MovementService = preload("res://src/autoload/servicios/DialogueActorMovementService.gd")
- 
+const RegistryService = preload("res://src/autoload/servicios/dialogue_actor_registry_service.gd")
+const AnimationService = preload("res://src/autoload/servicios/dialogue_actor_animation_service.gd")
+const MovementService = preload("res://src/autoload/servicios/dialogue_actor_movement_service.gd")
+
 const SIGNAL_CINEMATIC_ACTION_FINISHED: String = "cinematic_action_finished"
  
 # Plan de deprecación (temporal):

@@ -29,7 +29,7 @@
 - **Servicios internos de `DialogueActors`**: existen servicios separados por módulo (`Registry`, `Animation`, `Movement`) y la fachada principal ya delega en estos servicios.
 
 ### 4.2 En transición (con wrappers legacy)
-- **Autoload `DialogueActors.gd`** conserva API legacy de compatibilidad temporal (retiro objetivo 2026-06), incluyendo wrappers como:
+- **Autoload `dialogue_actors.gd`** conserva API legacy de compatibilidad temporal (retiro objetivo 2026-06), incluyendo wrappers como:
   - Registro: `register_actor`, `registrar_actor`, `unregister_actor`, `desregistrar_actor`.
   - Animación: `set_expr`, `establecer_expresion`, `set_anim`, `establecer_animacion`, `play_anim_and_wait`.
   - Movimiento: `move_and_wait`, `mover_derecha`, `mover_izquierda`, `mover_y_esperar`.
