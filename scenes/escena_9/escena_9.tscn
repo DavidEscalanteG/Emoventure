@@ -36,7 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://bishv70yvv71n" path="res://assets/botones/Yellow_Buttons_Pixel.png" id="32_trrj2"]
 [ext_resource type="Texture2D" uid="uid://bb4x5nsfbg57u" path="res://assets/assets_escena_9/puerta/puerta_brillante.png" id="35_rfoqg"]
 [ext_resource type="Script" uid="uid://bcnfhy88ywwax" path="res://scenes/escena_9/puerta_cuestionario.gd" id="36_t272c"]
-[ext_resource type="PackedScene" uid="uid://bgjfcq8bkynuh" path="res://scenes/cuestionario/EscenaCuestionario.tscn" id="37_t272c"]
+[ext_resource type="PackedScene" uid="uid://bgjfcq8bkynuh" path="res://scenes/cuestionarios/EscenaCuestionario.tscn" id="37_t272c"]
 [ext_resource type="PackedScene" uid="uid://dghl2jv2pxg6l" path="res://scenes/escena_10_llave/escena_10.tscn" id="38_xwnhn"]
 
 [sub_resource type="Animation" id="Animation_uf5ph"]

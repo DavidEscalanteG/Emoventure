@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgjfcq8bkynuh"]
 
-[ext_resource type="Script" uid="uid://b6an8n502wk8v" path="res://scenes/cuestionario/escena_cuestionario.gd" id="1_7itg5"]
+[ext_resource type="Script" uid="uid://b6an8n502wk8v" path="res://scenes/cuestionarios/escena_cuestionario.gd" id="1_7itg5"]
 [ext_resource type="Theme" uid="uid://cc5n1x65884ar" path="res://assets/temas/tema_cuestionario.tres" id="2_3yix8"]
 [ext_resource type="Texture2D" uid="uid://b6ofbmr3xbid8" path="res://assets/assets_escena_pregunta/fondo_preguntas.jpg" id="2_bir5t"]
 

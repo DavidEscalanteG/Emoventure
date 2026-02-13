@@ -73,6 +73,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sb04r")
+siguiente_escena = "res://scenes/menu_principal/menu_principal.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -112,3 +113,5 @@ icon_alignment = 1
 libraries = {
 &"": SubResource("AnimationLibrary_lxnae")
 }
+
+[connection signal="pressed" from="Contenido/BotonContinuar" to="." method="_on_boton_continuar_pressed"]
