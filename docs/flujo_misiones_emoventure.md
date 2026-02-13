@@ -49,10 +49,16 @@ Este documento resume el flujo narrativo-operativo implementado actualmente y va
 15. **Llave 2 (intermedia)**  
 	`res://scenes/escena_10_llave/escena_10.tscn`
 	
-16. **Cierre actual (provisional)**  
+16. **Misión 3 — pasillo con hachas intermitentes**  
+	`res://scenes/escena_11_mision_3/escena_11_mision_3.tscn`
+	
+17. **Recompensa misión 3 (llave + mazo)**  
+	`res://scenes/escena_12_recompensa_m3/recompensa_mision_3.tscn`
+	
+18. **Cierre actual (provisional)**  
 	`res://scenes/menu_principal/menu_principal.tscn`
 
-> Nota: El documento de investigación describe una tercera misión (pasillo). En el estado actual del repositorio, el flujo implementado termina de forma provisional regresando al menú después de la segunda llave.
+> Nota: Se integra la tercera misión descrita en investigación como bloque jugable intermedio y se conserva el cierre provisional en menú mientras se define la fase posterior.
 
 ## 2) Validación de transiciones en scripts `scenes/escena_*/*.gd`
 
@@ -72,8 +78,11 @@ Este documento resume el flujo narrativo-operativo implementado actualmente y va
 1. **Cuestionario 1 → Llave 1 (faltaba enlace intermedio)**  
    Se reasignó `escena_siguiente` de `NivelCompletadoUI.tscn` para que apunte a `PrimeraLlave.tscn` (antes iba directo a `escena_5.tscn`).
 
-2. **Llave 2 → Cierre (faltaba export en `.tscn`)**  
-   Se añadió `siguiente_escena` en `escena_10.tscn` apuntando al cierre actual (menú principal).
+2. 2. **Llave 2 → Misión 3 (actualización de encadenado)**  
+   Se actualizó `siguiente_escena` en `escena_10.tscn` para enlazar con `escena_11_mision_3.tscn`.
+
+3. **Misión 3 → Recompensa → Cierre**  
+   La misión de pasillo transiciona a `recompensa_mision_3.tscn`, y esta escena entrega llave + mazo antes de volver al menú provisional.
 
 ## 3) Variables export de transición completadas en `.tscn`
 
@@ -81,7 +90,13 @@ Este documento resume el flujo narrativo-operativo implementado actualmente y va
   `escena_siguiente = ExtResource("3_6w4pf")` ahora referencia `res://scenes/escena_4_llave/PrimeraLlave.tscn`.
 
 - `scenes/escena_10_llave/escena_10.tscn`  
-  Se agregó `siguiente_escena = "res://scenes/menu_principal/menu_principal.tscn"` en el nodo raíz con script `segunda_llave.gd`.
+  `siguiente_escena` ahora apunta a `res://scenes/escena_11_mision_3/escena_11_mision_3.tscn`.
+
+- `scenes/escena_11_mision_3/escena_11_mision_3.tscn`  
+  Nueva misión 3 con salida a `res://scenes/escena_12_recompensa_m3/recompensa_mision_3.tscn`.
+
+- `scenes/escena_12_recompensa_m3/recompensa_mision_3.tscn`  
+  Nueva recompensa final con transición al cierre provisional (`menu_principal.tscn`).
 
 ## 4) Diagrama de estados (mantenible)
 
@@ -101,4 +116,6 @@ Este documento resume el flujo narrativo-operativo implementado actualmente y va
 | `escena_8.tscn` | Fin de diálogo | `escena_9.tscn` |
 | `escena_9.tscn` | Completar 7 recuerdos y entrar por puerta | `EscenaCuestionario.tscn` |
 | `EscenaCuestionario.tscn` (M2) | Responder todas las preguntas | `escena_10.tscn` |
-| `escena_10.tscn` | Botón continuar | `menu_principal.tscn` (cierre provisional) |
+| `escena_10.tscn` | Botón continuar | `escena_11_mision_3.tscn` |
+| `escena_11_mision_3.tscn` | Activar 2 checkpoints, evitar hachas y llegar a salida | `recompensa_mision_3.tscn` |
+| `recompensa_mision_3.tscn` | Botón continuar | `menu_principal.tscn` (cierre provisional) |
