@@ -16,7 +16,6 @@ var preguntas: Array[String] = []
 var dimension: String = ""
 
 
-
 # ==================================================
 # ESTADO
 # ==================================================
@@ -28,8 +27,7 @@ var puntaje_local: int = 0
 # CICLO DE VIDA
 # ==================================================
 func _ready() -> void:
-	if preguntas.is_empty():
-		push_warning("Cuestionario iniciado sin preguntas")
+	if not Cuestionarios.validar_dimension_y_preguntas(dimension, preguntas):
 		return
 
 	mostrar_pregunta()
@@ -53,6 +51,10 @@ func responder(valor: int) -> void:
 
 
 func _finalizar() -> void:
+	if not Cuestionarios.es_dimension_soportada(dimension):
+		push_error("[EscenaCuestionario] Dimensión inválida al finalizar: %s" % dimension)
+		return
+		
 	Logs.log_debug("[DEBUG] Cuestionario terminado: %s %d" % [dimension, puntaje_local])
 
 	GameManager.agregar_puntaje(dimension, puntaje_local)

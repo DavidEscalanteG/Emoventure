@@ -2,26 +2,21 @@ extends TextureButton
 
 @export var escena_cuestionario: PackedScene
 @export var escena_siguiente: PackedScene
+@export var numero_mision_cuestionario: int = 2
 
 func _on_pressed() -> void:
 	if escena_cuestionario == null:
 		push_error("No se asignó escena_cuestionario")
 		return
 
+	if not Cuestionarios.validar_mision(numero_mision_cuestionario):
+		return
+
 	var cuestionario: EscenaCuestionario = escena_cuestionario.instantiate()
-
-	cuestionario.preguntas = [
-		"Presto mucha atención a los sentimientos.",
-		"Normalmente me preocupo mucho por lo que siento.",
-		"Normalmente dedico tiempo a pensar en mis emociones.",
-		"Pienso que merece la pena prestar atención a mis emociones.",
-		"Dejo que mis sentimientos afecten a mis pensamientos.",
-		"Pienso en mi estado de ánimo constantemente.",
-		"A menudo pienso en mis sentimientos.",
-		"Presto mucha atención a cómo me siento."
-	]
-
-	cuestionario.dimension = "atencion"
+	var dimension: String = Cuestionarios.obtener_dimension_para_mision(numero_mision_cuestionario)
+	
+	cuestionario.preguntas = Cuestionarios.obtener_preguntas_para_dimension(dimension)
+	cuestionario.dimension = dimension
 	cuestionario.escena_siguiente = escena_siguiente
 
 	var root := get_tree().root

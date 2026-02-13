@@ -22,6 +22,7 @@ DatosJugador="*res://src/autoload/datos_jugador.gd"
 GameManager="*res://src/autoload/game_manager.gd"
 DialogueActors="*res://src/autoload/dialogue_actors.gd"
 Logs="*res://src/autoload/logs.gd"
+Cuestionarios="*res://src/autoload/cuestionarios.gd"
 
 [dialogue_manager]
 
