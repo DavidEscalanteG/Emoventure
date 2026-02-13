@@ -44,18 +44,3 @@ func mover_a(actor_id: String, actor: Node, destino: Vector2, tiempo: float = 0.
 	tween.finished.connect(func() -> void:
 		_animation_service.establecer_idle(actor_id, actor_2d)
 	)
-
-
-# DEPRECADO: usar mover_y_esperar. Retiro objetivo: 2026-06.
-func move_and_wait(actor_id: String, actor: Node, delta: Vector2, tiempo: float = 0.6) -> void:
-	await mover_y_esperar(actor_id, actor, delta, tiempo)
-
-
-# DEPRECADO: usar mover_por. Retiro objetivo: 2026-06.
-func move_by(actor_id: String, actor: Node, delta: Vector2, tiempo: float = 0.6) -> void:
-	mover_por(actor_id, actor, delta, tiempo)
-
-
-# DEPRECADO: usar mover_a. Retiro objetivo: 2026-06.
-func move_to(actor_id: String, actor: Node, destino: Vector2, tiempo: float = 0.8) -> void:
-	mover_a(actor_id, actor, destino, tiempo)

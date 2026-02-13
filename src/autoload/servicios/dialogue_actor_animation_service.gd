@@ -144,31 +144,6 @@ func establecer_idle(actor_id: String, actor: Node) -> void:
 			warn(actor_id, actor, "NPC sin animación idle")
 
 
-# DEPRECADO: usar establecer_expresion. Retiro objetivo: 2026-06.
-func set_expr(actor_id: String, actor: Node, expresion: String) -> void:
-	establecer_expresion(actor_id, actor, expresion)
-
-
-# DEPRECADO: usar establecer_animacion. Retiro objetivo: 2026-06.
-func set_anim(actor_id: String, actor: Node, estado: String, direccion: String) -> void:
-	establecer_animacion(actor_id, actor, _normalizar_estado(estado), _normalizar_direccion(direccion))
-
-
-# DEPRECADO: usar reproducir_animacion_y_esperar. Retiro objetivo: 2026-06.
-func play_anim_and_wait(actor_id: String, actor: Node, estado: String, direccion: String) -> void:
-	await reproducir_animacion_y_esperar(actor_id, actor, _normalizar_estado(estado), _normalizar_direccion(direccion))
-
-
-# DEPRECADO: usar establecer_orientacion. Retiro objetivo: 2026-06.
-func set_facing(actor_id: String, actor: Node, direction: String) -> void:
-	establecer_orientacion(actor_id, actor, _normalizar_direccion(direction))
-
-
-# DEPRECADO: usar establecer_idle. Retiro objetivo: 2026-06.
-func set_idle(actor_id: String, actor: Node) -> void:
-	establecer_idle(actor_id, actor)
-
-
 func _play_npc_animation(actor_id: String, actor: Node, estado: String, direccion: String) -> void:
 	var sprite: AnimatedSprite2D = actor.get_node(NODE_ANIMATED_SPRITE)
 	var anim: String = _anim_name(estado, direccion)

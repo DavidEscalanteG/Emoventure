@@ -3,9 +3,9 @@
 # El protagonista decide entrar a la carpa.
 # Introducción narrativa antes del primer gameplay.
 
-#do DialogueActors.establecer_orientacion("gitana", "izquierda")
+#do DialogueActors.animacion_establecer_animacion("gitana", "reposo", "izquierda")
 #Gitana: [[Hoy tu vida puede cambiar|El destino te ha traído hasta aquí|No todos se atreven a acercarse]], viajero.
-#do DialogueActors.establecer_expresion("gitana", "misteriosa")
+#do DialogueActors.animacion_establecer_expresion("gitana", "misteriosa")
 #
 #Gitana: Si decides realmente conocerte…
 #Gitana: este es el lugar indicado.
@@ -18,7 +18,7 @@
 #
 #Gitana: *Jejeje…*  
 #Gitana: La curiosidad es la primera señal de que estás listo.
-##do DialogueActors.establecer_expresion("gitana", "sonrisa")
+##do DialogueActors.animacion_establecer_expresion("gitana", "sonrisa")
 #
 #Gitana: Dime, ¿qué sientes ahora mismo?
 #Protagonista: Un poco de miedo… y emoción al mismo tiempo.
@@ -30,13 +30,13 @@
 #Gitana: ¿Deseas entrar a la carpa y enfrentarte a lo que llevas dentro?
 #
 #- Sí, quiero entrar.
-#	do DialogueActors.establecer_expresion("gitana", "adivina")
+#	do DialogueActors.animacion_establecer_expresion("gitana", "adivina")
 #	Gitana: Sabia decisión.
 #	Gitana: Has dado el primer paso hacia ti mismo.
 #	Gitana: Sígueme… y no mires atrás.
 #
 #- No estoy seguro…
-#	#do establecer_expresion("gitana", "neutral")
+#	#do DialogueActors.animacion_establecer_expresion("gitana", "neutral")
 #	Gitana: Dudar es humano.
 #	Gitana: Incluso la duda es una emoción que merece ser escuchada.
 #	Gitana: Pero si estás aquí, es porque una parte de ti quiere avanzar.
@@ -49,7 +49,7 @@
 #
 ##do DialogueActors.fade_out("feria")
 ##do DialogueActors.fade_in("interior_carpa")
-##do DialogueActors.establecer_expresion("gitana", "oscura")
+##do DialogueActors.animacion_establecer_expresion("gitana", "oscura")
 #
 #Protagonista: ¿Qué sucede…?
 #Protagonista: Siento mi cuerpo extraño…
@@ -62,7 +62,7 @@
 #Gitana: Tu color… se desvanece.
 #
 #Gitana: *Wuajajaja…*
-##do DialogueActors.establecer_expresion("gitana", "demonio")
+##do DialogueActors.animacion_establecer_expresion("gitana", "demonio")
 #
 #Gitana: Bienvenido a tu primera misión.
 #Gitana: **El cazador de las bestias despiertas**.

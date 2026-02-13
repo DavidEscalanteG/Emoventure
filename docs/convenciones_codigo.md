@@ -25,38 +25,25 @@
 
 ### 4.1 Migrado completamente
 - **Entrada a diálogos desde escenas (`dialogue_ui`)**: las escenas activas usan `dialogue_ui.iniciar_dialogo(...)`.
-- **Registro principal de actores en escenas**: las escenas activas usan `DialogueActors.registro_registrar_actor(...)` en lugar de `register_actor(...)`.
-- **Servicios internos de `DialogueActors`**: existen servicios separados por módulo (`Registry`, `Animation`, `Movement`) y la fachada principal ya delega en estos servicios.
+- **Registro principal de actores en escenas**: las escenas activas usan `DialogueActors.registro_registrar_actor(...)`.
+- **Animación y movimiento en escena/diálogo**: las llamadas activas y comandos `#do/##do` usan API canónica (`animacion_establecer_*`, `movimiento_mover_*`).
+- **Fachada y servicios de `DialogueActors`**: wrappers legacy retirados; se mantiene únicamente API canónica.
 
-### 4.2 En transición (con wrappers legacy)
-- **Autoload `dialogue_actors.gd`** conserva API legacy de compatibilidad temporal (retiro objetivo 2026-06), incluyendo wrappers como:
-  - Registro: `register_actor`, `registrar_actor`, `unregister_actor`, `desregistrar_actor`.
-  - Animación: `set_expr`, `establecer_expresion`, `set_anim`, `establecer_animacion`, `play_anim_and_wait`.
-  - Movimiento: `move_and_wait`, `mover_derecha`, `mover_izquierda`, `mover_y_esperar`.
-- **Servicios (`DialogueActorRegistryService`, `DialogueActorAnimationService`, `DialogueActorMovementService`)** también mantienen wrappers deprecados (`register_actor`, `unregister_actor`, `set_expr`, `set_anim`, `move_and_wait`) para no romper llamadas antiguas.
-
-### 4.3 Scripts/diálogos pendientes por migrar
-Pendientes detectados que aún dependen de API legacy o nombres transicionales:
-- **Diálogos con comandos legacy de animación/expresión**:
-  - `dialogos/escena_1.dialogue` (`DialogueActors.establecer_expresion(...)`).
-  - `dialogos/escena_2.dialogue` (`DialogueActors.establecer_expresion(...)`, incluye líneas desactivadas con `##do`).
-  - `dialogos/escena_5.dialogue` (`DialogueActors.establecer_expresion(...)`).
-  - `dialogos/escena_8.dialogue` (`DialogueActors.establecer_animacion(...)`).
-- **Script de escena con nombre transicional/no canónico**:
-  - `scenes/escena_8/escena_8.gd` usa `DialogueActors.animacion_set_animacion(...)`; debe alinearse al nombre canónico vigente en la fachada.
+### 4.2 Estado actual
+No hay consumidores legacy detectados en escenas ni en diálogos del proyecto para la migración de `DialogueActors`.
 
 ## 5) Estado de migración DialogueActors
 
 Checklist por módulo:
 - [x] **`DialogueActors` (fachada + servicios separados)**: separación por responsabilidades implementada y en uso.
-- [ ] **Servicios (en transición)**: API canónica migrada, pero con wrappers deprecados aún presentes para compatibilidad.
-- [ ] **Escenas (en transición)**: registro de actores y arranque de diálogos mayormente migrados; queda normalizar llamada de animación en `escena_8.gd`.
-- [ ] **Diálogos**: faltan migrar comandos `#do` que todavía llaman wrappers legacy (`establecer_expresion` / `establecer_animacion`).
+- [x] **Servicios**: wrappers deprecados retirados; API canónica en uso.
+- [x] **Escenas**: registro de actores, animación y arranque de diálogos alineados a convención vigente.
+- [x] **Diálogos**: comandos `#do/##do` normalizados a API canónica.
 
 **Criterio de finalización (DoD) de esta migración:**
 1. No existan llamadas en escenas/diálogos a wrappers legacy de `DialogueActors`.
 2. Se unifiquen los nombres canónicos de la fachada para registro/animación/movimiento en todo el proyecto.
-3. Se retiren wrappers deprecados en fachada y servicios (o queden detrás de una bandera de compatibilidad explícita).
+3. Se retiren wrappers deprecados en fachada y servicios.
 4. Se valide que las escenas de diálogo siguen funcionando sin regresiones tras el retiro de compatibilidad.
 
 ## 6) Glosario permitido (spanglish controlado)

@@ -3,7 +3,7 @@
 # Carlos sale exhausto, con la llave en la mano.
 # El ambiente de la feria se siente distinto, más inquietante.
 
-#do DialogueActors.establecer_orientacion("mujer_lagarto", "izquierda")
+#do DialogueActors.animacion_establecer_animacion("mujer_lagarto", "reposo", "izquierda")
 #Carlos: (respira hondo) No pensé que fuera tan difícil...
 #Carlos: Siento mi cuerpo cansado, pero algo dentro de mí se movió.
 #
@@ -12,7 +12,7 @@
 ## Aparece la Mujer Lagarto desde las sombras.
 #
 #MujerLagarto: No todos logran salir de esa carpa.
-#do DialogueActors.establecer_expresion("mujer_lagarto", "seria")
+#do DialogueActors.animacion_establecer_expresion("mujer_lagarto", "seria")
 #
 #Carlos: (sobresaltado) ¿Q-qué…?
 #Carlos: ¿Quién eres tú?
@@ -27,7 +27,7 @@
 #MujerLagarto: Reconocer tus emociones es apenas el primer paso.
 #
 #MujerLagarto: Esa llave que llevas no abre cualquier puerta.
-#do DialogueActors.establecer_expresion("mujer_lagarto", "sonrisa")
+#do DialogueActors.animacion_establecer_expresion("mujer_lagarto", "sonrisa")
 #
 #Carlos: Entonces… ¿qué sigue ahora?
 #
