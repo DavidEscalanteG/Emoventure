@@ -14,3 +14,9 @@ Convención vigente para autoloads en `project.godot`:
 - Usar estos nombres directamente en scripts (`DatosJugador`, `Logs`, etc.).
 - Evitar alias históricos como `Global` para no duplicar conceptos.
 - Si se agrega un nuevo autoload, documentarlo aquí y en `project.godot`.
+
+## Dependencias externas y adaptaciones
+
+- `addons/dialogue_manager/` se considera dependencia externa del proyecto.
+- No aplicar refactors de estilo interno dentro de `addons/dialogue_manager/`.
+- Si se necesita adaptar su comportamiento, priorizar wrappers propios en `src/ui/dialogos/`.
