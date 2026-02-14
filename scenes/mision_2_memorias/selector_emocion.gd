@@ -56,7 +56,7 @@ func mostrar(cuadro: CuadroMemoria) -> void:
 	visor.visible = true
 	visor.scale = Vector2(0.7, 0.7)
 	visor.modulate.a = 1.0
-	
+
 	var boton_confirmar: Button = $BotonConfirmar
 	boton_confirmar.disabled = false
 
@@ -102,8 +102,7 @@ func confirmar_emocion() -> void:
 	if emocion_confirmada:
 		Logs.log_debug("[DEBUG] Confirmar ignorado: ya confirmado")
 		return
-	
-	
+
 	if emocion_seleccionada == "":
 		Logs.log_debug("[DEBUG] Confirmar ignorado: ninguna emoción seleccionada")
 		return
@@ -111,6 +110,7 @@ func confirmar_emocion() -> void:
 	Logs.log_debug("[DEBUG] Emoción CONFIRMADA: %s" % emocion_seleccionada)
 
 	emocion_confirmada = true
+	cuadro_actual.emocion_asignada = emocion_seleccionada
 	var color_estela: Color = Color(colores_emociones[emocion_seleccionada])
 	cuadro_actual.marcar_completado(color_estela)
 

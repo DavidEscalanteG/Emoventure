@@ -15,6 +15,7 @@ var click_tween: Tween = null
 var estela_tween: Tween = null
 
 @onready var estela: TextureRect = $Estela
+@onready var emoji_animado: AnimatedSprite2D = $EmojiAnimado
 
 
 func _ready() -> void:
@@ -23,6 +24,8 @@ func _ready() -> void:
 
 	scale = Vector2.ONE
 	pivot_offset = size / 2.0
+	_update_layout_overlays()
+	resized.connect(_on_resized)
 	_configurar_estela_inicial()
 
 
@@ -89,12 +92,14 @@ func marcar_completado(color_estela: Color) -> void:
 
 	if has_node("JugadorCinematico"):
 		$JugadorCinematico.set_emocion(emocion_asignada)
+	elif emoji_animado != null:
+		emoji_animado.play(emocion_asignada)
 
 
 func _configurar_estela_inicial() -> void:
 	estela.visible = false
 	estela.position = Vector2.ZERO
-	estela.scale = Vector2(1.08, 1.08)
+	estela.scale = Vector2.ONE
 
 
 func _animar_estela_neon() -> void:
@@ -108,13 +113,40 @@ func _animar_estela_neon() -> void:
 	estela_tween.set_ease(Tween.EASE_IN_OUT)
 
 	estela_tween.tween_property(estela, "position", Vector2(5.0, -3.0), 0.6)
-	estela_tween.parallel().tween_property(estela, "scale", Vector2(1.12, 1.07), 0.6)
+	estela_tween.parallel().tween_property(estela, "scale", Vector2(1.03, 1.02), 0.6)
 	estela_tween.parallel().tween_property(estela, "modulate:a", 0.82, 0.6)
 
 	estela_tween.tween_property(estela, "position", Vector2(-4.0, 4.0), 0.6)
-	estela_tween.parallel().tween_property(estela, "scale", Vector2(1.09, 1.11), 0.6)
+	estela_tween.parallel().tween_property(estela, "scale", Vector2(1.01, 1.04), 0.6)
 	estela_tween.parallel().tween_property(estela, "modulate:a", 0.98, 0.6)
 
 	estela_tween.tween_property(estela, "position", Vector2.ZERO, 0.7)
-	estela_tween.parallel().tween_property(estela, "scale", Vector2(1.08, 1.08), 0.7)
+	estela_tween.parallel().tween_property(estela, "scale", Vector2.ONE, 0.7)
 	estela_tween.parallel().tween_property(estela, "modulate:a", 0.9, 0.7)
+
+
+func _on_resized() -> void:
+	_update_layout_overlays()
+
+
+func _update_layout_overlays() -> void:
+	pivot_offset = size / 2.0
+
+	var padding: float = min(size.x, size.y) * 0.05
+	estela.anchor_left = 0.0
+	estela.anchor_top = 0.0
+	estela.anchor_right = 1.0
+	estela.anchor_bottom = 1.0
+	estela.offset_left = -padding
+	estela.offset_top = -padding
+	estela.offset_right = padding
+	estela.offset_bottom = padding
+
+	if emoji_animado == null:
+		return
+
+	emoji_animado.position = size / 2.0
+	var referencia: float = max(min(size.x, size.y), 1.0)
+	var escala_base: float = referencia / 56.0
+	emoji_animado.scale = Vector2.ONE * clamp(escala_base, 1.8, 3.4)
+	emoji_animado.play("neutro")

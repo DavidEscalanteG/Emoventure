@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dr4vbuueuu56w"]
+[gd_scene load_steps=45 format=3 uid="uid://dr4vbuueuu56w"]
 
 [ext_resource type="Script" uid="uid://diq5t1l7eecp5" path="res://scenes/mision_2_memorias/cuadro_memoria.gd" id="1_p8cra"]
 [ext_resource type="Script" uid="uid://c6atu0ejscdo5" path="res://scenes/mision_2_memorias/memorias_eternas_gameplay.gd" id="1_uus5q"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://mhtlvsqfvweb" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria1.jpg" id="3_k0nqh"]
 [ext_resource type="Texture2D" uid="uid://0vgv22tf7xv1" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria1ByN.jpg" id="4_3p6no"]
 [ext_resource type="Script" uid="uid://y8nce1uqxe73" path="res://scenes/mision_2_memorias/emoji_button.gd" id="4_k0nqh"]
-[ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="5_0sevr"]
 [ext_resource type="Texture2D" uid="uid://wty0f175e7ph" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria2ByN.jpg" id="5_1a4ln"]
 [ext_resource type="Texture2D" uid="uid://d1oo2t42s5s3e" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria2.jpg" id="6_5m4x7"]
 [ext_resource type="Texture2D" uid="uid://bhg1tyrpt4528" path="res://pruebas/assets/borde neon byn.png" id="6_uf5ph"]
@@ -176,16 +175,19 @@ grow_vertical = 2
 scale = Vector2(1.105, 1.105)
 mouse_filter = 2
 texture = ExtResource("6_uf5ph")
-stretch_mode = 5
+stretch_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CuadrosContainer/CuadroMemoria/Estela"]
 libraries = {
 &"": SubResource("AnimationLibrary_vesnk")
 }
 
-[node name="JugadorCinematico" parent="CuadrosContainer/CuadroMemoria" instance=ExtResource("5_0sevr")]
-scale = Vector2(6.9999995, 6.9999995)
-iniciar_con_emocion_neutra = true
+[node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria"]
+position = Vector2(95, 132)
+scale = Vector2(3.4, 3.4)
+sprite_frames = ExtResource("39_emojis")
+animation = &"neutro"
+autoplay = "neutro"
 
 [node name="CuadroMemoria2" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
@@ -207,16 +209,19 @@ grow_vertical = 2
 scale = Vector2(1.105, 1.105)
 mouse_filter = 2
 texture = ExtResource("6_uf5ph")
-stretch_mode = 5
+stretch_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CuadrosContainer/CuadroMemoria2/Estela"]
 libraries = {
 &"": SubResource("AnimationLibrary_vesnk")
 }
 
-[node name="JugadorCinematico" parent="CuadrosContainer/CuadroMemoria2" instance=ExtResource("5_0sevr")]
-scale = Vector2(6.9999995, 6.9999995)
-iniciar_con_emocion_neutra = true
+[node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria2"]
+position = Vector2(95, 132)
+scale = Vector2(3.4, 3.4)
+sprite_frames = ExtResource("39_emojis")
+animation = &"neutro"
+autoplay = "neutro"
 
 [node name="CuadroMemoria3" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
@@ -238,15 +243,19 @@ grow_vertical = 2
 scale = Vector2(1.105, 1.105)
 mouse_filter = 2
 texture = ExtResource("6_uf5ph")
+stretch_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CuadrosContainer/CuadroMemoria3/Estela"]
 libraries = {
 &"": SubResource("AnimationLibrary_vesnk")
 }
 
-[node name="JugadorCinematico" parent="CuadrosContainer/CuadroMemoria3" instance=ExtResource("5_0sevr")]
-scale = Vector2(6.9999995, 6.9999995)
-iniciar_con_emocion_neutra = true
+[node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria3"]
+position = Vector2(95, 132)
+scale = Vector2(3.4, 3.4)
+sprite_frames = ExtResource("39_emojis")
+animation = &"neutro"
+autoplay = "neutro"
 
 [node name="CuadroMemoria4" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
@@ -268,15 +277,19 @@ grow_vertical = 2
 scale = Vector2(1.105, 1.105)
 mouse_filter = 2
 texture = ExtResource("6_uf5ph")
+stretch_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CuadrosContainer/CuadroMemoria4/Estela"]
 libraries = {
 &"": SubResource("AnimationLibrary_vesnk")
 }
 
-[node name="JugadorCinematico" parent="CuadrosContainer/CuadroMemoria4" instance=ExtResource("5_0sevr")]
-scale = Vector2(6.9999995, 6.9999995)
-iniciar_con_emocion_neutra = true
+[node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria4"]
+position = Vector2(95, 132)
+scale = Vector2(3.4, 3.4)
+sprite_frames = ExtResource("39_emojis")
+animation = &"neutro"
+autoplay = "neutro"
 
 [node name="CuadroMemoria5" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
@@ -298,15 +311,19 @@ grow_vertical = 2
 scale = Vector2(1.105, 1.105)
 mouse_filter = 2
 texture = ExtResource("6_uf5ph")
+stretch_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CuadrosContainer/CuadroMemoria5/Estela"]
 libraries = {
 &"": SubResource("AnimationLibrary_vesnk")
 }
 
-[node name="JugadorCinematico" parent="CuadrosContainer/CuadroMemoria5" instance=ExtResource("5_0sevr")]
-scale = Vector2(6.9999995, 6.9999995)
-iniciar_con_emocion_neutra = true
+[node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria5"]
+position = Vector2(95, 132)
+scale = Vector2(3.4, 3.4)
+sprite_frames = ExtResource("39_emojis")
+animation = &"neutro"
+autoplay = "neutro"
 
 [node name="CuadroMemoria6" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
@@ -328,15 +345,19 @@ grow_vertical = 2
 scale = Vector2(1.105, 1.105)
 mouse_filter = 2
 texture = ExtResource("6_uf5ph")
+stretch_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CuadrosContainer/CuadroMemoria6/Estela"]
 libraries = {
 &"": SubResource("AnimationLibrary_vesnk")
 }
 
-[node name="JugadorCinematico" parent="CuadrosContainer/CuadroMemoria6" instance=ExtResource("5_0sevr")]
-scale = Vector2(6.9999995, 6.9999995)
-iniciar_con_emocion_neutra = true
+[node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria6"]
+position = Vector2(95, 132)
+scale = Vector2(3.4, 3.4)
+sprite_frames = ExtResource("39_emojis")
+animation = &"neutro"
+autoplay = "neutro"
 
 [node name="CuadroMemoria7" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
@@ -358,15 +379,19 @@ grow_vertical = 2
 scale = Vector2(1.105, 1.105)
 mouse_filter = 2
 texture = ExtResource("6_uf5ph")
+stretch_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CuadrosContainer/CuadroMemoria7/Estela"]
 libraries = {
 &"": SubResource("AnimationLibrary_vesnk")
 }
 
-[node name="JugadorCinematico" parent="CuadrosContainer/CuadroMemoria7" instance=ExtResource("5_0sevr")]
-scale = Vector2(6.9999995, 6.9999995)
-iniciar_con_emocion_neutra = true
+[node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria7"]
+position = Vector2(95, 132)
+scale = Vector2(3.4, 3.4)
+sprite_frames = ExtResource("39_emojis")
+animation = &"neutro"
+autoplay = "neutro"
 
 [node name="SelectorEmocion" type="Control" parent="."]
 layout_mode = 1

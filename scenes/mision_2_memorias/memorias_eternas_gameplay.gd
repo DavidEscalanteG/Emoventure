@@ -14,13 +14,13 @@ var respuestas_emociones: Array[String] = []
 func _ready() -> void:
 	_respuestas_iniciales()
 	actualizar_contador()
-	
+
 	selector.visible = false
-	
+
 	puerta.visible = true
 	puerta.disabled = true
 	puerta.modulate.a = 0.0
-	
+
 	for cuadro in cuadros_container.get_children():
 		var cuadro_memoria: CuadroMemoria = cuadro as CuadroMemoria
 		if cuadro_memoria == null:
@@ -40,9 +40,9 @@ func _on_cuadro_completado(cuadro: CuadroMemoria, emocion: String) -> void:
 	_guardar_respuesta(cuadro, emocion)
 	Logs.log_debug("[DEBUG] Cuadros completados: %d" % cuadros_completados)
 	Logs.log_debug("[DEBUG] Respuestas misión 2: %s" % str(respuestas_emociones))
-	
+
 	actualizar_contador()
-	
+
 	if cuadros_completados >= TOTAL_CUADROS:
 		_mostrar_puerta()
 
