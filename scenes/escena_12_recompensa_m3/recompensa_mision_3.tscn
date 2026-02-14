@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://g120rogpki5q"]
 
-[ext_resource type="Script" path="res://scenes/escena_12_recompensa_m3/recompensa_mision_3.gd" id="1"]
-[ext_resource type="Texture2D" path="res://pruebas/assets_temporales/llave_temporal.jpg" id="2"]
-[ext_resource type="Texture2D" path="res://assets/assets_escena_payaso/martillo.png" id="3"]
-[ext_resource type="Texture2D" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="4"]
+[ext_resource type="Script" uid="uid://ct1uvjy0gac0u" path="res://scenes/escena_12_recompensa_m3/recompensa_mision_3.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bberwoc2of0kp" path="res://pruebas/assets_temporales/llave_temporal.jpg" id="2"]
+[ext_resource type="Texture2D" uid="uid://bjy1778uwb80f" path="res://assets/assets_escena_payaso/martillo.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="4"]
 
 [node name="RecompensaMision3" type="Control"]
 layout_mode = 3
@@ -13,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
+siguiente_escena = "res://scenes/escena_topos/mapa_topos.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

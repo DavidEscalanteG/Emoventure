@@ -128,6 +128,7 @@ func _construir_texto_perfil_final(puntajes: Dictionary[String, int], total_glob
 
 
 func _on_boton_menu_principal_pressed() -> void:
+	# Cierre completo del ciclo: limpia puntajes y estado temporal antes de volver al menú.
 	GameManager.reiniciar_puntajes()
 	if DatosJugador.has_method("reiniciar_estado_temporal"):
 		DatosJugador.reiniciar_estado_temporal()
