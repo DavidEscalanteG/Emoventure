@@ -14,6 +14,7 @@ Videojuego acerca de la Inteligencia Emocional
 
 ### 2) Verificación de preguntas por misión y cantidad esperada
 
+
 - **Regla base:** cada dimensión mantiene **8 preguntas** en `src/autoload/cuestionarios.gd`, pero Reparación se divide en dos bloques de 4 según misión.
 - **Misión 1 (`numero_mision_cuestionario = 1`)** → dimensión `atencion` → **8/8 preguntas correctas**.
 - **Misión 2 (`numero_mision_cuestionario = 2`)** → dimensión `claridad` → **8/8 preguntas correctas**.
