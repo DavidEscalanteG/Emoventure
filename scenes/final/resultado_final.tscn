@@ -54,6 +54,103 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 12
 
+
+[node name="TarjetaAtencion" type="PanelContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margen" type="MarginContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Titulo" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+
+[node name="Barra" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+show_percentage = false
+
+[node name="Mensaje" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="TarjetaClaridad" type="PanelContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margen" type="MarginContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Titulo" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+
+[node name="Barra" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+show_percentage = false
+
+[node name="Mensaje" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="TarjetaReparacion" type="PanelContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margen" type="MarginContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Titulo" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+
+[node name="Barra" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+show_percentage = false
+
+[node name="Mensaje" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3
+
 [node name="PerfilFinalLabel" type="Label" parent="MarginContainer/VBoxPrincipal"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 34)

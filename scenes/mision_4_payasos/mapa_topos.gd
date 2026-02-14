@@ -23,11 +23,12 @@ var mision_finalizada: bool = false
 var dificultad: float = 1.0
 var velocidad_minima: float = 0.4
 
-var pantalla_resultado: PanelContainer
-var titulo_resultado: Label
-var detalle_resultado: Label
-var boton_principal: Button
-var boton_secundario: Button
+@onready var pantalla_resultado: PanelContainer = %PantallaResultado
+@onready var titulo_resultado: Label = %TituloResultado
+@onready var detalle_resultado: Label = %DetalleResultado
+@onready var boton_principal: Button = %BotonPrincipalResultado
+@onready var boton_secundario: Button = %BotonSecundarioResultado
+@onready var marcador_puntos: Label = %MarcadorPuntos
 
 func _ready() -> void:
 	randomize()
@@ -40,7 +41,8 @@ func _ready() -> void:
 		if topo.has_signal("golpe_recibido"):
 			topo.golpe_recibido.connect(_al_sumar_punto)
 
-	_crear_pantalla_resultado()
+	boton_principal.pressed.connect(_on_boton_principal_presionado)
+	boton_secundario.pressed.connect(_on_boton_secundario_presionado)
 	Input.set_custom_mouse_cursor(cursor_normal)
 	_actualizar_marcador()
 
@@ -62,7 +64,7 @@ func _al_sumar_punto() -> void:
 	_actualizar_marcador()
 
 func _actualizar_marcador() -> void:
-	$CanvasLayer/MarcadorPuntos.text = "Puntos: " + str(puntos)
+	marcador_puntos.text = "Puntos: " + str(puntos)
 	
 func _on_spawn_timer_timeout() -> void:
 	if mision_finalizada or topos_jugables.is_empty():
@@ -123,54 +125,6 @@ func _evaluar_resultado() -> Dictionary:
 		"porcentaje_aciertos": porcentaje_aciertos,
 		"total_aparecidos": total_topos_aparecidos
 	}
-
-func _crear_pantalla_resultado() -> void:
-	pantalla_resultado = PanelContainer.new()
-	pantalla_resultado.visible = false
-	pantalla_resultado.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	pantalla_resultado.custom_minimum_size = Vector2(900, 340)
-	pantalla_resultado.position = Vector2(510, 360)
-
-	var margen: MarginContainer = MarginContainer.new()
-	margen.add_theme_constant_override("margin_left", 28)
-	margen.add_theme_constant_override("margin_top", 28)
-	margen.add_theme_constant_override("margin_right", 28)
-	margen.add_theme_constant_override("margin_bottom", 28)
-	pantalla_resultado.add_child(margen)
-
-	var vbox: VBoxContainer = VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 16)
-	margen.add_child(vbox)
-
-	titulo_resultado = Label.new()
-	titulo_resultado.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	titulo_resultado.add_theme_font_size_override("font_size", 44)
-	vbox.add_child(titulo_resultado)
-
-	detalle_resultado = Label.new()
-	detalle_resultado.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	detalle_resultado.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	detalle_resultado.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	detalle_resultado.custom_minimum_size = Vector2(0, 120)
-	detalle_resultado.add_theme_font_size_override("font_size", 24)
-	vbox.add_child(detalle_resultado)
-
-	var hbox: HBoxContainer = HBoxContainer.new()
-	hbox.alignment = BoxContainer.ALIGNMENT_CENTER
-	hbox.add_theme_constant_override("separation", 20)
-	vbox.add_child(hbox)
-
-	boton_principal = Button.new()
-	boton_principal.pressed.connect(_on_boton_principal_presionado)
-	hbox.add_child(boton_principal)
-
-	boton_secundario = Button.new()
-	boton_secundario.text = "Continuar"
-	boton_secundario.visible = false
-	boton_secundario.pressed.connect(_on_boton_secundario_presionado)
-	hbox.add_child(boton_secundario)
-
-	$CanvasLayer.add_child(pantalla_resultado)
 
 func _mostrar_victoria(resultado: Dictionary) -> void:
 	var porcentaje: float = resultado.porcentaje_aciertos * 100.0
