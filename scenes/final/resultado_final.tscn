@@ -54,7 +54,6 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 12
 
-
 [node name="TarjetaAtencion" type="PanelContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -71,19 +70,20 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Titulo" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
+[node name="TituloAtencion" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 
-[node name="Barra" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
+[node name="BarraAtencion" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 show_percentage = false
 
-[node name="Mensaje" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
+[node name="MensajeAtencion" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 autowrap_mode = 3
 
@@ -103,19 +103,17 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Titulo" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
-unique_name_in_owner = true
+[node name="TituloClaridad" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 
-[node name="Barra" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
-unique_name_in_owner = true
+[node name="BarraClaridad" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 show_percentage = false
 
-[node name="Mensaje" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
-unique_name_in_owner = true
+[node name="MensajeClaridad" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
+custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 autowrap_mode = 3
 
@@ -135,19 +133,17 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Titulo" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
-unique_name_in_owner = true
+[node name="TituloReparacion" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 
-[node name="Barra" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
-unique_name_in_owner = true
+[node name="BarraReparacion" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 show_percentage = false
 
-[node name="Mensaje" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
-unique_name_in_owner = true
+[node name="MensajeReparacion" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
+custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
 autowrap_mode = 3
 
