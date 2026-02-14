@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccyl5upn364ly"]
+[gd_scene load_steps=2 format=3 uid="uid://dv6g10ucalhs1"]
 
-[ext_resource type="Script" uid="uid://qbm06qxpsr73" path="res://scenes/escena_topos/area_2d.gd" id="1_1fv7n"]
+[ext_resource type="Script" uid="uid://qbm06qxpsr73" path="res://scenes/mision_4_payasos/area_2d.gd" id="1_1fv7n"]
 
 [node name="Area2D" type="Node2D"]
 script = ExtResource("1_1fv7n")

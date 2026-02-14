@@ -113,7 +113,7 @@ func _actualizar_color() -> void:
 	DatosJugador.set_color_apariencia(clave_color_global, nuevo_color)
 
 	if apariencia:
-		apariencia._restaurar_colores()
+		apariencia.restaurar_colores()
 
 
 # ==================================================

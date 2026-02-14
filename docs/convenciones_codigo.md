@@ -1,13 +1,24 @@
 # Convenciones de código (GDScript)
 
+## 0) Alcance de estas convenciones
+- **Aplican de forma obligatoria** al código y escenas internas del equipo en:
+  - `src/`
+  - `scenes/`
+  - `jugador/`
+  - `dialogos/`
+- **No aplican como estilo interno** a `addons/dialogue_manager/`, que se considera una **dependencia externa**.
+- No se deben hacer cambios de formato, nombres o tipado dentro de `addons/dialogue_manager/` salvo necesidad técnica excepcional y justificada.
+
 ## 1) Idioma oficial
 - **Idioma oficial:** español técnico en `snake_case`.
-- Se permite **spanglish controlado** solo para términos del glosario permitido (sección 5).
+- Se permite **spanglish controlado** solo para términos del glosario permitido (sección 6).
 - Identificadores nuevos (señales, variables, funciones, constantes, nodos lógicos) deben priorizar términos en español.
+- Esta regla de idioma aplica al alcance interno indicado en la sección 0 (`src/`, `scenes/`, `jugador/`, `dialogos/`).
 
 ## 2) Formato de clases y archivos
 - **Archivos `.gd` y `.tscn`: `snake_case`** (una sola convención para todo el proyecto).
 - `class_name` (si se usa) en `PascalCase` por convención de tipo, pero el archivo sigue en `snake_case`.
+- Esta regla aplica al alcance interno indicado en la sección 0.
 
 ## 3) Nombres por tipo de identificador
 - **Señales:** `snake_case` en español, en pasado o evento claro.
@@ -21,33 +32,42 @@
 - **Constantes:** `MAYUSCULAS_CON_GUIONES_BAJOS`.
   - Ejemplo: `DIALOGO_ESCENA_1`, `SIGUIENTE_ESCENA`.
 
-## 4) Inventario de identificadores y estado de convención
+## 3.1) Tipado
+- En scripts nuevos o editados dentro del alcance interno (`src/`, `scenes/`, `jugador/`, `dialogos/`) se debe usar tipado explícito cuando sea razonable (`: int`, `: String`, `: Node`, etc.).
+- Evitar `Variant` implícito si el tipo es conocido.
+- Si una API externa obliga tipos dinámicos, documentar el motivo en comentario breve.
 
-### Alcance auditado
-- Scripts propios (`**/*.gd`) excluyendo `addons/dialogue_manager/**`.
-- Refactor aplicado en APIs cruzadas de diálogos, actores y apariencia de jugador.
+## 3.2) Prefijos y visibilidad
+- Métodos y helpers privados deben mantener prefijo `_`.
+- No introducir prefijos de estilo heredado ajenos a esta convención para código nuevo.
+- Estas reglas de prefijos aplican al alcance interno de la sección 0.
 
-### Cambios aplicados (antes → ahora)
-- `DialogueActors.register_actor` → `DialogueActors.registrar_actor`
-- `DialogueActors.set_anim` → `DialogueActors.establecer_animacion`
-- `DialogueActors.set_expr` → `DialogueActors.establecer_expresion`
-- `DialogueActors.move_and_wait` → `DialogueActors.mover_y_esperar`
-- `DialogueActors.move_left/right/up/down` → `mover_izquierda/derecha/arriba/abajo`
-- `dialogue_ui.start_dialogue` → `dialogue_ui.iniciar_dialogo`
-- `PlayerAppearance.set_direction` → `PlayerAppearance.establecer_direccion`
-- `PlayerAppearance.set_estado_movimiento` → `PlayerAppearance.establecer_estado_movimiento`
+## 4) Estado real de migración (auditado)
 
-### Identificadores que rompen convención (pendientes o excepciones)
-1. **Callbacks de ciclo de vida y señales de Godot** (excepción técnica):
-   - `_ready`, `_process`, `_physics_process`, `_input`, `_unhandled_input`, `_on_*_pressed`, `_on_*_timeout`, `_on_body_entered`.
-   - Se mantienen por interoperabilidad con el motor y el editor.
-2. **Acciones de input ya configuradas en proyecto** (pendiente controlado):
-   - `move_up`, `move_down`, `move_left`, `move_right` (Input Map).
-   - Se pueden migrar más adelante con una tarea dedicada y validación de escenas.
-3. **Logger global heredado** (pendiente):
-   - `set_debug_logs`, `is_debug_enabled`, `log_debug`.
+### 4.1 Migrado completamente
+- **Entrada a diálogos desde escenas (`dialogue_ui`)**: las escenas activas usan `dialogue_ui.iniciar_dialogo(...)`.
+- **Registro principal de actores en escenas**: las escenas activas usan `DialogueActors.registro_registrar_actor(...)`.
+- **Animación y movimiento en escena/diálogo**: las llamadas activas y comandos `#do/##do` usan API canónica (`animacion_establecer_*`, `movimiento_mover_*`).
+- **Fachada y servicios de `DialogueActors`**: wrappers legacy retirados; se mantiene únicamente API canónica.
 
-## 5) Glosario permitido (spanglish controlado)
+### 4.2 Estado actual
+No hay consumidores legacy detectados en escenas ni en diálogos del proyecto para la migración de `DialogueActors`.
+
+## 5) Estado de migración DialogueActors
+
+Checklist por módulo:
+- [x] **`DialogueActors` (fachada + servicios separados)**: separación por responsabilidades implementada y en uso.
+- [x] **Servicios**: wrappers deprecados retirados; API canónica en uso.
+- [x] **Escenas**: registro de actores, animación y arranque de diálogos alineados a convención vigente.
+- [x] **Diálogos**: comandos `#do/##do` normalizados a API canónica.
+
+**Criterio de finalización (DoD) de esta migración:**
+1. No existan llamadas en escenas/diálogos a wrappers legacy de `DialogueActors`.
+2. Se unifiquen los nombres canónicos de la fachada para registro/animación/movimiento en todo el proyecto.
+3. Se retiren wrappers deprecados en fachada y servicios.
+4. Se valide que las escenas de diálogo siguen funcionando sin regresiones tras el retiro de compatibilidad.
+
+## 6) Glosario permitido (spanglish controlado)
 Solo estos términos en inglés están permitidos en identificadores nuevos:
 - `preview`
 - `ui`
@@ -59,3 +79,13 @@ Solo estos términos en inglés están permitidos en identificadores nuevos:
 - `walk`
 
 Cualquier otro anglicismo debe evitarse o registrarse primero en este glosario.
+
+## 7) Integración con `dialogue_manager` (sin forks directos)
+- Si se requiere adaptar comportamiento del plugin, implementar la adaptación en wrappers/puentes propios bajo `src/ui/dialogos/`.
+- Evitar forks y modificaciones directas de `addons/dialogue_manager/`.
+- Si excepcionalmente se modifica `addons/`, dejar justificación técnica y plan para volver a wrapper propio.
+
+## 8) Mini checklist de PR (cambios en addons)
+- [ ] Verifiqué que **no** hay cambios en `addons/`.
+- [ ] Si hay cambios en `addons/`, están justificados explícitamente en la PR (motivo, alcance, riesgo).
+- [ ] Confirmé que cualquier adaptación de `dialogue_manager` se resolvió en `src/ui/dialogos/` cuando fue posible.

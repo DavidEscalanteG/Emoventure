@@ -137,19 +137,19 @@ func _on_btn_cuerpo_atras_pressed() -> void:
 
 func _on_color_picker_button_cabeza_color_changed(color: Color) -> void:
 	DatosJugador.apariencia.color_cabeza = color
-	apariencia._restaurar_colores()
+	apariencia.restaurar_colores()
 
 func _on_color_picker_button_ojos_color_changed(color: Color) -> void:
 	DatosJugador.apariencia.color_ojos = color
-	apariencia._restaurar_colores()
+	apariencia.restaurar_colores()
 
 func _on_color_picker_button_boca_color_changed(color: Color) -> void:
 	DatosJugador.apariencia.color_boca = color
-	apariencia._restaurar_colores()
+	apariencia.restaurar_colores()
 
 func _on_color_picker_button_cuerpo_color_changed(color: Color) -> void:
 	DatosJugador.apariencia.color_cuerpo = color
-	apariencia._restaurar_colores()
+	apariencia.restaurar_colores()
 
 # --------------------------------------------------
 # BOTÓN FINAL
@@ -157,7 +157,7 @@ func _on_color_picker_button_cuerpo_color_changed(color: Color) -> void:
 
 func _on_comenzar_pressed() -> void:
 	guardar_en_global()
-	get_tree().change_scene_to_file("uid://dlfpd1a8lfh5") #escena_1.tscn
+	get_tree().change_scene_to_file("uid://dlfpd1a8lfh5") #intro_dialogo_1.tscn
 
 
 func _on_mascota_siguiente_pressed() -> void:
@@ -186,7 +186,7 @@ func _actualizar_indice_mascota(delta: int) -> void:
 	DatosJugador.set_indice_mascota(indice)
 	mascota.aplicar_mascota_desde_global()
 
-func _validar_cabello_por_genero():
+func _validar_cabello_por_genero() -> void:
 	if DatosJugador.genero == "":
 		return
 	

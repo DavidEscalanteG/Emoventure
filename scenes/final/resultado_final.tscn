@@ -1,0 +1,162 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5lujjlaxpbod"]
+
+[ext_resource type="Script" uid="uid://hcbxx8gi0uyv" path="res://scenes/final/resultado_final.gd" id="1_u2rfl"]
+
+[node name="ResultadoFinal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u2rfl")
+
+[node name="Fondo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0666667, 0.0862745, 0.14902, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxPrincipal" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Titulo" type="Label" parent="MarginContainer/VBoxPrincipal"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 54
+text = "Resultado final"
+horizontal_alignment = 1
+
+[node name="NarrativaLabel" type="Label" parent="MarginContainer/VBoxPrincipal"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="TarjetasContainer" type="VBoxContainer" parent="MarginContainer/VBoxPrincipal"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="TarjetaAtencion" type="PanelContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margen" type="MarginContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TituloAtencion" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+
+[node name="BarraAtencion" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+show_percentage = false
+
+[node name="MensajeAtencion" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="TarjetaClaridad" type="PanelContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margen" type="MarginContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TituloClaridad" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+
+[node name="BarraClaridad" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+show_percentage = false
+
+[node name="MensajeClaridad" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="TarjetaReparacion" type="PanelContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Margen" type="MarginContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TituloReparacion" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+
+[node name="BarraReparacion" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+show_percentage = false
+
+[node name="MensajeReparacion" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="PerfilFinalLabel" type="Label" parent="MarginContainer/VBoxPrincipal"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BotonMenuPrincipal" type="Button" parent="MarginContainer/VBoxPrincipal"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Volver al menú principal"

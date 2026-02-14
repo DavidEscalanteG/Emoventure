@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://g120rogpki5q"]
+
+[ext_resource type="Script" uid="uid://ct1uvjy0gac0u" path="res://scenes/recompensa_mision_3/recompensa_mision_3.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bberwoc2of0kp" path="res://pruebas/assets_temporales/llave_temporal.jpg" id="2"]
+[ext_resource type="Texture2D" uid="uid://bjy1778uwb80f" path="res://assets/assets_escena_payaso/martillo.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="4"]
+
+[node name="RecompensaMision3" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+siguiente_escena = "res://scenes/mision_4_payasos/mapa_topos.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.33, 0.34, 1)
+
+[node name="Contenido" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -360.0
+offset_right = 420.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Titulo" type="Label" parent="Contenido"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 54
+text = "¡Misión 3 completada!"
+horizontal_alignment = 1
+
+[node name="Subtitulo" type="Label" parent="Contenido"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Has obtenido llave y mazo"
+horizontal_alignment = 1
+
+[node name="Recompensas" type="HBoxContainer" parent="Contenido"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Llave" type="TextureRect" parent="Contenido/Recompensas"]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Mazo" type="TextureRect" parent="Contenido/Recompensas"]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 2
+texture = ExtResource("3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BotonContinuar" type="Button" parent="Contenido"]
+layout_mode = 2
+text = "Continuar"
+icon = ExtResource("4")
+icon_alignment = 1
+
+[connection signal="pressed" from="Contenido/BotonContinuar" to="." method="_on_boton_continuar_pressed"]
