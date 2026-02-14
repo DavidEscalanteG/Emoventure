@@ -24,6 +24,10 @@ var titulo_narrativa_post: String = "Rescate completado"
 var indice: int = 0
 var puntaje_local: int = 0
 
+const FUENTE_PREGUNTA_BASE := 79
+const FUENTE_PREGUNTA_MEDIA := 68
+const FUENTE_PREGUNTA_LARGA := 58
+
 @onready var panel_narrativa_post: PanelContainer = %PanelNarrativaPost
 @onready var label_titulo_narrativa_post: Label = %TituloNarrativaPost
 @onready var label_texto_narrativa_post: Label = %TextoNarrativaPost
@@ -44,7 +48,20 @@ func _ready() -> void:
 # LÓGICA
 # ==================================================
 func mostrar_pregunta() -> void:
-	label_pregunta.text = preguntas[indice]
+	var pregunta_actual := preguntas[indice]
+	label_pregunta.add_theme_font_size_override("normal_font_size", _obtener_tamano_fuente_para_pregunta(pregunta_actual))
+	label_pregunta.text = pregunta_actual
+
+
+func _obtener_tamano_fuente_para_pregunta(pregunta: String) -> int:
+	var longitud := pregunta.length()
+
+	if longitud >= 120:
+		return FUENTE_PREGUNTA_LARGA
+	if longitud >= 90:
+		return FUENTE_PREGUNTA_MEDIA
+
+	return FUENTE_PREGUNTA_BASE
 
 
 func responder(valor: int) -> void:

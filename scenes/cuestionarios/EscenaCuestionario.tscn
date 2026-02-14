@@ -56,9 +56,9 @@ size_flags_horizontal = 4
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1300, 220)
 layout_mode = 2
+size_flags_vertical = 4
 theme = ExtResource("2_3yix8")
 text = "1. Presto mucha atención a los sentimientos"
-fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
