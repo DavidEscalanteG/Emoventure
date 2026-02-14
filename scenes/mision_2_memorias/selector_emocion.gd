@@ -1,30 +1,18 @@
 extends Control
 
-# ==================================================
-# ESTADO
-# ==================================================
-var cuadro_actual: Node = null
+const EMOCION_NEUTRA: String = "neutro"
 
+var cuadro_actual: CuadroMemoria = null
 var emocion_preview: String = ""
 var emocion_seleccionada: String = ""
 var emocion_confirmada: bool = false
+var emoji_seleccionado: TextureButton = null
 
-var emoji_seleccionado: Node = null
-
-
-# ==================================================
-# REFERENCIAS
-# ==================================================
 @onready var visor: TextureRect = $VisorImagen
-@onready var fondo: ColorRect = $FondoOscuro
 @onready var emojis_container: Control = $EmojisContainer
-@onready var jugador_preview: CharacterBody2D = $JugadorPreview
+@onready var emoji_grande: AnimatedSprite2D = $EmojiGrande
 
-
-# ==================================================
-# CONFIG
-# ==================================================
-var colores_emociones: Dictionary = {
+var colores_emociones: Dictionary[String, Color] = {
 	"felicidad": Color("#FFD966"),
 	"tristeza": Color("#6FA8DC"),
 	"enojo": Color("#E06666"),
@@ -35,10 +23,7 @@ var colores_emociones: Dictionary = {
 }
 
 
-# ==================================================
-# MOSTRAR SELECTOR
-# ==================================================
-func mostrar(cuadro: Node) -> void:
+func mostrar(cuadro: CuadroMemoria) -> void:
 	Logs.log_debug("[DEBUG] Mostrar selector")
 
 	cuadro_actual = cuadro
@@ -47,64 +32,52 @@ func mostrar(cuadro: Node) -> void:
 	emocion_confirmada = false
 	emoji_seleccionado = null
 
-	# ---- RESET EMOJIS ----
 	for emoji in emojis_container.get_children():
-		emoji.disabled = false
-		emoji.set_seleccionado(false)
+		var boton_emoji: TextureButton = emoji as TextureButton
+		if boton_emoji == null:
+			continue
+		boton_emoji.disabled = false
+		if boton_emoji.has_method("set_seleccionado"):
+			boton_emoji.call("set_seleccionado", false)
 
 	emojis_container.visible = true
 	emojis_container.modulate.a = 1.0
 	emojis_container.scale = Vector2.ONE
 
-	# ---- MOSTRAR SELECTOR ----
 	visible = true
 	modulate.a = 0.0
-	create_tween().tween_property(self, "modulate:a", 1.0, 0.3)
+	var tween_mostrar: Tween = create_tween()
+	tween_mostrar.tween_property(self, "modulate:a", 1.0, 0.3)
 
-	# ---- JUGADOR PREVIEW ----
-	jugador_preview.set_emocion("ninguna")
-	jugador_preview.scale = Vector2(7,7)
+	emoji_grande.scale = Vector2(8.0, 8.0)
+	emoji_grande.play(EMOCION_NEUTRA)
 
-	# ---- VISOR DE IMAGEN ----
 	visor.texture = cuadro.texture_normal
 	visor.visible = true
 	visor.scale = Vector2(0.7, 0.7)
 	visor.modulate.a = 1.0
 	
-	# ---- ACTIVAR BOTON ----
-	var boton_confirmar := $BotonConfirmar
+	var boton_confirmar: Button = $BotonConfirmar
 	boton_confirmar.disabled = false
 
-	var visor_tween := create_tween()
+	var visor_tween: Tween = create_tween()
 	visor_tween.set_trans(Tween.TRANS_SINE)
 	visor_tween.set_ease(Tween.EASE_OUT)
 	visor_tween.tween_property(visor, "scale", Vector2.ONE, 0.4)
 
 
-# ==================================================
-# PREVIEW (HOVER)
-# ==================================================
-func actualizar_cara(_textura: Texture2D, emocion_id: String) -> void:
+func actualizar_preview_emocion(emocion_id: String) -> void:
 	if emocion_confirmada:
 		return
 
 	if emocion_id == "":
-		if emocion_seleccionada != "":
-			jugador_preview.set_emocion(emocion_seleccionada)
-		else:
-			jugador_preview.set_emocion("ninguna")
-
-		emocion_preview = ""
 		return
 
 	emocion_preview = emocion_id
-	jugador_preview.set_emocion(emocion_id)
+	emoji_grande.play(emocion_id)
 
 
-# ==================================================
-# SELECCIÓN (CLICK EN EMOJI)
-# ==================================================
-func seleccionar_emocion(emocion_id: String, emoji: Node) -> void:
+func seleccionar_emocion(emocion_id: String, emoji: TextureButton) -> void:
 	if emocion_confirmada:
 		return
 
@@ -112,23 +85,24 @@ func seleccionar_emocion(emocion_id: String, emoji: Node) -> void:
 
 	emocion_seleccionada = emocion_id
 	emoji_seleccionado = emoji
+	emoji_grande.play(emocion_id)
 
-	jugador_preview.set_emocion(emocion_id)
+	for emoji_actual in emojis_container.get_children():
+		var boton_emoji: TextureButton = emoji_actual as TextureButton
+		if boton_emoji == null:
+			continue
+		if boton_emoji.has_method("set_seleccionado"):
+			boton_emoji.call("set_seleccionado", false)
 
-	for e in emojis_container.get_children():
-		e.set_seleccionado(false)
-
-	emoji.set_seleccionado(true)
+	if emoji.has_method("set_seleccionado"):
+		emoji.call("set_seleccionado", true)
 
 
-# ==================================================
-# CONFIRMAR
-# ==================================================
 func confirmar_emocion() -> void:
-	
 	if emocion_confirmada:
 		Logs.log_debug("[DEBUG] Confirmar ignorado: ya confirmado")
 		return
+	
 	
 	if emocion_seleccionada == "":
 		Logs.log_debug("[DEBUG] Confirmar ignorado: ninguna emoción seleccionada")
@@ -137,40 +111,32 @@ func confirmar_emocion() -> void:
 	Logs.log_debug("[DEBUG] Emoción CONFIRMADA: %s" % emocion_seleccionada)
 
 	emocion_confirmada = true
+	var color_estela: Color = Color(colores_emociones[emocion_seleccionada])
+	cuadro_actual.marcar_completado(color_estela)
 
-	cuadro_actual.emocion_asignada = emocion_seleccionada
-	cuadro_actual.marcar_completado(colores_emociones[emocion_seleccionada])
-
-	jugador_preview.confirmar_emocion_visual()
 	_ocultar()
 
-# ==================================================
-# CANCELAR (BOTÓN ESC / VOLVER)
-# ==================================================
+
 func cancelar_seleccion() -> void:
 	Logs.log_debug("[DEBUG] Selección cancelada, cerrando sin guardar")
 
-	# Reiniciar estado interno
 	emocion_preview = ""
 	emocion_seleccionada = ""
 	emocion_confirmada = false
 	emoji_seleccionado = null
+	emoji_grande.play(EMOCION_NEUTRA)
 
-	# Volver jugador a estado neutro
-	jugador_preview.set_emocion("ninguna")
+	for emoji in emojis_container.get_children():
+		if emoji.has_method("set_seleccionado"):
+			emoji.call("set_seleccionado", false)
 
-	# Quitar resaltado de emojis
-	for e in emojis_container.get_children():
-		e.set_seleccionado(false)
-
-	# Cerrar selector visualmente
 	_ocultar()
 
 
 func _ocultar() -> void:
-	var t := create_tween()
-	t.tween_property(self, "modulate:a", 0.0, 0.25)
-	t.tween_callback(func():
+	var tween_ocultar: Tween = create_tween()
+	tween_ocultar.tween_property(self, "modulate:a", 0.0, 0.25)
+	tween_ocultar.tween_callback(func() -> void:
 		visor.visible = false
 		hide()
 	)

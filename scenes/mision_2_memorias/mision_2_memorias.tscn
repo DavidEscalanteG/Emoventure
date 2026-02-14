@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dr4vbuueuu56w"]
+[gd_scene load_steps=46 format=3 uid="uid://dr4vbuueuu56w"]
 
 [ext_resource type="Script" uid="uid://diq5t1l7eecp5" path="res://scenes/mision_2_memorias/cuadro_memoria.gd" id="1_p8cra"]
 [ext_resource type="Script" uid="uid://c6atu0ejscdo5" path="res://scenes/mision_2_memorias/memorias_eternas_gameplay.gd" id="1_uus5q"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" uid="uid://bcnfhy88ywwax" path="res://scenes/mision_2_memorias/puerta_cuestionario.gd" id="36_t272c"]
 [ext_resource type="PackedScene" uid="uid://bgjfcq8bkynuh" path="res://scenes/cuestionarios/EscenaCuestionario.tscn" id="37_t272c"]
 [ext_resource type="PackedScene" uid="uid://dghl2jv2pxg6l" path="res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn" id="38_xwnhn"]
+[ext_resource type="SpriteFrames" uid="uid://mlosoquap83h" path="res://assets/assets_memorias_eternas/animacion/animacion_emociones.tres" id="39_emojis"]
 
 [sub_resource type="Animation" id="Animation_uf5ph"]
 length = 0.001
@@ -385,10 +386,13 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.7058824)
 
-[node name="JugadorPreview" parent="SelectorEmocion" instance=ExtResource("5_0sevr")]
+[node name="EmojiGrande" type="AnimatedSprite2D" parent="SelectorEmocion"]
 z_index = 11
 position = Vector2(960, 540)
-iniciar_con_emocion_neutra = true
+scale = Vector2(8, 8)
+sprite_frames = ExtResource("39_emojis")
+animation = &"neutro"
+autoplay = "neutro"
 
 [node name="VisorImagen" type="TextureRect" parent="SelectorEmocion"]
 z_index = 10
