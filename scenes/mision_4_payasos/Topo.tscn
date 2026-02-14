@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhkqfini0qkqf"]
 
-[ext_resource type="Script" uid="uid://ccvcog8q2kj57" path="res://scenes/escena_topos/topo.gd" id="1_16sdh"]
+[ext_resource type="Script" uid="uid://ccvcog8q2kj57" path="res://scenes/mision_4_payasos/topo.gd" id="1_16sdh"]
 [ext_resource type="Texture2D" uid="uid://msbgcv0un5x5" path="res://assets/assets_personaje/pngtree-clown-icon-simple-style-png-image_15810983.png" id="2_usqv1"]
 [ext_resource type="AudioStream" uid="uid://cjyixa1g6r3ce" path="res://audios/efectos/golpe.mp3" id="3_usqv1"]
 

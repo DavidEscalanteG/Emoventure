@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3uru6qnsiiif"
-path="res://.godot/imported/fondo_escena_8.jpg-9d853d2e66e889b2e264dc88ad7417c2.ctex"
+path="res://.godot/imported/fondo_escena_8.jpg-92cdb584faa52bd54e77f98adfd76532.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://scenes/intro_mision_2/fondo_escena_8.jpg"
-dest_files=["res://.godot/imported/fondo_escena_8.jpg-9d853d2e66e889b2e264dc88ad7417c2.ctex"]
+dest_files=["res://.godot/imported/fondo_escena_8.jpg-92cdb584faa52bd54e77f98adfd76532.ctex"]
 
 [params]
 

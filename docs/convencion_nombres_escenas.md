@@ -25,4 +25,5 @@ Usar `snake_case` con prefijo semántico y orden lógico:
 - `escena_11_mision_3` → `mision_3_hachas`
 - `escena_12_recompensa_m3` → `recompensa_mision_3`
 - `escena_13` → `intro_mision_4`
+- `escena_topos` → `mision_4_payasos` 
 - `escena_seleccion_genero` → `intro_seleccion_genero`
