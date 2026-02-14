@@ -1,4 +1,34 @@
 Videojuego acerca de la Inteligencia Emocional
+
+## Actualización aplicada: criterios por género y trazabilidad de cuestionarios
+
+### 1) Criterios de interpretación final (TMMS-24) por género
+
+> Estos criterios deben usarse en la escena de resultados finales (`scenes/final/resultado_final.gd`) según `DatosJugador.genero`.
+
+| Dimensión | Hombre | Mujer |
+|---|---|---|
+| **Atención a los sentimientos** | **Bajo:** ≤21 → Debe mejorar su atención: presta poca atención. **Medio:** 22–32 → Adecuada atención. **Alto:** ≥33 → Debe mejorar su atención: presta demasiada atención. | **Bajo:** ≤24 → Debe mejorar su atención: presta poca atención. **Medio:** 25–35 → Adecuada atención. **Alto:** ≥36 → Debe mejorar su atención: presta demasiada atención. |
+| **Claridad emocional** | **Bajo:** ≤25 → Debe mejorar su claridad emocional. **Medio:** 26–35 → Adecuada claridad emocional. **Alto:** ≥36 → Excelente claridad emocional. | **Bajo:** ≤23 → Debe mejorar su claridad emocional. **Medio:** 24–34 → Adecuada claridad emocional. **Alto:** ≥35 → Excelente claridad emocional. |
+| **Reparación emocional** | **Bajo:** ≤23 → Debe mejorar su reparación de las emociones. **Medio:** 24–35 → Adecuada reparación de las emociones. **Alto:** ≥36 → Excelente reparación de las emociones. | **Bajo:** ≤23 → Debe mejorar su reparación de las emociones. **Medio:** 24–34 → Adecuada reparación de las emociones. **Alto:** ≥35 → Excelente reparación de las emociones. |
+
+### 2) Verificación de preguntas por misión y cantidad esperada
+
+- **Regla base:** cada cuestionario usa **8 preguntas** (escala 1 a 5), tomadas de `src/autoload/cuestionarios.gd`.
+- **Misión 1 (`numero_mision_cuestionario = 1`)** → dimensión `atencion` → **8/8 preguntas correctas**.
+- **Misión 2 (`numero_mision_cuestionario = 2`)** → dimensión `claridad` → **8/8 preguntas correctas**.
+- **Misión 3 (`numero_mision_cuestionario = 3`)** → dimensión configurada `reparacion`, pero **el flujo actual no abre cuestionario** (salta a recompensa).
+- **Misión 4 (`numero_mision_cuestionario = 4`)** → dimensión `reparacion` → **8/8 preguntas correctas**.
+
+### 3) Resumen en una sola tarea (ejecución secuencial)
+
+1. Ajustar interpretación de resultados finales por género en `scenes/final/resultado_final.gd`.
+2. Confirmar mapeo misión→dimensión (`src/autoload/cuestionarios.gd`) y validarlo contra escenas que lanzan cuestionario.
+3. Corregir la trazabilidad de Misión 3 para que aplique su cuestionario de reparación o documentar formalmente su exclusión.
+4. Mantener este documento como referencia de control para QA pedagógico y técnico.
+
+---
+
 Antecedentes
 	En 2015, Cejudo y Latorre analizaron los efectos del videojuego “Spock” sobre la mejora de la inteligencia emocional en adolescentes. La muestra se conformó de 92 adolescentes que cursaban  el segundo grado de Bachillerato, el rango de sus edades fue de 17 a 19 años. En este estudio con diseño cuasi-experimental y un diseño de medidas repetidas pretest-postest con un grupo de control, se empleó el instrumento de Mayer-Salovey-Caruso Emotional Intelligence Test (MSCEIT). 
 	El software se basa en un modelo jerárquico de Mayer y Salovey (1997), el cual implica cuatro capacidades interrelacionadas: percepción emocional, facilitación emocional, comprensión emocional y regulación emocional. El videojuego plantea a los estudiantes situaciones hipotéticas, de orden intrapersonal e interpersonal, y propone cuatro opciones de respuestas por cada cuestión. En cuanto a los resultados, se obtuvo un incremento en la puntuación global de la inteligencia emocional, en la percepción emocional, en la facilitación emocional y en la regulación emocional. Lo anterior evidencia la efectividad del software (Cejudo y Latorre, 2015). 
