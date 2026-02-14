@@ -1,121 +1,80 @@
 # Flujo técnico de escenas — Emoventure
 
-Este documento resume el flujo narrativo-operativo implementado actualmente y valida las transiciones entre escenas con base en el documento de investigación (`docs/investigacion_texto_plano.md`).
+Este documento resume el flujo narrativo-operativo implementado actualmente y valida las transiciones entre escenas a partir de los scripts vigentes.
 
-## 1) Secuencia exacta de escenas (menú → selección → personalización → misiones → cuestionarios → llaves → cierre)
+## 1) Secuencia de escenas implementada (estado actual)
 
 1. **Menú principal**  
-   `res://scenes/menu_principal/menu_principal.tscn`
-
+   `res://scenes/menu_principal/menu_principal.tscn
 2. **Selección de género**  
    `res://scenes/escena_seleccion_genero/seleccion_genero.tscn`
-
 3. **Personalización de avatar**  
    `res://scenes/personalizacion/Personalizacion.tscn`
-
-4. **Intro narrativa (escena 1)**  
+4. **Escena narrativa 1**  
    `res://scenes/escena_1/escena_1.tscn`
-
-5. **Intro narrativa (escena 2)**  
+5. **Escena narrativa 2**  
    `res://scenes/escena_2/escena_2.tscn`
-
-6. **Misión 1 — recolección de emociones (mapa)**  
+6. **Misión 1 — recolección de emociones**  
    `res://scenes/escena_3/mapa_1/escena_3.tscn`
-
-7. **Cuestionario 1 (dimensión: atención)**  
-   `res://scenes/cuestionario/EscenaCuestionario.tscn`
-
-8. **Llave 1 (intermedia)**  
+7. **Cuestionario (misión 1)**  
+   `res://scenes/cuestionarios/EscenaCuestionario.tscn`
+8. **Llave 1**  
    `res://scenes/escena_4_llave/PrimeraLlave.tscn`
-
-9. **Transición narrativa post-misión 1**  
+9. **Escena narrativa 5**  
    `res://scenes/escena_5/escena_5.tscn`
-
-10. **Transición narrativa**  
+10. **Escena narrativa 6**  
 	`res://scenes/escena_6/escena_6.tscn`
-	
-11. **Transición narrativa**  
+11. **Escena narrativa 7**  
 	`res://scenes/escena_7/escena_7.tscn`
-	
 12. **Intro misión 2**  
 	`res://scenes/escena_8/escena_8.tscn`
-	
 13. **Misión 2 — memorias eternas**  
-	`res://scenes/escena_9/escena_9.tscn`
-	
-14. **Cuestionario 2 (dimensión: atención, temporal mientras se parametriza por misión)**  
-	`res://scenes/cuestionario/EscenaCuestionario.tscn`
-	
-15. **Llave 2 (intermedia)**  
+ `res://scenes/escena_9/escena_9.tscn`
+14. **Cuestionario (misión 2)**  
+	`res://scenes/cuestionarios/EscenaCuestionario.tscn`
+15. **Llave 2**  
 	`res://scenes/escena_10_llave/escena_10.tscn`
-	
-16. **Misión 3 — pasillo con hachas intermitentes**  
+16. **Misión 3 — pasillo con hachas**  
 	`res://scenes/escena_11_mision_3/escena_11_mision_3.tscn`
-	
 17. **Recompensa misión 3 (llave + mazo)**  
 	`res://scenes/escena_12_recompensa_m3/recompensa_mision_3.tscn`
-	
-18. **Cierre actual (provisional)**  
+18. **Retorno a menú (temporal)**  
 	`res://scenes/menu_principal/menu_principal.tscn`
 
-> Nota: Se integra la tercera misión descrita en investigación como bloque jugable intermedio y se conserva el cierre provisional en menú mientras se define la fase posterior.
+## 2) Validación de scripts solicitados
 
-## 2) Validación de transiciones en scripts `scenes/escena_*/*.gd`
+### `scenes/escena_11_mision_3/mision_3.gd`
+- Define `escena_recompensa` con destino por defecto `res://scenes/escena_12_recompensa_m3/recompensa_mision_3.tscn`.
+- La salida solo cambia de escena cuando se activaron los 2 checkpoints (`progreso_actual >= 2`) y el jugador entra al área de salida.
 
-### Coincidencias correctas con el flujo narrativo
+### `scenes/escena_12_recompensa_m3/recompensa_mision_3.gd`
+- Define `siguiente_escena` con destino por defecto `res://scenes/menu_principal/menu_principal.tscn`.
+- El botón de continuar ejecuta `change_scene_to_file(siguiente_escena)`.
 
-- `escena_1.gd` → `escena_2.tscn`.
-- `escena_2.gd` → `escena_3.tscn` (Misión 1).
-- `escena_5.gd` → `escena_6.tscn`.
-- `escena_6.gd` → `escena_7.tscn`.
-- `escena_7.gd` → `escena_8.tscn`.
-- `escena_8.gd` → `escena_9.tscn` (Misión 2).
-- `primera_llave.gd` y `segunda_llave.gd` usan `@export var siguiente_escena` para desacoplar transición.
-- `puerta_cuestionario.gd` y `escena_cuestionario.gd` usan `PackedScene` (`escena_siguiente`) para encadenar cuestionario→siguiente escena.
+### `scenes/final/resultado_final.gd`
+- Implementa el **cierre definitivo** en `res://scenes/final/resultado_final.tscn`.
+- El botón final reinicia estado (`GameManager.reiniciar_puntajes()` y, si existe, `DatosJugador.reiniciar_estado_temporal()`) y luego vuelve al menú principal.
 
-### Ajustes realizados para alinear el flujo
+## 3) Cierre de juego: definitivo vs temporal
 
-1. **Cuestionario 1 → Llave 1 (faltaba enlace intermedio)**  
-   Se reasignó `escena_siguiente` de `NivelCompletadoUI.tscn` para que apunte a `PrimeraLlave.tscn` (antes iba directo a `escena_5.tscn`).
+- **Cierre definitivo existente:** `res://scenes/final/resultado_final.tscn` (script `resultado_final.gd`).
+- **Cierre actualmente conectado tras misión 3:** retorno directo a menú desde `recompensa_mision_3.gd`.
 
-2. 2. **Llave 2 → Misión 3 (actualización de encadenado)**  
-   Se actualizó `siguiente_escena` en `escena_10.tscn` para enlazar con `escena_11_mision_3.tscn`.
+En consecuencia, el “cierre provisional” se reemplaza en este documento por dos estados explícitos:
+1. **Cierre definitivo disponible en código** (escena final).
+2. **Retorno temporal activo en el flujo de misión 3** (menú principal).
 
-3. **Misión 3 → Recompensa → Cierre**  
-   La misión de pasillo transiciona a `recompensa_mision_3.tscn`, y esta escena entrega llave + mazo antes de volver al menú provisional.
+## 4) Flujo validado en código
 
-## 3) Variables export de transición completadas en `.tscn`
+| Origen | Disparador | Destino | Evidencia en código |
+|---|---|---|---|
+| `escena_11_mision_3.tscn` | Jugador llega a salida con 2 checkpoints | `recompensa_mision_3.tscn` | `mision_3.gd` (`escena_recompensa`, `_on_salida_body_entered`) |
+| `recompensa_mision_3.tscn` | Botón continuar | `menu_principal.tscn` | `recompensa_mision_3.gd` (`siguiente_escena`, `_on_boton_continuar_pressed`) |
+| `mapa_topos.tscn` (misión 4) | Victoria + completar cuestionario | `resultado_final.tscn` | `mapa_topos.tscn` (`escena_cierre`) + `mapa_topos.gd` (`_iniciar_cuestionario`, `cuestionario.escena_siguiente = escena_cierre`) |
+| `resultado_final.tscn` | Botón “Volver al menú principal” | `menu_principal.tscn` | `resultado_final.gd` (`_on_boton_menu_principal_pressed`) |
 
-- `assets/assets_escena_3/UI/NivelCompletadoUI.tscn`  
-  `escena_siguiente = ExtResource("3_6w4pf")` ahora referencia `res://scenes/escena_4_llave/PrimeraLlave.tscn`.
+## 5) Nota de compatibilidad y criterio de retiro
 
-- `scenes/escena_10_llave/escena_10.tscn`  
-  `siguiente_escena` ahora apunta a `res://scenes/escena_11_mision_3/escena_11_mision_3.tscn`.
-
-- `scenes/escena_11_mision_3/escena_11_mision_3.tscn`  
-  Nueva misión 3 con salida a `res://scenes/escena_12_recompensa_m3/recompensa_mision_3.tscn`.
-
-- `scenes/escena_12_recompensa_m3/recompensa_mision_3.tscn`  
-  Nueva recompensa final con transición al cierre provisional (`menu_principal.tscn`).
-
-## 4) Diagrama de estados (mantenible)
-
-| Escena actual | Condición de salida | Siguiente escena |
-|---|---|---|
-| `menu_principal.tscn` | Click en botón comenzar | `escena_seleccion_genero.tscn` |
-| `escena_seleccion_genero.tscn` | Elegir hombre/mujer | `Personalizacion.tscn` |
-| `Personalizacion.tscn` | Confirmar avatar (botón comenzar) | `escena_1.tscn` |
-| `escena_1.tscn` | Fin de diálogo | `escena_2.tscn` |
-| `escena_2.tscn` | Fin de diálogo | `escena_3.tscn` |
-| `escena_3.tscn` | Recolectar emociones y continuar | `EscenaCuestionario.tscn` |
-| `EscenaCuestionario.tscn` (M1) | Responder todas las preguntas | `PrimeraLlave.tscn` |
-| `PrimeraLlave.tscn` | Botón continuar | `escena_5.tscn` |
-| `escena_5.tscn` | Fin de diálogo | `escena_6.tscn` |
-| `escena_6.tscn` | Fin de diálogo | `escena_7.tscn` |
-| `escena_7.tscn` | Fin de diálogo | `escena_8.tscn` |
-| `escena_8.tscn` | Fin de diálogo | `escena_9.tscn` |
-| `escena_9.tscn` | Completar 7 recuerdos y entrar por puerta | `EscenaCuestionario.tscn` |
-| `EscenaCuestionario.tscn` (M2) | Responder todas las preguntas | `escena_10.tscn` |
-| `escena_10.tscn` | Botón continuar | `escena_11_mision_3.tscn` |
-| `escena_11_mision_3.tscn` | Activar 2 checkpoints, evitar hachas y llegar a salida | `recompensa_mision_3.tscn` |
-| `recompensa_mision_3.tscn` | Botón continuar | `menu_principal.tscn` (cierre provisional) |
+- **Transición temporal activa:** `recompensa_mision_3.tscn` → `menu_principal.tscn`.
+- **Motivo de compatibilidad:** mantiene jugable el cierre de la rama de misión 3 sin obligar a pasar por misión 4.
+- **Criterio de retiro:** eliminar esta transición cuando la salida de misión 3 se conecte formalmente a la secuencia final del producto (por ejemplo, encadenar a misión 4 o al `resultado_final.tscn` según diseño definitivo) y se valide QA de regresión de flujo completo.

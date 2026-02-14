@@ -391,12 +391,9 @@ Carlos ha finalizado sus misiones y el juego llega a su fin.
 
 Referencias
 Bolaños, E. (2021). Desarrollo de la Inteligencia Emocional en el Preescolar a partir de los
-            Videojuegos Educativos [Tesis de maestría]. Universidad de Cartagena. https://repositorio.unicartagena.edu.co/server/api/core/bitstreams/d535b3ae-a4ce-4261-aeed-5a4f95deb347/content
+			Videojuegos Educativos [Tesis de maestría]. Universidad de Cartagena. https://repositorio.unicartagena.edu.co/server/api/core/bitstreams/d535b3ae-a4ce-4261-aeed-5a4f95deb347/content
 Cabello, E., Pérez-Escoda, N., Filella, G., Vendrell, C. y Cabases, M. (2016). Diseño, implementación y evaluación del videojuego Happy 8-12 para la resolución asertiva de los conflictos en el Ciclo Superior de la Educación Primaria. In Inteligencia Emocional y Bienestar II: reflexiones, experiencias profesionales e investigaciones (pp. 438-444). Ediciones Universidad San Jorge. https://dialnet.unirioja.es/servlet/articulo?codigo=5572677
 Cejudo, J. y Latorre, S. (2015). Efectos del videojuego Spock sobre la mejora de la inteligencia emocional en adolescentes. Electronic journal of research in educational psychology, 13 (2), 319-342. https://www.redalyc.org/pdf/2931/293141133006.pdf
 Corsi, D. y Revuelta, F. (2016). Identificación de las competencias emocionales desarrolladas al programar videojuegos en la Educación Superior. In De la Idea a la Pantalla: Compendio de investigaciones sobre juegos serios (pp. 333-341). Universidad de Vigo. https://dialnet.unirioja.es/servlet/articulo?codigo=8878118
 González, J. y Guerrero, J. (2021). cómoToy: las emociones en juego. Revista de la Asociación Interacción Persona Ordenador (AIPO), 2 (1), 38-47. https://revista.aipo.es/index.php/INTERACCION/article/view/34/45
 Rueda, P., Filella, G. y Cortés, A. (2015). Diseño, implementación y evaluación del videojuego Happy 12-16 para la mejora de la regulación emocional y la resolución asertiva de los conflictos en la adolescencia. In Congreso Internacional de Inteligencia Emocional y Bienestar (Vol. 2, pp. 765-771). https://www.ub.edu/grop/wp-content/uploads/2014/03/Videojuego-Happy-12-16.pdf
-
-
-
