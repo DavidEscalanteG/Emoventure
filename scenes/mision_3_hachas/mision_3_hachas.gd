@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var escena_cuestionario: PackedScene = preload("res://scenes/cuestionarios/EscenaCuestionario.tscn")
+@export var numero_mision_cuestionario: int = 3
 @export var escena_recompensa: String = "res://scenes/recompensa_mision_3/recompensa_mision_3.tscn"
 @export var escena_recompensa_legacy: String = ""
 @export var golpes_maximos: int = 2
@@ -75,11 +77,37 @@ func _on_salida_body_entered(body: Node) -> void:
 	_bloqueada = true
 	jugador.bloquear_movimiento()
 	await get_tree().create_timer(0.35).timeout
+
+	if escena_cuestionario == null:
+		push_error("No se asignó escena_cuestionario en misión 3")
+		return
+
+	if not Cuestionarios.validar_mision(numero_mision_cuestionario):
+		return
+
 	var destino := escena_recompensa if not escena_recompensa.is_empty() else escena_recompensa_legacy
 	if destino.is_empty():
 		push_warning("No se configuró la escena de recompensa de misión 3")
 		return
-	get_tree().change_scene_to_file(destino)
+
+	var recompensa: PackedScene = load(destino) as PackedScene
+	if recompensa == null:
+		push_error("No se pudo cargar la escena de recompensa de misión 3: %s" % destino)
+		return
+
+	var cuestionario: EscenaCuestionario = escena_cuestionario.instantiate()
+	var dimension: String = Cuestionarios.obtener_dimension_para_mision(numero_mision_cuestionario)
+	cuestionario.preguntas = Cuestionarios.obtener_preguntas_para_mision(numero_mision_cuestionario)
+	cuestionario.dimension = dimension
+	cuestionario.escena_siguiente = recompensa
+
+	var root: Window = get_tree().root
+	var escena_actual: Node = get_tree().current_scene
+	if escena_actual:
+		escena_actual.queue_free()
+
+	root.add_child(cuestionario)
+	get_tree().current_scene = cuestionario
 
 
 func _mostrar_flash_danio() -> void:

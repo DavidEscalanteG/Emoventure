@@ -100,7 +100,7 @@ func _continuar() -> void:
 	var dimension: String = Cuestionarios.obtener_dimension_para_mision(numero_mision_cuestionario)
 
 	# Inyectar datos
-	cuestionario.preguntas = Cuestionarios.obtener_preguntas_para_dimension(dimension)
+	cuestionario.preguntas = Cuestionarios.obtener_preguntas_para_mision(numero_mision_cuestionario)
 	cuestionario.dimension = dimension
 	cuestionario.escena_siguiente = escena_siguiente
  

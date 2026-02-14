@@ -36,18 +36,20 @@ Este documento resume el flujo narrativo-operativo implementado actualmente y va
 	`res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn`
 16. **Misión 3 — pasillo con hachas**  
 	`res://scenes/mision_3_hachas/mision_3_hachas.tscn`
-17. **Recompensa misión 3 (llave + mazo)**  
+17. **Cuestionario (misión 3, reparación ítems 1–4)**  
+	`res://scenes/cuestionarios/EscenaCuestionario.tscn`
+18. **Recompensa misión 3 (llave + mazo)**  
 	`res://scenes/recompensa_mision_3/recompensa_mision_3.tscn`
-18. **Misión 4 — topos (rescate final)**
+19. **Misión 4 — topos (rescate final)**
 	`res://scenes/mision_4_payasos/mapa_topos.tscn`
-19. **Resultado final**
+20. **Resultado final**
 	`res://scenes/final/resultado_final.tscn`
 
 ## 2) Validación de scripts solicitados
 
 ### `scenes/mision_3_hachas/mision_3_hachas.gd`
-- Define `escena_recompensa` con destino por defecto `res://scenes/recompensa_mision_3/recompensa_mision_3.tscn`.
-- La salida solo cambia de escena cuando se activaron los 2 checkpoints (`progreso_actual >= 2`) y el jugador entra al área de salida.
+- Define `escena_cuestionario` y `numero_mision_cuestionario = 3` para inyectar el bloque de reparación (ítems 1–4).
+- Tras activar 2 checkpoints y llegar a salida, instancia `EscenaCuestionario` y define como `escena_siguiente` la recompensa de misión 3.
 
 ### `scenes/recompensa_mision_3/recompensa_mision_3.gd`
 - Define `siguiente_escena` con destino por defecto `res://scenes/mision_4_payasos/mapa_topos.tscn`.
@@ -59,7 +61,7 @@ Este documento resume el flujo narrativo-operativo implementado actualmente y va
 
 ## 3) Cierre de juego y encadenamiento actual
 
-- **Flujo activo tras misión 3:** recompensa de misión 3 → misión 4 (topos).
+- **Flujo activo tras misión 3:** cuestionario de reparación (ítems 1–4) → recompensa de misión 3 → misión 4 (topos).
 - **Cierre definitivo:** `res://scenes/final/resultado_final.tscn` (script `resultado_final.gd`).
 
 En el estado actual, la rama principal ya encadena a resultado final pasando por misión 4 y cuestionario correspondiente.
@@ -68,8 +70,9 @@ En el estado actual, la rama principal ya encadena a resultado final pasando por
 
 | Origen | Disparador | Destino | Evidencia en código |
 |---|---|---|---|
-| `mision_3_hachas.tscn` | Jugador llega a salida con 2 checkpoints | `recompensa_mision_3.tscn` | `mision_3_hachas.gd` (`escena_recompensa`, `_on_salida_body_entered`) |
-| `recompensa_mision_3.tscn` | Botón continuar | `menu_principal.tscn` | `recompensa_mision_3.gd` (`siguiente_escena`, `_on_boton_continuar_pressed`) |
+| `mision_3_hachas.tscn` | Jugador llega a salida con 2 checkpoints | `EscenaCuestionario.tscn` (misión 3) | `mision_3_hachas.gd` (`escena_cuestionario`, `_on_salida_body_entered`) |
+| `EscenaCuestionario.tscn` (misión 3) | Responder 4 preguntas de reparación (ítems 1–4) | `recompensa_mision_3.tscn` | `escena_cuestionario.gd` + `mision_3_hachas.gd` (`escena_siguiente`) |
+| `recompensa_mision_3.tscn` | Botón continuar | `mapa_topos.tscn` | `recompensa_mision_3.gd` (`siguiente_escena`, `_on_boton_continuar_pressed`) |
 | `mapa_topos.tscn` (misión 4) | Victoria + completar cuestionario | `resultado_final.tscn` | `mapa_topos.tscn` (`escena_cierre`) + `mapa_topos.gd` (`_iniciar_cuestionario`, `cuestionario.escena_siguiente = escena_cierre`) |
 | `resultado_final.tscn` | Botón “Volver al menú principal” | `menu_principal.tscn` | `resultado_final.gd` (`_on_boton_menu_principal_pressed`) |
 

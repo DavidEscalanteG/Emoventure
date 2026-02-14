@@ -13,10 +13,11 @@
 | `mision_2_memorias.tscn` | Puerta habilitada al completar memorias | `EscenaCuestionario.tscn` | `scenes/mision_2_memorias/puerta_cuestionario.gd`, `scenes/mision_2_memorias/memorias_eternas_gameplay.gd` |
 | `EscenaCuestionario.tscn` (misión 2) | Responder preguntas + botón continuar narrativa | `transicion_post_mision_2.tscn` | `scenes/cuestionarios/escena_cuestionario.gd`, `scenes/transicion_post_mision_2/segunda_llave.gd` |
 | `transicion_post_mision_2.tscn` | Botón continuar (llave) | `mision_3_hachas.tscn` | `scenes/transicion_post_mision_2/segunda_llave.gd` |
-| `mision_3_hachas.tscn` | Salida + 2 checkpoints | `recompensa_mision_3.tscn` | `scenes/mision_3_hachas/mision_3_hachas.gd` |
+| `mision_3_hachas.tscn` | Salida + 2 checkpoints | `EscenaCuestionario.tscn` | `scenes/mision_3_hachas/mision_3_hachas.gd` |
+| `EscenaCuestionario.tscn` (misión 3) | Responder 4 preguntas de reparación (ítems 1–4) | `recompensa_mision_3.tscn` | `scenes/cuestionarios/escena_cuestionario.gd`, `scenes/mision_3_hachas/mision_3_hachas.gd` |
 | `recompensa_mision_3.tscn` | Botón **Continuar** (recompensa misión 3) | `mapa_topos.tscn` | `scenes/recompensa_mision_3/recompensa_mision_3.gd`, `scenes/recompensa_mision_3/recompensa_mision_3.tscn` |
 | `mapa_topos.tscn` | Fin de partida (victoria) + botón **Ir al cuestionario** | `EscenaCuestionario.tscn` | `scenes/mision_4_payasos/mapa_topos.gd` |
-| `EscenaCuestionario.tscn` (misión 4) | Responder preguntas + botón continuar narrativa | `resultado_final.tscn` | `scenes/cuestionarios/escena_cuestionario.gd`, `scenes/mision_4_payasos/mapa_topos.tscn` |
+| `EscenaCuestionario.tscn` (misión 4) | Responder 4 preguntas de reparación (ítems 5–8) + botón continuar narrativa | `resultado_final.tscn` | `scenes/cuestionarios/escena_cuestionario.gd`, `scenes/mision_4_payasos/mapa_topos.tscn` |
 | `resultado_final.tscn` | Botón **Volver al menú principal** | `menu_principal.tscn` | `scenes/final/resultado_final.gd` |
 
 ## Checklist manual de validación (menú → cierre)

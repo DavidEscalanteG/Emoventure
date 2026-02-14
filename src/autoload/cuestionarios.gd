@@ -44,6 +44,11 @@ const DIMENSION_POR_MISION: Dictionary[int, String] = {
 	4: DIMENSION_REPARACION
 }
 
+const RANGO_PREGUNTAS_POR_MISION: Dictionary[int, Vector2i] = {
+	3: Vector2i(0, 3),
+	4: Vector2i(4, 7)
+}
+
 func obtener_dimension_para_mision(numero_mision: int) -> String:
 	return DIMENSION_POR_MISION.get(numero_mision, "")
 
@@ -58,7 +63,24 @@ func obtener_preguntas_para_dimension(dimension: String) -> Array[String]:
 
 func obtener_preguntas_para_mision(numero_mision: int) -> Array[String]:
 	var dimension: String = obtener_dimension_para_mision(numero_mision)
-	return obtener_preguntas_para_dimension(dimension)
+	var preguntas: Array[String] = obtener_preguntas_para_dimension(dimension)
+	if preguntas.is_empty():
+		return []
+
+	if not RANGO_PREGUNTAS_POR_MISION.has(numero_mision):
+		return preguntas
+
+	var rango: Vector2i = RANGO_PREGUNTAS_POR_MISION[numero_mision]
+	var indice_inicio: int = maxi(0, rango.x)
+	var indice_fin: int = mini(rango.y, preguntas.size() - 1)
+	if indice_inicio > indice_fin:
+		push_error("[Cuestionarios] Rango inválido para misión %d: %s" % [numero_mision, rango])
+		return []
+
+	var subset: Array[String] = []
+	for i in range(indice_inicio, indice_fin + 1):
+		subset.append(preguntas[i])
+	return subset
 
 
 func es_dimension_soportada(dimension: String) -> bool:

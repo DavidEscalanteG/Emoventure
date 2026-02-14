@@ -8,8 +8,8 @@ Esta matriz conecta cada misión jugable con su objetivo pedagógico, la mecáni
 |---|---|---|---|---|---|
 | **Misión 1: Recolección de emociones (mapa)** | Identificar emociones básicas en contexto y reconocer señales emocionales del entorno. | Recolección de emociones + evitación de enemigos; la misión finaliza cuando se completa el set de emociones y se abre la UI de cierre para continuar a cuestionario. | **Atención** (misión 1 → `atencion`). | Se aplican las 8 preguntas de **Atención** definidas en `Cuestionarios.PREGUNTAS_POR_DIMENSION["atencion"]`. | `scenes/escena_3/mapa_1/mision_1_recoleccion.gd`, `assets/assets_escena_3/UI/NivelCompletadoUI.tscn`, `src/ui/nivel_completado_ui.gd`, `src/autoload/cuestionarios.gd`, `scenes/cuestionarios/escena_cuestionario.gd`. |
 | **Misión 2: Memorias eternas** | Favorecer la diferenciación y etiquetado de emociones al asociar recuerdos con una emoción elegida conscientemente. | Selección/confirmación de emoción en 7 cuadros de memoria; al completar todos los cuadros se habilita puerta de cuestionario. | **Claridad** (misión 2 → `claridad`). | Se aplican las 8 preguntas de **Claridad** definidas en `Cuestionarios.PREGUNTAS_POR_DIMENSION["claridad"]`. | `scenes/escena_9/memorias_eternas_gameplay.gd`, `scenes/escena_9/selector_emocion.gd`, `scenes/escena_9/puerta_cuestionario.gd`, `scenes/escena_9/mision_2_memorias.tscn`, `src/autoload/cuestionarios.gd`, `scenes/cuestionarios/escena_cuestionario.gd`. |
-| **Misión 3: Pasillo con hachas** | Entrenar autorregulación bajo presión (persistencia, control conductual y recuperación tras error). | Navegación con obstáculos intermitentes (hachas), control de golpes/vidas, checkpoints y salida condicionada por progreso. | **Reparación** (misión 3 → `reparacion`, configurada). | **Configuradas pero no aplicadas en el flujo actual**: 8 preguntas de **Reparación** existen en `Cuestionarios`, pero la escena actual transiciona a recompensa sin instanciar cuestionario. | `scenes/mision_3_hachas/mision_3_hachas.gd`, `scenes/mision_3_hachas/mision_3_hachas.tscn`, `scenes/recompensa_mision_3/recompensa_mision_3.gd`, `src/autoload/cuestionarios.gd`. |
-| **Misión 4: Topos (rescate de mascota)** | Fortalecer el foco atencional y la regulación durante actividad de precisión/tiempo limitado, con retroalimentación de desempeño. | Minijuego tipo whack-a-mole con dificultad dinámica, umbrales de victoria/derrota y entrada a cuestionario tras victoria. | **Reparación** (misión 4 → `reparacion`). | Se aplican las 8 preguntas de **Reparación** definidas en `Cuestionarios.PREGUNTAS_POR_DIMENSION["reparacion"]`. | `scenes/mision_4_payasos/mapa_topos.gd`, `scenes/mision_4_payasos/mapa_topos.tscn`, `src/autoload/cuestionarios.gd`, `scenes/cuestionarios/escena_cuestionario.gd`. |
+| **Misión 3: Pasillo con hachas** | Entrenar autorregulación bajo presión (persistencia, control conductual y recuperación tras error). | Navegación con obstáculos intermitentes (hachas), control de golpes/vidas, checkpoints y salida condicionada por progreso. | **Reparación** (misión 3 → `reparacion`, configurada). | Se aplican **4 preguntas de Reparación (ítems 1–4)** al finalizar misión 3. | `scenes/mision_3_hachas/mision_3_hachas.gd`, `scenes/mision_3_hachas/mision_3_hachas.tscn`, `scenes/recompensa_mision_3/recompensa_mision_3.gd`, `src/autoload/cuestionarios.gd`. |
+| **Misión 4: Topos (rescate de mascota)** | Fortalecer el foco atencional y la regulación durante actividad de precisión/tiempo limitado, con retroalimentación de desempeño. | Minijuego tipo whack-a-mole con dificultad dinámica, umbrales de victoria/derrota y entrada a cuestionario tras victoria. | **Reparación** (misión 4 → `reparacion`). | Se aplican **4 preguntas de Reparación (ítems 5–8)** al finalizar misión 4. | `scenes/mision_4_payasos/mapa_topos.gd`, `scenes/mision_4_payasos/mapa_topos.tscn`, `src/autoload/cuestionarios.gd`, `scenes/cuestionarios/escena_cuestionario.gd`. |
 
 ---
 
@@ -58,7 +58,7 @@ Estas métricas son el mínimo recomendado para considerar una misión/ciclo com
    - Fuente actual: `DatosJugador.emociones_recolectadas` + señal `todas_las_emociones_recolectadas`.
 
 2. **Respuestas por dimensión**
-   - Métrica: cantidad de respuestas registradas en el cuestionario por dimensión (esperado: 8 por cuestionario completo).
+   - Métrica: cantidad de respuestas registradas en el cuestionario por dimensión (esperado: 8 en atención/claridad; 4 por bloque en reparación para misiones 3 y 4).
    - Fuente actual: arreglo `preguntas` y avance `indice` en `EscenaCuestionario`.
 
 3. **Puntaje por dimensión**
@@ -101,7 +101,7 @@ Estas métricas son el mínimo recomendado para considerar una misión/ciclo com
 - [ ] Se valida flujo completo misión → cuestionario → siguiente escena.
 
 ### Deuda técnica / gaps actuales detectados
-- [ ] Resolver trazabilidad de **Misión 3 (hachas)** para que aplique su cuestionario configurado (`mision=3`, `reparacion`) o documentar su exclusión formal.
+- [x] Misión 3 aplica cuestionario de reparación parcial (`mision=3`, ítems 1–4) y Misión 4 completa el bloque (`mision=4`, ítems 5–8).
 - [ ] Unificar el flujo de misiones activas (rama narrativa principal vs misión de topos) en un único mapa de producto.
 
 ---

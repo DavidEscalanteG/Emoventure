@@ -8,32 +8,66 @@ const NOMBRES_DIMENSION: Dictionary[String, String] = {
 	"reparacion": "Reparación emocional"
 }
 
-const UMBRALES_MENSAJES: Dictionary[String, Dictionary] = {
-	"atencion": {
-		"bajo_max": 16,
-		"medio_max": 28,
-		"mensajes": {
-			"bajo": "Empiezas a notar tus emociones, pero aún necesitas escucharte con más constancia.",
-			"medio": "Prestas atención a lo que sientes y ya reconoces señales importantes en tu mundo emocional.",
-			"alto": "Tu atención emocional está muy despierta: detectas con claridad lo que ocurre en tu interior."
+const GENERO_HOMBRE: String = "hombre"
+const GENERO_MUJER: String = "mujer"
+
+const UMBRALES_MENSAJES_POR_GENERO: Dictionary[String, Dictionary] = {
+	GENERO_HOMBRE: {
+		"atencion": {
+			"bajo_max": 21,
+			"medio_max": 32,
+			"mensajes": {
+				"bajo": "Debe mejorar su atención: presta poca atención.",
+				"medio": "Adecuada atención.",
+				"alto": "Debe mejorar su atención: presta demasiada atención."
+			}
+		},
+		"claridad": {
+			"bajo_max": 25,
+			"medio_max": 35,
+			"mensajes": {
+				"bajo": "Debe mejorar su claridad emocional.",
+				"medio": "Adecuada claridad emocional.",
+				"alto": "Excelente claridad emocional."
+			}
+		},
+		"reparacion": {
+			"bajo_max": 23,
+			"medio_max": 35,
+			"mensajes": {
+				"bajo": "Debe mejorar su reparación de las emociones.",
+				"medio": "Adecuada reparación de las emociones.",
+				"alto": "Excelente reparación de las emociones."
+			}
 		}
 	},
-	"claridad": {
-		"bajo_max": 16,
-		"medio_max": 28,
-		"mensajes": {
-			"bajo": "Tus emociones aparecen mezcladas: ponerles nombre será tu siguiente gran avance.",
-			"medio": "Vas entendiendo mejor lo que sientes; cada paso te da más dirección.",
-			"alto": "Comprendes tus emociones con nitidez y eso te permite decidir con más seguridad."
-		}
-	},
-	"reparacion": {
-		"bajo_max": 16,
-		"medio_max": 28,
-		"mensajes": {
-			"bajo": "Cuando llegan momentos difíciles, aún te cuesta recuperar el equilibrio emocional.",
-			"medio": "Ya estás desarrollando recursos para levantarte y transformar emociones difíciles.",
-			"alto": "Tienes una gran capacidad de reparación: sabes volver a tu centro emocional con fortaleza."
+	GENERO_MUJER: {
+		"atencion": {
+			"bajo_max": 24,
+			"medio_max": 35,
+			"mensajes": {
+				"bajo": "Debe mejorar su atención: presta poca atención.",
+				"medio": "Adecuada atención.",
+				"alto": "Debe mejorar su atención: presta demasiada atención."
+			}
+		},
+		"claridad": {
+			"bajo_max": 23,
+			"medio_max": 34,
+			"mensajes": {
+				"bajo": "Debe mejorar su claridad emocional.",
+				"medio": "Adecuada claridad emocional.",
+				"alto": "Excelente claridad emocional."
+			}
+		},
+		"reparacion": {
+			"bajo_max": 23,
+			"medio_max": 34,
+			"mensajes": {
+				"bajo": "Debe mejorar su reparación de las emociones.",
+				"medio": "Adecuada reparación de las emociones.",
+				"alto": "Excelente reparación de las emociones."
+			}
 		}
 	}
 }
@@ -84,7 +118,8 @@ func _actualizar_tarjeta_dimension(dimension: String, puntaje: int, titulo: Labe
 
 
 func _obtener_mensaje_dimension(dimension: String, puntaje: int) -> String:
-	var config: Dictionary = UMBRALES_MENSAJES.get(dimension, {})
+	var umbrales_genero: Dictionary = _obtener_umbrales_genero()
+	var config: Dictionary = umbrales_genero.get(dimension, {})
 	if config.is_empty():
 		return "Sin configuración de mensaje para esta dimensión."
 
@@ -94,6 +129,13 @@ func _obtener_mensaje_dimension(dimension: String, puntaje: int) -> String:
 	if puntaje <= int(config.get("medio_max", 28)):
 		return mensajes.get("medio", "")
 	return mensajes.get("alto", "")
+
+
+func _obtener_umbrales_genero() -> Dictionary:
+	var genero: String = str(DatosJugador.genero).to_lower().strip_edges()
+	if not UMBRALES_MENSAJES_POR_GENERO.has(genero):
+		genero = GENERO_HOMBRE
+	return UMBRALES_MENSAJES_POR_GENERO.get(genero, {})
 
 
 func _construir_texto_perfil_final(puntajes: Dictionary[String, int], total_global: int) -> String:
