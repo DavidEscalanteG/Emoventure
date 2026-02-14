@@ -176,7 +176,7 @@ func _iniciar_cuestionario() -> void:
 	var cuestionario: EscenaCuestionario = escena_cuestionario.instantiate()
 	var dimension: String = Cuestionarios.obtener_dimension_para_mision(numero_mision_cuestionario)
 
-	cuestionario.preguntas = Cuestionarios.obtener_preguntas_para_dimension(dimension)
+	cuestionario.preguntas = Cuestionarios.obtener_preguntas_para_mision(numero_mision_cuestionario)
 	cuestionario.dimension = dimension
 	cuestionario.escena_siguiente = escena_cierre
 	cuestionario.narrativa_post_cuestionario = narrativa_posterior_rescate
