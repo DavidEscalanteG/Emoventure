@@ -99,19 +99,23 @@ texture = ExtResource("5")
 
 [node name="Hacha1" parent="." instance=ExtResource("3")]
 position = Vector2(420, 530)
+scale = Vector2(4.45, 4.45)
 
 [node name="Hacha2" parent="." instance=ExtResource("3")]
 position = Vector2(760, 520)
+scale = Vector2(4.45, 4.45)
 tiempo_activo = 0.8
 tiempo_inactivo = 0.75
 
 [node name="Hacha3" parent="." instance=ExtResource("3")]
 position = Vector2(1030, 550)
+scale = Vector2(4.45, 4.45)
 tiempo_activo = 1.2
 tiempo_inactivo = 0.7
 
 [node name="Hacha4" parent="." instance=ExtResource("3")]
 position = Vector2(1460, 500)
+scale = Vector2(4.45, 4.45)
 tiempo_activo = 0.9
 tiempo_inactivo = 1.0
 

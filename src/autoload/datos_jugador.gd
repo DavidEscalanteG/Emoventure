@@ -41,6 +41,15 @@ var emociones_recolectadas: Array[String] = []
 
 var lives_ui: Node = null
 
+
+
+func reiniciar_estado_temporal() -> void:
+	emociones_recolectadas.clear()
+	jugador = null
+	emotions_ui = null
+	lives_ui = null
+
+	
 func registrar_emocion(emocion: String) -> void:
 	if emociones_recolectadas.has(emocion):
 		return
