@@ -5,7 +5,7 @@ Este documento resume el flujo narrativo-operativo implementado actualmente y va
 ## 1) Secuencia de escenas implementada (estado actual)
 
 1. **Menú principal**  
-   `res://scenes/menu_principal/menu_principal.tscn
+   `res://scenes/menu_principal/menu_principal.tscn`
 2. **Selección de género**  
    `res://scenes/escena_seleccion_genero/seleccion_genero.tscn`
 3. **Personalización de avatar**  
