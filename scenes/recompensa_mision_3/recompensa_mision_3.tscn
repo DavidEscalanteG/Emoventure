@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
-siguiente_escena = "res://scenes/escena_topos/mapa_topos.tscn"
+siguiente_escena = "res://scenes/mision_4_payasos/mapa_topos.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

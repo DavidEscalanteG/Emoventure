@@ -42,6 +42,15 @@ const UMBRALES_MENSAJES: Dictionary[String, Dictionary] = {
 @onready var tarjetas_container: VBoxContainer = %TarjetasContainer
 @onready var label_perfil_final: Label = %PerfilFinalLabel
 @onready var boton_menu_principal: Button = %BotonMenuPrincipal
+@onready var titulo_atencion: Label = $"MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox/Titulo"
+@onready var barra_atencion: ProgressBar = $"MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox/Barra"
+@onready var mensaje_atencion: Label = $"MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox/Mensaje"
+@onready var titulo_claridad: Label = $"MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox/Titulo"
+@onready var barra_claridad: ProgressBar = $"MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox/Barra"
+@onready var mensaje_claridad: Label = $"MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox/Mensaje"
+@onready var titulo_reparacion: Label = $"MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox/Titulo"
+@onready var barra_reparacion: ProgressBar = $"MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox/Barra"
+@onready var mensaje_reparacion: Label = $"MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox/Mensaje"
 
 
 func _ready() -> void:
@@ -52,52 +61,23 @@ func _ready() -> void:
 
 func _renderizar_resumen() -> void:
 	var puntajes: Dictionary[String, int] = GameManager.obtener_puntajes_por_dimension()
-	for child in tarjetas_container.get_children():
-		child.queue_free()
-
 	var total_global: int = 0
 	for dimension in DIMENSIONES:
-		var puntaje: int = puntajes.get(dimension, 0)
-		total_global += puntaje
-		tarjetas_container.add_child(_crear_tarjeta_dimension(dimension, puntaje))
+		total_global += puntajes.get(dimension, 0)
+
+	_actualizar_tarjeta_dimension("atencion", puntajes.get("atencion", 0), titulo_atencion, barra_atencion, mensaje_atencion)
+	_actualizar_tarjeta_dimension("claridad", puntajes.get("claridad", 0), titulo_claridad, barra_claridad, mensaje_claridad)
+	_actualizar_tarjeta_dimension("reparacion", puntajes.get("reparacion", 0), titulo_reparacion, barra_reparacion, mensaje_reparacion)
 
 	label_perfil_final.text = _construir_texto_perfil_final(puntajes, total_global)
 
 
-func _crear_tarjeta_dimension(dimension: String, puntaje: int) -> PanelContainer:
-	var tarjeta: PanelContainer = PanelContainer.new()
-	tarjeta.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-
-	var margen: MarginContainer = MarginContainer.new()
-	margen.add_theme_constant_override("margin_left", 16)
-	margen.add_theme_constant_override("margin_top", 16)
-	margen.add_theme_constant_override("margin_right", 16)
-	margen.add_theme_constant_override("margin_bottom", 16)
-	tarjeta.add_child(margen)
-
-	var vbox: VBoxContainer = VBoxContainer.new()
-	vbox.add_theme_constant_override("separation", 8)
-	margen.add_child(vbox)
-
-	var titulo: Label = Label.new()
+func _actualizar_tarjeta_dimension(dimension: String, puntaje: int, titulo: Label, barra: ProgressBar, mensaje: Label) -> void:
 	titulo.text = "%s · %d/40" % [NOMBRES_DIMENSION.get(dimension, dimension.capitalize()), puntaje]
-	titulo.add_theme_font_size_override("font_size", 26)
-	vbox.add_child(titulo)
-
-	var barra: ProgressBar = ProgressBar.new()
 	barra.min_value = 0
 	barra.max_value = 40
 	barra.value = puntaje
-	barra.show_percentage = false
-	barra.custom_minimum_size = Vector2(0, 28)
-	vbox.add_child(barra)
-
-	var mensaje: Label = Label.new()
-	mensaje.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	mensaje.text = _obtener_mensaje_dimension(dimension, puntaje)
-	vbox.add_child(mensaje)
-
-	return tarjeta
 
 
 func _obtener_mensaje_dimension(dimension: String, puntaje: int) -> String:

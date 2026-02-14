@@ -27,3 +27,8 @@ Usar `snake_case` con prefijo semántico y orden lógico:
 - `escena_13` → `intro_mision_4`
 - `escena_topos` → `mision_4_payasos` 
 - `escena_seleccion_genero` → `intro_seleccion_genero`
+
+
+## Regla previa a refactors de nombre
+
+Antes de renombrar cualquier escena legacy (`escena_X`) se debe actualizar y validar primero `docs/matriz_transiciones.md` para evitar romper el flujo narrativo y técnico.

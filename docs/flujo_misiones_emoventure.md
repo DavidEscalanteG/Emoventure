@@ -38,8 +38,10 @@ Este documento resume el flujo narrativo-operativo implementado actualmente y va
 	`res://scenes/mision_3_hachas/mision_3_hachas.tscn`
 17. **Recompensa misión 3 (llave + mazo)**  
 	`res://scenes/recompensa_mision_3/recompensa_mision_3.tscn`
-18. **Retorno a menú (temporal)**  
-	`res://scenes/menu_principal/menu_principal.tscn`
+18. **Misión 4 — topos (rescate final)**
+	`res://scenes/mision_4_payasos/mapa_topos.tscn`
+19. **Resultado final**
+	`res://scenes/final/resultado_final.tscn`
 
 ## 2) Validación de scripts solicitados
 
@@ -48,21 +50,19 @@ Este documento resume el flujo narrativo-operativo implementado actualmente y va
 - La salida solo cambia de escena cuando se activaron los 2 checkpoints (`progreso_actual >= 2`) y el jugador entra al área de salida.
 
 ### `scenes/recompensa_mision_3/recompensa_mision_3.gd`
-- Define `siguiente_escena` con destino por defecto `res://scenes/menu_principal/menu_principal.tscn`.
+- Define `siguiente_escena` con destino por defecto `res://scenes/mision_4_payasos/mapa_topos.tscn`.
 - El botón de continuar ejecuta `change_scene_to_file(siguiente_escena)`.
 
 ### `scenes/final/resultado_final.gd`
 - Implementa el **cierre definitivo** en `res://scenes/final/resultado_final.tscn`.
 - El botón final reinicia estado (`GameManager.reiniciar_puntajes()` y, si existe, `DatosJugador.reiniciar_estado_temporal()`) y luego vuelve al menú principal.
 
-## 3) Cierre de juego: definitivo vs temporal
+## 3) Cierre de juego y encadenamiento actual
 
-- **Cierre definitivo existente:** `res://scenes/final/resultado_final.tscn` (script `resultado_final.gd`).
-- **Cierre actualmente conectado tras misión 3:** retorno directo a menú desde `recompensa_mision_3.gd`.
+- **Flujo activo tras misión 3:** recompensa de misión 3 → misión 4 (topos).
+- **Cierre definitivo:** `res://scenes/final/resultado_final.tscn` (script `resultado_final.gd`).
 
-En consecuencia, el “cierre provisional” se reemplaza en este documento por dos estados explícitos:
-1. **Cierre definitivo disponible en código** (escena final).
-2. **Retorno temporal activo en el flujo de misión 3** (menú principal).
+En el estado actual, la rama principal ya encadena a resultado final pasando por misión 4 y cuestionario correspondiente.
 
 ## 4) Flujo validado en código
 
@@ -73,8 +73,15 @@ En consecuencia, el “cierre provisional” se reemplaza en este documento por 
 | `mapa_topos.tscn` (misión 4) | Victoria + completar cuestionario | `resultado_final.tscn` | `mapa_topos.tscn` (`escena_cierre`) + `mapa_topos.gd` (`_iniciar_cuestionario`, `cuestionario.escena_siguiente = escena_cierre`) |
 | `resultado_final.tscn` | Botón “Volver al menú principal” | `menu_principal.tscn` | `resultado_final.gd` (`_on_boton_menu_principal_pressed`) |
 
-## 5) Nota de compatibilidad y criterio de retiro
+## 5) Nota de compatibilidad y criterio de mantenimiento
 
-- **Transición temporal activa:** `recompensa_mision_3.tscn` → `menu_principal.tscn`.
-- **Motivo de compatibilidad:** mantiene jugable el cierre de la rama de misión 3 sin obligar a pasar por misión 4.
-- **Criterio de retiro:** eliminar esta transición cuando la salida de misión 3 se conecte formalmente a la secuencia final del producto (por ejemplo, encadenar a misión 4 o al `resultado_final.tscn` según diseño definitivo) y se valide QA de regresión de flujo completo.
+- **Transición activa:** `recompensa_mision_3.tscn` → `mision_4_payasos/mapa_topos.tscn`.
+- **Objetivo:** mantener continuidad del flujo principal hasta `resultado_final.tscn`.
+- **Criterio de mantenimiento:** cualquier cambio de destino desde recompensa misión 3 debe actualizar esta guía y `docs/matriz_transiciones.md`, seguido de QA de regresión del flujo completo.
+
+
+## 6) Matriz de transiciones (fuente de control)
+
+- Mantener sincronizado este documento con `docs/matriz_transiciones.md`.
+- Antes de cualquier refactor de nombres de escenas (`escena_X` → nombre semántico), actualizar primero la matriz y luego aplicar cambios de código.
+- Usar la checklist manual de la matriz para validar el flujo completo en cada release.
