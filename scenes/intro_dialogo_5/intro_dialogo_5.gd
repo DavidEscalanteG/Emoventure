@@ -6,6 +6,7 @@ const SIGUIENTE_ESCENA := "uid://607ynm435j8g" #escena_8.tcsn
 @onready var dialogue_ui: Node = $DialogueUI/Balloon
 
 func _ready() -> void:
+	MusicManager.reproducir_dialogo_por_ambiente(MusicManager.AMBIENTE_TIERNURA)
 	
 	DialogueActors.registro_registrar_actor("jugador", $Personajes/JugadorCinematico)
 	DialogueActors.registro_registrar_actor("mascota", $Personajes/Mascota)

@@ -7,6 +7,7 @@ const SIGUIENTE_ESCENA := "uid://dhr0rstqdkcin" #mision_1_recoleccion.tscn
 @onready var dialogue_ui: Node = $DialogueUI/Balloon
 
 func _ready() -> void:
+	MusicManager.reproducir_dialogo_por_ambiente(MusicManager.AMBIENTE_TENSION)
 	
 	DialogueActors.registro_registrar_actor("gitana", $personajes/gitana)
 	dialogue_ui.dialogo_finalizado.connect(_on_dialogo_finalizado)

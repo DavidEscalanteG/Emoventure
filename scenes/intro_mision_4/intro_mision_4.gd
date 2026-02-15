@@ -7,6 +7,7 @@ const SIGUIENTE_ESCENA := "uid://bpufyh81mgv3u" #mapa_topos.tscn"
 @onready var dialogue_ui: Node = $DialogueUI/Balloon
 
 func _ready() -> void:
+	MusicManager.reproducir_dialogo_por_ambiente(MusicManager.AMBIENTE_CALMA)
 	
 	DialogueActors.registro_registrar_actor("mujer_lagarto", $Personajes/MujerLagarto)
 	DialogueActors.registro_registrar_actor("jugador", $Personajes/JugadorCinematico)
