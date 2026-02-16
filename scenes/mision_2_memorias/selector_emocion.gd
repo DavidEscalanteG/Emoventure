@@ -1,10 +1,8 @@
 extends Control
-var Logs: Object = Engine.get_singleton("Logs") if Engine.has_singleton("Logs") else null
-
 
 const EMOCION_NEUTRA: String = "neutro"
 
-var cuadro_actual: Node = null
+var cuadro_actual: CuadroMemoria = null
 var emocion_preview: String = ""
 var emocion_seleccionada: String = ""
 var emocion_confirmada: bool = false
@@ -25,7 +23,7 @@ var colores_emociones: Dictionary[String, Color] = {
 }
 
 
-func mostrar(cuadro: Node) -> void:
+func mostrar(cuadro: CuadroMemoria) -> void:
 	Logs.log_debug("[DEBUG] Mostrar selector")
 
 	cuadro_actual = cuadro

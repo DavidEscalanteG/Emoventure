@@ -1,6 +1,4 @@
 extends Control
-var DatosJugador: Object = Engine.get_singleton("DatosJugador") if Engine.has_singleton("DatosJugador") else null
-
 
 @export var corazon_lleno: Texture2D
 @export var corazon_vacio: Texture2D

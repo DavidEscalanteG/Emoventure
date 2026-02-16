@@ -1,6 +1,4 @@
 extends Control
-var DatosJugador: Object = Engine.get_singleton("DatosJugador") if Engine.has_singleton("DatosJugador") else null
-
 
 @onready var jugador_hombre = $VBoxContainer/HBoxContainer/ContenedorHombre/JugadorHombre
 @onready var jugador_mujer = $VBoxContainer/HBoxContainer/ContenedorMujer/JugadorMujer
@@ -20,14 +18,14 @@ func _configurar_previews() -> void:
 func _on_boton_hombre_pressed() -> void:
 	DatosJugador.set_genero(DatosJugador.GENERO_HOMBRE)
 	_asignar_indices_base()
-	get_tree().change_scene_to_file("res://scenes/personalizacion/Personalizacion.tscn")
+	get_tree().change_scene_to_file("uid://cxv23v4515m48")
 
 
 
 func _on_boton_mujer_pressed() -> void:
 	DatosJugador.set_genero(DatosJugador.GENERO_MUJER)
 	_asignar_indices_base()
-	get_tree().change_scene_to_file("res://scenes/personalizacion/Personalizacion.tscn")
+	get_tree().change_scene_to_file("uid://cxv23v4515m48")
 
 func _asignar_indices_base() -> void:
 	DatosJugador.set_indice_cabello(DatosJugador.obtener_indice_cabello_inicio())

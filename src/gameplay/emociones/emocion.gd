@@ -1,6 +1,4 @@
 extends Area2D
-var DatosJugador: Object = Engine.get_singleton("DatosJugador") if Engine.has_singleton("DatosJugador") else null
-
 
 @export var textura: Texture2D
 @export var tipo_emocion := ""

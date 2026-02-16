@@ -1,7 +1,4 @@
 extends Control
-var DatosJugador: Object = Engine.get_singleton("DatosJugador") if Engine.has_singleton("DatosJugador") else null
-var GameManager: Object = Engine.get_singleton("GameManager") if Engine.has_singleton("GameManager") else null
-
 
 const MENU_PRINCIPAL_SCENE: String = "res://scenes/menu_principal/menu_principal.tscn"
 const DIMENSIONES: Array[String] = ["atencion", "claridad", "reparacion"]

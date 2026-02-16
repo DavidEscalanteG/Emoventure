@@ -1,6 +1,4 @@
 extends CharacterBody2D
-var Logs: Object = Engine.get_singleton("Logs") if Engine.has_singleton("Logs") else null
-
 
 @export var speed: float = 150.0
 
