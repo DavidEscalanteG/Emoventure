@@ -7,7 +7,7 @@ const SIGUIENTE_ESCENA := "uid://bpufyh81mgv3u" #mapa_topos.tscn"
 @onready var dialogue_ui: Node = $DialogueUI/Balloon
 
 func _ready() -> void:
-	MusicManager.reproducir_dialogo_por_ambiente(MusicManager.AMBIENTE_CALMA)
+	MusicManager.iniciar_override_dialogo(MusicManager.AMBIENTE_CALMA)
 	
 	DialogueActors.registro_registrar_actor("mujer_lagarto", $Personajes/MujerLagarto)
 	DialogueActors.registro_registrar_actor("jugador", $Personajes/JugadorCinematico)
@@ -17,4 +17,9 @@ func _ready() -> void:
 	dialogue_ui.iniciar_dialogo(DIALOGO_ESCENA_13)
 	
 func _on_dialogo_finalizado() -> void:
+	MusicManager.finalizar_override_dialogo()
 	get_tree().change_scene_to_file(SIGUIENTE_ESCENA)
+
+
+func _exit_tree() -> void:
+	MusicManager.finalizar_override_dialogo()

@@ -9,6 +9,7 @@ const AMBIENTE_TIERNURA := "ternura"
 
 var _reproductor: AudioStreamPlayer
 var _clave_actual: String = ""
+var _override_dialogo_activo: String = ""
 var _advertencias_emitidas: Dictionary[String, bool] = {}
 
 var _pistas_por_clave: Dictionary[String, String] = {
@@ -31,13 +32,20 @@ var _pistas_por_escena: Dictionary[String, String] = {
 	"res://scenes/menu_principal/menu_principal.tscn": "menu",
 	"res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn": "menu",
 	"res://scenes/personalizacion/Personalizacion.tscn": "personalizacion",
+	"res://scenes/intro_dialogo_1/intro_dialogo_1.tscn": "menu",
+	"res://scenes/intro_dialogo_2/intro_dialogo_2.tscn": "menu",
 	"res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn": "mision_1",
 	"res://scenes/transicion_post_mision_1/transicion_post_mision_1.tscn": "transicion_llave",
+	"res://scenes/intro_dialogo_3/intro_dialogo_3.tscn": "transicion_llave",
+	"res://scenes/intro_dialogo_4/intro_dialogo_4.tscn": "transicion_llave",
+	"res://scenes/intro_dialogo_5/intro_dialogo_5.tscn": "transicion_llave",
+	"res://scenes/intro_mision_2/intro_mision_2.tscn": "mision_2",
 	"res://scenes/mision_2_memorias/mision_2_memorias.tscn": "mision_2",
 	"res://scenes/cuestionarios/EscenaCuestionario.tscn": "cuestionario",
 	"res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn": "transicion_llave",
 	"res://scenes/mision_3_hachas/mision_3_hachas.tscn": "mision_3",
 	"res://scenes/recompensa_mision_3/recompensa_mision_3.tscn": "transicion_llave",
+	"res://scenes/intro_mision_4/intro_mision_4.tscn": "mision_4",
 	"res://scenes/mision_4_payasos/mapa_topos.tscn": "mision_4",
 	"res://scenes/final/resultado_final.tscn": "resultado_final"
 }
@@ -58,7 +66,28 @@ func _ready() -> void:
 
 
 func reproducir_dialogo_por_ambiente(ambiente: String) -> void:
+	iniciar_override_dialogo(ambiente)
+
+
+func iniciar_override_dialogo(ambiente: String) -> void:
+	if ambiente.is_empty():
+		return
+
+	_override_dialogo_activo = ambiente
 	reproducir_clave(ambiente)
+
+
+func finalizar_override_dialogo() -> void:
+	if _override_dialogo_activo.is_empty():
+		restaurar_tema_escena_actual()
+		return
+
+	_override_dialogo_activo = ""
+	restaurar_tema_escena_actual()
+
+
+func restaurar_tema_escena_actual() -> void:
+	_actualizar_musica_escena_actual(true)
 
 
 func reproducir_desde_ruta(ruta_pista: String, from_position: float = 0.0) -> void:
@@ -109,14 +138,15 @@ func reproducir_clave(clave: String) -> void:
 
 func detener() -> void:
 	_clave_actual = ""
+	_override_dialogo_activo = ""
 	_reproductor.stop()
 
 
 func _on_current_scene_changed(_nueva_escena: Node) -> void:
-	_actualizar_musica_escena_actual()
+	_actualizar_musica_escena_actual(false)
 
 
-func _actualizar_musica_escena_actual() -> void:
+func _actualizar_musica_escena_actual(forzar_restauracion: bool = false) -> void:
 	var escena_actual: Node = get_tree().current_scene
 	if escena_actual == null:
 		return
@@ -127,6 +157,14 @@ func _actualizar_musica_escena_actual() -> void:
 
 	var clave: String = _pistas_por_escena.get(ruta_escena, "")
 	if clave.is_empty():
+		return
+
+
+	# Prioridad explícita:
+	# 1) tema base por escena
+	# 2) override temporal de diálogo (misterio/tensión/calma/ternura)
+	# 3) al cerrar diálogo, restaurar el tema base de la escena actual
+	if not _override_dialogo_activo.is_empty() and not forzar_restauracion:
 		return
 
 	reproducir_clave(clave)
