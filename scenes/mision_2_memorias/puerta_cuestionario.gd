@@ -1,4 +1,6 @@
 extends TextureButton
+var Cuestionarios: Object = Engine.get_singleton("Cuestionarios") if Engine.has_singleton("Cuestionarios") else null
+
 
 @export var escena_cuestionario: PackedScene
 @export var escena_siguiente: PackedScene
@@ -12,15 +14,15 @@ func _on_pressed() -> void:
 	if not Cuestionarios.validar_mision(numero_mision_cuestionario):
 		return
 
-	var cuestionario: EscenaCuestionario = escena_cuestionario.instantiate()
+	var cuestionario: Node = escena_cuestionario.instantiate()
 	var dimension: String = Cuestionarios.obtener_dimension_para_mision(numero_mision_cuestionario)
 	
 	cuestionario.preguntas = Cuestionarios.obtener_preguntas_para_mision(numero_mision_cuestionario)
 	cuestionario.dimension = dimension
 	cuestionario.escena_siguiente = escena_siguiente
 
-	var root := get_tree().root
-	var escena_actual := get_tree().current_scene
+	var root: Window = get_tree().root
+	var escena_actual: Node = get_tree().current_scene
 
 	if escena_actual:
 		escena_actual.queue_free()

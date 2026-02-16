@@ -1,4 +1,6 @@
 extends Node2D
+var DatosJugador: Object = Engine.get_singleton("DatosJugador") if Engine.has_singleton("DatosJugador") else null
+
 
 # --------------------------------------------------
 # REFERENCIAS
@@ -157,7 +159,7 @@ func _on_color_picker_button_cuerpo_color_changed(color: Color) -> void:
 
 func _on_comenzar_pressed() -> void:
 	guardar_en_global()
-	get_tree().change_scene_to_file("uid://dlfpd1a8lfh5") #intro_dialogo_1.tscn
+	get_tree().change_scene_to_file("res://scenes/intro_dialogo_1/intro_dialogo_1.tscn")
 
 
 func _on_mascota_siguiente_pressed() -> void:

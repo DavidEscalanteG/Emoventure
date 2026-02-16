@@ -5,9 +5,35 @@ on:
     branches:
       - "**"
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: godot-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  test:
+  workflow-lint:
+    name: Lint workflows (YAML + actionlint)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Lint YAML files
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: .github/workflows
+          config_file: .github/workflows/.yamllint.yml
+
+      - name: Lint GitHub Actions workflow syntax
+        uses: reviewdog/action-actionlint@v1
+
+  gdscript-check:
+    name: GDScript syntax check
     runs-on: ubuntu-latest
 
     steps:
@@ -21,8 +47,48 @@ jobs:
           use-dotnet: false
           include-templates: false
 
-      - name: Verify Godot installed
+      - name: Verify Godot installation
         run: godot --version
 
+      - name: Import project assets for headless checks
+        run: godot --headless --path . --import --quit
+      - name: Check syntax of first-party .gd files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -d '' scripts < <(git ls-files '*.gd' ':(exclude)addons/**' -z)
+          if [ "${#scripts[@]}" -eq 0 ]; then
+            echo "No first-party GDScript files found."
+            exit 0
+          fi
+
+          for script in "${scripts[@]}"; do
+            echo "Checking ${script}"
+            godot --headless --path . --check-only --script "$script"
+          done
+
+  smoke-test:
+    name: Headless project smoke test
+    runs-on: ubuntu-latest
+    needs:
+      - workflow-lint
+      - gdscript-check
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Godot
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.5.1
+          use-dotnet: false
+          include-templates: false
+
+      - name: Verify Godot installation
+        run: godot --version
+
+      - name: Import project assets for headless checks
+        run: godot --headless --path . --import --quit
       - name: Run headless smoke test
-        run: godot --headless --quit --path .
+        run: godot --headless --path . --quit

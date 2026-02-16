@@ -43,22 +43,24 @@ var estado_actual: String = "idle" # idle | walk
 func _process(_delta: float) -> void:
 	_sincronizar_partes()
 
+
 func _sincronizar_partes() -> void:
-	var anim := cuerpo.animation
-	var frame := cuerpo.frame
-	var flip_h := cuerpo.flip_h
-	var flip_v := cuerpo.flip_v
+	var anim: StringName = cuerpo.animation
+	var frame: int = cuerpo.frame
+	var flip_h: bool = cuerpo.flip_h
+	var flip_v: bool = cuerpo.flip_v
 
 	for sprite in [cabello, cabeza, ojos, boca, nariz]:
 		if sprite.sprite_frames == null:
 			continue
 		if not sprite.sprite_frames.has_animation(anim):
 			continue
-	
+
 		sprite.animation = anim
 		sprite.frame = frame
 		sprite.flip_h = flip_h
 		sprite.flip_v = flip_v
+
 
 # ==================================================
 # API PÚBLICA (para DialogueActors)
@@ -88,26 +90,59 @@ func establecer_estado_movimiento(estado: String) -> void:
 
 
 # ==================================================
+# BRIDGE CON DATOSJUGADOR (safe para CI)
+# ==================================================
+
+func _get_datos_jugador() -> Object:
+	if Engine.has_singleton("DatosJugador"):
+		return Engine.get_singleton("DatosJugador")
+	return null
+
+
+func _get_apariencia() -> Variant:
+	var datos_jugador: Object = _get_datos_jugador()
+	if datos_jugador == null:
+		return null
+	return datos_jugador.get("apariencia")
+
+
+func _get_indice_apariencia(clave: String, fallback: int = 0) -> int:
+	var apariencia: Variant = _get_apariencia()
+	if apariencia == null:
+		return fallback
+	return int(apariencia.get(clave))
+
+
+func _get_color_apariencia(clave: String, fallback: Color = Color.WHITE) -> Color:
+	var apariencia: Variant = _get_apariencia()
+	if apariencia == null:
+		return fallback
+	return apariencia.get(clave, fallback)
+
+
+# ==================================================
 # APLICAR APARIENCIA DESDE GLOBAL
 # ==================================================
 
 func aplicar_apariencia_desde_global() -> void:
-	
 	_validar_indices_por_genero()
-	
-	_aplicar_spriteframes(cabello, coleccion_cabellos, DatosJugador.apariencia.indice_cabello)
-	_aplicar_spriteframes(cabeza,  coleccion_cabezas,  DatosJugador.apariencia.indice_cabeza)
-	_aplicar_spriteframes(ojos,     coleccion_ojos,     DatosJugador.apariencia.indice_ojos)
-	_aplicar_spriteframes(boca,     coleccion_bocas,    DatosJugador.apariencia.indice_boca)
-	_aplicar_spriteframes(nariz,    coleccion_narices,  DatosJugador.apariencia.indice_nariz)
-	_aplicar_spriteframes(cuerpo,   coleccion_cuerpos,  DatosJugador.apariencia.indice_cuerpo)
+
+	_aplicar_spriteframes(cabello, coleccion_cabellos, _get_indice_apariencia("indice_cabello"))
+	_aplicar_spriteframes(cabeza, coleccion_cabezas, _get_indice_apariencia("indice_cabeza"))
+	_aplicar_spriteframes(ojos, coleccion_ojos, _get_indice_apariencia("indice_ojos"))
+	_aplicar_spriteframes(boca, coleccion_bocas, _get_indice_apariencia("indice_boca"))
+	_aplicar_spriteframes(nariz, coleccion_narices, _get_indice_apariencia("indice_nariz"))
+	_aplicar_spriteframes(cuerpo, coleccion_cuerpos, _get_indice_apariencia("indice_cuerpo"))
 
 	restaurar_colores()
 	actualizar_animacion_visual()
 
-func _validar_indices_por_genero() -> void:
-	DatosJugador.set_indice_cabello(DatosJugador.apariencia.indice_cabello)
 
+func _validar_indices_por_genero() -> void:
+	var datos_jugador: Object = _get_datos_jugador()
+	if datos_jugador == null:
+		return
+	datos_jugador.call("set_indice_cabello", _get_indice_apariencia("indice_cabello"))
 
 
 func _aplicar_spriteframes(
@@ -167,9 +202,9 @@ func _restaurar_colores() -> void:
 
 
 func restaurar_colores() -> void:
-	cabello.self_modulate = DatosJugador.apariencia.color_cabello
-	cabeza.self_modulate  = DatosJugador.apariencia.color_cabeza
-	ojos.self_modulate    = DatosJugador.apariencia.color_ojos
-	boca.self_modulate    = DatosJugador.apariencia.color_boca
-	nariz.self_modulate   = DatosJugador.apariencia.color_nariz
-	cuerpo.self_modulate  = DatosJugador.apariencia.color_cuerpo
+	cabello.self_modulate = _get_color_apariencia("color_cabello")
+	cabeza.self_modulate = _get_color_apariencia("color_cabeza")
+	ojos.self_modulate = _get_color_apariencia("color_ojos")
+	boca.self_modulate = _get_color_apariencia("color_boca")
+	nariz.self_modulate = _get_color_apariencia("color_nariz")
+	cuerpo.self_modulate = _get_color_apariencia("color_cuerpo")

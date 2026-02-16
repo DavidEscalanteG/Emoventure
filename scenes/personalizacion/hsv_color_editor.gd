@@ -1,4 +1,6 @@
 extends Control
+var DatosJugador: Object = Engine.get_singleton("DatosJugador") if Engine.has_singleton("DatosJugador") else null
+
 
 # ==================================================
 # CONFIGURACIÓN (Inspector)

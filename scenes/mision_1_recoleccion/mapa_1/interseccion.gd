@@ -1,4 +1,6 @@
 extends Area2D
+var Logs: Object = Engine.get_singleton("Logs") if Engine.has_singleton("Logs") else null
+
 
 @export var rutas_disponibles: Array[Path2D]
 @export var cooldown_interseccion: float = 1.0

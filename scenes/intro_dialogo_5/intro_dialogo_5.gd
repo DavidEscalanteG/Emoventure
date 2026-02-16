@@ -1,7 +1,10 @@
 extends Node2D
+var DialogueActors: Object = Engine.get_singleton("DialogueActors") if Engine.has_singleton("DialogueActors") else null
+var MusicManager: Object = Engine.get_singleton("MusicManager") if Engine.has_singleton("MusicManager") else null
 
-const DIALOGO_ESCENA_7 := preload("uid://b5t1y0j0xbtoe") #escena_7.dialogue")
-const SIGUIENTE_ESCENA := "uid://607ynm435j8g" #escena_8.tcsn
+
+const DIALOGO_ESCENA_7_PATH: String = "res://dialogos/escena_7.dialogue"
+const SIGUIENTE_ESCENA: String = "res://scenes/intro_mision_2/intro_mision_2.tscn"
 
 @onready var dialogue_ui: Node = $DialogueUI/Balloon
 
@@ -13,7 +16,11 @@ func _ready() -> void:
 	dialogue_ui.dialogo_finalizado.connect(_on_dialogo_finalizado)
 	
 	#await get_tree().create_timer(1.0).timeout
-	dialogue_ui.iniciar_dialogo(DIALOGO_ESCENA_7)
+	var dialogo_resource: Resource = load(DIALOGO_ESCENA_7_PATH)
+	if dialogo_resource == null:
+		push_error("No se pudo cargar el diálogo: %s" % DIALOGO_ESCENA_7_PATH)
+		return
+	dialogue_ui.iniciar_dialogo(dialogo_resource)
 	
 
 func _on_dialogo_finalizado() -> void:

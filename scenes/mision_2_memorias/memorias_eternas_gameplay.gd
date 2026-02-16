@@ -1,4 +1,6 @@
 extends Control
+var Logs: Object = Engine.get_singleton("Logs") if Engine.has_singleton("Logs") else null
+
 
 const TOTAL_CUADROS: int = 7
 
@@ -22,7 +24,7 @@ func _ready() -> void:
 	puerta.modulate.a = 0.0
 
 	for cuadro in cuadros_container.get_children():
-		var cuadro_memoria: CuadroMemoria = cuadro as CuadroMemoria
+		var cuadro_memoria: Node = cuadro
 		if cuadro_memoria == null:
 			continue
 		cuadro_memoria.cuadro_seleccionado.connect(_on_cuadro_seleccionado)
@@ -35,7 +37,7 @@ func _respuestas_iniciales() -> void:
 		respuestas_emociones.append("")
 
 
-func _on_cuadro_completado(cuadro: CuadroMemoria, emocion: String) -> void:
+func _on_cuadro_completado(cuadro: Node, emocion: String) -> void:
 	cuadros_completados += 1
 	_guardar_respuesta(cuadro, emocion)
 	Logs.log_debug("[DEBUG] Cuadros completados: %d" % cuadros_completados)
@@ -47,7 +49,7 @@ func _on_cuadro_completado(cuadro: CuadroMemoria, emocion: String) -> void:
 		_mostrar_puerta()
 
 
-func _guardar_respuesta(cuadro: CuadroMemoria, emocion: String) -> void:
+func _guardar_respuesta(cuadro: Node, emocion: String) -> void:
 	var indice: int = cuadro.get_index()
 	if indice < 0 or indice >= respuestas_emociones.size():
 		push_warning("Índice de cuadro fuera de rango: %d" % indice)
@@ -64,7 +66,7 @@ func _mostrar_puerta() -> void:
 	tween.tween_property(puerta, "modulate:a", 1.0, 0.8)
 
 
-func _on_cuadro_seleccionado(cuadro: CuadroMemoria) -> void:
+func _on_cuadro_seleccionado(cuadro: Node) -> void:
 	selector.call("mostrar", cuadro)
 
 
