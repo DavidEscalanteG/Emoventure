@@ -50,6 +50,8 @@ jobs:
       - name: Verify Godot installation
         run: godot --version
 
+      - name: Import project assets for headless checks
+        run: godot --headless --path . --import --quit
       - name: Check syntax of first-party .gd files
         shell: bash
         run: |
@@ -86,5 +88,7 @@ jobs:
       - name: Verify Godot installation
         run: godot --version
 
+      - name: Import project assets for headless checks
+        run: godot --headless --path . --import --quit
       - name: Run headless smoke test
         run: godot --headless --path . --quit

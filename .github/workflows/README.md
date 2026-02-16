@@ -13,6 +13,8 @@ El flujo principal es `godot-ci.yml` y ejecuta 3 trabajos:
 
 2. **gdscript-check**
    - Instala Godot `4.5.1` en modo headless.
+   - Importa assets del proyecto en headless para generar recursos en `.godot/imported`:
+     - `godot --headless --path . --import --quit`
    - Recorre todos los archivos `*.gd` de código propio versionados, excluyendo `addons/**`:
      - `git ls-files '*.gd' ':(exclude)addons/**'`
    - Ejecuta verificación de sintaxis con:

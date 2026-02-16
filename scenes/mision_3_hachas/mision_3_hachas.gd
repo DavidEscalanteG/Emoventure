@@ -97,7 +97,7 @@ func _on_salida_body_entered(body: Node) -> void:
 		push_error("No se pudo cargar la escena de recompensa de misión 3: %s" % destino)
 		return
 
-	var cuestionario: EscenaCuestionario = escena_cuestionario.instantiate()
+	var cuestionario: Node = escena_cuestionario.instantiate()
 	var dimension: String = Cuestionarios.obtener_dimension_para_mision(numero_mision_cuestionario)
 	cuestionario.preguntas = Cuestionarios.obtener_preguntas_para_mision(numero_mision_cuestionario)
 	cuestionario.dimension = dimension
