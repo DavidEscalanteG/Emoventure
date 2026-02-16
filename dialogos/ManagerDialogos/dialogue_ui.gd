@@ -40,6 +40,18 @@ func _pedir_siguiente_linea(next_id: String = ""):
 	return await dialogue_manager.get_next_dialogue_line(dialogue_resource, next_id)
 
 
+
+
+func _cinematica_activa() -> bool:
+	if not Engine.has_singleton("DialogueActors"):
+		return false
+
+	var dialogue_actors := Engine.get_singleton("DialogueActors")
+	if dialogue_actors == null:
+		return false
+
+	return bool(dialogue_actors.get("cinematica_activa"))
+
 func iniciar_dialogo(resource) -> void:
 	dialogue_resource = resource
 	current_line = await _pedir_siguiente_linea()
@@ -95,7 +107,7 @@ func _mostrar_respuestas() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if DialogueActors.cinematica_activa:
+	if _cinematica_activa():
 		return
 
 	if event.is_action_pressed("ui_accept"):
@@ -103,7 +115,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _gui_input(event: InputEvent) -> void:
-	if DialogueActors.cinematica_activa:
+	if _cinematica_activa():
 		return
 
 	if event is InputEventMouseButton \
@@ -113,7 +125,7 @@ func _gui_input(event: InputEvent) -> void:
 
 
 func _gestionar_avance() -> void:
-	if DialogueActors.cinematica_activa:
+	if _cinematica_activa():
 		return
 
 	if responses_menu.visible:
