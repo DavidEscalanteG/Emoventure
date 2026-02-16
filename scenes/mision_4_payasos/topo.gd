@@ -22,6 +22,12 @@ func _ready() -> void:
 	# 3. Lo ocultamos completamente
 	hide()
 	
+func reset_estado() -> void:
+	$Timer.stop()
+	$Sprite2D.position = pos_escondido
+	$Sprite2D.texture = img_normal
+	hide()
+	
 func aparecer() -> void:
 	if visible: return
 	$Sprite2D.texture = img_normal # Reset a imagen normal

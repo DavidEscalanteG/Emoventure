@@ -108,7 +108,9 @@ func _finalizar_mision() -> void:
 	Input.set_custom_mouse_cursor(cursor_normal)
 
 	for topo in topos_jugables:
-		if topo is CanvasItem:
+		if topo.has_method("reset_estado"):
+			topo.reset_estado()
+		elif topo is CanvasItem:
 			(topo as CanvasItem).hide()
 
 	var resultado: Dictionary = _evaluar_resultado()
@@ -170,6 +172,9 @@ func _reiniciar_mision() -> void:
 	estado_resultado_actual = EstadoResultado.NINGUNO
 	dificultad = 1.0
 	$SpawnTimer.wait_time = 1.5
+	for topo in topos_jugables:
+		if topo.has_method("reset_estado"):
+			topo.reset_estado()
 	_actualizar_marcador()
 	pantalla_resultado.visible = false
 	$SpawnTimer.start()
