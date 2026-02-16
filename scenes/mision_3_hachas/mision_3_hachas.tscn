@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dkxhswm124pb6" path="res://scenes/mision_3_hachas/mision_3_hachas.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://vwxy66audqui" path="res://scenes/mision_3_hachas/HachaObstaculo.tscn" id="3"]
-[ext_resource type="AudioStream" uid="uid://ybw8yrp8ho4a" path="res://audios/sfx/ui_click.mp3" id="4"]
 [ext_resource type="Texture2D" uid="uid://bjruhfm0tmric" path="res://icon.svg" id="5"]
+[ext_resource type="AudioStream" uid="uid://lsna6o3cpggm" path="res://audios/sfx/danio_jugador.mp3" id="5_3alf4"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(1880, 24)
@@ -120,8 +120,7 @@ tiempo_activo = 0.9
 tiempo_inactivo = 1.0
 
 [node name="AudioDanio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4")
-volume_db = -6.0
+stream = ExtResource("5_3alf4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
