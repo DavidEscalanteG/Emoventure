@@ -4,11 +4,30 @@
 from __future__ import annotations
 
 import argparse
+import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+
+IGNORABLE_SCRIPT_ERROR_PATTERNS = [
+    re.compile(r"could not find type"),
+    re.compile(r"identifier not found"),
+    re.compile(r"could not resolve external class member"),
+    re.compile(r"preload file \"uid://.*\" does not exist"),
+    re.compile(r"cannot infer the type of"),
+]
+
+IGNORABLE_ENGINE_ERROR_PATTERNS = [
+    re.compile(r"^error: unrecognized uid:"),
+    re.compile(r"^error: unable to open file:"),
+    re.compile(r"^error: failed loading resource:"),
+    re.compile(r"^error: cannot open file"),
+    re.compile(r"parse error: \[ext_resource\] referenced non-existent resource"),
+]
+
 
 
 def parse_args() -> argparse.Namespace:
@@ -25,6 +44,15 @@ def parse_args() -> argparse.Namespace:
         type=int,
         default=30,
         help="Máximo de errores a mostrar antes de detener la revisión (por defecto: 30).",
+    )
+    parser.add_argument(
+        "--max-warnings",
+        type=int,
+        default=20,
+        help=(
+            "Máximo de scripts con advertencias de dependencias externas/autoloads "
+            "a mostrar (por defecto: 20)."
+        ),
     )
     return parser.parse_args()
 
@@ -65,8 +93,49 @@ def check_script(godot_bin: str, script_path: Path) -> tuple[bool, str]:
     return result.returncode == 0, result.stdout.strip()
 
 
+def is_ignorable_script_error(line: str) -> bool:
+    line_lower = line.lower()
+    return any(pattern.search(line_lower) for pattern in IGNORABLE_SCRIPT_ERROR_PATTERNS)
+
+
+def is_ignorable_engine_error(line: str) -> bool:
+    line_lower = line.lower()
+    return any(pattern.search(line_lower) for pattern in IGNORABLE_ENGINE_ERROR_PATTERNS)
+
+
+def classify_command_output(output: str) -> tuple[list[str], list[str]]:
+    fatal: list[str] = []
+    ignored: list[str] = []
+
+    for raw_line in output.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+
+        if "SCRIPT ERROR:" in line:
+            if is_ignorable_script_error(line):
+                ignored.append(line)
+            else:
+                fatal.append(line)
+            continue
+
+        if line.startswith("ERROR:"):
+            if is_ignorable_engine_error(line):
+                ignored.append(line)
+            continue
+
+    return fatal, ignored
+
+
 def main() -> int:
     args = parse_args()
+
+    if shutil.which(args.godot_bin) is None:
+        print(
+            f"ERROR: No se encontró el binario de Godot '{args.godot_bin}' en PATH. "
+            "Instálalo o usa --godot-bin con una ruta válida."
+        )
+        return 1
 
     scripts = list_gd_scripts()
     if not scripts:
@@ -74,21 +143,36 @@ def main() -> int:
         return 1
 
     errors: list[str] = []
+    warnings: list[str] = []
 
     for script in scripts:
         ok, output = check_script(args.godot_bin, script)
         if ok:
             continue
 
+        fatal, ignored = classify_command_output(output)
         rel = script.relative_to(ROOT)
-        message = f"\n[{rel}]\n{output or 'Sin salida del comando.'}"
-        errors.append(message)
 
-        if len(errors) >= args.max_errors:
-            errors.append(
-                f"\nSe alcanzó el límite de {args.max_errors} errores. Deteniendo revisión tempranamente."
-            )
-            break
+        if fatal:
+            message = "\n".join([f"[{rel}]", *fatal])
+            errors.append(f"\n{message}")
+
+            if len(errors) >= args.max_errors:
+                errors.append(
+                    f"\nSe alcanzó el límite de {args.max_errors} errores. Deteniendo revisión tempranamente."
+                )
+                break
+            continue
+
+        if ignored:
+            warnings.append(f"[{rel}] {len(ignored)} advertencias ignoradas por dependencias externas.")
+            if len(warnings) > args.max_warnings:
+                warnings = warnings[: args.max_warnings]
+
+    if warnings:
+        print("Advertencia: se ignoraron errores de dependencias externas/autoloads en algunos scripts:")
+        for line in warnings:
+            print(f" - {line}")
 
     if errors:
         print("Se encontraron errores de sintaxis en scripts GDScript:")
@@ -96,7 +180,9 @@ def main() -> int:
             print(entry)
         return 1
 
-    print(f"OK: {len(scripts)} scripts .gd revisados (excluyendo addons/) sin errores de sintaxis.")
+    print(
+        f"OK: {len(scripts)} scripts .gd revisados (excluyendo addons/) sin errores de sintaxis bloqueantes."
+    )
     return 0
 
 

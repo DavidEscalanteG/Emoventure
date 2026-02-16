@@ -17,6 +17,7 @@ El job `smoke-test` ejecuta tres validaciones rápidas:
    - Script: `.github/scripts/check_gdscript_syntax.py`
    - Busca todos los scripts `.gd` del repositorio excepto los que estén dentro de `addons/`, `.godot/` y `.git/`.
    - Ejecuta `godot --headless --check-only --script <archivo>` por cada script para detectar errores de sintaxis tempranamente.
+   - Ignora errores conocidos de dependencias de proyecto (autoloads/globales, UIDs y recursos externos) para evitar falsos positivos al revisar scripts individualmente.
 
 3. **Arranque mínimo de Godot en modo headless**
    - Comando: `godot --headless --quit --path .`
@@ -46,7 +47,8 @@ godot --headless --quit --path .
 - Si todo está bien, el script de autoload imprime:
   - `OK: autoloads en res://src/autoload y su uso básico pasaron la validación.`
 - Si todo está bien, el script de sintaxis imprime un resumen similar a:
-  - `OK: <N> scripts .gd revisados (excluyendo addons/) sin errores de sintaxis.`
+  - `OK: <N> scripts .gd revisados (excluyendo addons/) sin errores de sintaxis bloqueantes.`
+- Si hay advertencias por dependencias externas/autoloads, se reportan como aviso sin tumbar el job.
 - Si hay error, se lista cada problema y el workflow falla para evitar regresiones.
 
 ## Sugerencias de futuras pruebas de CI
