@@ -27,5 +27,8 @@ jobs:
       - name: Validate autoload scripts and naming
         run: python3 .github/scripts/check_autoload_usage.py
 
+      - name: Validate GDScript syntax (excluding addons)
+        run: python3 .github/scripts/check_gdscript_syntax.py
+
       - name: Run headless smoke test
         run: godot --headless --quit --path .

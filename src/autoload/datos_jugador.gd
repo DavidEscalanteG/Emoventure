@@ -13,6 +13,9 @@ const GENERO_MUJER := "mujer"
 const RANGO_CABELLO_HOMBRE := Vector2i(0, 17)
 const RANGO_CABELLO_MUJER := Vector2i(18, 34)
 
+const APARIENCIA_JUGADOR_SCRIPT := preload("res://src/autoload/estado/apariencia_jugador.gd")
+const MASCOTA_SELECCION_SCRIPT := preload("res://src/autoload/estado/mascota_seleccion.gd")
+
 ## ---------------------------------------------------------------------------
 ## DEPRECADO (TRANSICIÓN): Puntajes ahora viven en GameManager
 ## Mantener este wrapper evita romper scenes/scripts antiguos.
@@ -62,8 +65,8 @@ func registrar_emocion(emocion: String) -> void:
 func tiene_todas_las_emociones() -> bool:
 	return emociones_recolectadas.size() == EMOCIONES_TOTALES.size()
 
-var apariencia: AparienciaJugador = AparienciaJugador.new()
-var mascota: MascotaSeleccion = MascotaSeleccion.new()
+var apariencia: Variant = APARIENCIA_JUGADOR_SCRIPT.new()
+var mascota: Variant = MASCOTA_SELECCION_SCRIPT.new()
 
 func set_genero(nuevo_genero: String) -> void:
 	if nuevo_genero != GENERO_HOMBRE and nuevo_genero != GENERO_MUJER:
