@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cdmdrpiup0o5w"]
+[gd_scene load_steps=2 format=3 uid="uid://cdmdrpiup0o5w"]
+
+[ext_resource type="Script" uid="uid://cxiguqd1cr83y" path="res://scenes/configuracion/configuracion.gd" id="1_5f2y7"]
 
 [node name="Configuracion" type="Control"]
 layout_mode = 3
@@ -7,18 +9,126 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5f2y7")
 
-[node name="Label" type="Label" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -350.0
+offset_top = -220.0
+offset_right = 350.0
+offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Esta es la ventana de configurración que será de utilidad más adelante"
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="Titulo" type="Label" parent="Panel/VBox"]
+layout_mode = 2
+text = "Configuración de Audio"
+horizontal_alignment = 1
+
+[node name="Master" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="LabelMaster" type="Label" parent="Panel/VBox/Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Volumen general"
+
+[node name="SliderMaster" type="HSlider" parent="Panel/VBox/Master"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Musica" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="LabelMusica" type="Label" parent="Panel/VBox/Musica"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Música"
+
+[node name="SliderMusica" type="HSlider" parent="Panel/VBox/Musica"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="SFX" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="LabelSFX" type="Label" parent="Panel/VBox/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Efectos"
+
+[node name="SliderSFX" type="HSlider" parent="Panel/VBox/SFX"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Voz" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+
+[node name="LabelVoz" type="Label" parent="Panel/VBox/Voz"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Voces"
+
+[node name="SliderVoz" type="HSlider" parent="Panel/VBox/Voz"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="BotonesPrueba" type="HBoxContainer" parent="Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="BtnProbarMusica" type="Button" parent="Panel/VBox/BotonesPrueba"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Probar música"
+
+[node name="BtnProbarSFX" type="Button" parent="Panel/VBox/BotonesPrueba"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Probar SFX"
+
+[node name="BtnVolver" type="Button" parent="Panel/VBox"]
+layout_mode = 2
+text = "Volver al menú"
+
+[connection signal="value_changed" from="Panel/VBox/Master/SliderMaster" to="." method="_on_slider_master_value_changed"]
+[connection signal="value_changed" from="Panel/VBox/Musica/SliderMusica" to="." method="_on_slider_musica_value_changed"]
+[connection signal="value_changed" from="Panel/VBox/SFX/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
+[connection signal="value_changed" from="Panel/VBox/Voz/SliderVoz" to="." method="_on_slider_voz_value_changed"]
+[connection signal="pressed" from="Panel/VBox/BotonesPrueba/BtnProbarMusica" to="." method="_on_btn_probar_musica_pressed"]
+[connection signal="pressed" from="Panel/VBox/BotonesPrueba/BtnProbarSFX" to="." method="_on_btn_probar_sfx_pressed"]
+[connection signal="pressed" from="Panel/VBox/BtnVolver" to="." method="_on_btn_volver_pressed"]

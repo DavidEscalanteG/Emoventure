@@ -20,9 +20,11 @@ config/icon="res://icon.svg"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 DatosJugador="*res://src/autoload/datos_jugador.gd"
 GameManager="*res://src/autoload/game_manager.gd"
+AudioManager="*res://src/autoload/audio_manager.gd"
 DialogueActors="*res://src/autoload/dialogue_actors.gd"
 Logs="*res://src/autoload/logs.gd"
 Cuestionarios="*res://src/autoload/cuestionarios.gd"
+MusicManager="*res://src/autoload/music_manager.gd"
 
 [dialogue_manager]
 

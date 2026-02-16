@@ -1,5 +1,8 @@
 extends Node2D
 
+const SFX_NIVEL_COMPLETADO := "res://audios/sfx/nivel_completado.mp3"
+const SFX_GAME_OVER := "res://audios/sfx/game_over.mp3"
+
 @onready var level_complete_ui: Control = $NivelCompletadoUI/Control
 @onready var game_over_ui: Control = $GameOverUI/Control
 
@@ -18,6 +21,7 @@ func _on_todas_las_emociones_recolectadas() -> void:
 	
 	DatosJugador.todas_las_emociones_recolectadas.disconnect(_on_todas_las_emociones_recolectadas)
 	Logs.log_debug("Nivel completado")
+	AudioManager.play_sfx(SFX_NIVEL_COMPLETADO)
 	
 	DatosJugador.jugador.nivel_terminado = true
 	DatosJugador.jugador.terminar_emocion()
@@ -32,6 +36,7 @@ func _on_todas_las_emociones_recolectadas() -> void:
 	)
 
 func _on_jugador_sin_vidas() -> void:
+	AudioManager.play_sfx(SFX_GAME_OVER)
 	DatosJugador.jugador.bloquear_movimiento()
 
 	for enemigo in get_tree().get_nodes_in_group("enemigos"):

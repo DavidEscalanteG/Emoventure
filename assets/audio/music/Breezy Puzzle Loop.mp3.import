@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ge0ujcto36jv"
+path="res://.godot/imported/Breezy Puzzle Loop.mp3-04e05cce1d0acb31dae6817b93f9f310.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Breezy Puzzle Loop.mp3"
+dest_files=["res://.godot/imported/Breezy Puzzle Loop.mp3-04e05cce1d0acb31dae6817b93f9f310.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
