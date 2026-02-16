@@ -48,7 +48,7 @@ godot --headless --quit --path .
   - `OK: autoloads en res://src/autoload y su uso básico pasaron la validación.`
 - Si todo está bien, el script de sintaxis imprime un resumen similar a:
   - `OK: <N> scripts .gd revisados (excluyendo addons/) sin errores de sintaxis bloqueantes.`
-- Si hay advertencias por dependencias externas/autoloads, se reportan como aviso sin tumbar el job.
+- Si hay advertencias por dependencias externas/autoloads, se reportan como aviso sin tumbar el job, incluyendo detalles de las líneas ignoradas por script.
 - Si hay error, se lista cada problema y el workflow falla para evitar regresiones.
 
 ## Sugerencias de futuras pruebas de CI

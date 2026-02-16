@@ -54,6 +54,15 @@ def parse_args() -> argparse.Namespace:
             "a mostrar (por defecto: 20)."
         ),
     )
+    parser.add_argument(
+        "--max-warning-details",
+        type=int,
+        default=3,
+        help=(
+            "Máximo de líneas de advertencia ignorada a detallar por script "
+            "(por defecto: 3)."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -165,14 +174,25 @@ def main() -> int:
             continue
 
         if ignored:
-            warnings.append(f"[{rel}] {len(ignored)} advertencias ignoradas por dependencias externas.")
-            if len(warnings) > args.max_warnings:
-                warnings = warnings[: args.max_warnings]
+            unique_ignored = list(dict.fromkeys(ignored))
+            details = unique_ignored[: args.max_warning_details]
+            warning_message = [
+                f"[{rel}] {len(unique_ignored)} advertencias ignoradas por dependencias externas:"
+            ]
+            warning_message.extend([f"  - {line}" for line in details])
+            if len(unique_ignored) > len(details):
+                warning_message.append(
+                    f"  - ... y {len(unique_ignored) - len(details)} advertencias más en este script."
+                )
+            warnings.append("\n".join(warning_message))
 
     if warnings:
         print("Advertencia: se ignoraron errores de dependencias externas/autoloads en algunos scripts:")
-        for line in warnings:
+        for line in warnings[: args.max_warnings]:
             print(f" - {line}")
+        omitted = len(warnings) - min(len(warnings), args.max_warnings)
+        if omitted > 0:
+            print(f" - ... y {omitted} scripts adicionales con advertencias ignoradas.")
 
     if errors:
         print("Se encontraron errores de sintaxis en scripts GDScript:")
