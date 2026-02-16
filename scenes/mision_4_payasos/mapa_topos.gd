@@ -1,6 +1,6 @@
 extends Node2D
-var Logs: Object = Engine.get_singleton("Logs") if Engine.has_singleton("Logs") else null
-var Cuestionarios: Object = Engine.get_singleton("Cuestionarios") if Engine.has_singleton("Cuestionarios") else null
+var Logs: Object = Engine.get_singleton("Logs") if Engine.has_singleton("Logs") else ((Engine.get_main_loop().root.get_node_or_null("Logs")) if Engine.get_main_loop() is SceneTree else null)
+var Cuestionarios: Object = Engine.get_singleton("Cuestionarios") if Engine.has_singleton("Cuestionarios") else ((Engine.get_main_loop().root.get_node_or_null("Cuestionarios")) if Engine.get_main_loop() is SceneTree else null)
 
 
 var cursor_normal: Texture2D = load("res://assets/assets_escena_payaso/martillo.png")

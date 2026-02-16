@@ -1,5 +1,5 @@
 extends Node
-var AudioManager: Object = Engine.get_singleton("AudioManager") if Engine.has_singleton("AudioManager") else null
+var AudioManager: Object = Engine.get_singleton("AudioManager") if Engine.has_singleton("AudioManager") else ((Engine.get_main_loop().root.get_node_or_null("AudioManager")) if Engine.get_main_loop() is SceneTree else null)
 
 
 const BUS_MUSICA := "Musica"

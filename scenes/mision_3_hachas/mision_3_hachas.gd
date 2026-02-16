@@ -1,5 +1,5 @@
 extends Node2D
-var Cuestionarios: Object = Engine.get_singleton("Cuestionarios") if Engine.has_singleton("Cuestionarios") else null
+var Cuestionarios: Object = Engine.get_singleton("Cuestionarios") if Engine.has_singleton("Cuestionarios") else ((Engine.get_main_loop().root.get_node_or_null("Cuestionarios")) if Engine.get_main_loop() is SceneTree else null)
 
 
 @export var escena_cuestionario: PackedScene = preload("res://scenes/cuestionarios/EscenaCuestionario.tscn")

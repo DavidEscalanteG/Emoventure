@@ -1,5 +1,5 @@
 extends Node
-var GameManager: Object = Engine.get_singleton("GameManager") if Engine.has_singleton("GameManager") else null
+var GameManager: Object = Engine.get_singleton("GameManager") if Engine.has_singleton("GameManager") else ((Engine.get_main_loop().root.get_node_or_null("GameManager")) if Engine.get_main_loop() is SceneTree else null)
 
 #Este es el global
 signal todas_las_emociones_recolectadas

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var Logs: Object = Engine.get_singleton("Logs") if Engine.has_singleton("Logs") else null
+var Logs: Object = Engine.get_singleton("Logs") if Engine.has_singleton("Logs") else ((Engine.get_main_loop().root.get_node_or_null("Logs")) if Engine.get_main_loop() is SceneTree else null)
 
 
 @export var speed: float = 150.0

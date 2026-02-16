@@ -1,6 +1,6 @@
 extends Node2D
-var DialogueActors: Object = Engine.get_singleton("DialogueActors") if Engine.has_singleton("DialogueActors") else null
-var MusicManager: Object = Engine.get_singleton("MusicManager") if Engine.has_singleton("MusicManager") else null
+var DialogueActors: Object = Engine.get_singleton("DialogueActors") if Engine.has_singleton("DialogueActors") else ((Engine.get_main_loop().root.get_node_or_null("DialogueActors")) if Engine.get_main_loop() is SceneTree else null)
+var MusicManager: Object = Engine.get_singleton("MusicManager") if Engine.has_singleton("MusicManager") else ((Engine.get_main_loop().root.get_node_or_null("MusicManager")) if Engine.get_main_loop() is SceneTree else null)
 
 
 const DIALOGO_ESCENA_5_PATH: String = "res://dialogos/escena_5.dialogue"
