@@ -1,13 +1,13 @@
 extends Control
 
-@onready var label: DialogueLabel = %DialogueLabel
+@onready var label = %DialogueLabel
 @onready var type_sound: AudioStreamPlayer = $DialogueTypeSound
 @onready var type_timer: Timer = $TypeSoundTimer
-@onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+@onready var responses_menu = %ResponsesMenu
 @onready var character_label: RichTextLabel = %CharacterLabel
 
-var dialogue_resource: DialogueResource
-var current_line: DialogueLine
+var dialogue_resource
+var current_line
 var visible_chars: int = 0
 var line_finished: bool = false
 
@@ -21,7 +21,7 @@ func _ready() -> void:
 	responses_menu.response_selected.connect(_al_respuesta_seleccionada)
 	responses_menu.hide()
 
-func iniciar_dialogo(resource: DialogueResource) -> void:
+func iniciar_dialogo(resource) -> void:
 	dialogue_resource = resource
 	current_line = await DialogueManager.get_next_dialogue_line(dialogue_resource)
 	_mostrar_linea()
