@@ -8,15 +8,16 @@ El flujo principal es `godot-ci.yml` y ejecuta 3 trabajos:
 
 1. **workflow-lint**
    - **YAML lint** sobre `./.github/workflows` usando `ibiqlik/action-yamllint`.
-   - **actionlint** para validar sintaxis y buenas prácticas de GitHub Actions.
+   - **actionlint** para validar sintaxis y buenas prácticas de GitHub Actions mediante `reviewdog/action-actionlint@v1`.
    - **Por qué**: evita errores de configuración en CI (indentación, claves inválidas, expresiones mal formadas), que suelen romper pipelines aunque el código del juego esté bien.
 
 2. **gdscript-check**
    - Instala Godot `4.5.1` en modo headless.
-   - Recorre todos los archivos `*.gd` versionados (`git ls-files '*.gd'`).
+   - Recorre todos los archivos `*.gd` de código propio versionados, excluyendo `addons/**`:
+     - `git ls-files '*.gd' ':(exclude)addons/**'`
    - Ejecuta verificación de sintaxis con:
      - `godot --headless --path . --check-only --script <archivo.gd>`
-   - **Por qué**: detecta errores de sintaxis de GDScript de forma temprana en PRs, antes de integrar cambios a ramas compartidas.
+   - **Por qué**: detecta errores de sintaxis de GDScript de forma temprana en PRs, evitando falsos positivos que pueden aparecer en addons de terceros cuando se validan de forma aislada por archivo.
 
 3. **smoke-test** (depende de los dos anteriores)
    - Ejecuta arranque headless del proyecto:

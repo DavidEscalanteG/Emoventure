@@ -30,7 +30,7 @@ jobs:
           config_file: .github/workflows/.yamllint.yml
 
       - name: Lint GitHub Actions workflow syntax
-        uses: rhysd/actionlint@v1
+        uses: reviewdog/action-actionlint@v1
 
   gdscript-check:
     name: GDScript syntax check
@@ -50,13 +50,13 @@ jobs:
       - name: Verify Godot installation
         run: godot --version
 
-      - name: Check syntax of all .gd files
+      - name: Check syntax of first-party .gd files
         shell: bash
         run: |
           set -euo pipefail
-          mapfile -d '' scripts < <(git ls-files '*.gd' -z)
+          mapfile -d '' scripts < <(git ls-files '*.gd' ':(exclude)addons/**' -z)
           if [ "${#scripts[@]}" -eq 0 ]; then
-            echo "No GDScript files found."
+            echo "No first-party GDScript files found."
             exit 0
           fi
 
