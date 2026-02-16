@@ -3,8 +3,8 @@ var DialogueActors: Object = Engine.get_singleton("DialogueActors") if Engine.ha
 var MusicManager: Object = Engine.get_singleton("MusicManager") if Engine.has_singleton("MusicManager") else null
 
 
-const DIALOGO_ESCENA_5 := preload("uid://caiwc0mkeiv5k") #escena_5.dialogue"
-const SIGUIENTE_ESCENA := "uid://b0tuj3njkfr0j" #intro_dialogo_4.tscn"
+const DIALOGO_ESCENA_5 = preload("res://dialogos/escena_5.dialogue")
+const SIGUIENTE_ESCENA: String = "res://scenes/intro_dialogo_4/intro_dialogo_4.tscn"
 
 #@onready var personajes := $personajes
 @onready var dialogue_ui: Node = $DialogueUI/Balloon

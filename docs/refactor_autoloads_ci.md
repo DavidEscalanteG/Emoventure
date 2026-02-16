@@ -63,3 +63,19 @@ var GameManager: Object = Engine.get_singleton("GameManager") if Engine.has_sing
 - El problema aparece en parseo aislado del archivo, no necesariamente en runtime de la escena completa.
 - Usar referencias locales via `Engine.has_singleton` / `Engine.get_singleton` desacopla la compilación del identificador global estático.
 - Este enfoque reduce falsos negativos de CI y evita que el pipeline se rompa por orden/carga de autoloads durante checks estáticos.
+
+## Ajuste adicional: reemplazo de `uid://` en `preload(...)` de diálogos intro
+
+Además del refactor de autoloads, se reemplazaron constantes con `preload("uid://...")` por rutas `res://...` en escenas de introducción. Esto evita errores de CI cuando un UID no está reconocido en el entorno del runner (por ejemplo: `Unrecognized UID` / `Preload file "uid://..." does not exist`).
+
+Archivos ajustados en este punto:
+
+- `scenes/intro_dialogo_1/intro_dialogo_1.gd`
+- `scenes/intro_dialogo_2/intro_dialogo_2.gd`
+- `scenes/intro_dialogo_3/intro_dialogo_3.gd`
+- `scenes/intro_dialogo_4/intro_dialogo_4.gd`
+- `scenes/intro_dialogo_5/intro_dialogo_5.gd`
+- `scenes/intro_mision_2/intro_mision_2.gd`
+- `scenes/intro_mision_4/intro_mision_4.gd`
+
+También se normalizaron algunos `change_scene_to_file("uid://...")` a rutas `res://...` para robustez de parseo y trazabilidad de recursos.
