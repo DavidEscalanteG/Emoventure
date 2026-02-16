@@ -3,6 +3,7 @@ extends TextureButton
 
 @export var imagen_color: Texture2D
 @export var imagen_bn: Texture2D
+@export var id_cuadro: int = -1
 
 var emocion_asignada: String = ""
 var completado: bool = false
