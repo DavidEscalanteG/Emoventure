@@ -12,19 +12,19 @@ var _clave_actual: String = ""
 var _advertencias_emitidas: Dictionary[String, bool] = {}
 
 var _pistas_por_clave: Dictionary[String, String] = {
-	"menu": "res://audios/musica/menu_principal.ogg",
-	"personalizacion": "res://audios/musica/personalizacion.ogg",
-	"mision_1": "res://audios/musica/mision_1.ogg",
-	"mision_2": "res://audios/musica/mision_2.ogg",
-	"mision_3": "res://audios/musica/mision_3.ogg",
-	"mision_4": "res://audios/musica/mision_4.ogg",
-	"transicion_llave": "res://audios/musica/transicion_llave.ogg",
-	"cuestionario": "res://audios/musica/cuestionario.ogg",
-	"resultado_final": "res://audios/musica/resultado_final.ogg",
-	AMBIENTE_MISTERIO: "res://audios/musica/dialogo_misterio.ogg",
-	AMBIENTE_TENSION: "res://audios/musica/dialogo_tension.ogg",
-	AMBIENTE_CALMA: "res://audios/musica/dialogo_calma.ogg",
-	AMBIENTE_TIERNURA: "res://audios/musica/dialogo_ternura.ogg"
+	"menu": "res://audios/musica/menu_principal.mp3",
+	"personalizacion": "res://audios/musica/personalizacion.mp3",
+	"mision_1": "res://audios/musica/mision_1.mp3",
+	"mision_2": "res://audios/musica/mision_2.mp3",
+	"mision_3": "res://audios/musica/mision_3.mp3",
+	"mision_4": "res://audios/musica/mision_4.mp3",
+	"transicion_llave": "res://audios/musica/transicion_llave.mp3",
+	"cuestionario": "res://audios/musica/cuestionario.mp3",
+	"resultado_final": "res://audios/musica/resultado_final.mp3",
+	AMBIENTE_MISTERIO: "res://audios/musica/dialogo_misterio.mp3",
+	AMBIENTE_TENSION: "res://audios/musica/dialogo_tension.mp3",
+	AMBIENTE_CALMA: "res://audios/musica/dialogo_calma.mp3",
+	AMBIENTE_TIERNURA: "res://audios/musica/dialogo_ternura.mp3"
 }
 
 var _pistas_por_escena: Dictionary[String, String] = {
@@ -46,8 +46,10 @@ var _pistas_por_escena: Dictionary[String, String] = {
 func _ready() -> void:
 	_reproductor = AudioStreamPlayer.new()
 	_reproductor.name = "MusicPlayer"
-	_reproductor.bus = BUS_MUSICA
+	_reproductor.bus = _obtener_bus_musica()
 	add_child(_reproductor)
+	
+	_validar_pistas_registradas()
 
 	if get_tree().has_signal("current_scene_changed"):
 		get_tree().current_scene_changed.connect(_on_current_scene_changed)
@@ -128,3 +130,33 @@ func _actualizar_musica_escena_actual() -> void:
 		return
 
 	reproducir_clave(clave)
+
+
+func _validar_pistas_registradas() -> void:
+	var faltantes: Dictionary[String, PackedStringArray] = {}
+	for clave in _pistas_por_clave.keys():
+		var ruta: String = _pistas_por_clave[clave]
+		if ResourceLoader.exists(ruta):
+			continue
+		var extension := ruta.get_extension().to_lower()
+		if not faltantes.has(extension):
+			faltantes[extension] = PackedStringArray()
+		faltantes[extension].append("%s -> %s" % [clave, ruta])
+
+	if faltantes.is_empty():
+		return
+
+	var detalles := PackedStringArray()
+	for extension in faltantes.keys():
+		detalles.append("%s: [%s]" % [extension, ", ".join(faltantes[extension])])
+
+	push_warning("[MusicManager] Pistas faltantes al iniciar: %s" % " | ".join(detalles))
+
+
+func _obtener_bus_musica() -> String:
+	if AudioManager == null:
+		return BUS_MUSICA
+
+	if AudioManager.BUS_MUSICA != BUS_MUSICA:
+		push_warning("[MusicManager] BUS_MUSICA no coincide con AudioManager (%s != %s). Se usará '%s'." % [BUS_MUSICA, AudioManager.BUS_MUSICA, AudioManager.BUS_MUSICA])
+	return AudioManager.BUS_MUSICA

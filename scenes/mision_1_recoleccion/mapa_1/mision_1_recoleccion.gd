@@ -1,7 +1,7 @@
 extends Node2D
 
-const SFX_NIVEL_COMPLETADO := "res://assets/audio/sfx/nivel_completado.wav"
-const SFX_GAME_OVER := "res://assets/audio/sfx/game_over.wav"
+const SFX_NIVEL_COMPLETADO := "res://audios/sfx/nivel_completado.mp3"
+const SFX_GAME_OVER := "res://audios/sfx/game_over.mp3"
 
 @onready var level_complete_ui: Control = $NivelCompletadoUI/Control
 @onready var game_over_ui: Control = $GameOverUI/Control

@@ -21,7 +21,6 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 DatosJugador="*res://src/autoload/datos_jugador.gd"
 GameManager="*res://src/autoload/game_manager.gd"
 AudioManager="*res://src/autoload/audio_manager.gd"
-; BGM y ambientes centralizados en MusicManager. AudioManager se usa para buses/volumenes y SFX/UI.
 DialogueActors="*res://src/autoload/dialogue_actors.gd"
 Logs="*res://src/autoload/logs.gd"
 Cuestionarios="*res://src/autoload/cuestionarios.gd"

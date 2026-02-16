@@ -5,8 +5,8 @@ extends Control
 @onready var slider_sfx: HSlider = %SliderSFX
 @onready var slider_voz: HSlider = %SliderVoz
 
-const MUSIC_PREVIEW := "res://assets/audio/music/menu_principal.ogg"
-const SFX_PREVIEW := "res://assets/audio/sfx/ui_click.wav"
+const MUSIC_PREVIEW := "res://audios/musica/menu_principal.mp3"
+const SFX_PREVIEW := "res://audios/sfx/ui_click.mp3"
 
 
 func _ready() -> void:

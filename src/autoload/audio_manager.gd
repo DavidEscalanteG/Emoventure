@@ -7,7 +7,7 @@ const BUS_VOZ := "Voz"
 
 const SETTINGS_PATH := "user://audio_settings.cfg"
 
-const DEFAULT_UI_CLICK_SFX := "res://assets/audio/sfx/ui_click.wav"
+const DEFAULT_UI_CLICK_SFX := "res://audios/sfx/ui_click.mp3"
 
 var volumenes := {
 	BUS_MASTER: 1.0,
