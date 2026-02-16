@@ -45,10 +45,10 @@ func _process(_delta: float) -> void:
 
 
 func _sincronizar_partes() -> void:
-	var anim := cuerpo.animation
-	var frame := cuerpo.frame
-	var flip_h := cuerpo.flip_h
-	var flip_v := cuerpo.flip_v
+	var anim: StringName = cuerpo.animation
+	var frame: int = cuerpo.frame
+	var flip_h: bool = cuerpo.flip_h
+	var flip_v: bool = cuerpo.flip_v
 
 	for sprite in [cabello, cabeza, ojos, boca, nariz]:
 		if sprite.sprite_frames == null:
@@ -100,21 +100,21 @@ func _get_datos_jugador() -> Object:
 
 
 func _get_apariencia() -> Variant:
-	var datos_jugador := _get_datos_jugador()
+	var datos_jugador: Object = _get_datos_jugador()
 	if datos_jugador == null:
 		return null
 	return datos_jugador.get("apariencia")
 
 
 func _get_indice_apariencia(clave: String, fallback: int = 0) -> int:
-	var apariencia := _get_apariencia()
+	var apariencia: Variant = _get_apariencia()
 	if apariencia == null:
 		return fallback
 	return int(apariencia.get(clave))
 
 
 func _get_color_apariencia(clave: String, fallback: Color = Color.WHITE) -> Color:
-	var apariencia := _get_apariencia()
+	var apariencia: Variant = _get_apariencia()
 	if apariencia == null:
 		return fallback
 	return apariencia.get(clave, fallback)
@@ -139,7 +139,7 @@ func aplicar_apariencia_desde_global() -> void:
 
 
 func _validar_indices_por_genero() -> void:
-	var datos_jugador := _get_datos_jugador()
+	var datos_jugador: Object = _get_datos_jugador()
 	if datos_jugador == null:
 		return
 	datos_jugador.call("set_indice_cabello", _get_indice_apariencia("indice_cabello"))
