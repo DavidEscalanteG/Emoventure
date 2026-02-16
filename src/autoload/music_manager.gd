@@ -1,6 +1,6 @@
 extends Node
 
-const VOLUMEN_MUSICA_DB: float = -10.0
+const BUS_MUSICA := "Musica"
 
 const AMBIENTE_MISTERIO := "misterio"
 const AMBIENTE_TENSION := "tension"
@@ -46,8 +46,7 @@ var _pistas_por_escena: Dictionary[String, String] = {
 func _ready() -> void:
 	_reproductor = AudioStreamPlayer.new()
 	_reproductor.name = "MusicPlayer"
-	_reproductor.bus = "Master"
-	_reproductor.volume_db = VOLUMEN_MUSICA_DB
+	_reproductor.bus = BUS_MUSICA
 	add_child(_reproductor)
 
 	if get_tree().has_signal("current_scene_changed"):
@@ -58,6 +57,27 @@ func _ready() -> void:
 
 func reproducir_dialogo_por_ambiente(ambiente: String) -> void:
 	reproducir_clave(ambiente)
+
+
+func reproducir_desde_ruta(ruta_pista: String, from_position: float = 0.0) -> void:
+	if ruta_pista.is_empty():
+		return
+
+	if not ResourceLoader.exists(ruta_pista):
+		push_warning("[MusicManager] Falta archivo de música: %s" % ruta_pista)
+		return
+
+	var stream := load(ruta_pista) as AudioStream
+	if stream == null:
+		push_warning("[MusicManager] No se pudo cargar el AudioStream: %s" % ruta_pista)
+		return
+
+	if _reproductor.stream == stream and _reproductor.playing:
+		return
+
+	_clave_actual = ""
+	_reproductor.stream = stream
+	_reproductor.play(from_position)
 
 
 func reproducir_clave(clave: String) -> void:
