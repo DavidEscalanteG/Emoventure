@@ -79,3 +79,15 @@ Archivos ajustados en este punto:
 - `scenes/intro_mision_4/intro_mision_4.gd`
 
 También se normalizaron algunos `change_scene_to_file("uid://...")` a rutas `res://...` para robustez de parseo y trazabilidad de recursos.
+
+
+## Ajuste adicional 2: evitar `preload` de `.dialogue` para no depender de `.godot/imported` en parseo
+
+En CI se observó otro fallo al hacer parseo aislado: aunque la ruta `res://dialogos/*.dialogue` existía, `preload(...)` intentaba resolver el recurso importado en `.godot/imported/*.tres`, que no siempre está presente en runners limpios.
+
+Por eso, en las escenas intro con diálogos se cambió:
+
+- de `const DIALOGO_... = preload("res://dialogos/... .dialogue")`
+- a `const DIALOGO_..._PATH: String = "res://dialogos/... .dialogue"` y carga en runtime con `load(...)` dentro de `_ready()`
+
+Con esto el parser de CI ya no necesita resolver el import en compile-time del script.
