@@ -30,5 +30,17 @@ jobs:
       - name: Validate GDScript syntax (excluding addons)
         run: python3 .github/scripts/check_gdscript_syntax.py
 
+      - name: Validate scene and resource references (.tscn/.tres)
+        run: python3 .github/scripts/check_scene_resources.py
+
+      - name: Validate scene signal connections
+        run: python3 .github/scripts/check_scene_connections.py
+
+      - name: Lint basic GDScript style
+        run: python3 .github/scripts/check_gdscript_style.py
+
+      - name: Report potentially unused assets (non-blocking)
+        run: python3 .github/scripts/check_unused_assets.py
+
       - name: Run headless smoke test
         run: godot --headless --quit --path .
