@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://cxv23v4515m48"]
 
-[ext_resource type="Script" uid="uid://6uymohbocc55" path="res://scenes/personalizacion/Personalizador.gd" id="1_n5qyn"]
+[ext_resource type="Script" uid="uid://6uymohbocc55" path="res://scenes/personalizacion/personalizador.gd" id="1_n5qyn"]
 [ext_resource type="Script" uid="uid://dck5qqh46f0cm" path="res://scenes/personalizacion/hsv_color_editor.gd" id="2_rysy1"]
 [ext_resource type="PackedScene" uid="uid://b4t1ghb0ibdtf" path="res://assets/personajes/mascota/mascota.tscn" id="4_ngfm0"]
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="13_3x2dh"]

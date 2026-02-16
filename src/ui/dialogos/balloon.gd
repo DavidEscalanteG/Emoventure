@@ -1,6 +1,4 @@
 extends CanvasLayer
-
-const DMConstants := preload("res://addons/dialogue_manager/constants.gd")
 ## A basic dialogue balloon for use with Dialogue Manager.
 
 
