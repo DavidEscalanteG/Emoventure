@@ -1,7 +1,4 @@
 extends CharacterBody2D
-var DatosJugador: Object = Engine.get_singleton("DatosJugador") if Engine.has_singleton("DatosJugador") else null
-var Logs: Object = Engine.get_singleton("Logs") if Engine.has_singleton("Logs") else null
-
 
 # --------------------------------------------------
 # SEÑALES

@@ -1,8 +1,4 @@
 extends Node2D
-var DatosJugador: Object = Engine.get_singleton("DatosJugador") if Engine.has_singleton("DatosJugador") else null
-var AudioManager: Object = Engine.get_singleton("AudioManager") if Engine.has_singleton("AudioManager") else null
-var Logs: Object = Engine.get_singleton("Logs") if Engine.has_singleton("Logs") else null
-
 
 const SFX_NIVEL_COMPLETADO := "res://audios/sfx/nivel_completado.mp3"
 const SFX_GAME_OVER := "res://audios/sfx/game_over.mp3"

@@ -1,10 +1,7 @@
 extends Node2D
-var DialogueActors: Object = Engine.get_singleton("DialogueActors") if Engine.has_singleton("DialogueActors") else null
-var MusicManager: Object = Engine.get_singleton("MusicManager") if Engine.has_singleton("MusicManager") else null
 
-
-const DIALOGO_ESCENA_8_PATH: String = "res://dialogos/escena_8.dialogue"
-const SIGUIENTE_ESCENA: String = "res://scenes/mision_2_memorias/mision_2_memorias.tscn"
+const DIALOGO_ESCENA_8 := preload("uid://bxdfug21llqcy") #escena_8.dialogue")
+const SIGUIENTE_ESCENA := "uid://dr4vbuueuu56w" #escena_9.tcsn
 
 @onready var dialogue_ui: Node = $DialogueUI/Balloon
 
@@ -19,11 +16,7 @@ func _ready() -> void:
 	DialogueActors.animacion_establecer_animacion("mascota", "idle", "right")
 	
 	#await get_tree().create_timer(1.0).timeout
-	var dialogo_resource: Resource = load(DIALOGO_ESCENA_8_PATH)
-	if dialogo_resource == null:
-		push_error("No se pudo cargar el diálogo: %s" % DIALOGO_ESCENA_8_PATH)
-		return
-	dialogue_ui.iniciar_dialogo(dialogo_resource)
+	dialogue_ui.iniciar_dialogo(DIALOGO_ESCENA_8)
 
 
 func _on_dialogo_finalizado() -> void:

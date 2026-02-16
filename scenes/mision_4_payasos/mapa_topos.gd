@@ -1,7 +1,4 @@
 extends Node2D
-var Logs: Object = Engine.get_singleton("Logs") if Engine.has_singleton("Logs") else null
-var Cuestionarios: Object = Engine.get_singleton("Cuestionarios") if Engine.has_singleton("Cuestionarios") else null
-
 
 var cursor_normal: Texture2D = load("res://assets/assets_escena_payaso/martillo.png")
 var cursor_golpe: Texture2D = load("res://assets/assets_escena_payaso/martillo_pegando.png")
@@ -176,7 +173,7 @@ func _iniciar_cuestionario() -> void:
 	if not Cuestionarios.validar_mision(numero_mision_cuestionario):
 		return
 
-	var cuestionario: Node = escena_cuestionario.instantiate()
+	var cuestionario: EscenaCuestionario = escena_cuestionario.instantiate()
 	var dimension: String = Cuestionarios.obtener_dimension_para_mision(numero_mision_cuestionario)
 
 	cuestionario.preguntas = Cuestionarios.obtener_preguntas_para_mision(numero_mision_cuestionario)
