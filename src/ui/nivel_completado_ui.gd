@@ -1,4 +1,7 @@
 extends Control
+var Logs: Object = Engine.get_singleton("Logs") if Engine.has_singleton("Logs") else null
+var Cuestionarios: Object = Engine.get_singleton("Cuestionarios") if Engine.has_singleton("Cuestionarios") else null
+
 
 # ==================================================
 # CONFIG

@@ -1,4 +1,7 @@
 extends Node2D
+var DialogueActors: Object = Engine.get_singleton("DialogueActors") if Engine.has_singleton("DialogueActors") else null
+var MusicManager: Object = Engine.get_singleton("MusicManager") if Engine.has_singleton("MusicManager") else null
+
 
 const DIALOGO_ESCENA_6 := preload("uid://4uhkfxb2ak8d") #escena_6.dialogue
 const SIGUIENTE_ESCENA := "uid://c7ncdodlaop87" #intro_dialogo_5.tscn

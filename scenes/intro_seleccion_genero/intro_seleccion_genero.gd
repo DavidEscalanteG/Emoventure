@@ -1,4 +1,6 @@
 extends Control
+var DatosJugador: Object = Engine.get_singleton("DatosJugador") if Engine.has_singleton("DatosJugador") else null
+
 
 @onready var jugador_hombre = $VBoxContainer/HBoxContainer/ContenedorHombre/JugadorHombre
 @onready var jugador_mujer = $VBoxContainer/HBoxContainer/ContenedorMujer/JugadorMujer

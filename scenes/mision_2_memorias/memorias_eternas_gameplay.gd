@@ -1,4 +1,6 @@
 extends Control
+var Logs: Object = Engine.get_singleton("Logs") if Engine.has_singleton("Logs") else null
+
 
 const TOTAL_CUADROS: int = 7
 

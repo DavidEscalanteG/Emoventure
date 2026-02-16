@@ -1,4 +1,6 @@
 extends Node
+var AudioManager: Object = Engine.get_singleton("AudioManager") if Engine.has_singleton("AudioManager") else null
+
 
 const BUS_MUSICA := "Musica"
 
