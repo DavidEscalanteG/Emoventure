@@ -20,6 +20,13 @@ var topos_jugables: Array[Node] = []
 var total_topos_aparecidos: int = 0
 var mision_finalizada: bool = false
 
+enum EstadoResultado {
+	NINGUNO,
+	VICTORIA,
+	DERROTA
+}
+var estado_resultado_actual: EstadoResultado = EstadoResultado.NINGUNO
+
 var dificultad: float = 1.0
 var velocidad_minima: float = 0.4
 
@@ -128,6 +135,7 @@ func _evaluar_resultado() -> Dictionary:
 
 func _mostrar_victoria(resultado: Dictionary) -> void:
 	var porcentaje: float = resultado.porcentaje_aciertos * 100.0
+	estado_resultado_actual = EstadoResultado.VICTORIA
 	titulo_resultado.text = "Misión completada"
 	detalle_resultado.text = "Puntos: %d | Aciertos: %.0f%%\n\n%s" % [puntos, porcentaje, narrativa_previa_rescate]
 	boton_principal.text = "Ir al cuestionario"
@@ -136,6 +144,7 @@ func _mostrar_victoria(resultado: Dictionary) -> void:
 
 func _mostrar_derrota(resultado: Dictionary) -> void:
 	var porcentaje: float = resultado.porcentaje_aciertos * 100.0
+	estado_resultado_actual = EstadoResultado.DERROTA
 	titulo_resultado.text = "Misión fallida"
 	detalle_resultado.text = "Puntos: %d | Aciertos: %.0f%%\nNecesitas mejorar tu precisión para rescatar a tu mascota." % [puntos, porcentaje]
 	boton_principal.text = "Reintentar misión"
@@ -143,11 +152,13 @@ func _mostrar_derrota(resultado: Dictionary) -> void:
 	pantalla_resultado.visible = true
 
 func _on_boton_principal_presionado() -> void:
-	if titulo_resultado.text == "Misión completada":
-		_iniciar_cuestionario()
-		return
-
-	_reiniciar_mision()
+	match estado_resultado_actual:
+		EstadoResultado.VICTORIA:
+			_iniciar_cuestionario()
+		EstadoResultado.DERROTA:
+			_reiniciar_mision()
+		_:
+			push_warning("Estado de resultado no definido al presionar botón principal")
 
 func _on_boton_secundario_presionado() -> void:
 	pantalla_resultado.visible = false
@@ -156,6 +167,7 @@ func _reiniciar_mision() -> void:
 	mision_finalizada = false
 	puntos = 0
 	total_topos_aparecidos = 0
+	estado_resultado_actual = EstadoResultado.NINGUNO
 	dificultad = 1.0
 	$SpawnTimer.wait_time = 1.5
 	_actualizar_marcador()
