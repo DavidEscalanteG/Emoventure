@@ -11,17 +11,17 @@ var progreso_actual: int = 0
 var _checkpoints_activados: Dictionary = {}
 var _bloqueada: bool = false
 
-@onready var jugador: CharacterBody2D = $Jugador
-@onready var label_vidas: Label = $CanvasLayer/UI/Panel/VBoxContainer/Vidas
-@onready var label_progreso: Label = $CanvasLayer/UI/Panel/VBoxContainer/Progreso
-@onready var dano_overlay: ColorRect = $CanvasLayer/DanoOverlay
-@onready var sonido_danio: AudioStreamPlayer = $AudioDanio
-@onready var salida: Area2D = $Salida
+@onready var jugador: CharacterBody2D = %Jugador
+@onready var label_vidas: Label = %Vidas
+@onready var label_progreso: Label = %Progreso
+@onready var dano_overlay: ColorRect = %DanoOverlay
+@onready var sonido_danio: AudioStreamPlayer = %AudioDanio
+@onready var salida: Area2D = %Salida
 
 func _ready() -> void:
 	jugador.add_to_group("jugador_mision_3")
 	jugador.permitir_movimiento()
-	jugador.global_position = $SpawnJugador.global_position
+	jugador.global_position = %SpawnJugador.global_position
 	jugador.vidas_actuales = golpes_maximos
 
 	for checkpoint in get_tree().get_nodes_in_group("mision_3_checkpoint"):
