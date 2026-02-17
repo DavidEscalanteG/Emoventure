@@ -79,54 +79,66 @@ func _anterior(indice: int, coleccion: Array) -> int:
 # --------------------------------------------------
 
 func _on_btn_cabello_siguiente_pressed() -> void:
+	AudioManager.play_ui_click()
 	indice_cabello = DatosJugador.avanzar_indice_cabello()
 	refrescar_preview()
 
 func _on_btn_cabello_atras_pressed() -> void:
+	AudioManager.play_ui_click()
 	indice_cabello = DatosJugador.retroceder_indice_cabello()
 	refrescar_preview()
 
 
 func _on_btn_cabeza_siguiente_pressed() -> void:
+	AudioManager.play_ui_click()
 	indice_cabeza = _siguiente(indice_cabeza, apariencia.coleccion_cabezas)
 	refrescar_preview()
 
 func _on_btn_cabeza_atras_pressed() -> void:
+	AudioManager.play_ui_click()
 	indice_cabeza = _anterior(indice_cabeza, apariencia.coleccion_cabezas)
 	refrescar_preview()
 
 
 func _on_btn_ojos_siguiente_pressed() -> void:
+	AudioManager.play_ui_click()
 	indice_ojos = _siguiente(indice_ojos, apariencia.coleccion_ojos)
 	refrescar_preview()
 
 func _on_btn_ojos_atras_pressed() -> void:
+	AudioManager.play_ui_click()
 	indice_ojos = _anterior(indice_ojos, apariencia.coleccion_ojos)
 	refrescar_preview()
 
 
 func _on_btn_nariz_siguiente_pressed() -> void:
+	AudioManager.play_ui_click()
 	indice_nariz = _siguiente(indice_nariz, apariencia.coleccion_narices)
 	refrescar_preview()
 
 func _on_btn_nariz_atras_pressed() -> void:
+	AudioManager.play_ui_click()
 	indice_nariz = _anterior(indice_nariz, apariencia.coleccion_narices)
 	refrescar_preview()
 
 
 func _on_btn_boca_siguiente_pressed() -> void:
+	AudioManager.play_ui_click()
 	indice_boca = _siguiente(indice_boca, apariencia.coleccion_bocas)
 	refrescar_preview()
 
 func _on_btn_boca_atras_pressed() -> void:
+	AudioManager.play_ui_click()
 	indice_boca = _anterior(indice_boca, apariencia.coleccion_bocas)
 	refrescar_preview()
 
 
 func _on_btn_cuerpo_siguiente_pressed() -> void:
+	AudioManager.play_ui_click()
 	indice_cuerpo = _siguiente(indice_cuerpo, apariencia.coleccion_cuerpos)
 	refrescar_preview()
 func _on_btn_cuerpo_atras_pressed() -> void:
+	AudioManager.play_ui_click()
 	indice_cuerpo = _anterior(indice_cuerpo, apariencia.coleccion_cuerpos)
 	refrescar_preview()
 
@@ -156,11 +168,13 @@ func _on_color_picker_button_cuerpo_color_changed(color: Color) -> void:
 # --------------------------------------------------
 
 func _on_comenzar_pressed() -> void:
+	AudioManager.play_ui_click()
 	guardar_en_global()
 	get_tree().change_scene_to_file("uid://dlfpd1a8lfh5") #intro_dialogo_1.tscn
 
 
 func _on_mascota_siguiente_pressed() -> void:
+	AudioManager.play_ui_click()
 	_actualizar_indice_mascota(1)
 
 
@@ -170,6 +184,7 @@ func mascota_anterior() -> void:
 
 
 func _on_mascota_anterior_pressed() -> void:
+	AudioManager.play_ui_click()
 	mascota_anterior()
 
 

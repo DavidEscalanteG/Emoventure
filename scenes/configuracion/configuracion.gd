@@ -33,10 +33,12 @@ func _on_slider_voz_value_changed(value: float) -> void:
 
 
 func _on_btn_probar_musica_pressed() -> void:
+	AudioManager.play_ui_click()
 	MusicManager.reproducir_desde_ruta(MUSIC_PREVIEW)
 
 
 func _on_btn_probar_sfx_pressed() -> void:
+	AudioManager.play_ui_click()
 	AudioManager.play_sfx(SFX_PREVIEW)
 
 

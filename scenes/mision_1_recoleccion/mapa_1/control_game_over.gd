@@ -10,4 +10,5 @@ func mostrar() -> void:
 	visible = true
 
 func _on_reiniciar_pressed() -> void:
+	AudioManager.play_ui_click()
 	get_tree().reload_current_scene()
