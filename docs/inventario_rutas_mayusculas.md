@@ -39,7 +39,8 @@ Pendiente acordar y ejecutar en PRs de normalización:
 1. **Alcance de la regla:** confirmar si la convención de minúsculas aplica solo a scripts (`.gd`) o también a escenas (`.tscn`).
 2. **Rutas públicas/referencias:** validar impacto en `preload/load`, `class_name`, export variables y referencias de escenas antes de renombrar.
 3. **Prioridad de migración:**
-   - Alta prioridad: `src/autoload/Logs.gd` y `scenes/personalizacion/Personalizador.gd` (scripts con mayúsculas).
+   - Alta prioridad: `scenes/personalizacion/Personalizador.gd` (script con mayúsculas).
+   - Nota: `src/autoload/Logs.gd` se mantiene con mayúscula por compatibilidad de nombre público del singleton `Logs` y ya está referenciado con el casing exacto en `project.godot` y `docs/arquitectura.md`.
    - Prioridad media: escenas con mayúsculas bajo `scenes/` y `assets/`.
 4. **Estrategia de ejecución:** decidir si se hace en un único PR atómico o por lotes (por carpeta/sistema) para reducir riesgo de regresiones.
 
