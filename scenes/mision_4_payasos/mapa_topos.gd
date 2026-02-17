@@ -36,14 +36,11 @@ var velocidad_minima: float = 0.4
 @onready var boton_principal: Button = %BotonPrincipalResultado
 @onready var boton_secundario: Button = %BotonSecundarioResultado
 @onready var marcador_puntos: Label = %MarcadorPuntos
-@onready var gameplay: Node = %Gameplay
-@onready var spawn_timer: Timer = %SpawnTimer
-@onready var timer_juego: Timer = %TimerJuego
 
 func _ready() -> void:
 	randomize()
 
-	for topo in gameplay.get_children():
+	for topo in get_children():
 		if topo.has_method("aparecer") or topo.has_signal("golpe_recibido"):
 			topos_jugables.append(topo)
 
@@ -92,8 +89,8 @@ func _on_spawn_timer_timeout() -> void:
 		total_topos_aparecidos += 1
 		disponibles.remove_at(indice_aleatorio)
 
-	if spawn_timer.wait_time > velocidad_minima:
-		spawn_timer.wait_time -= 0.05
+	if $SpawnTimer.wait_time > velocidad_minima:
+		$SpawnTimer.wait_time -= 0.05
 	
 	if dificultad < 5:
 		dificultad += 0.1
@@ -106,8 +103,8 @@ func _finalizar_mision() -> void:
 		return
 
 	mision_finalizada = true
-	spawn_timer.stop()
-	timer_juego.stop()
+	$SpawnTimer.stop()
+	$TimerJuego.stop()
 	Input.set_custom_mouse_cursor(cursor_normal)
 
 	for topo in topos_jugables:
@@ -174,14 +171,14 @@ func _reiniciar_mision() -> void:
 	total_topos_aparecidos = 0
 	estado_resultado_actual = EstadoResultado.NINGUNO
 	dificultad = 1.0
-	spawn_timer.wait_time = 1.5
+	$SpawnTimer.wait_time = 1.5
 	for topo in topos_jugables:
 		if topo.has_method("reset_estado"):
 			topo.reset_estado()
 	_actualizar_marcador()
 	pantalla_resultado.visible = false
-	spawn_timer.start()
-	timer_juego.start()
+	$SpawnTimer.start()
+	$TimerJuego.start()
 	Input.set_custom_mouse_cursor(cursor_normal)
 	Logs.log_debug("Misión de topos reiniciada")
 
