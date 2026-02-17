@@ -9,7 +9,7 @@ Convención vigente para autoloads en `project.godot`:
 | `AudioManager` | `res://src/autoload/audio_manager.gd` | Configuración de buses, volumenes persistentes (`Master`, `Musica`, `SFX`, `Voz`) y reproducción de SFX/UI. |
 | `MusicManager` | `res://src/autoload/music_manager.gd` | Único punto de verdad para música de fondo y ambientes (pistas por escena, por clave y por ambiente). |
 | `DialogueActors` | `res://src/autoload/dialogue_actors.gd` | Registro/gestión de actores de diálogo. |
-| `Logs` | `res://src/autoload/logs.gd` | Canal centralizado de logs del juego. |
+| `Logs` | `res://src/autoload/Logs.gd` | Canal centralizado de logs del juego. |
 | `Cuestionarios` | `res://src/autoload/cuestionarios.gd` | Datos y utilidades globales de cuestionarios. |
 
 ## Decisión de audio
