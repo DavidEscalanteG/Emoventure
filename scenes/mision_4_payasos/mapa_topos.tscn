@@ -10,122 +10,112 @@ script = ExtResource("1_motkv")
 escena_cierre = ExtResource("4_tuyx4")
 numero_mision_cuestionario = 4
 
-[node name="Gameplay" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="Decoracion" type="Node2D" parent="."]
-
-[node name="UI" type="Node" parent="."]
-
-[node name="Flow" type="Node" parent="."]
-
-[node name="Topo" parent="Gameplay" instance=ExtResource("2_tucnq")]
+[node name="Topo" parent="." instance=ExtResource("2_tucnq")]
 offset_left = 332.0
 offset_top = 25.0
 offset_right = 632.0
 offset_bottom = 325.0
 
-[node name="Topo2" parent="Gameplay" instance=ExtResource("2_tucnq")]
+[node name="Topo2" parent="." instance=ExtResource("2_tucnq")]
 offset_left = 796.0
 offset_top = 23.0
 offset_right = 1096.0
 offset_bottom = 323.0
 
-[node name="Topo3" parent="Gameplay" instance=ExtResource("2_tucnq")]
+[node name="Topo3" parent="." instance=ExtResource("2_tucnq")]
 offset_left = 1262.0
 offset_top = 48.0
 offset_right = 1562.0
 offset_bottom = 348.0
 
-[node name="Topo4" parent="Gameplay" instance=ExtResource("2_tucnq")]
+[node name="Topo4" parent="." instance=ExtResource("2_tucnq")]
 offset_left = 341.0
 offset_top = 392.0
 offset_right = 641.0
 offset_bottom = 692.0
 
-[node name="Topo5" parent="Gameplay" instance=ExtResource("2_tucnq")]
+[node name="Topo5" parent="." instance=ExtResource("2_tucnq")]
 offset_left = 775.0
 offset_top = 397.0
 offset_right = 1075.0
 offset_bottom = 697.0
 
-[node name="Topo6" parent="Gameplay" instance=ExtResource("2_tucnq")]
+[node name="Topo6" parent="." instance=ExtResource("2_tucnq")]
 offset_left = 1219.0
 offset_top = 431.0
 offset_right = 1519.0
 offset_bottom = 731.0
 
-[node name="Topo7" parent="Gameplay" instance=ExtResource("2_tucnq")]
+[node name="Topo7" parent="." instance=ExtResource("2_tucnq")]
 offset_left = 315.0
 offset_top = 752.0
 offset_right = 615.0
 offset_bottom = 1052.0
 
-[node name="Topo8" parent="Gameplay" instance=ExtResource("2_tucnq")]
+[node name="Topo8" parent="." instance=ExtResource("2_tucnq")]
 offset_left = 756.0
 offset_top = 750.0
 offset_right = 1056.0
 offset_bottom = 1050.0
 
-[node name="Topo9" parent="Gameplay" instance=ExtResource("2_tucnq")]
+[node name="Topo9" parent="." instance=ExtResource("2_tucnq")]
 offset_left = 1204.0
 offset_top = 738.0
 offset_right = 1504.0
 offset_bottom = 1038.0
 
-[node name="SpawnTimer" type="Timer" parent="Flow"]
-unique_name_in_owner = true
+[node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
 
-[node name="Tierra_0,0" type="Sprite2D" parent="Decoracion"]
+[node name="Tierra_0,0" type="Sprite2D" parent="."]
 position = Vector2(468, 295.00003)
 scale = Vector2(2.4421487, 1.5865386)
 texture = ExtResource("3_h0xfj")
 
-[node name="Tierra_0,1" type="Sprite2D" parent="Decoracion"]
+[node name="Tierra_0,1" type="Sprite2D" parent="."]
 position = Vector2(948, 300.00003)
 scale = Vector2(2.4421487, 1.5865386)
 texture = ExtResource("3_h0xfj")
 
-[node name="Tierra_0,2" type="Sprite2D" parent="Decoracion"]
+[node name="Tierra_0,2" type="Sprite2D" parent="."]
 position = Vector2(1414, 326.00003)
 scale = Vector2(2.4421487, 1.5865386)
 texture = ExtResource("3_h0xfj")
 
-[node name="Tierra_1,0" type="Sprite2D" parent="Decoracion"]
+[node name="Tierra_1,0" type="Sprite2D" parent="."]
 position = Vector2(470, 651.00006)
 scale = Vector2(2.4421487, 1.5865386)
 texture = ExtResource("3_h0xfj")
 
-[node name="Tierra_1,1" type="Sprite2D" parent="Decoracion"]
+[node name="Tierra_1,1" type="Sprite2D" parent="."]
 position = Vector2(918, 664.00006)
 scale = Vector2(2.4421487, 1.5865386)
 texture = ExtResource("3_h0xfj")
 
-[node name="Tierra_1,2" type="Sprite2D" parent="Decoracion"]
+[node name="Tierra_1,2" type="Sprite2D" parent="."]
 position = Vector2(1356, 678)
 scale = Vector2(2.4421487, 1.5865386)
 texture = ExtResource("3_h0xfj")
 
-[node name="Tierra_2,0" type="Sprite2D" parent="Decoracion"]
+[node name="Tierra_2,0" type="Sprite2D" parent="."]
 position = Vector2(487, 988.00006)
 scale = Vector2(2.4421487, 1.5865386)
 texture = ExtResource("3_h0xfj")
 
-[node name="Tierra_2,1" type="Sprite2D" parent="Decoracion"]
+[node name="Tierra_2,1" type="Sprite2D" parent="."]
 position = Vector2(912, 1004.00006)
 scale = Vector2(2.4421487, 1.5865386)
 texture = ExtResource("3_h0xfj")
 
-[node name="Tierra_2,2" type="Sprite2D" parent="Decoracion"]
+[node name="Tierra_2,2" type="Sprite2D" parent="."]
 position = Vector2(1366, 1014.00006)
 scale = Vector2(2.4421487, 1.5865386)
 texture = ExtResource("3_h0xfj")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarcadorPuntos" type="Label" parent="UI/CanvasLayer"]
+[node name="MarcadorPuntos" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
 anchors_preset = 10
 anchor_right = 1.0
@@ -139,7 +129,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 45
 text = "Puntos: 0"
 
-[node name="PantallaResultado" type="PanelContainer" parent="UI/CanvasLayer"]
+[node name="PantallaResultado" type="PanelContainer" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 8
@@ -154,24 +144,24 @@ offset_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/PantallaResultado"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PantallaResultado"]
 layout_mode = 2
 theme_override_constants/margin_left = 28
 theme_override_constants/margin_top = 28
 theme_override_constants/margin_right = 28
 theme_override_constants/margin_bottom = 28
 
-[node name="VBoxResultado" type="VBoxContainer" parent="UI/CanvasLayer/PantallaResultado/MarginContainer"]
+[node name="VBoxResultado" type="VBoxContainer" parent="CanvasLayer/PantallaResultado/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="TituloResultado" type="Label" parent="UI/CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado"]
+[node name="TituloResultado" type="Label" parent="CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 44
 horizontal_alignment = 1
 
-[node name="DetalleResultado" type="Label" parent="UI/CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado"]
+[node name="DetalleResultado" type="Label" parent="CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
@@ -180,27 +170,26 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="HBoxAcciones" type="HBoxContainer" parent="UI/CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado"]
+[node name="HBoxAcciones" type="HBoxContainer" parent="CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="BotonPrincipalResultado" type="Button" parent="UI/CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado/HBoxAcciones"]
+[node name="BotonPrincipalResultado" type="Button" parent="CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado/HBoxAcciones"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Continuar"
 
-[node name="BotonSecundarioResultado" type="Button" parent="UI/CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado/HBoxAcciones"]
+[node name="BotonSecundarioResultado" type="Button" parent="CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado/HBoxAcciones"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "Continuar"
 
-[node name="TimerJuego" type="Timer" parent="Flow"]
-unique_name_in_owner = true
+[node name="TimerJuego" type="Timer" parent="."]
 wait_time = 60.0
 one_shot = true
 autostart = true
 
-[connection signal="timeout" from="Flow/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="timeout" from="Flow/TimerJuego" to="." method="_on_timer_juego_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="TimerJuego" to="." method="_on_timer_juego_timeout"]
