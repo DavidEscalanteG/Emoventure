@@ -155,7 +155,6 @@ theme_override_constants/v_separation = 200
 columns = 4
 
 [node name="CuadroMemoria" type="TextureButton" parent="CuadrosContainer"]
-id_cuadro = 0
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
@@ -164,6 +163,7 @@ stretch_mode = 0
 script = ExtResource("1_p8cra")
 imagen_color = ExtResource("3_k0nqh")
 imagen_bn = ExtResource("4_3p6no")
+id_cuadro = 1
 
 [node name="Estela" type="TextureRect" parent="CuadrosContainer/CuadroMemoria"]
 modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
@@ -191,7 +191,6 @@ animation = &"neutro"
 autoplay = "neutro"
 
 [node name="CuadroMemoria2" type="TextureButton" parent="CuadrosContainer"]
-id_cuadro = 1
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("5_1a4ln")
@@ -199,6 +198,7 @@ stretch_mode = 0
 script = ExtResource("1_p8cra")
 imagen_color = ExtResource("6_5m4x7")
 imagen_bn = ExtResource("5_1a4ln")
+id_cuadro = 2
 
 [node name="Estela" type="TextureRect" parent="CuadrosContainer/CuadroMemoria2"]
 modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
@@ -226,7 +226,6 @@ animation = &"neutro"
 autoplay = "neutro"
 
 [node name="CuadroMemoria3" type="TextureButton" parent="CuadrosContainer"]
-id_cuadro = 2
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("7_d4c4x")
@@ -234,6 +233,7 @@ stretch_mode = 0
 script = ExtResource("1_p8cra")
 imagen_color = ExtResource("8_mm1al")
 imagen_bn = ExtResource("7_d4c4x")
+id_cuadro = 3
 
 [node name="Estela" type="TextureRect" parent="CuadrosContainer/CuadroMemoria3"]
 modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
@@ -261,7 +261,6 @@ animation = &"neutro"
 autoplay = "neutro"
 
 [node name="CuadroMemoria4" type="TextureButton" parent="CuadrosContainer"]
-id_cuadro = 3
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("9_bvbsn")
@@ -269,6 +268,7 @@ stretch_mode = 0
 script = ExtResource("1_p8cra")
 imagen_color = ExtResource("10_wls2d")
 imagen_bn = ExtResource("9_bvbsn")
+id_cuadro = 4
 
 [node name="Estela" type="TextureRect" parent="CuadrosContainer/CuadroMemoria4"]
 modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
@@ -296,7 +296,6 @@ animation = &"neutro"
 autoplay = "neutro"
 
 [node name="CuadroMemoria5" type="TextureButton" parent="CuadrosContainer"]
-id_cuadro = 4
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("11_0q4pt")
@@ -304,6 +303,7 @@ stretch_mode = 0
 script = ExtResource("1_p8cra")
 imagen_color = ExtResource("12_phvrg")
 imagen_bn = ExtResource("11_0q4pt")
+id_cuadro = 5
 
 [node name="Estela" type="TextureRect" parent="CuadrosContainer/CuadroMemoria5"]
 modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
@@ -331,7 +331,6 @@ animation = &"neutro"
 autoplay = "neutro"
 
 [node name="CuadroMemoria6" type="TextureButton" parent="CuadrosContainer"]
-id_cuadro = 5
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("13_ses3a")
@@ -339,6 +338,7 @@ stretch_mode = 0
 script = ExtResource("1_p8cra")
 imagen_color = ExtResource("14_0sevr")
 imagen_bn = ExtResource("13_ses3a")
+id_cuadro = 6
 
 [node name="Estela" type="TextureRect" parent="CuadrosContainer/CuadroMemoria6"]
 modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
@@ -366,7 +366,6 @@ animation = &"neutro"
 autoplay = "neutro"
 
 [node name="CuadroMemoria7" type="TextureButton" parent="CuadrosContainer"]
-id_cuadro = 6
 layout_mode = 2
 focus_mode = 0
 texture_normal = ExtResource("15_3coyv")
@@ -374,6 +373,7 @@ stretch_mode = 0
 script = ExtResource("1_p8cra")
 imagen_color = ExtResource("16_uf5ph")
 imagen_bn = ExtResource("15_3coyv")
+id_cuadro = 7
 
 [node name="Estela" type="TextureRect" parent="CuadrosContainer/CuadroMemoria7"]
 modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)

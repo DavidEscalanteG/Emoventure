@@ -11,9 +11,10 @@ var _reproductor: AudioStreamPlayer
 var _clave_actual: String = ""
 var _override_dialogo_activo: String = ""
 var _advertencias_emitidas: Dictionary[String, bool] = {}
+var _ultima_ruta_escena: String = ""
 
 var _pistas_por_clave: Dictionary[String, String] = {
-	"menu": "res://audios/musica/menu_principal.mp3",
+	"menu_principal": "res://audios/musica/menu_principal.mp3",
 	"personalizacion": "res://audios/musica/personalizacion.mp3",
 	"mision_1": "res://audios/musica/mision_1.mp3",
 	"mision_2": "res://audios/musica/mision_2.mp3",
@@ -29,23 +30,23 @@ var _pistas_por_clave: Dictionary[String, String] = {
 }
 
 var _pistas_por_escena: Dictionary[String, String] = {
-	"res://scenes/menu_principal/menu_principal.tscn": "menu",
-	"res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn": "menu",
+	"res://scenes/menu_principal/menu_principal.tscn": "menu_principal",
+	"res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn": "menu_principal",
 	"res://scenes/personalizacion/Personalizacion.tscn": "personalizacion",
-	"res://scenes/intro_dialogo_1/intro_dialogo_1.tscn": "menu",
-	"res://scenes/intro_dialogo_2/intro_dialogo_2.tscn": "menu",
+	"res://scenes/intro_dialogo_1/intro_dialogo_1.tscn": AMBIENTE_MISTERIO,
+	"res://scenes/intro_dialogo_2/intro_dialogo_2.tscn": AMBIENTE_TENSION,
 	"res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn": "mision_1",
 	"res://scenes/transicion_post_mision_1/transicion_post_mision_1.tscn": "transicion_llave",
-	"res://scenes/intro_dialogo_3/intro_dialogo_3.tscn": "transicion_llave",
-	"res://scenes/intro_dialogo_4/intro_dialogo_4.tscn": "transicion_llave",
-	"res://scenes/intro_dialogo_5/intro_dialogo_5.tscn": "transicion_llave",
-	"res://scenes/intro_mision_2/intro_mision_2.tscn": "mision_2",
+	"res://scenes/intro_dialogo_3/intro_dialogo_3.tscn": AMBIENTE_TENSION,
+	"res://scenes/intro_dialogo_4/intro_dialogo_4.tscn": AMBIENTE_TENSION,
+	"res://scenes/intro_dialogo_5/intro_dialogo_5.tscn": AMBIENTE_TIERNURA,
+	"res://scenes/intro_mision_2/intro_mision_2.tscn": AMBIENTE_MISTERIO,
 	"res://scenes/mision_2_memorias/mision_2_memorias.tscn": "mision_2",
 	"res://scenes/cuestionarios/EscenaCuestionario.tscn": "cuestionario",
 	"res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn": "transicion_llave",
 	"res://scenes/mision_3_hachas/mision_3_hachas.tscn": "mision_3",
 	"res://scenes/recompensa_mision_3/recompensa_mision_3.tscn": "transicion_llave",
-	"res://scenes/intro_mision_4/intro_mision_4.tscn": "mision_4",
+	"res://scenes/intro_mision_4/intro_mision_4.tscn": AMBIENTE_CALMA,
 	"res://scenes/mision_4_payasos/mapa_topos.tscn": "mision_4",
 	"res://scenes/final/resultado_final.tscn": "resultado_final"
 }
@@ -63,10 +64,29 @@ func _ready() -> void:
 		get_tree().current_scene_changed.connect(_on_current_scene_changed)
 
 	_actualizar_musica_escena_actual()
+	set_process(true)
 
 
 func reproducir_dialogo_por_ambiente(ambiente: String) -> void:
 	iniciar_override_dialogo(ambiente)
+
+
+func _process(_delta: float) -> void:
+	if _override_dialogo_activo.is_empty():
+		_actualizar_musica_si_cambio_escena()
+
+
+func _actualizar_musica_si_cambio_escena() -> void:
+	var escena_actual: Node = get_tree().current_scene
+	if escena_actual == null:
+		return
+
+	var ruta_escena: String = escena_actual.scene_file_path
+	if ruta_escena.is_empty() or ruta_escena == _ultima_ruta_escena:
+		return
+
+	_ultima_ruta_escena = ruta_escena
+	_actualizar_musica_escena_actual(false)
 
 
 func iniciar_override_dialogo(ambiente: String) -> void:
@@ -154,6 +174,8 @@ func _actualizar_musica_escena_actual(forzar_restauracion: bool = false) -> void
 	var ruta_escena: String = escena_actual.scene_file_path
 	if ruta_escena.is_empty():
 		return
+		
+	_ultima_ruta_escena = ruta_escena
 
 	var clave: String = _pistas_por_escena.get(ruta_escena, "")
 	if clave.is_empty():
