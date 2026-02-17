@@ -5,6 +5,7 @@ extends TextureButton
 @export var numero_mision_cuestionario: int = 2
 
 func _on_pressed() -> void:
+	AudioManager.play_ui_click()
 	if escena_cuestionario == null:
 		push_error("No se asignó escena_cuestionario")
 		return

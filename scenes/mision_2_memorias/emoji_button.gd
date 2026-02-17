@@ -32,6 +32,7 @@ func _on_mouse_exited() -> void:
 
 
 func _on_pressed() -> void:
+	AudioManager.play_ui_click()
 	if selector != null:
 		selector.call("seleccionar_emocion", emocion_id, self)
 
