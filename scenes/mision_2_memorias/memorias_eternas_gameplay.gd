@@ -9,6 +9,7 @@ const TOTAL_CUADROS: int = 7
 
 var cuadros_completados: int = 0
 var respuestas_emociones: Array[String] = []
+var cuadros_confirmados: Dictionary = {}
 
 
 func _ready() -> void:
@@ -31,11 +32,22 @@ func _ready() -> void:
 
 func _respuestas_iniciales() -> void:
 	respuestas_emociones.clear()
+	cuadros_confirmados.clear()
 	for indice in range(TOTAL_CUADROS):
 		respuestas_emociones.append("")
 
 
 func _on_cuadro_completado(cuadro: CuadroMemoria, emocion: String) -> void:
+	if cuadro == null:
+		push_warning("Se recibió cuadro nulo en _on_cuadro_completado")
+		return
+
+	if cuadros_confirmados.has(cuadro.id_cuadro):
+		push_warning("Cuadro ya confirmado: %d" % cuadro.id_cuadro)
+		_guardar_respuesta(cuadro, emocion)
+		return
+
+	cuadros_confirmados[cuadro.id_cuadro] = true
 	cuadros_completados += 1
 	_guardar_respuesta(cuadro, emocion)
 	Logs.log_debug("[DEBUG] Cuadros completados: %d" % cuadros_completados)
@@ -48,10 +60,22 @@ func _on_cuadro_completado(cuadro: CuadroMemoria, emocion: String) -> void:
 
 
 func _guardar_respuesta(cuadro: CuadroMemoria, emocion: String) -> void:
-	var indice: int = cuadro.get_index()
+	if cuadro == null:
+		push_warning("Intento de guardar respuesta con cuadro nulo")
+		return
+
+	var indice: int = cuadro.id_cuadro
 	if indice < 0 or indice >= respuestas_emociones.size():
 		push_warning("Índice de cuadro fuera de rango: %d" % indice)
 		return
+
+	for otro_cuadro in cuadros_container.get_children():
+		var cuadro_memoria: CuadroMemoria = otro_cuadro as CuadroMemoria
+		if cuadro_memoria == null or cuadro_memoria == cuadro:
+			continue
+		if cuadro_memoria.id_cuadro == indice:
+			push_warning("ID de cuadro duplicado detectado: %d" % indice)
+			return
 
 	respuestas_emociones[indice] = emocion
 
