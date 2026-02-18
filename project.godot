@@ -22,7 +22,7 @@ DatosJugador="*res://src/autoload/datos_jugador.gd"
 GameManager="*res://src/autoload/game_manager.gd"
 AudioManager="*res://src/autoload/audio_manager.gd"
 DialogueActors="*res://src/autoload/dialogue_actors.gd"
-Logs="*res://src/autoload/logs.gd"
+Logs="*res://src/autoload/Logs.gd"
 Cuestionarios="*res://src/autoload/cuestionarios.gd"
 MusicManager="*res://src/autoload/music_manager.gd"
 

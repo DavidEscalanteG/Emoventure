@@ -16,6 +16,7 @@ func _configurar_previews() -> void:
 
 
 func _on_boton_hombre_pressed() -> void:
+	AudioManager.play_ui_click()
 	DatosJugador.set_genero(DatosJugador.GENERO_HOMBRE)
 	_asignar_indices_base()
 	get_tree().change_scene_to_file("uid://cxv23v4515m48")
@@ -23,6 +24,7 @@ func _on_boton_hombre_pressed() -> void:
 
 
 func _on_boton_mujer_pressed() -> void:
+	AudioManager.play_ui_click()
 	DatosJugador.set_genero(DatosJugador.GENERO_MUJER)
 	_asignar_indices_base()
 	get_tree().change_scene_to_file("uid://cxv23v4515m48")

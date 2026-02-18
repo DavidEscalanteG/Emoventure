@@ -38,6 +38,8 @@ const FUENTE_PREGUNTA_LARGA := 58
 # CICLO DE VIDA
 # ==================================================
 func _ready() -> void:
+	if not boton_narrativa_post.pressed.is_connected(_on_boton_narrativa_post_pressed):
+		boton_narrativa_post.pressed.connect(_on_boton_narrativa_post_pressed)
 	if not Cuestionarios.validar_dimension_y_preguntas(dimension, preguntas):
 		return
 
@@ -101,16 +103,25 @@ func _mostrar_narrativa_post() -> void:
 # BOTONES
 # ==================================================
 func _on_boton_1_pressed() -> void:
+	AudioManager.play_ui_click()
 	responder(1)
 
 func _on_boton_2_pressed() -> void:
+	AudioManager.play_ui_click()
 	responder(2)
 
 func _on_boton_3_pressed() -> void:
+	AudioManager.play_ui_click()
 	responder(3)
 
 func _on_boton_4_pressed() -> void:
+	AudioManager.play_ui_click()
 	responder(4)
 
 func _on_boton_5_pressed() -> void:
+	AudioManager.play_ui_click()
 	responder(5)
+
+
+func _on_boton_narrativa_post_pressed() -> void:
+	AudioManager.play_ui_click()

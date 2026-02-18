@@ -1,3 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Godot editor temporary scene files
+*.tmp
+*.tscn[0-9]*.tmp

@@ -48,11 +48,11 @@
 [ext_resource type="SpriteFrames" uid="uid://bwxlppuwgwdl4" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_15.tres" id="36_klcfh"]
 [ext_resource type="SpriteFrames" uid="uid://cack0b6yeo1cb" path="res://assets/personajes/jugador/animaciones/cabello/cabello_m_16.tres" id="37_ow5h1"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_a407c"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dltli"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xreb1"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_n3rbc"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_p6pvl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vu2ya"]
 
@@ -77,13 +77,13 @@ coleccion_bocas = Array[SpriteFrames]([ExtResource("9_7mavr"), ExtResource("10_u
 coleccion_cuerpos = Array[SpriteFrames]([ExtResource("11_7fnqw"), ExtResource("12_7y0lq")])
 
 [node name="Cuerpo" type="AnimatedSprite2D" parent="PlayerAppearance"]
-sprite_frames = SubResource("SpriteFrames_a407c")
+sprite_frames = SubResource("SpriteFrames_dltli")
 
 [node name="Boca" type="AnimatedSprite2D" parent="PlayerAppearance"]
 sprite_frames = SubResource("SpriteFrames_xreb1")
 
 [node name="Cabello" type="AnimatedSprite2D" parent="PlayerAppearance"]
-sprite_frames = SubResource("SpriteFrames_n3rbc")
+sprite_frames = SubResource("SpriteFrames_p6pvl")
 
 [node name="Cabeza" type="AnimatedSprite2D" parent="PlayerAppearance"]
 scale = Vector2(0.99999994, 0.99999994)
@@ -116,6 +116,7 @@ region_rect = Rect2(0, 0, 64, 64)
 [node name="Sombrero" type="Sprite2D" parent="Referencia"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.49999994, -3.4999995)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_bjo0t")
