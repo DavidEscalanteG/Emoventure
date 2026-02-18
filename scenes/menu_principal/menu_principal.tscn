@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://co64vr8dggawo"]
+[gd_scene load_steps=15 format=3 uid="uid://co64vr8dggawo"]
 
 [ext_resource type="Texture2D" uid="uid://cvrhj3gc8u4g2" path="res://assets/assets_menu_principal/fondo/fondo_menu.png" id="1_hkuy5"]
 [ext_resource type="Texture2D" uid="uid://b414bmu8meery" path="res://assets/assets_menu_principal/boton_play/boton_play_pressed.png" id="2_00m27"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b87q6e1n2dt21" path="res://assets/assets_menu_principal/boton_configuracion/boton_configuracion_hover.png" id="6_7mlcq"]
 [ext_resource type="Script" uid="uid://cyrtus6bnppfb" path="res://scenes/menu_principal/configuracion.gd" id="9_otvbs"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="11_cceyl"]
+[ext_resource type="Script" uid="uid://bsxy04raie6y0" path="res://scenes/menu_principal/creditos.gd" id="12_2v5fx"]
 
 [sub_resource type="Animation" id="Animation_byxo4"]
 resource_name = "Desvanecido_Fuera"
@@ -104,7 +105,25 @@ texture_pressed = ExtResource("5_hkuy5")
 texture_hover = ExtResource("6_7mlcq")
 script = ExtResource("9_otvbs")
 
+[node name="Creditos" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = -100.0
+offset_right = 132.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Créditos"
+script = ExtResource("12_2v5fx")
+
 [node name="TextureButton" type="TextureButton" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -122,3 +141,4 @@ autoplay = "Desvanecido_Fuera"
 
 [connection signal="pressed" from="Comenzar" to="Comenzar" method="_on_pressed"]
 [connection signal="pressed" from="Configuracion" to="Configuracion" method="_on_pressed"]
+[connection signal="pressed" from="Creditos" to="Creditos" method="_on_pressed"]
