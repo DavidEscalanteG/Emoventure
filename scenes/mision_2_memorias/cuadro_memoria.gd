@@ -88,7 +88,7 @@ func marcar_completado(color_estela: Color) -> void:
 	estela.visible = true
 	estela.modulate = color_estela
 	estela.modulate.a = 0.95
-	_animar_estela_neon()
+	#_animar_estela_neon()
 
 	scale = Vector2.ONE
 	cuadro_completado.emit(self, emocion_asignada)
@@ -108,27 +108,27 @@ func _configurar_estela_inicial() -> void:
 	_actualizar_borde_particulas()
 
 
-func _animar_estela_neon() -> void:
-	if estela_tween != null:
-		estela_tween.kill()
-
-	estela.position = Vector2.ZERO
-	estela_tween = create_tween()
-	estela_tween.set_loops()
-	estela_tween.set_trans(Tween.TRANS_SINE)
-	estela_tween.set_ease(Tween.EASE_IN_OUT)
-
-	estela_tween.tween_property(estela, "position", Vector2(5.0, -3.0), 0.6)
-	estela_tween.parallel().tween_property(estela, "scale", Vector2(1.03, 1.02), 0.6)
-	estela_tween.parallel().tween_property(estela, "modulate:a", 0.82, 0.6)
-
-	estela_tween.tween_property(estela, "position", Vector2(-4.0, 4.0), 0.6)
-	estela_tween.parallel().tween_property(estela, "scale", Vector2(1.01, 1.04), 0.6)
-	estela_tween.parallel().tween_property(estela, "modulate:a", 0.98, 0.6)
-
-	estela_tween.tween_property(estela, "position", Vector2.ZERO, 0.7)
-	estela_tween.parallel().tween_property(estela, "scale", Vector2.ONE, 0.7)
-	estela_tween.parallel().tween_property(estela, "modulate:a", 0.9, 0.7)
+#func _animar_estela_neon() -> void:
+	#if estela_tween != null:
+		#estela_tween.kill()
+#
+	#estela.position = Vector2.ZERO
+	#estela_tween = create_tween()
+	#estela_tween.set_loops()
+	#estela_tween.set_trans(Tween.TRANS_SINE)
+	#estela_tween.set_ease(Tween.EASE_IN_OUT)
+#
+	#estela_tween.tween_property(estela, "position", Vector2(5.0, -3.0), 0.6)
+	#estela_tween.parallel().tween_property(estela, "scale", Vector2(1.03, 1.02), 0.6)
+	#estela_tween.parallel().tween_property(estela, "modulate:a", 0.82, 0.6)
+#
+	#estela_tween.tween_property(estela, "position", Vector2(-4.0, 4.0), 0.6)
+	#estela_tween.parallel().tween_property(estela, "scale", Vector2(1.01, 1.04), 0.6)
+	#estela_tween.parallel().tween_property(estela, "modulate:a", 0.98, 0.6)
+#
+	#estela_tween.tween_property(estela, "position", Vector2.ZERO, 0.7)
+	#estela_tween.parallel().tween_property(estela, "scale", Vector2.ONE, 0.7)
+	#estela_tween.parallel().tween_property(estela, "modulate:a", 0.9, 0.7)
 
 
 func _on_resized() -> void:
@@ -177,8 +177,8 @@ func _crear_o_recuperar_emisores_borde() -> void:
 		proceso_material.gravity = Vector3.ZERO
 		proceso_material.initial_velocity_min = 10.0
 		proceso_material.initial_velocity_max = 28.0
-		proceso_material.scale_min = 1.2
-		proceso_material.scale_max = 2.2
+		proceso_material.scale_min = 5
+		proceso_material.scale_max = 10
 		proceso_material.spread = 28.0
 		proceso_material.angular_velocity_min = -50.0
 		proceso_material.angular_velocity_max = 50.0
