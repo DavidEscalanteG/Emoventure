@@ -65,7 +65,7 @@ func _guardar_respuesta(cuadro: CuadroMemoria, emocion: String) -> void:
 		return
 
 	var indice: int = cuadro.id_cuadro
-	if indice < 0 or indice >= respuestas_emociones.size():
+	if indice <= 0 or indice > respuestas_emociones.size():
 		push_warning("Índice de cuadro fuera de rango: %d" % indice)
 		return
 

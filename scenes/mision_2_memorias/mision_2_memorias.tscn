@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dr4vbuueuu56w"]
+[gd_scene load_steps=41 format=3 uid="uid://dr4vbuueuu56w"]
 
 [ext_resource type="Script" uid="uid://diq5t1l7eecp5" path="res://scenes/mision_2_memorias/cuadro_memoria.gd" id="1_p8cra"]
 [ext_resource type="Script" uid="uid://c6atu0ejscdo5" path="res://scenes/mision_2_memorias/memorias_eternas_gameplay.gd" id="1_uus5q"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://y8nce1uqxe73" path="res://scenes/mision_2_memorias/emoji_button.gd" id="4_k0nqh"]
 [ext_resource type="Texture2D" uid="uid://wty0f175e7ph" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria2ByN.jpg" id="5_1a4ln"]
 [ext_resource type="Texture2D" uid="uid://d1oo2t42s5s3e" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria2.jpg" id="6_5m4x7"]
-[ext_resource type="Texture2D" uid="uid://bhg1tyrpt4528" path="res://pruebas/assets/borde neon byn.png" id="6_uf5ph"]
 [ext_resource type="Texture2D" uid="uid://rjn2d6hb826k" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria3ByN.jpg" id="7_d4c4x"]
 [ext_resource type="Texture2D" uid="uid://bch03n77ik707" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria3.jpg" id="8_mm1al"]
 [ext_resource type="Texture2D" uid="uid://c8vyujb4d3x3t" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria4ByN.jpg" id="9_bvbsn"]
@@ -38,68 +37,6 @@
 [ext_resource type="PackedScene" uid="uid://bgjfcq8bkynuh" path="res://scenes/cuestionarios/EscenaCuestionario.tscn" id="37_t272c"]
 [ext_resource type="PackedScene" uid="uid://dghl2jv2pxg6l" path="res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn" id="38_xwnhn"]
 [ext_resource type="SpriteFrames" uid="uid://mlosoquap83h" path="res://assets/assets_memorias_eternas/animacion/animacion_emociones.tres" id="39_emojis"]
-
-[sub_resource type="Animation" id="Animation_uf5ph"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.105, 1.105)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_lc5k6"]
-resource_name = "glow"
-length = 1.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.91, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1.105, 1.105), Vector2(1.135, 1.075), Vector2(1.105, 1.105)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.9, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-0.017453292, 0.017453292, -0.017453292]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vesnk"]
-_data = {
-&"RESET": SubResource("Animation_uf5ph"),
-&"onda_idle": SubResource("Animation_lc5k6")
-}
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q85nd"]
 texture = ExtResource("30_vesnk")
@@ -165,23 +102,11 @@ imagen_color = ExtResource("3_k0nqh")
 imagen_bn = ExtResource("4_3p6no")
 id_cuadro = 1
 
-[node name="Estela" type="TextureRect" parent="CuadrosContainer/CuadroMemoria"]
+[node name="Estela" type="Node2D" parent="CuadrosContainer/CuadroMemoria"]
 modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.105, 1.105)
-mouse_filter = 2
-texture = ExtResource("6_uf5ph")
-stretch_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CuadrosContainer/CuadroMemoria/Estela"]
-libraries = {
-&"": SubResource("AnimationLibrary_vesnk")
-}
+show_behind_parent = true
+position = Vector2(-9, -9)
+scale = Vector2(15, 15)
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria"]
 position = Vector2(95, 132)
@@ -200,23 +125,10 @@ imagen_color = ExtResource("6_5m4x7")
 imagen_bn = ExtResource("5_1a4ln")
 id_cuadro = 2
 
-[node name="Estela" type="TextureRect" parent="CuadrosContainer/CuadroMemoria2"]
+[node name="Estela" type="Node2D" parent="CuadrosContainer/CuadroMemoria2"]
 modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.105, 1.105)
-mouse_filter = 2
-texture = ExtResource("6_uf5ph")
-stretch_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CuadrosContainer/CuadroMemoria2/Estela"]
-libraries = {
-&"": SubResource("AnimationLibrary_vesnk")
-}
+show_behind_parent = true
+position = Vector2(-9, -9)
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria2"]
 position = Vector2(95, 132)
@@ -235,23 +147,10 @@ imagen_color = ExtResource("8_mm1al")
 imagen_bn = ExtResource("7_d4c4x")
 id_cuadro = 3
 
-[node name="Estela" type="TextureRect" parent="CuadrosContainer/CuadroMemoria3"]
+[node name="Estela" type="Node2D" parent="CuadrosContainer/CuadroMemoria3"]
 modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.105, 1.105)
-mouse_filter = 2
-texture = ExtResource("6_uf5ph")
-stretch_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CuadrosContainer/CuadroMemoria3/Estela"]
-libraries = {
-&"": SubResource("AnimationLibrary_vesnk")
-}
+show_behind_parent = true
+position = Vector2(-9, -9)
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria3"]
 position = Vector2(95, 132)
@@ -270,23 +169,10 @@ imagen_color = ExtResource("10_wls2d")
 imagen_bn = ExtResource("9_bvbsn")
 id_cuadro = 4
 
-[node name="Estela" type="TextureRect" parent="CuadrosContainer/CuadroMemoria4"]
+[node name="Estela" type="Node2D" parent="CuadrosContainer/CuadroMemoria4"]
 modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.105, 1.105)
-mouse_filter = 2
-texture = ExtResource("6_uf5ph")
-stretch_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CuadrosContainer/CuadroMemoria4/Estela"]
-libraries = {
-&"": SubResource("AnimationLibrary_vesnk")
-}
+show_behind_parent = true
+position = Vector2(-9, -9)
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria4"]
 position = Vector2(95, 132)
@@ -305,23 +191,10 @@ imagen_color = ExtResource("12_phvrg")
 imagen_bn = ExtResource("11_0q4pt")
 id_cuadro = 5
 
-[node name="Estela" type="TextureRect" parent="CuadrosContainer/CuadroMemoria5"]
+[node name="Estela" type="Node2D" parent="CuadrosContainer/CuadroMemoria5"]
 modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.105, 1.105)
-mouse_filter = 2
-texture = ExtResource("6_uf5ph")
-stretch_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CuadrosContainer/CuadroMemoria5/Estela"]
-libraries = {
-&"": SubResource("AnimationLibrary_vesnk")
-}
+show_behind_parent = true
+position = Vector2(-9, -9)
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria5"]
 position = Vector2(95, 132)
@@ -340,23 +213,10 @@ imagen_color = ExtResource("14_0sevr")
 imagen_bn = ExtResource("13_ses3a")
 id_cuadro = 6
 
-[node name="Estela" type="TextureRect" parent="CuadrosContainer/CuadroMemoria6"]
+[node name="Estela" type="Node2D" parent="CuadrosContainer/CuadroMemoria6"]
 modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.105, 1.105)
-mouse_filter = 2
-texture = ExtResource("6_uf5ph")
-stretch_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CuadrosContainer/CuadroMemoria6/Estela"]
-libraries = {
-&"": SubResource("AnimationLibrary_vesnk")
-}
+show_behind_parent = true
+position = Vector2(-9, -9)
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria6"]
 position = Vector2(95, 132)
@@ -375,23 +235,10 @@ imagen_color = ExtResource("16_uf5ph")
 imagen_bn = ExtResource("15_3coyv")
 id_cuadro = 7
 
-[node name="Estela" type="TextureRect" parent="CuadrosContainer/CuadroMemoria7"]
+[node name="Estela" type="Node2D" parent="CuadrosContainer/CuadroMemoria7"]
 modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.105, 1.105)
-mouse_filter = 2
-texture = ExtResource("6_uf5ph")
-stretch_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CuadrosContainer/CuadroMemoria7/Estela"]
-libraries = {
-&"": SubResource("AnimationLibrary_vesnk")
-}
+show_behind_parent = true
+position = Vector2(-9, -9)
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria7"]
 position = Vector2(95, 132)

@@ -14,8 +14,9 @@ signal cuadro_completado(cuadro: CuadroMemoria, emocion: String)
 var hover_tween: Tween = null
 var click_tween: Tween = null
 var estela_tween: Tween = null
+var emisores_borde: Array[GPUParticles2D] = []
 
-@onready var estela: TextureRect = $Estela
+@onready var estela: Node2D = $Estela
 @onready var emoji_animado: AnimatedSprite2D = $EmojiAnimado
 
 
@@ -99,9 +100,12 @@ func marcar_completado(color_estela: Color) -> void:
 
 
 func _configurar_estela_inicial() -> void:
-	estela.visible = false
+	estela.visible = true
+	estela.modulate = Color(0.66, 0.66, 0.66, 0.9)
 	estela.position = Vector2.ZERO
 	estela.scale = Vector2.ONE
+	_crear_o_recuperar_emisores_borde()
+	_actualizar_borde_particulas()
 
 
 func _animar_estela_neon() -> void:
@@ -134,15 +138,9 @@ func _on_resized() -> void:
 func _update_layout_overlays() -> void:
 	pivot_offset = size / 2.0
 
-	var padding: float = min(size.x, size.y) * 0.05
-	estela.anchor_left = 0.0
-	estela.anchor_top = 0.0
-	estela.anchor_right = 1.0
-	estela.anchor_bottom = 1.0
-	estela.offset_left = -padding
-	estela.offset_top = -padding
-	estela.offset_right = padding
-	estela.offset_bottom = padding
+	var padding: float = max(min(size.x, size.y) * 0.08, 10.0)
+	estela.position = Vector2(-padding, -padding)
+	_actualizar_borde_particulas()
 
 	if emoji_animado == null:
 		return
@@ -152,3 +150,74 @@ func _update_layout_overlays() -> void:
 	var escala_base: float = referencia / 56.0
 	emoji_animado.scale = Vector2.ONE * clamp(escala_base, 1.8, 3.4)
 	emoji_animado.play("neutro")
+
+
+func _crear_o_recuperar_emisores_borde() -> void:
+	emisores_borde.clear()
+	for nombre_emisor in ["Top", "Bottom", "Left", "Right"]:
+		var nodo_existente: Node = estela.get_node_or_null(nombre_emisor)
+		var emisor: GPUParticles2D
+		if nodo_existente is GPUParticles2D:
+			emisor = nodo_existente
+		else:
+			emisor = GPUParticles2D.new()
+			emisor.name = nombre_emisor
+			estela.add_child(emisor)
+
+		emisor.top_level = false
+		emisor.one_shot = false
+		emisor.explosiveness = 0.2
+		emisor.amount = 56
+		emisor.lifetime = 1.4
+		emisor.preprocess = 1.4
+		emisor.local_coords = true
+		emisor.show_behind_parent = true
+
+		var proceso_material: ParticleProcessMaterial = ParticleProcessMaterial.new()
+		proceso_material.gravity = Vector3.ZERO
+		proceso_material.initial_velocity_min = 10.0
+		proceso_material.initial_velocity_max = 28.0
+		proceso_material.scale_min = 1.2
+		proceso_material.scale_max = 2.2
+		proceso_material.spread = 28.0
+		proceso_material.angular_velocity_min = -50.0
+		proceso_material.angular_velocity_max = 50.0
+		proceso_material.color = Color(1, 1, 1, 0.95)
+		emisor.process_material = proceso_material
+		emisor.emitting = true
+
+		emisores_borde.append(emisor)
+
+
+func _actualizar_borde_particulas() -> void:
+	if emisores_borde.is_empty():
+		return
+
+	var half_size: Vector2 = size / 2.0
+	var grosor: float = max(min(size.x, size.y) * 0.09, 10.0)
+
+	for emisor in emisores_borde:
+		var proceso_material: ParticleProcessMaterial = emisor.process_material as ParticleProcessMaterial
+		if proceso_material == null:
+			continue
+
+		if emisor.name == "Top":
+			emisor.position = Vector2(half_size.x, 0.0)
+			proceso_material.direction = Vector3(0.0, -1.0, 0.0)
+			proceso_material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
+			proceso_material.emission_box_extents = Vector3(half_size.x, grosor * 0.5, 1.0)
+		elif emisor.name == "Bottom":
+			emisor.position = Vector2(half_size.x, size.y)
+			proceso_material.direction = Vector3(0.0, 1.0, 0.0)
+			proceso_material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
+			proceso_material.emission_box_extents = Vector3(half_size.x, grosor * 0.5, 1.0)
+		elif emisor.name == "Left":
+			emisor.position = Vector2(0.0, half_size.y)
+			proceso_material.direction = Vector3(-1.0, 0.0, 0.0)
+			proceso_material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
+			proceso_material.emission_box_extents = Vector3(grosor * 0.5, half_size.y, 1.0)
+		else:
+			emisor.position = Vector2(size.x, half_size.y)
+			proceso_material.direction = Vector3(1.0, 0.0, 0.0)
+			proceso_material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
+			proceso_material.emission_box_extents = Vector3(grosor * 0.5, half_size.y, 1.0)
