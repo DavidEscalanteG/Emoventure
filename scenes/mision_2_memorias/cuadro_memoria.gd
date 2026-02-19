@@ -142,7 +142,7 @@ func _update_layout_overlays() -> void:
 	if emoji_animado == null:
 		return
 
-	emoji_animado.position = size / 2.0
+	#emoji_animado.position = size / 2.0
 	var referencia: float = max(min(size.x, size.y), 1.0)
 	var escala_base: float = referencia / 56.0
 	emoji_animado.scale = Vector2.ONE * clamp(escala_base, 1.8, 3.4)
