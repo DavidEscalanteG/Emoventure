@@ -4,5 +4,6 @@ extends Button
 
 func _on_pressed() -> void:
 	AudioManager.play_ui_click()
-	disabled = true
-	selector.confirmar_emocion()
+	var confirmado: bool = selector.confirmar_emocion()
+	if confirmado:
+		disabled = true

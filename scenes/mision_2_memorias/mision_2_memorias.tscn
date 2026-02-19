@@ -1,12 +1,24 @@
-[gd_scene load_steps=30 format=3 uid="uid://dr4vbuueuu56w"]
+[gd_scene load_steps=42 format=3 uid="uid://dr4vbuueuu56w"]
 
 [ext_resource type="Script" uid="uid://diq5t1l7eecp5" path="res://scenes/mision_2_memorias/cuadro_memoria.gd" id="1_p8cra"]
 [ext_resource type="Script" uid="uid://c6atu0ejscdo5" path="res://scenes/mision_2_memorias/memorias_eternas_gameplay.gd" id="1_uus5q"]
 [ext_resource type="Texture2D" uid="uid://b24nvekjmmfdu" path="res://scenes/mision_2_memorias/fondo_escena_9.png" id="2_trrj2"]
 [ext_resource type="Script" uid="uid://b6gjxqpooc1l0" path="res://scenes/mision_2_memorias/selector_emocion.gd" id="3_botlv"]
+[ext_resource type="Texture2D" uid="uid://0vgv22tf7xv1" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria1ByN.jpg" id="3_s0bfu"]
 [ext_resource type="Script" uid="uid://y8nce1uqxe73" path="res://scenes/mision_2_memorias/emoji_button.gd" id="4_k0nqh"]
+[ext_resource type="Texture2D" uid="uid://mhtlvsqfvweb" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria1.jpg" id="5_auu3l"]
+[ext_resource type="Texture2D" uid="uid://wty0f175e7ph" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria2ByN.jpg" id="8_8sqc0"]
+[ext_resource type="Texture2D" uid="uid://d1oo2t42s5s3e" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria2.jpg" id="9_tj183"]
+[ext_resource type="Texture2D" uid="uid://rjn2d6hb826k" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria3ByN.jpg" id="10_c176s"]
+[ext_resource type="Texture2D" uid="uid://bch03n77ik707" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria3.jpg" id="11_wo2m1"]
+[ext_resource type="Texture2D" uid="uid://c8vyujb4d3x3t" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria4ByN.jpg" id="12_67ss3"]
+[ext_resource type="Texture2D" uid="uid://cdkd60hq513xy" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria4.jpg" id="13_1imss"]
+[ext_resource type="Texture2D" uid="uid://bqa51ta5l7uci" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria5ByN.jpg" id="14_uugws"]
+[ext_resource type="Texture2D" uid="uid://bcrvlhauatn5r" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria5.jpg" id="15_1p0r8"]
 [ext_resource type="Texture2D" uid="uid://bq44aky1yh14i" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria7ByN.jpg" id="15_3coyv"]
+[ext_resource type="Texture2D" uid="uid://dqn4v3f7ihc3k" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria6ByN.jpg" id="16_2mx8i"]
 [ext_resource type="Texture2D" uid="uid://dx0jdg1tsgl0o" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria7.jpg" id="16_uf5ph"]
+[ext_resource type="Texture2D" uid="uid://bhe7g44iqg2nu" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria6.jpg" id="17_45p5j"]
 [ext_resource type="Texture2D" uid="uid://be2m12ilqfwyk" path="res://assets/emociones/sprites/desagrado.png" id="18_wls2d"]
 [ext_resource type="Texture2D" uid="uid://cpqa724qpfdg7" path="res://assets/emociones/sprites/enojo.png" id="20_0q4pt"]
 [ext_resource type="Texture2D" uid="uid://qtect2yegfev" path="res://assets/emociones/sprites/felicidad.png" id="21_phvrg"]
@@ -84,11 +96,11 @@ columns = 4
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
-texture_normal = ExtResource("15_3coyv")
+texture_normal = ExtResource("3_s0bfu")
 stretch_mode = 0
 script = ExtResource("1_p8cra")
-imagen_color = ExtResource("16_uf5ph")
-imagen_bn = ExtResource("15_3coyv")
+imagen_color = ExtResource("5_auu3l")
+imagen_bn = ExtResource("3_s0bfu")
 id_cuadro = 0
 
 [node name="Estela" parent="CuadrosContainer/CuadroMemoria_00" instance=ExtResource("40_estela")]
@@ -102,11 +114,11 @@ autoplay = "neutro"
 [node name="CuadroMemoria_01" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
 focus_mode = 0
-texture_normal = ExtResource("15_3coyv")
+texture_normal = ExtResource("8_8sqc0")
 stretch_mode = 0
 script = ExtResource("1_p8cra")
-imagen_color = ExtResource("16_uf5ph")
-imagen_bn = ExtResource("15_3coyv")
+imagen_color = ExtResource("9_tj183")
+imagen_bn = ExtResource("8_8sqc0")
 id_cuadro = 1
 
 [node name="Estela" parent="CuadrosContainer/CuadroMemoria_01" instance=ExtResource("40_estela")]
@@ -120,11 +132,11 @@ autoplay = "neutro"
 [node name="CuadroMemoria_02" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
 focus_mode = 0
-texture_normal = ExtResource("15_3coyv")
+texture_normal = ExtResource("10_c176s")
 stretch_mode = 0
 script = ExtResource("1_p8cra")
-imagen_color = ExtResource("16_uf5ph")
-imagen_bn = ExtResource("15_3coyv")
+imagen_color = ExtResource("11_wo2m1")
+imagen_bn = ExtResource("10_c176s")
 id_cuadro = 2
 
 [node name="Estela" parent="CuadrosContainer/CuadroMemoria_02" instance=ExtResource("40_estela")]
@@ -138,11 +150,11 @@ autoplay = "neutro"
 [node name="CuadroMemoria_03" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
 focus_mode = 0
-texture_normal = ExtResource("15_3coyv")
+texture_normal = ExtResource("12_67ss3")
 stretch_mode = 0
 script = ExtResource("1_p8cra")
-imagen_color = ExtResource("16_uf5ph")
-imagen_bn = ExtResource("15_3coyv")
+imagen_color = ExtResource("13_1imss")
+imagen_bn = ExtResource("12_67ss3")
 id_cuadro = 3
 
 [node name="Estela" parent="CuadrosContainer/CuadroMemoria_03" instance=ExtResource("40_estela")]
@@ -156,11 +168,11 @@ autoplay = "neutro"
 [node name="CuadroMemoria_04" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
 focus_mode = 0
-texture_normal = ExtResource("15_3coyv")
+texture_normal = ExtResource("14_uugws")
 stretch_mode = 0
 script = ExtResource("1_p8cra")
-imagen_color = ExtResource("16_uf5ph")
-imagen_bn = ExtResource("15_3coyv")
+imagen_color = ExtResource("15_1p0r8")
+imagen_bn = ExtResource("14_uugws")
 id_cuadro = 4
 
 [node name="Estela" parent="CuadrosContainer/CuadroMemoria_04" instance=ExtResource("40_estela")]
@@ -174,11 +186,11 @@ autoplay = "neutro"
 [node name="CuadroMemoria_05" type="TextureButton" parent="CuadrosContainer"]
 layout_mode = 2
 focus_mode = 0
-texture_normal = ExtResource("15_3coyv")
+texture_normal = ExtResource("16_2mx8i")
 stretch_mode = 0
 script = ExtResource("1_p8cra")
-imagen_color = ExtResource("16_uf5ph")
-imagen_bn = ExtResource("15_3coyv")
+imagen_color = ExtResource("17_45p5j")
+imagen_bn = ExtResource("16_2mx8i")
 id_cuadro = 5
 
 [node name="Estela" parent="CuadrosContainer/CuadroMemoria_05" instance=ExtResource("40_estela")]
@@ -208,7 +220,6 @@ animation = &"neutro"
 autoplay = "neutro"
 
 [node name="SelectorEmocion" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -225,14 +236,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.7058824)
-
-[node name="EmojiGrande" type="AnimatedSprite2D" parent="SelectorEmocion"]
-z_index = 11
-position = Vector2(960, 540)
-scale = Vector2(8, 8)
-sprite_frames = ExtResource("39_emojis")
-animation = &"neutro"
-autoplay = "neutro"
 
 [node name="VisorImagen" type="TextureRect" parent="SelectorEmocion"]
 z_index = 10
@@ -251,32 +254,12 @@ grow_vertical = 2
 mouse_filter = 2
 stretch_mode = 5
 
-[node name="ImagenCentral" type="TextureRect" parent="SelectorEmocion"]
+[node name="EmojiGrande" type="AnimatedSprite2D" parent="SelectorEmocion/VisorImagen"]
 z_index = 11
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch_mode = 5
-
-[node name="CaraJugador" type="TextureRect" parent="SelectorEmocion/ImagenCentral"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-stretch_mode = 5
-
-[node name="SignoPregunta" type="TextureRect" parent="SelectorEmocion/ImagenCentral"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+scale = Vector2(8, 8)
+sprite_frames = ExtResource("39_emojis")
+animation = &"neutro"
+autoplay = "neutro"
 
 [node name="EmojisContainer" type="GridContainer" parent="SelectorEmocion"]
 modulate = Color(1, 1, 1, 0)

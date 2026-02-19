@@ -10,7 +10,7 @@ var emoji_seleccionado: TextureButton = null
 
 @onready var visor: TextureRect = $VisorImagen
 @onready var emojis_container: Control = $EmojisContainer
-@onready var emoji_grande: AnimatedSprite2D = $EmojiGrande
+@onready var emoji_grande: AnimatedSprite2D = $VisorImagen/EmojiGrande
 
 var colores_emociones: Dictionary[String, Color] = {
 	"felicidad": Color("#FFD966"),
@@ -77,6 +77,19 @@ func actualizar_preview_emocion(emocion_id: String) -> void:
 	emoji_grande.play(emocion_id)
 
 
+func restaurar_preview_emocion() -> void:
+	if emocion_confirmada:
+		return
+
+	if emocion_seleccionada != "":
+		emocion_preview = emocion_seleccionada
+		emoji_grande.play(emocion_seleccionada)
+		return
+
+	emocion_preview = ""
+	emoji_grande.play(EMOCION_NEUTRA)
+
+
 func seleccionar_emocion(emocion_id: String, emoji: TextureButton) -> void:
 	if emocion_confirmada:
 		return
@@ -98,14 +111,14 @@ func seleccionar_emocion(emocion_id: String, emoji: TextureButton) -> void:
 		emoji.call("set_seleccionado", true)
 
 
-func confirmar_emocion() -> void:
+func confirmar_emocion() -> bool:
 	if emocion_confirmada:
 		Logs.log_debug("[DEBUG] Confirmar ignorado: ya confirmado")
-		return
+		return false
 
 	if emocion_seleccionada == "":
 		Logs.log_debug("[DEBUG] Confirmar ignorado: ninguna emoción seleccionada")
-		return
+		return false
 
 	Logs.log_debug("[DEBUG] Emoción CONFIRMADA: %s" % emocion_seleccionada)
 
@@ -115,6 +128,7 @@ func confirmar_emocion() -> void:
 	cuadro_actual.marcar_completado(color_estela)
 
 	_ocultar()
+	return true
 
 
 func cancelar_seleccion() -> void:
@@ -140,3 +154,4 @@ func _ocultar() -> void:
 		visor.visible = false
 		hide()
 	)
+	
