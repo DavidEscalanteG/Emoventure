@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dr4vbuueuu56w"]
+[gd_scene load_steps=42 format=3 uid="uid://dr4vbuueuu56w"]
 
 [ext_resource type="Script" uid="uid://diq5t1l7eecp5" path="res://scenes/mision_2_memorias/cuadro_memoria.gd" id="1_p8cra"]
 [ext_resource type="Script" uid="uid://c6atu0ejscdo5" path="res://scenes/mision_2_memorias/memorias_eternas_gameplay.gd" id="1_uus5q"]
@@ -37,6 +37,8 @@
 [ext_resource type="PackedScene" uid="uid://bgjfcq8bkynuh" path="res://scenes/cuestionarios/EscenaCuestionario.tscn" id="37_t272c"]
 [ext_resource type="PackedScene" uid="uid://dghl2jv2pxg6l" path="res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn" id="38_xwnhn"]
 [ext_resource type="SpriteFrames" uid="uid://mlosoquap83h" path="res://assets/assets_memorias_eternas/animacion/animacion_emociones.tres" id="39_emojis"]
+
+[ext_resource type="PackedScene" path="res://scenes/mision_2_memorias/estela_particulas.tscn" id="40_estela"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q85nd"]
 texture = ExtResource("30_vesnk")
@@ -102,11 +104,8 @@ imagen_color = ExtResource("3_k0nqh")
 imagen_bn = ExtResource("4_3p6no")
 id_cuadro = 1
 
-[node name="Estela" type="Node2D" parent="CuadrosContainer/CuadroMemoria"]
-modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-show_behind_parent = true
-position = Vector2(-9, -9)
-scale = Vector2(15, 15)
+[node name="Estela" parent="CuadrosContainer/CuadroMemoria" instance=ExtResource("40_estela")]
+
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria"]
 position = Vector2(95, 132)
@@ -125,10 +124,8 @@ imagen_color = ExtResource("6_5m4x7")
 imagen_bn = ExtResource("5_1a4ln")
 id_cuadro = 2
 
-[node name="Estela" type="Node2D" parent="CuadrosContainer/CuadroMemoria2"]
-modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-show_behind_parent = true
-position = Vector2(-9, -9)
+[node name="Estela" parent="CuadrosContainer/CuadroMemoria2" instance=ExtResource("40_estela")]
+
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria2"]
 position = Vector2(95, 132)
@@ -147,10 +144,8 @@ imagen_color = ExtResource("8_mm1al")
 imagen_bn = ExtResource("7_d4c4x")
 id_cuadro = 3
 
-[node name="Estela" type="Node2D" parent="CuadrosContainer/CuadroMemoria3"]
-modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-show_behind_parent = true
-position = Vector2(-9, -9)
+[node name="Estela" parent="CuadrosContainer/CuadroMemoria3" instance=ExtResource("40_estela")]
+
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria3"]
 position = Vector2(95, 132)
@@ -169,10 +164,8 @@ imagen_color = ExtResource("10_wls2d")
 imagen_bn = ExtResource("9_bvbsn")
 id_cuadro = 4
 
-[node name="Estela" type="Node2D" parent="CuadrosContainer/CuadroMemoria4"]
-modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-show_behind_parent = true
-position = Vector2(-9, -9)
+[node name="Estela" parent="CuadrosContainer/CuadroMemoria4" instance=ExtResource("40_estela")]
+
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria4"]
 position = Vector2(95, 132)
@@ -191,10 +184,8 @@ imagen_color = ExtResource("12_phvrg")
 imagen_bn = ExtResource("11_0q4pt")
 id_cuadro = 5
 
-[node name="Estela" type="Node2D" parent="CuadrosContainer/CuadroMemoria5"]
-modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-show_behind_parent = true
-position = Vector2(-9, -9)
+[node name="Estela" parent="CuadrosContainer/CuadroMemoria5" instance=ExtResource("40_estela")]
+
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria5"]
 position = Vector2(95, 132)
@@ -213,10 +204,8 @@ imagen_color = ExtResource("14_0sevr")
 imagen_bn = ExtResource("13_ses3a")
 id_cuadro = 6
 
-[node name="Estela" type="Node2D" parent="CuadrosContainer/CuadroMemoria6"]
-modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-show_behind_parent = true
-position = Vector2(-9, -9)
+[node name="Estela" parent="CuadrosContainer/CuadroMemoria6" instance=ExtResource("40_estela")]
+
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria6"]
 position = Vector2(95, 132)
@@ -235,10 +224,8 @@ imagen_color = ExtResource("16_uf5ph")
 imagen_bn = ExtResource("15_3coyv")
 id_cuadro = 7
 
-[node name="Estela" type="Node2D" parent="CuadrosContainer/CuadroMemoria7"]
-modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
-show_behind_parent = true
-position = Vector2(-9, -9)
+[node name="Estela" parent="CuadrosContainer/CuadroMemoria7" instance=ExtResource("40_estela")]
+
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria7"]
 position = Vector2(95, 132)
