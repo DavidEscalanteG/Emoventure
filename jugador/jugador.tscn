@@ -97,25 +97,21 @@ sprite_frames = SubResource("SpriteFrames_yl2o6")
 visible = false
 
 [node name="Cuerpo" type="Sprite2D" parent="Referencia"]
-visible = false
 texture = ExtResource("13_vmphg")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
 
 [node name="Cabello" type="Sprite2D" parent="Referencia"]
-visible = false
 texture = ExtResource("14_5iu33")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
 
 [node name="Ropa" type="Sprite2D" parent="Referencia"]
-visible = false
 texture = ExtResource("15_llqwg")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
 
 [node name="Sombrero" type="Sprite2D" parent="Referencia"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

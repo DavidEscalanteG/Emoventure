@@ -83,6 +83,7 @@ sprite_frames = SubResource("SpriteFrames_dltli")
 sprite_frames = SubResource("SpriteFrames_xreb1")
 
 [node name="Cabello" type="AnimatedSprite2D" parent="PlayerAppearance"]
+scale = Vector2(0.9999999, 0.9999999)
 sprite_frames = SubResource("SpriteFrames_p6pvl")
 
 [node name="Cabeza" type="AnimatedSprite2D" parent="PlayerAppearance"]
