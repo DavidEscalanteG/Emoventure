@@ -92,20 +92,20 @@ alignment = 1
 layout_mode = 2
 text = "Nada de acuerdo "
 
-[node name="Boton_2" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaIzquierda"]
+[node name="Boton_3" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaIzquierda"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Algo de acuerdo"
+text = "Bastante de acuerdo"
 
 [node name="ColumnaDerecha" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 70
 
-[node name="Boton_3" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaDerecha"]
+[node name="Boton_2" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaDerecha"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Bastante de acuerdo"
+text = "Algo de acuerdo"
 
 [node name="Boton_4" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaDerecha"]
 layout_mode = 2
@@ -172,7 +172,7 @@ scale = Vector2(1.6662338, 1.5055866)
 texture = ExtResource("2_bir5t")
 
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaIzquierda/Boton_1" to="." method="_on_boton_1_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaIzquierda/Boton_2" to="." method="_on_boton_2_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaDerecha/Boton_3" to="." method="_on_boton_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaIzquierda/Boton_3" to="." method="_on_boton_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaDerecha/Boton_2" to="." method="_on_boton_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaDerecha/Boton_4" to="." method="_on_boton_4_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Boton_5" to="." method="_on_boton_5_pressed"]

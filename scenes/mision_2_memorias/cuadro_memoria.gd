@@ -14,8 +14,7 @@ signal cuadro_completado(cuadro: CuadroMemoria, emocion: String)
 var hover_tween: Tween = null
 var click_tween: Tween = null
 var estela_tween: Tween = null
-
-@onready var estela: TextureRect = $Estela
+@onready var estela: GPUParticles2D = $Estela
 @onready var emoji_animado: AnimatedSprite2D = $EmojiAnimado
 
 
@@ -87,7 +86,7 @@ func marcar_completado(color_estela: Color) -> void:
 	estela.visible = true
 	estela.modulate = color_estela
 	estela.modulate.a = 0.95
-	_animar_estela_neon()
+	#_animar_estela_neon()
 
 	scale = Vector2.ONE
 	cuadro_completado.emit(self, emocion_asignada)
@@ -99,32 +98,34 @@ func marcar_completado(color_estela: Color) -> void:
 
 
 func _configurar_estela_inicial() -> void:
-	estela.visible = false
+	estela.visible = true
+	estela.modulate = Color(0.66, 0.66, 0.66, 0.9)
 	estela.position = Vector2.ZERO
 	estela.scale = Vector2.ONE
+	_actualizar_borde_particulas()
 
 
-func _animar_estela_neon() -> void:
-	if estela_tween != null:
-		estela_tween.kill()
-
-	estela.position = Vector2.ZERO
-	estela_tween = create_tween()
-	estela_tween.set_loops()
-	estela_tween.set_trans(Tween.TRANS_SINE)
-	estela_tween.set_ease(Tween.EASE_IN_OUT)
-
-	estela_tween.tween_property(estela, "position", Vector2(5.0, -3.0), 0.6)
-	estela_tween.parallel().tween_property(estela, "scale", Vector2(1.03, 1.02), 0.6)
-	estela_tween.parallel().tween_property(estela, "modulate:a", 0.82, 0.6)
-
-	estela_tween.tween_property(estela, "position", Vector2(-4.0, 4.0), 0.6)
-	estela_tween.parallel().tween_property(estela, "scale", Vector2(1.01, 1.04), 0.6)
-	estela_tween.parallel().tween_property(estela, "modulate:a", 0.98, 0.6)
-
-	estela_tween.tween_property(estela, "position", Vector2.ZERO, 0.7)
-	estela_tween.parallel().tween_property(estela, "scale", Vector2.ONE, 0.7)
-	estela_tween.parallel().tween_property(estela, "modulate:a", 0.9, 0.7)
+#func _animar_estela_neon() -> void:
+	#if estela_tween != null:
+		#estela_tween.kill()
+#
+	#estela.position = Vector2.ZERO
+	#estela_tween = create_tween()
+	#estela_tween.set_loops()
+	#estela_tween.set_trans(Tween.TRANS_SINE)
+	#estela_tween.set_ease(Tween.EASE_IN_OUT)
+#
+	#estela_tween.tween_property(estela, "position", Vector2(5.0, -3.0), 0.6)
+	#estela_tween.parallel().tween_property(estela, "scale", Vector2(1.03, 1.02), 0.6)
+	#estela_tween.parallel().tween_property(estela, "modulate:a", 0.82, 0.6)
+#
+	#estela_tween.tween_property(estela, "position", Vector2(-4.0, 4.0), 0.6)
+	#estela_tween.parallel().tween_property(estela, "scale", Vector2(1.01, 1.04), 0.6)
+	#estela_tween.parallel().tween_property(estela, "modulate:a", 0.98, 0.6)
+#
+	#estela_tween.tween_property(estela, "position", Vector2.ZERO, 0.7)
+	#estela_tween.parallel().tween_property(estela, "scale", Vector2.ONE, 0.7)
+	#estela_tween.parallel().tween_property(estela, "modulate:a", 0.9, 0.7)
 
 
 func _on_resized() -> void:
@@ -134,21 +135,32 @@ func _on_resized() -> void:
 func _update_layout_overlays() -> void:
 	pivot_offset = size / 2.0
 
-	var padding: float = min(size.x, size.y) * 0.05
-	estela.anchor_left = 0.0
-	estela.anchor_top = 0.0
-	estela.anchor_right = 1.0
-	estela.anchor_bottom = 1.0
-	estela.offset_left = -padding
-	estela.offset_top = -padding
-	estela.offset_right = padding
-	estela.offset_bottom = padding
+	var padding: float = max(min(size.x, size.y) * 0.08, 10.0)
+	estela.position = Vector2(-padding, -padding)
+	_actualizar_borde_particulas()
 
 	if emoji_animado == null:
 		return
 
-	emoji_animado.position = size / 2.0
+	#emoji_animado.position = size / 2.0
 	var referencia: float = max(min(size.x, size.y), 1.0)
 	var escala_base: float = referencia / 56.0
 	emoji_animado.scale = Vector2.ONE * clamp(escala_base, 1.8, 3.4)
 	emoji_animado.play("neutro")
+
+
+func _actualizar_borde_particulas() -> void:
+	if estela == null:
+		return
+
+	var half_size: Vector2 = size / 2.0
+	var grosor: float = max(min(size.x, size.y) * 0.09, 10.0)
+	var proceso_material: ParticleProcessMaterial = estela.process_material as ParticleProcessMaterial
+	if proceso_material == null:
+		return
+
+	estela.position = half_size
+	proceso_material.direction = Vector3.ZERO
+	proceso_material.spread = 180.0
+	proceso_material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_BOX
+	proceso_material.emission_box_extents = Vector3(half_size.x + grosor, half_size.y + grosor, 1.0)

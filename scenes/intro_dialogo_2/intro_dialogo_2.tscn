@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://de1slo8qjtesq" path="res://assets/assets_escena_2/fondo/dentro_carpa.jpg" id="2_k1oe6"]
 [ext_resource type="PackedScene" uid="uid://dgbvgfgvxkfgn" path="res://assets/personajes/gitana/gitana.tscn" id="3_ohtjw"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="4_bu4yu"]
-[ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui_3.tscn" id="6_bu4yu"]
+[ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui.tscn" id="6_bu4yu"]
 
 [sub_resource type="Animation" id="Animation_byxo4"]
 resource_name = "Desvanecido_Fuera"

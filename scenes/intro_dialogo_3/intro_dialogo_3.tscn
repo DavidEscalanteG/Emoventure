@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7js5luc4br5p" path="res://scenes/intro_dialogo_3/fondo/fondo_escena_5.jpg" id="2_j5lqe"]
 [ext_resource type="PackedScene" uid="uid://xhl3vkcuplpl" path="res://assets/personajes/mujer_lagarto/mujer_lagarto.tscn" id="2_k53gw"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="4_j5lqe"]
-[ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui_3.tscn" id="4_qvidq"]
+[ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui.tscn" id="4_qvidq"]
 
 [node name="Escena5" type="Node2D"]
 script = ExtResource("1_k53gw")

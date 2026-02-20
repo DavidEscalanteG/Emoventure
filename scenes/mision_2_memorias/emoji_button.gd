@@ -30,6 +30,9 @@ func _on_mouse_exited() -> void:
 
 	_actualizar_escala()
 
+	if selector != null:
+		selector.call("restaurar_preview_emocion")
+
 
 func _on_pressed() -> void:
 	AudioManager.play_ui_click()

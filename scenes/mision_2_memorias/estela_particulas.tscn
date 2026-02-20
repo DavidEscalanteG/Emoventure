@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b72vpjuxw3fg2"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 28.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 8.0
+scale_max = 15.0
+color = Color(1, 1, 1, 0.95)
+
+[node name="EstelaParticulas" type="GPUParticles2D"]
+show_behind_parent = true
+amount = 324
+lifetime = 1.4
+preprocess = 1.4
+explosiveness = 0.2
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_1")
