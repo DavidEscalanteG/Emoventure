@@ -81,6 +81,26 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 82
 text = "0 / 7 recuerdos explorados"
 
+[node name="Retroalimentacion" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_top = 120.0
+offset_right = 500.0
+offset_bottom = 195.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.164706, 0.109804, 0.0509804, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.968627, 0.827451, 0.8)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 44
+horizontal_alignment = 1
+text = "Qué interesante..."
+
 [node name="CuadrosContainer" type="GridContainer" parent="."]
 layout_mode = 1
 offset_left = 336.0
