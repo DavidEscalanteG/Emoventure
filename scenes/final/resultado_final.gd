@@ -1,6 +1,6 @@
 extends Control
 
-const MENU_PRINCIPAL_SCENE: String = "res://scenes/menu_principal/menu_principal.tscn"
+const MAPA_REJUGABILIDAD_SCENE: String = "res://scenes/rejugabilidad/mapa_rejugabilidad.tscn"
 const DIMENSIONES: Array[String] = ["atencion", "claridad", "reparacion"]
 const NOMBRES_DIMENSION: Dictionary[String, String] = {
 	"atencion": "Atención emocional",
@@ -154,8 +154,4 @@ func _construir_texto_perfil_final(puntajes: Dictionary[String, int], total_glob
 
 func _on_boton_menu_principal_pressed() -> void:
 	AudioManager.play_ui_click()
-	# Cierre completo del ciclo: limpia puntajes y estado temporal antes de volver al menú.
-	GameManager.reiniciar_puntajes()
-	if DatosJugador.has_method("reiniciar_estado_temporal"):
-		DatosJugador.reiniciar_estado_temporal()
-	get_tree().change_scene_to_file(MENU_PRINCIPAL_SCENE)
+	get_tree().change_scene_to_file(MAPA_REJUGABILIDAD_SCENE)
