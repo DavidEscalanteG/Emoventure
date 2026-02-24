@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dlfpd1a8lfh5"]
 
-[ext_resource type="Script" uid="uid://drx7lt3mhojre" path="res://escenas/escena_1/escena_1.gd" id="1_avmbo"]
+[ext_resource type="Script" uid="uid://drx7lt3mhojre" path="res://escena_1/escena_1.gd" id="1_avmbo"]
 [ext_resource type="Texture2D" uid="uid://6qtwykxeov1l" path="res://assets/assets_escena_1/fondo/Fondo_Feria_Emoventure.png" id="1_gwnrk"]
 [ext_resource type="PackedScene" uid="uid://dgbvgfgvxkfgn" path="res://assets/personajes/gitana/gitana.tscn" id="3_avmbo"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="4_kgfb6"]
