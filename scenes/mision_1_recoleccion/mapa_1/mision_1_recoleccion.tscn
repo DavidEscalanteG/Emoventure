@@ -531,7 +531,6 @@ curve = SubResource("Curve2D_d0l5o")
 curve = SubResource("Curve2D_uamsr")
 
 [node name="Intersecciones" type="Node2D" parent="."]
-visible = false
 
 [node name="Interseccion_1" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("4_uamsr")]
 position = Vector2(67, 290)
@@ -594,28 +593,23 @@ position = Vector2(1347, 994)
 rutas_disponibles = [NodePath("../../Caminos/Path2D_10"), NodePath("../../Caminos/Path2D_15"), NodePath("../../Caminos/Path2D_16")]
 
 [node name="Jugador" parent="." instance=ExtResource("13_s7qke")]
-visible = false
 position = Vector2(1089, 511)
 scale = Vector2(2, 2)
 
 [node name="EmocionesUI" parent="." instance=ExtResource("25_bjo0t")]
-visible = false
 offset = Vector2(700, 575)
 transform = Transform2D(1, 0, 0, 1, 700, 575)
 
 [node name="VidasUI" parent="." instance=ExtResource("26_pu42y")]
-visible = false
 offset = Vector2(800, 400)
 scale = Vector2(0.5, 0.5)
 transform = Transform2D(0.5, 0, 0, 0.5, 800, 400)
 
 [node name="NivelCompletadoUI" parent="." instance=ExtResource("16_311ul")]
-visible = false
 offset = Vector2(700, 0)
 transform = Transform2D(1, 0, 0, 1, 700, 0)
 
 [node name="GameOverUI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="GameOverUI"]
 layout_mode = 3

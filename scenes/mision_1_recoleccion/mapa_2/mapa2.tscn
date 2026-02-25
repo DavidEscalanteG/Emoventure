@@ -840,104 +840,135 @@ rutas_disponibles = [NodePath("../../Caminos/Path2D7"), NodePath("../../Caminos/
 
 [node name="Interseccion_4" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1408, 224)
-rutas_disponibles = [NodePath("../../Caminos/Path2D15"), NodePath("../../Caminos/Path2D31"), NodePath("../../Caminos/Path2D19")]
+rutas_disponibles = [NodePath("../../Caminos/Path2D15"), NodePath("../../Caminos/Path2D19"), NodePath("../../Caminos/Path2D31")]
 
-[node name="Interseccion_5" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_5" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1536, 224)
+rutas_disponibles = [NodePath("../../Caminos/Path2D6"), NodePath("../../Caminos/Path2D19"), NodePath("../../Caminos/Path2D20"), NodePath("../../Caminos/Path2D21")]
 
-[node name="Interseccion_6" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_6" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1664, 224)
+rutas_disponibles = [NodePath("../../Caminos/Path2D21"), NodePath("../../Caminos/Path2D35"), NodePath("../../Caminos/Path2D36")]
 
-[node name="Interseccion_7" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_7" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(192, 352)
+rutas_disponibles = [NodePath("../../Caminos/Path2D2"), NodePath("../../Caminos/Path2D4"), NodePath("../../Caminos/Path2D5")]
 
-[node name="Interseccion_8" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_8" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(384, 352)
+rutas_disponibles = [NodePath("../../Caminos/Path2D4"), NodePath("../../Caminos/Path2D11"), NodePath("../../Caminos/Path2D12"), NodePath("../../Caminos/Path2D13")]
 
-[node name="Interseccion_9" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_9" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(512, 352)
+rutas_disponibles = [NodePath("../../Caminos/Path2D12"), NodePath("../../Caminos/Path2D14"), NodePath("../../Caminos/Path2D18")]
 
-[node name="Interseccion_10" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_10" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(672, 352)
+rutas_disponibles = [NodePath("../../Caminos/Path2D18"), NodePath("../../Caminos/Path2D27"), NodePath("../../Caminos/Path2D30")]
 
 [node name="Interseccion_11" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1248, 352)
-rutas_disponibles = [null, null, null]
+rutas_disponibles = [NodePath("../../Caminos/Path2D30"), NodePath("../../Caminos/Path2D43"), NodePath("../../Caminos/Path2D61")]
 
-[node name="Interseccion_12" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_12" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1408, 352)
+rutas_disponibles = [NodePath("../../Caminos/Path2D31"), NodePath("../../Caminos/Path2D32"), NodePath("../../Caminos/Path2D61")]
 
-[node name="Interseccion_13" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_13" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1536, 352)
+rutas_disponibles = [NodePath("../../Caminos/Path2D20"), NodePath("../../Caminos/Path2D32"), NodePath("../../Caminos/Path2D33"), NodePath("../../Caminos/Path2D34")]
 
-[node name="Interseccion_14" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_14" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1728, 352)
+rutas_disponibles = [NodePath("../../Caminos/Path2D34"), NodePath("../../Caminos/Path2D36"), NodePath("../../Caminos/Path2D46")]
 
-[node name="Interseccion_15" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_15" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(64, 512)
+rutas_disponibles = [NodePath("../../Caminos/Path2D"), NodePath("../../Caminos/Path2D8"), NodePath("../../Caminos/Path2D22")]
 
-[node name="Interseccion_16" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_16" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(192, 512)
+rutas_disponibles = [NodePath("../../Caminos/Path2D5"), NodePath("../../Caminos/Path2D8"), NodePath("../../Caminos/Path2D9"), NodePath("../../Caminos/Path2D10")]
 
-[node name="Interseccion_17" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_17" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(384, 512)
+rutas_disponibles = [NodePath("../../Caminos/Path2D10"), NodePath("../../Caminos/Path2D13"), NodePath("../../Caminos/Path2D16"), NodePath("../../Caminos/Path2D17")]
 
-[node name="Interseccion_18" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_18" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(672, 512)
+rutas_disponibles = [NodePath("../../Caminos/Path2D17"), NodePath("../../Caminos/Path2D27"), NodePath("../../Caminos/Path2D28"), NodePath("../../Caminos/Path2D29")]
 
-[node name="Interseccion_19" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_19" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1248, 512)
+rutas_disponibles = [NodePath("../../Caminos/Path2D29"), NodePath("../../Caminos/Path2D43"), NodePath("../../Caminos/Path2D44"), NodePath("../../Caminos/Path2D45")]
 
-[node name="Interseccion_20" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_20" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1536, 512)
+rutas_disponibles = [NodePath("../../Caminos/Path2D33"), NodePath("../../Caminos/Path2D45"), NodePath("../../Caminos/Path2D51"), NodePath("../../Caminos/Path2D52")]
 
-[node name="Interseccion_21" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_21" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1728, 512)
+rutas_disponibles = [NodePath("../../Caminos/Path2D46"), NodePath("../../Caminos/Path2D47"), NodePath("../../Caminos/Path2D52"), NodePath("../../Caminos/Path2D58")]
 
-[node name="Interseccion_22" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_22" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1856, 512)
+rutas_disponibles = [NodePath("../../Caminos/Path2D35"), NodePath("../../Caminos/Path2D47"), NodePath("../../Caminos/Path2D48")]
 
-[node name="Interseccion_23" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_23" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(192, 672)
+rutas_disponibles = [NodePath("../../Caminos/Path2D9"), NodePath("../../Caminos/Path2D23"), NodePath("../../Caminos/Path2D24")]
 
-[node name="Interseccion_24" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_24" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(384, 672)
+rutas_disponibles = [NodePath("../../Caminos/Path2D16"), NodePath("../../Caminos/Path2D24"), NodePath("../../Caminos/Path2D25"), NodePath("../../Caminos/Path2D26")]
 
-[node name="Interseccion_25" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_25" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(512, 672)
+rutas_disponibles = [NodePath("../../Caminos/Path2D26"), NodePath("../../Caminos/Path2D40"), NodePath("../../Caminos/Path2D41")]
 
-[node name="Interseccion_26" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_26" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(672, 672)
+rutas_disponibles = [NodePath("../../Caminos/Path2D28"), NodePath("../../Caminos/Path2D41"), NodePath("../../Caminos/Path2D42")]
 
-[node name="Interseccion_27" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_27" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1248, 672)
+rutas_disponibles = [NodePath("../../Caminos/Path2D42"), NodePath("../../Caminos/Path2D44"), NodePath("../../Caminos/Path2D50")]
 
-[node name="Interseccion_28" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_28" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1408, 672)
+rutas_disponibles = [NodePath("../../Caminos/Path2D50"), NodePath("../../Caminos/Path2D53"), NodePath("../../Caminos/Path2D55")]
 
-[node name="Interseccion_29" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_29" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1536, 672)
+rutas_disponibles = [NodePath("../../Caminos/Path2D51"), NodePath("../../Caminos/Path2D55"), NodePath("../../Caminos/Path2D56"), NodePath("../../Caminos/Path2D57")]
 
-[node name="Interseccion_30" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_30" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1728, 672)
+rutas_disponibles = [NodePath("../../Caminos/Path2D57"), NodePath("../../Caminos/Path2D58"), NodePath("../../Caminos/Path2D60")]
 
-[node name="Interseccion_31" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_31" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(272, 800)
+rutas_disponibles = [NodePath("../../Caminos/Path2D22"), NodePath("../../Caminos/Path2D23")]
 
-[node name="Interseccion_32" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_32" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(384, 800)
+rutas_disponibles = [NodePath("../../Caminos/Path2D25"), NodePath("../../Caminos/Path2D37"), NodePath("../../Caminos/Path2D38"), NodePath("../../Caminos/Path2D39")]
 
-[node name="Interseccion_33" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_33" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(512, 800)
+rutas_disponibles = [NodePath("../../Caminos/Path2D39"), NodePath("../../Caminos/Path2D40"), NodePath("../../Caminos/Path2D49")]
 
-[node name="Interseccion_34" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_34" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1408, 800)
+rutas_disponibles = [NodePath("../../Caminos/Path2D49"), NodePath("../../Caminos/Path2D53"), NodePath("../../Caminos/Path2D54")]
 
-[node name="Interseccion_35" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_35" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1536, 800)
+rutas_disponibles = [NodePath("../../Caminos/Path2D38"), NodePath("../../Caminos/Path2D54"), NodePath("../../Caminos/Path2D56"), NodePath("../../Caminos/Path2D59")]
 
-[node name="Interseccion_36" parent="Intersecciones" instance=ExtResource("10_fw1s6")]
+[node name="Interseccion_36" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_fw1s6")]
 position = Vector2(1664, 800)
+rutas_disponibles = [NodePath("../../Caminos/Path2D48"), NodePath("../../Caminos/Path2D59"), NodePath("../../Caminos/Path2D60")]
 
 [node name="Jugador" parent="." instance=ExtResource("11_svdmk")]
 position = Vector2(1089, 511)
