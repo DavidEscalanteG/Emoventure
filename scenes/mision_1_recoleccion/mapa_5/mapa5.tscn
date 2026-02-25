@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://bvvvohh7klt57"]
+[gd_scene load_steps=90 format=4 uid="uid://bvvvohh7klt57"]
 
 [ext_resource type="Texture2D" uid="uid://dk4pt704h4p0y" path="res://assets/assets_escena_3/fondos/fondos_unidos.png" id="1_cvbmt"]
 [ext_resource type="Texture2D" uid="uid://coq3u4o4mvnf0" path="res://assets/assets_escena_3/paredes/Terrain (32x32).png" id="2_jd71q"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://qtect2yegfev" path="res://assets/emociones/sprites/felicidad.png" id="6_42fo6"]
 [ext_resource type="Texture2D" uid="uid://dbeo324lgnb8p" path="res://assets/emociones/sprites/miedo.png" id="7_xjaro"]
 [ext_resource type="Texture2D" uid="uid://dxxy4k6ht2k6i" path="res://assets/emociones/sprites/tristeza.png" id="8_dm6ih"]
-[ext_resource type="PackedScene" uid="uid://d14ky0d5wqhvm" path="res://assets/enemigos/serpiente/Enemigo.tscn" id="9_nlbwq"]
 [ext_resource type="PackedScene" uid="uid://7coyibirj1qa" path="res://assets/assets_escena_3/otros_elementos/interseccion.tscn" id="10_mu6jr"]
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="11_ohd5n"]
 [ext_resource type="PackedScene" uid="uid://bjfkw43822usi" path="res://assets/assets_escena_3/UI/EmocionesUI.tscn" id="12_06t6u"]
@@ -186,171 +185,393 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 8
 sources/1 = SubResource("TileSetAtlasSource_6wcda")
 
+[sub_resource type="Curve2D" id="Curve2D_yrfjx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, 64, 0, 0, 0, 0, 128, 160)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_cvbmt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, 160, 0, 0, 0, 0, 128, 608)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_jd71q"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, 160, 0, 0, 0, 0, 288, 160)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_fkqhv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, 608, 0, 0, 0, 0, 128, 960, 0, 0, 0, 0, 352, 960)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_ydwwv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, 608, 0, 0, 0, 0, 288, 608)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_eyu7u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 288, 160, 0, 0, 0, 0, 288, 320)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_42fo6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 288, 160, 0, 0, 0, 0, 448, 160)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_xjaro"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 352, 960, 0, 0, 0, 0, 352, 608)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_dm6ih"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 352, 960, 0, 0, 0, 0, 768, 960)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_nlbwq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 288, 608, 0, 0, 0, 0, 288, 448)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_mu6jr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 288, 608, 0, 0, 0, 0, 352, 608)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_ohd5n"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 288, 320, 0, 0, 0, 0, 288, 448)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_06t6u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 288, 320, 0, 0, 0, 0, 448, 320)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_8ldwy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 448, 160, 0, 0, 0, 0, 448, 320)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_wdtp6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 448, 160, 0, 0, 0, 0, 608, 160)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_ipu61"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 768, 960, 0, 0, 0, 0, 768, 768)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_8wyp8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 768, 960, 0, 0, 0, 0, 1024, 960)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_4mj2m"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 352, 608, 0, 0, 0, 0, 448, 608)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_31brn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 288, 448, 0, 0, 0, 0, 448, 448)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_caw3m"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 448, 320, 0, 0, 0, 0, 448, 448)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_epg4n"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 448, 320, 0, 0, 0, 0, 608, 320)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_6wcda"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 608, 160, 0, 0, 0, 0, 608, 64, 0, 0, 0, 0, 832, 64)
+}
+point_count = 3
+
 [sub_resource type="Curve2D" id="Curve2D_ioo0f"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 67, 290, 0, 0, 0, 0, 67, 74, 0, 0, 0, 0, 774, 74, 0, 0, 0, 0, 774, 356, 0, 0, 0, 0, 644, 356)
+"points": PackedVector2Array(0, 0, 0, 0, 768, 768, 0, 0, 0, 0, 768, 640)
 }
-point_count = 5
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_sl56s"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 67, 290, 0, 0, 0, 0, 195, 290)
+"points": PackedVector2Array(0, 0, 0, 0, 768, 768, 0, 0, 0, 0, 1024, 768)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_1xv20"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 67, 290, 0, 0, 0, 0, 67, 863, 0, 0, 0, 0, 191, 863, 0, 0, 0, 0, 191, 739, 0, 0, 0, 0, 257, 739, 0, 0, 0, 0, 257, 480, 0, 0, 0, 0, 195, 480, 0, 0, 0, 0, 195, 290)
+"points": PackedVector2Array(0, 0, 0, 0, 448, 608, 0, 0, 0, 0, 448, 448)
 }
-point_count = 8
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_vljn3"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 644, 356, 0, 0, 0, 0, 509, 356, 0, 0, 0, 0, 509, 741, 0, 0, 0, 0, 644, 741, 0, 0, 0, 0, 644, 513)
+"points": PackedVector2Array(0, 0, 0, 0, 448, 608, 0, 0, 0, 0, 608, 608)
 }
-point_count = 5
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_0tgg4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 644, 356, 0, 0, 0, 0, 644, 513)
+"points": PackedVector2Array(0, 0, 0, 0, 608, 320, 0, 0, 0, 0, 608, 160)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_1v8ob"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 650, 513, 0, 0, 0, 0, 1090, 513)
+"points": PackedVector2Array(0, 0, 0, 0, 608, 320, 0, 0, 0, 0, 608, 448)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_wrku8"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 195, 290, 0, 0, 0, 0, 259, 290, 0, 0, 0, 0, 259, 154, 0, 0, 0, 0, 643, 154, 0, 0, 0, 0, 643, 260, 0, 0, 0, 0, 380, 260, 0, 0, 0, 0, 380, 863, 0, 0, 0, 0, 765, 863, 0, 0, 0, 0, 765, 736, 0, 0, 0, 0, 959, 736)
+"points": PackedVector2Array(0, 0, 0, 0, 832, 64, 0, 0, 0, 0, 832, 256)
 }
-point_count = 10
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_jcl5x"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 959, 736, 0, 0, 0, 0, 959, 994)
+"points": PackedVector2Array(0, 0, 0, 0, 832, 64, 0, 0, 0, 0, 1248, 64)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_1vnum"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 959, 994, 0, 0, 0, 0, 64, 994)
+"points": PackedVector2Array(0, 0, 0, 0, 1024, 960, 0, 0, 0, 0, 1024, 768)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_ybp6x"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 959, 994, 0, 0, 0, 0, 1347, 994)
+"points": PackedVector2Array(0, 0, 0, 0, 1024, 960, 0, 0, 0, 0, 1344, 960)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_asulm"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 959, 736, 0, 0, 0, 0, 1093, 736, 0, 0, 0, 0, 1093, 871, 0, 0, 0, 0, 1218, 871, 0, 0, 0, 0, 1217, 801)
+"points": PackedVector2Array(0, 0, 0, 0, 768, 768, 0, 0, 0, 0, 608, 768, 0, 0, 0, 0, 608, 608)
 }
-point_count = 5
+point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_fit0t"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1217, 802, 0, 0, 0, 0, 1217, 608)
+"points": PackedVector2Array(0, 0, 0, 0, 448, 448, 0, 0, 0, 0, 608, 448)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_faob4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1217, 801, 0, 0, 0, 0, 1347, 801)
+"points": PackedVector2Array(0, 0, 0, 0, 608, 448, 0, 0, 0, 0, 608, 608)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_6014p"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1347, 801, 0, 0, 0, 0, 1347, 608)
+"points": PackedVector2Array(0, 0, 0, 0, 1344, 960, 0, 0, 0, 0, 1344, 768)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_703p3"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1347, 801, 0, 0, 0, 0, 1347, 994)
+"points": PackedVector2Array(0, 0, 0, 0, 1344, 960, 0, 0, 0, 0, 1504, 960)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_cxlao"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1347, 994, 0, 0, 0, 0, 1475, 994, 0, 0, 0, 0, 1475, 611, 0, 0, 0, 0, 1602, 611, 0, 0, 0, 0, 1602, 768, 0, 0, 0, 0, 1733, 768)
-}
-point_count = 6
-
-[sub_resource type="Curve2D" id="Curve2D_s0fn5"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1733, 768, 0, 0, 0, 0, 1733, 543)
+"points": PackedVector2Array(0, 0, 0, 0, 1024, 768, 0, 0, 0, 0, 1344, 768)
 }
 point_count = 2
 
+[sub_resource type="Curve2D" id="Curve2D_s0fn5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 768, 640, 0, 0, 0, 0, 768, 256, 0, 0, 0, 0, 832, 256)
+}
+point_count = 3
+
 [sub_resource type="Curve2D" id="Curve2D_80y8i"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1733, 768, 0, 0, 0, 0, 1733, 1021)
+"points": PackedVector2Array(0, 0, 0, 0, 768, 640, 0, 0, 0, 0, 960, 640)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_adl0s"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1733, 1021, 0, 0, 0, 0, 1594, 1021, 0, 0, 0, 0, 1594, 897)
+"points": PackedVector2Array(0, 0, 0, 0, 832, 256, 0, 0, 0, 0, 1248, 256)
 }
-point_count = 3
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_21l3u"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1733, 1021, 0, 0, 0, 0, 1864, 1021, 0, 0, 0, 0, 1864, 897)
+"points": PackedVector2Array(0, 0, 0, 0, 1248, 64, 0, 0, 0, 0, 1248, 256)
 }
-point_count = 3
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_xp633"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1733, 768, 0, 0, 0, 0, 1863, 768, 0, 0, 0, 0, 1863, 449, 0, 0, 0, 0, 1222, 449, 0, 0, 0, 0, 1222, 289)
+"points": PackedVector2Array(0, 0, 0, 0, 1248, 64, 0, 0, 0, 0, 1504, 64)
 }
-point_count = 5
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_y24fl"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1222, 289, 0, 0, 0, 0, 1022, 289, 0, 0, 0, 0, 1022, 361, 0, 0, 0, 0, 893, 361, 0, 0, 0, 0, 893, 99, 0, 0, 0, 0, 1222, 99, 0, 0, 0, 0, 1222, 289)
+"points": PackedVector2Array(0, 0, 0, 0, 1504, 960, 0, 0, 0, 0, 1504, 672)
 }
-point_count = 7
+point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_rfuqs"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1222, 289, 0, 0, 0, 0, 1408, 289)
+"points": PackedVector2Array(0, 0, 0, 0, 1504, 960, 0, 0, 0, 0, 1664, 960)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_ukc53"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1408, 289, 0, 0, 0, 0, 1408, 61, 0, 0, 0, 0, 1856, 61, 0, 0, 0, 0, 1856, 289)
-}
-point_count = 4
-
-[sub_resource type="Curve2D" id="Curve2D_ft7ko"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1408, 289, 0, 0, 0, 0, 1570, 289)
+"points": PackedVector2Array(0, 0, 0, 0, 1344, 768, 0, 0, 0, 0, 1344, 672)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_qp0od"]
+[sub_resource type="Curve2D" id="Curve2D_ft7ko"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1570, 289, 0, 0, 0, 0, 1570, 153)
+"points": PackedVector2Array(0, 0, 0, 0, 960, 640, 0, 0, 0, 0, 960, 512)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_a5nf4"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1570, 289, 0, 0, 0, 0, 1699, 289)
+"points": PackedVector2Array(0, 0, 0, 0, 1248, 256, 0, 0, 0, 0, 1344, 256, 0, 0, 0, 0, 1344, 384)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_e25oa"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1699, 289, 0, 0, 0, 0, 1699, 153)
+"points": PackedVector2Array(0, 0, 0, 0, 1504, 64, 0, 0, 0, 0, 1504, 384)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_ao2wm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1504, 64, 0, 0, 0, 0, 1664, 64)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_ble5o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1664, 960, 0, 0, 0, 0, 1664, 672)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_ivhif"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1664, 960, 0, 0, 0, 0, 1792, 960)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_2wg4a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1344, 672, 0, 0, 0, 0, 1344, 384)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_s8c2j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1344, 672, 0, 0, 0, 0, 1504, 672)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_4ow3t"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1504, 672, 0, 0, 0, 0, 1504, 384)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_i6rkq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1344, 384, 0, 0, 0, 0, 1504, 384)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_rbe4c"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1504, 672, 0, 0, 0, 0, 1664, 672)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_b5di7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1504, 384, 0, 0, 0, 0, 1664, 384)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_qixam"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1664, 672, 0, 0, 0, 0, 1664, 384)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_bkmhu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1664, 672, 0, 0, 0, 0, 1792, 672)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_sex5f"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1664, 384, 0, 0, 0, 0, 1792, 384)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_igg7s"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 960, 512, 0, 0, 0, 0, 896, 512, 0, 0, 0, 0, 896, 384, 0, 0, 0, 0, 1216, 384, 0, 0, 0, 0, 1216, 640, 0, 0, 0, 0, 960, 640)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_u1ksj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 960, 512, 0, 0, 0, 0, 1088, 512)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_r6wy7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1664, 64, 0, 0, 0, 0, 1664, 384)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_7n3cb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1664, 64, 0, 0, 0, 0, 1792, 64)
 }
 point_count = 2
 
@@ -414,182 +635,320 @@ tipo_emocion = "tristeza"
 color = Color(0.043137256, 0.11764706, 1, 1)
 
 [node name="Caminos" type="Node2D" parent="."]
-visible = false
 
-[node name="Path2D_1" type="Path2D" parent="Caminos"]
+[node name="Path2D" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_yrfjx")
+
+[node name="Path2D2" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_cvbmt")
+
+[node name="Path2D3" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_jd71q")
+
+[node name="Path2D4" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_fkqhv")
+
+[node name="Path2D5" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_ydwwv")
+
+[node name="Path2D6" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_eyu7u")
+
+[node name="Path2D7" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_42fo6")
+
+[node name="Path2D8" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_xjaro")
+
+[node name="Path2D9" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_dm6ih")
+
+[node name="Path2D10" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_nlbwq")
+
+[node name="Path2D11" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_mu6jr")
+
+[node name="Path2D12" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_ohd5n")
+
+[node name="Path2D13" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_06t6u")
+
+[node name="Path2D14" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_8ldwy")
+
+[node name="Path2D15" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_wdtp6")
+
+[node name="Path2D16" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_ipu61")
+
+[node name="Path2D17" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_8wyp8")
+
+[node name="Path2D18" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_4mj2m")
+
+[node name="Path2D19" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_31brn")
+
+[node name="Path2D20" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_caw3m")
+
+[node name="Path2D21" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_epg4n")
+
+[node name="Path2D22" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_6wcda")
+
+[node name="Path2D24" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_ioo0f")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Caminos/Path2D_1"]
-position = Vector2(67, 290)
-rotation = -1.5707964
-loop = false
-
-[node name="Enemigo_1" parent="Caminos/Path2D_1/PathFollow2D" instance=ExtResource("9_nlbwq")]
-
-[node name="Path2D_2" type="Path2D" parent="Caminos"]
+[node name="Path2D25" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_sl56s")
 
-[node name="Path2D_3" type="Path2D" parent="Caminos"]
+[node name="Path2D26" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_1xv20")
 
-[node name="Path2D_4" type="Path2D" parent="Caminos"]
+[node name="Path2D27" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_vljn3")
 
-[node name="Path2D_5" type="Path2D" parent="Caminos"]
+[node name="Path2D28" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_0tgg4")
 
-[node name="Path2D_6" type="Path2D" parent="Caminos"]
+[node name="Path2D29" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_1v8ob")
 
-[node name="Path2D_7" type="Path2D" parent="Caminos"]
+[node name="Path2D30" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_wrku8")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Caminos/Path2D_7"]
-position = Vector2(940.2298, 736)
-progress = 2243.2107
-loop = false
-
-[node name="Enemigo_2" parent="Caminos/Path2D_7/PathFollow2D" instance=ExtResource("9_nlbwq")]
-
-[node name="Path2D_8" type="Path2D" parent="Caminos"]
+[node name="Path2D31" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_jcl5x")
 
-[node name="Path2D_9" type="Path2D" parent="Caminos"]
+[node name="Path2D32" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_1vnum")
 
-[node name="Path2D_10" type="Path2D" parent="Caminos"]
+[node name="Path2D33" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_ybp6x")
 
-[node name="Path2D_11" type="Path2D" parent="Caminos"]
+[node name="Path2D34" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_asulm")
 
-[node name="Path2D_12" type="Path2D" parent="Caminos"]
+[node name="Path2D35" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_fit0t")
 
-[node name="Path2D_13" type="Path2D" parent="Caminos"]
+[node name="Path2D36" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_faob4")
 
-[node name="Path2D_14" type="Path2D" parent="Caminos"]
+[node name="Path2D37" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_6014p")
 
-[node name="Path2D_15" type="Path2D" parent="Caminos"]
+[node name="Path2D38" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_703p3")
 
-[node name="Path2D_16" type="Path2D" parent="Caminos"]
+[node name="Path2D39" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_cxlao")
 
-[node name="Path2D_17" type="Path2D" parent="Caminos"]
+[node name="Path2D40" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_s0fn5")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Caminos/Path2D_17"]
-position = Vector2(1733, 768)
-rotation = -1.5707964
-loop = false
-
-[node name="Enemigo_3" parent="Caminos/Path2D_17/PathFollow2D" instance=ExtResource("9_nlbwq")]
-
-[node name="Path2D_18" type="Path2D" parent="Caminos"]
+[node name="Path2D41" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_80y8i")
 
-[node name="Path2D_19" type="Path2D" parent="Caminos"]
+[node name="Path2D42" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_adl0s")
 
-[node name="Path2D_20" type="Path2D" parent="Caminos"]
+[node name="Path2D43" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_21l3u")
 
-[node name="Path2D_21" type="Path2D" parent="Caminos"]
+[node name="Path2D44" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_xp633")
 
-[node name="Path2D_22" type="Path2D" parent="Caminos"]
+[node name="Path2D45" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_y24fl")
 
-[node name="Path2D_23" type="Path2D" parent="Caminos"]
+[node name="Path2D46" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_rfuqs")
 
-[node name="Path2D_24" type="Path2D" parent="Caminos"]
+[node name="Path2D47" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_ukc53")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Caminos/Path2D_24"]
-position = Vector2(1408, 289)
-rotation = -1.5707964
-loop = false
-
-[node name="Enemigo_4" parent="Caminos/Path2D_24/PathFollow2D" instance=ExtResource("9_nlbwq")]
-
-[node name="Path2D_25" type="Path2D" parent="Caminos"]
+[node name="Path2D48" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_ft7ko")
 
-[node name="Path2D_26" type="Path2D" parent="Caminos"]
-curve = SubResource("Curve2D_qp0od")
-
-[node name="Path2D_27" type="Path2D" parent="Caminos"]
+[node name="Path2D50" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_a5nf4")
 
-[node name="Path2D_28" type="Path2D" parent="Caminos"]
+[node name="Path2D51" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_e25oa")
 
+[node name="Path2D52" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_ao2wm")
+
+[node name="Path2D53" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_ble5o")
+
+[node name="Path2D54" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_ivhif")
+
+[node name="Path2D55" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_2wg4a")
+
+[node name="Path2D56" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_s8c2j")
+
+[node name="Path2D57" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_4ow3t")
+
+[node name="Path2D58" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_i6rkq")
+
+[node name="Path2D59" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_rbe4c")
+
+[node name="Path2D60" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_b5di7")
+
+[node name="Path2D61" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_qixam")
+
+[node name="Path2D62" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_bkmhu")
+
+[node name="Path2D63" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_sex5f")
+
+[node name="Path2D64" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_igg7s")
+
+[node name="Path2D65" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_u1ksj")
+
+[node name="Path2D69" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_r6wy7")
+
+[node name="Path2D70" type="Path2D" parent="Caminos"]
+curve = SubResource("Curve2D_7n3cb")
+
 [node name="Intersecciones" type="Node2D" parent="."]
-visible = false
 
-[node name="Interseccion_1" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(67, 290)
-rutas_disponibles = [null, null, null]
+[node name="Interseccion_1" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(832, 64)
 
-[node name="Interseccion_2" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(195, 290)
-rutas_disponibles = [null, null, null]
+[node name="Interseccion_2" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1248, 64)
 
-[node name="Interseccion_3" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(959, 736)
-rutas_disponibles = [null, null, null]
+[node name="Interseccion_3" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1504, 64)
 
-[node name="Interseccion_4" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(959, 994)
-rutas_disponibles = [null, null, null]
+[node name="Interseccion_4" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1664, 64)
 
-[node name="Interseccion_5" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(1217, 801)
-rutas_disponibles = [null, null, null]
+[node name="Interseccion_5" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(128, 160)
 
-[node name="Interseccion_6" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(1347, 801)
-rutas_disponibles = [null, null, null]
+[node name="Interseccion_6" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(288, 160)
 
-[node name="Interseccion_7" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(1733, 768)
-rutas_disponibles = [null, null, null, null]
+[node name="Interseccion_7" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(448, 160)
 
-[node name="Interseccion_8" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(1733, 1021)
-rutas_disponibles = [null, null, null]
+[node name="Interseccion_8" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(608, 160)
 
-[node name="Interseccion_9" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(1222, 289)
-rutas_disponibles = [null, null, null]
+[node name="Interseccion_9" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(832, 256)
 
-[node name="Interseccion_10" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(1408, 290)
-rutas_disponibles = [null, null, null]
+[node name="Interseccion_10" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1248, 256)
 
-[node name="Interseccion_11" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(644, 356)
-rutas_disponibles = [null, null, null]
+[node name="Interseccion_11" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(288, 320)
 
-[node name="Interseccion_12" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(644, 513)
-rutas_disponibles = [null, null, null]
+[node name="Interseccion_12" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(448, 320)
 
-[node name="Interseccion_13" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(1699, 289)
-rutas_disponibles = [null, null]
+[node name="Interseccion_13" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(608, 320)
 
-[node name="Interseccion_14" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(1570, 289)
-rutas_disponibles = [null, null, null]
+[node name="Interseccion_14" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1344, 384)
 
-[node name="Interseccion_15" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(1347, 994)
-rutas_disponibles = [null, null, null]
+[node name="Interseccion_15" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1504, 384)
+
+[node name="Interseccion_16" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1664, 384)
+
+[node name="Interseccion_17" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(288, 448)
+
+[node name="Interseccion_18" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(448, 448)
+
+[node name="Interseccion_19" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(608, 448)
+
+[node name="Interseccion_20" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(960, 512)
+
+[node name="Interseccion_21" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(128, 608)
+
+[node name="Interseccion_22" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(288, 608)
+
+[node name="Interseccion_23" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(352, 608)
+
+[node name="Interseccion_24" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(448, 608)
+
+[node name="Interseccion_25" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(608, 608)
+
+[node name="Interseccion_26" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(768, 640)
+
+[node name="Interseccion_27" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(960, 640)
+
+[node name="Interseccion_28" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1344, 672)
+
+[node name="Interseccion_29" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1504, 672)
+
+[node name="Interseccion_30" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1664, 672)
+
+[node name="Interseccion_31" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(768, 768)
+
+[node name="Interseccion_32" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1024, 768)
+
+[node name="Interseccion_33" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1344, 768)
+
+[node name="Interseccion_34" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(352, 960)
+
+[node name="Interseccion_35" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(768, 960)
+
+[node name="Interseccion_36" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1024, 960)
+
+[node name="Interseccion_37" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1344, 960)
+
+[node name="Interseccion_38" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1504, 960)
+
+[node name="Interseccion_39" parent="Intersecciones" instance=ExtResource("10_mu6jr")]
+position = Vector2(1664, 960)
 
 [node name="Jugador" parent="." instance=ExtResource("11_ohd5n")]
 visible = false
