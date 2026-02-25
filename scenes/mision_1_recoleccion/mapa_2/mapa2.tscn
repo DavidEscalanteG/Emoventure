@@ -101,6 +101,7 @@ texture_region_size = Vector2i(32, 32)
 9:5/0 = 0
 10:5/0 = 0
 12:5/0 = 0
+12:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 17:5/0 = 0
 18:5/0 = 0
 19:5/0 = 0
@@ -143,8 +144,6 @@ texture_region_size = Vector2i(32, 32)
 6:10/0 = 0
 7:10/0 = 0
 8:10/0 = 0
-13:5/size_in_atlas = Vector2i(2, 2)
-13:5/0 = 0
 12:8/size_in_atlas = Vector2i(3, 1)
 12:8/0 = 0
 13:9/size_in_atlas = Vector2i(2, 2)
@@ -178,11 +177,25 @@ texture_region_size = Vector2i(32, 32)
 15:2/0 = 0
 15:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 15:4/0 = 0
+15:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 15:5/0 = 0
+15:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 15:6/0 = 0
+15:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 14:4/0 = 0
+14:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 13:4/0 = 0
+13:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 12:4/0 = 0
+12:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+13:5/0 = 0
+13:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+13:6/0 = 0
+13:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+14:6/0 = 0
+14:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+14:5/0 = 0
+14:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSet" id="TileSet_qj3mf"]
 tile_size = Vector2i(32, 32)
@@ -582,35 +595,34 @@ tile_map_data = PackedByteArray("AAAAAAAAAQAPAAQAAAAAAAEAAQAPAAUAAAAAAAIAAQAPAAY
 tile_set = SubResource("TileSet_qj3mf")
 
 [node name="Emociones" type="Node2D" parent="."]
-visible = false
 
 [node name="Emocion_Desagrado" parent="Emociones" instance=ExtResource("3_g7qru")]
-position = Vector2(897, 343)
+position = Vector2(1664, 800)
 textura = ExtResource("4_v5g01")
 tipo_emocion = "desagrado"
 color = Color(0.3647059, 0.8862745, 0.21568628, 1)
 
 [node name="Emocion_Enojo" parent="Emociones" instance=ExtResource("3_g7qru")]
-position = Vector2(453, 161)
+position = Vector2(64, 64)
 collision_layer = 0
 textura = ExtResource("5_7ttne")
 tipo_emocion = "enojo"
 color = Color(1, 0, 0, 1)
 
 [node name="Emocion_Felicidad" parent="Emociones" instance=ExtResource("3_g7qru")]
-position = Vector2(1217, 106)
+position = Vector2(1536, 64)
 textura = ExtResource("6_2n0y8")
 tipo_emocion = "alegria"
 color = Color(1, 1, 0.09803922, 1)
 
 [node name="Emocion_Miedo" parent="Emociones" instance=ExtResource("3_g7qru")]
-position = Vector2(1586, 631)
+position = Vector2(272, 800)
 textura = ExtResource("7_2slqd")
 tipo_emocion = "miedo"
 color = Color(1, 0.14901961, 1, 1)
 
 [node name="Emocion_Tristeza" parent="Emociones" instance=ExtResource("3_g7qru")]
-position = Vector2(958, 861)
+position = Vector2(960, 960)
 textura = ExtResource("8_gri5v")
 tipo_emocion = "tristeza"
 color = Color(0.043137256, 0.11764706, 1, 1)
@@ -638,6 +650,7 @@ curve = SubResource("Curve2D_7ttne")
 [node name="PathFollow2D" type="PathFollow2D" parent="Caminos/Path2D6"]
 position = Vector2(384, 224)
 rotation = -1.5707964
+loop = false
 
 [node name="Enemigo" parent="Caminos/Path2D6/PathFollow2D" instance=ExtResource("10_tdjkx")]
 
@@ -683,6 +696,7 @@ curve = SubResource("Curve2D_iuj1e")
 [node name="PathFollow2D" type="PathFollow2D" parent="Caminos/Path2D19"]
 position = Vector2(1536, 224)
 rotation = 3.1415927
+loop = false
 
 [node name="Enemigo" parent="Caminos/Path2D19/PathFollow2D" instance=ExtResource("10_tdjkx")]
 
@@ -707,6 +721,7 @@ curve = SubResource("Curve2D_df5re")
 [node name="PathFollow2D" type="PathFollow2D" parent="Caminos/Path2D25"]
 position = Vector2(384, 672)
 rotation = 1.5707964
+loop = false
 
 [node name="Enemigo" parent="Caminos/Path2D25/PathFollow2D" instance=ExtResource("10_tdjkx")]
 
@@ -806,6 +821,7 @@ curve = SubResource("Curve2D_58pdg")
 [node name="PathFollow2D" type="PathFollow2D" parent="Caminos/Path2D56"]
 position = Vector2(1536, 672)
 rotation = 1.5707964
+loop = false
 
 [node name="Enemigo" parent="Caminos/Path2D56/PathFollow2D" instance=ExtResource("10_tdjkx")]
 
@@ -975,23 +991,19 @@ position = Vector2(1089, 511)
 scale = Vector2(2, 2)
 
 [node name="EmocionesUI" parent="." instance=ExtResource("12_18dv8")]
-visible = false
-offset = Vector2(700, 575)
-transform = Transform2D(1, 0, 0, 1, 700, 575)
+offset = Vector2(720, 545)
+transform = Transform2D(1, 0, 0, 1, 720, 545)
 
 [node name="VidasUI" parent="." instance=ExtResource("13_st4o8")]
-visible = false
 offset = Vector2(800, 400)
 scale = Vector2(0.5, 0.5)
 transform = Transform2D(0.5, 0, 0, 0.5, 800, 400)
 
 [node name="NivelCompletadoUI" parent="." instance=ExtResource("14_xco0s")]
-visible = false
 offset = Vector2(700, 0)
 transform = Transform2D(1, 0, 0, 1, 700, 0)
 
 [node name="GameOverUI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Control" type="Control" parent="GameOverUI"]
 layout_mode = 3
