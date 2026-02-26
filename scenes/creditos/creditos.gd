@@ -1,6 +1,6 @@
 extends Control
 
-const MENU_PRINCIPAL_SCENE := "res://scenes/menu_principal/menu_principal.tscn"
+const MENU_PRINCIPAL_SCENE := "res://scenes/main_menu/menu_principal/menu_principal.tscn"
 
 @export var titulo_principal: String = "Créditos"
 @export var subtitulo: String = "Gracias por jugar Emoventure"

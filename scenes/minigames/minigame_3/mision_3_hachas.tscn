@@ -1,0 +1,159 @@
+[gd_scene load_steps=10 format=3 uid="uid://ds0xp4qtryygh"]
+
+[ext_resource type="Script" uid="uid://dkxhswm124pb6" path="res://scenes/minigames/minigame_3/mision_3_hachas.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://vwxy66audqui" path="res://scenes/minigames/minigame_3/HachaObstaculo.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://bjruhfm0tmric" path="res://icon.svg" id="5"]
+[ext_resource type="AudioStream" uid="uid://lsna6o3cpggm" path="res://audios/sfx/danio_jugador.mp3" id="5_3alf4"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(1880, 24)
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(24, 1020)
+
+[sub_resource type="CircleShape2D" id="3"]
+radius = 38.0
+
+[sub_resource type="CircleShape2D" id="4"]
+radius = 45.0
+
+[node name="Mision3Pasillo" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Fondo" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.088, 0.096, 0.16, 1)
+
+[node name="SpawnJugador" type="Marker2D" parent="."]
+position = Vector2(120, 540)
+
+[node name="Jugador" parent="." instance=ExtResource("2")]
+position = Vector2(120, 540)
+
+[node name="ParedSuperior" type="StaticBody2D" parent="."]
+position = Vector2(960, 60)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedSuperior"]
+shape = SubResource("1")
+
+[node name="ParedInferior" type="StaticBody2D" parent="."]
+position = Vector2(960, 1020)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedInferior"]
+shape = SubResource("1")
+
+[node name="ParedIzquierda" type="StaticBody2D" parent="."]
+position = Vector2(30, 540)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedIzquierda"]
+shape = SubResource("2")
+
+[node name="ParedDerecha" type="StaticBody2D" parent="."]
+position = Vector2(1890, 540)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedDerecha"]
+shape = SubResource("2")
+
+[node name="CheckpointA" type="Area2D" parent="." groups=["mision_3_checkpoint"]]
+position = Vector2(620, 260)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointA"]
+shape = SubResource("3")
+
+[node name="Sprite2D" type="Sprite2D" parent="CheckpointA"]
+modulate = Color(1, 0.78, 0.3, 1)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("5")
+
+[node name="CheckpointB" type="Area2D" parent="." groups=["mision_3_checkpoint"]]
+position = Vector2(1280, 820)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointB"]
+shape = SubResource("3")
+
+[node name="Sprite2D" type="Sprite2D" parent="CheckpointB"]
+modulate = Color(1, 0.78, 0.3, 1)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("5")
+
+[node name="Salida" type="Area2D" parent="."]
+position = Vector2(1780, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Salida"]
+shape = SubResource("4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Salida"]
+modulate = Color(0.4, 0.9, 1, 1)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("5")
+
+[node name="Hacha1" parent="." instance=ExtResource("3")]
+position = Vector2(420, 530)
+scale = Vector2(4.45, 4.45)
+
+[node name="Hacha2" parent="." instance=ExtResource("3")]
+position = Vector2(760, 520)
+scale = Vector2(4.45, 4.45)
+tiempo_activo = 0.8
+tiempo_inactivo = 0.75
+
+[node name="Hacha3" parent="." instance=ExtResource("3")]
+position = Vector2(1030, 550)
+scale = Vector2(4.45, 4.45)
+tiempo_activo = 1.2
+tiempo_inactivo = 0.7
+
+[node name="Hacha4" parent="." instance=ExtResource("3")]
+position = Vector2(1460, 500)
+scale = Vector2(4.45, 4.45)
+tiempo_activo = 0.9
+tiempo_inactivo = 1.0
+
+[node name="AudioDanio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3alf4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 600.0
+offset_bottom = 180.0
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 22
+
+[node name="Panel" type="PanelContainer" parent="CanvasLayer/UI"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/Panel"]
+layout_mode = 2
+
+[node name="Titulo" type="Label" parent="CanvasLayer/UI/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Misión 3: Pasillo del Mazo"
+
+[node name="Vidas" type="Label" parent="CanvasLayer/UI/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Vidas: 2/2"
+
+[node name="Progreso" type="Label" parent="CanvasLayer/UI/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Progreso: 0/2 palancas"
+
+[node name="Ayuda" type="Label" parent="CanvasLayer/UI/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Activa 2 palancas y llega a la salida"
+
+[node name="DanoOverlay" type="ColorRect" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(1, 0.15, 0.15, 0)

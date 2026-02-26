@@ -1,6 +1,6 @@
 extends Control
 
-@export var siguiente_escena: String = "res://scenes/final/resultado_final.tscn"
+@export var siguiente_escena: String = "res://scenes/results/final/resultado_final.tscn"
 @export var siguiente_escena_legacy: String = ""
 
 func _on_boton_continuar_pressed() -> void:

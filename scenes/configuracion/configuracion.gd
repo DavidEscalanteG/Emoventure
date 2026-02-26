@@ -44,4 +44,4 @@ func _on_btn_probar_sfx_pressed() -> void:
 
 func _on_btn_volver_pressed() -> void:
 	AudioManager.play_ui_click()
-	get_tree().change_scene_to_file("res://scenes/menu_principal/menu_principal.tscn")
+	get_tree().change_scene_to_file("res://scenes/main_menu/menu_principal/menu_principal.tscn")

@@ -4,13 +4,13 @@ Convención vigente para autoloads en `project.godot`:
 
 | Nombre de singleton | Ruta | Responsabilidad |
 | --- | --- | --- |
-| `DatosJugador` | `res://src/autoload/datos_jugador.gd` | Estado persistente del jugador y progreso global. |
-| `GameManager` | `res://src/autoload/game_manager.gd` | Flujo global del juego y transición de estados de alto nivel. |
-| `AudioManager` | `res://src/autoload/audio_manager.gd` | Configuración de buses, volumenes persistentes (`Master`, `Musica`, `SFX`, `Voz`) y reproducción de SFX/UI. |
-| `MusicManager` | `res://src/autoload/music_manager.gd` | Único punto de verdad para música de fondo y ambientes (pistas por escena, por clave y por ambiente). |
-| `DialogueActors` | `res://src/autoload/dialogue_actors.gd` | Registro/gestión de actores de diálogo. |
-| `Logs` | `res://src/autoload/Logs.gd` | Canal centralizado de logs del juego. |
-| `Cuestionarios` | `res://src/autoload/cuestionarios.gd` | Datos y utilidades globales de cuestionarios. |
+| `DatosJugador` | `res://core/managers/datos_jugador.gd` | Estado persistente del jugador y progreso global. |
+| `GameManager` | `res://core/managers/game_manager.gd` | Flujo global del juego y transición de estados de alto nivel. |
+| `AudioManager` | `res://core/managers/audio_manager.gd` | Configuración de buses, volumenes persistentes (`Master`, `Musica`, `SFX`, `Voz`) y reproducción de SFX/UI. |
+| `MusicManager` | `res://core/managers/music_manager.gd` | Único punto de verdad para música de fondo y ambientes (pistas por escena, por clave y por ambiente). |
+| `DialogueActors` | `res://core/managers/dialogue_actors.gd` | Registro/gestión de actores de diálogo. |
+| `Logs` | `res://core/managers/Logs.gd` | Canal centralizado de logs del juego. |
+| `Cuestionarios` | `res://core/managers/cuestionarios.gd` | Datos y utilidades globales de cuestionarios. |
 
 ## Decisión de audio
 

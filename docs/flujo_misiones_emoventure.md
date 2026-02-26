@@ -5,45 +5,45 @@ Este documento resume el flujo narrativo-operativo implementado actualmente y va
 ## 1) Secuencia de escenas implementada (estado actual)
 
 1. **Menú principal**  
-   `res://scenes/menu_principal/menu_principal.tscn`
+   `res://scenes/main_menu/menu_principal/menu_principal.tscn`
 2. **Selección de género**  
-   `res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn`
+   `res://scenes/tutorials/intro_seleccion_genero/intro_seleccion_genero.tscn`
 3. **Personalización de avatar**  
    `res://scenes/personalizacion/Personalizacion.tscn`
 4. **Escena narrativa 1**  
-   `res://scenes/intro_dialogo_1/intro_dialogo_1.tscn`
+   `res://scenes/tutorials/intro_dialogo_1/intro_dialogo_1.tscn`
 5. **Escena narrativa 2**  
-   `res://scenes/intro_dialogo_2/intro_dialogo_2.tscn`
+   `res://scenes/tutorials/intro_dialogo_2/intro_dialogo_2.tscn`
 6. **Misión 1 — recolección de emociones**  
-   `res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn`
+   `res://scenes/minigames/minigame_1/mapa_1/mision_1_recoleccion.tscn`
 7. **Cuestionario (misión 1)**  
    `res://scenes/cuestionarios/EscenaCuestionario.tscn`
 8. **Llave 1**  
    `res://scenes/transicion_post_mision_1/transicion_post_mision_1.tscn`
 9. **Escena narrativa 5**  
-   `res://scenes/intro_dialogo_3/intro_dialogo_3.tscn`
+   `res://scenes/tutorials/intro_dialogo_3/intro_dialogo_3.tscn`
 10. **Escena narrativa 6**  
-	`res://scenes/intro_dialogo_4/intro_dialogo_4.tscn`
+	`res://scenes/tutorials/intro_dialogo_4/intro_dialogo_4.tscn`
 11. **Escena narrativa 7**  
-	`res://scenes/intro_dialogo_5/intro_dialogo_5.tscn`
+	`res://scenes/tutorials/intro_dialogo_5/intro_dialogo_5.tscn`
 12. **Intro misión 2**  
-	`res://scenes/intro_mision_2/intro_mision_2.tscn`
+	`res://scenes/tutorials/intro_mision_2/intro_mision_2.tscn`
 13. **Misión 2 — memorias eternas**  
- `res://scenes/mision_2_memorias/mision_2_memorias.tscn`
+ `res://scenes/minigames/minigame_2/mision_2_memorias.tscn`
 14. **Cuestionario (misión 2)**  
 	`res://scenes/cuestionarios/EscenaCuestionario.tscn`
 15. **Llave 2**  
 	`res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn`
 16. **Misión 3 — pasillo con hachas**  
-	`res://scenes/mision_3_hachas/mision_3_hachas.tscn`
+	`res://scenes/minigames/minigame_3/mision_3_hachas.tscn`
 17. **Cuestionario (misión 3, reparación ítems 1–4)**  
 	`res://scenes/cuestionarios/EscenaCuestionario.tscn`
 18. **Recompensa misión 3 (llave + mazo)**  
 	`res://scenes/recompensa_mision_3/recompensa_mision_3.tscn`
 19. **Misión 4 — topos (rescate final)**
-	`res://scenes/mision_4_payasos/mapa_topos.tscn`
+	`res://scenes/minigames/minigame_4/mapa_topos.tscn`
 20. **Resultado final**
-	`res://scenes/final/resultado_final.tscn`
+	`res://scenes/results/final/resultado_final.tscn`
 
 ## 2) Validación de scripts solicitados
 
@@ -52,17 +52,17 @@ Este documento resume el flujo narrativo-operativo implementado actualmente y va
 - Tras activar 2 checkpoints y llegar a salida, instancia `EscenaCuestionario` y define como `escena_siguiente` la recompensa de misión 3.
 
 ### `scenes/recompensa_mision_3/recompensa_mision_3.gd`
-- Define `siguiente_escena` con destino por defecto `res://scenes/mision_4_payasos/mapa_topos.tscn`.
+- Define `siguiente_escena` con destino por defecto `res://scenes/minigames/minigame_4/mapa_topos.tscn`.
 - El botón de continuar ejecuta `change_scene_to_file(siguiente_escena)`.
 
 ### `scenes/final/resultado_final.gd`
-- Implementa el **cierre definitivo** en `res://scenes/final/resultado_final.tscn`.
+- Implementa el **cierre definitivo** en `res://scenes/results/final/resultado_final.tscn`.
 - El botón final reinicia estado (`GameManager.reiniciar_puntajes()` y, si existe, `DatosJugador.reiniciar_estado_temporal()`) y luego vuelve al menú principal.
 
 ## 3) Cierre de juego y encadenamiento actual
 
 - **Flujo activo tras misión 3:** cuestionario de reparación (ítems 1–4) → recompensa de misión 3 → misión 4 (topos).
-- **Cierre definitivo:** `res://scenes/final/resultado_final.tscn` (script `resultado_final.gd`).
+- **Cierre definitivo:** `res://scenes/results/final/resultado_final.tscn` (script `resultado_final.gd`).
 
 En el estado actual, la rama principal ya encadena a resultado final pasando por misión 4 y cuestionario correspondiente.
 

@@ -71,7 +71,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_tei6f")
-siguiente_escena = "res://scenes/intro_dialogo_3/intro_dialogo_3.tscn"
+siguiente_escena = "res://scenes/tutorials/intro_dialogo_3/intro_dialogo_3.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

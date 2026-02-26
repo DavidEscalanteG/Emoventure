@@ -11,20 +11,22 @@ config_version=5
 [application]
 
 config/name="Emoventure"
-run/main_scene="res://scenes/menu_principal/menu_principal.tscn"
+run/main_scene="res://scenes/main_menu/menu_principal/menu_principal.tscn"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-DatosJugador="*res://src/autoload/datos_jugador.gd"
-GameManager="*res://src/autoload/game_manager.gd"
-AudioManager="*res://src/autoload/audio_manager.gd"
-DialogueActors="*res://src/autoload/dialogue_actors.gd"
-Logs="*res://src/autoload/Logs.gd"
-Cuestionarios="*res://src/autoload/cuestionarios.gd"
-MusicManager="*res://src/autoload/music_manager.gd"
+DatosJugador="*res://core/managers/datos_jugador.gd"
+GameManager="*res://core/managers/game_manager.gd"
+AudioManager="*res://core/managers/audio_manager.gd"
+DialogueActors="*res://core/managers/dialogue_actors.gd"
+Logs="*res://core/managers/Logs.gd"
+Cuestionarios="*res://core/managers/cuestionarios.gd"
+MusicManager="*res://core/managers/music_manager.gd"
+GameFlowManager="*res://core/managers/game_flow_manager.gd"
+DataManager="*res://core/managers/data_manager.gd"
 
 [dialogue_manager]
 

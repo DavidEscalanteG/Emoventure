@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://xirhg56731lh"]
 
-[ext_resource type="Script" uid="uid://l6wswws2bnvk" path="res://src/ui/nivel_completado_ui.gd" id="1_2e01h"]
+[ext_resource type="Script" uid="uid://l6wswws2bnvk" path="res://scripts/ui/nivel_completado_ui.gd" id="1_2e01h"]
 [ext_resource type="Texture2D" uid="uid://qtect2yegfev" path="res://assets/emociones/sprites/felicidad.png" id="2_po2aj"]
 [ext_resource type="PackedScene" uid="uid://bgjfcq8bkynuh" path="res://scenes/cuestionarios/EscenaCuestionario.tscn" id="2_tg12r"]
 [ext_resource type="Texture2D" uid="uid://dxxy4k6ht2k6i" path="res://assets/emociones/sprites/tristeza.png" id="3_n5g63"]

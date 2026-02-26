@@ -49,19 +49,19 @@ Esta guía organiza la dirección musical **por bloque del juego** para facilita
 
 | clave_musical | ruta_archivo | escenas consumidoras |
 |---|---|---|
-| `menu_principal` | `res://audios/musica/menu_principal.mp3` | `res://scenes/menu_principal/menu_principal.tscn`, `res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn` |
+| `menu_principal` | `res://audios/musica/menu_principal.mp3` | `res://scenes/main_menu/menu_principal/menu_principal.tscn`, `res://scenes/tutorials/intro_seleccion_genero/intro_seleccion_genero.tscn` |
 | `personalizacion` | `res://audios/musica/personalizacion.mp3` | `res://scenes/personalizacion/Personalizacion.tscn` |
-| `dialogo_misterio` (`misterio`) | `res://audios/musica/dialogo_misterio.mp3` | `res://scenes/intro_dialogo_1/intro_dialogo_1.tscn`, `res://scenes/intro_mision_2/intro_mision_2.tscn` |
-| `dialogo_tension` (`tension`) | `res://audios/musica/dialogo_tension.mp3` | `res://scenes/intro_dialogo_2/intro_dialogo_2.tscn`, `res://scenes/intro_dialogo_3/intro_dialogo_3.tscn`, `res://scenes/intro_dialogo_4/intro_dialogo_4.tscn` |
-| `dialogo_ternura` (`ternura`) | `res://audios/musica/dialogo_ternura.mp3` | `res://scenes/intro_dialogo_5/intro_dialogo_5.tscn` |
-| `dialogo_calma` (`calma`) | `res://audios/musica/dialogo_calma.mp3` | `res://scenes/intro_mision_4/intro_mision_4.tscn` |
-| `mision_1` | `res://audios/musica/mision_1.mp3` | `res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn` |
-| `mision_2` | `res://audios/musica/mision_2.mp3` | `res://scenes/mision_2_memorias/mision_2_memorias.tscn` |
-| `mision_3` | `res://audios/musica/mision_3.mp3` | `res://scenes/mision_3_hachas/mision_3_hachas.tscn` |
-| `mision_4` | `res://audios/musica/mision_4.mp3` | `res://scenes/mision_4_payasos/mapa_topos.tscn` |
+| `dialogo_misterio` (`misterio`) | `res://audios/musica/dialogo_misterio.mp3` | `res://scenes/tutorials/intro_dialogo_1/intro_dialogo_1.tscn`, `res://scenes/tutorials/intro_mision_2/intro_mision_2.tscn` |
+| `dialogo_tension` (`tension`) | `res://audios/musica/dialogo_tension.mp3` | `res://scenes/tutorials/intro_dialogo_2/intro_dialogo_2.tscn`, `res://scenes/tutorials/intro_dialogo_3/intro_dialogo_3.tscn`, `res://scenes/tutorials/intro_dialogo_4/intro_dialogo_4.tscn` |
+| `dialogo_ternura` (`ternura`) | `res://audios/musica/dialogo_ternura.mp3` | `res://scenes/tutorials/intro_dialogo_5/intro_dialogo_5.tscn` |
+| `dialogo_calma` (`calma`) | `res://audios/musica/dialogo_calma.mp3` | `res://scenes/tutorials/intro_mision_4/intro_mision_4.tscn` |
+| `mision_1` | `res://audios/musica/mision_1.mp3` | `res://scenes/minigames/minigame_1/mapa_1/mision_1_recoleccion.tscn` |
+| `mision_2` | `res://audios/musica/mision_2.mp3` | `res://scenes/minigames/minigame_2/mision_2_memorias.tscn` |
+| `mision_3` | `res://audios/musica/mision_3.mp3` | `res://scenes/minigames/minigame_3/mision_3_hachas.tscn` |
+| `mision_4` | `res://audios/musica/mision_4.mp3` | `res://scenes/minigames/minigame_4/mapa_topos.tscn` |
 | `cuestionario` | `res://audios/musica/cuestionario.mp3` | `res://scenes/cuestionarios/EscenaCuestionario.tscn` |
 | `transicion_llave` | `res://audios/musica/transicion_llave.mp3` | `res://scenes/transicion_post_mision_1/transicion_post_mision_1.tscn`, `res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn`, `res://scenes/recompensa_mision_3/recompensa_mision_3.tscn` |
-| `resultado_final` | `res://audios/musica/resultado_final.mp3` | `res://scenes/final/resultado_final.tscn` |
+| `resultado_final` | `res://audios/musica/resultado_final.mp3` | `res://scenes/results/final/resultado_final.tscn` |
 
 ---
 
