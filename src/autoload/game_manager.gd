@@ -1,6 +1,7 @@
 extends Node
 
 var puntaje_total: int = 0
+const ESCENA_MAPA_REJUGABILIDAD: String = "res://scenes/rejugabilidad/mapa_rejugabilidad.tscn"
 
 const MAPAS_MINIJUEGO_1: Array[String] = [
 	"res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn",
@@ -17,6 +18,7 @@ var puntajes_por_dimension: Dictionary[String, int] = {
 }
 
 var _mapas_minijuego_1_jugados: Array[String] = []
+var _modo_rejugabilidad_activo: bool = false
 
 
 func _ready() -> void:
@@ -68,3 +70,17 @@ func obtener_siguiente_mapa_minijuego_1() -> String:
 
 func reiniciar_rotacion_mapas_minijuego_1() -> void:
 	_mapas_minijuego_1_jugados.clear()
+
+
+func activar_modo_rejugabilidad() -> void:
+	_modo_rejugabilidad_activo = true
+
+
+func desactivar_modo_rejugabilidad() -> void:
+	_modo_rejugabilidad_activo = false
+
+
+func consumir_modo_rejugabilidad() -> bool:
+	var estaba_activo: bool = _modo_rejugabilidad_activo
+	_modo_rejugabilidad_activo = false
+	return estaba_activo

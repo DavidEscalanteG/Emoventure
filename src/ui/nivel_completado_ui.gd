@@ -87,6 +87,11 @@ func _mostrar_jugador() -> void:
  # CONTINUAR → CUESTIONARIO
  # ==================================================
 func _continuar() -> void:
+	if GameManager.consumir_modo_rejugabilidad():
+		Logs.log_debug("[DEBUG] Rejugabilidad activa, volver al mapa de minijuegos")
+		get_tree().change_scene_to_file(GameManager.ESCENA_MAPA_REJUGABILIDAD)
+		return
+		
 	Logs.log_debug("[DEBUG] Ir al cuestionario")
  
 	if escena_cuestionario == null:

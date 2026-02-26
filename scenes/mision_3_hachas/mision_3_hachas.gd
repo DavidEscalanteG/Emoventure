@@ -77,7 +77,11 @@ func _on_salida_body_entered(body: Node) -> void:
 	_bloqueada = true
 	jugador.bloquear_movimiento()
 	await get_tree().create_timer(0.35).timeout
-
+	
+	if GameManager.consumir_modo_rejugabilidad():
+		get_tree().change_scene_to_file(GameManager.ESCENA_MAPA_REJUGABILIDAD)
+		return
+		
 	if escena_cuestionario == null:
 		push_error("No se asignó escena_cuestionario en misión 3")
 		return

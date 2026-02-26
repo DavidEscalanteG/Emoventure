@@ -72,6 +72,7 @@ func _on_localizacion_pressed(nombre_boton: String) -> void:
 
 	_en_transicion = true
 	_bloquear_localizaciones(true)
+	GameManager.activar_modo_rejugabilidad()
 	AudioManager.play_ui_click()
 	_realizar_transicion_a_minijuego(boton, destino)
 
@@ -110,5 +111,6 @@ func _bloquear_localizaciones(bloquear: bool) -> void:
 func _on_boton_volver_resultados_pressed() -> void:
 	if _en_transicion:
 		return
+	GameManager.desactivar_modo_rejugabilidad()
 	AudioManager.play_ui_click()
 	get_tree().change_scene_to_file(ESCENA_RESULTADO_FINAL)
