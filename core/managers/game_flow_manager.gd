@@ -1,4 +1,3 @@
-class_name GameFlowManager
 extends Node
 
 ## Orquesta el flujo global de escenas para desacoplar UI y gameplay.

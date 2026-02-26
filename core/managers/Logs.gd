@@ -14,7 +14,7 @@ func is_debug_enabled() -> bool:
 	return DEBUG_LOGS or qa_debug_logs
 
 
-func log_debug(context: String, message: Variant) -> void:
+func log_debug(message: Variant, context: String = "General") -> void:
 	if is_debug_enabled():
 		print(_format_message("DEBUG", context, message))
 

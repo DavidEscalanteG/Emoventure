@@ -1,4 +1,3 @@
-class_name DataManager
 extends Node
 
 ## Punto único para rutas de datos y futura serialización.
