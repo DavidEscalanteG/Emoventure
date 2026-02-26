@@ -3,11 +3,12 @@ extends Control
 const ESCENA_RESULTADO_FINAL: String = "res://scenes/final/resultado_final.tscn"
 
 const MINIJUEGOS: Dictionary[String, String] = {
-	"Minijuego1": "res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn",
 	"Minijuego2": "res://scenes/mision_2_memorias/mision_2_memorias.tscn",
 	"Minijuego3": "res://scenes/mision_3_hachas/mision_3_hachas.tscn",
 	"Minijuego4": "res://scenes/mision_4_payasos/mapa_topos.tscn"
 }
+
+const BOTON_MINIJUEGO_1: String = "Minijuego1"
 
 @onready var mapa_container: Control = %MapaContainer
 @onready var oscurecedor: ColorRect = %Oscurecedor
@@ -18,7 +19,7 @@ var _en_transicion: bool = false
 
 
 func _ready() -> void:
-	for nombre_boton in MINIJUEGOS.keys():
+	for nombre_boton in _obtener_botones_minijuego():
 		var boton: BaseButton = get_node_or_null("MapaContainer/%s" % nombre_boton)
 		if boton == null:
 			push_warning("[mapa_rejugabilidad] No se encontró el botón: %s" % nombre_boton)
@@ -43,11 +44,23 @@ func _animar_entrada_mapa() -> void:
 	tween.tween_property(mapa_container, "modulate", Color.WHITE, 0.65)
 
 
+func _obtener_botones_minijuego() -> Array[String]:
+	var botones: Array[String] = MINIJUEGOS.keys()
+	botones.append(BOTON_MINIJUEGO_1)
+	return botones
+
+
+func _obtener_destino_minijuego(nombre_boton: String) -> String:
+	if nombre_boton == BOTON_MINIJUEGO_1:
+		return GameManager.obtener_siguiente_mapa_minijuego_1()
+	return MINIJUEGOS.get(nombre_boton, "")
+
+
 func _on_localizacion_pressed(nombre_boton: String) -> void:
 	if _en_transicion:
 		return
 
-	var destino: String = MINIJUEGOS.get(nombre_boton, "")
+	var destino: String = _obtener_destino_minijuego(nombre_boton)
 	if destino.is_empty():
 		push_warning("[mapa_rejugabilidad] No hay destino configurado para: %s" % nombre_boton)
 		return
@@ -88,7 +101,7 @@ func _realizar_transicion_a_minijuego(boton_objetivo: Control, destino: String) 
 
 
 func _bloquear_localizaciones(bloquear: bool) -> void:
-	for nombre_boton in MINIJUEGOS.keys():
+	for nombre_boton in _obtener_botones_minijuego():
 		var boton: BaseButton = get_node_or_null("MapaContainer/%s" % nombre_boton)
 		if boton != null:
 			boton.disabled = bloquear

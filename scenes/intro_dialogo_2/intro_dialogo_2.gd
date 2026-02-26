@@ -1,7 +1,7 @@
 extends Node2D
 
 const DIALOGO_ESCENA_2 := preload("uid://43a3ofv6np6u") #escena_2.dialogue"
-const SIGUIENTE_ESCENA := "uid://dhr0rstqdkcin" #mision_1_recoleccion.tscn
+const ESCENA_FALLBACK_MINIJUEGO_1 := "res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn"
 
 #@onready var personajes := $personajes
 @onready var dialogue_ui: Node = $DialogueUI/Balloon
@@ -17,7 +17,10 @@ func _ready() -> void:
 
 func _on_dialogo_finalizado() -> void:
 	MusicManager.finalizar_override_dialogo()
-	get_tree().change_scene_to_file(SIGUIENTE_ESCENA)
+	var siguiente_escena: String = GameManager.obtener_siguiente_mapa_minijuego_1()
+	if siguiente_escena.is_empty():
+		siguiente_escena = ESCENA_FALLBACK_MINIJUEGO_1
+	get_tree().change_scene_to_file(siguiente_escena)
 
 
 func _exit_tree() -> void:
