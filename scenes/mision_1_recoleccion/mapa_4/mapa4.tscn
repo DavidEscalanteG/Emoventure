@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=4 uid="uid://b54cijfj8mi0m"]
+[gd_scene load_steps=93 format=4 uid="uid://b54cijfj8mi0m"]
 
 [ext_resource type="Texture2D" uid="uid://dk4pt704h4p0y" path="res://assets/assets_escena_3/fondos/fondos_unidos.png" id="1_654ow"]
 [ext_resource type="Script" uid="uid://dvjj8pf7anx04" path="res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.gd" id="1_lxppe"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dbeo324lgnb8p" path="res://assets/emociones/sprites/miedo.png" id="7_6t8sb"]
 [ext_resource type="Texture2D" uid="uid://dxxy4k6ht2k6i" path="res://assets/emociones/sprites/tristeza.png" id="8_xtcp4"]
 [ext_resource type="PackedScene" uid="uid://7coyibirj1qa" path="res://assets/assets_escena_3/otros_elementos/interseccion.tscn" id="10_l2b7p"]
-[ext_resource type="PackedScene" uid="uid://d14ky0d5wqhvm" path="res://assets/enemigos/serpiente/Enemigo.tscn" id="10_lxppe"]
+[ext_resource type="PackedScene" uid="uid://d14ky0d5wqhvm" path="res://assets/enemigos/serpiente/Serpiente.tscn" id="10_lxppe"]
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="11_yc78y"]
 [ext_resource type="PackedScene" uid="uid://bjfkw43822usi" path="res://assets/assets_escena_3/UI/EmocionesUI.tscn" id="12_p7lry"]
 [ext_resource type="PackedScene" uid="uid://lxrjfehd544h" path="res://assets/assets_escena_3/UI/VidasUI.tscn" id="13_2wma2"]
@@ -371,9 +371,9 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_o03hm"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1408, 224, 0, 0, 0, 0, 1408, 288)
+"points": PackedVector2Array(0, 0, 0, 0, 1408, 224, 0, 0, 0, 0, 1408, 288, 0, 0, 0, 0, 1408, 352)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_iyyg6"]
 _data = {
@@ -411,17 +411,11 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_h5tlw"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1408, 288, 0, 0, 0, 0, 1408, 352)
-}
-point_count = 2
-
 [sub_resource type="Curve2D" id="Curve2D_qcsgx"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1408, 288, 0, 0, 0, 0, 1600, 288)
+"points": PackedVector2Array(0, 0, 0, 0, 1600, 288, 0, 0, 0, 0, 1408, 288, 0, 0, 0, 0, 1408, 224)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_onlh3"]
 _data = {
@@ -780,9 +774,6 @@ curve = SubResource("Curve2D_70v20")
 [node name="Path2D37" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_hx60s")
 
-[node name="Path2D38" type="Path2D" parent="Caminos"]
-curve = SubResource("Curve2D_h5tlw")
-
 [node name="Path2D39" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_qcsgx")
 
@@ -928,7 +919,7 @@ rutas_disponibles = [NodePath("../../Caminos/Path2D28"), NodePath("../../Caminos
 
 [node name="Interseccion_10" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_l2b7p")]
 position = Vector2(1408, 224)
-rutas_disponibles = [NodePath("../../Caminos/Path2D19"), NodePath("../../Caminos/Path2D29"), NodePath("../../Caminos/Path2D30")]
+rutas_disponibles = [NodePath("../../Caminos/Path2D19"), NodePath("../../Caminos/Path2D29"), NodePath("../../Caminos/Path2D30"), NodePath("../../Caminos/Path2D39")]
 
 [node name="Interseccion_11" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_l2b7p")]
 position = Vector2(96, 288)
@@ -937,10 +928,6 @@ rutas_disponibles = [NodePath("../../Caminos/Path2D2"), NodePath("../../Caminos/
 [node name="Interseccion_12" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_l2b7p")]
 position = Vector2(320, 288)
 rutas_disponibles = [NodePath("../../Caminos/Path2D5"), NodePath("../../Caminos/Path2D7"), NodePath("../../Caminos/Path2D10")]
-
-[node name="Interseccion_13" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_l2b7p")]
-position = Vector2(1408, 288)
-rutas_disponibles = [NodePath("../../Caminos/Path2D30"), NodePath("../../Caminos/Path2D38"), NodePath("../../Caminos/Path2D39")]
 
 [node name="Interseccion_14" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_l2b7p")]
 position = Vector2(1600, 288)
@@ -960,7 +947,7 @@ rutas_disponibles = [NodePath("../../Caminos/Path2D36"), NodePath("../../Caminos
 
 [node name="Interseccion_18" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_l2b7p")]
 position = Vector2(1408, 352)
-rutas_disponibles = [NodePath("../../Caminos/Path2D38"), NodePath("../../Caminos/Path2D48"), NodePath("../../Caminos/Path2D49")]
+rutas_disponibles = [NodePath("../../Caminos/Path2D30"), NodePath("../../Caminos/Path2D48"), NodePath("../../Caminos/Path2D49")]
 
 [node name="Interseccion_19" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_l2b7p")]
 position = Vector2(96, 512)

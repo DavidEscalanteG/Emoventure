@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dbeo324lgnb8p" path="res://assets/emociones/sprites/miedo.png" id="7_2slqd"]
 [ext_resource type="Texture2D" uid="uid://dxxy4k6ht2k6i" path="res://assets/emociones/sprites/tristeza.png" id="8_gri5v"]
 [ext_resource type="PackedScene" uid="uid://7coyibirj1qa" path="res://assets/assets_escena_3/otros_elementos/interseccion.tscn" id="10_fw1s6"]
-[ext_resource type="PackedScene" uid="uid://d14ky0d5wqhvm" path="res://assets/enemigos/serpiente/Enemigo.tscn" id="10_tdjkx"]
+[ext_resource type="PackedScene" uid="uid://d14ky0d5wqhvm" path="res://assets/enemigos/serpiente/Serpiente.tscn" id="10_tdjkx"]
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="11_svdmk"]
 [ext_resource type="PackedScene" uid="uid://bjfkw43822usi" path="res://assets/assets_escena_3/UI/EmocionesUI.tscn" id="12_18dv8"]
 [ext_resource type="PackedScene" uid="uid://lxrjfehd544h" path="res://assets/assets_escena_3/UI/VidasUI.tscn" id="13_st4o8"]

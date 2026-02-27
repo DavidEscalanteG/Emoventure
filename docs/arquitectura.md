@@ -1,35 +1,32 @@
 # Arquitectura: Autoloads (Singletons)
 
-Convención vigente para autoloads en `project.godot`:
+Estado actual de autoloads definidos en `project.godot`.
 
 | Nombre de singleton | Ruta | Responsabilidad |
 | --- | --- | --- |
-| `DatosJugador` | `res://src/autoload/datos_jugador.gd` | Estado persistente del jugador y progreso global. |
-| `GameManager` | `res://src/autoload/game_manager.gd` | Flujo global del juego y transición de estados de alto nivel. |
-| `AudioManager` | `res://src/autoload/audio_manager.gd` | Configuración de buses, volumenes persistentes (`Master`, `Musica`, `SFX`, `Voz`) y reproducción de SFX/UI. |
-| `MusicManager` | `res://src/autoload/music_manager.gd` | Único punto de verdad para música de fondo y ambientes (pistas por escena, por clave y por ambiente). |
-| `DialogueActors` | `res://src/autoload/dialogue_actors.gd` | Registro/gestión de actores de diálogo. |
-| `Logs` | `res://src/autoload/Logs.gd` | Canal centralizado de logs del juego. |
-| `Cuestionarios` | `res://src/autoload/cuestionarios.gd` | Datos y utilidades globales de cuestionarios. |
+| `DialogueManager` | `res://addons/dialogue_manager/dialogue_manager.gd` | Runtime del plugin de diálogos (dependencia externa). |
+| `DatosJugador` | `res://src/autoload/datos_jugador.gd` | Estado persistente del jugador (género, progreso, emociones recolectadas, etc.). |
+| `GameManager` | `res://src/autoload/game_manager.gd` | Puntajes globales, rotación de mapas de misión 1 y bandera de modo rejugabilidad. |
+| `AudioManager` | `res://src/autoload/audio_manager.gd` | Buses, volúmenes persistentes y reproducción de SFX/UI. |
+| `DialogueActors` | `res://src/autoload/dialogue_actors.gd` | Registro, animación y movimiento de actores de diálogo (fachada canónica). |
+| `Logs` | `res://src/autoload/Logs.gd` | Canal centralizado de logs del proyecto. |
+| `Cuestionarios` | `res://src/autoload/cuestionarios.gd` | Banco de preguntas y mapeo misión→dimensión emocional. |
+| `MusicManager` | `res://src/autoload/music_manager.gd` | Música por escena, por clave y por ambiente narrativo temporal. |
 
-## Decisión de audio
+## Decisiones vigentes de audio
 
-- `MusicManager` concentra toda la lógica de BGM/ambientes:
-  - selección automática por escena,
-  - reproducción por clave (`reproducir_clave`),
-  - reproducción por ambiente de diálogo (`reproducir_dialogo_por_ambiente`),
-  - reproducción directa por ruta (`reproducir_desde_ruta`) para casos puntuales como previews.
-- `AudioManager` **no** decide música por escena ni mantiene reproductor de BGM; solo administra buses/volúmenes y SFX/UI.
-- El bus `Musica` se mantiene en `AudioManager` (persistencia de volumen), y `MusicManager` reproduce sobre ese bus para respetar la configuración del usuario.
+- `AudioManager` conserva la configuración de buses (`Master`, `Musica`, `SFX`, `Voz`) y su persistencia.
+- `MusicManager` decide tema por escena (`_pistas_por_escena`) y reproduce sobre el bus `Musica`.
+- El sistema soporta override temporal para diálogos (`misterio`, `tension`, `calma`, `ternura`) y restaura el tema base al terminar.
+
+## Dependencias externas
+
+- `addons/dialogue_manager/` se trata como dependencia externa.
+- No se refactoriza estilo interno de este addon salvo necesidad técnica puntual.
+- Integraciones propias del proyecto deben ir en `dialogos/` y `src/ui/dialogos/`.
 
 ## Notas de mantenimiento
 
-- Usar estos nombres directamente en scripts (`DatosJugador`, `MusicManager`, etc.).
-- Evitar alias históricos como `Global` para no duplicar conceptos.
-- Si se agrega un nuevo autoload, documentarlo aquí y en `project.godot`.
-
-## Dependencias externas y adaptaciones
-
-- `addons/dialogue_manager/` se considera dependencia externa del proyecto.
-- No aplicar refactors de estilo interno dentro de `addons/dialogue_manager/`.
-- Si se necesita adaptar su comportamiento, priorizar wrappers propios en `src/ui/dialogos/`.
+1. Cualquier nuevo autoload debe registrarse en `project.godot` y actualizar esta tabla.
+2. Evitar aliases legacy para singletons (por ejemplo `Global`) para no duplicar estado.
+3. Si se modifica flujo global de rejugabilidad o puntajes, documentar junto a `GameManager`.

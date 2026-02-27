@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=4 uid="uid://bvvvohh7klt57"]
+[gd_scene load_steps=91 format=4 uid="uid://bvvvohh7klt57"]
 
 [ext_resource type="Texture2D" uid="uid://dk4pt704h4p0y" path="res://assets/assets_escena_3/fondos/fondos_unidos.png" id="1_cvbmt"]
 [ext_resource type="Script" uid="uid://dvjj8pf7anx04" path="res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.gd" id="1_jd71q"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://qtect2yegfev" path="res://assets/emociones/sprites/felicidad.png" id="6_42fo6"]
 [ext_resource type="Texture2D" uid="uid://dbeo324lgnb8p" path="res://assets/emociones/sprites/miedo.png" id="7_xjaro"]
 [ext_resource type="Texture2D" uid="uid://dxxy4k6ht2k6i" path="res://assets/emociones/sprites/tristeza.png" id="8_dm6ih"]
-[ext_resource type="PackedScene" uid="uid://d14ky0d5wqhvm" path="res://assets/enemigos/serpiente/Enemigo.tscn" id="10_jd71q"]
+[ext_resource type="PackedScene" uid="uid://d14ky0d5wqhvm" path="res://assets/enemigos/serpiente/Serpiente.tscn" id="10_jd71q"]
 [ext_resource type="PackedScene" uid="uid://7coyibirj1qa" path="res://assets/assets_escena_3/otros_elementos/interseccion.tscn" id="10_mu6jr"]
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="11_ohd5n"]
 [ext_resource type="PackedScene" uid="uid://bjfkw43822usi" path="res://assets/assets_escena_3/UI/EmocionesUI.tscn" id="12_06t6u"]
@@ -246,9 +246,9 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_xjaro"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 352, 960, 0, 0, 0, 0, 352, 608)
+"points": PackedVector2Array(0, 0, 0, 0, 352, 960, 0, 0, 0, 0, 352, 608, 0, 0, 0, 0, 448, 608)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_dm6ih"]
 _data = {
@@ -264,9 +264,9 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_mu6jr"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 288, 608, 0, 0, 0, 0, 352, 608)
+"points": PackedVector2Array(0, 0, 0, 0, 288, 608, 0, 0, 0, 0, 352, 608, 0, 0, 0, 0, 448, 608)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_ohd5n"]
 _data = {
@@ -301,12 +301,6 @@ point_count = 2
 [sub_resource type="Curve2D" id="Curve2D_8wyp8"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 768, 960, 0, 0, 0, 0, 1024, 960)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_4mj2m"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 352, 608, 0, 0, 0, 0, 448, 608)
 }
 point_count = 2
 
@@ -716,9 +710,6 @@ loop = false
 
 [node name="Enemigo" parent="Caminos/Path2D17/PathFollow2D" instance=ExtResource("10_jd71q")]
 
-[node name="Path2D18" type="Path2D" parent="Caminos"]
-curve = SubResource("Curve2D_4mj2m")
-
 [node name="Path2D19" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_31brn")
 
@@ -962,13 +953,9 @@ rutas_disponibles = [NodePath("../../Caminos/Path2D2"), NodePath("../../Caminos/
 position = Vector2(288, 608)
 rutas_disponibles = [NodePath("../../Caminos/Path2D5"), NodePath("../../Caminos/Path2D10"), NodePath("../../Caminos/Path2D11")]
 
-[node name="Interseccion_23" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
-position = Vector2(352, 608)
-rutas_disponibles = [NodePath("../../Caminos/Path2D8"), NodePath("../../Caminos/Path2D11"), NodePath("../../Caminos/Path2D18")]
-
 [node name="Interseccion_24" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
 position = Vector2(448, 608)
-rutas_disponibles = [NodePath("../../Caminos/Path2D18"), NodePath("../../Caminos/Path2D26"), NodePath("../../Caminos/Path2D27")]
+rutas_disponibles = [NodePath("../../Caminos/Path2D8"), NodePath("../../Caminos/Path2D11"), NodePath("../../Caminos/Path2D26"), NodePath("../../Caminos/Path2D27")]
 
 [node name="Interseccion_25" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("10_mu6jr")]
 position = Vector2(608, 608)
