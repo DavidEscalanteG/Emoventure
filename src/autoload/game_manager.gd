@@ -4,7 +4,7 @@ var puntaje_total: int = 0
 const ESCENA_MAPA_REJUGABILIDAD: String = "res://scenes/rejugabilidad/mapa_rejugabilidad.tscn"
 
 const MAPAS_MINIJUEGO_1: Array[String] = [
-	"res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn",
+	#"res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn",
 	"res://scenes/mision_1_recoleccion/mapa_2/mapa2.tscn",
 	"res://scenes/mision_1_recoleccion/mapa_3/mapa3.tscn",
 	"res://scenes/mision_1_recoleccion/mapa_4/mapa4.tscn",

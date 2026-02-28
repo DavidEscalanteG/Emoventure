@@ -9,9 +9,9 @@ Comando de referencia usado para auditar:
 python - <<'PY'
 import os
 for dp, _, files in os.walk('.'):
-    for f in files:
-        if f.endswith(('.gd', '.tscn')) and any(c.isupper() for c in f):
-            print(os.path.relpath(os.path.join(dp, f), '.'))
+	for f in files:
+		if f.endswith(('.gd', '.tscn')) and any(c.isupper() for c in f):
+			print(os.path.relpath(os.path.join(dp, f), '.'))
 PY
 ```
 
