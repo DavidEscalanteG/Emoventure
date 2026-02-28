@@ -2,47 +2,91 @@ extends Node2D
 class_name Minijuego1TutorialDemo
 
 @onready var player: Node2D = $Player
-@onready var player_body: Polygon2D = $Player/Body
 @onready var emotion: Node2D = $Emotion
+@onready var emotion_sprite: Sprite2D = $Emotion/Sprite2D
 @onready var obstacle: Node2D = $Obstacle
-@onready var player_hit_flash: Polygon2D = $Player/HitFlash
+@onready var obstacle_sprite: Sprite2D = $Obstacle/Sprite2D
 
 const PLAYER_START := Vector2(240, 360)
 const EMOTION_POS := Vector2(650, 300)
 const OBSTACLE_POS := Vector2(500, 360)
 
+const PLAYER_SCALE := Vector2.ONE * 1.7
+const EMOTION_SCALE := Vector2.ONE * 1.6
+const OBSTACLE_SCALE := Vector2.ONE * 3.0
+
+const EMOTION_TEXTURES := {
+	"alegria": preload("res://assets/emociones/sprites/felicidad.png"),
+	"tristeza": preload("res://assets/emociones/sprites/tristeza.png"),
+	"enojo": preload("res://assets/emociones/sprites/enojo.png"),
+	"desagrado": preload("res://assets/emociones/sprites/desagrado.png"),
+	"miedo": preload("res://assets/emociones/sprites/miedo.png"),
+}
+
 func reset_world() -> void:
 	player.position = PLAYER_START
 	player.modulate = Color.WHITE
-	player_body.color = Color("5ac8fa")
+	player.scale = PLAYER_SCALE
+	_set_player_movement_state("idle", Vector2.DOWN)
 	emotion.position = EMOTION_POS
 	emotion.visible = false
-	emotion.scale = Vector2.ONE
+	emotion.scale = EMOTION_SCALE
+	emotion.modulate = Color.WHITE
 	obstacle.position = OBSTACLE_POS
 	obstacle.visible = false
-	player_hit_flash.visible = false
-	player_hit_flash.color = Color(1, 0.35, 0.35, 0)
+	obstacle.scale = OBSTACLE_SCALE
+	obstacle_sprite.modulate = Color.WHITE
 
 func move_player(offset: Vector2, duration: float = 0.5) -> Tween:
+	_set_player_movement_state("walk", offset)
 	var tween := create_tween()
 	tween.tween_property(player, "position", player.position + offset, duration)
+	tween.finished.connect(func() -> void:
+		_set_player_movement_state("idle", offset)
+	)
 	return tween
 
-func show_emotion() -> void:
+func show_emotion(tipo: String) -> void:
+	emotion_sprite.texture = EMOTION_TEXTURES.get(tipo)
 	emotion.visible = true
-	emotion.modulate = Color(1, 1, 0.6)
+	emotion.modulate = Color.WHITE
+	emotion.scale = EMOTION_SCALE
+	emotion.position = EMOTION_POS
 
-func play_emotion_capture_effect() -> void:
+func play_emotion_capture_effect() -> Tween:
 	var tween := create_tween()
-	tween.parallel().tween_property(player_body, "color", Color("ffd166"), 0.2)
-	tween.parallel().tween_property(emotion, "scale", Vector2(0.1, 0.1), 0.25)
+	tween.parallel().tween_property(player, "modulate", Color(1, 0.95, 0.7), 0.2)
+	tween.parallel().tween_property(emotion, "position", player.position + Vector2(8, -22), 0.25)
+	tween.parallel().tween_property(emotion, "scale", Vector2.ONE * 0.2, 0.25)
 	tween.parallel().tween_property(emotion, "modulate", Color(1, 1, 1, 0), 0.25)
+	return tween
 
 func show_obstacle() -> void:
 	obstacle.visible = true
 
-func play_obstacle_hit_effect() -> void:
-	player_hit_flash.visible = true
+func play_obstacle_hit_effect() -> Tween:
 	var tween := create_tween()
-	tween.tween_property(player_hit_flash, "color", Color(1, 0.25, 0.25, 0.75), 0.12)
-	tween.tween_property(player_hit_flash, "color", Color(1, 0.25, 0.25, 0), 0.2)
+	tween.tween_property(player, "modulate", Color(1, 0.4, 0.4), 0.1)
+	tween.tween_property(player, "modulate", Color.WHITE, 0.22)
+	tween.parallel().tween_property(obstacle_sprite, "modulate", Color(1, 0.6, 0.6), 0.12)
+	tween.parallel().tween_property(obstacle_sprite, "modulate", Color.WHITE, 0.2)
+	return tween
+
+func _set_player_movement_state(state: String, direction_vector: Vector2) -> void:
+	var appearance: Node = player.get_node_or_null("PlayerAppearance")
+	if appearance == null:
+		return
+
+	if appearance.has_method("establecer_direccion"):
+		appearance.call("establecer_direccion", _vector_to_direction(direction_vector))
+	if appearance.has_method("establecer_estado_movimiento"):
+		appearance.call("establecer_estado_movimiento", state)
+
+func _vector_to_direction(direction: Vector2) -> String:
+	if direction == Vector2.ZERO:
+		return "down"
+
+	if abs(direction.x) > abs(direction.y):
+		return "right" if direction.x > 0 else "left"
+
+	return "down" if direction.y > 0 else "up"
