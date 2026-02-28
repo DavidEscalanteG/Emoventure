@@ -16,23 +16,25 @@ Documento de referencia del flujo narrativo/jugable según scripts y escenas act
 2. `Personalizacion.tscn`
 3. `intro_dialogo_1.tscn`
 4. `intro_dialogo_2.tscn`
-5. **Misión 1 (recolección)**: `mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn` (la selección real del mapa usa rotación aleatoria del `GameManager`, puede enviar a `mapa_1..mapa_5`).
-6. `EscenaCuestionario.tscn` (misión 1)
-7. `transicion_post_mision_1.tscn`
-8. `intro_dialogo_3.tscn`
-9. `intro_dialogo_4.tscn`
-10. `intro_dialogo_5.tscn`
-11. `intro_mision_2.tscn`
-12. `mision_2_memorias.tscn`
-13. `EscenaCuestionario.tscn` (misión 2)
-14. `transicion_post_mision_2.tscn`
-15. `mision_3_hachas.tscn`
-16. `EscenaCuestionario.tscn` (misión 3, bloque reparación ítems 1–4)
-17. `recompensa_mision_3.tscn`
-18. `mision_4_payasos/mapa_topos.tscn`
-19. `EscenaCuestionario.tscn` (misión 4, bloque reparación ítems 5–8)
-20. `final/resultado_final.tscn`
-21. `rejugabilidad/mapa_rejugabilidad.tscn`
+5. `mision_1_recoleccion/tutorial/Minijuego1_Tutorial.tscn`
+6. **Misión 1 (recolección)**: selección aleatoria entre `mision_1_recoleccion/mapa_1..mapa_5` vía `GameManager`.
+7. `EscenaCuestionario.tscn` (misión 1)
+8. `transicion_post_mision_1.tscn`
+9. `intro_dialogo_3.tscn`
+10. `intro_dialogo_4.tscn`
+11. `intro_dialogo_5.tscn`
+12. `intro_mision_2.tscn`
+13. `mision_2_memorias/tutorial/Minijuego2_Tutorial.tscn`
+14. `mision_2_memorias.tscn`
+15. `EscenaCuestionario.tscn` (misión 2)
+16. `transicion_post_mision_2.tscn`
+17. `mision_3_hachas.tscn`
+18. `EscenaCuestionario.tscn` (misión 3, bloque reparación ítems 1–4)
+19. `recompensa_mision_3.tscn`
+20. `mision_4_payasos/mapa_topos.tscn`
+21. `EscenaCuestionario.tscn` (misión 4, bloque reparación ítems 5–8)
+22. `final/resultado_final.tscn`
+23. `rejugabilidad/mapa_rejugabilidad.tscn`
 
 ## 3) Estado de cierre actual
 
@@ -46,7 +48,8 @@ Documento de referencia del flujo narrativo/jugable según scripts y escenas act
 
 - Existe una ruta narrativa disponible de forma independiente en scripts:
   - `intro_mision_4.tscn` → `mision_4_payasos/mapa_topos.tscn`.
-- Los tutoriales de minijuego (`Minijuego1_Tutorial.tscn`, `Minijuego2_Tutorial.tscn`) existen como escenas de apoyo y su controlador redirige a la escena de misión correspondiente.
+- Los tutoriales de minijuego (`Minijuego1_Tutorial.tscn`, `Minijuego2_Tutorial.tscn`) forman parte del flujo principal antes de cada minijuego.
+- En rejugabilidad se entra directo al minijuego (sin pasar por tutorial).
 
 ## 5) Reglas técnicas clave del flujo
 

@@ -148,4 +148,3 @@ func _crear_indicador_y_programar_fuego(interseccion: Node2D) -> void:
 func _on_fuego_extinguido(interseccion: Node2D) -> void:
 	if _fuegos_activos.has(interseccion):
 		_fuegos_activos.erase(interseccion)
-		

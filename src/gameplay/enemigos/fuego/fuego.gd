@@ -28,7 +28,7 @@ func bloquear_movimiento() -> void:
 	if _desactivado:
 		return
 	_desactivado = true
-	colision.disabled = true
+	colision.set_deferred("disabled", true)
 	sprite.stop()
 
 
@@ -41,7 +41,7 @@ func _iniciar_ciclo_vida() -> void:
 	if _desactivado:
 		return
 
-	colision.disabled = true
+	colision.set_deferred("disabled", true)
 	sprite.play("end")
 	await sprite.animation_finished
 	_emitir_extincion_y_liberar()

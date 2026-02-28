@@ -12,14 +12,16 @@ Fuente operativa para validar flujo real del proyecto.
 | `intro_seleccion_genero.tscn` | Botón continuar | `Personalizacion.tscn` | `scenes/intro_seleccion_genero/intro_seleccion_genero.gd` |
 | `Personalizacion.tscn` | Botón **Comenzar** | `intro_dialogo_1.tscn` | `scenes/personalizacion/Personalizador.gd` |
 | `intro_dialogo_1.tscn` | `dialogo_finalizado` | `intro_dialogo_2.tscn` | `scenes/intro_dialogo_1/intro_dialogo_1.gd` |
-| `intro_dialogo_2.tscn` | `dialogo_finalizado` | `mapa_1..mapa_5` (rotación aleatoria) | `scenes/intro_dialogo_2/intro_dialogo_2.gd`, `src/autoload/game_manager.gd` |
+| `intro_dialogo_2.tscn` | `dialogo_finalizado` | `Minijuego1_Tutorial.tscn` | `scenes/intro_dialogo_2/intro_dialogo_2.gd` |
+| `Minijuego1_Tutorial.tscn` | Botón iniciar/omitir | `mapa_1..mapa_5` (rotación aleatoria) | `scenes/mision_1_recoleccion/tutorial/scripts/minijuego1_tutorial_controller.gd`, `src/autoload/game_manager.gd` |
 | `mision_1_recoleccion.tscn` (cualquier mapa) | Completar nivel | `EscenaCuestionario.tscn` (M1) | `scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.gd`, `src/ui/nivel_completado_ui.gd` |
 | `EscenaCuestionario.tscn` (M1) | Continuar (`escena_siguiente`) | `transicion_post_mision_1.tscn` | `scenes/cuestionarios/escena_cuestionario.gd`, `scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn` |
 | `transicion_post_mision_1.tscn` | Botón continuar | `intro_dialogo_3.tscn` | `scenes/transicion_post_mision_1/primera_llave.gd` |
 | `intro_dialogo_3.tscn` | `dialogo_finalizado` | `intro_dialogo_4.tscn` | `scenes/intro_dialogo_3/intro_dialogo_3.gd` |
 | `intro_dialogo_4.tscn` | `dialogo_finalizado` | `intro_dialogo_5.tscn` | `scenes/intro_dialogo_4/intro_dialogo_4.gd` |
 | `intro_dialogo_5.tscn` | `dialogo_finalizado` | `intro_mision_2.tscn` | `scenes/intro_dialogo_5/intro_dialogo_5.gd` |
-| `intro_mision_2.tscn` | `dialogo_finalizado` | `mision_2_memorias.tscn` | `scenes/intro_mision_2/intro_mision_2.gd` |
+| `intro_mision_2.tscn` | `dialogo_finalizado` | `Minijuego2_Tutorial.tscn` | `scenes/intro_mision_2/intro_mision_2.gd` |
+| `Minijuego2_Tutorial.tscn` | Botón iniciar/omitir | `mision_2_memorias.tscn` | `scenes/mision_2_memorias/tutorial/scripts/minijuego2_tutorial_controller.gd` |
 | `mision_2_memorias.tscn` | Puerta habilitada | `EscenaCuestionario.tscn` (M2) | `scenes/mision_2_memorias/puerta_cuestionario.gd` |
 | `EscenaCuestionario.tscn` (M2) | Continuar (`escena_siguiente`) | `transicion_post_mision_2.tscn` | `scenes/cuestionarios/escena_cuestionario.gd`, `scenes/mision_2_memorias/mision_2_memorias.tscn` |
 | `transicion_post_mision_2.tscn` | Botón continuar | `mision_3_hachas.tscn` | `scenes/transicion_post_mision_2/segunda_llave.gd` |

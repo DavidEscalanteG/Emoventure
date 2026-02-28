@@ -18,6 +18,8 @@ const STEP_COUNT := 5
 var _current_step: int = STEP_INTRO
 var _playback_token: int = 0
 
+const ESCENA_FALLBACK_MINIJUEGO_1 := "res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn"
+
 func _ready() -> void:
 	ui.previous_pressed.connect(_on_previous_pressed)
 	ui.next_pressed.connect(_on_next_pressed)
@@ -129,4 +131,7 @@ func _play_closure(token: int) -> void:
 		return
 
 func _start_real_mission() -> void:
-	get_tree().change_scene_to_file("uid://dhr0rstqdkcin")
+	var escena_destino: String = GameManager.obtener_siguiente_mapa_minijuego_1()
+	if escena_destino.is_empty():
+		escena_destino = ESCENA_FALLBACK_MINIJUEGO_1
+	get_tree().change_scene_to_file(escena_destino)
