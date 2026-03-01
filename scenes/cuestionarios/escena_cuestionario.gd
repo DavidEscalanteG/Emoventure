@@ -23,6 +23,7 @@ var titulo_narrativa_post: String = "Rescate completado"
 # ==================================================
 var indice: int = 0
 var puntaje_local: int = 0
+var finalizando: bool = false
 
 const FUENTE_PREGUNTA_BASE := 79
 const FUENTE_PREGUNTA_MEDIA := 68
@@ -32,6 +33,13 @@ const FUENTE_PREGUNTA_LARGA := 58
 @onready var label_titulo_narrativa_post: Label = %TituloNarrativaPost
 @onready var label_texto_narrativa_post: Label = %TextoNarrativaPost
 @onready var boton_narrativa_post: Button = %BotonContinuarNarrativa
+@onready var botones_opciones: Array[Button] = [
+	$CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaIzquierda/Boton_1,
+	$CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaDerecha/Boton_2,
+	$CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaIzquierda/Boton_3,
+	$CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaDerecha/Boton_4,
+	$CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Boton_5,
+]
 
 
 # ==================================================
@@ -67,6 +75,9 @@ func _obtener_tamano_fuente_para_pregunta(pregunta: String) -> int:
 
 
 func responder(valor: int) -> void:
+	if finalizando:
+		return
+		
 	puntaje_local += valor
 	indice += 1
 
@@ -77,8 +88,16 @@ func responder(valor: int) -> void:
 
 
 func _finalizar() -> void:
+	if finalizando:
+		return
+
+	finalizando = true
+	_set_botones_opciones_habilitados(false)
+	
 	if not Cuestionarios.es_dimension_soportada(dimension):
 		push_error("[EscenaCuestionario] Dimensión inválida al finalizar: %s" % dimension)
+		finalizando = false
+		_set_botones_opciones_habilitados(true)
 		return
 		
 	Logs.log_debug("[DEBUG] Cuestionario terminado: %s %d" % [dimension, puntaje_local])
@@ -87,8 +106,10 @@ func _finalizar() -> void:
 	if not narrativa_post_cuestionario.strip_edges().is_empty():
 		await _mostrar_narrativa_post()
 		
-	if escena_siguiente:
-		get_tree().change_scene_to_packed(escena_siguiente)
+	if escena_siguiente and is_inside_tree():
+		var tree := get_tree()
+		if tree:
+			tree.change_scene_to_packed(escena_siguiente)
 
 func _mostrar_narrativa_post() -> void:
 	label_titulo_narrativa_post.text = titulo_narrativa_post
@@ -99,6 +120,12 @@ func _mostrar_narrativa_post() -> void:
 	panel_narrativa_post.visible = false
 
 
+func _set_botones_opciones_habilitados(habilitados: bool) -> void:
+	for boton in botones_opciones:
+		if is_instance_valid(boton):
+			boton.disabled = not habilitados
+			
+			
 # ==================================================
 # BOTONES
 # ==================================================
