@@ -12,13 +12,13 @@ Narrador
 #Payaso: ¡Ja, ja, ja! Bienvenido, viajero de recuerdos.
 #do DialogueActors.animacion_establecer_animacion("payaso", "reposo", "izquierda")
 #
-#Carlos: ¿Quién eres…? ¿Y qué es este lugar?
+#{{DatosJugador.nombre_jugador}}: ¿Quién eres…? ¿Y qué es este lugar?
 #
 #do DialogueActors.animacion_establecer_animacion("payaso", "hablando", "izquierda")
 #Payaso: Estás en el Cuarto de las Memorias Eternas.
 #Payaso: Aquí se guardan momentos que nunca desaparecen… aunque intentemos olvidarlos.
 #
-#Carlos: Son… fotografías mías.
+#{{DatosJugador.nombre_jugador}}: Son… fotografías mías.
 #
 #Payaso: Exacto.
 #Payaso: Cada una encierra una emoción que alguna vez sentiste.
@@ -28,7 +28,7 @@ Narrador
 #
 #Payaso: Y dime, ¿qué emoción vivía tu corazón en ese instante?
 #
-#Carlos: ¿Y si no estoy seguro?
+#{{DatosJugador.nombre_jugador}}: ¿Y si no estoy seguro?
 #
 #Payaso: ¡Ja! No existe una única respuesta correcta.
 #Payaso: Un recuerdo puede despertar muchas emociones distintas.

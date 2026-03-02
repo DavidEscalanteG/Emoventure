@@ -37,7 +37,7 @@
 # 
 #do DialogueActors.animacion_establecer_animacion("jugador", "caminar", "derecha")
 #Gitana: Ven para aca
-#Carlos: Voy
+#{{DatosJugador.nombre_jugador}}: Voy
 #do DialogueActors.animacion_establecer_animacion("jugador", "caminar", "izquierda")
 #do DialogueActors.movimiento_mover_y_esperar("jugador", Vector2(-400,0), 3)
 #Gitana: Ahora yo voy para allá

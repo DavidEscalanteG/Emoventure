@@ -1,6 +1,6 @@
 ~ start
-Carlos: Tengo miedo
-Carlos: Pero aquí voy.....
+{{DatosJugador.nombre_jugador}}: Tengo miedo
+{{DatosJugador.nombre_jugador}}: Pero aquí voy.....
 do DialogueActors.animacion_establecer_animacion("jugador", "caminar", "izquierda")
 do DialogueActors.movimiento_mover_izquierda("jugador", 900, 10)
 => END

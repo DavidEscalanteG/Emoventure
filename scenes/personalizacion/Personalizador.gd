@@ -6,6 +6,8 @@ extends Node2D
 
 @onready var apariencia: Node2D = $Jugador/PlayerAppearance
 @onready var mascota: Node2D = $Mascota
+@onready var input_nombre_jugador: LineEdit = $CanvasLayer/PanelNombreJugador/MarginContainer/VBoxContainer/InputNombreJugador
+@onready var label_error_nombre_jugador: Label = $CanvasLayer/PanelNombreJugador/MarginContainer/VBoxContainer/ErrorNombreJugador
 
 # --------------------------------------------------
 # ESTADO TEMPORAL (índices del menú)
@@ -27,6 +29,7 @@ func _ready() -> void:
 	cargar_desde_global()
 	_validar_cabello_por_genero()
 	refrescar_preview()
+	_inicializar_nombre_jugador()
 	
 	mascota.aplicar_mascota_desde_global()
 
@@ -169,6 +172,13 @@ func _on_color_picker_button_cuerpo_color_changed(color: Color) -> void:
 
 func _on_comenzar_pressed() -> void:
 	AudioManager.play_ui_click()
+	var validacion := DatosJugador.validar_nombre(input_nombre_jugador.text)
+	if not validacion.ok:
+		label_error_nombre_jugador.text = validacion.mensaje
+		return
+
+	DatosJugador.nombre_jugador = validacion.nombre
+	label_error_nombre_jugador.text = ""
 	guardar_en_global()
 	get_tree().change_scene_to_file("uid://dlfpd1a8lfh5") #intro_dialogo_1.tscn
 
@@ -210,3 +220,11 @@ func _validar_cabello_por_genero() -> void:
 	if indice_cabello < rango.x or indice_cabello > rango.y:
 		DatosJugador.set_indice_cabello(rango.x)
 		indice_cabello = DatosJugador.apariencia.indice_cabello
+
+
+func _inicializar_nombre_jugador() -> void:
+	if DatosJugador.nombre_jugador.is_empty():
+		DatosJugador.nombre_jugador = DatosJugador.NOMBRE_JUGADOR_PREDETERMINADO
+
+	input_nombre_jugador.text = DatosJugador.nombre_jugador
+	label_error_nombre_jugador.text = ""

@@ -356,32 +356,19 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.3)
 
-[node name="PreviousButton" type="Button" parent="TutorialUI/Overlay"]
+[node name="TopBar" type="HBoxContainer" parent="TutorialUI/Overlay"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 22.0
-offset_top = -30.0
-offset_right = 156.0
-offset_bottom = 30.0
-grow_vertical = 2
-text = "← Anterior"
-
-[node name="NextButton" type="Button" parent="TutorialUI/Overlay"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -156.0
-offset_top = -30.0
-offset_right = -22.0
-offset_bottom = 30.0
-grow_horizontal = 0
-grow_vertical = 2
-text = "Siguiente →"
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+grow_horizontal = 2
+alignment = 2
+
+[node name="SkipButton" type="Button" parent="TutorialUI/Overlay/TopBar"]
+layout_mode = 2
+text = "Omitir tutorial"
 
 [node name="BottomPanel" type="PanelContainer" parent="TutorialUI/Overlay"]
 layout_mode = 1
@@ -389,9 +376,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 180.0
-offset_top = -220.0
-offset_right = -180.0
+offset_left = 40.0
+offset_top = -210.0
+offset_right = -40.0
 offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -419,18 +406,20 @@ layout_mode = 2
 text = "Paso 1 de 6"
 horizontal_alignment = 1
 
-[node name="ActionRow" type="HBoxContainer" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer"]
-visible = false
+[node name="NavigationRow" type="HBoxContainer" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 12
 alignment = 1
 
-[node name="StartButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/ActionRow"]
-custom_minimum_size = Vector2(180, 46)
+[node name="PreviousButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow"]
+layout_mode = 2
+text = "← Anterior"
+
+[node name="NextButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow"]
+layout_mode = 2
+text = "Siguiente →"
+
+[node name="StartButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow"]
+visible = false
 layout_mode = 2
 text = "Iniciar misión"
-
-[node name="SkipButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/ActionRow"]
-custom_minimum_size = Vector2(180, 46)
-layout_mode = 2
-text = "Omitir tutorial"
