@@ -6,6 +6,22 @@ var jugador: CharacterBody2D
 var emotions_ui: Node = null
 
 var genero: String = "hombre"
+var nombre_jugador: String = ""
+var nombre_mascota: String = ""
+
+const NOMBRE_JUGADOR_PREDETERMINADO := "Aventurero"
+const NOMBRE_MASCOTA_PREDETERMINADO := "Chispa"
+const NOMBRES_PROHIBIDOS: Array[String] = [
+	"admin",
+	"administrador",
+	"moderador",
+	"mod",
+	"soporte",
+	"system",
+	"null",
+	"undefined",
+	"god"
+]
 
 const GENERO_HOMBRE := "hombre"
 const GENERO_MUJER := "mujer"
@@ -48,6 +64,8 @@ func reiniciar_estado_temporal() -> void:
 	jugador = null
 	emotions_ui = null
 	lives_ui = null
+	nombre_jugador = ""
+	nombre_mascota = ""
 
 	
 func registrar_emocion(emocion: String) -> void:
@@ -196,3 +214,24 @@ func set_color_apariencia(clave: String, color: Color) -> bool:
 		_:
 			return false
 	return true
+
+
+func limpiar_nombre(valor: String) -> String:
+	var nombre := valor.strip_edges()
+	var invisibles := ["\u200B", "\u200C", "\u200D", "\u2060", "\uFEFF"]
+	for caracter in invisibles:
+		nombre = nombre.replace(caracter, "")
+	return nombre.strip_edges()
+
+
+func nombre_esta_prohibido(nombre: String) -> bool:
+	return NOMBRES_PROHIBIDOS.has(nombre.to_lower())
+
+
+func validar_nombre(valor: String) -> Dictionary:
+	var limpio := limpiar_nombre(valor)
+	if limpio.is_empty():
+		return {"ok": false, "mensaje": "El nombre no puede estar vacío ni contener solo espacios."}
+	if nombre_esta_prohibido(limpio):
+		return {"ok": false, "mensaje": "Ese nombre no está permitido. Elige uno diferente."}
+	return {"ok": true, "nombre": limpio}

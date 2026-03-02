@@ -187,7 +187,7 @@ layout_mode = 2
 text = "Continuar"
 
 [node name="TimerJuego" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 

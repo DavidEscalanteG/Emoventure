@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dx3lyr6opd214"]
+[gd_scene load_steps=33 format=3 uid="uid://dx3lyr6opd214"]
 
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="1_3i8n2"]
 [ext_resource type="SpriteFrames" uid="uid://da1cf5pybf7m4" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cuerpo/cuerpo_01.tres" id="2_iefso"]
@@ -10,8 +10,148 @@
 [ext_resource type="SpriteFrames" uid="uid://dklhb2vd3a6pv" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cabello/cabello_02.tres" id="8_8bf4g"]
 [ext_resource type="SpriteFrames" uid="uid://ekebet145v3e" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/sombrero/sobrero_02.tres" id="9_rnowv"]
 [ext_resource type="PackedScene" uid="uid://cxv23v4515m48" path="res://scenes/personalizacion/Personalizacion.tscn" id="10_b3f8t"]
+[ext_resource type="Texture2D" uid="uid://bwdkdwcq7ndmx" path="res://assets/enemigos/fuego/blue/end/burning_end_1.png" id="11_tn4m2"]
+[ext_resource type="Texture2D" uid="uid://cy6t3dc8k03rt" path="res://assets/enemigos/fuego/blue/loops/burning_loop_1.png" id="12_xly8e"]
+[ext_resource type="Texture2D" uid="uid://bsqske75dk3h5" path="res://assets/enemigos/fuego/blue/start/burning_start_1.png" id="13_yj4ec"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3f8t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiux7"]
+atlas = ExtResource("11_tn4m2")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgpwr"]
+atlas = ExtResource("11_tn4m2")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ku8b"]
+atlas = ExtResource("11_tn4m2")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mahsp"]
+atlas = ExtResource("11_tn4m2")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4727e"]
+atlas = ExtResource("11_tn4m2")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpu7r"]
+atlas = ExtResource("12_xly8e")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmo1g"]
+atlas = ExtResource("12_xly8e")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox2qf"]
+atlas = ExtResource("12_xly8e")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of5ec"]
+atlas = ExtResource("12_xly8e")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5423m"]
+atlas = ExtResource("12_xly8e")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhxng"]
+atlas = ExtResource("12_xly8e")
+region = Rect2(120, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyntu"]
+atlas = ExtResource("12_xly8e")
+region = Rect2(144, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42oef"]
+atlas = ExtResource("12_xly8e")
+region = Rect2(168, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkxoc"]
+atlas = ExtResource("13_yj4ec")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5gm1"]
+atlas = ExtResource("13_yj4ec")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef3t3"]
+atlas = ExtResource("13_yj4ec")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mmal"]
+atlas = ExtResource("13_yj4ec")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sxotr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiux7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgpwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ku8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mahsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4727e")
+}],
+"loop": true,
+"name": &"end",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpu7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmo1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox2qf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_of5ec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5423m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhxng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyntu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42oef")
+}],
+"loop": true,
+"name": &"loop",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkxoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5gm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef3t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mmal")
+}],
+"loop": true,
+"name": &"start",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 
@@ -19,6 +159,7 @@
 visible = false
 
 [node name="Personaje_1" type="CharacterBody2D" parent="."]
+visible = false
 position = Vector2(32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Personaje_1"]
@@ -42,6 +183,7 @@ sprite_frames = ExtResource("5_sgo64")
 animation = &"idle_down"
 
 [node name="Personaje_2" type="CharacterBody2D" parent="."]
+visible = false
 position = Vector2(64, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Personaje_2"]
@@ -112,13 +254,30 @@ offset_right = 192.0
 offset_bottom = 208.0
 
 [node name="Selección de personaje" parent="." instance=ExtResource("10_b3f8t")]
+visible = false
+
+[node name="CanvasLayer" parent="Selección de personaje" index="0"]
+visible = false
 
 [node name="PanelContainer" parent="Selección de personaje/CanvasLayer" index="0"]
 offset_right = 320.0
+
+[node name="BoxContainer5" parent="Selección de personaje/CanvasLayer/PanelContainer/VBoxContainer" index="4"]
+visible = false
+
+[node name="Label" parent="Selección de personaje/CanvasLayer/HSVColorEditor/HSVEditorPiel" index="3"]
+visible = false
 
 [node name="Jugador" parent="Selección de personaje" index="1"]
 position = Vector2(1280, 587)
 scale = Vector2(3, 3)
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sxotr")
+animation = &"end"
+frame = 3
+frame_progress = 0.12561639
+
 [editable path="Jugador"]
 [editable path="Selección de personaje"]
+[editable path="Selección de personaje/Mascota"]

@@ -1,27 +1,27 @@
 ~ start
 # — ESCENA: Exterior de la primera carpa —
-# Carlos sale exhausto, con la llave en la mano.
+# {{DatosJugador.nombre_jugador}} sale exhausto, con la llave en la mano.
 # El ambiente de la feria se siente distinto, más inquietante.
 
 #do DialogueActors.animacion_establecer_animacion("mujer_lagarto", "reposo", "izquierda")
-#Carlos: (respira hondo) No pensé que fuera tan difícil...
-#Carlos: Siento mi cuerpo cansado, pero algo dentro de mí se movió.
+#{{DatosJugador.nombre_jugador}}: (respira hondo) No pensé que fuera tan difícil...
+#{{DatosJugador.nombre_jugador}}: Siento mi cuerpo cansado, pero algo dentro de mí se movió.
 #
-#Carlos: (mira la llave) Así que esto es lo que obtuve por enfrentarme a mis emociones...
+#{{DatosJugador.nombre_jugador}}: (mira la llave) Así que esto es lo que obtuve por enfrentarme a mis emociones...
 #
 ## Aparece la Mujer Lagarto desde las sombras.
 #
 #MujerLagarto: No todos logran salir de esa carpa.
 #do DialogueActors.animacion_establecer_expresion("mujer_lagarto", "seria")
 #
-#Carlos: (sobresaltado) ¿Q-qué…?
-#Carlos: ¿Quién eres tú?
+#{{DatosJugador.nombre_jugador}}: (sobresaltado) ¿Q-qué…?
+#{{DatosJugador.nombre_jugador}}: ¿Quién eres tú?
 #
 #MujerLagarto: Algunos me llaman guardiana.
 #MujerLagarto: Otros… solo prefieren no mirarme a los ojos.
 #
-#Carlos: (traga saliva) Yo… acabo de salir de ahí dentro.
-#Carlos: Fue horrible… pero necesario.
+#{{DatosJugador.nombre_jugador}}: (traga saliva) Yo… acabo de salir de ahí dentro.
+#{{DatosJugador.nombre_jugador}}: Fue horrible… pero necesario.
 #
 #MujerLagarto: (asiente lentamente)
 #MujerLagarto: Reconocer tus emociones es apenas el primer paso.
@@ -29,7 +29,7 @@
 #MujerLagarto: Esa llave que llevas no abre cualquier puerta.
 #do DialogueActors.animacion_establecer_expresion("mujer_lagarto", "sonrisa")
 #
-#Carlos: Entonces… ¿qué sigue ahora?
+#{{DatosJugador.nombre_jugador}}: Entonces… ¿qué sigue ahora?
 #
 #MujerLagarto: Sigue enfrentar tus recuerdos.
 #MujerLagarto: Aquello que guardas, incluso de ti mismo.
@@ -39,20 +39,20 @@
 #MujerLagarto: La Casa del Terror te espera.
 #MujerLagarto: No temas al miedo… escúchalo.
 #
-#Carlos: (mira la casa, nervioso)
-#Carlos: No sé si estoy listo para eso…
+#{{DatosJugador.nombre_jugador}}: (mira la casa, nervioso)
+#{{DatosJugador.nombre_jugador}}: No sé si estoy listo para eso…
 #
 #MujerLagarto: Nadie lo está.
 #MujerLagarto: Pero ya comenzaste el camino.
 #
-#MujerLagarto: Adelante, Carlos.
+#MujerLagarto: Adelante, {{DatosJugador.nombre_jugador}}.
 #MujerLagarto: Tus memorias quieren ser vistas.
 #
 ## La mujer lagarto se desvanece entre la multitud de la feria.
 #
-#Carlos: (aprieta la llave)
-#Carlos: De acuerdo…
-Carlos: Sea lo que sea que haya ahí dentro… lo enfrentaré.
+#{{DatosJugador.nombre_jugador}}: (aprieta la llave)
+#{{DatosJugador.nombre_jugador}}: De acuerdo…
+{{DatosJugador.nombre_jugador}}: Sea lo que sea que haya ahí dentro… lo enfrentaré.
 
 # Aquí puedes cambiar de escena a la Casa del Terror
 #do emit_signal("fin_dialogo_salida_carpa")

@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://dl0a7l4a8s7m1"]
 
-[ext_resource type="Script" path="res://scenes/rejugabilidad/mapa_rejugabilidad.gd" id="1_ahxk8"]
-[ext_resource type="Script" path="res://src/ui/effects/hover_pulse_button.gd" id="2_likm8"]
-[ext_resource type="Texture2D" path="res://assets/assets_escena_1/fondo/Fondo_Feria_Emoventure.png" id="3_6nhqu"]
-[ext_resource type="Texture2D" path="res://assets/botones/boton_morado.png" id="4_d5wmg"]
-[ext_resource type="AudioStream" path="res://audios/musica/dialogo_misterio.mp3" id="5_not"]
+[ext_resource type="Script" uid="uid://bg8bgryahy6s5" path="res://scenes/rejugabilidad/mapa_rejugabilidad.gd" id="1_ahxk8"]
+[ext_resource type="Script" uid="uid://d0obgr25i075h" path="res://src/ui/effects/hover_pulse_button.gd" id="2_likm8"]
+[ext_resource type="Texture2D" uid="uid://6qtwykxeov1l" path="res://assets/assets_escena_1/fondo/Fondo_Feria_Emoventure.png" id="3_6nhqu"]
+[ext_resource type="Texture2D" uid="uid://bsjiua800xbau" path="res://assets/botones/boton_morado.png" id="4_d5wmg"]
+[ext_resource type="AudioStream" uid="uid://crpnlwdhq0jo2" path="res://audios/musica/dialogo_misterio.mp3" id="5_not"]
 
 [node name="MapaRejugabilidad" type="Control"]
 layout_mode = 3
@@ -209,8 +209,8 @@ grow_horizontal = 2
 [node name="Margen" type="MarginContainer" parent="OverlayUI/PanelSuperior"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
-theme_override_constants/margin_right = 12
 theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 8
 
 [node name="BotonVolverResultados" type="Button" parent="OverlayUI/PanelSuperior/Margen"]
@@ -230,5 +230,5 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
 [node name="MusicaAmbiente" type="AudioStreamPlayer" parent="."]
-autoplay = true
 stream = ExtResource("5_not")
+autoplay = true

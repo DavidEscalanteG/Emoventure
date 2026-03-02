@@ -55,7 +55,7 @@ Esta guía organiza la dirección musical **por bloque del juego** para facilita
 | `dialogo_tension` (`tension`) | `res://audios/musica/dialogo_tension.mp3` | `res://scenes/intro_dialogo_2/intro_dialogo_2.tscn`, `res://scenes/intro_dialogo_3/intro_dialogo_3.tscn`, `res://scenes/intro_dialogo_4/intro_dialogo_4.tscn` |
 | `dialogo_ternura` (`ternura`) | `res://audios/musica/dialogo_ternura.mp3` | `res://scenes/intro_dialogo_5/intro_dialogo_5.tscn` |
 | `dialogo_calma` (`calma`) | `res://audios/musica/dialogo_calma.mp3` | `res://scenes/intro_mision_4/intro_mision_4.tscn` |
-| `mision_1` | `res://audios/musica/mision_1.mp3` | `res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn` |
+| `mision_1` | `res://audios/musica/mision_1.mp3` | `res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn`, `res://scenes/mision_1_recoleccion/mapa_2/mapa2.tscn`, `res://scenes/mision_1_recoleccion/mapa_3/mapa3.tscn`, `res://scenes/mision_1_recoleccion/mapa_4/mapa4.tscn`, `res://scenes/mision_1_recoleccion/mapa_5/mapa5.tscn` |
 | `mision_2` | `res://audios/musica/mision_2.mp3` | `res://scenes/mision_2_memorias/mision_2_memorias.tscn` |
 | `mision_3` | `res://audios/musica/mision_3.mp3` | `res://scenes/mision_3_hachas/mision_3_hachas.tscn` |
 | `mision_4` | `res://audios/musica/mision_4.mp3` | `res://scenes/mision_4_payasos/mapa_topos.tscn` |
@@ -77,7 +77,17 @@ Esta guía organiza la dirección musical **por bloque del juego** para facilita
 
 ---
 
-## 5) Integración técnica
+## 5) Escenas sin clave musical explícita
+
+Actualmente `MusicManager` no define clave explícita para algunas escenas utilitarias/UI (por ejemplo `configuracion.tscn`, `creditos.tscn` y `mapa_rejugabilidad.tscn`).
+
+Comportamiento esperado:
+- Se mantiene la música previamente activa mientras no exista reasignación de clave.
+- Si se requiere tema propio para estas pantallas, agregar entrada en `_pistas_por_escena` y actualizar esta guía.
+
+---
+
+## 6) Integración técnica
 
 La lógica de reproducción está centralizada en:
 

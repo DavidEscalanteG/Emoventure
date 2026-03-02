@@ -183,6 +183,10 @@ func _reiniciar_mision() -> void:
 	Logs.log_debug("Misión de topos reiniciada")
 
 func _iniciar_cuestionario() -> void:
+	if GameManager.consumir_modo_rejugabilidad():
+		get_tree().change_scene_to_file(GameManager.ESCENA_MAPA_REJUGABILIDAD)
+		return
+		
 	if escena_cuestionario == null:
 		push_error("No se asignó escena_cuestionario")
 		return

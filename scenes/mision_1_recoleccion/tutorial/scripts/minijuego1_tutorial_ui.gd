@@ -28,13 +28,17 @@ func _ready() -> void:
 func set_message(text: String) -> void:
 	message_label.text = text
 
-func set_navigation(step_index: int, step_count: int, is_last_step: bool) -> void:
+func set_navigation(step_index: int, _step_count: int, is_last_step: bool) -> void:
 	previous_button.disabled = step_index <= 0
 	next_button.visible = not is_last_step
 	start_button.visible = is_last_step
 	if is_last_step:
 		start_button.disabled = false
 	next_button.disabled = false
+
+func set_continue_enabled(is_enabled: bool) -> void:
+	if next_button.visible:
+		next_button.disabled = not is_enabled
 
 func show_keys(is_visible: bool) -> void:
 	$Overlay/BottomPanel/MarginContainer/VBoxContainer/KeysRow.visible = is_visible

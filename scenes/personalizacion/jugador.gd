@@ -11,6 +11,7 @@ signal sin_vidas
 # --------------------------------------------------
 @export var speed: int = 300
 @export var vidas_maximas: int = 3
+@export var duracion_invulnerabilidad: float = 1.2
 
 
 # --------------------------------------------------
@@ -93,10 +94,13 @@ func _activar_invulnerabilidad() -> void:
 	invulnerable = true
 	speed = velocidad_base + 150
 
+	var duracion_paso: float = 0.1
+	var pasos_totales: int = max(1, int(round(duracion_invulnerabilidad / (duracion_paso * 2.0))))
+
 	var tween: Tween = create_tween()
-	tween.set_loops(6)
-	tween.tween_property(self, "modulate:a", 0.2, 0.1)
-	tween.tween_property(self, "modulate:a", 1.0, 0.1)
+	tween.set_loops(pasos_totales)
+	tween.tween_property(self, "modulate:a", 0.2, duracion_paso)
+	tween.tween_property(self, "modulate:a", 1.0, duracion_paso)
 
 	await tween.finished
 
