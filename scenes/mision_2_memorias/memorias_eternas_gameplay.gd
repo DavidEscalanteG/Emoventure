@@ -1,7 +1,7 @@
 extends Control
 
 const TOTAL_CUADROS: int = 7
-const DURACION_RETROALIMENTACION: float = 2.2
+const DURACION_RETROALIMENTACION: float = 4.0
 
 const MENSAJES_RETROALIMENTACION_GENERICO: Array[String] = [
 	"Qué interesante...",
@@ -115,6 +115,7 @@ func _ready() -> void:
 	selector.visible = false
 	texto_retroalimentacion.visible = false
 	texto_retroalimentacion.modulate.a = 0.0
+	texto_retroalimentacion.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 
 	puerta.visible = true
 	puerta.disabled = true
@@ -203,8 +204,7 @@ func _mostrar_retroalimentacion(emocion: String) -> void:
 	if texto_retroalimentacion == null:
 		return
 
-	if tween_retroalimentacion != null:
-		tween_retroalimentacion.kill()
+	_ocultar_retroalimentacion_inmediata()
 
 	var emocion_normalizada: String = emocion.strip_edges().to_lower()
 	var mensajes_emocion: Array[String] = MENSAJES_RETROALIMENTACION_GENERICO
@@ -237,3 +237,12 @@ func _mostrar_retroalimentacion(emocion: String) -> void:
 	tween_retroalimentacion.tween_callback(func() -> void:
 		texto_retroalimentacion.visible = false
 	)
+
+
+func _ocultar_retroalimentacion_inmediata() -> void:
+	if tween_retroalimentacion != null:
+		tween_retroalimentacion.kill()
+		tween_retroalimentacion = null
+
+	texto_retroalimentacion.visible = false
+	texto_retroalimentacion.modulate.a = 0.0
