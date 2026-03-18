@@ -40,12 +40,15 @@ var estado_actual: String = "idle" # idle | walk
 # "enojado" -> "angry"
 
 
-func _process(_delta: float) -> void:
+func _ready() -> void:
+	cuerpo.frame_changed.connect(_sincronizar_partes)
+	cuerpo.animation_changed.connect(_sincronizar_partes)
 	_sincronizar_partes()
 
 func _sincronizar_partes() -> void:
 	var anim := cuerpo.animation
 	var frame := cuerpo.frame
+	var frame_progress := cuerpo.frame_progress
 	var flip_h := cuerpo.flip_h
 	var flip_v := cuerpo.flip_v
 
@@ -55,8 +58,9 @@ func _sincronizar_partes() -> void:
 		if not sprite.sprite_frames.has_animation(anim):
 			continue
 	
-		sprite.animation = anim
-		sprite.frame = frame
+		if sprite.animation != anim:
+			sprite.play(anim)
+		sprite.set_frame_and_progress(frame, frame_progress)
 		sprite.flip_h = flip_h
 		sprite.flip_v = flip_v
 
@@ -143,6 +147,7 @@ func actualizar_animacion_visual() -> void:
 
 	if cuerpo.sprite_frames and cuerpo.sprite_frames.has_animation(nombre_anim):
 		cuerpo.play(nombre_anim)
+		_sincronizar_partes()
 
 
 func _reproducir(sprite: AnimatedSprite2D, anim: String) -> void:
