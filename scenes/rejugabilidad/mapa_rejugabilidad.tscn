@@ -253,7 +253,6 @@ etiqueta_hover_path = NodePath("../Nombre")
 
 [node name="Oscurecedor" type="ColorRect" parent="OverlayUI"]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -263,7 +262,6 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
 [node name="PanelSuperior" type="PanelContainer" parent="OverlayUI"]
-visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 56.0
@@ -284,7 +282,6 @@ text = "Volver a resultados"
 
 [node name="FadeNegro" type="ColorRect" parent="OverlayUI"]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -292,6 +289,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="BotonSalirMenu" type="Button" parent="OverlayUI"]
+unique_name_in_owner = true
+offset_left = 1580.0
+offset_top = 980.0
+offset_right = 1890.0
+offset_bottom = 1046.0
+theme_override_font_sizes/font_size = 28
+text = "Salir al menú principal"
 
 [node name="MusicaAmbiente" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_not")
