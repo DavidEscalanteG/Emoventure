@@ -133,6 +133,8 @@ func _actualizar_datos_slot(slot_id: String, escena_actual: String) -> void:
 		partida["genero"] = DatosJugador.genero
 		partida["apariencia"] = _serializar_apariencia(DatosJugador.apariencia)
 		partida["mascota_indice"] = DatosJugador.obtener_indice_mascota()
+		partida["puntaje_total"] = GameManager.obtener_puntaje_total()
+		partida["puntajes_emocionales"] = GameManager.obtener_puntajes_por_dimension()
 		partida["escena_actual"] = escena_actual
 		partida["updated_at"] = Time.get_datetime_string_from_system(true)
 		_partidas[i] = partida
@@ -158,6 +160,13 @@ func _aplicar_datos_partida(partida: Dictionary) -> void:
 	_aplicar_apariencia_desde_diccionario(apariencia_dict)
 
 	DatosJugador.set_indice_mascota(int(partida.get("mascota_indice", 0)))
+
+	var puntaje_total_guardado: int = int(partida.get("puntaje_total", 0))
+	var puntajes_emocionales_variant: Variant = partida.get("puntajes_emocionales", {})
+	var puntajes_emocionales_guardados: Dictionary = {}
+	if typeof(puntajes_emocionales_variant) == TYPE_DICTIONARY:
+		puntajes_emocionales_guardados = puntajes_emocionales_variant
+	GameManager.cargar_puntajes_desde_guardado(puntaje_total_guardado, puntajes_emocionales_guardados)
 
 
 func _serializar_apariencia(apariencia: AparienciaJugador) -> Dictionary:

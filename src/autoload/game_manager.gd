@@ -47,6 +47,21 @@ func reiniciar_puntajes() -> void:
 		puntajes_por_dimension[dimension] = 0
 
 
+func cargar_puntajes_desde_guardado(total_guardado: int, puntajes_guardados: Dictionary = {}) -> void:
+	reiniciar_puntajes()
+
+	var total_calculado: int = 0
+	for dimension in puntajes_por_dimension.keys():
+		var valor_dimension: int = int(puntajes_guardados.get(dimension, 0))
+		puntajes_por_dimension[dimension] = valor_dimension
+		total_calculado += valor_dimension
+
+	if total_guardado > 0:
+		puntaje_total = total_guardado
+	else:
+		puntaje_total = total_calculado
+
+
 func obtener_siguiente_mapa_minijuego_1() -> String:
 	if MAPAS_MINIJUEGO_1.is_empty():
 		push_warning("[GameManager] No hay mapas configurados para el minijuego 1")
