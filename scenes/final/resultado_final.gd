@@ -2,6 +2,9 @@ extends Control
 
 const MAPA_REJUGABILIDAD_SCENE: String = "res://scenes/rejugabilidad/mapa_rejugabilidad.tscn"
 const DIMENSIONES: Array[String] = ["atencion", "claridad", "reparacion"]
+const TEXTO_BOTON_DESCARGA_POR_DEFECTO: String = "Descargar resultados en PDF"
+const TEXTO_BOTON_DESCARGA_EXITOSA: String = "¡Archivo descargado exitosamente en tu carpeta de descargas!"
+const SEGUNDOS_REACTIVAR_DESCARGA: int = 10
 const NOMBRES_DIMENSION: Dictionary[String, String] = {
 	"atencion": "Atención emocional",
 	"claridad": "Claridad emocional",
@@ -92,10 +95,13 @@ const UMBRALES_MENSAJES_POR_GENERO: Dictionary[String, Dictionary] = {
 @onready var barra_reparacion: ProgressBar = $"MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox/BarraReparacion"
 @onready var mensaje_reparacion: Label = $"MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox/MensajeReparacion"
 
+var cuenta_regresiva_descarga_activa: bool = false
+
 
 func _ready() -> void:
 	label_narrativa.text = "Ahora te revelaré quién eres"
 	_renderizar_resumen()
+	boton_descargar_pdf.text = TEXTO_BOTON_DESCARGA_POR_DEFECTO
 	boton_descargar_pdf.pressed.connect(_on_boton_descargar_pdf_pressed)
 	boton_menu_principal.pressed.connect(_on_boton_menu_principal_pressed)
 	dialogo_guardar_pdf.file_selected.connect(_on_dialogo_guardar_pdf_file_selected)
@@ -161,6 +167,7 @@ func _on_boton_descargar_pdf_pressed() -> void:
 	AudioManager.play_ui_click()
 	var ruta_pdf_sugerida: String = _construir_ruta_pdf_sugerida()
 	if _guardar_reporte_pdf(ruta_pdf_sugerida):
+		_iniciar_cooldown_boton_descarga()
 		return
 
 	dialogo_guardar_pdf.current_path = ruta_pdf_sugerida
@@ -171,7 +178,8 @@ func _on_dialogo_guardar_pdf_file_selected(path: String) -> void:
 	var ruta_pdf: String = path
 	if not ruta_pdf.to_lower().ends_with(".pdf"):
 		ruta_pdf += ".pdf"
-	_guardar_reporte_pdf(ruta_pdf)
+	if _guardar_reporte_pdf(ruta_pdf):
+		_iniciar_cooldown_boton_descarga()
 
 
 func _guardar_reporte_pdf(path: String) -> bool:
@@ -340,6 +348,21 @@ func _mapear_unicode_a_winansi(codigo_unicode: int) -> int:
 		376: 159 # Ÿ
 	}
 	return int(mapa.get(codigo_unicode, 63)) # ? cuando no se puede mapear
+
+
+func _iniciar_cooldown_boton_descarga() -> void:
+	if cuenta_regresiva_descarga_activa:
+		return
+
+	cuenta_regresiva_descarga_activa = true
+	boton_descargar_pdf.disabled = true
+	for segundos_restantes in range(SEGUNDOS_REACTIVAR_DESCARGA, 0, -1):
+		boton_descargar_pdf.text = "%s (%d)" % [TEXTO_BOTON_DESCARGA_EXITOSA, segundos_restantes]
+		await get_tree().create_timer(1.0).timeout
+
+	boton_descargar_pdf.disabled = false
+	boton_descargar_pdf.text = TEXTO_BOTON_DESCARGA_POR_DEFECTO
+	cuenta_regresiva_descarga_activa = false
 
 
 func _on_boton_menu_principal_pressed() -> void:
