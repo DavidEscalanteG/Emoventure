@@ -35,40 +35,61 @@ texture = ExtResource("3_6nhqu")
 stretch_mode = 6
 
 [node name="TituloMapa" type="Label" parent="MapaContainer"]
-layout_mode = 0
-offset_left = 48.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -235.5
 offset_top = 24.0
-offset_right = 519.0
+offset_right = 235.5
 offset_bottom = 79.0
+grow_horizontal = 2
 theme_override_font_sizes/font_size = 40
-text = "Mapa de rejugabilidad"
+text = "Felicidades"
+horizontal_alignment = 1
 
 [node name="SubtituloMapa" type="Label" parent="MapaContainer"]
-layout_mode = 0
-offset_left = 50.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
 offset_top = 78.0
-offset_right = 710.0
-offset_bottom = 114.0
-theme_override_font_sizes/font_size = 22
-text = "Explora cualquier misión y rejuega sin afectar tu progreso global"
+offset_right = 512.0
+offset_bottom = 124.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 33
+text = "Explora cualquier misión y vuelve a jugar sin afectar tu progreso global"
+
+[node name="InstruccionMapa" type="Label" parent="MapaContainer"]
+visible = false
+layout_mode = 0
+offset_left = 480.0
+offset_top = 110.0
+offset_right = 905.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 19
+text = "Selecciona una carpa para viajar"
+horizontal_alignment = 1
 
 [node name="Minijuego1" type="TextureButton" parent="MapaContainer"]
 layout_mode = 0
-offset_left = 180.0
-offset_top = 255.0
-offset_right = 284.0
-offset_bottom = 358.0
+offset_left = 300.0
+offset_top = 330.0
+offset_right = 403.99985
+offset_bottom = 433.0
+scale = Vector2(2, 2)
 texture_normal = ExtResource("3_asvx7")
 ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Nombre" type="Label" parent="MapaContainer/Minijuego1"]
 layout_mode = 0
-offset_left = -56.0
+offset_left = -81.5
 offset_top = -35.0
-offset_right = 160.0
+offset_right = 190.5
 offset_bottom = -7.0
-text = "Minijuego 1"
+text = "El cazador de las bestias despiertas"
 horizontal_alignment = 1
 
 [node name="Check" type="Label" parent="MapaContainer/Minijuego1"]
@@ -88,10 +109,11 @@ etiqueta_hover_path = NodePath("../Nombre")
 
 [node name="Minijuego2" type="TextureButton" parent="MapaContainer"]
 layout_mode = 0
-offset_left = 442.0
-offset_top = 193.0
-offset_right = 546.0
-offset_bottom = 296.0
+offset_left = 300.0
+offset_top = 800.0
+offset_right = 404.0
+offset_bottom = 903.0
+scale = Vector2(2, 2)
 texture_normal = ExtResource("3_asvx7")
 ignore_texture_size = true
 stretch_mode = 5
@@ -102,7 +124,7 @@ offset_left = -56.0
 offset_top = -35.0
 offset_right = 160.0
 offset_bottom = -7.0
-text = "Minijuego 2"
+text = "Memorias eternas"
 horizontal_alignment = 1
 
 [node name="Check" type="Label" parent="MapaContainer/Minijuego2"]
@@ -122,10 +144,11 @@ etiqueta_hover_path = NodePath("../Nombre")
 
 [node name="Minijuego3" type="TextureButton" parent="MapaContainer"]
 layout_mode = 0
-offset_left = 744.0
-offset_top = 296.0
-offset_right = 848.0
-offset_bottom = 399.0
+offset_left = 1400.0
+offset_top = 330.0
+offset_right = 1504.0
+offset_bottom = 433.0
+scale = Vector2(2, 2)
 texture_normal = ExtResource("3_asvx7")
 ignore_texture_size = true
 stretch_mode = 5
@@ -136,7 +159,7 @@ offset_left = -56.0
 offset_top = -35.0
 offset_right = 160.0
 offset_bottom = -7.0
-text = "Minijuego 3"
+text = "El pasillo de la lengua filosa"
 horizontal_alignment = 1
 
 [node name="Check" type="Label" parent="MapaContainer/Minijuego3"]
@@ -156,10 +179,11 @@ etiqueta_hover_path = NodePath("../Nombre")
 
 [node name="Minijuego4" type="TextureButton" parent="MapaContainer"]
 layout_mode = 0
-offset_left = 953.0
-offset_top = 163.0
-offset_right = 1057.0
-offset_bottom = 266.0
+offset_left = 1400.0
+offset_top = 800.0
+offset_right = 1504.0
+offset_bottom = 903.0
+scale = Vector2(2, 2)
 texture_normal = ExtResource("3_asvx7")
 ignore_texture_size = true
 stretch_mode = 5
@@ -170,7 +194,7 @@ offset_left = -56.0
 offset_top = -35.0
 offset_right = 160.0
 offset_bottom = -7.0
-text = "Minijuego 4"
+text = "Pega al payaso"
 horizontal_alignment = 1
 
 [node name="Check" type="Label" parent="MapaContainer/Minijuego4"]
@@ -188,10 +212,48 @@ script = ExtResource("2_likm8")
 objetivo_path = NodePath("..")
 etiqueta_hover_path = NodePath("../Nombre")
 
+[node name="CarpaResultados" type="TextureButton" parent="MapaContainer"]
+unique_name_in_owner = true
+modulate = Color(0.94902, 1, 0.788235, 1)
+layout_mode = 0
+offset_left = 822.0
+offset_top = 480.0
+offset_right = 926.0
+offset_bottom = 583.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_asvx7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Nombre" type="Label" parent="MapaContainer/CarpaResultados"]
+layout_mode = 0
+offset_left = -56.0
+offset_top = -35.0
+offset_right = 160.0
+offset_bottom = -7.0
+text = "Resultados"
+horizontal_alignment = 1
+
+[node name="Icono" type="Label" parent="MapaContainer/CarpaResultados"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 31.0
+offset_right = 125.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 26
+text = "🏆"
+horizontal_alignment = 1
+
+[node name="HoverPulse" type="Node" parent="MapaContainer/CarpaResultados"]
+script = ExtResource("2_likm8")
+objetivo_path = NodePath("..")
+etiqueta_hover_path = NodePath("../Nombre")
+
 [node name="OverlayUI" type="CanvasLayer" parent="."]
 
 [node name="Oscurecedor" type="ColorRect" parent="OverlayUI"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -201,6 +263,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
 [node name="PanelSuperior" type="PanelContainer" parent="OverlayUI"]
+visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 56.0
@@ -221,6 +284,7 @@ text = "Volver a resultados"
 
 [node name="FadeNegro" type="ColorRect" parent="OverlayUI"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
