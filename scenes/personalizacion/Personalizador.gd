@@ -172,7 +172,7 @@ func _on_color_picker_button_cuerpo_color_changed(color: Color) -> void:
 
 func _on_comenzar_pressed() -> void:
 	AudioManager.play_ui_click()
-	var validacion := DatosJugador.validar_nombre(input_nombre_jugador.text)
+	var validacion: Dictionary = DatosJugador.validar_nombre(input_nombre_jugador.text)
 	if not validacion.ok:
 		label_error_nombre_jugador.text = validacion.mensaje
 		return
@@ -180,6 +180,7 @@ func _on_comenzar_pressed() -> void:
 	DatosJugador.nombre_jugador = validacion.nombre
 	label_error_nombre_jugador.text = ""
 	guardar_en_global()
+	SaveManager.confirmar_guardado_inicial("res://scenes/intro_dialogo_1/intro_dialogo_1.tscn")
 	get_tree().change_scene_to_file("uid://dlfpd1a8lfh5") #intro_dialogo_1.tscn
 
 

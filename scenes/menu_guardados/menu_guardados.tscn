@@ -1,0 +1,88 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1fbuvpiej7a8"]
+
+[ext_resource type="Script" uid="uid://dx0msb5cskx6d" path="res://scenes/menu_guardados/menu_guardados.gd" id="1_d6fpn"]
+
+[node name="MenuGuardados" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d6fpn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0941176, 0.0862745, 0.239216, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(1300, 760)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Titulo" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Selecciona una partida"
+horizontal_alignment = 1
+
+[node name="EtiquetaVacio" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "No tienes partidas guardadas.
+Crea una nueva para comenzar."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 540)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ContenedorPartidas" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="BotonesInferiores" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BotonNuevaPartida" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BotonesInferiores"]
+custom_minimum_size = Vector2(320, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Crear nueva partida"
+
+[node name="BotonVolver" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BotonesInferiores"]
+custom_minimum_size = Vector2(180, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Volver"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BotonesInferiores/BotonNuevaPartida" to="." method="_on_boton_nueva_partida_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BotonesInferiores/BotonVolver" to="." method="_on_boton_volver_pressed"]
