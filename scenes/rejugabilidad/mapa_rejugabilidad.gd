@@ -1,6 +1,7 @@
 extends Control
 
 const ESCENA_RESULTADO_FINAL: String = "res://scenes/final/resultado_final.tscn"
+const ESCENA_MENU_PRINCIPAL: String = "res://scenes/menu_principal/menu_principal.tscn"
 
 const MINIJUEGOS: Dictionary[String, String] = {
 	"Minijuego2": "res://scenes/mision_2_memorias/mision_2_memorias.tscn",
@@ -14,6 +15,8 @@ const BOTON_MINIJUEGO_1: String = "Minijuego1"
 @onready var oscurecedor: ColorRect = %Oscurecedor
 @onready var fade_negro: ColorRect = %FadeNegro
 @onready var boton_volver_resultados: Button = %BotonVolverResultados
+@onready var boton_salir_menu: Button = %BotonSalirMenu
+@onready var carpa_resultados: BaseButton = %CarpaResultados
 
 var _en_transicion: bool = false
 
@@ -27,6 +30,9 @@ func _ready() -> void:
 		boton.pressed.connect(_on_localizacion_pressed.bind(nombre_boton))
 
 	boton_volver_resultados.pressed.connect(_on_boton_volver_resultados_pressed)
+	boton_salir_menu.pressed.connect(_on_boton_salir_menu_pressed)
+	if carpa_resultados != null:
+		carpa_resultados.pressed.connect(_on_carpa_resultados_pressed)
 	_animar_entrada_mapa()
 
 
@@ -72,6 +78,10 @@ func _on_localizacion_pressed(nombre_boton: String) -> void:
 
 	_en_transicion = true
 	_bloquear_localizaciones(true)
+	if carpa_resultados != null:
+		carpa_resultados.disabled = true
+	boton_volver_resultados.disabled = true
+	boton_salir_menu.disabled = true
 	GameManager.activar_modo_rejugabilidad()
 	AudioManager.play_ui_click()
 	_realizar_transicion_a_minijuego(boton, destino)
@@ -114,3 +124,30 @@ func _on_boton_volver_resultados_pressed() -> void:
 	GameManager.desactivar_modo_rejugabilidad()
 	AudioManager.play_ui_click()
 	get_tree().change_scene_to_file(ESCENA_RESULTADO_FINAL)
+
+
+func _on_boton_salir_menu_pressed() -> void:
+	if _en_transicion:
+		return
+
+	GameManager.desactivar_modo_rejugabilidad()
+	GameManager.reiniciar_puntajes()
+	GameManager.reiniciar_rotacion_mapas_minijuego_1()
+	DatosJugador.reiniciar_estado_temporal()
+	AudioManager.play_ui_click()
+	get_tree().change_scene_to_file(ESCENA_MENU_PRINCIPAL)
+
+
+func _on_carpa_resultados_pressed() -> void:
+	if _en_transicion:
+		return
+
+	_en_transicion = true
+	_bloquear_localizaciones(true)
+	if carpa_resultados != null:
+		carpa_resultados.disabled = true
+	boton_volver_resultados.disabled = true
+	boton_salir_menu.disabled = true
+	GameManager.desactivar_modo_rejugabilidad()
+	AudioManager.play_ui_click()
+	_realizar_transicion_a_minijuego(carpa_resultados, ESCENA_RESULTADO_FINAL)

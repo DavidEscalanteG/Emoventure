@@ -25,6 +25,7 @@ DialogueActors="*res://src/autoload/dialogue_actors.gd"
 Logs="*res://src/autoload/Logs.gd"
 Cuestionarios="*res://src/autoload/cuestionarios.gd"
 MusicManager="*res://src/autoload/music_manager.gd"
+SaveManager="*res://src/autoload/save_manager.gd"
 
 [dialogue_manager]
 
