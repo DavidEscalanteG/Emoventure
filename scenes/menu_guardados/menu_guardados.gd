@@ -63,9 +63,9 @@ func _crear_fila_partida(indice_visual: int, slot: Dictionary) -> Control:
 	]
 
 	var detalle: Label = Label.new()
-	#detalle.text = resumen
-	#detalle.add_theme_font_size_override("font_size", 24)
-	#info.add_child(detalle)
+	detalle.text = resumen#
+	detalle.add_theme_font_size_override("font_size", 24)#
+	info.add_child(detalle)#
 
 	var escena: Label = Label.new()
 	escena.text = "Escena guardada: %s" % slot.get("escena_actual", "N/A")
