@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyxwh51xuix7b"
-path="res://.godot/imported/boton_play.png-b0ee865f6b26117cdd6cfd3049885c25.ctex"
+uid="uid://b1fk1ss2e3x4d"
+path="res://.godot/imported/emocion_ansiedad.png-855b6ce273c42de613a524abadbd87b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets_menu_principal/boton_play/boton_play.png"
-dest_files=["res://.godot/imported/boton_play.png-b0ee865f6b26117cdd6cfd3049885c25.ctex"]
+source_file="res://assets/emociones/spritesheets/emocion_ansiedad.png"
+dest_files=["res://.godot/imported/emocion_ansiedad.png-855b6ce273c42de613a524abadbd87b3.ctex"]
 
 [params]
 

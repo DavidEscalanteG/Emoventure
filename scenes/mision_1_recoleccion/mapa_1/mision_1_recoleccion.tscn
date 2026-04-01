@@ -386,7 +386,7 @@ tile_set = SubResource("TileSet_de147")
 [node name="Emociones" type="Node2D" parent="."]
 
 [node name="Emocion_Desagrado" parent="Emociones" instance=ExtResource("16_wcswo")]
-position = Vector2(897, 343)
+position = Vector2(896, 336)
 textura = ExtResource("17_rrsqi")
 tipo_emocion = "desagrado"
 color = Color(0.3647059, 0.8862745, 0.21568628, 1)
@@ -417,6 +417,7 @@ tipo_emocion = "tristeza"
 color = Color(0.043137256, 0.11764706, 1, 1)
 
 [node name="Caminos" type="Node2D" parent="."]
+visible = false
 
 [node name="Path2D_1" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_spp1b")
@@ -610,6 +611,7 @@ offset = Vector2(700, 0)
 transform = Transform2D(1, 0, 0, 1, 700, 0)
 
 [node name="GameOverUI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="GameOverUI"]
 layout_mode = 3

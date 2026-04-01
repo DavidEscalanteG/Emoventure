@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b414bmu8meery"
-path="res://.godot/imported/boton_play_pressed.png-ba46d0de0317a6481a2043989d217aa4.ctex"
+uid="uid://dak4m8tmu7fqp"
+path="res://.godot/imported/emocion_enojo.png-e713791844313faea2dcd2ddf055a9c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets_menu_principal/boton_play/boton_play_pressed.png"
-dest_files=["res://.godot/imported/boton_play_pressed.png-ba46d0de0317a6481a2043989d217aa4.ctex"]
+source_file="res://assets/emociones/spritesheets/emocion_enojo.png"
+dest_files=["res://.godot/imported/emocion_enojo.png-e713791844313faea2dcd2ddf055a9c4.ctex"]
 
 [params]
 

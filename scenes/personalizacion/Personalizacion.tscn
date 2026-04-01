@@ -1,13 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://cxv23v4515m48"]
+[gd_scene load_steps=17 format=3 uid="uid://cxv23v4515m48"]
 
 [ext_resource type="Script" uid="uid://6uymohbocc55" path="res://scenes/personalizacion/Personalizador.gd" id="1_n5qyn"]
 [ext_resource type="Script" uid="uid://dck5qqh46f0cm" path="res://scenes/personalizacion/hsv_color_editor.gd" id="2_rysy1"]
 [ext_resource type="PackedScene" uid="uid://b4t1ghb0ibdtf" path="res://assets/personajes/mascota/mascota.tscn" id="4_ngfm0"]
+[ext_resource type="Texture2D" uid="uid://dtvbvblxrod3d" path="res://assets/botones/boton_play.png" id="5_6udkd"]
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="13_3x2dh"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="13_qeg4c"]
-[ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="14_tydmf"]
-[ext_resource type="Texture2D" uid="uid://b414bmu8meery" path="res://assets/assets_menu_principal/boton_play/boton_play_pressed.png" id="15_3x2dh"]
-[ext_resource type="Texture2D" uid="uid://c1csicswuxs24" path="res://assets/assets_menu_principal/boton_play/boton_play_hover.png" id="16_gvyea"]
 [ext_resource type="Script" uid="uid://c46nol38d8qcv" path="res://scenes/personalizacion/comenzar.gd" id="17_tydmf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rysy1"]
@@ -510,9 +508,7 @@ offset_top = 867.0
 offset_right = 1042.0001
 offset_bottom = 992.0
 scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("14_tydmf")
-texture_pressed = ExtResource("15_3x2dh")
-texture_hover = ExtResource("16_gvyea")
+texture_normal = ExtResource("5_6udkd")
 script = ExtResource("17_tydmf")
 
 [node name="FondoNegro" type="Sprite2D" parent="."]

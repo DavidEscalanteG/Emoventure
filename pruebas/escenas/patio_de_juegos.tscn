@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dx3lyr6opd214"]
+[gd_scene load_steps=34 format=3 uid="uid://dx3lyr6opd214"]
 
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="1_3i8n2"]
 [ext_resource type="SpriteFrames" uid="uid://da1cf5pybf7m4" path="res://pruebas/animaciones/hombre_mana_seed/animaciones/cuerpo/cuerpo_01.tres" id="2_iefso"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bwdkdwcq7ndmx" path="res://assets/enemigos/fuego/blue/end/burning_end_1.png" id="11_tn4m2"]
 [ext_resource type="Texture2D" uid="uid://cy6t3dc8k03rt" path="res://assets/enemigos/fuego/blue/loops/burning_loop_1.png" id="12_xly8e"]
 [ext_resource type="Texture2D" uid="uid://bsqske75dk3h5" path="res://assets/enemigos/fuego/blue/start/burning_start_1.png" id="13_yj4ec"]
+[ext_resource type="SpriteFrames" uid="uid://mlosoquap83h" path="res://assets/assets_memorias_eternas/animacion/animacion_emociones.tres" id="14_xly8e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3f8t"]
 
@@ -277,6 +278,11 @@ sprite_frames = SubResource("SpriteFrames_sxotr")
 animation = &"end"
 frame = 3
 frame_progress = 0.12561639
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("14_xly8e")
+animation = &"tristeza"
+frame_progress = 0.4819067
 
 [editable path="Jugador"]
 [editable path="Selección de personaje"]
