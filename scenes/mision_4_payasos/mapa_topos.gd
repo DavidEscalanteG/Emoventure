@@ -53,6 +53,9 @@ func _ready() -> void:
 	Input.set_custom_mouse_cursor(cursor_normal)
 	_actualizar_marcador()
 
+func _exit_tree() -> void:
+	_restaurar_cursor_predeterminado()
+
 func _input(event: InputEvent) -> void:
 	if mision_finalizada:
 		return
@@ -105,7 +108,7 @@ func _finalizar_mision() -> void:
 	mision_finalizada = true
 	$SpawnTimer.stop()
 	$TimerJuego.stop()
-	Input.set_custom_mouse_cursor(cursor_normal)
+	_restaurar_cursor_predeterminado()
 
 	for topo in topos_jugables:
 		if topo.has_method("reset_estado"):
@@ -184,6 +187,7 @@ func _reiniciar_mision() -> void:
 
 func _iniciar_cuestionario() -> void:
 	if GameManager.consumir_modo_rejugabilidad():
+		_restaurar_cursor_predeterminado()
 		get_tree().change_scene_to_file(GameManager.ESCENA_MAPA_REJUGABILIDAD)
 		return
 		
@@ -210,3 +214,6 @@ func _iniciar_cuestionario() -> void:
 
 	root.add_child(cuestionario)
 	get_tree().current_scene = cuestionario
+
+func _restaurar_cursor_predeterminado() -> void:
+	Input.set_custom_mouse_cursor(null)
