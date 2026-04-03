@@ -1,14 +1,14 @@
-[gd_scene load_steps=88 format=4 uid="uid://0b56nx3kg6cu"]
+[gd_scene load_steps=93 format=4 uid="uid://0b56nx3kg6cu"]
 
 [ext_resource type="Texture2D" uid="uid://dk4pt704h4p0y" path="res://assets/assets_escena_3/fondos/fondos_unidos.png" id="1_jqo4o"]
 [ext_resource type="Script" uid="uid://dvjj8pf7anx04" path="res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.gd" id="1_tdjkx"]
 [ext_resource type="Texture2D" uid="uid://coq3u4o4mvnf0" path="res://assets/assets_escena_3/paredes/Terrain (32x32).png" id="2_tdjkx"]
 [ext_resource type="PackedScene" uid="uid://b4jiwtffqt48m" path="res://assets/emociones/emocion.tscn" id="3_g7qru"]
-[ext_resource type="Texture2D" uid="uid://be2m12ilqfwyk" path="res://assets/emociones/sprites/desagrado.png" id="4_v5g01"]
-[ext_resource type="Texture2D" uid="uid://cpqa724qpfdg7" path="res://assets/emociones/sprites/enojo.png" id="5_7ttne"]
-[ext_resource type="Texture2D" uid="uid://qtect2yegfev" path="res://assets/emociones/sprites/felicidad.png" id="6_2n0y8"]
-[ext_resource type="Texture2D" uid="uid://dbeo324lgnb8p" path="res://assets/emociones/sprites/miedo.png" id="7_2slqd"]
-[ext_resource type="Texture2D" uid="uid://dxxy4k6ht2k6i" path="res://assets/emociones/sprites/tristeza.png" id="8_gri5v"]
+[ext_resource type="Texture2D" uid="uid://bf1xbh4xdr7or" path="res://assets/emociones/spritesheets/emocion_desagrado.png" id="5_tdjkx"]
+[ext_resource type="Texture2D" uid="uid://dak4m8tmu7fqp" path="res://assets/emociones/spritesheets/emocion_enojo.png" id="6_g7qru"]
+[ext_resource type="Texture2D" uid="uid://drij7vi18vgxg" path="res://assets/emociones/spritesheets/emocion_feliz.png" id="7_v5g01"]
+[ext_resource type="Texture2D" uid="uid://b1fk1ss2e3x4d" path="res://assets/emociones/spritesheets/emocion_ansiedad.png" id="8_7ttne"]
+[ext_resource type="Texture2D" uid="uid://nsaqlorvolv" path="res://assets/emociones/spritesheets/emocion_tristeza.png" id="9_2n0y8"]
 [ext_resource type="PackedScene" uid="uid://7coyibirj1qa" path="res://assets/assets_escena_3/otros_elementos/interseccion.tscn" id="10_fw1s6"]
 [ext_resource type="PackedScene" uid="uid://d14ky0d5wqhvm" path="res://assets/enemigos/serpiente/Serpiente.tscn" id="10_tdjkx"]
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="11_svdmk"]
@@ -201,6 +201,26 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 8
 sources/1 = SubResource("TileSetAtlasSource_exyrr")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2slqd"]
+atlas = ExtResource("5_tdjkx")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gri5v"]
+atlas = ExtResource("6_g7qru")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytprr"]
+atlas = ExtResource("7_v5g01")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fw1s6"]
+atlas = ExtResource("8_7ttne")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svdmk"]
+atlas = ExtResource("9_2n0y8")
+region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="Curve2D" id="Curve2D_gmb4v"]
 _data = {
@@ -598,32 +618,32 @@ tile_set = SubResource("TileSet_qj3mf")
 
 [node name="Emocion_Desagrado" parent="Emociones" instance=ExtResource("3_g7qru")]
 position = Vector2(1664, 800)
-textura = ExtResource("4_v5g01")
+textura = SubResource("AtlasTexture_2slqd")
 tipo_emocion = "desagrado"
 color = Color(0.3647059, 0.8862745, 0.21568628, 1)
 
 [node name="Emocion_Enojo" parent="Emociones" instance=ExtResource("3_g7qru")]
 position = Vector2(64, 64)
 collision_layer = 0
-textura = ExtResource("5_7ttne")
+textura = SubResource("AtlasTexture_gri5v")
 tipo_emocion = "enojo"
 color = Color(1, 0, 0, 1)
 
 [node name="Emocion_Felicidad" parent="Emociones" instance=ExtResource("3_g7qru")]
 position = Vector2(1536, 64)
-textura = ExtResource("6_2n0y8")
+textura = SubResource("AtlasTexture_ytprr")
 tipo_emocion = "alegria"
 color = Color(1, 1, 0.09803922, 1)
 
 [node name="Emocion_Miedo" parent="Emociones" instance=ExtResource("3_g7qru")]
 position = Vector2(272, 800)
-textura = ExtResource("7_2slqd")
+textura = SubResource("AtlasTexture_fw1s6")
 tipo_emocion = "miedo"
 color = Color(1, 0.14901961, 1, 1)
 
 [node name="Emocion_Tristeza" parent="Emociones" instance=ExtResource("3_g7qru")]
 position = Vector2(960, 960)
-textura = ExtResource("8_gri5v")
+textura = SubResource("AtlasTexture_svdmk")
 tipo_emocion = "tristeza"
 color = Color(0.043137256, 0.11764706, 1, 1)
 

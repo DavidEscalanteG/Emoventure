@@ -57,6 +57,6 @@ texture = SubResource("AtlasTexture_1odwn")
 layout_mode = 2
 texture = SubResource("AtlasTexture_yrs2c")
 
-[node name="AnsiedadIcon" type="TextureRect" parent="Control/HBoxContainer"]
+[node name="MiedoIcon" type="TextureRect" parent="Control/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_1an2v")
