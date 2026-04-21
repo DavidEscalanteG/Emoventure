@@ -28,7 +28,7 @@ static func aplicar_a_boton(boton: BaseButton) -> void:
 	var control: Control = boton as Control
 	if control == null:
 		return
-	if bool(control.get_meta(META_CLAVE_APLICADO, false)):
+	if control.has_meta(META_CLAVE_APLICADO) and bool(control.get_meta(META_CLAVE_APLICADO)):
 		return
 
 	control.set_meta(META_CLAVE_APLICADO, true)
@@ -66,7 +66,7 @@ static func _on_boton_hover_in(boton: Control) -> void:
 		return
 	_detener_tween(boton)
 
-	var escala_base: Vector2 = boton.get_meta(META_CLAVE_ESCALA_BASE, boton.scale)
+	var escala_base: Vector2 = _obtener_escala_base(boton)
 	var tween: Tween = boton.create_tween()
 	tween.set_loops()
 	tween.set_trans(Tween.TRANS_SINE)
@@ -81,7 +81,7 @@ static func _on_boton_hover_out(boton: Control) -> void:
 		return
 	_detener_tween(boton)
 
-	var escala_base: Vector2 = boton.get_meta(META_CLAVE_ESCALA_BASE, boton.scale)
+	var escala_base: Vector2 = _obtener_escala_base(boton)
 	var tween: Tween = boton.create_tween()
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_OUT)
@@ -93,8 +93,8 @@ static func _on_boton_button_down(boton: Control) -> void:
 	boton.set_meta(META_CLAVE_PRESIONADO, true)
 	_detener_tween(boton)
 
-	var escala_base: Vector2 = boton.get_meta(META_CLAVE_ESCALA_BASE, boton.scale)
-	var modulate_base: Color = boton.get_meta(META_CLAVE_MODULATE_BASE, boton.modulate)
+	var escala_base: Vector2 = _obtener_escala_base(boton)
+	var modulate_base: Color = _obtener_modulate_base(boton)
 	var modulate_presionado := Color(
 		modulate_base.r * OSCURECIMIENTO_PRESION_BOTON,
 		modulate_base.g * OSCURECIMIENTO_PRESION_BOTON,
@@ -114,8 +114,8 @@ static func _on_boton_button_up(boton: Control) -> void:
 	boton.set_meta(META_CLAVE_PRESIONADO, false)
 	_detener_tween(boton)
 
-	var escala_base: Vector2 = boton.get_meta(META_CLAVE_ESCALA_BASE, boton.scale)
-	var modulate_base: Color = boton.get_meta(META_CLAVE_MODULATE_BASE, boton.modulate)
+	var escala_base: Vector2 = _obtener_escala_base(boton)
+	var modulate_base: Color = _obtener_modulate_base(boton)
 	var tween: Tween = boton.create_tween()
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_OUT)
@@ -128,10 +128,28 @@ static func _on_boton_button_up(boton: Control) -> void:
 
 
 static func _esta_presionado(boton: Control) -> bool:
-	return bool(boton.get_meta(META_CLAVE_PRESIONADO, false))
+	if not boton.has_meta(META_CLAVE_PRESIONADO):
+		return false
+	return bool(boton.get_meta(META_CLAVE_PRESIONADO))
 
+
+static func _obtener_escala_base(boton: Control) -> Vector2:
+	if boton.has_meta(META_CLAVE_ESCALA_BASE):
+		return boton.get_meta(META_CLAVE_ESCALA_BASE) as Vector2
+	return boton.scale
+
+
+static func _obtener_modulate_base(boton: Control) -> Color:
+	if boton.has_meta(META_CLAVE_MODULATE_BASE):
+		return boton.get_meta(META_CLAVE_MODULATE_BASE) as Color
+	return boton.modulate
 
 static func _detener_tween(boton: Control) -> void:
-	var tween: Tween = boton.get_meta(META_CLAVE_TWEEN, null)
-	if tween != null and tween.is_running():
-		tween.kill()
+	if not boton.has_meta(META_CLAVE_TWEEN):
+		return
+
+	var tween_variant: Variant = boton.get_meta(META_CLAVE_TWEEN)
+	if tween_variant is Tween:
+		var tween: Tween = tween_variant as Tween
+		if tween != null and tween.is_running():
+			tween.kill()

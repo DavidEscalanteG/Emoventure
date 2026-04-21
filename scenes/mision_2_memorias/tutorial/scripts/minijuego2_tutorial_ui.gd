@@ -1,9 +1,6 @@
 extends CanvasLayer
 class_name Minijuego2TutorialUI
 
-const InteractiveButtonFX := preload("res://src/ui/effects/interactive_button_fx.gd")
-
-
 signal previous_pressed
 signal next_pressed
 signal start_pressed

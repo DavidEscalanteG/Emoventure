@@ -1,9 +1,6 @@
 extends Control
 class_name EscenaCuestionario
 
-const InteractiveButtonFX := preload("res://src/ui/effects/interactive_button_fx.gd")
-
-
 # ==================================================
 # REFERENCIAS
 # ==================================================

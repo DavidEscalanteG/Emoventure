@@ -1,8 +1,5 @@
 extends Control
 
-const InteractiveButtonFX := preload("res://src/ui/effects/interactive_button_fx.gd")
-
-
 @onready var slider_master: HSlider = %SliderMaster
 @onready var slider_musica: HSlider = %SliderMusica
 @onready var slider_sfx: HSlider = %SliderSFX

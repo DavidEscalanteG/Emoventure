@@ -1,8 +1,5 @@
 extends Control
 
-const InteractiveButtonFX := preload("res://src/ui/effects/interactive_button_fx.gd")
-
-
 # ==================================================
 # CONFIG
 # ==================================================

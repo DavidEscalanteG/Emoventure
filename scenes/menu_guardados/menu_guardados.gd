@@ -1,8 +1,5 @@
 extends Control
 
-const InteractiveButtonFX := preload("res://src/ui/effects/interactive_button_fx.gd")
-
-
 const ESCENA_SELECCION_GENERO: String = "res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn"
 const ESCENA_MENU_PRINCIPAL: String = "res://scenes/menu_principal/menu_principal.tscn"
 const ESCENA_JUGADOR_PREVIEW: PackedScene = preload("res://jugador/jugador.tscn")

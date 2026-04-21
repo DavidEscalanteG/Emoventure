@@ -1,8 +1,5 @@
 extends Control
 
-const InteractiveButtonFX := preload("res://src/ui/effects/interactive_button_fx.gd")
-
-
 const MENU_PRINCIPAL_SCENE := "res://scenes/menu_principal/menu_principal.tscn"
 
 @export var titulo_principal: String = "Créditos"
