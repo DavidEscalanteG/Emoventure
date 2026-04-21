@@ -256,10 +256,15 @@ theme_override_colors/font_color = Color(1, 0.329412, 0.329412, 1)
 autowrap_mode = 3
 
 [node name="HSVColorEditor" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 552.0
-offset_top = 318.0
-offset_right = 1204.0
-offset_bottom = 896.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -623.0
+offset_top = 54.0
+offset_right = -352.0
+offset_bottom = 417.0
+grow_horizontal = 0
+scale = Vector2(2, 2)
 theme_override_constants/separation = 18
 
 [node name="HSVEditorCabello" type="VBoxContainer" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
