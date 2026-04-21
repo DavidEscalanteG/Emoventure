@@ -1,5 +1,8 @@
 extends Control
 
+const InteractiveButtonFX := preload("res://src/ui/effects/interactive_button_fx.gd")
+
+
 # ==================================================
 # CONFIG
 # ==================================================
@@ -20,6 +23,7 @@ extends Control
  # CICLO DE VIDA
  # ==================================================
 func _ready() -> void:
+	InteractiveButtonFX.aplicar_a_botones_en(self)
 	hide()
 	boton.visible = false
 	boton.disabled = true

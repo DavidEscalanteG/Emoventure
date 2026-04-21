@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://co64vr8dggawo"]
+[gd_scene load_steps=14 format=3 uid="uid://co64vr8dggawo"]
 
 [ext_resource type="Texture2D" uid="uid://cvrhj3gc8u4g2" path="res://assets/assets_menu_principal/fondo/fondo_menu.png" id="1_hkuy5"]
 [ext_resource type="Texture2D" uid="uid://dtvbvblxrod3d" path="res://assets/botones/boton_play.png" id="2_eqv07"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cyrtus6bnppfb" path="res://scenes/menu_principal/configuracion.gd" id="9_otvbs"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="11_cceyl"]
 [ext_resource type="Script" uid="uid://bsxy04raie6y0" path="res://scenes/menu_principal/creditos.gd" id="12_2v5fx"]
+[ext_resource type="Script" path="res://scenes/menu_principal/menu_principal.gd" id="13_menu_root"]
 
 [sub_resource type="Animation" id="Animation_byxo4"]
 resource_name = "Desvanecido_Fuera"
@@ -48,6 +49,7 @@ _data = {
 
 [node name="MenuPrincipal" type="Control"]
 layout_mode = 3
+script = ExtResource("13_menu_root")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

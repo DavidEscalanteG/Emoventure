@@ -1,6 +1,9 @@
 extends CanvasLayer
 class_name Minijuego2TutorialUI
 
+const InteractiveButtonFX := preload("res://src/ui/effects/interactive_button_fx.gd")
+
+
 signal previous_pressed
 signal next_pressed
 signal start_pressed
@@ -15,6 +18,7 @@ signal skip_pressed
 @onready var skip_button: Button = $Overlay/TopBar/SkipButton
 
 func _ready() -> void:
+	InteractiveButtonFX.aplicar_a_botones_en(self)
 	previous_button.pressed.connect(func() -> void: previous_pressed.emit())
 	next_button.pressed.connect(func() -> void: next_pressed.emit())
 	start_button.pressed.connect(func() -> void: start_pressed.emit())

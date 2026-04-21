@@ -1,5 +1,8 @@
 extends Control
 
+const InteractiveButtonFX := preload("res://src/ui/effects/interactive_button_fx.gd")
+
+
 const ESCENA_SELECCION_GENERO: String = "res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn"
 const ESCENA_MENU_PRINCIPAL: String = "res://scenes/menu_principal/menu_principal.tscn"
 const ESCENA_JUGADOR_PREVIEW: PackedScene = preload("res://jugador/jugador.tscn")
@@ -26,6 +29,7 @@ func _refrescar_lista() -> void:
 		var fila: Control = _crear_fila_partida(index + 1, slot)
 		contenedor_partidas.add_child(fila)
 	boton_nueva_partida.visible = true
+	InteractiveButtonFX.aplicar_a_botones_en(self)
 
 
 func _crear_fila_partida(indice_visual: int, slot: Dictionary) -> Control:

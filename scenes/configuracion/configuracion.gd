@@ -1,5 +1,8 @@
 extends Control
 
+const InteractiveButtonFX := preload("res://src/ui/effects/interactive_button_fx.gd")
+
+
 @onready var slider_master: HSlider = %SliderMaster
 @onready var slider_musica: HSlider = %SliderMusica
 @onready var slider_sfx: HSlider = %SliderSFX
@@ -10,6 +13,7 @@ const SFX_PREVIEW := "res://audios/sfx/ui_click.mp3"
 
 
 func _ready() -> void:
+	InteractiveButtonFX.aplicar_a_botones_en(self)
 	slider_master.value = AudioManager.get_volumen(AudioManager.BUS_MASTER)
 	slider_musica.value = AudioManager.get_volumen(AudioManager.BUS_MUSICA)
 	slider_sfx.value = AudioManager.get_volumen(AudioManager.BUS_SFX)
