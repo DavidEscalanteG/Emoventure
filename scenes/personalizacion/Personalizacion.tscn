@@ -255,52 +255,36 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.329412, 0.329412, 1)
 autowrap_mode = 3
 
-[node name="HSVColorEditor" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HSVColorEditor" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 552.0
+offset_top = 318.0
+offset_right = 1204.0
+offset_bottom = 896.0
+theme_override_constants/separation = 18
 
-[node name="HSVEditorCabello" type="Control" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
-anchors_preset = 0
-offset_left = 700.0
-offset_right = 740.0
-offset_bottom = 40.0
+[node name="HSVEditorCabello" type="VBoxContainer" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
+layout_mode = 2
+size_flags_horizontal = 4
 script = ExtResource("2_rysy1")
 clave_color_global = "color_cabello"
 apariencia = NodePath("../../../Jugador/PlayerAppearance")
 
 [node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 64.0
-offset_right = 678.0
-offset_bottom = 80.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 112.0
-offset_right = 678.0
-offset_bottom = 128.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 160.0
-offset_right = 678.0
-offset_bottom = 176.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
 min_value = 0.125
@@ -309,58 +293,36 @@ step = 0.01
 value = 0.125
 
 [node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
-layout_mode = 0
-offset_left = 900.0
-offset_top = 64.0
-offset_right = 1204.0
-offset_bottom = 192.0
+layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Color de cabello"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSVEditorGorro" type="Control" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
+[node name="HSVEditorGorro" type="VBoxContainer" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
 visible = false
-anchors_preset = 0
-offset_left = 700.0
-offset_top = 200.0
-offset_right = 740.0
-offset_bottom = 240.0
+layout_mode = 2
+size_flags_horizontal = 4
 script = ExtResource("2_rysy1")
 clave_color_global = "color_cabeza"
 apariencia = NodePath("../../../Jugador/PlayerAppearance")
 
 [node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 64.0
-offset_right = 678.0
-offset_bottom = 80.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 112.0
-offset_right = 678.0
-offset_bottom = 128.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 160.0
-offset_right = 678.0
-offset_bottom = 176.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
 min_value = 0.125
@@ -369,57 +331,35 @@ step = 0.01
 value = 0.125
 
 [node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
-layout_mode = 0
-offset_left = 900.0
-offset_top = 64.0
-offset_right = 1204.0
-offset_bottom = 192.0
+layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Color de gorro"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSVEditorRopa" type="Control" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
-anchors_preset = 0
-offset_left = 700.0
-offset_top = 400.0
-offset_right = 740.0
-offset_bottom = 440.0
+[node name="HSVEditorRopa" type="VBoxContainer" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
+layout_mode = 2
+size_flags_horizontal = 4
 script = ExtResource("2_rysy1")
 clave_color_global = "color_boca"
 apariencia = NodePath("../../../Jugador/PlayerAppearance")
 
 [node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 64.0
-offset_right = 678.0
-offset_bottom = 80.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 112.0
-offset_right = 678.0
-offset_bottom = 128.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 160.0
-offset_right = 678.0
-offset_bottom = 176.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
 min_value = 0.125
@@ -428,57 +368,35 @@ step = 0.01
 value = 0.125
 
 [node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
-layout_mode = 0
-offset_left = 900.0
-offset_top = 64.0
-offset_right = 1204.0
-offset_bottom = 192.0
+layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Color de ropa"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSVEditorPiel" type="Control" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
-anchors_preset = 0
-offset_left = 700.0
-offset_top = 600.0
-offset_right = 740.0
-offset_bottom = 640.0
+[node name="HSVEditorPiel" type="VBoxContainer" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
+layout_mode = 2
+size_flags_horizontal = 4
 script = ExtResource("2_rysy1")
 clave_color_global = "color_cuerpo"
 apariencia = NodePath("../../../Jugador/PlayerAppearance")
 
 [node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 64.0
-offset_right = 678.0
-offset_bottom = 80.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 112.0
-offset_right = 678.0
-offset_bottom = 128.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 160.0
-offset_right = 678.0
-offset_bottom = 176.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
 min_value = 0.125
@@ -487,11 +405,7 @@ step = 0.01
 value = 0.125
 
 [node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
-layout_mode = 0
-offset_left = 900.0
-offset_top = 64.0
-offset_right = 1204.0
-offset_bottom = 192.0
+layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Color de piel"
 horizontal_alignment = 1
