@@ -102,11 +102,6 @@ theme_override_font_sizes/font_size = 20
 text = "✓"
 horizontal_alignment = 1
 
-[node name="HoverPulse" type="Node" parent="MapaContainer/Minijuego1"]
-script = ExtResource("2_likm8")
-objetivo_path = NodePath("..")
-etiqueta_hover_path = NodePath("../Nombre")
-
 [node name="Minijuego2" type="TextureButton" parent="MapaContainer"]
 layout_mode = 0
 offset_left = 300.0
@@ -136,11 +131,6 @@ offset_bottom = 102.0
 theme_override_font_sizes/font_size = 20
 text = "✓"
 horizontal_alignment = 1
-
-[node name="HoverPulse" type="Node" parent="MapaContainer/Minijuego2"]
-script = ExtResource("2_likm8")
-objetivo_path = NodePath("..")
-etiqueta_hover_path = NodePath("../Nombre")
 
 [node name="Minijuego3" type="TextureButton" parent="MapaContainer"]
 layout_mode = 0
@@ -172,11 +162,6 @@ theme_override_font_sizes/font_size = 20
 text = "✓"
 horizontal_alignment = 1
 
-[node name="HoverPulse" type="Node" parent="MapaContainer/Minijuego3"]
-script = ExtResource("2_likm8")
-objetivo_path = NodePath("..")
-etiqueta_hover_path = NodePath("../Nombre")
-
 [node name="Minijuego4" type="TextureButton" parent="MapaContainer"]
 layout_mode = 0
 offset_left = 1400.0
@@ -206,11 +191,6 @@ offset_bottom = 102.0
 theme_override_font_sizes/font_size = 20
 text = "✓"
 horizontal_alignment = 1
-
-[node name="HoverPulse" type="Node" parent="MapaContainer/Minijuego4"]
-script = ExtResource("2_likm8")
-objetivo_path = NodePath("..")
-etiqueta_hover_path = NodePath("../Nombre")
 
 [node name="CarpaResultados" type="TextureButton" parent="MapaContainer"]
 unique_name_in_owner = true
@@ -244,10 +224,10 @@ theme_override_font_sizes/font_size = 26
 text = "🏆"
 horizontal_alignment = 1
 
-[node name="HoverPulse" type="Node" parent="MapaContainer/CarpaResultados"]
+[node name="HoverPulseBotones" type="Node" parent="MapaContainer"]
 script = ExtResource("2_likm8")
-objetivo_path = NodePath("..")
-etiqueta_hover_path = NodePath("../Nombre")
+aplicar_a_todos_los_botones = true
+contenedor_path = NodePath(".")
 
 [node name="OverlayUI" type="CanvasLayer" parent="."]
 
