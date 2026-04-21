@@ -800,6 +800,13 @@ curve = SubResource("Curve2D_qcsgx")
 [node name="Path2D40" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_onlh3")
 
+[node name="PathFollow2D" type="PathFollow2D" parent="Caminos/Path2D40"]
+position = Vector2(1600, 160)
+rotation = 1.5707964
+loop = false
+
+[node name="Enemigo" parent="Caminos/Path2D40/PathFollow2D" instance=ExtResource("10_lxppe")]
+
 [node name="Path2D41" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_ijjyg")
 
@@ -829,14 +836,6 @@ curve = SubResource("Curve2D_038jg")
 
 [node name="Path2D50" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_ecb2b")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Caminos/Path2D50"]
-position = Vector2(1600, 288)
-rotation = 1.5707964
-loop = false
-
-[node name="Enemigo" parent="Caminos/Path2D50/PathFollow2D" instance=ExtResource("10_lxppe")]
-rotation = -1.5707964
 
 [node name="Path2D51" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_4hi52")

@@ -102,6 +102,7 @@ layout_mode = 2
 text = ">"
 
 [node name="BoxContainer2" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -156,6 +157,7 @@ layout_mode = 2
 text = ">"
 
 [node name="BoxContainer5" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -318,6 +320,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSVEditorGorro" type="Control" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
+visible = false
 anchors_preset = 0
 offset_left = 700.0
 offset_top = 200.0
