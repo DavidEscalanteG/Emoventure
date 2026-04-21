@@ -9,8 +9,8 @@ var genero: String = "hombre"
 var nombre_jugador: String = ""
 var nombre_mascota: String = ""
 
-const NOMBRE_JUGADOR_PREDETERMINADO := "Aventurero"
-const NOMBRE_MASCOTA_PREDETERMINADO := "Chispa"
+const NOMBRE_JUGADOR_PREDETERMINADO := ""
+const NOMBRE_MASCOTA_PREDETERMINADO := ""
 const NOMBRES_PROHIBIDOS: Array[String] = [
 	"admin",
 	"administrador",
