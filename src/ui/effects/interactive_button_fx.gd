@@ -1,9 +1,9 @@
 extends RefCounted
 class_name InteractiveButtonFX
 
-const ESCALA_PULSO_HOVER: float = 1.06
+const ESCALA_PULSO_HOVER: float = 1.13
 const ESCALA_PRESION_BOTON: float = 0.94
-const DURACION_PULSO_HOVER: float = 0.18
+const DURACION_PULSO_HOVER: float = 0.89
 const OSCURECIMIENTO_PRESION_BOTON: float = 0.82
 
 const META_CLAVE_APLICADO: StringName = &"ibfx_aplicado"
