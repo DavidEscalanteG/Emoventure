@@ -20,6 +20,15 @@ var indice_cuerpo: int = 0
 var indice_nariz: int = 0
 var indice_cabeza: int = 0
 
+const ESCALA_PULSO_HOVER: float = 1.13
+const DURACION_PULSO_HOVER: float = 0.89
+const ESCALA_PRESION_BOTON: float = 0.94
+const OSCURECIMIENTO_PRESION_BOTON: float = 0.82
+
+var _escala_base_botones: Dictionary = {}
+var _tweens_hover_botones: Dictionary = {}
+var _modulate_base_botones: Dictionary = {}
+var _botones_presionados: Dictionary = {}
 
 # --------------------------------------------------
 # CICLO DE VIDA
@@ -30,6 +39,7 @@ func _ready() -> void:
 	_validar_cabello_por_genero()
 	refrescar_preview()
 	_inicializar_nombre_jugador()
+	configurar_hover_botones()
 	
 	mascota.aplicar_mascota_desde_global()
 
@@ -229,3 +239,119 @@ func _inicializar_nombre_jugador() -> void:
 
 	input_nombre_jugador.text = DatosJugador.nombre_jugador
 	label_error_nombre_jugador.text = ""
+
+
+func configurar_hover_botones() -> void:
+	for boton in find_children("*", "BaseButton", true, false):
+		var boton_base := boton as BaseButton
+		var control := boton_base as Control
+		if boton_base == null or control == null:
+			continue
+
+		_escala_base_botones[control] = control.scale
+		_modulate_base_botones[control] = control.modulate
+		control.pivot_offset = control.size / 2.0
+		control.resized.connect(func() -> void:
+			if is_instance_valid(control):
+				control.pivot_offset = control.size / 2.0
+		)
+		control.mouse_entered.connect(func() -> void:
+			_on_boton_mouse_entered(control)
+		)
+		control.mouse_exited.connect(func() -> void:
+			_on_boton_mouse_exited(control)
+		)
+		boton_base.button_down.connect(func() -> void:
+			_on_boton_button_down(control)
+		)
+		boton_base.button_up.connect(func() -> void:
+			_on_boton_button_up(control)
+		)
+
+
+func _on_boton_mouse_entered(boton: Control) -> void:
+	if _esta_boton_presionado(boton):
+		return
+	_iniciar_pulso_boton(boton)
+
+
+func _on_boton_mouse_exited(boton: Control) -> void:
+	if _esta_boton_presionado(boton):
+		return
+	_detener_pulso_boton(boton)
+
+
+func _iniciar_pulso_boton(boton: Control) -> void:
+	if _esta_boton_presionado(boton):
+		return
+	_detener_tween_boton(boton)
+
+	var escala_base: Vector2 = _escala_base_botones.get(boton, boton.scale)
+	var tween: Tween = create_tween()
+	tween.set_loops()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(boton, "scale", escala_base * ESCALA_PULSO_HOVER, DURACION_PULSO_HOVER)
+	tween.tween_property(boton, "scale", escala_base, DURACION_PULSO_HOVER)
+	_tweens_hover_botones[boton] = tween
+
+
+func _detener_pulso_boton(boton: Control) -> void:
+	if _esta_boton_presionado(boton):
+		return
+	_detener_tween_boton(boton)
+
+	var escala_base: Vector2 = _escala_base_botones.get(boton, Vector2.ONE)
+	var tween: Tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(boton, "scale", escala_base, DURACION_PULSO_HOVER)
+	_tweens_hover_botones[boton] = tween
+
+
+func _detener_tween_boton(boton: Control) -> void:
+	var tween: Tween = _tweens_hover_botones.get(boton)
+	if tween != null and tween.is_running():
+		tween.kill()
+
+
+func _on_boton_button_down(boton: Control) -> void:
+	_botones_presionados[boton] = true
+	_detener_tween_boton(boton)
+
+	var escala_base: Vector2 = _escala_base_botones.get(boton, Vector2.ONE)
+	var modulate_base: Color = _modulate_base_botones.get(boton, Color.WHITE)
+	var modulate_presionado := Color(
+		modulate_base.r * OSCURECIMIENTO_PRESION_BOTON,
+		modulate_base.g * OSCURECIMIENTO_PRESION_BOTON,
+		modulate_base.b * OSCURECIMIENTO_PRESION_BOTON,
+		modulate_base.a
+	)
+
+	var tween: Tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(boton, "scale", escala_base * ESCALA_PRESION_BOTON, DURACION_PULSO_HOVER * 0.45)
+	tween.parallel().tween_property(boton, "modulate", modulate_presionado, DURACION_PULSO_HOVER * 0.45)
+	_tweens_hover_botones[boton] = tween
+
+
+func _on_boton_button_up(boton: Control) -> void:
+	_botones_presionados[boton] = false
+	_detener_tween_boton(boton)
+
+	var escala_base: Vector2 = _escala_base_botones.get(boton, Vector2.ONE)
+	var modulate_base: Color = _modulate_base_botones.get(boton, Color.WHITE)
+	var tween: Tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(boton, "scale", escala_base, DURACION_PULSO_HOVER * 0.5)
+	tween.parallel().tween_property(boton, "modulate", modulate_base, DURACION_PULSO_HOVER * 0.5)
+	_tweens_hover_botones[boton] = tween
+
+	if boton.get_global_rect().has_point(boton.get_global_mouse_position()):
+		_iniciar_pulso_boton(boton)
+
+
+func _esta_boton_presionado(boton: Control) -> bool:
+	return _botones_presionados.get(boton, false)
