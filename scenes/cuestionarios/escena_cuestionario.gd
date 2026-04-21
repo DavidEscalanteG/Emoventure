@@ -46,6 +46,7 @@ const FUENTE_PREGUNTA_LARGA := 58
 # CICLO DE VIDA
 # ==================================================
 func _ready() -> void:
+	InteractiveButtonFX.aplicar_a_botones_en(self)
 	if not boton_narrativa_post.pressed.is_connected(_on_boton_narrativa_post_pressed):
 		boton_narrativa_post.pressed.connect(_on_boton_narrativa_post_pressed)
 		

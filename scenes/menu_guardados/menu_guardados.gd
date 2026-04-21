@@ -26,6 +26,7 @@ func _refrescar_lista() -> void:
 		var fila: Control = _crear_fila_partida(index + 1, slot)
 		contenedor_partidas.add_child(fila)
 	boton_nueva_partida.visible = true
+	InteractiveButtonFX.aplicar_a_botones_en(self)
 
 
 func _crear_fila_partida(indice_visual: int, slot: Dictionary) -> Control:
