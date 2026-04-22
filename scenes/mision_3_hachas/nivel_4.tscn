@@ -1,0 +1,148 @@
+[gd_scene load_steps=13 format=3 uid="uid://s05hyewvb4wl"]
+
+[ext_resource type="Script" uid="uid://b8567yb0avepb" path="res://scenes/mision_3_hachas/jugador.gd" id="1_spetb"]
+[ext_resource type="Texture2D" uid="uid://bjruhfm0tmric" path="res://icon.svg" id="2_4taxq"]
+[ext_resource type="Script" uid="uid://jbnohsvm0qx2" path="res://scenes/mision_3_hachas/meta.gd" id="3_nt3fa"]
+[ext_resource type="Script" uid="uid://cdp45smvtf2e8" path="res://scenes/mision_3_hachas/trampa.gd" id="4_yb21g"]
+[ext_resource type="Texture2D" uid="uid://bjy1778uwb80f" path="res://assets/assets_escena_payaso/martillo.png" id="5_ucs3p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tn4fu"]
+size = Vector2(109, 109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnrgv"]
+size = Vector2(360, 20)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u4mhi"]
+height = 174.0
+
+[sub_resource type="TileSet" id="TileSet_tn4fu"]
+physics_layer_0/collision_layer = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jiijv"]
+radius = 37.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spetb"]
+size = Vector2(1389.5, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4taxq"]
+radius = 163.01227
+
+[node name="Nivel 1" type="Node2D"]
+
+[node name="Jugador" type="CharacterBody2D" parent="."]
+script = ExtResource("1_spetb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Jugador"]
+position = Vector2(-881, 3)
+texture = ExtResource("2_4taxq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador"]
+position = Vector2(-880, 2)
+shape = SubResource("RectangleShape2D_tn4fu")
+
+[node name="Suelo" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo"]
+position = Vector2(-775, 77)
+shape = SubResource("RectangleShape2D_vnrgv")
+
+[node name="ColorRect" type="ColorRect" parent="Suelo"]
+offset_left = -997.0
+offset_top = 67.0
+offset_right = -596.0
+offset_bottom = 620.0
+color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Suelo/ColorRect"]
+layout_mode = 0
+offset_left = -997.0
+offset_top = 67.0
+offset_right = -596.0
+offset_bottom = 620.0
+color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Suelo/ColorRect"]
+layout_mode = 0
+offset_left = -997.0
+offset_top = 67.0
+offset_right = -596.0
+offset_bottom = 620.0
+color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Suelo/ColorRect/ColorRect2"]
+layout_mode = 0
+offset_left = -997.0
+offset_top = 67.0
+offset_right = -596.0
+offset_bottom = 620.0
+color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Meta" type="Area2D" parent="."]
+position = Vector2(940, -20)
+script = ExtResource("3_nt3fa")
+siguiente_escena = "uid://cmv2ec5b2irrc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Meta"]
+position = Vector2(-2, -16)
+shape = SubResource("CapsuleShape2D_u4mhi")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_tn4fu")
+
+[node name="Techo" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Techo"]
+position = Vector2(1, -261)
+shape = SubResource("RectangleShape2D_vnrgv")
+
+[node name="ColorRect" type="ColorRect" parent="Techo"]
+offset_left = -982.0
+offset_top = -806.0
+offset_right = 974.0
+offset_bottom = -253.0
+color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+
+[node name="Trampa" type="Area2D" parent="."]
+script = ExtResource("4_yb21g")
+
+[node name="Sprite2D" type="Sprite2D" parent="Trampa"]
+position = Vector2(-67, 41)
+rotation = 0.72431165
+scale = Vector2(1.725, 1.875)
+texture = ExtResource("5_ucs3p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trampa"]
+position = Vector2(-70, 55)
+shape = SubResource("CircleShape2D_jiijv")
+
+[node name="Suelo 2" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Suelo 2"]
+offset_left = -404.0
+offset_top = 73.0
+offset_right = 1104.0
+offset_bottom = 626.0
+color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo 2"]
+position = Vector2(302.25, 80)
+shape = SubResource("RectangleShape2D_spetb")
+
+[node name="Trampa2" type="Area2D" parent="."]
+script = ExtResource("4_yb21g")
+
+[node name="Sprite2D" type="Sprite2D" parent="Trampa2"]
+position = Vector2(-555, 589)
+rotation = 0.72431165
+scale = Vector2(1.725, 1.875)
+texture = ExtResource("5_ucs3p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trampa2"]
+position = Vector2(-499, 660)
+shape = SubResource("CircleShape2D_4taxq")
+
+[connection signal="body_entered" from="Meta" to="Meta" method="_on_body_entered"]
+[connection signal="body_entered" from="Trampa" to="Trampa" method="_on_body_entered"]
+[connection signal="body_entered" from="Trampa2" to="Trampa2" method="_on_body_entered"]

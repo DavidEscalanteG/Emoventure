@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bycbtwmgvm6sw"]
+
+[ext_resource type="Script" uid="uid://b8567yb0avepb" path="res://scenes/mision_3_hachas/jugador.gd" id="1_bngu6"]
+[ext_resource type="Texture2D" uid="uid://bjruhfm0tmric" path="res://icon.svg" id="2_l8whq"]
+[ext_resource type="Script" uid="uid://jbnohsvm0qx2" path="res://scenes/mision_3_hachas/meta.gd" id="3_siecw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tn4fu"]
+size = Vector2(109, 109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyjp0"]
+size = Vector2(1104, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7ncn"]
+
+[sub_resource type="TileSet" id="TileSet_tn4fu"]
+physics_layer_0/collision_layer = 1
+
+[node name="Nivel 1" type="Node2D"]
+
+[node name="Jugador" type="CharacterBody2D" parent="."]
+script = ExtResource("1_bngu6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Jugador"]
+texture = ExtResource("2_l8whq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jugador"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_tn4fu")
+
+[node name="Suelo" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo"]
+position = Vector2(-10, 352)
+shape = SubResource("RectangleShape2D_uyjp0")
+
+[node name="ColorRect" type="ColorRect" parent="Suelo"]
+offset_left = -564.0
+offset_top = 323.0
+offset_right = 546.0
+offset_bottom = 363.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Meta" type="Area2D" parent="."]
+position = Vector2(905, 55)
+script = ExtResource("3_siecw")
+siguiente_escena = "uid://bvd0qxnnopl10"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Meta"]
+position = Vector2(-1388, 190)
+shape = SubResource("CircleShape2D_k7ncn")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_tn4fu")
+
+[connection signal="body_entered" from="Meta" to="Meta" method="_on_body_entered"]
