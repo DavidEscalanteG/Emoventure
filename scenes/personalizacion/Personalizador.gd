@@ -34,6 +34,7 @@ var _tweens_hover_botones: Dictionary = {}
 var _modulate_base_botones: Dictionary = {}
 var _botones_presionados: Dictionary = {}
 var _tween_sacudida_panel_nombre: Tween = null
+var _posicion_base_panel_nombre: Vector2 = Vector2.ZERO
 
 # --------------------------------------------------
 # CICLO DE VIDA
@@ -44,6 +45,7 @@ func _ready() -> void:
 	_validar_cabello_por_genero()
 	refrescar_preview()
 	_inicializar_nombre_jugador()
+	_inicializar_posicion_panel_nombre()
 	configurar_hover_botones()
 	
 	mascota.aplicar_mascota_desde_global()
@@ -370,7 +372,8 @@ func _sacudir_panel_nombre_jugador() -> void:
 	if _tween_sacudida_panel_nombre != null and _tween_sacudida_panel_nombre.is_running():
 		_tween_sacudida_panel_nombre.kill()
 
-	var posicion_base: Vector2 = panel_nombre_jugador.position
+	panel_nombre_jugador.position = _posicion_base_panel_nombre
+	
 	_tween_sacudida_panel_nombre = create_tween()
 	_tween_sacudida_panel_nombre.set_trans(Tween.TRANS_SINE)
 	_tween_sacudida_panel_nombre.set_ease(Tween.EASE_IN_OUT)
@@ -381,13 +384,24 @@ func _sacudir_panel_nombre_jugador() -> void:
 		_tween_sacudida_panel_nombre.tween_property(
 			panel_nombre_jugador,
 			"position",
-			posicion_base + desplazamiento,
+			_posicion_base_panel_nombre + desplazamiento,
 			DURACION_SACUDIDA_PANEL_NOMBRE
 		)
 
 	_tween_sacudida_panel_nombre.tween_property(
 		panel_nombre_jugador,
 		"position",
-		posicion_base,
+		_posicion_base_panel_nombre,
 		DURACION_SACUDIDA_PANEL_NOMBRE
 	)
+	
+	_tween_sacudida_panel_nombre.finished.connect(func() -> void:
+		if is_instance_valid(panel_nombre_jugador):
+			panel_nombre_jugador.position = _posicion_base_panel_nombre
+	)
+
+
+func _inicializar_posicion_panel_nombre() -> void:
+	if panel_nombre_jugador == null:
+		return
+	_posicion_base_panel_nombre = panel_nombre_jugador.position
