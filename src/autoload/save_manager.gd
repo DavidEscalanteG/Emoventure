@@ -4,6 +4,7 @@ const SAVE_FILE_PATH: String = "user://partidas_guardadas.json"
 const ESCENA_SELECCION_GENERO: String = "res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn"
 const ESCENA_FALLBACK: String = ESCENA_SELECCION_GENERO
 const ESCENA_CUESTIONARIO: String = "res://scenes/cuestionarios/EscenaCuestionario.tscn"
+const PREFIJO_ESCENA_REJUGABILIDAD: String = "res://scenes/rejugabilidad/"
 const ESCENAS_EXCLUIDAS_GUARDADO: Array[String] = [
 	"res://scenes/menu_principal/menu_principal.tscn",
 	"res://scenes/menu_guardados/menu_guardados.tscn",
@@ -138,6 +139,9 @@ func _actualizar_datos_slot(slot_id: String, escena_actual: String) -> void:
 		partida["puntaje_total"] = GameManager.obtener_puntaje_total()
 		partida["puntajes_emocionales"] = GameManager.obtener_puntajes_por_dimension()
 		partida["escena_actual"] = escena_actual
+		var progreso_bloqueado_100: bool = bool(partida.get("progreso_historia_bloqueado_100", false))
+		if progreso_bloqueado_100 or escena_actual.begins_with(PREFIJO_ESCENA_REJUGABILIDAD):
+			partida["progreso_historia_bloqueado_100"] = true
 		var estado_cuestionario: Dictionary = _construir_estado_cuestionario(escena_actual)
 		if estado_cuestionario.is_empty():
 			partida.erase("estado_cuestionario")
