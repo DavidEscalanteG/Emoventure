@@ -5,6 +5,7 @@ extends Control
 
 func _ready() -> void:
 	_configurar_previews()
+	InteractiveButtonFX.aplicar_a_botones_en(self)
 
 
 func _configurar_previews() -> void:

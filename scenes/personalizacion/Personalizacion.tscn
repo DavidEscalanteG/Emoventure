@@ -90,7 +90,6 @@ offset_left = 1400.0
 offset_top = 60.0
 offset_right = 1514.0
 offset_bottom = 320.0
-scale = Vector2(3.7199998, 3.7199998)
 theme_override_styles/panel = SubResource("StyleBoxFlat_x4m3r")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
@@ -102,14 +101,17 @@ size_flags_horizontal = 4
 
 [node name="BtnCabelloAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 70
 text = "<"
 
 [node name="Cabello" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 70
 text = "Cabello"
 
 [node name="BtnCabelloSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 70
 text = ">"
 
 [node name="BoxContainer2" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
