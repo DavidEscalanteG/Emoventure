@@ -6,6 +6,7 @@ extends Node2D
 
 @onready var apariencia: Node2D = $Jugador/PlayerAppearance
 @onready var mascota: Node2D = $Mascota
+@onready var panel_nombre_jugador: Control = $CanvasLayer/PanelNombreJugador
 @onready var input_nombre_jugador: LineEdit = $CanvasLayer/PanelNombreJugador/MarginContainer/VBoxContainer/InputNombreJugador
 @onready var label_error_nombre_jugador: Label = $CanvasLayer/PanelNombreJugador/MarginContainer/VBoxContainer/ErrorNombreJugador
 
@@ -24,11 +25,15 @@ const ESCALA_PULSO_HOVER: float = 1.13
 const DURACION_PULSO_HOVER: float = 0.89
 const ESCALA_PRESION_BOTON: float = 0.94
 const OSCURECIMIENTO_PRESION_BOTON: float = 0.82
+const DURACION_SACUDIDA_PANEL_NOMBRE: float = 0.08
+const DISTANCIA_SACUDIDA_PANEL_NOMBRE: float = 16.0
+const REPETICIONES_SACUDIDA_PANEL_NOMBRE: int = 4
 
 var _escala_base_botones: Dictionary = {}
 var _tweens_hover_botones: Dictionary = {}
 var _modulate_base_botones: Dictionary = {}
 var _botones_presionados: Dictionary = {}
+var _tween_sacudida_panel_nombre: Tween = null
 
 # --------------------------------------------------
 # CICLO DE VIDA
@@ -185,6 +190,7 @@ func _on_comenzar_pressed() -> void:
 	var validacion: Dictionary = DatosJugador.validar_nombre(input_nombre_jugador.text)
 	if not validacion.ok:
 		label_error_nombre_jugador.text = validacion.mensaje
+		_sacudir_panel_nombre_jugador()
 		return
 
 	DatosJugador.nombre_jugador = validacion.nombre
@@ -355,3 +361,33 @@ func _on_boton_button_up(boton: Control) -> void:
 
 func _esta_boton_presionado(boton: Control) -> bool:
 	return _botones_presionados.get(boton, false)
+
+
+func _sacudir_panel_nombre_jugador() -> void:
+	if panel_nombre_jugador == null:
+		return
+
+	if _tween_sacudida_panel_nombre != null and _tween_sacudida_panel_nombre.is_running():
+		_tween_sacudida_panel_nombre.kill()
+
+	var posicion_base: Vector2 = panel_nombre_jugador.position
+	_tween_sacudida_panel_nombre = create_tween()
+	_tween_sacudida_panel_nombre.set_trans(Tween.TRANS_SINE)
+	_tween_sacudida_panel_nombre.set_ease(Tween.EASE_IN_OUT)
+
+	for iteracion in REPETICIONES_SACUDIDA_PANEL_NOMBRE:
+		var direccion: float = 1.0 if iteracion % 2 == 0 else -1.0
+		var desplazamiento: Vector2 = Vector2(DISTANCIA_SACUDIDA_PANEL_NOMBRE * direccion, 0.0)
+		_tween_sacudida_panel_nombre.tween_property(
+			panel_nombre_jugador,
+			"position",
+			posicion_base + desplazamiento,
+			DURACION_SACUDIDA_PANEL_NOMBRE
+		)
+
+	_tween_sacudida_panel_nombre.tween_property(
+		panel_nombre_jugador,
+		"position",
+		posicion_base,
+		DURACION_SACUDIDA_PANEL_NOMBRE
+	)
