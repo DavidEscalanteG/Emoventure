@@ -62,7 +62,7 @@ func _crear_fila_partida(indice_visual: int, slot: Dictionary) -> Control:
 	info.add_child(nombre)
 
 	var apariencia: Dictionary = slot.get("apariencia", {})
-	var progreso: int = _calcular_progreso_historia(slot.get("escena_actual", ""))
+	var progreso: int = _calcular_progreso_historia(slot)
 
 	var detalle: Label = Label.new()
 	detalle.text = "Avance en la historia: %d%%" % progreso
@@ -226,7 +226,11 @@ func _on_boton_volver_pressed() -> void:
 	get_tree().change_scene_to_file(ESCENA_MENU_PRINCIPAL)
 
 
-func _calcular_progreso_historia(escena_actual: String) -> int:
+func _calcular_progreso_historia(slot: Dictionary) -> int:
+	if bool(slot.get("progreso_historia_bloqueado_100", false)):
+		return 100
+
+	var escena_actual: String = slot.get("escena_actual", "")
 	if escena_actual.is_empty():
 		return 0
 
