@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b6e2rxp4u2e7u" path="res://scenes/transicion_post_mision_1/primera_llave.gd" id="1_tei6f"]
 [ext_resource type="Texture2D" uid="uid://bberwoc2of0kp" path="res://pruebas/assets_temporales/llave_temporal.jpg" id="2_xt1j8"]
-[ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="3_lxnae"]
+[ext_resource type="Texture2D" uid="uid://dtvbvblxrod3d" path="res://assets/botones/boton_play.png" id="3_f36tt"]
 
 [sub_resource type="Animation" id="Animation_xt1j8"]
 length = 0.001
@@ -104,7 +104,7 @@ texture = ExtResource("2_xt1j8")
 
 [node name="BotonContinuar" type="Button" parent="Contenido"]
 layout_mode = 2
-icon = ExtResource("3_lxnae")
+icon = ExtResource("3_f36tt")
 icon_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

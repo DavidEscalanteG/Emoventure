@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qtect2yegfev"
-path="res://.godot/imported/felicidad.png-c56916fe04cf6889db278145bffcebee.ctex"
+uid="uid://diq400vp6pnqb"
+path="res://.godot/imported/fondo_personalizacion.png-bd841a1829ff7a1b8661b8d808970313.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/emociones/sprites/felicidad.png"
-dest_files=["res://.godot/imported/felicidad.png-c56916fe04cf6889db278145bffcebee.ctex"]
+source_file="res://assets/assets_personalizacion/fondo/fondo_personalizacion.png"
+dest_files=["res://.godot/imported/fondo_personalizacion.png-bd841a1829ff7a1b8661b8d808970313.ctex"]
 
 [params]
 

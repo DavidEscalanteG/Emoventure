@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxxy4k6ht2k6i"
-path="res://.godot/imported/tristeza.png-305a0b58df398cdf84cfde7e1e09ada7.ctex"
+uid="uid://drij7vi18vgxg"
+path="res://.godot/imported/emocion_feliz.png-5f25c1dc3209492288d5fa257a1e8b4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/emociones/sprites/tristeza.png"
-dest_files=["res://.godot/imported/tristeza.png-305a0b58df398cdf84cfde7e1e09ada7.ctex"]
+source_file="res://assets/emociones/spritesheets/emocion_feliz.png"
+dest_files=["res://.godot/imported/emocion_feliz.png-5f25c1dc3209492288d5fa257a1e8b4b.ctex"]
 
 [params]
 

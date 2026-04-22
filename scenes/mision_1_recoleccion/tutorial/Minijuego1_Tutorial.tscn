@@ -4,9 +4,13 @@
 [ext_resource type="Script" uid="uid://ikkh0xk6bjyy" path="res://scenes/mision_1_recoleccion/tutorial/scripts/minijuego1_tutorial_demo.gd" id="2"]
 [ext_resource type="Script" uid="uid://dxc66x4vjgb0g" path="res://scenes/mision_1_recoleccion/tutorial/scripts/minijuego1_tutorial_ui.gd" id="3"]
 [ext_resource type="Script" uid="uid://b58adpg5yrkmj" path="res://scenes/mision_1_recoleccion/tutorial/scripts/key_visual.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://drij7vi18vgxg" path="res://assets/emociones/spritesheets/emocion_feliz.png" id="4_komua"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="5"]
-[ext_resource type="Texture2D" uid="uid://qtect2yegfev" path="res://assets/emociones/sprites/felicidad.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://duxyu3k01oec3" path="res://assets/enemigos/serpiente/spritesheets/snake spritesheet calciumtrice.png" id="7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f27vv"]
+atlas = ExtResource("4_komua")
+region = Rect2(0, 0, 100, 100)
 
 [node name="Minijuego1Tutorial" type="Node2D"]
 script = ExtResource("1")
@@ -25,13 +29,11 @@ color = Color(0.192157, 0.223529, 0.243137, 1)
 position = Vector2(240, 360)
 scale = Vector2(1.7, 1.7)
 
-
 [node name="Emotion" type="Node2D" parent="DemoWorld"]
 position = Vector2(650, 300)
 
 [node name="Sprite2D" type="Sprite2D" parent="DemoWorld/Emotion"]
-texture = ExtResource("6")
-centered = true
+texture = SubResource("AtlasTexture_f27vv")
 
 [node name="Obstacle" type="Node2D" parent="DemoWorld"]
 position = Vector2(500, 360)
@@ -40,7 +42,6 @@ position = Vector2(500, 360)
 texture = ExtResource("7")
 region_enabled = true
 region_rect = Rect2(0, 64, 32, 32)
-centered = true
 
 [node name="TutorialUI" type="CanvasLayer" parent="."]
 script = ExtResource("3")

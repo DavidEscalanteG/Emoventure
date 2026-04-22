@@ -19,6 +19,7 @@ signal start_pressed
 }
 
 func _ready() -> void:
+	InteractiveButtonFX.aplicar_a_botones_en(self)
 	previous_button.pressed.connect(func() -> void: previous_pressed.emit())
 	next_button.pressed.connect(func() -> void: next_pressed.emit())
 	skip_button.pressed.connect(func() -> void: skip_pressed.emit())

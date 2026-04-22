@@ -49,7 +49,7 @@ func mostrar(cuadro: CuadroMemoria) -> void:
 	var tween_mostrar: Tween = create_tween()
 	tween_mostrar.tween_property(self, "modulate:a", 1.0, 0.3)
 
-	emoji_grande.scale = Vector2(8.0, 8.0)
+	emoji_grande.scale = Vector2(4.0, 4.0)
 	emoji_grande.play(EMOCION_NEUTRA)
 
 	visor.texture = cuadro.texture_normal

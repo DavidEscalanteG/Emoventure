@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q7hoqt5qkhiw"
-path="res://.godot/imported/asombro.jpg-c101b25ee89bb45c578bc161f6faa5e7.ctex"
+uid="uid://cyxkbcescyc6x"
+path="res://.godot/imported/emocion_amor.png-bb395608b5a1863289e984066702d47f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/emociones/sprites/asombro.jpg"
-dest_files=["res://.godot/imported/asombro.jpg-c101b25ee89bb45c578bc161f6faa5e7.ctex"]
+source_file="res://assets/emociones/spritesheets/emocion_amor.png"
+dest_files=["res://.godot/imported/emocion_amor.png-bb395608b5a1863289e984066702d47f.ctex"]
 
 [params]
 

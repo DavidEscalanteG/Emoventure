@@ -25,6 +25,7 @@ const MENU_PRINCIPAL_SCENE := "res://scenes/menu_principal/menu_principal.tscn"
 @onready var secciones_container: VBoxContainer = %SeccionesContainer
 
 func _ready() -> void:
+	InteractiveButtonFX.aplicar_a_botones_en(self)
 	titulo_label.text = titulo_principal
 	subtitulo_label.text = subtitulo
 	_construir_creditos()

@@ -1,11 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjfkw43822usi"]
+[gd_scene load_steps=12 format=3 uid="uid://bjfkw43822usi"]
 
 [ext_resource type="Script" uid="uid://canummngiy44b" path="res://src/ui/emociones_ui.gd" id="1_2chsd"]
-[ext_resource type="Texture2D" uid="uid://qtect2yegfev" path="res://assets/emociones/sprites/felicidad.png" id="2_qtd61"]
-[ext_resource type="Texture2D" uid="uid://dxxy4k6ht2k6i" path="res://assets/emociones/sprites/tristeza.png" id="3_7rka3"]
-[ext_resource type="Texture2D" uid="uid://cpqa724qpfdg7" path="res://assets/emociones/sprites/enojo.png" id="4_m8y3u"]
-[ext_resource type="Texture2D" uid="uid://be2m12ilqfwyk" path="res://assets/emociones/sprites/desagrado.png" id="5_8ivc6"]
-[ext_resource type="Texture2D" uid="uid://dbeo324lgnb8p" path="res://assets/emociones/sprites/miedo.png" id="6_phiiv"]
+[ext_resource type="Texture2D" uid="uid://drij7vi18vgxg" path="res://assets/emociones/spritesheets/emocion_feliz.png" id="2_qtd61"]
+[ext_resource type="Texture2D" uid="uid://nsaqlorvolv" path="res://assets/emociones/spritesheets/emocion_tristeza.png" id="3_7rka3"]
+[ext_resource type="Texture2D" uid="uid://dak4m8tmu7fqp" path="res://assets/emociones/spritesheets/emocion_enojo.png" id="4_m8y3u"]
+[ext_resource type="Texture2D" uid="uid://bf1xbh4xdr7or" path="res://assets/emociones/spritesheets/emocion_desagrado.png" id="5_8ivc6"]
+[ext_resource type="Texture2D" uid="uid://b1fk1ss2e3x4d" path="res://assets/emociones/spritesheets/emocion_ansiedad.png" id="6_phiiv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gd0ae"]
+atlas = ExtResource("2_qtd61")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62f2c"]
+atlas = ExtResource("3_7rka3")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1odwn"]
+atlas = ExtResource("4_m8y3u")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrs2c"]
+atlas = ExtResource("5_8ivc6")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1an2v"]
+atlas = ExtResource("6_phiiv")
+region = Rect2(0, 0, 100, 100)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -23,20 +43,20 @@ offset_bottom = 40.0
 
 [node name="AlegriaIcon" type="TextureRect" parent="Control/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_qtd61")
+texture = SubResource("AtlasTexture_gd0ae")
 
 [node name="TristezaIcon" type="TextureRect" parent="Control/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_7rka3")
+texture = SubResource("AtlasTexture_62f2c")
 
 [node name="EnojoIcon" type="TextureRect" parent="Control/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("4_m8y3u")
+texture = SubResource("AtlasTexture_1odwn")
 
 [node name="DesagradoIcon" type="TextureRect" parent="Control/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_8ivc6")
+texture = SubResource("AtlasTexture_yrs2c")
 
 [node name="MiedoIcon" type="TextureRect" parent="Control/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("6_phiiv")
+texture = SubResource("AtlasTexture_1an2v")

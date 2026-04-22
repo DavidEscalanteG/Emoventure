@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1csicswuxs24"
-path="res://.godot/imported/boton_play_hover.png-be8ae9c5bfab4a85a92bb5fff55d972d.ctex"
+uid="uid://ceig5b4edl2j4"
+path="res://.godot/imported/emocion_asombro.png-8c1281336f02b6dc0ecf435f70ef53d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets_menu_principal/boton_play/boton_play_hover.png"
-dest_files=["res://.godot/imported/boton_play_hover.png-be8ae9c5bfab4a85a92bb5fff55d972d.ctex"]
+source_file="res://assets/emociones/spritesheets/emocion_asombro.png"
+dest_files=["res://.godot/imported/emocion_asombro.png-8c1281336f02b6dc0ecf435f70ef53d8.ctex"]
 
 [params]
 

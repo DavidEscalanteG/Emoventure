@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ywfka2ip4e7x"
-path="res://.godot/imported/ansiedad.jpg-89c0d8486fc87076995c57d94cfb999e.ctex"
+uid="uid://dak4m8tmu7fqp"
+path="res://.godot/imported/emocion_enojo.png-e713791844313faea2dcd2ddf055a9c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/emociones/sprites/ansiedad.jpg"
-dest_files=["res://.godot/imported/ansiedad.jpg-89c0d8486fc87076995c57d94cfb999e.ctex"]
+source_file="res://assets/emociones/spritesheets/emocion_enojo.png"
+dest_files=["res://.godot/imported/emocion_enojo.png-e713791844313faea2dcd2ddf055a9c4.ctex"]
 
 [params]
 

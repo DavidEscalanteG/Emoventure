@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpqa724qpfdg7"
-path="res://.godot/imported/enojo.png-61a35ccd6c4560e8d151d33114657bbc.ctex"
+uid="uid://c8mjmhykwlu2v"
+path="res://.godot/imported/fondo_seleccion_genero.png-464633c80eb351381a4e01593a437044.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/emociones/sprites/enojo.png"
-dest_files=["res://.godot/imported/enojo.png-61a35ccd6c4560e8d151d33114657bbc.ctex"]
+source_file="res://assets/assets_seleccion_genero/fondo/fondo_seleccion_genero.png"
+dest_files=["res://.godot/imported/fondo_seleccion_genero.png-464633c80eb351381a4e01593a437044.ctex"]
 
 [params]
 

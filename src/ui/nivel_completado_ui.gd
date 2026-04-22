@@ -20,6 +20,7 @@ extends Control
  # CICLO DE VIDA
  # ==================================================
 func _ready() -> void:
+	InteractiveButtonFX.aplicar_a_botones_en(self)
 	hide()
 	boton.visible = false
 	boton.disabled = true

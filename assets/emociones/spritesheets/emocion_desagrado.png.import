@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbeo324lgnb8p"
-path="res://.godot/imported/miedo.png-2700e45ec66a2bd9a2698fa0f1b6e1ee.ctex"
+uid="uid://bf1xbh4xdr7or"
+path="res://.godot/imported/emocion_desagrado.png-1ec09d569fcaa65f62cb11674ce2e1f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/emociones/sprites/miedo.png"
-dest_files=["res://.godot/imported/miedo.png-2700e45ec66a2bd9a2698fa0f1b6e1ee.ctex"]
+source_file="res://assets/emociones/spritesheets/emocion_desagrado.png"
+dest_files=["res://.godot/imported/emocion_desagrado.png-1ec09d569fcaa65f62cb11674ce2e1f8.ctex"]
 
 [params]
 

@@ -1,9 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://co64vr8dggawo"]
+[gd_scene load_steps=14 format=3 uid="uid://co64vr8dggawo"]
 
 [ext_resource type="Texture2D" uid="uid://cvrhj3gc8u4g2" path="res://assets/assets_menu_principal/fondo/fondo_menu.png" id="1_hkuy5"]
-[ext_resource type="Texture2D" uid="uid://b414bmu8meery" path="res://assets/assets_menu_principal/boton_play/boton_play_pressed.png" id="2_00m27"]
-[ext_resource type="Texture2D" uid="uid://c1csicswuxs24" path="res://assets/assets_menu_principal/boton_play/boton_play_hover.png" id="2_53ly4"]
-[ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="2_jylg6"]
+[ext_resource type="Texture2D" uid="uid://dtvbvblxrod3d" path="res://assets/botones/boton_play.png" id="2_eqv07"]
 [ext_resource type="Texture2D" uid="uid://dw08fv77nfc71" path="res://assets/assets_menu_principal/boton_configuracion/boton_configuracion.png" id="4_lbtcn"]
 [ext_resource type="Texture2D" uid="uid://rj1ou2jrr33d" path="res://assets/assets_menu_principal/boton_configuracion/boton_configuracion_pressed.png" id="5_hkuy5"]
 [ext_resource type="Script" uid="uid://cf3jyo61tfxs5" path="res://scenes/menu_principal/comenzar.gd" id="5_otvbs"]
@@ -11,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cyrtus6bnppfb" path="res://scenes/menu_principal/configuracion.gd" id="9_otvbs"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="11_cceyl"]
 [ext_resource type="Script" uid="uid://bsxy04raie6y0" path="res://scenes/menu_principal/creditos.gd" id="12_2v5fx"]
+[ext_resource type="Script" uid="uid://dfni414w3ri23" path="res://scenes/menu_principal/menu_principal.gd" id="13_menu_root"]
 
 [sub_resource type="Animation" id="Animation_byxo4"]
 resource_name = "Desvanecido_Fuera"
@@ -55,6 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("13_menu_root")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -70,20 +70,18 @@ stretch_mode = 6
 [node name="Comenzar" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.49300003
-anchor_top = 0.79800004
-anchor_right = 0.49300003
-anchor_bottom = 0.79800004
-offset_left = -124.56006
-offset_top = -125.04004
-offset_right = 0.4399414
-offset_bottom = -0.040039063
+anchor_left = 0.5
+anchor_top = 0.771
+anchor_right = 0.5
+anchor_bottom = 0.771
+offset_left = -40.0
+offset_top = -65.68005
+offset_right = 60.0
+offset_bottom = 34.319946
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 scale = Vector2(2, 2)
-texture_normal = ExtResource("2_jylg6")
-texture_pressed = ExtResource("2_00m27")
-texture_hover = ExtResource("2_53ly4")
+texture_normal = ExtResource("2_eqv07")
 script = ExtResource("5_otvbs")
 
 [node name="Configuracion" type="TextureButton" parent="."]
@@ -95,8 +93,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -132.0
 offset_top = -132.0
-offset_right = -48.0
-offset_bottom = -48.0
+offset_right = -74.0
+offset_bottom = -74.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(2, 2)

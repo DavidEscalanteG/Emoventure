@@ -1,14 +1,17 @@
 [gd_scene load_steps=19 format=3 uid="uid://cxv23v4515m48"]
 
 [ext_resource type="Script" uid="uid://6uymohbocc55" path="res://scenes/personalizacion/Personalizador.gd" id="1_n5qyn"]
+[ext_resource type="Texture2D" uid="uid://diq400vp6pnqb" path="res://assets/assets_personalizacion/fondo/fondo_personalizacion.png" id="2_eo7kl"]
 [ext_resource type="Script" uid="uid://dck5qqh46f0cm" path="res://scenes/personalizacion/hsv_color_editor.gd" id="2_rysy1"]
 [ext_resource type="PackedScene" uid="uid://b4t1ghb0ibdtf" path="res://assets/personajes/mascota/mascota.tscn" id="4_ngfm0"]
+[ext_resource type="Texture2D" uid="uid://dtvbvblxrod3d" path="res://assets/botones/boton_play.png" id="5_6udkd"]
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="13_3x2dh"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="13_qeg4c"]
-[ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="14_tydmf"]
-[ext_resource type="Texture2D" uid="uid://b414bmu8meery" path="res://assets/assets_menu_principal/boton_play/boton_play_pressed.png" id="15_3x2dh"]
-[ext_resource type="Texture2D" uid="uid://c1csicswuxs24" path="res://assets/assets_menu_principal/boton_play/boton_play_hover.png" id="16_gvyea"]
 [ext_resource type="Script" uid="uid://c46nol38d8qcv" path="res://scenes/personalizacion/comenzar.gd" id="17_tydmf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4m3r"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rysy1"]
 bg_color = Color(0, 0, 0, 0)
@@ -76,13 +79,18 @@ script = ExtResource("1_n5qyn")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(967.00006, 540)
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("2_eo7kl")
+
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 custom_minimum_size = Vector2(0.535, 0)
-offset_left = 64.0
+offset_left = 1400.0
 offset_top = 60.0
-offset_right = 178.0
+offset_right = 1514.0
 offset_bottom = 320.0
-scale = Vector2(3.7199998, 3.7199998)
+theme_override_styles/panel = SubResource("StyleBoxFlat_x4m3r")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
@@ -93,17 +101,21 @@ size_flags_horizontal = 4
 
 [node name="BtnCabelloAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 70
 text = "<"
 
 [node name="Cabello" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 70
 text = "Cabello"
 
 [node name="BtnCabelloSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 70
 text = ">"
 
 [node name="BoxContainer2" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -158,6 +170,7 @@ layout_mode = 2
 text = ">"
 
 [node name="BoxContainer5" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 
@@ -225,9 +238,9 @@ max_value = 1.2
 value = 0.8
 
 [node name="PanelNombreJugador" type="PanelContainer" parent="CanvasLayer"]
-offset_left = 550.0
+offset_left = 620.0
 offset_top = 150.0
-offset_right = 1203.0
+offset_right = 1272.9998
 offset_bottom = 286.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelNombreJugador"]
@@ -242,11 +255,15 @@ layout_mode = 2
 
 [node name="TituloNombreJugador" type="Label" parent="CanvasLayer/PanelNombreJugador/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Nombre del protagonista"
+theme_override_font_sizes/font_size = 26
+text = "¿Cómo te llamas?"
+horizontal_alignment = 1
 
 [node name="InputNombreJugador" type="LineEdit" parent="CanvasLayer/PanelNombreJugador/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 22
 placeholder_text = "Escribe tu nombre"
+alignment = 1
 max_length = 20
 
 [node name="ErrorNombreJugador" type="Label" parent="CanvasLayer/PanelNombreJugador/MarginContainer/VBoxContainer"]
@@ -255,52 +272,41 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.329412, 0.329412, 1)
 autowrap_mode = 3
 
-[node name="HSVColorEditor" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HSVColorEditor" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1770.0
+offset_top = 54.0
+offset_right = -1499.0
+offset_bottom = 417.0
+grow_horizontal = 0
+scale = Vector2(1.5, 1.5)
+theme_override_constants/separation = 18
 
-[node name="HSVEditorCabello" type="Control" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
-anchors_preset = 0
-offset_left = 700.0
-offset_right = 740.0
-offset_bottom = 40.0
+[node name="HSVEditorCabello" type="VBoxContainer" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
+layout_mode = 2
+size_flags_horizontal = 4
 script = ExtResource("2_rysy1")
 clave_color_global = "color_cabello"
 apariencia = NodePath("../../../Jugador/PlayerAppearance")
 
 [node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 64.0
-offset_right = 678.0
-offset_bottom = 80.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 112.0
-offset_right = 678.0
-offset_bottom = 128.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 160.0
-offset_right = 678.0
-offset_bottom = 176.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
 min_value = 0.125
@@ -309,57 +315,36 @@ step = 0.01
 value = 0.125
 
 [node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
-layout_mode = 0
-offset_left = 900.0
-offset_top = 64.0
-offset_right = 1204.0
-offset_bottom = 192.0
+layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Color de cabello"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSVEditorGorro" type="Control" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
-anchors_preset = 0
-offset_left = 700.0
-offset_top = 200.0
-offset_right = 740.0
-offset_bottom = 240.0
+[node name="HSVEditorGorro" type="VBoxContainer" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
 script = ExtResource("2_rysy1")
 clave_color_global = "color_cabeza"
 apariencia = NodePath("../../../Jugador/PlayerAppearance")
 
 [node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 64.0
-offset_right = 678.0
-offset_bottom = 80.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 112.0
-offset_right = 678.0
-offset_bottom = 128.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 160.0
-offset_right = 678.0
-offset_bottom = 176.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
 min_value = 0.125
@@ -368,57 +353,35 @@ step = 0.01
 value = 0.125
 
 [node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
-layout_mode = 0
-offset_left = 900.0
-offset_top = 64.0
-offset_right = 1204.0
-offset_bottom = 192.0
+layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Color de gorro"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSVEditorRopa" type="Control" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
-anchors_preset = 0
-offset_left = 700.0
-offset_top = 400.0
-offset_right = 740.0
-offset_bottom = 440.0
+[node name="HSVEditorRopa" type="VBoxContainer" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
+layout_mode = 2
+size_flags_horizontal = 4
 script = ExtResource("2_rysy1")
 clave_color_global = "color_boca"
 apariencia = NodePath("../../../Jugador/PlayerAppearance")
 
 [node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 64.0
-offset_right = 678.0
-offset_bottom = 80.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 112.0
-offset_right = 678.0
-offset_bottom = 128.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 160.0
-offset_right = 678.0
-offset_bottom = 176.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
 min_value = 0.125
@@ -427,57 +390,35 @@ step = 0.01
 value = 0.125
 
 [node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
-layout_mode = 0
-offset_left = 900.0
-offset_top = 64.0
-offset_right = 1204.0
-offset_bottom = 192.0
+layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Color de ropa"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSVEditorPiel" type="Control" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
-anchors_preset = 0
-offset_left = 700.0
-offset_top = 600.0
-offset_right = 740.0
-offset_bottom = 640.0
+[node name="HSVEditorPiel" type="VBoxContainer" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
+layout_mode = 2
+size_flags_horizontal = 4
 script = ExtResource("2_rysy1")
 clave_color_global = "color_cuerpo"
 apariencia = NodePath("../../../Jugador/PlayerAppearance")
 
 [node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 64.0
-offset_right = 678.0
-offset_bottom = 80.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 112.0
-offset_right = 678.0
-offset_bottom = 128.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
 max_value = 1.0
 step = 0.01
 
 [node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 160.0
-offset_right = 678.0
-offset_bottom = 176.0
-scale = Vector2(2.5, 2.5)
+layout_mode = 2
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
 min_value = 0.125
@@ -486,18 +427,14 @@ step = 0.01
 value = 0.125
 
 [node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
-layout_mode = 0
-offset_left = 900.0
-offset_top = 64.0
-offset_right = 1204.0
-offset_bottom = 192.0
+layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Color de piel"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Jugador" parent="." instance=ExtResource("13_3x2dh")]
-position = Vector2(907, 538)
+position = Vector2(990, 675)
 scale = Vector2(16, 16)
 
 [node name="Mascota" parent="." instance=ExtResource("4_ngfm0")]
@@ -505,14 +442,12 @@ position = Vector2(1568, 895)
 scale = Vector2(6, 6)
 
 [node name="Comenzar" type="TextureButton" parent="."]
-offset_left = 917.0001
-offset_top = 867.0
-offset_right = 1042.0001
-offset_bottom = 992.0
+offset_left = 911.0
+offset_top = 912.0
+offset_right = 1011.0
+offset_bottom = 1012.0
 scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("14_tydmf")
-texture_pressed = ExtResource("15_3x2dh")
-texture_hover = ExtResource("16_gvyea")
+texture_normal = ExtResource("5_6udkd")
 script = ExtResource("17_tydmf")
 
 [node name="FondoNegro" type="Sprite2D" parent="."]
