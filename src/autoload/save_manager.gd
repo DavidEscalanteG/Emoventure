@@ -5,6 +5,16 @@ const ESCENA_SELECCION_GENERO: String = "res://scenes/intro_seleccion_genero/int
 const ESCENA_FALLBACK: String = ESCENA_SELECCION_GENERO
 const ESCENA_CUESTIONARIO: String = "res://scenes/cuestionarios/EscenaCuestionario.tscn"
 const PREFIJO_ESCENA_REJUGABILIDAD: String = "res://scenes/rejugabilidad/"
+const ESCENA_MAPA_REJUGABILIDAD: String = "res://scenes/rejugabilidad/mapa_rejugabilidad.tscn"
+const ESCENAS_MINIJUEGOS_REJUGABLES: Array[String] = [
+	"res://scenes/mision_1_recoleccion/mapa_2/mapa2.tscn",
+	"res://scenes/mision_1_recoleccion/mapa_3/mapa3.tscn",
+	"res://scenes/mision_1_recoleccion/mapa_4/mapa4.tscn",
+	"res://scenes/mision_1_recoleccion/mapa_5/mapa5.tscn",
+	"res://scenes/mision_2_memorias/mision_2_memorias.tscn",
+	"res://scenes/mision_3_hachas/mision_3_hachas.tscn",
+	"res://scenes/mision_4_payasos/mapa_topos.tscn"
+]
 const ESCENAS_EXCLUIDAS_GUARDADO: Array[String] = [
 	"res://scenes/menu_principal/menu_principal.tscn",
 	"res://scenes/menu_guardados/menu_guardados.tscn",
@@ -79,6 +89,8 @@ func cargar_partida(slot_id: String) -> bool:
 	_aplicar_datos_partida(partida)
 
 	var escena_guardada: String = partida.get("escena_actual", ESCENA_FALLBACK)
+	if _debe_redirigir_mapa_rejugabilidad(partida, escena_guardada):
+		escena_guardada = ESCENA_MAPA_REJUGABILIDAD
 	if escena_guardada.is_empty():
 		escena_guardada = ESCENA_FALLBACK
 	if not ResourceLoader.exists(escena_guardada):
@@ -227,6 +239,13 @@ func _construir_estado_cuestionario(escena_actual: String) -> Dictionary:
 	}
 
 
+func _debe_redirigir_mapa_rejugabilidad(partida: Dictionary, escena_guardada: String) -> bool:
+	if not bool(partida.get("progreso_historia_bloqueado_100", false)):
+		return false
+
+	return ESCENAS_MINIJUEGOS_REJUGABLES.has(escena_guardada)
+	
+	
 func _serializar_apariencia(apariencia: AparienciaJugador) -> Dictionary:
 	return {
 		"indice_cabello": apariencia.indice_cabello,

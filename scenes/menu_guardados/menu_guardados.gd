@@ -114,7 +114,7 @@ func _crear_preview_apariencia(datos_apariencia: Dictionary) -> Control:
 		contenedor.add_child(sin_preview)
 		return contenedor
 
-	personaje.scale = Vector2(2.0, 2.0)
+	personaje.scale = Vector2(4.0, 4.0)
 	personaje.position = Vector2(60, 80)
 	contenedor.add_child(personaje)
 	_aplicar_apariencia_preview(personaje, datos_apariencia)
