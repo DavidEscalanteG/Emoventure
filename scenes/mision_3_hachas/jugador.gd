@@ -1,8 +1,13 @@
 extends CharacterBody2D
 
+const MOBILE_CONTROLS_SCENE := preload("res://src/ui/mobile_controls.tscn")
+
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+
+func _ready() -> void:
+	_ensure_mobile_controls()
 
 
 func _physics_process(delta: float) -> void:
@@ -23,3 +28,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+func _ensure_mobile_controls() -> void:
+	if not OS.has_feature("mobile"):
+		return
+	if get_tree().root.has_node("MobileControls"):
+		return
+	var controls := MOBILE_CONTROLS_SCENE.instantiate()
+	controls.name = "MobileControls"
+	get_tree().root.add_child(controls)

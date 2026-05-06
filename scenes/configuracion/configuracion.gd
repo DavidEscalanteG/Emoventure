@@ -4,6 +4,7 @@ extends Control
 @onready var slider_musica: HSlider = %SliderMusica
 @onready var slider_sfx: HSlider = %SliderSFX
 @onready var slider_voz: HSlider = %SliderVoz
+@onready var option_controles: OptionButton = %OptionControles
 
 const MUSIC_PREVIEW := "res://audios/musica/menu_principal.mp3"
 const SFX_PREVIEW := "res://audios/sfx/ui_click.mp3"
@@ -15,6 +16,17 @@ func _ready() -> void:
 	slider_musica.value = AudioManager.get_volumen(AudioManager.BUS_MUSICA)
 	slider_sfx.value = AudioManager.get_volumen(AudioManager.BUS_SFX)
 	slider_voz.value = AudioManager.get_volumen(AudioManager.BUS_VOZ)
+	option_controles.clear()
+	option_controles.add_item("Sin controles táctiles")
+	option_controles.add_item("Cruceta")
+	option_controles.add_item("Joystick")
+	match MobileControlsSettings.control_mode:
+		MobileControlsSettings.MODE_OFF:
+			option_controles.select(0)
+		MobileControlsSettings.MODE_JOYSTICK:
+			option_controles.select(2)
+		_:
+			option_controles.select(1)
 
 
 func _on_slider_master_value_changed(value: float) -> void:
@@ -46,3 +58,14 @@ func _on_btn_probar_sfx_pressed() -> void:
 func _on_btn_volver_pressed() -> void:
 	AudioManager.play_ui_click()
 	get_tree().change_scene_to_file("res://scenes/menu_principal/menu_principal.tscn")
+
+
+func _on_option_controles_item_selected(index: int) -> void:
+	match index:
+		0:
+			MobileControlsSettings.set_control_mode(MobileControlsSettings.MODE_OFF)
+		1:
+			MobileControlsSettings.set_control_mode(MobileControlsSettings.MODE_CRUCETA)
+		2:
+			MobileControlsSettings.set_control_mode(MobileControlsSettings.MODE_JOYSTICK)
+	AudioManager.play_ui_click()
