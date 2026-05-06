@@ -1,0 +1,108 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcayqrg4arbio"]
+
+[ext_resource type="Script" uid="uid://dkheishgacbi2" path="res://src/ui/pause_overlay.gd" id="1"]
+
+[node name="PauseOverlay" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1")
+
+[node name="MarginTopRight" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_top = 24.0
+offset_right = -40.0
+offset_bottom = 104.0
+
+[node name="BtnPausa" type="Button" parent="MarginTopRight"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 70)
+layout_mode = 2
+theme_override_font_sizes/font_size = 52
+text = "⏸"
+
+[node name="PanelPausa" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelPausa"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="PanelPausa/CenterContainer"]
+custom_minimum_size = Vector2(680, 560)
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Titulo" type="Label" parent="PanelPausa/CenterContainer/VBox"]
+layout_mode = 2
+text = "Menú de pausa"
+horizontal_alignment = 1
+
+[node name="Musica" type="VBoxContainer" parent="PanelPausa/CenterContainer/VBox"]
+layout_mode = 2
+
+[node name="LabelMusica" type="Label" parent="PanelPausa/CenterContainer/VBox/Musica"]
+layout_mode = 2
+text = "Música"
+
+[node name="SliderMusica" type="HSlider" parent="PanelPausa/CenterContainer/VBox/Musica"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="Sfx" type="VBoxContainer" parent="PanelPausa/CenterContainer/VBox"]
+layout_mode = 2
+
+[node name="LabelSfx" type="Label" parent="PanelPausa/CenterContainer/VBox/Sfx"]
+layout_mode = 2
+text = "Sonidos"
+
+[node name="SliderSFX" type="HSlider" parent="PanelPausa/CenterContainer/VBox/Sfx"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Controles" type="VBoxContainer" parent="PanelPausa/CenterContainer/VBox"]
+layout_mode = 2
+
+[node name="LabelControles" type="Label" parent="PanelPausa/CenterContainer/VBox/Controles"]
+layout_mode = 2
+text = "Controles táctiles"
+
+[node name="OptionControles" type="OptionButton" parent="PanelPausa/CenterContainer/VBox/Controles"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Botones" type="HBoxContainer" parent="PanelPausa/CenterContainer/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="BtnReanudar" type="Button" parent="PanelPausa/CenterContainer/VBox/Botones"]
+layout_mode = 2
+text = "Reanudar"
+
+[node name="BtnMenuPrincipal" type="Button" parent="PanelPausa/CenterContainer/VBox/Botones"]
+layout_mode = 2
+text = "Salir al menú principal"
+
+[connection signal="pressed" from="MarginTopRight/BtnPausa" to="." method="_on_btn_pausa_pressed"]
+[connection signal="value_changed" from="PanelPausa/CenterContainer/VBox/Musica/SliderMusica" to="." method="_on_slider_musica_value_changed"]
+[connection signal="value_changed" from="PanelPausa/CenterContainer/VBox/Sfx/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
+[connection signal="item_selected" from="PanelPausa/CenterContainer/VBox/Controles/OptionControles" to="." method="_on_option_controles_item_selected"]
+[connection signal="pressed" from="PanelPausa/CenterContainer/VBox/Botones/BtnReanudar" to="." method="_on_btn_reanudar_pressed"]
+[connection signal="pressed" from="PanelPausa/CenterContainer/VBox/Botones/BtnMenuPrincipal" to="." method="_on_btn_menu_principal_pressed"]

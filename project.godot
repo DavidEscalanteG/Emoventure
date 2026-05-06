@@ -27,6 +27,7 @@ Cuestionarios="*res://src/autoload/cuestionarios.gd"
 MusicManager="*res://src/autoload/music_manager.gd"
 SaveManager="*res://src/autoload/save_manager.gd"
 MobileControlsSettings="*res://src/autoload/mobile_controls_settings.gd"
+PauseOverlayManager="*res://src/autoload/pause_overlay_manager.gd"
 
 [dialogue_manager]
 
