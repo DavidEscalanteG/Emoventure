@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+const MOBILE_CONTROLS_SCENE := preload("res://src/ui/mobile_controls.tscn")
 @export var coyote_time_duration = 0.15 # Cuánto tiempo dura el "perdón" (0.15s es ideal)
 
 
@@ -10,7 +11,8 @@ var wall_jump_timer = 0.0  # Temporizador para bloquear el movimiento lateral un
 var input_dir = 0 # Guardará la dirección según el orden de pulsación
 var coyote_timer = 0.0                 # El contador real
 
-func _ready():
+func _ready() -> void:
+	_ensure_mobile_controls()
 	# Al nacer/revivir, verificamos inmediatamente qué teclas están pulsadas físicamente
 	if Input.is_action_pressed("ui_right"):
 		input_dir = 1
@@ -83,6 +85,15 @@ func _physics_process(delta: float) -> void:
 	# 7. EJECUTAR MOVIMIENTO
 	move_and_slide()
 
+
+func _ensure_mobile_controls() -> void:
+	if not OS.has_feature("mobile"):
+		return
+	if get_tree().root.has_node("MobileControls"):
+		return
+	var controls := MOBILE_CONTROLS_SCENE.instantiate()
+	controls.name = "MobileControls"
+	get_tree().root.add_child(controls)
 	# 8. DETECCIÓN DE TRAMPAS
 	for i in get_slide_collision_count():
 		var colision = get_slide_collision(i)
