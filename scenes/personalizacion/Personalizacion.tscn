@@ -1,10 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://cxv23v4515m48"]
+[gd_scene load_steps=24 format=3 uid="uid://cxv23v4515m48"]
 
 [ext_resource type="Script" uid="uid://6uymohbocc55" path="res://scenes/personalizacion/Personalizador.gd" id="1_n5qyn"]
 [ext_resource type="Texture2D" uid="uid://diq400vp6pnqb" path="res://assets/assets_personalizacion/fondo/fondo_personalizacion.png" id="2_eo7kl"]
 [ext_resource type="Script" uid="uid://dck5qqh46f0cm" path="res://scenes/personalizacion/hsv_color_editor.gd" id="2_rysy1"]
 [ext_resource type="PackedScene" uid="uid://b4t1ghb0ibdtf" path="res://assets/personajes/mascota/mascota.tscn" id="4_ngfm0"]
-[ext_resource type="Texture2D" uid="uid://dtvbvblxrod3d" path="res://assets/botones/boton_play.png" id="5_6udkd"]
+[ext_resource type="Texture2D" uid="uid://d1lodo36peyik" path="res://assets/botones/Blue_Buttons_Pixel.png" id="6_v1tqj"]
+[ext_resource type="Texture2D" uid="uid://k0weo1vvbnpk" path="res://assets/botones/Green_Buttons_Pixel.png" id="7_5xbqv"]
+[ext_resource type="Texture2D" uid="uid://bishv70yvv71n" path="res://assets/botones/Yellow_Buttons_Pixel.png" id="8_7a7x5"]
 [ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="13_3x2dh"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="13_qeg4c"]
 [ext_resource type="Script" uid="uid://c46nol38d8qcv" path="res://scenes/personalizacion/comenzar.gd" id="17_tydmf"]
@@ -36,6 +38,18 @@ border_color = Color(0, 0, 0, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fmof"]
 bg_color = Color(0, 0, 0, 0)
 border_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ojtl8"]
+texture = ExtResource("6_v1tqj")
+region_rect = Rect2(16, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q5t2n"]
+texture = ExtResource("7_5xbqv")
+region_rect = Rect2(16, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0h5y"]
+texture = ExtResource("8_7a7x5")
+region_rect = Rect2(16, 0, 16, 16)
 
 [sub_resource type="Animation" id="Animation_byxo4"]
 resource_name = "Desvanecido_Fuera"
@@ -441,13 +455,15 @@ scale = Vector2(16, 16)
 position = Vector2(1568, 895)
 scale = Vector2(6, 6)
 
-[node name="Comenzar" type="TextureButton" parent="."]
+[node name="Comenzar" type="Button" parent="."]
 offset_left = 911.0
 offset_top = 912.0
 offset_right = 1011.0
 offset_bottom = 1012.0
 scale = Vector2(1.5, 1.5)
-texture_normal = ExtResource("5_6udkd")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ojtl8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_q5t2n")
+theme_override_styles/hover = SubResource("StyleBoxTexture_r0h5y")
 script = ExtResource("17_tydmf")
 
 [node name="FondoNegro" type="Sprite2D" parent="."]

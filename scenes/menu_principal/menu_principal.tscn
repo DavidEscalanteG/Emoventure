@@ -1,15 +1,38 @@
-[gd_scene load_steps=14 format=3 uid="uid://co64vr8dggawo"]
+[gd_scene load_steps=19 format=3 uid="uid://co64vr8dggawo"]
 
 [ext_resource type="Texture2D" uid="uid://cvrhj3gc8u4g2" path="res://assets/assets_menu_principal/fondo/fondo_menu.png" id="1_hkuy5"]
-[ext_resource type="Texture2D" uid="uid://dtvbvblxrod3d" path="res://assets/botones/boton_play.png" id="2_eqv07"]
-[ext_resource type="Texture2D" uid="uid://dw08fv77nfc71" path="res://assets/assets_menu_principal/boton_configuracion/boton_configuracion.png" id="4_lbtcn"]
-[ext_resource type="Texture2D" uid="uid://rj1ou2jrr33d" path="res://assets/assets_menu_principal/boton_configuracion/boton_configuracion_pressed.png" id="5_hkuy5"]
+[ext_resource type="Texture2D" uid="uid://d1lodo36peyik" path="res://assets/botones/Blue_Buttons_Pixel.png" id="3_4jlvr"]
+[ext_resource type="Texture2D" uid="uid://k0weo1vvbnpk" path="res://assets/botones/Green_Buttons_Pixel.png" id="4_b3va0"]
+[ext_resource type="Texture2D" uid="uid://bishv70yvv71n" path="res://assets/botones/Yellow_Buttons_Pixel.png" id="5_iovm2"]
 [ext_resource type="Script" uid="uid://cf3jyo61tfxs5" path="res://scenes/menu_principal/comenzar.gd" id="5_otvbs"]
-[ext_resource type="Texture2D" uid="uid://b87q6e1n2dt21" path="res://assets/assets_menu_principal/boton_configuracion/boton_configuracion_hover.png" id="6_7mlcq"]
 [ext_resource type="Script" uid="uid://cyrtus6bnppfb" path="res://scenes/menu_principal/configuracion.gd" id="9_otvbs"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="11_cceyl"]
 [ext_resource type="Script" uid="uid://bsxy04raie6y0" path="res://scenes/menu_principal/creditos.gd" id="12_2v5fx"]
 [ext_resource type="Script" uid="uid://dfni414w3ri23" path="res://scenes/menu_principal/menu_principal.gd" id="13_menu_root"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_noekw"]
+texture = ExtResource("3_4jlvr")
+region_rect = Rect2(16, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mqmoq"]
+texture = ExtResource("4_b3va0")
+region_rect = Rect2(16, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f5qc2"]
+texture = ExtResource("5_iovm2")
+region_rect = Rect2(16, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eqv07"]
+texture = ExtResource("3_4jlvr")
+region_rect = Rect2(32, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b5s1v"]
+texture = ExtResource("4_b3va0")
+region_rect = Rect2(32, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8kbuk"]
+texture = ExtResource("5_iovm2")
+region_rect = Rect2(32, 0, 16, 16)
 
 [sub_resource type="Animation" id="Animation_byxo4"]
 resource_name = "Desvanecido_Fuera"
@@ -67,24 +90,26 @@ texture = ExtResource("1_hkuy5")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Comenzar" type="TextureButton" parent="."]
+[node name="Comenzar" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.771
 anchor_right = 0.5
 anchor_bottom = 0.771
-offset_left = -40.0
-offset_top = -65.68005
-offset_right = 60.0
-offset_bottom = 34.319946
+offset_left = -77.0
+offset_top = -63.680054
+offset_right = 3.0
+offset_bottom = 16.319946
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(2, 2)
-texture_normal = ExtResource("2_eqv07")
+theme_override_styles/normal = SubResource("StyleBoxTexture_noekw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mqmoq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_f5qc2")
 script = ExtResource("5_otvbs")
 
-[node name="Configuracion" type="TextureButton" parent="."]
+[node name="Configuracion" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -98,9 +123,9 @@ offset_bottom = -74.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(2, 2)
-texture_normal = ExtResource("4_lbtcn")
-texture_pressed = ExtResource("5_hkuy5")
-texture_hover = ExtResource("6_7mlcq")
+theme_override_styles/normal = SubResource("StyleBoxTexture_eqv07")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b5s1v")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8kbuk")
 script = ExtResource("9_otvbs")
 
 [node name="Creditos" type="Button" parent="."]
