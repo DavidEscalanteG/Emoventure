@@ -29,5 +29,8 @@ func _inyectar_en_escena_actual() -> void:
 func _debe_tener_pausa(scene_path: String) -> bool:
 	if scene_path.is_empty():
 		return false
+	# Los tutoriales de minijuegos usan su propia UI y no deben mostrar el botón de pausa.
+	if scene_path.contains("/tutorial/"):
+		return false
 	return scene_path.begins_with("res://scenes/intro_") \
 		or scene_path.begins_with("res://scenes/mision_")

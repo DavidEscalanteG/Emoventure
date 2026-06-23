@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcayqrg4arbio"]
+[gd_scene load_steps=8 format=3 uid="uid://dcayqrg4arbio"]
 
 [ext_resource type="Script" uid="uid://dkheishgacbi2" path="res://src/ui/pause_overlay.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://d1lodo36peyik" path="res://assets/botones/Blue_Buttons_Pixel.png" id="2_vesnk"]
+[ext_resource type="Texture2D" uid="uid://k0weo1vvbnpk" path="res://assets/botones/Green_Buttons_Pixel.png" id="3_b13op"]
+[ext_resource type="Texture2D" uid="uid://doj3kenfi4r02" path="res://assets/botones/Gray_Buttons_Pixel.png" id="4_40aqf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d6cuj"]
+texture = ExtResource("2_vesnk")
+region_rect = Rect2(16, 16, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rfoqg"]
+texture = ExtResource("3_b13op")
+region_rect = Rect2(16, 16, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bb34s"]
+texture = ExtResource("4_40aqf")
+region_rect = Rect2(16, 16, 16, 16)
 
 [node name="PauseOverlay" type="CanvasLayer"]
 layer = 100
@@ -10,17 +25,18 @@ script = ExtResource("1")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -220.0
+offset_left = -120.0
 offset_top = 24.0
 offset_right = -40.0
 offset_bottom = 104.0
 
 [node name="BtnPausa" type="Button" parent="MarginTopRight"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(180, 70)
 layout_mode = 2
 theme_override_font_sizes/font_size = 52
-text = "⏸"
+theme_override_styles/normal = SubResource("StyleBoxTexture_d6cuj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rfoqg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bb34s")
 
 [node name="PanelPausa" type="Panel" parent="."]
 unique_name_in_owner = true

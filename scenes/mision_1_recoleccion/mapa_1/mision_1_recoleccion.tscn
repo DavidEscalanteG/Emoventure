@@ -393,6 +393,7 @@ region_rect = Rect2(144, 32, 16, 16)
 script = ExtResource("1_wcswo")
 
 [node name="Mapa" type="Node2D" parent="."]
+visible = false
 
 [node name="Fondo" type="TileMapLayer" parent="Mapa"]
 visible = false
@@ -404,6 +405,7 @@ tile_map_data = PackedByteArray("AAAjAA4AAQANAAEAAAAjAA8AAQANAAIAAAAjABAAAQANAAE
 tile_set = SubResource("TileSet_de147")
 
 [node name="Emociones" type="Node2D" parent="."]
+visible = false
 
 [node name="Emocion_Desagrado" parent="Emociones" instance=ExtResource("16_wcswo")]
 position = Vector2(896, 336)
@@ -437,6 +439,7 @@ tipo_emocion = "tristeza"
 color = Color(0.043137256, 0.11764706, 1, 1)
 
 [node name="Caminos" type="Node2D" parent="."]
+visible = false
 
 [node name="Path2D_1" type="Path2D" parent="Caminos"]
 curve = SubResource("Curve2D_spp1b")
@@ -551,6 +554,7 @@ curve = SubResource("Curve2D_d0l5o")
 curve = SubResource("Curve2D_uamsr")
 
 [node name="Intersecciones" type="Node2D" parent="."]
+visible = false
 
 [node name="Interseccion_1" parent="Intersecciones" node_paths=PackedStringArray("rutas_disponibles") instance=ExtResource("4_uamsr")]
 position = Vector2(67, 290)
