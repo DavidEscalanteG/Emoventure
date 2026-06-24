@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const MOBILE_CONTROLS_SCENE := preload("res://src/ui/mobile_controls.tscn")
+
 # --------------------------------------------------
 # SEÑALES
 # --------------------------------------------------
@@ -46,6 +48,7 @@ var timer_congelar: Timer
 # CICLO DE VIDA
 # --------------------------------------------------
 func _ready() -> void:
+	_ensure_mobile_controls()
 	velocidad_base = speed
 	vidas_actuales = vidas_maximas
 
@@ -225,3 +228,13 @@ func bloquear_movimiento() -> void:
 
 func permitir_movimiento() -> void:
 	puede_moverse = true
+
+
+func _ensure_mobile_controls() -> void:
+	if not OS.has_feature("mobile"):
+		return
+	if get_tree().root.has_node("MobileControls"):
+		return
+	var controls := MOBILE_CONTROLS_SCENE.instantiate()
+	controls.name = "MobileControls"
+	get_tree().root.add_child(controls)

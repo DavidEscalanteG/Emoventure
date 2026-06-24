@@ -46,17 +46,56 @@ const FUENTE_PREGUNTA_LARGA := 58
 # CICLO DE VIDA
 # ==================================================
 func _ready() -> void:
+	InteractiveButtonFX.aplicar_a_botones_en(self)
 	if not boton_narrativa_post.pressed.is_connected(_on_boton_narrativa_post_pressed):
 		boton_narrativa_post.pressed.connect(_on_boton_narrativa_post_pressed)
+		
+	_restaurar_estado_desde_guardado_si_aplica()
+
 	if not Cuestionarios.validar_dimension_y_preguntas(dimension, preguntas):
 		return
 
+	if indice >= preguntas.size():
+		_finalizar()
+		return
+	
 	mostrar_pregunta()
 
 
 # ==================================================
 # LÓGICA
 # ==================================================
+
+func _restaurar_estado_desde_guardado_si_aplica() -> void:
+	var estado: Dictionary = SaveManager.consumir_estado_cuestionario_pendiente()
+	if estado.is_empty():
+		return
+
+	var dimension_guardada: String = str(estado.get("dimension", ""))
+	if not dimension_guardada.is_empty():
+		dimension = dimension_guardada
+
+	var preguntas_guardadas_variant: Variant = estado.get("preguntas", [])
+	if typeof(preguntas_guardadas_variant) == TYPE_ARRAY:
+		preguntas.clear()
+		for pregunta in preguntas_guardadas_variant:
+			preguntas.append(str(pregunta))
+
+	var indice_guardado: int = maxi(0, int(estado.get("indice", indice)))
+	if not preguntas.is_empty():
+		indice = mini(indice_guardado, preguntas.size())
+	else:
+		indice = 0
+
+	puntaje_local = maxi(0, int(estado.get("puntaje_local", puntaje_local)))
+	narrativa_post_cuestionario = str(estado.get("narrativa_post_cuestionario", narrativa_post_cuestionario))
+	titulo_narrativa_post = str(estado.get("titulo_narrativa_post", titulo_narrativa_post))
+
+	var escena_siguiente_path: String = str(estado.get("escena_siguiente_path", ""))
+	if not escena_siguiente_path.is_empty() and ResourceLoader.exists(escena_siguiente_path):
+		escena_siguiente = load(escena_siguiente_path) as PackedScene
+
+
 func mostrar_pregunta() -> void:
 	var pregunta_actual := preguntas[indice]
 	label_pregunta.add_theme_font_size_override("normal_font_size", _obtener_tamano_fuente_para_pregunta(pregunta_actual))
@@ -80,6 +119,7 @@ func responder(valor: int) -> void:
 		
 	puntaje_local += valor
 	indice += 1
+	SaveManager.actualizar_guardado_actual()
 
 	if indice < preguntas.size():
 		mostrar_pregunta()

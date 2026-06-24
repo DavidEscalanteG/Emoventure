@@ -4,6 +4,13 @@ const ESCENA_SELECCION_GENERO: String = "res://scenes/intro_seleccion_genero/int
 const ESCENA_MENU_PRINCIPAL: String = "res://scenes/menu_principal/menu_principal.tscn"
 const ESCENA_JUGADOR_PREVIEW: PackedScene = preload("res://jugador/jugador.tscn")
 const ANIMACION_PREVIEW: String = "idle_down"
+const HITOS_PROGRESO: Array[Dictionary] = [
+	{"porcentaje": 100, "prefijos": ["res://scenes/rejugabilidad/"]},
+	{"porcentaje": 80, "prefijos": ["res://scenes/mision_4_payasos/", "res://scenes/intro_mision_4/"]},
+	{"porcentaje": 60, "prefijos": ["res://scenes/mision_3_hachas/", "res://scenes/intro_dialogo_5/"]},
+	{"porcentaje": 40, "prefijos": ["res://scenes/mision_2_memorias/", "res://scenes/intro_mision_2/", "res://scenes/intro_dialogo_4/"]},
+	{"porcentaje": 20, "prefijos": ["res://scenes/mision_1_recoleccion/", "res://scenes/transicion_post_mision_1/", "res://scenes/intro_dialogo_3/"]}
+]
 
 @onready var contenedor_partidas: VBoxContainer = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ContenedorPartidas
 @onready var boton_nueva_partida: Button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BotonesInferiores/BotonNuevaPartida
@@ -26,11 +33,12 @@ func _refrescar_lista() -> void:
 		var fila: Control = _crear_fila_partida(index + 1, slot)
 		contenedor_partidas.add_child(fila)
 	boton_nueva_partida.visible = true
+	InteractiveButtonFX.aplicar_a_botones_en(self)
 
 
 func _crear_fila_partida(indice_visual: int, slot: Dictionary) -> Control:
 	var panel: PanelContainer = PanelContainer.new()
-	panel.custom_minimum_size = Vector2(0, 130)
+	panel.custom_minimum_size = Vector2(0, 150)
 
 	var margen: MarginContainer = MarginContainer.new()
 	margen.add_theme_constant_override("margin_left", 12)
@@ -53,24 +61,22 @@ func _crear_fila_partida(indice_visual: int, slot: Dictionary) -> Control:
 	nombre.add_theme_font_size_override("font_size", 34)
 	info.add_child(nombre)
 
-	var genero: String = slot.get("genero", "")
 	var apariencia: Dictionary = slot.get("apariencia", {})
-	var resumen: String = "Apariencia: %s | Cabello #%d | Ojos #%d | Cuerpo #%d" % [
-		genero.capitalize(),
-		int(apariencia.get("indice_cabello", 0)),
-		int(apariencia.get("indice_ojos", 0)),
-		int(apariencia.get("indice_cuerpo", 0))
-	]
+	var progreso: int = _calcular_progreso_historia(slot)
 
 	var detalle: Label = Label.new()
-	#detalle.text = resumen
-	#detalle.add_theme_font_size_override("font_size", 24)
-	#info.add_child(detalle)
+	detalle.text = "Avance en la historia: %d%%" % progreso
+	detalle.add_theme_font_size_override("font_size", 24)
+	info.add_child(detalle)
 
-	var escena: Label = Label.new()
-	escena.text = "Escena guardada: %s" % slot.get("escena_actual", "N/A")
-	escena.add_theme_font_size_override("font_size", 20)
-	info.add_child(escena)
+	var barra_progreso: ProgressBar = ProgressBar.new()
+	barra_progreso.min_value = 0
+	barra_progreso.max_value = 100
+	barra_progreso.step = 20
+	barra_progreso.value = progreso
+	barra_progreso.show_percentage = true
+	barra_progreso.custom_minimum_size = Vector2(0, 28)
+	info.add_child(barra_progreso)
 
 	var preview: Control = _crear_preview_apariencia(apariencia)
 	fila.add_child(preview)
@@ -108,7 +114,7 @@ func _crear_preview_apariencia(datos_apariencia: Dictionary) -> Control:
 		contenedor.add_child(sin_preview)
 		return contenedor
 
-	personaje.scale = Vector2(2.0, 2.0)
+	personaje.scale = Vector2(4.0, 4.0)
 	personaje.position = Vector2(60, 80)
 	contenedor.add_child(personaje)
 	_aplicar_apariencia_preview(personaje, datos_apariencia)
@@ -218,3 +224,21 @@ func _on_boton_nueva_partida_pressed() -> void:
 func _on_boton_volver_pressed() -> void:
 	AudioManager.play_ui_click()
 	get_tree().change_scene_to_file(ESCENA_MENU_PRINCIPAL)
+
+
+func _calcular_progreso_historia(slot: Dictionary) -> int:
+	if bool(slot.get("progreso_historia_bloqueado_100", false)):
+		return 100
+
+	var escena_actual: String = slot.get("escena_actual", "")
+	if escena_actual.is_empty():
+		return 0
+
+	for hito in HITOS_PROGRESO:
+		var porcentaje: int = int(hito.get("porcentaje", 0))
+		var prefijos: PackedStringArray = hito.get("prefijos", PackedStringArray())
+		for prefijo in prefijos:
+			if escena_actual.begins_with(prefijo):
+				return porcentaje
+
+	return 0

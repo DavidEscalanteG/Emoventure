@@ -3,6 +3,18 @@ extends Node
 const SAVE_FILE_PATH: String = "user://partidas_guardadas.json"
 const ESCENA_SELECCION_GENERO: String = "res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn"
 const ESCENA_FALLBACK: String = ESCENA_SELECCION_GENERO
+const ESCENA_CUESTIONARIO: String = "res://scenes/cuestionarios/EscenaCuestionario.tscn"
+const PREFIJO_ESCENA_REJUGABILIDAD: String = "res://scenes/rejugabilidad/"
+const ESCENA_MAPA_REJUGABILIDAD: String = "res://scenes/rejugabilidad/mapa_rejugabilidad.tscn"
+const ESCENAS_MINIJUEGOS_REJUGABLES: Array[String] = [
+	"res://scenes/mision_1_recoleccion/mapa_2/mapa2.tscn",
+	"res://scenes/mision_1_recoleccion/mapa_3/mapa3.tscn",
+	"res://scenes/mision_1_recoleccion/mapa_4/mapa4.tscn",
+	"res://scenes/mision_1_recoleccion/mapa_5/mapa5.tscn",
+	"res://scenes/mision_2_memorias/mision_2_memorias.tscn",
+	"res://scenes/mision_3_hachas/mision_3_hachas.tscn",
+	"res://scenes/mision_4_payasos/mapa_topos.tscn"
+]
 const ESCENAS_EXCLUIDAS_GUARDADO: Array[String] = [
 	"res://scenes/menu_principal/menu_principal.tscn",
 	"res://scenes/menu_guardados/menu_guardados.tscn",
@@ -14,6 +26,7 @@ var _partidas: Array = []
 var current_slot_id: String = ""
 var _crear_nueva_partida: bool = false
 var _ultima_escena_detectada: String = ""
+var _estado_cuestionario_pendiente: Dictionary = {}
 
 
 func _ready() -> void:
@@ -76,6 +89,8 @@ func cargar_partida(slot_id: String) -> bool:
 	_aplicar_datos_partida(partida)
 
 	var escena_guardada: String = partida.get("escena_actual", ESCENA_FALLBACK)
+	if _debe_redirigir_mapa_rejugabilidad(partida, escena_guardada):
+		escena_guardada = ESCENA_MAPA_REJUGABILIDAD
 	if escena_guardada.is_empty():
 		escena_guardada = ESCENA_FALLBACK
 	if not ResourceLoader.exists(escena_guardada):
@@ -136,6 +151,14 @@ func _actualizar_datos_slot(slot_id: String, escena_actual: String) -> void:
 		partida["puntaje_total"] = GameManager.obtener_puntaje_total()
 		partida["puntajes_emocionales"] = GameManager.obtener_puntajes_por_dimension()
 		partida["escena_actual"] = escena_actual
+		var progreso_bloqueado_100: bool = bool(partida.get("progreso_historia_bloqueado_100", false))
+		if progreso_bloqueado_100 or escena_actual.begins_with(PREFIJO_ESCENA_REJUGABILIDAD):
+			partida["progreso_historia_bloqueado_100"] = true
+		var estado_cuestionario: Dictionary = _construir_estado_cuestionario(escena_actual)
+		if estado_cuestionario.is_empty():
+			partida.erase("estado_cuestionario")
+		else:
+			partida["estado_cuestionario"] = estado_cuestionario
 		partida["updated_at"] = Time.get_datetime_string_from_system(true)
 		_partidas[i] = partida
 		return
@@ -168,7 +191,61 @@ func _aplicar_datos_partida(partida: Dictionary) -> void:
 		puntajes_emocionales_guardados = puntajes_emocionales_variant
 	GameManager.cargar_puntajes_desde_guardado(puntaje_total_guardado, puntajes_emocionales_guardados)
 
+	var estado_cuestionario_variant: Variant = partida.get("estado_cuestionario", {})
+	if typeof(estado_cuestionario_variant) == TYPE_DICTIONARY:
+		_estado_cuestionario_pendiente = (estado_cuestionario_variant as Dictionary).duplicate(true)
+	else:
+		_estado_cuestionario_pendiente = {}
 
+
+
+func obtener_estado_cuestionario_pendiente() -> Dictionary:
+	return _estado_cuestionario_pendiente.duplicate(true)
+
+
+func consumir_estado_cuestionario_pendiente() -> Dictionary:
+	var estado: Dictionary = _estado_cuestionario_pendiente.duplicate(true)
+	_estado_cuestionario_pendiente = {}
+	return estado
+
+
+func _construir_estado_cuestionario(escena_actual: String) -> Dictionary:
+	if escena_actual != ESCENA_CUESTIONARIO:
+		return {}
+
+	if get_tree().current_scene == null:
+		return {}
+
+	var cuestionario: EscenaCuestionario = get_tree().current_scene as EscenaCuestionario
+	if cuestionario == null:
+		return {}
+
+	var preguntas_serializadas: Array[String] = []
+	for pregunta in cuestionario.preguntas:
+		preguntas_serializadas.append(str(pregunta))
+
+	var escena_siguiente_path: String = ""
+	if cuestionario.escena_siguiente != null:
+		escena_siguiente_path = cuestionario.escena_siguiente.resource_path
+
+	return {
+		"dimension": cuestionario.dimension,
+		"preguntas": preguntas_serializadas,
+		"indice": cuestionario.indice,
+		"puntaje_local": cuestionario.puntaje_local,
+		"narrativa_post_cuestionario": cuestionario.narrativa_post_cuestionario,
+		"titulo_narrativa_post": cuestionario.titulo_narrativa_post,
+		"escena_siguiente_path": escena_siguiente_path
+	}
+
+
+func _debe_redirigir_mapa_rejugabilidad(partida: Dictionary, escena_guardada: String) -> bool:
+	if not bool(partida.get("progreso_historia_bloqueado_100", false)):
+		return false
+
+	return ESCENAS_MINIJUEGOS_REJUGABLES.has(escena_guardada)
+	
+	
 func _serializar_apariencia(apariencia: AparienciaJugador) -> Dictionary:
 	return {
 		"indice_cabello": apariencia.indice_cabello,

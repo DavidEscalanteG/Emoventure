@@ -103,7 +103,7 @@ func _ready() -> void:
 	_renderizar_resumen()
 	boton_descargar_pdf.text = TEXTO_BOTON_DESCARGA_POR_DEFECTO
 	boton_descargar_pdf.pressed.connect(_on_boton_descargar_pdf_pressed)
-	boton_menu_principal.pressed.connect(_on_boton_menu_principal_pressed)
+	boton_menu_principal.pressed.connect(_on_boton_rejugabilidad_pressed)
 	dialogo_guardar_pdf.file_selected.connect(_on_dialogo_guardar_pdf_file_selected)
 
 
@@ -365,6 +365,6 @@ func _iniciar_cooldown_boton_descarga() -> void:
 	cuenta_regresiva_descarga_activa = false
 
 
-func _on_boton_menu_principal_pressed() -> void:
+func _on_boton_rejugabilidad_pressed() -> void:
 	AudioManager.play_ui_click()
 	get_tree().change_scene_to_file(MAPA_REJUGABILIDAD_SCENE)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dr4vbuueuu56w"]
+[gd_scene load_steps=52 format=3 uid="uid://dr4vbuueuu56w"]
 
 [ext_resource type="Script" uid="uid://diq5t1l7eecp5" path="res://scenes/mision_2_memorias/cuadro_memoria.gd" id="1_p8cra"]
 [ext_resource type="Script" uid="uid://c6atu0ejscdo5" path="res://scenes/mision_2_memorias/memorias_eternas_gameplay.gd" id="1_uus5q"]
@@ -19,18 +19,18 @@
 [ext_resource type="Texture2D" uid="uid://dqn4v3f7ihc3k" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria6ByN.jpg" id="16_2mx8i"]
 [ext_resource type="Texture2D" uid="uid://dx0jdg1tsgl0o" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria7.jpg" id="16_uf5ph"]
 [ext_resource type="Texture2D" uid="uid://bhe7g44iqg2nu" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria6.jpg" id="17_45p5j"]
-[ext_resource type="Texture2D" uid="uid://be2m12ilqfwyk" path="res://assets/emociones/sprites/desagrado.png" id="18_wls2d"]
-[ext_resource type="Texture2D" uid="uid://cpqa724qpfdg7" path="res://assets/emociones/sprites/enojo.png" id="20_0q4pt"]
-[ext_resource type="Texture2D" uid="uid://qtect2yegfev" path="res://assets/emociones/sprites/felicidad.png" id="21_phvrg"]
-[ext_resource type="Texture2D" uid="uid://q7hoqt5qkhiw" path="res://assets/emociones/sprites/asombro.jpg" id="22_ses3a"]
-[ext_resource type="Texture2D" uid="uid://dxxy4k6ht2k6i" path="res://assets/emociones/sprites/tristeza.png" id="23_0sevr"]
-[ext_resource type="Texture2D" uid="uid://ywfka2ip4e7x" path="res://assets/emociones/sprites/ansiedad.jpg" id="23_3coyv"]
-[ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="24_0q4pt"]
-[ext_resource type="Texture2D" uid="uid://b7hiiqa8wrlvk" path="res://assets/emociones/sprites/amor.jpg" id="25_uf5ph"]
+[ext_resource type="Texture2D" uid="uid://drij7vi18vgxg" path="res://assets/emociones/spritesheets/emocion_feliz.png" id="21_s0bfu"]
+[ext_resource type="Texture2D" uid="uid://nsaqlorvolv" path="res://assets/emociones/spritesheets/emocion_tristeza.png" id="23_auu3l"]
+[ext_resource type="Texture2D" uid="uid://dak4m8tmu7fqp" path="res://assets/emociones/spritesheets/emocion_enojo.png" id="24_8sqc0"]
+[ext_resource type="Texture2D" uid="uid://ceig5b4edl2j4" path="res://assets/emociones/spritesheets/emocion_asombro.png" id="25_tj183"]
+[ext_resource type="Texture2D" uid="uid://b1fk1ss2e3x4d" path="res://assets/emociones/spritesheets/emocion_ansiedad.png" id="26_c176s"]
+[ext_resource type="Texture2D" uid="uid://bf1xbh4xdr7or" path="res://assets/emociones/spritesheets/emocion_desagrado.png" id="27_wo2m1"]
 [ext_resource type="Script" uid="uid://c3duorvxi7eul" path="res://scenes/mision_2_memorias/boton_confirmar.gd" id="28_3coyv"]
+[ext_resource type="Texture2D" uid="uid://cyxkbcescyc6x" path="res://assets/emociones/spritesheets/emocion_amor.png" id="28_67ss3"]
 [ext_resource type="Texture2D" uid="uid://d1lodo36peyik" path="res://assets/botones/Blue_Buttons_Pixel.png" id="30_vesnk"]
 [ext_resource type="Texture2D" uid="uid://4y4gqktpfyd0" path="res://assets/botones/Red_Buttons_Pixel.png" id="31_b241m"]
 [ext_resource type="Script" uid="uid://cd2y27drmyq4r" path="res://scenes/mision_2_memorias/boton_cancelar.gd" id="31_efkit"]
+[ext_resource type="Texture2D" uid="uid://k0weo1vvbnpk" path="res://assets/botones/Green_Buttons_Pixel.png" id="31_s0bfu"]
 [ext_resource type="Texture2D" uid="uid://bishv70yvv71n" path="res://assets/botones/Yellow_Buttons_Pixel.png" id="32_trrj2"]
 [ext_resource type="Texture2D" uid="uid://bb4x5nsfbg57u" path="res://assets/assets_escena_9/puerta/puerta_brillante.png" id="35_rfoqg"]
 [ext_resource type="Script" uid="uid://bcnfhy88ywwax" path="res://scenes/mision_2_memorias/puerta_cuestionario.gd" id="36_t272c"]
@@ -38,6 +38,46 @@
 [ext_resource type="PackedScene" uid="uid://dghl2jv2pxg6l" path="res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn" id="38_xwnhn"]
 [ext_resource type="SpriteFrames" uid="uid://mlosoquap83h" path="res://assets/assets_memorias_eternas/animacion/animacion_emociones.tres" id="39_emojis"]
 [ext_resource type="PackedScene" uid="uid://b72vpjuxw3fg2" path="res://scenes/mision_2_memorias/estela_particulas.tscn" id="40_estela"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1imss"]
+atlas = ExtResource("21_s0bfu")
+region = Rect2(0, 0, 96, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uugws"]
+atlas = ExtResource("23_auu3l")
+region = Rect2(0, 0, 96, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p0r8"]
+atlas = ExtResource("24_8sqc0")
+region = Rect2(0, 0, 96, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mx8i"]
+atlas = ExtResource("25_tj183")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45p5j"]
+atlas = ExtResource("26_c176s")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waq38"]
+atlas = ExtResource("27_wo2m1")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0ga1"]
+atlas = ExtResource("28_67ss3")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_auu3l"]
+texture = ExtResource("30_vesnk")
+region_rect = Rect2(16, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8sqc0"]
+texture = ExtResource("31_s0bfu")
+region_rect = Rect2(16, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s0bfu"]
+texture = ExtResource("32_trrj2")
+region_rect = Rect2(16, 0, 16, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q85nd"]
 texture = ExtResource("30_vesnk")
@@ -82,7 +122,6 @@ theme_override_font_sizes/font_size = 82
 text = "0 / 7 recuerdos explorados"
 
 [node name="Retroalimentacion" type="Label" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 5
@@ -129,7 +168,7 @@ id_cuadro = 0
 [node name="Estela" parent="CuadrosContainer/CuadroMemoria_00" instance=ExtResource("40_estela")]
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria_00"]
-scale = Vector2(3.4, 3.4)
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("39_emojis")
 animation = &"neutro"
 autoplay = "neutro"
@@ -147,7 +186,7 @@ id_cuadro = 1
 [node name="Estela" parent="CuadrosContainer/CuadroMemoria_01" instance=ExtResource("40_estela")]
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria_01"]
-scale = Vector2(3.4, 3.4)
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("39_emojis")
 animation = &"neutro"
 autoplay = "neutro"
@@ -165,7 +204,7 @@ id_cuadro = 2
 [node name="Estela" parent="CuadrosContainer/CuadroMemoria_02" instance=ExtResource("40_estela")]
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria_02"]
-scale = Vector2(3.4, 3.4)
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("39_emojis")
 animation = &"neutro"
 autoplay = "neutro"
@@ -183,7 +222,7 @@ id_cuadro = 3
 [node name="Estela" parent="CuadrosContainer/CuadroMemoria_03" instance=ExtResource("40_estela")]
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria_03"]
-scale = Vector2(3.4, 3.4)
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("39_emojis")
 animation = &"neutro"
 autoplay = "neutro"
@@ -201,7 +240,7 @@ id_cuadro = 4
 [node name="Estela" parent="CuadrosContainer/CuadroMemoria_04" instance=ExtResource("40_estela")]
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria_04"]
-scale = Vector2(3.4, 3.4)
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("39_emojis")
 animation = &"neutro"
 autoplay = "neutro"
@@ -219,7 +258,7 @@ id_cuadro = 5
 [node name="Estela" parent="CuadrosContainer/CuadroMemoria_05" instance=ExtResource("40_estela")]
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria_05"]
-scale = Vector2(3.4, 3.4)
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("39_emojis")
 animation = &"neutro"
 autoplay = "neutro"
@@ -237,7 +276,7 @@ id_cuadro = 6
 [node name="Estela" parent="CuadrosContainer/CuadroMemoria_06" instance=ExtResource("40_estela")]
 
 [node name="EmojiAnimado" type="AnimatedSprite2D" parent="CuadrosContainer/CuadroMemoria_06"]
-scale = Vector2(3.4, 3.4)
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("39_emojis")
 animation = &"neutro"
 autoplay = "neutro"
@@ -279,7 +318,7 @@ stretch_mode = 5
 
 [node name="EmojiGrande" type="AnimatedSprite2D" parent="SelectorEmocion/VisorImagen"]
 z_index = 11
-scale = Vector2(8, 8)
+scale = Vector2(4, 4)
 sprite_frames = ExtResource("39_emojis")
 animation = &"neutro"
 autoplay = "neutro"
@@ -300,43 +339,43 @@ scale = Vector2(0.8, 0.8)
 
 [node name="EmojiButton" type="TextureButton" parent="SelectorEmocion/EmojisContainer"]
 layout_mode = 2
-texture_normal = ExtResource("21_phvrg")
+texture_normal = SubResource("AtlasTexture_1imss")
 script = ExtResource("4_k0nqh")
 emocion_id = "felicidad"
 
 [node name="EmojiButton2" type="TextureButton" parent="SelectorEmocion/EmojisContainer"]
 layout_mode = 2
-texture_normal = ExtResource("23_0sevr")
+texture_normal = SubResource("AtlasTexture_uugws")
 script = ExtResource("4_k0nqh")
 emocion_id = "tristeza"
 
 [node name="EmojiButton3" type="TextureButton" parent="SelectorEmocion/EmojisContainer"]
 layout_mode = 2
-texture_normal = ExtResource("20_0q4pt")
+texture_normal = SubResource("AtlasTexture_1p0r8")
 script = ExtResource("4_k0nqh")
 emocion_id = "enojo"
 
 [node name="EmojiButton4" type="TextureButton" parent="SelectorEmocion/EmojisContainer"]
 layout_mode = 2
-texture_normal = ExtResource("22_ses3a")
+texture_normal = SubResource("AtlasTexture_2mx8i")
 script = ExtResource("4_k0nqh")
 emocion_id = "asombro"
 
 [node name="EmojiButton5" type="TextureButton" parent="SelectorEmocion/EmojisContainer"]
 layout_mode = 2
-texture_normal = ExtResource("23_3coyv")
+texture_normal = SubResource("AtlasTexture_45p5j")
 script = ExtResource("4_k0nqh")
 emocion_id = "ansiedad"
 
 [node name="EmojiButton6" type="TextureButton" parent="SelectorEmocion/EmojisContainer"]
 layout_mode = 2
-texture_normal = ExtResource("18_wls2d")
+texture_normal = SubResource("AtlasTexture_waq38")
 script = ExtResource("4_k0nqh")
 emocion_id = "desagrado"
 
 [node name="EmojiButton7" type="TextureButton" parent="SelectorEmocion/EmojisContainer"]
 layout_mode = 2
-texture_normal = ExtResource("25_uf5ph")
+texture_normal = SubResource("AtlasTexture_x0ga1")
 script = ExtResource("4_k0nqh")
 emocion_id = "amor"
 
@@ -348,7 +387,9 @@ anchor_top = 0.8203703
 anchor_right = 0.4921875
 anchor_bottom = 0.9435185
 offset_top = 6.1035156e-05
-icon = ExtResource("24_0q4pt")
+theme_override_styles/normal = SubResource("StyleBoxTexture_auu3l")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8sqc0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_s0bfu")
 script = ExtResource("28_3coyv")
 metadata/_edit_use_anchors_ = true
 

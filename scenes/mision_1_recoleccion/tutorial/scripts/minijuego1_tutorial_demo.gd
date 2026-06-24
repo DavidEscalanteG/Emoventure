@@ -16,11 +16,11 @@ const EMOTION_SCALE := Vector2.ONE * 1.6
 const OBSTACLE_SCALE := Vector2.ONE * 3.0
 
 const EMOTION_TEXTURES := {
-	"alegria": preload("res://assets/emociones/sprites/felicidad.png"),
-	"tristeza": preload("res://assets/emociones/sprites/tristeza.png"),
-	"enojo": preload("res://assets/emociones/sprites/enojo.png"),
-	"desagrado": preload("res://assets/emociones/sprites/desagrado.png"),
-	"miedo": preload("res://assets/emociones/sprites/miedo.png"),
+	"alegria": preload("res://assets/emociones/spritesheets/emocion_feliz.png"),
+	"tristeza": preload("res://assets/emociones/spritesheets/emocion_tristeza.png"),
+	"enojo": preload("res://assets/emociones/spritesheets/emocion_enojo.png"),
+	"desagrado": preload("res://assets/emociones/spritesheets/emocion_desagrado.png"),
+	"miedo": preload("res://assets/emociones/spritesheets/emocion_ansiedad.png"),
 }
 
 func reset_world() -> void:
@@ -47,7 +47,15 @@ func move_player(offset: Vector2, duration: float = 0.5) -> Tween:
 	return tween
 
 func show_emotion(tipo: String) -> void:
-	emotion_sprite.texture = EMOTION_TEXTURES.get(tipo)
+	var base_texture: Texture2D = EMOTION_TEXTURES.get(tipo)
+	
+	if base_texture:
+		var atlas := AtlasTexture.new()
+		atlas.atlas = base_texture
+		atlas.region = Rect2(0, 0, 100, 100)
+		
+		emotion_sprite.texture = atlas
+	
 	emotion.visible = true
 	emotion.modulate = Color.WHITE
 	emotion.scale = EMOTION_SCALE

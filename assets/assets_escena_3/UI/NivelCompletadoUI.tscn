@@ -1,17 +1,38 @@
-[gd_scene load_steps=13 format=3 uid="uid://xirhg56731lh"]
+[gd_scene load_steps=19 format=3 uid="uid://xirhg56731lh"]
 
-[ext_resource type="Script" uid="uid://l6wswws2bnvk" path="res://scenes/src/ui/nivel_completado_ui.gd" id="1_2e01h"]
-[ext_resource type="Texture2D" uid="uid://qtect2yegfev" path="res://assets/emociones/sprites/felicidad.png" id="2_po2aj"]
+[ext_resource type="Script" uid="uid://l6wswws2bnvk" path="res://src/ui/nivel_completado_ui.gd" id="1_2e01h"]
 [ext_resource type="PackedScene" uid="uid://bgjfcq8bkynuh" path="res://scenes/cuestionarios/EscenaCuestionario.tscn" id="2_tg12r"]
-[ext_resource type="Texture2D" uid="uid://dxxy4k6ht2k6i" path="res://assets/emociones/sprites/tristeza.png" id="3_n5g63"]
 [ext_resource type="PackedScene" uid="uid://1qd5o2iv27o7" path="res://scenes/transicion_post_mision_1/transicion_post_mision_1.tscn" id="3_tg12r"]
-[ext_resource type="Texture2D" uid="uid://cpqa724qpfdg7" path="res://assets/emociones/sprites/enojo.png" id="4_vj3d1"]
-[ext_resource type="Texture2D" uid="uid://be2m12ilqfwyk" path="res://assets/emociones/sprites/desagrado.png" id="5_tg12r"]
-[ext_resource type="Texture2D" uid="uid://dbeo324lgnb8p" path="res://assets/emociones/sprites/miedo.png" id="6_6w4pf"]
+[ext_resource type="FontFile" uid="uid://bkvak4ksmjeuu" path="res://assets/fuentes/PlainPixel-Regular.ttf" id="4_6w4pf"]
+[ext_resource type="Texture2D" uid="uid://drij7vi18vgxg" path="res://assets/emociones/spritesheets/emocion_feliz.png" id="4_tg12r"]
+[ext_resource type="Texture2D" uid="uid://nsaqlorvolv" path="res://assets/emociones/spritesheets/emocion_tristeza.png" id="5_6w4pf"]
+[ext_resource type="Texture2D" uid="uid://dak4m8tmu7fqp" path="res://assets/emociones/spritesheets/emocion_enojo.png" id="6_3m343"]
 [ext_resource type="Texture2D" uid="uid://dakbba4p8b1b3" path="res://pruebas/assets_temporales/corazon_lleno.png" id="7_3m343"]
+[ext_resource type="Texture2D" uid="uid://bf1xbh4xdr7or" path="res://assets/emociones/spritesheets/emocion_desagrado.png" id="7_cj4g5"]
+[ext_resource type="Texture2D" uid="uid://b1fk1ss2e3x4d" path="res://assets/emociones/spritesheets/emocion_ansiedad.png" id="8_bmrmj"]
 [ext_resource type="Texture2D" uid="uid://diko1vyjoakh1" path="res://pruebas/assets_temporales/serpiente png.png" id="8_cj4g5"]
-[ext_resource type="Texture2D" uid="uid://cyxwh51xuix7b" path="res://assets/assets_menu_principal/boton_play/boton_play.png" id="9_bmrmj"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="9_n5g63"]
+[ext_resource type="Texture2D" uid="uid://dtvbvblxrod3d" path="res://assets/botones/boton_play.png" id="12_tg12r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y520g"]
+atlas = ExtResource("4_tg12r")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1pxu"]
+atlas = ExtResource("5_6w4pf")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1fu3"]
+atlas = ExtResource("6_3m343")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qj2d"]
+atlas = ExtResource("7_cj4g5")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h5ht"]
+atlas = ExtResource("8_bmrmj")
+region = Rect2(0, 0, 100, 100)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -40,6 +61,7 @@ layout_mode = 2
 
 [node name="Titulo" type="Label" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6w4pf")
 theme_override_font_sizes/font_size = 45
 text = "Nivel Superado"
 horizontal_alignment = 1
@@ -50,23 +72,23 @@ alignment = 1
 
 [node name="Alegria" type="TextureRect" parent="Control/Panel/VBoxContainer/Emociones"]
 layout_mode = 2
-texture = ExtResource("2_po2aj")
+texture = SubResource("AtlasTexture_y520g")
 
 [node name="Tristeza" type="TextureRect" parent="Control/Panel/VBoxContainer/Emociones"]
 layout_mode = 2
-texture = ExtResource("3_n5g63")
+texture = SubResource("AtlasTexture_y1pxu")
 
 [node name="Enojo" type="TextureRect" parent="Control/Panel/VBoxContainer/Emociones"]
 layout_mode = 2
-texture = ExtResource("4_vj3d1")
+texture = SubResource("AtlasTexture_c1fu3")
 
 [node name="Desagrado" type="TextureRect" parent="Control/Panel/VBoxContainer/Emociones"]
 layout_mode = 2
-texture = ExtResource("5_tg12r")
+texture = SubResource("AtlasTexture_6qj2d")
 
-[node name="Miedo" type="TextureRect" parent="Control/Panel/VBoxContainer/Emociones"]
+[node name="Ansiedad" type="TextureRect" parent="Control/Panel/VBoxContainer/Emociones"]
 layout_mode = 2
-texture = ExtResource("6_6w4pf")
+texture = SubResource("AtlasTexture_0h5ht")
 
 [node name="Separador" type="HSeparator" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2
@@ -109,5 +131,5 @@ layout_mode = 0
 offset_top = 4.0
 offset_right = 589.0
 offset_bottom = 137.0
-icon = ExtResource("9_bmrmj")
+icon = ExtResource("12_tg12r")
 icon_alignment = 1

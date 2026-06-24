@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://x4dja336xuxl" path="res://assets/botones/boton_amarillo.png" id="1_2aa2q"]
 [ext_resource type="Texture2D" uid="uid://q2noayx4pdex" path="res://assets/botones/boton_azul.png" id="1_m1tqe"]
-[ext_resource type="FontFile" uid="uid://frkucnc5x4yc" path="res://assets/fuentes/Song of Valentine Sans.otf" id="2_xwqlt"]
+[ext_resource type="FontFile" uid="uid://bkvak4ksmjeuu" path="res://assets/fuentes/PlainPixel-Regular.ttf" id="2_xwqlt"]
 [ext_resource type="Texture2D" uid="uid://bsjiua800xbau" path="res://assets/botones/boton_morado.png" id="3_vqmqe"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vqmqe"]

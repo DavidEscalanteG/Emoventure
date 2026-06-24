@@ -8,16 +8,26 @@ var esperando_cambio: bool = false
 var en_interseccion: bool = false
 
 var puede_moverse: bool = true
+var ultima_direccion: Vector2 = Vector2.RIGHT
+var ultima_posicion_global: Vector2 = Vector2.ZERO
 
+@onready var visual: Node2D = $Visual
 @onready var sprite: AnimatedSprite2D = $Visual/AnimatedSprite2D
 
 func _ready() -> void:
 	path_follow = get_parent() as PathFollow2D
+	if path_follow != null:
+		path_follow.rotates = false
+		path_follow.rotation = 0.0
 	sprite.play("walk") # arranca caminando por default
+	visual.scale = Vector2.ONE
+	ultima_posicion_global = global_position
+	_actualizar_orientacion(ultima_direccion)
 
 func _physics_process(delta: float) -> void:
 	if not puede_moverse:
 		_actualizar_animacion()
+		_actualizar_orientacion(Vector2.ZERO)
 		return
 
 	if path_follow == null:
@@ -25,6 +35,10 @@ func _physics_process(delta: float) -> void:
 
 	path_follow.progress += speed * delta
 	_actualizar_animacion()
+
+	var movimiento: Vector2 = global_position - ultima_posicion_global
+	_actualizar_orientacion(movimiento)
+	ultima_posicion_global = global_position
 
 	# 🔀 Cambio de ruta SOLO si sigue en intersección
 	if esperando_cambio and en_interseccion:
@@ -51,6 +65,27 @@ func _actualizar_animacion() -> void:
 		if sprite.animation != "walk":
 			sprite.play("walk")
 
+func _actualizar_orientacion(movimiento: Vector2) -> void:
+	if movimiento.length_squared() > 0.0001:
+		if abs(movimiento.x) > abs(movimiento.y):
+			ultima_direccion = Vector2.RIGHT if movimiento.x > 0.0 else Vector2.LEFT
+		else:
+			ultima_direccion = Vector2.DOWN if movimiento.y > 0.0 else Vector2.UP
+
+	sprite.flip_h = false
+	visual.rotation = 0.0
+
+	match ultima_direccion:
+		Vector2.RIGHT:
+			sprite.flip_h = true
+			visual.rotation = 0.0
+		Vector2.LEFT:
+			visual.rotation = 0.0
+		Vector2.UP:
+			visual.rotation = PI / 2.0
+		Vector2.DOWN:
+			visual.rotation = -PI / 2.0
+
 
 func preparar_cambio_de_ruta(nueva_ruta: Path2D) -> void:
 	ruta_pendiente = nueva_ruta
@@ -62,6 +97,8 @@ func _ejecutar_cambio_de_ruta() -> void:
 
 	var nueva_follow: PathFollow2D = PathFollow2D.new()
 	nueva_follow.loop = false
+	nueva_follow.rotates = false
+	nueva_follow.rotation = 0.0
 
 	# ⬅️ 1. Añadir PRIMERO al Path2D
 	ruta_pendiente.add_child(nueva_follow)
@@ -88,6 +125,7 @@ func _ejecutar_cambio_de_ruta() -> void:
 	# ⬅️ 4. Limpiar
 	path_follow.queue_free()
 	path_follow = nueva_follow
+	ultima_posicion_global = global_position
 
 	ruta_pendiente = null
 	esperando_cambio = false
