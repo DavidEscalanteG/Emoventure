@@ -49,6 +49,10 @@ enabled=PackedStringArray("res://addons/curve_snapper/plugin.cfg", "res://addons
 
 enemigos="Enemigos del juego del laberinto"
 
+[gui]
+
+theme/custom="res://assets/temas/tema_global_fuente.tres"
+
 [input]
 
 move_up={

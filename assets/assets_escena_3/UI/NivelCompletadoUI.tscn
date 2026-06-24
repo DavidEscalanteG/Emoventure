@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://xirhg56731lh"]
+[gd_scene load_steps=19 format=3 uid="uid://xirhg56731lh"]
 
 [ext_resource type="Script" uid="uid://l6wswws2bnvk" path="res://src/ui/nivel_completado_ui.gd" id="1_2e01h"]
 [ext_resource type="PackedScene" uid="uid://bgjfcq8bkynuh" path="res://scenes/cuestionarios/EscenaCuestionario.tscn" id="2_tg12r"]
 [ext_resource type="PackedScene" uid="uid://1qd5o2iv27o7" path="res://scenes/transicion_post_mision_1/transicion_post_mision_1.tscn" id="3_tg12r"]
+[ext_resource type="FontFile" uid="uid://bkvak4ksmjeuu" path="res://assets/fuentes/PlainPixel-Regular.ttf" id="4_6w4pf"]
 [ext_resource type="Texture2D" uid="uid://drij7vi18vgxg" path="res://assets/emociones/spritesheets/emocion_feliz.png" id="4_tg12r"]
 [ext_resource type="Texture2D" uid="uid://nsaqlorvolv" path="res://assets/emociones/spritesheets/emocion_tristeza.png" id="5_6w4pf"]
 [ext_resource type="Texture2D" uid="uid://dak4m8tmu7fqp" path="res://assets/emociones/spritesheets/emocion_enojo.png" id="6_3m343"]
@@ -60,6 +61,7 @@ layout_mode = 2
 
 [node name="Titulo" type="Label" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6w4pf")
 theme_override_font_sizes/font_size = 45
 text = "Nivel Superado"
 horizontal_alignment = 1
