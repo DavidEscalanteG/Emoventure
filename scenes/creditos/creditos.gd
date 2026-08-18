@@ -12,7 +12,8 @@ const MENU_PRINCIPAL_SCENE := "res://scenes/menu_principal/menu_principal.tscn"
 	},
 	{
 		"rol": "Arte",
-		"personas": ["Evan"]
+		"personas": ["Evan
+		Jose"]
 	},
 	{
 		"rol": "QA / Testing",

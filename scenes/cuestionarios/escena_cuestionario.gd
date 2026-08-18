@@ -25,8 +25,8 @@ var indice: int = 0
 var puntaje_local: int = 0
 var finalizando: bool = false
 
-const FUENTE_PREGUNTA_BASE := 79
-const FUENTE_PREGUNTA_MEDIA := 68
+const FUENTE_PREGUNTA_BASE := 58
+const FUENTE_PREGUNTA_MEDIA := 58
 const FUENTE_PREGUNTA_LARGA := 58
 
 @onready var panel_narrativa_post: PanelContainer = %PanelNarrativaPost

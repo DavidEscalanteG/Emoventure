@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://xirhg56731lh"]
+[gd_scene load_steps=24 format=3 uid="uid://xirhg56731lh"]
 
 [ext_resource type="Script" uid="uid://l6wswws2bnvk" path="res://src/ui/nivel_completado_ui.gd" id="1_2e01h"]
 [ext_resource type="PackedScene" uid="uid://bgjfcq8bkynuh" path="res://scenes/cuestionarios/EscenaCuestionario.tscn" id="2_tg12r"]
@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://b1fk1ss2e3x4d" path="res://assets/emociones/spritesheets/emocion_ansiedad.png" id="8_bmrmj"]
 [ext_resource type="Texture2D" uid="uid://diko1vyjoakh1" path="res://pruebas/assets_temporales/serpiente png.png" id="8_cj4g5"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="9_n5g63"]
-[ext_resource type="Texture2D" uid="uid://dtvbvblxrod3d" path="res://assets/botones/boton_play.png" id="12_tg12r"]
+[ext_resource type="Texture2D" uid="uid://d1lodo36peyik" path="res://assets/botones/Blue_Buttons_Pixel.png" id="13_6w4pf"]
+[ext_resource type="Texture2D" uid="uid://k0weo1vvbnpk" path="res://assets/botones/Green_Buttons_Pixel.png" id="14_cj4g5"]
+[ext_resource type="Texture2D" uid="uid://bishv70yvv71n" path="res://assets/botones/Yellow_Buttons_Pixel.png" id="15_bmrmj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y520g"]
 atlas = ExtResource("4_tg12r")
@@ -33,6 +35,18 @@ region = Rect2(100, 0, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0h5ht"]
 atlas = ExtResource("8_bmrmj")
 region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3m343"]
+texture = ExtResource("13_6w4pf")
+region_rect = Rect2(16, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y520g"]
+texture = ExtResource("14_cj4g5")
+region_rect = Rect2(16, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y1pxu"]
+texture = ExtResource("15_bmrmj")
+region_rect = Rect2(16, 0, 16, 16)
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -128,8 +142,11 @@ layout_mode = 2
 
 [node name="BotonContinuar" type="Button" parent="Control/Panel/VBoxContainer/ControlBoton"]
 layout_mode = 0
+offset_left = 250.0
 offset_top = 4.0
-offset_right = 589.0
-offset_bottom = 137.0
-icon = ExtResource("12_tg12r")
+offset_right = 314.0
+offset_bottom = 68.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_3m343")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y520g")
+theme_override_styles/hover = SubResource("StyleBoxTexture_y1pxu")
 icon_alignment = 1

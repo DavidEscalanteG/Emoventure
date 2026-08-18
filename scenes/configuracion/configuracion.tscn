@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdmdrpiup0o5w"]
+[gd_scene load_steps=9 format=3 uid="uid://cdmdrpiup0o5w"]
 
 [ext_resource type="Script" uid="uid://cxiguqd1cr83y" path="res://scenes/configuracion/configuracion.gd" id="1_5f2y7"]
+[ext_resource type="Texture2D" uid="uid://dcfbcs5obnba6" path="res://assets/assets_menu_principal/fondo/fondo_menu_pixel.jpeg" id="2_gkh82"]
+[ext_resource type="Shader" uid="uid://cmegfkrqjhxo8" path="res://scenes/configuracion/configuracion.gdshader" id="3_3h3dg"]
+[ext_resource type="Texture2D" uid="uid://ula0mb0bql8u" path="res://assets/ui/Tilesheets/Large tiles/Thin outline/tilemap_packed.png" id="4_3h3dg"]
+[ext_resource type="Texture2D" uid="uid://ckg6hy0bjfonn" path="res://assets/ui/Tilesheets/Large tiles/Thick outline/tilemap_packed.png" id="4_6w621"]
+[ext_resource type="Theme" uid="uid://dwacxx3nxjf5c" path="res://assets/temas/tema_botones.tres" id="6_6w621"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lmhtk"]
+shader = ExtResource("3_3h3dg")
+shader_parameter/blur_amount = 2.170000103075
+shader_parameter/darken_amount = 0.830000039425
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_erp7v"]
 
 [node name="Configuracion" type="Control"]
 layout_mode = 3
@@ -11,7 +23,189 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5f2y7")
 
+[node name="FondoMenuPixel" type="Sprite2D" parent="."]
+position = Vector2(959, 536.25)
+scale = Vector2(1.8867188, 1.9561718)
+texture = ExtResource("2_gkh82")
+
+[node name="BlurOverlay" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_lmhtk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fondo_Config" type="Sprite2D" parent="."]
+position = Vector2(956, 663.26)
+scale = Vector2(30.56, 18.296251)
+texture = ExtResource("4_3h3dg")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Fondo_Titulo" type="Sprite2D" parent="."]
+position = Vector2(963.5, 351)
+scale = Vector2(9.531251, 8)
+texture = ExtResource("4_6w621")
+region_enabled = true
+region_rect = Rect2(128, 96, 96, 32)
+
+[node name="Titulo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 297.0
+offset_right = 1286.0
+offset_bottom = 428.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "Configuración de Audio"
+horizontal_alignment = 1
+
+[node name="Master" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 613.0
+offset_top = 541.0
+offset_right = 1265.0
+offset_bottom = 606.0
+
+[node name="LabelMaster" type="Label" parent="Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "Volumen general"
+
+[node name="SliderMaster" type="HSlider" parent="Master"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Musica" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 612.0
+offset_top = 614.0
+offset_right = 1264.0
+offset_bottom = 679.0
+
+[node name="LabelMusica" type="Label" parent="Musica"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "Música"
+
+[node name="SliderMusica" type="HSlider" parent="Musica"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="SFX" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 608.0
+offset_top = 679.0
+offset_right = 1260.0
+offset_bottom = 744.0
+
+[node name="LabelSFX" type="Label" parent="SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "Efectos"
+
+[node name="SliderSFX" type="HSlider" parent="SFX"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Voz" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 649.0
+offset_top = 709.0
+offset_right = 1301.0
+offset_bottom = 775.0
+
+[node name="LabelVoz" type="Label" parent="Voz"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "Voces"
+
+[node name="SliderVoz" type="HSlider" parent="Voz"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Controles" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 634.0
+offset_top = 569.0
+offset_right = 1286.0
+offset_bottom = 600.0
+
+[node name="LabelControles" type="Label" parent="Controles"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Controles móvil"
+
+[node name="OptionControles" type="OptionButton" parent="Controles"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BotonesPrueba" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 618.0
+offset_top = 901.0
+offset_right = 1270.0
+offset_bottom = 958.0
+theme_override_constants/separation = 12
+
+[node name="BtnProbarMusica" type="Button" parent="BotonesPrueba"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "Probar música"
+
+[node name="BtnProbarSFX" type="Button" parent="BotonesPrueba"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "Probar SFX"
+
+[node name="BtnVolver" type="Button" parent="."]
+layout_mode = 0
+offset_left = 611.0
+offset_top = 784.0
+offset_right = 1263.0
+offset_bottom = 853.0
+theme = ExtResource("6_6w621")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Volver al menú"
+
 [node name="Panel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,6 +218,7 @@ offset_right = 350.0
 offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_erp7v")
 
 [node name="VBox" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -38,112 +233,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 14
 
-[node name="Titulo" type="Label" parent="Panel/VBox"]
-layout_mode = 2
-text = "Configuración de Audio"
-horizontal_alignment = 1
-
-[node name="Master" type="HBoxContainer" parent="Panel/VBox"]
-layout_mode = 2
-
-[node name="LabelMaster" type="Label" parent="Panel/VBox/Master"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Volumen general"
-
-[node name="SliderMaster" type="HSlider" parent="Panel/VBox/Master"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="Musica" type="HBoxContainer" parent="Panel/VBox"]
-layout_mode = 2
-
-[node name="LabelMusica" type="Label" parent="Panel/VBox/Musica"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Música"
-
-[node name="SliderMusica" type="HSlider" parent="Panel/VBox/Musica"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.01
-value = 0.8
-
-[node name="SFX" type="HBoxContainer" parent="Panel/VBox"]
-layout_mode = 2
-
-[node name="LabelSFX" type="Label" parent="Panel/VBox/SFX"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Efectos"
-
-[node name="SliderSFX" type="HSlider" parent="Panel/VBox/SFX"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-[node name="Voz" type="HBoxContainer" parent="Panel/VBox"]
-layout_mode = 2
-
-[node name="LabelVoz" type="Label" parent="Panel/VBox/Voz"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Voces"
-
-[node name="SliderVoz" type="HSlider" parent="Panel/VBox/Voz"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 1.0
-step = 0.01
-value = 1.0
-
-
-[node name="Controles" type="HBoxContainer" parent="Panel/VBox"]
-layout_mode = 2
-
-[node name="LabelControles" type="Label" parent="Panel/VBox/Controles"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Controles móvil"
-
-[node name="OptionControles" type="OptionButton" parent="Panel/VBox/Controles"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="BotonesPrueba" type="HBoxContainer" parent="Panel/VBox"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="BtnProbarMusica" type="Button" parent="Panel/VBox/BotonesPrueba"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Probar música"
-
-[node name="BtnProbarSFX" type="Button" parent="Panel/VBox/BotonesPrueba"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Probar SFX"
-
-[node name="BtnVolver" type="Button" parent="Panel/VBox"]
-layout_mode = 2
-text = "Volver al menú"
-
-[connection signal="value_changed" from="Panel/VBox/Master/SliderMaster" to="." method="_on_slider_master_value_changed"]
-[connection signal="value_changed" from="Panel/VBox/Musica/SliderMusica" to="." method="_on_slider_musica_value_changed"]
-[connection signal="value_changed" from="Panel/VBox/SFX/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
-[connection signal="value_changed" from="Panel/VBox/Voz/SliderVoz" to="." method="_on_slider_voz_value_changed"]
-[connection signal="pressed" from="Panel/VBox/BotonesPrueba/BtnProbarMusica" to="." method="_on_btn_probar_musica_pressed"]
-[connection signal="pressed" from="Panel/VBox/BotonesPrueba/BtnProbarSFX" to="." method="_on_btn_probar_sfx_pressed"]
-[connection signal="pressed" from="Panel/VBox/BtnVolver" to="." method="_on_btn_volver_pressed"]
-[connection signal="item_selected" from="Panel/VBox/Controles/OptionControles" to="." method="_on_option_controles_item_selected"]
+[connection signal="value_changed" from="Master/SliderMaster" to="." method="_on_slider_master_value_changed"]
+[connection signal="value_changed" from="Musica/SliderMusica" to="." method="_on_slider_musica_value_changed"]
+[connection signal="value_changed" from="SFX/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
+[connection signal="value_changed" from="Voz/SliderVoz" to="." method="_on_slider_voz_value_changed"]
+[connection signal="item_selected" from="Controles/OptionControles" to="." method="_on_option_controles_item_selected"]
+[connection signal="pressed" from="BotonesPrueba/BtnProbarMusica" to="." method="_on_btn_probar_musica_pressed"]
+[connection signal="pressed" from="BotonesPrueba/BtnProbarSFX" to="." method="_on_btn_probar_sfx_pressed"]
+[connection signal="pressed" from="BtnVolver" to="." method="_on_btn_volver_pressed"]

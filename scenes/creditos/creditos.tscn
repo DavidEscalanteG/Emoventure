@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://kitnjm682nm7"]
+[gd_scene load_steps=4 format=3 uid="uid://kitnjm682nm7"]
 
 [ext_resource type="Script" uid="uid://xq3j6v2ekbvr" path="res://scenes/creditos/creditos.gd" id="1_hv6g2"]
+[ext_resource type="Theme" uid="uid://dwacxx3nxjf5c" path="res://assets/temas/tema_botones.tres" id="2_s4lej"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fondo"]
 bg_color = Color(0.0705882, 0.0784314, 0.137255, 1)
@@ -67,6 +68,11 @@ theme_override_constants/separation = 14
 [node name="BotonVolver" type="Button" parent="MargenPrincipal/Contenido"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_s4lej")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
 text = "Volver al menú principal"
 
 [connection signal="pressed" from="MargenPrincipal/Contenido/BotonVolver" to="." method="_on_boton_volver_pressed"]

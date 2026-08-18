@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://co64vr8dggawo"]
+[gd_scene load_steps=23 format=3 uid="uid://co64vr8dggawo"]
 
 [ext_resource type="Texture2D" uid="uid://cvrhj3gc8u4g2" path="res://assets/assets_menu_principal/fondo/fondo_menu.png" id="1_hkuy5"]
+[ext_resource type="Texture2D" uid="uid://dcfbcs5obnba6" path="res://assets/assets_menu_principal/fondo/fondo_menu_pixel.jpeg" id="2_b5s1v"]
 [ext_resource type="Texture2D" uid="uid://d1lodo36peyik" path="res://assets/botones/Blue_Buttons_Pixel.png" id="3_4jlvr"]
 [ext_resource type="Texture2D" uid="uid://k0weo1vvbnpk" path="res://assets/botones/Green_Buttons_Pixel.png" id="4_b3va0"]
 [ext_resource type="Texture2D" uid="uid://bishv70yvv71n" path="res://assets/botones/Yellow_Buttons_Pixel.png" id="5_iovm2"]
@@ -33,6 +34,18 @@ region_rect = Rect2(32, 0, 16, 16)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8kbuk"]
 texture = ExtResource("5_iovm2")
 region_rect = Rect2(32, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4jlvr"]
+texture = ExtResource("3_4jlvr")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b3va0"]
+texture = ExtResource("4_b3va0")
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iovm2"]
+texture = ExtResource("5_iovm2")
+region_rect = Rect2(0, 0, 16, 16)
 
 [sub_resource type="Animation" id="Animation_byxo4"]
 resource_name = "Desvanecido_Fuera"
@@ -79,7 +92,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("13_menu_root")
 
+[node name="FondoMenuPixel" type="Sprite2D" parent="."]
+position = Vector2(958.5, 534.25)
+scale = Vector2(1.9013672, 1.9561718)
+texture = ExtResource("2_b5s1v")
+
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -135,13 +154,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -132.0
-offset_top = -100.0
-offset_right = 132.0
-offset_bottom = -36.0
+offset_left = -119.0
+offset_top = -143.0
+offset_right = 81.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_4jlvr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b3va0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_iovm2")
 text = "Créditos"
 script = ExtResource("12_2v5fx")
 
