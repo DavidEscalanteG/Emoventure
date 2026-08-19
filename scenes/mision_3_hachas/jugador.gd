@@ -4,8 +4,10 @@ const MOBILE_CONTROLS_SCENE := preload("res://src/ui/mobile_controls.tscn")
 @export var coyote_time_duration = 0.15 # Cuánto tiempo dura el "perdón" (0.15s es ideal)
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -444.0
+const SPEED = 480.0
+const JUMP_VELOCITY = -760.0
+
+
 
 var wall_jump_timer = 0.0  # Temporizador para bloquear el movimiento lateral un instante
 var input_dir = 0 # Guardará la dirección según el orden de pulsación
@@ -41,9 +43,11 @@ func _input(event):
 			input_dir = 0
 			
 func _physics_process(delta: float) -> void:
-	# 1. GRAVEDAD
+
+	# 1. GRAVEDAD (Ajustada a la nueva escala)
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta * 1.6
+	
 
 	# 2. PROCESAR EL TIMER
 	# Restamos el tiempo que pasa en cada frame

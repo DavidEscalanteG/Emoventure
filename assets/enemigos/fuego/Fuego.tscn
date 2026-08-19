@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://blj0u62s4ekuv"]
 
-[ext_resource type="Script" uid="uid://ctv8ov8ukvc2t" path="res://src/gameplay/enemigos/fuego/fuego.gd" id="1_x1"]
+[ext_resource type="Script" uid="uid://ctv8ov8ukvc2t" path="res://scenes/src/gameplay/enemigos/fuego/fuego.gd" id="1_x1"]
 [ext_resource type="Texture2D" uid="uid://bwdkdwcq7ndmx" path="res://assets/enemigos/fuego/blue/end/burning_end_1.png" id="2_5ngcy"]
 [ext_resource type="Texture2D" uid="uid://cy6t3dc8k03rt" path="res://assets/enemigos/fuego/blue/loops/burning_loop_1.png" id="3_m14wi"]
 [ext_resource type="Texture2D" uid="uid://bsqske75dk3h5" path="res://assets/enemigos/fuego/blue/start/burning_start_1.png" id="4_blynn"]

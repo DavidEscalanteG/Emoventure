@@ -9,8 +9,8 @@ const SIGUIENTE_ESCENA := "uid://b0tuj3njkfr0j" #intro_dialogo_4.tscn"
 func _ready() -> void:
 	MusicManager.iniciar_override_dialogo(MusicManager.AMBIENTE_TENSION)
 	
-	DialogueActors.registro_registrar_actor("mujer_lagarto", $Personajes/MujerLagarto)
-	DialogueActors.registro_registrar_actor("jugador", $Personajes/JugadorCinematico)
+	#@DialogueActors.registro_registrar_actor("mujer_lagarto", $Personajes/MujerLagarto)
+	#@DialogueActors.registro_registrar_actor("jugador", $Personajes/JugadorCinematico)
 	dialogue_ui.dialogo_finalizado.connect(_on_dialogo_finalizado)
 	
 	#await get_tree().create_timer(1.0).timeout
