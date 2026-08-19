@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8cb4bvrdo8hf"]
 
-[ext_resource type="Script" uid="uid://cr72sy4u6fusf" path="res://scenes/src/gameplay/enemigos/fuego/fuego_indicador.gd" id="1_i1"]
+[ext_resource type="Script" uid="uid://cr72sy4u6fusf" path="res://src/gameplay/enemigos/fuego/fuego_indicador.gd" id="1_i1"]
 [ext_resource type="Texture2D" uid="uid://cy6t3dc8k03rt" path="res://assets/enemigos/fuego/blue/loops/burning_loop_1.png" id="2_yif03"]
 
 [node name="FuegoIndicador" type="Node2D"]
