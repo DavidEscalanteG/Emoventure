@@ -3,6 +3,8 @@ extends Control
 const ESCENA_SELECCION_GENERO: String = "res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn"
 const ESCENA_MENU_PRINCIPAL: String = "res://scenes/menu_principal/menu_principal.tscn"
 const ESCENA_JUGADOR_PREVIEW: PackedScene = preload("res://jugador/jugador.tscn")
+const TEMA_BOTONES: Theme = preload("res://assets/temas/tema_botones.tres")
+const TEXTO_TARJETA_GUARDADO: Texture2D = preload("res://assets/ui/Tiles/Large tiles/Thin outline/tile_0013.png")
 const ANIMACION_PREVIEW: String = "idle_down"
 const HITOS_PROGRESO: Array[Dictionary] = [
 	{"porcentaje": 100, "prefijos": ["res://scenes/rejugabilidad/"]},
@@ -38,27 +40,32 @@ func _refrescar_lista() -> void:
 
 func _crear_fila_partida(indice_visual: int, slot: Dictionary) -> Control:
 	var panel: PanelContainer = PanelContainer.new()
-	panel.custom_minimum_size = Vector2(0, 150)
+	panel.custom_minimum_size = Vector2(0, 168)
+	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	panel.add_theme_stylebox_override("panel", _crear_estilo_tarjeta_guardado())
 
 	var margen: MarginContainer = MarginContainer.new()
-	margen.add_theme_constant_override("margin_left", 12)
-	margen.add_theme_constant_override("margin_right", 12)
-	margen.add_theme_constant_override("margin_top", 8)
-	margen.add_theme_constant_override("margin_bottom", 8)
+	margen.add_theme_constant_override("margin_left", 22)
+	margen.add_theme_constant_override("margin_right", 22)
+	margen.add_theme_constant_override("margin_top", 16)
+	margen.add_theme_constant_override("margin_bottom", 16)
 	panel.add_child(margen)
 
 	var fila: HBoxContainer = HBoxContainer.new()
 	fila.alignment = BoxContainer.ALIGNMENT_BEGIN
-	fila.add_theme_constant_override("separation", 16)
+	fila.add_theme_constant_override("separation", 20)
+	fila.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	margen.add_child(fila)
 
 	var info: VBoxContainer = VBoxContainer.new()
 	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info.add_theme_constant_override("separation", 6)
 	fila.add_child(info)
 
 	var nombre: Label = Label.new()
 	nombre.text = "%d. %s" % [indice_visual, slot.get("nombre_jugador", "Sin nombre")]
-	nombre.add_theme_font_size_override("font_size", 34)
+	nombre.add_theme_font_size_override("font_size", 32)
+	_aplicar_texto_negro(nombre)
 	info.add_child(nombre)
 
 	var apariencia: Dictionary = slot.get("apariencia", {})
@@ -66,7 +73,8 @@ func _crear_fila_partida(indice_visual: int, slot: Dictionary) -> Control:
 
 	var detalle: Label = Label.new()
 	detalle.text = "Avance en la historia: %d%%" % progreso
-	detalle.add_theme_font_size_override("font_size", 24)
+	detalle.add_theme_font_size_override("font_size", 32)
+	_aplicar_texto_negro(detalle)
 	info.add_child(detalle)
 
 	var barra_progreso: ProgressBar = ProgressBar.new()
@@ -75,26 +83,36 @@ func _crear_fila_partida(indice_visual: int, slot: Dictionary) -> Control:
 	barra_progreso.step = 20
 	barra_progreso.value = progreso
 	barra_progreso.show_percentage = true
-	barra_progreso.custom_minimum_size = Vector2(0, 28)
+	barra_progreso.add_theme_font_size_override("font_size", 25)
+	barra_progreso.custom_minimum_size = Vector2(0, 30)
+	_aplicar_texto_negro(barra_progreso)
 	info.add_child(barra_progreso)
 
 	var preview: Control = _crear_preview_apariencia(apariencia)
+	preview.custom_minimum_size = Vector2(132, 118)
 	fila.add_child(preview)
 	
 	var acciones: VBoxContainer = VBoxContainer.new()
 	acciones.alignment = BoxContainer.ALIGNMENT_CENTER
-	acciones.custom_minimum_size = Vector2(250, 0)
+	acciones.custom_minimum_size = Vector2(248, 0)
+	acciones.add_theme_constant_override("separation", 10)
 	fila.add_child(acciones)
 
 	var boton_jugar: Button = Button.new()
 	boton_jugar.text = "Cargar"
-	boton_jugar.custom_minimum_size = Vector2(220, 42)
+	boton_jugar.custom_minimum_size = Vector2(220, 44)
+	boton_jugar.theme = TEMA_BOTONES
+	boton_jugar.add_theme_font_size_override("font_size", 30)
+	_aplicar_texto_negro(boton_jugar)
 	boton_jugar.pressed.connect(_on_cargar_partida_pressed.bind(slot.get("id", "")))
 	acciones.add_child(boton_jugar)
 
 	var boton_eliminar: Button = Button.new()
 	boton_eliminar.text = "Eliminar"
-	boton_eliminar.custom_minimum_size = Vector2(220, 42)
+	boton_eliminar.custom_minimum_size = Vector2(220, 44)
+	boton_eliminar.theme = TEMA_BOTONES
+	boton_eliminar.add_theme_font_size_override("font_size", 30)
+	_aplicar_texto_negro(boton_eliminar)
 	boton_eliminar.pressed.connect(_on_eliminar_partida_pressed.bind(slot.get("id", "")))
 	acciones.add_child(boton_eliminar)
 
@@ -103,23 +121,42 @@ func _crear_fila_partida(indice_visual: int, slot: Dictionary) -> Control:
 
 func _crear_preview_apariencia(datos_apariencia: Dictionary) -> Control:
 	var contenedor: Control = Control.new()
-	contenedor.custom_minimum_size = Vector2(120, 110)
+	contenedor.custom_minimum_size = Vector2(132, 118)
 
 	var personaje: Node2D = _instanciar_player_appearance()
 	if personaje == null:
 		var sin_preview: Label = Label.new()
 		sin_preview.text = "Sin\npreview"
 		sin_preview.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_aplicar_texto_negro(sin_preview)
 		sin_preview.size = contenedor.custom_minimum_size
 		contenedor.add_child(sin_preview)
 		return contenedor
 
 	personaje.scale = Vector2(4.0, 4.0)
-	personaje.position = Vector2(60, 80)
+	personaje.position = Vector2(66, 84)
 	contenedor.add_child(personaje)
 	_aplicar_apariencia_preview(personaje, datos_apariencia)
 
 	return contenedor
+
+
+func _crear_estilo_tarjeta_guardado() -> StyleBoxTexture:
+	var estilo: StyleBoxTexture = StyleBoxTexture.new()
+	estilo.texture = TEXTO_TARJETA_GUARDADO
+	estilo.texture_margin_left = 6.0
+	estilo.texture_margin_top = 6.0
+	estilo.texture_margin_right = 6.0
+	estilo.texture_margin_bottom = 6.0
+	return estilo
+
+
+func _aplicar_texto_negro(control: Control) -> void:
+	control.add_theme_color_override("font_color", Color.BLACK)
+	control.add_theme_color_override("font_hover_color", Color.BLACK)
+	control.add_theme_color_override("font_pressed_color", Color.BLACK)
+	control.add_theme_color_override("font_focus_color", Color.BLACK)
+	control.add_theme_color_override("font_disabled_color", Color.BLACK)
 
 
 func _instanciar_player_appearance() -> Node2D:

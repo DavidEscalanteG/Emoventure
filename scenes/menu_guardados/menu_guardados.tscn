@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1fbuvpiej7a8"]
+[gd_scene load_steps=8 format=3 uid="uid://b1fbuvpiej7a8"]
 
 [ext_resource type="Script" uid="uid://dx0msb5cskx6d" path="res://scenes/menu_guardados/menu_guardados.gd" id="1_d6fpn"]
+[ext_resource type="Texture2D" uid="uid://dcfbcs5obnba6" path="res://assets/assets_menu_principal/fondo/fondo_menu_pixel.jpeg" id="2_ard82"]
+[ext_resource type="Shader" uid="uid://cmegfkrqjhxo8" path="res://scenes/configuracion/configuracion.gdshader" id="3_h5ocq"]
+[ext_resource type="Texture2D" uid="uid://c52cu0ywfn0xw" path="res://assets/ui/Tiles/Large tiles/Thin outline/tile_0005.png" id="4_3auta"]
+[ext_resource type="Theme" uid="uid://dwacxx3nxjf5c" path="res://assets/temas/tema_botones.tres" id="4_h5ocq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3auta"]
+shader = ExtResource("3_h5ocq")
+shader_parameter/blur_amount = 2.170000103075
+shader_parameter/darken_amount = 0.830000039425
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3auta"]
 
 [node name="MenuGuardados" type="Control"]
 layout_mode = 3
@@ -11,7 +22,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d6fpn")
 
+[node name="FondoMenuPixel" type="Sprite2D" parent="."]
+position = Vector2(959, 536.25)
+scale = Vector2(1.8867188, 1.9561718)
+texture = ExtResource("2_ard82")
+
+[node name="BlurOverlay" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_3auta")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tile0005" type="Sprite2D" parent="."]
+position = Vector2(951, 551)
+scale = Vector2(50.6875, 35)
+texture = ExtResource("4_3auta")
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,8 +60,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(1300, 760)
+custom_minimum_size = Vector2(1000, 760)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3auta")
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
 layout_mode = 2
@@ -45,13 +77,15 @@ theme_override_constants/separation = 14
 
 [node name="Titulo" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
 text = "Selecciona una partida"
 horizontal_alignment = 1
 
 [node name="EtiquetaVacio" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 54
 text = "No tienes partidas guardadas.
 Crea una nueva para comenzar."
 horizontal_alignment = 1
@@ -75,12 +109,16 @@ alignment = 1
 [node name="BotonNuevaPartida" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BotonesInferiores"]
 custom_minimum_size = Vector2(320, 60)
 layout_mode = 2
+theme = ExtResource("4_h5ocq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Crear nueva partida"
 
 [node name="BotonVolver" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BotonesInferiores"]
 custom_minimum_size = Vector2(180, 60)
 layout_mode = 2
+theme = ExtResource("4_h5ocq")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Volver"
 
