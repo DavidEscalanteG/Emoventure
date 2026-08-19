@@ -1,11 +1,22 @@
 extends CharacterBody2D
 
-const MOBILE_CONTROLS_SCENE := preload("res://src/ui/mobile_controls.tscn")
+const MOBILE_CONTROLS_SCENE := preload("res://scenes/src/ui/mobile_controls.tscn")
 @export var coyote_time_duration = 0.15 # Cuánto tiempo dura el "perdón" (0.15s es ideal)
 
+<<<<<<< Updated upstream
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -444.0
+=======
+<<<<<<< HEAD
+const SPEED = 480.0
+const JUMP_VELOCITY = -760.0
+=======
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -444.0
+>>>>>>> main
+>>>>>>> Stashed changes
 
 var wall_jump_timer = 0.0  # Temporizador para bloquear el movimiento lateral un instante
 var input_dir = 0 # Guardará la dirección según el orden de pulsación
@@ -43,14 +54,22 @@ func _input(event):
 func _physics_process(delta: float) -> void:
 	# 1. GRAVEDAD
 	if not is_on_floor():
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+		velocity += get_gravity() * delta * 1.6
+	
+=======
+>>>>>>> Stashed changes
 		velocity += get_gravity() * delta
 
+>>>>>>> main
 	# 2. PROCESAR EL TIMER
 	# Restamos el tiempo que pasa en cada frame
 	if wall_jump_timer > 0:
 		wall_jump_timer -= delta
 
-# Manejo del Coyote Time
+	# Manejo del Coyote Time
 	if is_on_floor():
 		coyote_timer = coyote_time_duration # Si toca el suelo, el timer se reinicia
 	else:
@@ -77,14 +96,31 @@ func _physics_process(delta: float) -> void:
 			# Bloqueamos el control por 0.15 segundos para que el impulso funcione
 			wall_jump_timer = 0.1
 
-# 6. MOVIMIENTO HORIZONTAL (Instantáneo y con Prioridad)
+	# 6. MOVIMIENTO HORIZONTAL (Instantáneo y con Prioridad)
 	if wall_jump_timer <= 0:
 		# Asignamos la velocidad de golpe: o es SPEED, o es -SPEED, o es 0.
 		velocity.x = input_dir * SPEED
+		
+		# VOLTEAR EL SPRITE (Flip) según la dirección que camina
+		if input_dir > 0:
+			$AnimatedSprite2D.flip_h = false # Mira a la derecha
+		elif input_dir < 0:
+			$AnimatedSprite2D.flip_h = true  # Voltea a la izquierda
 
 	# 7. EJECUTAR MOVIMIENTO
 	move_and_slide()
-
+	
+	# CONTROL DE LAS ANIMACIONES (Ejecutadas tras mover al personaje)
+	if not is_on_floor():
+		if velocity.y < 0:
+			$AnimatedSprite2D.play("jump") # Subiendo
+		else:
+			$AnimatedSprite2D.play("fall") # Bajando
+	else:
+		if velocity.x != 0:
+			$AnimatedSprite2D.play("run")  # Corriendo
+		else:
+			$AnimatedSprite2D.play("iddle") # Quieto
 
 func _ensure_mobile_controls() -> void:
 	if not OS.has_feature("mobile"):
@@ -94,6 +130,7 @@ func _ensure_mobile_controls() -> void:
 	var controls := MOBILE_CONTROLS_SCENE.instantiate()
 	controls.name = "MobileControls"
 	get_tree().root.add_child(controls)
+	
 	# 8. DETECCIÓN DE TRAMPAS
 	for i in get_slide_collision_count():
 		var colision = get_slide_collision(i)
@@ -106,7 +143,6 @@ func _ensure_mobile_controls() -> void:
 			if capas & 2:
 				morir()
 				
-
 # Función para reiniciar el nivel
 func morir():
 	get_tree().reload_current_scene()

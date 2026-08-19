@@ -1,0 +1,50 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+<<<<<<<< HEAD:scenes/mision_3_hachas/fuego.png.import
+uid="uid://dmrauwa2u6tug"
+path="res://.godot/imported/fuego.png-e08032752c6a0dcf33ff90031a4542cc.ctex"
+========
+uid="uid://622rcebvtiy"
+path="res://.godot/imported/tile_0029.png-95aebee6e900c7919563ff729ad3e617.ctex"
+>>>>>>>> main:assets/ui/Tiles/Large tiles/Thin outline/tile_0029.png.import
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+<<<<<<<< HEAD:scenes/mision_3_hachas/fuego.png.import
+source_file="res://scenes/mision_3_hachas/fuego.png"
+dest_files=["res://.godot/imported/fuego.png-e08032752c6a0dcf33ff90031a4542cc.ctex"]
+========
+source_file="res://assets/ui/Tiles/Large tiles/Thin outline/tile_0029.png"
+dest_files=["res://.godot/imported/tile_0029.png-95aebee6e900c7919563ff729ad3e617.ctex"]
+>>>>>>>> main:assets/ui/Tiles/Large tiles/Thin outline/tile_0029.png.import
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://s05hyewvb4wl"]
 
 [ext_resource type="Script" uid="uid://b8567yb0avepb" path="res://scenes/mision_3_hachas/jugador.gd" id="1_spetb"]
-[ext_resource type="Texture2D" uid="uid://bjruhfm0tmric" path="res://icon.svg" id="2_4taxq"]
+[ext_resource type="Texture2D" uid="uid://bjruhfm0tmric" path="res://scenes/mision_3_hachas/icon.svg" id="2_4taxq"]
 [ext_resource type="Script" uid="uid://jbnohsvm0qx2" path="res://scenes/mision_3_hachas/meta.gd" id="3_nt3fa"]
 [ext_resource type="Script" uid="uid://cdp45smvtf2e8" path="res://scenes/mision_3_hachas/trampa.gd" id="4_yb21g"]
 [ext_resource type="Texture2D" uid="uid://bjy1778uwb80f" path="res://assets/assets_escena_payaso/martillo.png" id="5_ucs3p"]

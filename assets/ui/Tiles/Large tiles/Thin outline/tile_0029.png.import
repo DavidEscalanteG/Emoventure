@@ -2,16 +2,46 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream
+<<<<<<<< Updated upstream:assets/ui/Tiles/Large tiles/Thin outline/tile_0029.png.import
 uid="uid://622rcebvtiy"
 path="res://.godot/imported/tile_0029.png-95aebee6e900c7919563ff729ad3e617.ctex"
+========
+uid="uid://njsogktqpu3v"
+path="res://.godot/imported/tile_0002.png-708a6af8460a88cc743a77019d08e79a.ctex"
+>>>>>>>> Stashed changes:assets/ui/Tiles/Large tiles/Thin outline/tile_0002.png.import
+=======
+<<<<<<<< HEAD:scenes/mision_3_hachas/fuego.png.import
+uid="uid://dmrauwa2u6tug"
+path="res://.godot/imported/fuego.png-e08032752c6a0dcf33ff90031a4542cc.ctex"
+========
+uid="uid://622rcebvtiy"
+path="res://.godot/imported/tile_0029.png-95aebee6e900c7919563ff729ad3e617.ctex"
+>>>>>>>> main:assets/ui/Tiles/Large tiles/Thin outline/tile_0029.png.import
+>>>>>>> Stashed changes
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<< Updated upstream
+<<<<<<<< Updated upstream:assets/ui/Tiles/Large tiles/Thin outline/tile_0029.png.import
 source_file="res://assets/ui/Tiles/Large tiles/Thin outline/tile_0029.png"
 dest_files=["res://.godot/imported/tile_0029.png-95aebee6e900c7919563ff729ad3e617.ctex"]
+========
+source_file="res://assets/ui/Tiles/Large tiles/Thin outline/tile_0002.png"
+dest_files=["res://.godot/imported/tile_0002.png-708a6af8460a88cc743a77019d08e79a.ctex"]
+>>>>>>>> Stashed changes:assets/ui/Tiles/Large tiles/Thin outline/tile_0002.png.import
+=======
+<<<<<<<< HEAD:scenes/mision_3_hachas/fuego.png.import
+source_file="res://scenes/mision_3_hachas/fuego.png"
+dest_files=["res://.godot/imported/fuego.png-e08032752c6a0dcf33ff90031a4542cc.ctex"]
+========
+source_file="res://assets/ui/Tiles/Large tiles/Thin outline/tile_0029.png"
+dest_files=["res://.godot/imported/tile_0029.png-95aebee6e900c7919563ff729ad3e617.ctex"]
+>>>>>>>> main:assets/ui/Tiles/Large tiles/Thin outline/tile_0029.png.import
+>>>>>>> Stashed changes
 
 [params]
 

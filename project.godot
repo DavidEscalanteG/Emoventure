@@ -13,21 +13,22 @@ config_version=5
 config/name="Emoventure"
 run/main_scene="res://scenes/menu_principal/menu_principal.tscn"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://scenes/mision_3_hachas/icon.svg"
 
 [autoload]
 
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-DatosJugador="*res://src/autoload/datos_jugador.gd"
-GameManager="*res://src/autoload/game_manager.gd"
-AudioManager="*res://src/autoload/audio_manager.gd"
-DialogueActors="*res://src/autoload/dialogue_actors.gd"
-Logs="*res://src/autoload/Logs.gd"
-Cuestionarios="*res://src/autoload/cuestionarios.gd"
-MusicManager="*res://src/autoload/music_manager.gd"
-SaveManager="*res://src/autoload/save_manager.gd"
-MobileControlsSettings="*res://src/autoload/mobile_controls_settings.gd"
-PauseOverlayManager="*res://src/autoload/pause_overlay_manager.gd"
+SaveManager="*res://scenes/src/autoload/save_manager.gd"
+GameManager="*res://scenes/src/autoload/game_manager.gd"
+MusicManager="*res://scenes/src/autoload/music_manager.gd"
+MobileControlsSettings="*res://scenes/src/autoload/mobile_controls_settings.gd"
+DatosJugador="*res://scenes/src/autoload/datos_jugador.gd"
+AudioManager="*res://scenes/src/autoload/audio_manager.gd"
+Cuestionarios="*res://scenes/src/autoload/cuestionarios.gd"
+DialogueActors="*res://scenes/src/autoload/dialogue_actors.gd"
+Logs="*res://scenes/src/autoload/Logs.gd"
+PauseOverlayManager="*res://scenes/src/autoload/pause_overlay_manager.gd"
+PauseOverlay="*res://scenes/src/ui/pause_overlay.tscn"
+MobileControls="*res://scenes/src/ui/mobile_controls.tscn"
 
 [dialogue_manager]
 

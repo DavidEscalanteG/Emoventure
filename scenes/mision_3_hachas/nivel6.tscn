@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6lromkr5aop0"]
+
+[ext_resource type="PackedScene" uid="uid://bt1u37eru1boq" path="res://scenes/mision_3_hachas/nivel5.tscn" id="1_c12jc"]
+[ext_resource type="Texture2D" uid="uid://bjruhfm0tmric" path="res://scenes/mision_3_hachas/icon.svg" id="2_uow8i"]
+[ext_resource type="PackedScene" uid="uid://bgxls8sigbkan" path="res://scenes/mision_3_hachas/lanzallamas.tscn" id="2_xreua"]
+
+[node name="Nivel 1" instance=ExtResource("1_c12jc")]
+
+[node name="Sprite2D" type="Sprite2D" parent="Jugador" index="0"]
+visible = false
+position = Vector2(-880.455, 130.835)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_uow8i")
+
+[node name="Meta" parent="." index="3"]
+position = Vector2(940, -20)
+siguiente_escena = "uid://dwmknq6dd5wxb"
+
+[node name="Lanzallamas" parent="." index="5" instance=ExtResource("2_xreua")]
+position = Vector2(-515, 467)
+
+[node name="Lanzallamas2" parent="." index="6" instance=ExtResource("2_xreua")]
+position = Vector2(-59, 464)
+
+[node name="TileMapLayer" parent="." index="7"]
+visible = true
+position = Vector2(0, 1)
+scale = Vector2(1, 1)
+
+[node name="Parca2" parent="." index="9"]
+dialogo_nivel = " [wave amp=50 freq=5] ¿Qué camino prefieres ahora? [/wave]"
+
+[connection signal="body_entered" from="Meta" to="Meta" method="_on_body_entered"]

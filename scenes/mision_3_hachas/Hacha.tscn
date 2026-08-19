@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://6awaje4oufs8"]
+
+[ext_resource type="Texture2D" uid="uid://ibmvilwl8hce" path="res://scenes/mision_3_hachas/hacha.png" id="1_lvgno"]
+[ext_resource type="Script" uid="uid://baodqx2a16x77" path="res://scenes/mision_3_hachas/pendulo.gd" id="1_yn3uu"]
+
+[sub_resource type="Animation" id="Animation_yn3uu"]
+resource_name = "Balanceo"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [3.9269907, 0.7853982, 3.9269907]
+}
+
+[sub_resource type="Animation" id="Animation_673bl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.9269907]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_673bl"]
+_data = {
+&"Balanceo": SubResource("Animation_yn3uu"),
+&"RESET": SubResource("Animation_673bl")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gugq8"]
+radius = 182.15
+
+[node name="Hacha" type="Area2D"]
+rotation = 3.9269907
+script = ExtResource("1_yn3uu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_673bl")
+}
+autoplay = "Balanceo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(98.513535, -99.70206)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_lvgno")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(118.08685, -119.50104)
+scale = Vector2(0.35, 0.35)
+shape = SubResource("CircleShape2D_gugq8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
