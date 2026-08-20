@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://607ynm435j8g"]
 
 [ext_resource type="Script" uid="uid://beih55je4icr6" path="res://scenes/intro_mision_2/intro_mision_2.gd" id="1_e4mbm"]
-[ext_resource type="Texture2D" uid="uid://b3uru6qnsiiif" path="res://scenes/intro_mision_2/fondo_escena_8.jpg" id="1_yqrw1"]
+[ext_resource type="Texture2D" uid="uid://c1jgtf3o1f23q" path="res://scenes/intro_mision_2/fondo_escena_8.png" id="1_yqrw1"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="2_e4mbm"]
 [ext_resource type="PackedScene" uid="uid://dsru8g6xhin0k" path="res://assets/personajes/payaso/payaso.tscn" id="3_ntaao"]
 [ext_resource type="PackedScene" uid="uid://b4t1ghb0ibdtf" path="res://assets/personajes/mascota/mascota.tscn" id="4_o2m3e"]
@@ -12,7 +12,7 @@ script = ExtResource("1_e4mbm")
 
 [node name="FondoEscena8" type="Sprite2D" parent="."]
 position = Vector2(958.5, 542.5)
-scale = Vector2(3.5659342, 3.1880343)
+scale = Vector2(0.641, 0.573)
 texture = ExtResource("1_yqrw1")
 
 [node name="Personajes" type="Node2D" parent="."]

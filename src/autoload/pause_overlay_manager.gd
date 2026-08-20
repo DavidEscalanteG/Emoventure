@@ -1,6 +1,6 @@
 extends Node
 
-const PAUSE_OVERLAY_SCENE := preload("res://scenes/src/ui/pause_overlay.tscn")
+const PAUSE_OVERLAY_SCENE := preload("res://src/ui/pause_overlay.tscn")
 
 
 func _ready() -> void:

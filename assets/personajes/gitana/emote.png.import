@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de1slo8qjtesq"
-path="res://.godot/imported/dentro_carpa.jpg-7f1d7e33ce8317ffc55684f736908321.ctex"
+uid="uid://dnxdu3t8pgrjw"
+path="res://.godot/imported/emote.png-c0492ab5f89e047aad561f9a7c204376.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets_escena_2/fondo/dentro_carpa.jpg"
-dest_files=["res://.godot/imported/dentro_carpa.jpg-7f1d7e33ce8317ffc55684f736908321.ctex"]
+source_file="res://assets/personajes/gitana/emote.png"
+dest_files=["res://.godot/imported/emote.png-c0492ab5f89e047aad561f9a7c204376.ctex"]
 
 [params]
 

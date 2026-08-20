@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlfpd1a8lfh5"]
+[gd_scene load_steps=9 format=3 uid="uid://dlfpd1a8lfh5"]
 
 [ext_resource type="Script" uid="uid://drx7lt3mhojre" path="res://scenes/intro_dialogo_1/intro_dialogo_1.gd" id="1_avmbo"]
 [ext_resource type="Texture2D" uid="uid://6qtwykxeov1l" path="res://assets/assets_escena_1/fondo/Fondo_Feria_Emoventure.png" id="1_gwnrk"]
-[ext_resource type="PackedScene" uid="uid://dgbvgfgvxkfgn" path="res://assets/personajes/gitana/gitana.tscn" id="3_avmbo"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="4_kgfb6"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="5_xucjc"]
 [ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui.tscn" id="6_ngdnf"]
@@ -47,19 +46,17 @@ _data = {
 script = ExtResource("1_avmbo")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
+scale = Vector2(1.41, 1.41)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
-position = Vector2(961, 541.00006)
-scale = Vector2(1.25, 1.05)
+position = Vector2(636.87946, 269.5035)
+scale = Vector2(10.185161, 8.555535)
 texture = ExtResource("1_gwnrk")
 
 [node name="personajes" type="Node2D" parent="."]
 
-[node name="gitana" parent="personajes" instance=ExtResource("3_avmbo")]
-position = Vector2(431, 503)
-
 [node name="JugadorCinematico" parent="personajes" instance=ExtResource("5_xucjc")]
-position = Vector2(1434, 626)
+position = Vector2(1093, 746)
 
 [node name="FondoNegro" type="Sprite2D" parent="."]
 visible = false

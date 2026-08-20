@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7js5luc4br5p"
-path="res://.godot/imported/fondo_escena_5.jpg-d7041c87007e8f6c0cdedcec0c07940d.ctex"
+uid="uid://dpojee4go2e6o"
+path="res://.godot/imported/fondo_escena_5.png-1ed2efb8cda35c50424d89a8e2d0c6af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/intro_dialogo_3/fondo/fondo_escena_5.jpg"
-dest_files=["res://.godot/imported/fondo_escena_5.jpg-d7041c87007e8f6c0cdedcec0c07940d.ctex"]
+source_file="res://scenes/intro_dialogo_3/fondo/fondo_escena_5.png"
+dest_files=["res://.godot/imported/fondo_escena_5.png-1ed2efb8cda35c50424d89a8e2d0c6af.ctex"]
 
 [params]
 

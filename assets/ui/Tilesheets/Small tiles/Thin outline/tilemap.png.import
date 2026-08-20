@@ -2,46 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< Updated upstream
-<<<<<<<< Updated upstream:assets/ui/Tilesheets/Small tiles/Thin outline/tilemap.png.import
-uid="uid://nc123j875llg"
+uid="uid://dbeev33bernnd"
 path="res://.godot/imported/tilemap.png-dd8a6d06aca21a031b916041b6f72e8d.ctex"
-========
-uid="uid://4dxhl6p5rsq7"
-path="res://.godot/imported/tile_0013.png-5c81a1749d1604cfbce134fed6571f02.ctex"
->>>>>>>> Stashed changes:assets/ui/Tiles/Large tiles/Thin outline/tile_0013.png.import
-=======
-<<<<<<<< HEAD:scenes/mision_3_hachas/calaca xd.png.import
-uid="uid://cdqhmqyg804h3"
-path="res://.godot/imported/calaca xd.png-b85cf7db0ef038fa6d8341eaf2ff5e42.ctex"
-========
-uid="uid://nc123j875llg"
-path="res://.godot/imported/tilemap.png-dd8a6d06aca21a031b916041b6f72e8d.ctex"
->>>>>>>> main:assets/ui/Tilesheets/Small tiles/Thin outline/tilemap.png.import
->>>>>>> Stashed changes
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< Updated upstream
-<<<<<<<< Updated upstream:assets/ui/Tilesheets/Small tiles/Thin outline/tilemap.png.import
 source_file="res://assets/ui/Tilesheets/Small tiles/Thin outline/tilemap.png"
 dest_files=["res://.godot/imported/tilemap.png-dd8a6d06aca21a031b916041b6f72e8d.ctex"]
-========
-source_file="res://assets/ui/Tiles/Large tiles/Thin outline/tile_0013.png"
-dest_files=["res://.godot/imported/tile_0013.png-5c81a1749d1604cfbce134fed6571f02.ctex"]
->>>>>>>> Stashed changes:assets/ui/Tiles/Large tiles/Thin outline/tile_0013.png.import
-=======
-<<<<<<<< HEAD:scenes/mision_3_hachas/calaca xd.png.import
-source_file="res://scenes/mision_3_hachas/calaca xd.png"
-dest_files=["res://.godot/imported/calaca xd.png-b85cf7db0ef038fa6d8341eaf2ff5e42.ctex"]
-========
-source_file="res://assets/ui/Tilesheets/Small tiles/Thin outline/tilemap.png"
-dest_files=["res://.godot/imported/tilemap.png-dd8a6d06aca21a031b916041b6f72e8d.ctex"]
->>>>>>>> main:assets/ui/Tilesheets/Small tiles/Thin outline/tilemap.png.import
->>>>>>> Stashed changes
 
 [params]
 

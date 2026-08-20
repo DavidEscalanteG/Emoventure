@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dghl2jv2pxg6l"]
 
 [ext_resource type="Script" uid="uid://dflbawyki0q2i" path="res://scenes/transicion_post_mision_2/segunda_llave.gd" id="1_sb04r"]
-[ext_resource type="Texture2D" uid="uid://bberwoc2of0kp" path="res://pruebas/assets_temporales/llave_temporal.jpg" id="2_d3bht"]
+[ext_resource type="Texture2D" uid="uid://d07lutkmy7x0p" path="res://assets/llaves/key2.png" id="2_hsskj"]
 [ext_resource type="Texture2D" uid="uid://dtvbvblxrod3d" path="res://assets/botones/boton_play.png" id="3_hsskj"]
 
 [sub_resource type="Animation" id="Animation_xt1j8"]
@@ -101,8 +101,11 @@ tab_size = 24
 horizontal_alignment = 1
 
 [node name="Llave" type="TextureRect" parent="Contenido"]
+custom_minimum_size = Vector2(670, 670)
 layout_mode = 2
-texture = ExtResource("2_d3bht")
+texture = ExtResource("2_hsskj")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="BotonContinuar" type="Button" parent="Contenido"]
 layout_mode = 2

@@ -70,47 +70,47 @@ autostart = true
 
 [node name="Tierra_0,0" type="Sprite2D" parent="."]
 position = Vector2(468, 295.00003)
-scale = Vector2(2.4421487, 1.5865386)
+scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_0,1" type="Sprite2D" parent="."]
 position = Vector2(948, 300.00003)
-scale = Vector2(2.4421487, 1.5865386)
+scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_0,2" type="Sprite2D" parent="."]
 position = Vector2(1414, 326.00003)
-scale = Vector2(2.4421487, 1.5865386)
+scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_1,0" type="Sprite2D" parent="."]
 position = Vector2(470, 651.00006)
-scale = Vector2(2.4421487, 1.5865386)
+scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_1,1" type="Sprite2D" parent="."]
 position = Vector2(918, 664.00006)
-scale = Vector2(2.4421487, 1.5865386)
+scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_1,2" type="Sprite2D" parent="."]
 position = Vector2(1356, 678)
-scale = Vector2(2.4421487, 1.5865386)
+scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_2,0" type="Sprite2D" parent="."]
 position = Vector2(487, 988.00006)
-scale = Vector2(2.4421487, 1.5865386)
+scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_2,1" type="Sprite2D" parent="."]
 position = Vector2(912, 1004.00006)
-scale = Vector2(2.4421487, 1.5865386)
+scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_2,2" type="Sprite2D" parent="."]
 position = Vector2(1366, 1014.00006)
-scale = Vector2(2.4421487, 1.5865386)
+scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

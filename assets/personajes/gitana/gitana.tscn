@@ -6,5 +6,6 @@
 scale = Vector2(10, 10)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
 sprite_frames = ExtResource("1_ir1xb")
-animation = &"adivina"
+animation = &"risa"

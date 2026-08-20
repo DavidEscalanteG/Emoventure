@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://olm6ncxajt4k"
+
+[deps]
+
+files=["res://assets/personajes/mujer_lagarto/lpc_female_animations_2026-08-20T12-31-33/credits/credits.notes.translation", "res://assets/personajes/mujer_lagarto/lpc_female_animations_2026-08-20T12-31-33/credits/credits.authors.translation", "res://assets/personajes/mujer_lagarto/lpc_female_animations_2026-08-20T12-31-33/credits/credits.licenses.translation", "res://assets/personajes/mujer_lagarto/lpc_female_animations_2026-08-20T12-31-33/credits/credits.urls.translation"]
+
+source_file="res://assets/personajes/mujer_lagarto/lpc_female_animations_2026-08-20T12-31-33/credits/credits.csv"
+dest_files=["res://assets/personajes/mujer_lagarto/lpc_female_animations_2026-08-20T12-31-33/credits/credits.notes.translation", "res://assets/personajes/mujer_lagarto/lpc_female_animations_2026-08-20T12-31-33/credits/credits.authors.translation", "res://assets/personajes/mujer_lagarto/lpc_female_animations_2026-08-20T12-31-33/credits/credits.licenses.translation", "res://assets/personajes/mujer_lagarto/lpc_female_animations_2026-08-20T12-31-33/credits/credits.urls.translation"]
+
+[params]
+
+compress=true
+delimiter=0

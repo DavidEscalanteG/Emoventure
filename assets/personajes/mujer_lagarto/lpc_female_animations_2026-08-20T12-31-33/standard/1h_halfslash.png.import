@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3uru6qnsiiif"
-path="res://.godot/imported/fondo_escena_8.jpg-92cdb584faa52bd54e77f98adfd76532.ctex"
+uid="uid://cr1b43tig4c3k"
+path="res://.godot/imported/1h_halfslash.png-357a709e9f1177f22e8aec16cae87ded.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/intro_mision_2/fondo_escena_8.jpg"
-dest_files=["res://.godot/imported/fondo_escena_8.jpg-92cdb584faa52bd54e77f98adfd76532.ctex"]
+source_file="res://assets/personajes/mujer_lagarto/lpc_female_animations_2026-08-20T12-31-33/standard/1h_halfslash.png"
+dest_files=["res://.godot/imported/1h_halfslash.png-357a709e9f1177f22e8aec16cae87ded.ctex"]
 
 [params]
 
