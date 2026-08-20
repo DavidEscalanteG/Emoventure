@@ -406,7 +406,7 @@ value = 0.125
 [node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "Color de ropa"
+text = "  Color de ropa  "
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -443,7 +443,7 @@ value = 0.125
 [node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "Color de piel"
+text = "  Color de piel  "
 horizontal_alignment = 1
 vertical_alignment = 1
 
