@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" uid="uid://diq5t1l7eecp5" path="res://scenes/mision_2_memorias/cuadro_memoria.gd" id="1_p8cra"]
 [ext_resource type="Script" uid="uid://c6atu0ejscdo5" path="res://scenes/mision_2_memorias/memorias_eternas_gameplay.gd" id="1_uus5q"]
-[ext_resource type="Texture2D" uid="uid://b24nvekjmmfdu" path="res://scenes/mision_2_memorias/fondo_escena_9.png" id="2_trrj2"]
+[ext_resource type="Texture2D" uid="uid://ounnqgeedxjm" path="res://scenes/mision_2_memorias/tutorial/fondo9.jpg" id="2_trrj2"]
 [ext_resource type="Script" uid="uid://b6gjxqpooc1l0" path="res://scenes/mision_2_memorias/selector_emocion.gd" id="3_botlv"]
 [ext_resource type="Texture2D" uid="uid://0vgv22tf7xv1" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria1ByN.jpg" id="3_s0bfu"]
 [ext_resource type="Script" uid="uid://y8nce1uqxe73" path="res://scenes/mision_2_memorias/emoji_button.gd" id="4_k0nqh"]
 [ext_resource type="Texture2D" uid="uid://mhtlvsqfvweb" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria1.jpg" id="5_auu3l"]
 [ext_resource type="Texture2D" uid="uid://wty0f175e7ph" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria2ByN.jpg" id="8_8sqc0"]
 [ext_resource type="Texture2D" uid="uid://d1oo2t42s5s3e" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria2.jpg" id="9_tj183"]
-[ext_resource type="Texture2D" uid="uid://rjn2d6hb826k" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria3ByN.jpg" id="10_c176s"]
-[ext_resource type="Texture2D" uid="uid://bch03n77ik707" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria3.jpg" id="11_wo2m1"]
-[ext_resource type="Texture2D" uid="uid://c8vyujb4d3x3t" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria4ByN.jpg" id="12_67ss3"]
-[ext_resource type="Texture2D" uid="uid://cdkd60hq513xy" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria4.jpg" id="13_1imss"]
+[ext_resource type="Texture2D" uid="uid://r8cxivhvsq7x" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria3ByN.png" id="10_c176s"]
+[ext_resource type="Texture2D" uid="uid://brfqsecfedor" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria3.png" id="11_wo2m1"]
+[ext_resource type="Texture2D" uid="uid://dhchyggn3mpsi" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria4ByN.png" id="12_67ss3"]
+[ext_resource type="Texture2D" uid="uid://llnuc5ipqugh" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria4.png" id="13_1imss"]
 [ext_resource type="Texture2D" uid="uid://bqa51ta5l7uci" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria5ByN.jpg" id="14_uugws"]
 [ext_resource type="Texture2D" uid="uid://bcrvlhauatn5r" path="res://assets/assets_escena_9/Memorias/color/CuadroMemoria5.jpg" id="15_1p0r8"]
 [ext_resource type="Texture2D" uid="uid://bq44aky1yh14i" path="res://assets/assets_escena_9/Memorias/blanco_y_negro/CuadroMemoria7ByN.jpg" id="15_3coyv"]
@@ -121,28 +121,6 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 82
 text = "0 / 7 recuerdos explorados"
 
-[node name="Retroalimentacion" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -500.0
-offset_top = 120.0
-offset_right = 500.0
-offset_bottom = 255.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.164706, 0.109804, 0.0509804, 1)
-theme_override_colors/font_shadow_color = Color(1, 0.968627, 0.827451, 0.8)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 3
-theme_override_font_sizes/font_size = 44
-text = "Qué interesante..."
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
 [node name="CuadrosContainer" type="GridContainer" parent="."]
 layout_mode = 1
 offset_left = 336.0
@@ -155,6 +133,7 @@ theme_override_constants/v_separation = 200
 columns = 4
 
 [node name="CuadroMemoria_00" type="TextureButton" parent="CuadrosContainer"]
+custom_minimum_size = Vector2(205, 246)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
@@ -407,15 +386,35 @@ script = ExtResource("31_efkit")
 [node name="PuertaCuestionario" type="TextureButton" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 1385.0
-offset_top = 588.0
-offset_right = 1827.0
-offset_bottom = 1030.0
+offset_left = 1209.0
+offset_top = 515.0
+offset_right = 1709.0
+offset_bottom = 1015.0
 disabled = true
 texture_normal = ExtResource("35_rfoqg")
 script = ExtResource("36_t272c")
 escena_cuestionario = ExtResource("37_t272c")
 escena_siguiente = ExtResource("38_xwnhn")
+
+[node name="Retroalimentacion" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -697.0
+offset_top = 866.0
+offset_right = 303.0
+offset_bottom = 1001.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.164706, 0.109804, 0.0509804, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.968627, 0.827451, 0.8)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 44
+text = "Qué interesante..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [connection signal="mouse_entered" from="CuadrosContainer/CuadroMemoria_00" to="CuadrosContainer/CuadroMemoria_00" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CuadrosContainer/CuadroMemoria_00" to="CuadrosContainer/CuadroMemoria_00" method="_on_mouse_exited"]

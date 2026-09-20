@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://1qd5o2iv27o7"]
+[gd_scene load_steps=8 format=3 uid="uid://1qd5o2iv27o7"]
 
 [ext_resource type="Script" uid="uid://b6e2rxp4u2e7u" path="res://scenes/transicion_post_mision_1/primera_llave.gd" id="1_tei6f"]
 [ext_resource type="Texture2D" uid="uid://blr8oeiiwb0ht" path="res://assets/llaves/key1.png" id="2_f36tt"]
 [ext_resource type="Texture2D" uid="uid://dtvbvblxrod3d" path="res://assets/botones/boton_play.png" id="3_f36tt"]
+[ext_resource type="Texture2D" uid="uid://cdwy1g5ff3psh" path="res://scenes/recompensa_mision_3/fondo llave.jpg" id="4_5h7xj"]
 
 [sub_resource type="Animation" id="Animation_xt1j8"]
 length = 0.001
@@ -73,7 +74,13 @@ offset_bottom = 40.0
 script = ExtResource("1_tei6f")
 siguiente_escena = "res://scenes/intro_dialogo_3/intro_dialogo_3.tscn"
 
+[node name="FondoLlave" type="Sprite2D" parent="."]
+position = Vector2(958.21875, 539.75)
+scale = Vector2(0.7021483, 0.70214844)
+texture = ExtResource("4_5h7xj")
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -82,11 +89,13 @@ color = Color(2.117753e-06, 0.51306957, 0.51369035, 1)
 [node name="Contenido" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 600.0
-offset_right = 1226.0
-offset_bottom = 836.0
+offset_top = 200.0
+offset_right = 1270.0
+offset_bottom = 1036.0
 scale = Vector2(1e-05, 1e-05)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Contenido"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 50
 theme_override_font_sizes/bold_font_size = 50

@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1jgtf3o1f23q"
-path="res://.godot/imported/fondo_escena_8.png-283043514b4ae4b38c311ae3b0694e6d.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://scenes/intro_mision_2/fondo_escena_8.png"
-dest_files=["res://.godot/imported/fondo_escena_8.png-283043514b4ae4b38c311ae3b0694e6d.ctex"]
 
 [params]
 

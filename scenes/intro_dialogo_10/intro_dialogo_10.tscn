@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccrvaf1ne2mck"]
+
+[ext_resource type="Script" uid="uid://d1hasiswqfrpj" path="res://scenes/intro_dialogo_5/intro_dialogo_5.gd" id="1_0460w"]
+[ext_resource type="Texture2D" uid="uid://bsahjm4tfsptl" path="res://assets/fondo10.jpg" id="2_426k2"]
+[ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="3_45dby"]
+[ext_resource type="PackedScene" uid="uid://b4t1ghb0ibdtf" path="res://assets/personajes/mascota/mascota.tscn" id="4_vap0x"]
+[ext_resource type="Texture2D" uid="uid://ditrkwnyrhv8i" path="res://assets/jaula.png" id="5_c85ek"]
+[ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui.tscn" id="6_i8dg2"]
+
+[node name="Escena7" type="Node2D"]
+script = ExtResource("1_0460w")
+
+[node name="FondoEscena7" type="Sprite2D" parent="."]
+position = Vector2(985.0001, 541)
+scale = Vector2(1.5983194, 1.3987381)
+texture = ExtResource("2_426k2")
+
+[node name="Personajes" type="Node2D" parent="."]
+
+[node name="JugadorCinematico" parent="Personajes" instance=ExtResource("3_45dby")]
+position = Vector2(251.99998, 634.99994)
+
+[node name="Mascota" parent="Personajes" instance=ExtResource("4_vap0x")]
+position = Vector2(1003.99994, 637.00006)
+scale = Vector2(7, 7)
+
+[node name="Jaula" type="Sprite2D" parent="Personajes"]
+position = Vector2(1399.9998, 901.0001)
+scale = Vector2(14.139999, 14.139999)
+texture = ExtResource("5_c85ek")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PanelNombreMascota" type="PanelContainer" parent="UI"]
+offset_left = 551.0
+offset_top = 753.0
+offset_right = 1368.0
+offset_bottom = 1042.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PanelNombreMascota"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelNombreMascota/MarginContainer"]
+layout_mode = 2
+
+[node name="TituloNombreMascota" type="Label" parent="UI/PanelNombreMascota/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "¿Cómo quieres llamar a tu mascota?"
+
+[node name="InputNombreMascota" type="LineEdit" parent="UI/PanelNombreMascota/MarginContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Escribe el nombre de tu mascota"
+max_length = 20
+
+[node name="ErrorNombreMascota" type="Label" parent="UI/PanelNombreMascota/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.329412, 0.329412, 1)
+autowrap_mode = 3
+
+[node name="BtnConfirmarNombreMascota" type="Button" parent="UI/PanelNombreMascota/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Confirmar nombre"
+
+[node name="DialogueUI" parent="." instance=ExtResource("6_i8dg2")]
+
+[connection signal="pressed" from="UI/PanelNombreMascota/MarginContainer/VBoxContainer/BtnConfirmarNombreMascota" to="." method="_on_btn_confirmar_nombre_mascota_pressed"]

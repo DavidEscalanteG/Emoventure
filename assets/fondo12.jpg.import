@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bch03n77ik707"
-path="res://.godot/imported/CuadroMemoria3.jpg-2d0bec939e0c941c903766ff08f2fd40.ctex"
+uid="uid://cflm6l5tfcile"
+path="res://.godot/imported/fondo12.jpg-9d69fe96fff72741454f86844bead460.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/assets_escena_9/Memorias/color/CuadroMemoria3.jpg"
-dest_files=["res://.godot/imported/CuadroMemoria3.jpg-2d0bec939e0c941c903766ff08f2fd40.ctex"]
+source_file="res://assets/fondo12.jpg"
+dest_files=["res://.godot/imported/fondo12.jpg-9d69fe96fff72741454f86844bead460.ctex"]
 
 [params]
 

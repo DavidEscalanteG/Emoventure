@@ -9,8 +9,8 @@
 script = ExtResource("1_sby86")
 
 [node name="FondoEscena6" type="Sprite2D" parent="."]
-position = Vector2(956.75, 545.25)
-scale = Vector2(3.6920905, 3.4602447)
+position = Vector2(965.202, 537.75)
+scale = Vector2(1.4992951, 1.2902644)
 texture = ExtResource("1_egauy")
 
 [node name="Personajes" type="Node2D" parent="."]

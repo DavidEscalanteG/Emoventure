@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpufyh81mgv3u"]
+[gd_scene load_steps=6 format=3 uid="uid://bpufyh81mgv3u"]
 
 [ext_resource type="Script" uid="uid://bboa3wd4qjbea" path="res://scenes/mision_4_payasos/mapa_topos.gd" id="1_motkv"]
 [ext_resource type="PackedScene" uid="uid://dhkqfini0qkqf" path="res://scenes/mision_4_payasos/Topo.tscn" id="2_tucnq"]
+[ext_resource type="Texture2D" uid="uid://bonwv5f02ix4d" path="res://scenes/mision_4_payasos/fondo_topos.jpg" id="3_bywb4"]
 [ext_resource type="Texture2D" uid="uid://cx27ju4tduufo" path="res://assets/assets_escena_payaso/images.png" id="3_h0xfj"]
 [ext_resource type="PackedScene" uid="uid://b5lujjlaxpbod" path="res://scenes/final/resultado_final.tscn" id="4_tuyx4"]
 
@@ -9,6 +10,11 @@
 script = ExtResource("1_motkv")
 escena_cierre = ExtResource("4_tuyx4")
 numero_mision_cuestionario = 4
+
+[node name="FondoTopos" type="Sprite2D" parent="."]
+position = Vector2(953.2467, 477.62503)
+scale = Vector2(1.4892769, 1.4892769)
+texture = ExtResource("3_bywb4")
 
 [node name="Topo" parent="." instance=ExtResource("2_tucnq")]
 offset_left = 332.0
@@ -69,46 +75,55 @@ wait_time = 1.5
 autostart = true
 
 [node name="Tierra_0,0" type="Sprite2D" parent="."]
+modulate = Color(0.6174667, 0.8, 0.504, 1)
 position = Vector2(468, 295.00003)
 scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_0,1" type="Sprite2D" parent="."]
+modulate = Color(0.6174667, 0.8, 0.504, 1)
 position = Vector2(948, 300.00003)
 scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_0,2" type="Sprite2D" parent="."]
+modulate = Color(0.6174667, 0.8, 0.504, 1)
 position = Vector2(1414, 326.00003)
 scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_1,0" type="Sprite2D" parent="."]
+modulate = Color(0.6174667, 0.8, 0.504, 1)
 position = Vector2(470, 651.00006)
 scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_1,1" type="Sprite2D" parent="."]
+modulate = Color(0.6174667, 0.8, 0.504, 1)
 position = Vector2(918, 664.00006)
 scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_1,2" type="Sprite2D" parent="."]
+modulate = Color(0.6174667, 0.8, 0.504, 1)
 position = Vector2(1356, 678)
 scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_2,0" type="Sprite2D" parent="."]
+modulate = Color(0.6174667, 0.8, 0.504, 1)
 position = Vector2(487, 988.00006)
 scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_2,1" type="Sprite2D" parent="."]
+modulate = Color(0.6174667, 0.8, 0.504, 1)
 position = Vector2(912, 1004.00006)
 scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")
 
 [node name="Tierra_2,2" type="Sprite2D" parent="."]
+modulate = Color(0.6174667, 0.8, 0.504, 1)
 position = Vector2(1366, 1014.00006)
 scale = Vector2(0.857, 0.557)
 texture = ExtResource("3_h0xfj")

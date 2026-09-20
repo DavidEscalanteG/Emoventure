@@ -9,7 +9,6 @@ const SIGUIENTE_ESCENA := "uid://ojuxji1qnqno" #intro_dialogo_2.tscn
 func _ready() -> void:
 	MusicManager.iniciar_override_dialogo(MusicManager.AMBIENTE_MISTERIO)
 	
-	DialogueActors.registro_registrar_actor("gitana", $personajes/gitana)
 	DialogueActors.registro_registrar_actor("jugador", $personajes/JugadorCinematico)
 
 	dialogue_ui.dialogo_finalizado.connect(_on_dialogo_finalizado)

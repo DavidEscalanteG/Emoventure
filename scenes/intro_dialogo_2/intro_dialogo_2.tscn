@@ -47,8 +47,8 @@ _data = {
 script = ExtResource("1_wnj6t")
 
 [node name="DentroCarpa" type="Sprite2D" parent="."]
-position = Vector2(921.694, 399.6348)
-scale = Vector2(2.7438006, 2.045461)
+position = Vector2(903.3863, 537.6587)
+scale = Vector2(2.867082, 2.137365)
 texture = ExtResource("2_k1oe6")
 
 [node name="personajes" type="Node2D" parent="."]
