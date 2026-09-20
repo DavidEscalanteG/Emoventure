@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4l5sfe0otln8"]
+[gd_scene load_steps=10 format=3 uid="uid://4l5sfe0otln8"]
 
 [ext_resource type="Script" uid="uid://nf6njfisv6gy" path="res://scenes/mision_1_recoleccion/tutorial/scripts/minijuego1_tutorial_controller.gd" id="1"]
 [ext_resource type="Script" uid="uid://ikkh0xk6bjyy" path="res://scenes/mision_1_recoleccion/tutorial/scripts/minijuego1_tutorial_demo.gd" id="2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://drij7vi18vgxg" path="res://assets/emociones/spritesheets/emocion_feliz.png" id="4_komua"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="5"]
 [ext_resource type="Texture2D" uid="uid://duxyu3k01oec3" path="res://assets/enemigos/serpiente/spritesheets/snake spritesheet calciumtrice.png" id="7"]
+[ext_resource type="Theme" uid="uid://dwacxx3nxjf5c" path="res://assets/temas/tema_botones.tres" id="8_f27vv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f27vv"]
 atlas = ExtResource("4_komua")
@@ -76,6 +77,7 @@ alignment = 2
 
 [node name="SkipButton" type="Button" parent="TutorialUI/Overlay/TopBar"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Omitir tutorial"
 
 [node name="BottomPanel" type="PanelContainer" parent="TutorialUI/Overlay"]
@@ -106,6 +108,7 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
 text = "Mensaje"
 autowrap_mode = 3
 
@@ -120,7 +123,9 @@ layout_mode = 2
 script = ExtResource("4")
 
 [node name="Label" type="Label" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/KeysRow/WKey"]
+custom_minimum_size = Vector2(61, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "W"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -132,7 +137,9 @@ script = ExtResource("4")
 key_text = "A"
 
 [node name="Label" type="Label" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/KeysRow/AKey"]
+custom_minimum_size = Vector2(61, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -144,7 +151,9 @@ script = ExtResource("4")
 key_text = "S"
 
 [node name="Label" type="Label" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/KeysRow/SKey"]
+custom_minimum_size = Vector2(61, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "S"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -156,7 +165,9 @@ script = ExtResource("4")
 key_text = "D"
 
 [node name="Label" type="Label" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/KeysRow/DKey"]
+custom_minimum_size = Vector2(61, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "D"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -168,10 +179,14 @@ alignment = 1
 
 [node name="PreviousButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow"]
 layout_mode = 2
+theme = ExtResource("8_f27vv")
+theme_override_font_sizes/font_size = 32
 text = "← Anterior"
 
 [node name="NextButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow"]
 layout_mode = 2
+theme = ExtResource("8_f27vv")
+theme_override_font_sizes/font_size = 32
 text = "Siguiente →"
 
 [node name="StartButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow"]

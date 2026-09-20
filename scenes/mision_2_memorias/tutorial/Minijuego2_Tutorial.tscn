@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://neu10y8m8x1m"]
+[gd_scene load_steps=6 format=3 uid="uid://neu10y8m8x1m"]
 
 [ext_resource type="Script" uid="uid://bi38yoj8ftjob" path="res://scenes/mision_2_memorias/tutorial/scripts/minijuego2_tutorial_controller.gd" id="1_ctrl"]
 [ext_resource type="Script" uid="uid://bb1hbw7efiad8" path="res://scenes/mision_2_memorias/tutorial/scripts/minijuego2_tutorial_demo.gd" id="2_demo"]
 [ext_resource type="Script" uid="uid://cxvfusydandn3" path="res://scenes/mision_2_memorias/tutorial/scripts/minijuego2_tutorial_ui.gd" id="3_ui"]
-[ext_resource type="Texture2D" uid="uid://ounnqgeedxjm" path="res://scenes/mision_2_memorias/tutorial/fondo9.jpg" id="4_bg"]
+[ext_resource type="Texture2D" uid="uid://b24nvekjmmfdu" path="res://scenes/mision_2_memorias/fondo_escena_9.png" id="4_bg"]
+[ext_resource type="Theme" uid="uid://dwacxx3nxjf5c" path="res://assets/temas/tema_botones.tres" id="5_bvad7"]
 
 [node name="Minijuego2Tutorial" type="Control"]
 layout_mode = 3
@@ -338,6 +339,7 @@ show_percentage = false
 
 [node name="ProgressLabel" type="Label" parent="TutorialDemo/TopInfo/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "0 / 7 cuadros completados"
 horizontal_alignment = 1
 
@@ -374,6 +376,7 @@ alignment = 2
 
 [node name="SkipButton" type="Button" parent="TutorialUI/Overlay/TopBar"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Omitir tutorial"
 
 [node name="BottomPanel" type="PanelContainer" parent="TutorialUI/Overlay"]
@@ -409,6 +412,7 @@ autowrap_mode = 2
 
 [node name="StepLabel" type="Label" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Paso 1 de 6"
 horizontal_alignment = 1
 
@@ -419,10 +423,14 @@ alignment = 1
 
 [node name="PreviousButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow"]
 layout_mode = 2
+theme = ExtResource("5_bvad7")
+theme_override_font_sizes/font_size = 32
 text = "← Anterior"
 
 [node name="NextButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow"]
 layout_mode = 2
+theme = ExtResource("5_bvad7")
+theme_override_font_sizes/font_size = 32
 text = "Siguiente →"
 
 [node name="StartButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow"]
