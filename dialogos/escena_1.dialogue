@@ -3,44 +3,32 @@
 # El protagonista se acerca a la gitana con curiosidad.
 # Se usan funciones "do" para cambiar expresiones.
 
-#do DatosJugador.jugador.bloquear_movimiento()
+do DatosJugador.jugador.bloquear_movimiento()
+
+Director de feria: ¡Bienvenidas! ¡Bienvenidos! A la mágica tierra de EmoVenture. Dejen que sus emociones los lleven a lo más recóndito de su ser, y quién sabe, quizás encuentres más de lo que esperabas.
+*Deambulando por este parque de diversiones, sus colores, sonidos y olores atrapan tus sentidos, como si cada parte del parque invitara a tu ser a una extraña danza de emociones internas, una extraña montaña rusa interior.
+ *De repente, una voz cautivadora rompe tu tren de pensamiento y te trae de vuelta.
+
 #Gitana: [[Bienvenido|Oh, mira nada más|Al fin llegaste]], viajero de las emociones.
 #do DialogueActors.animacion_establecer_expresion("gitana", "adivina")
-#
-#Gitana: Estaba esperándote... aunque quizás no lo sabías todavía.
-#Gitana: Algunas puertas se abren cuando uno está listo, no antes.
-#
-#Gitana: Dime, ¿cómo te sientes al estar aquí?
-#Protagonista: ...creo que un poco nervioso.
-#
-#Gitana: *Jejeje...* Los nervios son buenos. Significa que algo dentro de ti sabe que estás por comenzar un viaje importante.
+
+???: Acércate oh intrépida alma. ¿Te atreves a conocer tu mundo interno? ¿A develar el secreto que yace en tu mundo interior? Sígueme si no temes escuchar aquello que tus emociones tienen que decirte.
+
 #do DialogueActors.animacion_establecer_expresion("gitana", "neutral")
-#
-#Gitana: Antes de continuar, debo preguntarte algo.
-#Gitana: ¿Estás preparado para entrar a Emoventure y descubrir lo que se esconde dentro de ti?
-#
-#- Sí, estoy listo.
-#	do DialogueActors.animacion_establecer_expresion("gitana", "adivina")
-#	Gitana: Excelente. Entonces sigue mis pasos y no mires atrás.
-#	Gitana: A partir de aquí, nada vuelve a ser igual.
-#
-#- No estoy seguro…
-#	do DialogueActors.animacion_establecer_expresion("gitana", "neutral")
-#	Gitana: Es normal dudar. La duda también es una emoción que nos guía.
-#	Gitana: Pero si has llegado hasta aquí, es porque una parte de ti sí quiere saber la verdad.
-#	Gitana: Ven. Camina conmigo. Lo demás lo descubrirás dentro.
-#
-#Gitana: Muy bien… comenzaremos con lo esencial.  
-#Gitana: Para avanzar, necesitarás algo más que valor: necesitarás sinceridad contigo mismo.
-#
-#Gitana: Adelante. Cruza la cortina.
-# 
-#do DialogueActors.animacion_establecer_animacion("jugador", "caminar", "derecha")
-#Gitana: Ven para aca
-#{{DatosJugador.nombre_jugador}}: Voy
-#do DialogueActors.animacion_establecer_animacion("jugador", "caminar", "izquierda")
-#do DialogueActors.movimiento_mover_y_esperar("jugador", Vector2(-400,0), 3)
-#Gitana: Ahora yo voy para allá
-#do DialogueActors.animacion_establecer_expresion("gitana", "adivina")
-#do DialogueActors.movimiento_mover_derecha("gitana", 200)
-Gitana: Y recuerda: en Emoventure, cada emoción tiene un rostro.
+
+
+
+- Sí, ¿Por qué no?
+	#do DialogueActors.animacion_establecer_expresion("gitana", "adivina")
+	???: Sabia desición, adelante, pasa.
+
+- No estoy seguro…
+	#do DialogueActors.animacion_establecer_expresion("gitana", "neutral")
+	???: Ánimate, sólo para tí hoy será gratis la experiencia, entra.
+
+
+ do DialogueActors.animacion_establecer_animacion("jugador", "caminar", "derecha")
+
+do DialogueActors.animacion_establecer_animacion("jugador", "caminar", "derecha")
+do DialogueActors.movimiento_mover_y_esperar("jugador", Vector2(470,0), 3)
+

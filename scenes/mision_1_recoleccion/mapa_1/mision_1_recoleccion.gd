@@ -24,15 +24,20 @@ var _intersecciones_reservadas: Dictionary = {}
 var _timer_generacion_fuego: Timer
 
 func _ready() -> void:
-
-	DatosJugador.jugador.permitir_movimiento()
+	
+	# COMPROBACIÓN 1: ¿El jugador puede moverse?
+	if DatosJugador.jugador.has_method("permitir_movimiento"):
+		DatosJugador.jugador.permitir_movimiento()
 
 	Logs.log_debug("Enemigos encontrados: %d" % get_tree().get_nodes_in_group("enemigos").size())
 	Logs.log_debug("Level complete UI listo")
 	DatosJugador.emociones_recolectadas.clear()
 	DatosJugador.todas_las_emociones_recolectadas.connect(_on_todas_las_emociones_recolectadas)
 
-	DatosJugador.jugador.sin_vidas.connect(_on_jugador_sin_vidas)
+	# COMPROBACIÓN 2: ¿El jugador tiene la señal de vidas?
+	if DatosJugador.jugador.has_signal("sin_vidas"):
+		DatosJugador.jugador.sin_vidas.connect(_on_jugador_sin_vidas)
+		
 	_inicializar_fuego_dinamico()
 
 func _on_todas_las_emociones_recolectadas() -> void:
@@ -41,22 +46,33 @@ func _on_todas_las_emociones_recolectadas() -> void:
 	Logs.log_debug("Nivel completado")
 	AudioManager.play_sfx(SFX_NIVEL_COMPLETADO)
 
-	DatosJugador.jugador.nivel_terminado = true
-	DatosJugador.jugador.terminar_emocion()
-	DatosJugador.jugador.bloquear_movimiento()
+	# COMPROBACIONES: Solo ejecutamos esto si es el jugador real
+	if "nivel_terminado" in DatosJugador.jugador:
+		DatosJugador.jugador.nivel_terminado = true
+	if DatosJugador.jugador.has_method("terminar_emocion"):
+		DatosJugador.jugador.terminar_emocion()
+	if DatosJugador.jugador.has_method("bloquear_movimiento"):
+		DatosJugador.jugador.bloquear_movimiento()
 
 	_detener_fuego_dinamico()
 	for enemigo in get_tree().get_nodes_in_group("enemigos"):
 		enemigo.bloquear_movimiento()
 
+	# Valor por defecto en caso de que sea el actor del diálogo
+	var vidas = 3 
+	if "vidas_actuales" in DatosJugador.jugador:
+		vidas = DatosJugador.jugador.vidas_actuales
+
 	level_complete_ui.mostrar(
 		DatosJugador.emociones_recolectadas,
-		DatosJugador.jugador.vidas_actuales
+		vidas
 	)
 
 func _on_jugador_sin_vidas() -> void:
 	AudioManager.play_sfx(SFX_GAME_OVER)
-	DatosJugador.jugador.bloquear_movimiento()
+	
+	if DatosJugador.jugador.has_method("bloquear_movimiento"):
+		DatosJugador.jugador.bloquear_movimiento()
 
 	_detener_fuego_dinamico()
 	for enemigo in get_tree().get_nodes_in_group("enemigos"):
@@ -93,7 +109,8 @@ func _detener_fuego_dinamico() -> void:
 
 
 func _intentar_generar_fuegos() -> void:
-	if DatosJugador.jugador == null or DatosJugador.jugador.nivel_terminado:
+	# COMPROBACIÓN SEGURA: Usamos get() para que no crashee si la variable no existe
+	if DatosJugador.jugador == null or DatosJugador.jugador.get("nivel_terminado") == true:
 		return
 
 	var candidatas: Array[Node2D] = []
@@ -124,7 +141,8 @@ func _crear_indicador_y_programar_fuego(interseccion: Node2D) -> void:
 
 	await get_tree().create_timer(tiempo_indicador_fuego).timeout
 
-	if DatosJugador.jugador == null or DatosJugador.jugador.nivel_terminado:
+	# COMPROBACIÓN SEGURA aquí también
+	if DatosJugador.jugador == null or DatosJugador.jugador.get("nivel_terminado") == true:
 		_intersecciones_reservadas.erase(interseccion)
 		return
 

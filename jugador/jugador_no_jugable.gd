@@ -1,19 +1,26 @@
 extends CharacterBody2D
 
+# --- Camuflaje para evitar que el nivel crashee ---
+signal sin_vidas
+var nivel_terminado: bool = false
+var vidas_actuales: int = 3 
+
+# --- Variables originales de apariencia ---
 @export var iniciar_con_emocion_neutra: bool = false
+@export var forzar_indice_cabello: int = -1
 
 @onready var apariencia: Node = $PlayerAppearance
 
-@export var forzar_indice_cabello: int = -1
-
 func _ready() -> void:
+	# Solo dejamos el registro del diálogo para las cinemáticas
+	DialogueActors.registro_registrar_actor("jugador", self)
+
 	refrescar_preview()
 
 	if iniciar_con_emocion_neutra:
 		set_emocion("ninguna")
 	else:
 		_reproducir_idle_normal()
-
 
 func refrescar_preview() -> void:
 	if forzar_indice_cabello >= 0:
@@ -29,14 +36,12 @@ func refrescar_preview() -> void:
 	apariencia.establecer_direccion("down")
 	apariencia.establecer_estado_movimiento("idle")
 
-
 func set_emocion(nombre: String) -> void:
 	var appearance := $PlayerAppearance
 
 	appearance.establecer_estado_movimiento("idle")
 	appearance.establecer_direccion("down")
 
-	# SOLO cuerpo por ahora
 	var anim := "emocion_" + nombre
 
 	if appearance.cuerpo.sprite_frames \
@@ -59,3 +64,16 @@ func _reproducir_idle_normal() -> void:
 	if appearance.cuerpo.sprite_frames \
 	and appearance.cuerpo.sprite_frames.has_animation(anim):
 		appearance.cuerpo.play(anim)
+
+# --- Funciones Escudo (Camuflaje) ---
+func permitir_movimiento() -> void:
+	pass
+
+func bloquear_movimiento() -> void:
+	pass
+
+func desbloquear_movimiento() -> void:
+	pass
+
+func terminar_emocion() -> void:
+	pass
