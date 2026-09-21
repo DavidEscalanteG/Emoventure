@@ -237,4 +237,4 @@ func _ensure_mobile_controls() -> void:
 		return
 	var controls := MOBILE_CONTROLS_SCENE.instantiate()
 	controls.name = "MobileControls"
-	get_tree().root.add_child(controls)
+	get_tree().root.add_child.call_deferred(controls)

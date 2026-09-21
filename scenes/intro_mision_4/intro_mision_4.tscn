@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://nhr434u7ip2a"]
+[gd_scene load_steps=3 format=3 uid="uid://nhr434u7ip2a"]
 
 [ext_resource type="Script" uid="uid://cv3fwo523lyig" path="res://scenes/intro_mision_4/intro_mision_4.gd" id="1_sqcdd"]
+
+[ext_resource type="PackedScene" path="res://dialogos/ManagerDialogos/dialogue_ui.tscn" id="2_dialogue"]
 
 [node name="Escena13" type="Control"]
 layout_mode = 3
@@ -10,3 +12,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sqcdd")
+
+[node name="DialogueUI" parent="." instance=ExtResource("2_dialogue")]

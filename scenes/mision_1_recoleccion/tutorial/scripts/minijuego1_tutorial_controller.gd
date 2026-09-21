@@ -5,15 +5,18 @@ extends Node2D
 @onready var dark_overlay: ColorRect = $TutorialUI/Overlay/DarkOverlay
 
 const STEP_INTRO := 0
-const STEP_MOVEMENT := 1
-const STEP_ALEGRIA := 2
-const STEP_TRISTEZA := 3
-const STEP_ENOJO := 4
-const STEP_DESAGRADO := 5
-const STEP_MIEDO := 6
-const STEP_OBSTACLE := 7
-const STEP_CLOSURE := 8
-const STEP_COUNT := 9
+const STEP_MOVE_RIGHT := 1
+const STEP_MOVE_LEFT := 2
+const STEP_MOVE_UP := 3
+const STEP_MOVE_DOWN := 4
+const STEP_ALEGRIA := 5
+const STEP_TRISTEZA := 6
+const STEP_ENOJO := 7
+const STEP_DESAGRADO := 8
+const STEP_MIEDO := 9
+const STEP_OBSTACLE := 10
+const STEP_CLOSURE := 11
+const STEP_COUNT := 12
 
 const STEP_LOOP_DELAY := 1.1
 const ESCENA_FALLBACK_MINIJUEGO_1 := "res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn"
@@ -49,8 +52,14 @@ func _go_to_step(step: int) -> void:
 	match _current_step:
 		STEP_INTRO:
 			await _play_intro(token)
-		STEP_MOVEMENT:
-			await _play_looped_step(token, _current_step, _play_movement)
+		STEP_MOVE_RIGHT:
+			await _play_looped_step(token, _current_step, _play_move_right)
+		STEP_MOVE_LEFT:
+			await _play_looped_step(token, _current_step, _play_move_left)
+		STEP_MOVE_UP:
+			await _play_looped_step(token, _current_step, _play_move_up)
+		STEP_MOVE_DOWN:
+			await _play_looped_step(token, _current_step, _play_move_down)
 		STEP_ALEGRIA:
 			await _play_looped_step(token, _current_step, _play_alegria)
 		STEP_TRISTEZA:
@@ -99,27 +108,27 @@ func _play_looped_step(token: int, step_id: int, callback: Callable) -> void:
 
 		await get_tree().create_timer(STEP_LOOP_DELAY).timeout
 
-func _play_movement(token: int) -> void:
+func _play_movement_example(token: int, key: String, offset: Vector2, text: String) -> void:
 	ui.show_keys(true)
-	var sequence := [
-		{"key": "D", "offset": Vector2(110, 0), "text": "Para moverte a la derecha se usa la tecla D."},
-		{"key": "A", "offset": Vector2(-110, 0), "text": "Para moverte a la izquierda se usa la tecla A."},
-		{"key": "W", "offset": Vector2(0, -95), "text": "Para moverte hacia arriba se usa la tecla W."},
-		{"key": "S", "offset": Vector2(0, 95), "text": "Para moverte hacia abajo se usa la tecla S."},
-	]
-
-	for item in sequence:
-		if not _is_token_valid(token):
-			return
-		ui.set_message(item.text)
-		ui.animate_key(item.key)
-		await demo.move_player(item.offset, 0.45).finished
-		if not _is_token_valid(token):
-			return
-		await get_tree().create_timer(0.18).timeout
-
+	ui.set_message(text)
+	ui.animate_key(key)
+	if not _is_token_valid(token):
+		return
+	await demo.move_player(offset, 0.45).finished
 	if _is_token_valid(token):
 		ui.reset_keys()
+
+func _play_move_right(token: int) -> void:
+	await _play_movement_example(token, "D", Vector2(110, 0), "Para moverte a la derecha se usa la tecla D.")
+
+func _play_move_left(token: int) -> void:
+	await _play_movement_example(token, "A", Vector2(-110, 0), "Para moverte a la izquierda se usa la tecla A.")
+
+func _play_move_up(token: int) -> void:
+	await _play_movement_example(token, "W", Vector2(0, -95), "Para moverte hacia arriba se usa la tecla W.")
+
+func _play_move_down(token: int) -> void:
+	await _play_movement_example(token, "S", Vector2(0, 95), "Para moverte hacia abajo se usa la tecla S.")
 
 func _play_alegria(token: int) -> void:
 	ui.show_keys(false)
@@ -151,9 +160,9 @@ func _play_tristeza(token: int) -> void:
 
 func _play_enojo(token: int) -> void:
 	ui.show_keys(true)
-	ui.set_message("Enojo: invierte tus controles. Si presionas A, te mueves al lado opuesto.")
+	ui.set_message("Enojo invierte tus controles: antes de recogerlo, D te mueve a la derecha; después de recogerlo, la misma tecla D te mueve a la izquierda.")
 	demo.show_emotion("enojo")
-	ui.animate_key("A")
+	ui.animate_key("D")
 	if not _is_token_valid(token):
 		return
 	await demo.move_player(Vector2(240, 0), 0.75).finished
@@ -163,8 +172,8 @@ func _play_enojo(token: int) -> void:
 	if not _is_token_valid(token):
 		return
 	await get_tree().create_timer(0.15).timeout
-	ui.animate_key("A")
-	await demo.move_player(Vector2(170, 0), 0.6).finished
+	ui.animate_key("D")
+	await demo.move_player(Vector2(-170, 0), 0.6).finished
 	ui.reset_keys()
 
 func _play_desagrado(token: int) -> void:

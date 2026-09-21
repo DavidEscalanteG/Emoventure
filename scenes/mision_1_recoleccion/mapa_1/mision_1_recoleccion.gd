@@ -135,11 +135,16 @@ func _intentar_generar_fuegos() -> void:
 func _crear_indicador_y_programar_fuego(interseccion: Node2D) -> void:
 	var indicador = FUEGO_INDICADOR_SCENE.instantiate()
 	indicador.global_position = interseccion.global_position
-	add_child(indicador)
 	indicador.set("duracion", tiempo_indicador_fuego)
 	indicador.set("intervalo_parpadeo", intervalo_parpadeo_indicador)
 
-	await get_tree().create_timer(tiempo_indicador_fuego).timeout
+	add_child(indicador)
+	var espera := create_tween()
+	espera.tween_interval(tiempo_indicador_fuego)
+	espera.tween_callback(_crear_fuego.bind(interseccion))
+
+
+func _crear_fuego(interseccion: Node2D) -> void:
 
 	# COMPROBACIÓN SEGURA aquí también
 	if DatosJugador.jugador == null or DatosJugador.jugador.get("nivel_terminado") == true:

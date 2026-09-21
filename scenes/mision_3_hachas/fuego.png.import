@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:scenes/mision_3_hachas/fuego.png.import
 uid="uid://dmrauwa2u6tug"
 path="res://.godot/imported/fuego.png-e08032752c6a0dcf33ff90031a4542cc.ctex"
-========
-uid="uid://622rcebvtiy"
-path="res://.godot/imported/tile_0029.png-95aebee6e900c7919563ff729ad3e617.ctex"
->>>>>>>> main:assets/ui/Tiles/Large tiles/Thin outline/tile_0029.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:scenes/mision_3_hachas/fuego.png.import
 source_file="res://scenes/mision_3_hachas/fuego.png"
 dest_files=["res://.godot/imported/fuego.png-e08032752c6a0dcf33ff90031a4542cc.ctex"]
-========
-source_file="res://assets/ui/Tiles/Large tiles/Thin outline/tile_0029.png"
-dest_files=["res://.godot/imported/tile_0029.png-95aebee6e900c7919563ff729ad3e617.ctex"]
->>>>>>>> main:assets/ui/Tiles/Large tiles/Thin outline/tile_0029.png.import
 
 [params]
 

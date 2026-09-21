@@ -12,10 +12,11 @@ func _ready() -> void:
 
 
 func _reproducir_parpadeo() -> void:
-	var tiempo_transcurrido: float = 0.0
-	while tiempo_transcurrido < duracion:
-		sprite.visible = not sprite.visible
-		await get_tree().create_timer(intervalo_parpadeo).timeout
-		tiempo_transcurrido += intervalo_parpadeo
-	sprite.visible = true
-	queue_free()
+	var tween := create_tween()
+	var intervalo := maxf(intervalo_parpadeo, 0.01)
+	var restante := duracion
+	while restante > 0.0:
+		tween.tween_callback(func(): sprite.visible = not sprite.visible)
+		tween.tween_interval(minf(intervalo, restante))
+		restante -= intervalo
+	tween.tween_callback(queue_free)
