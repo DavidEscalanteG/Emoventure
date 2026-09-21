@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bi38yoj8ftjob" path="res://scenes/mision_2_memorias/tutorial/scripts/minijuego2_tutorial_controller.gd" id="1_ctrl"]
 [ext_resource type="Script" uid="uid://bb1hbw7efiad8" path="res://scenes/mision_2_memorias/tutorial/scripts/minijuego2_tutorial_demo.gd" id="2_demo"]
 [ext_resource type="Script" uid="uid://cxvfusydandn3" path="res://scenes/mision_2_memorias/tutorial/scripts/minijuego2_tutorial_ui.gd" id="3_ui"]
-[ext_resource type="Texture2D" uid="uid://b24nvekjmmfdu" path="res://scenes/mision_2_memorias/fondo_escena_9.png" id="4_bg"]
+[ext_resource type="Texture2D" uid="uid://vv72wrpq6vdm" path="res://scenes/mision_2_memorias/fondo_escena_9.png" id="4_bg"]
 [ext_resource type="Theme" uid="uid://dwacxx3nxjf5c" path="res://assets/temas/tema_botones.tres" id="5_bvad7"]
 
 [node name="Minijuego2Tutorial" type="Control"]
