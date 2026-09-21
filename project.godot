@@ -27,7 +27,6 @@ SaveManager="*res://src/autoload/save_manager.gd"
 Logs="*res://src/autoload/Logs.gd"
 DialogueActors="*res://src/autoload/dialogue_actors.gd"
 Cuestionarios="*res://src/autoload/cuestionarios.gd"
-PauseOverlay="*res://src/ui/pause_overlay.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]
