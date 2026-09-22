@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bf1xbh4xdr7or" path="res://assets/emociones/spritesheets/emocion_desagrado.png" id="5_jd71q"]
 [ext_resource type="Texture2D" uid="uid://dak4m8tmu7fqp" path="res://assets/emociones/spritesheets/emocion_enojo.png" id="6_fkqhv"]
 [ext_resource type="Texture2D" uid="uid://drij7vi18vgxg" path="res://assets/emociones/spritesheets/emocion_feliz.png" id="7_ydwwv"]
-[ext_resource type="Texture2D" uid="uid://b1fk1ss2e3x4d" path="res://assets/emociones/spritesheets/emocion_ansiedad.png" id="8_eyu7u"]
+[ext_resource type="Texture2D" uid="uid://ceig5b4edl2j4" path="res://assets/emociones/spritesheets/emocion_asombro.png" id="8_eyu7u"]
 [ext_resource type="Texture2D" uid="uid://nsaqlorvolv" path="res://assets/emociones/spritesheets/emocion_tristeza.png" id="9_42fo6"]
 [ext_resource type="PackedScene" uid="uid://d14ky0d5wqhvm" path="res://assets/enemigos/serpiente/Serpiente.tscn" id="10_jd71q"]
 [ext_resource type="PackedScene" uid="uid://7coyibirj1qa" path="res://assets/assets_escena_3/otros_elementos/interseccion.tscn" id="10_mu6jr"]
@@ -216,7 +216,7 @@ region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yrfjx"]
 atlas = ExtResource("8_eyu7u")
-region = Rect2(0, 0, 100, 100)
+region = Rect2(200, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvbmt"]
 atlas = ExtResource("9_42fo6")
@@ -653,11 +653,11 @@ textura = SubResource("AtlasTexture_7qjch")
 tipo_emocion = "alegria"
 color = Color(1, 1, 0.09803922, 1)
 
-[node name="Emocion_Miedo" parent="Emociones" instance=ExtResource("3_fkqhv")]
+[node name="Emocion_Sorpresa" parent="Emociones" instance=ExtResource("3_fkqhv")]
 position = Vector2(1504, 384)
 textura = SubResource("AtlasTexture_yrfjx")
-tipo_emocion = "miedo"
-color = Color(1, 0.14901961, 1, 1)
+tipo_emocion = "sorpresa"
+color = Color(1, 0.88, 0.24, 1)
 
 [node name="Emocion_Tristeza" parent="Emociones" instance=ExtResource("3_fkqhv")]
 position = Vector2(128, 608)
@@ -1042,14 +1042,13 @@ position = Vector2(1089, 511)
 scale = Vector2(2, 2)
 
 [node name="EmocionesUI" parent="." instance=ExtResource("12_06t6u")]
-offset = Vector2(900, 675)
-scale = Vector2(0.6, 0.6)
-transform = Transform2D(0.6, 0, 0, 0.6, 900, 675)
+offset = Vector2(30, 965)
+scale = Vector2(0.7, 0.7)
+transform = Transform2D(0.7, 0, 0, 0.7, 30, 965)
 
 [node name="VidasUI" parent="." instance=ExtResource("13_8ldwy")]
-offset = Vector2(900, 290)
-scale = Vector2(0.4, 0.4)
-transform = Transform2D(0.4, 0, 0, 0.4, 900, 290)
+offset = Vector2(842, 18)
+transform = Transform2D(1, 0, 0, 1, 842, 18)
 
 [node name="NivelCompletadoUI" parent="." instance=ExtResource("14_wdtp6")]
 offset = Vector2(700, 0)

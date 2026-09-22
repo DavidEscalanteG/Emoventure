@@ -13,7 +13,7 @@ const STEP_ALEGRIA := 5
 const STEP_TRISTEZA := 6
 const STEP_ENOJO := 7
 const STEP_DESAGRADO := 8
-const STEP_MIEDO := 9
+const STEP_SORPRESA := 9
 const STEP_OBSTACLE := 10
 const STEP_CLOSURE := 11
 const STEP_COUNT := 12
@@ -46,6 +46,7 @@ func _go_to_step(step: int) -> void:
 	demo.reset_world()
 	ui.reset_keys()
 	ui.show_keys(false)
+	ui.set_step_indicator(_current_step, STEP_COUNT)
 	ui.set_navigation(_current_step, STEP_COUNT, _current_step == STEP_CLOSURE)
 	dark_overlay.color = Color(0, 0, 0, 0.35)
 
@@ -68,8 +69,8 @@ func _go_to_step(step: int) -> void:
 			await _play_looped_step(token, _current_step, _play_enojo)
 		STEP_DESAGRADO:
 			await _play_looped_step(token, _current_step, _play_desagrado)
-		STEP_MIEDO:
-			await _play_looped_step(token, _current_step, _play_miedo)
+		STEP_SORPRESA:
+			await _play_looped_step(token, _current_step, _play_sorpresa)
 		STEP_OBSTACLE:
 			await _play_looped_step(token, _current_step, _play_obstacle)
 		STEP_CLOSURE:
@@ -196,10 +197,10 @@ func _play_desagrado(token: int) -> void:
 		return
 	await demo.move_player(Vector2(90, 0), 0.28).finished
 
-func _play_miedo(token: int) -> void:
+func _play_sorpresa(token: int) -> void:
 	ui.show_keys(false)
-	ui.set_message("Miedo: activa tu alerta y te permite reaccionar con más velocidad.")
-	demo.show_emotion("miedo")
+	ui.set_message("Sorpresa: te da el impulso más veloz para reaccionar ante lo inesperado.")
+	demo.show_emotion("sorpresa")
 	if not _is_token_valid(token):
 		return
 	await demo.move_player(Vector2(260, -35), 0.8).finished

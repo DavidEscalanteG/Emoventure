@@ -24,7 +24,8 @@ var _intersecciones_reservadas: Dictionary = {}
 var _timer_generacion_fuego: Timer
 
 func _ready() -> void:
-	
+	_crear_fondo_ambiente()
+
 	# COMPROBACIÓN 1: ¿El jugador puede moverse?
 	if DatosJugador.jugador.has_method("permitir_movimiento"):
 		DatosJugador.jugador.permitir_movimiento()
@@ -171,3 +172,34 @@ func _crear_fuego(interseccion: Node2D) -> void:
 func _on_fuego_extinguido(interseccion: Node2D) -> void:
 	if _fuegos_activos.has(interseccion):
 		_fuegos_activos.erase(interseccion)
+
+
+func _crear_fondo_ambiente() -> void:
+	# Cubre las zonas sin TileMap en todos los mapas que comparten este script.
+	# El patrón grande conserva el aspecto pixel art sin competir con el laberinto.
+	var canvas := CanvasLayer.new()
+	canvas.name = "FondoAmbiente"
+	canvas.layer = -100
+	add_child(canvas)
+
+	var fondo := ColorRect.new()
+	fondo.name = "CieloPixelado"
+	fondo.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	fondo.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var shader := Shader.new()
+	shader.code = """
+		shader_type canvas_item;
+		render_mode unshaded;
+		void fragment() {
+			vec2 cell = floor(UV * vec2(30.0, 17.0));
+			float checker = mod(cell.x + cell.y, 2.0);
+			float vignette = 1.0 - smoothstep(0.25, 0.82, distance(UV, vec2(0.5)));
+			vec3 base = mix(vec3(0.025, 0.055, 0.115), vec3(0.04, 0.10, 0.18), checker * 0.32);
+			base += vec3(0.015, 0.04, 0.07) * vignette;
+			COLOR = vec4(base, 1.0);
+		}
+	"""
+	var material := ShaderMaterial.new()
+	material.shader = shader
+	fondo.material = material
+	canvas.add_child(fondo)

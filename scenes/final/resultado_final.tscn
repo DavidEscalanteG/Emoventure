@@ -1,6 +1,106 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5lujjlaxpbod"]
+[gd_scene load_steps=12 format=3 uid="uid://b5lujjlaxpbod"]
 
 [ext_resource type="Script" uid="uid://hcbxx8gi0uyv" path="res://scenes/final/resultado_final.gd" id="1_u2rfl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleCardAtencion"]
+bg_color = Color(0.067, 0.153, 0.25, 0.96)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.294, 0.639, 0.902, 0.9)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.28)
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleCardClaridad"]
+bg_color = Color(0.137, 0.102, 0.239, 0.96)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.663, 0.471, 0.91, 0.9)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.28)
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleCardReparacion"]
+bg_color = Color(0.235, 0.153, 0.075, 0.96)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.91, 0.651, 0.353, 0.9)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.28)
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBarraFondo"]
+bg_color = Color(0.02, 0.035, 0.073, 0.75)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBarraAtencion"]
+bg_color = Color(0.294, 0.639, 0.902, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBarraClaridad"]
+bg_color = Color(0.663, 0.471, 0.91, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBarraReparacion"]
+bg_color = Color(0.91, 0.651, 0.353, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleButtonPrimary"]
+bg_color = Color(0.212, 0.463, 0.784, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+content_margin_left = 28.0
+content_margin_right = 28.0
+
+[sub_resource type="StyleBoxFlat" id="StyleButtonSecondary"]
+bg_color = Color(0.255, 0.196, 0.431, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.663, 0.471, 0.91, 0.8)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+content_margin_left = 32.0
+content_margin_right = 32.0
+
+[sub_resource type="StyleBoxFlat" id="StyleButtonHover"]
+bg_color = Color(0.333, 0.573, 0.878, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [node name="ResultadoFinal" type="Control"]
 layout_mode = 3
@@ -18,7 +118,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0666667, 0.0862745, 0.14902, 1)
+color = Color(0.025, 0.045, 0.094, 1)
+
+[node name="ResplandorSuperior" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -120.0
+offset_top = -100.0
+offset_right = 2040.0
+offset_bottom = 210.0
+mouse_filter = 2
+color = Color(0.153, 0.306, 0.529, 0.28)
+
+[node name="FranjaInferior" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -170.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.173, 0.11, 0.286, 0.28)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -27,25 +148,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 80
-theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 80
-theme_override_constants/margin_bottom = 60
+theme_override_constants/margin_left = 96
+theme_override_constants/margin_top = 38
+theme_override_constants/margin_right = 96
+theme_override_constants/margin_bottom = 38
 
 [node name="VBoxPrincipal" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 12
 
 [node name="Titulo" type="Label" parent="MarginContainer/VBoxPrincipal"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 54
-text = "Resultado final"
+theme_override_colors/font_color = Color(0.965, 0.978, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.55)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 50
+text = "Tu mapa emocional"
 horizontal_alignment = 1
 
 [node name="NarrativaLabel" type="Label" parent="MarginContainer/VBoxPrincipal"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.761, 0.839, 0.949, 1)
+theme_override_font_sizes/font_size = 25
+text = "Una mirada a las tendencias que aparecieron durante tu aventura"
+horizontal_alignment = 1
+
+[node name="NotaNeutral" type="Label" parent="MarginContainer/VBoxPrincipal"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.878, 0.996, 1)
+theme_override_font_sizes/font_size = 22
+text = "No hay resultados correctos o incorrectos: cada barra describe una dimensión diferente."
 horizontal_alignment = 1
 
 [node name="TarjetasContainer" type="VBoxContainer" parent="MarginContainer/VBoxPrincipal"]
@@ -56,14 +190,16 @@ theme_override_constants/separation = 12
 
 [node name="TarjetaAtencion" type="PanelContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 154)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleCardAtencion")
 
 [node name="Margen" type="MarginContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion"]
 layout_mode = 2
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 16
 
 [node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen"]
@@ -73,30 +209,36 @@ theme_override_constants/separation = 8
 [node name="TituloAtencion" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.819, 0.914, 1, 1)
+theme_override_font_sizes/font_size = 30
 
 [node name="BarraAtencion" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 28)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBarraFondo")
+theme_override_styles/fill = SubResource("StyleBarraAtencion")
 show_percentage = false
 
 [node name="MensajeAtencion" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaAtencion/Margen/VBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.922, 0.957, 1, 1)
+theme_override_font_sizes/font_size = 23
 autowrap_mode = 3
 
 [node name="TarjetaClaridad" type="PanelContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 154)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleCardClaridad")
 
 [node name="Margen" type="MarginContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad"]
 layout_mode = 2
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 16
 
 [node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen"]
@@ -105,28 +247,34 @@ theme_override_constants/separation = 8
 
 [node name="TituloClaridad" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.91, 0.855, 1, 1)
+theme_override_font_sizes/font_size = 30
 
 [node name="BarraClaridad" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
-custom_minimum_size = Vector2(0, 28)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBarraFondo")
+theme_override_styles/fill = SubResource("StyleBarraClaridad")
 show_percentage = false
 
 [node name="MensajeClaridad" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
-custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.955, 0.929, 1, 1)
+theme_override_font_sizes/font_size = 23
 autowrap_mode = 3
 
 [node name="TarjetaReparacion" type="PanelContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 154)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleCardReparacion")
 
 [node name="Margen" type="MarginContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion"]
 layout_mode = 2
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 16
 
 [node name="VBox" type="VBoxContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen"]
@@ -135,36 +283,53 @@ theme_override_constants/separation = 8
 
 [node name="TituloReparacion" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(1, 0.902, 0.773, 1)
+theme_override_font_sizes/font_size = 30
 
 [node name="BarraReparacion" type="ProgressBar" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
-custom_minimum_size = Vector2(0, 28)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme_override_styles/background = SubResource("StyleBarraFondo")
+theme_override_styles/fill = SubResource("StyleBarraReparacion")
 show_percentage = false
 
 [node name="MensajeReparacion" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
-custom_minimum_size = Vector2(0, 23)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.949, 0.878, 1)
+theme_override_font_sizes/font_size = 23
 autowrap_mode = 3
 
 [node name="PerfilFinalLabel" type="Label" parent="MarginContainer/VBoxPrincipal"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 34)
+custom_minimum_size = Vector2(0, 68)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.875, 0.906, 0.961, 1)
+theme_override_font_sizes/font_size = 23
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="BotonDescargarPDF" type="Button" parent="MarginContainer/VBoxPrincipal"]
-unique_name_in_owner = true
+[node name="Botones" type="HBoxContainer" parent="MarginContainer/VBoxPrincipal"]
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_constants/separation = 22
+alignment = 1
+
+[node name="BotonDescargarPDF" type="Button" parent="MarginContainer/VBoxPrincipal/Botones"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(470, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleButtonPrimary")
+theme_override_styles/hover = SubResource("StyleButtonHover")
 text = "Descargar resultados en PDF"
 
-[node name="BotonMenuPrincipal" type="Button" parent="MarginContainer/VBoxPrincipal"]
+[node name="BotonMenuPrincipal" type="Button" parent="MarginContainer/VBoxPrincipal/Botones"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 60)
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleButtonSecondary")
+theme_override_styles/hover = SubResource("StyleButtonHover")
 text = "Continuar"
 
 [node name="DialogoGuardarPDF" type="FileDialog" parent="."]

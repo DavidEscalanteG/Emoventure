@@ -7,12 +7,12 @@ class_name Minijuego1TutorialDemo
 @onready var obstacle: Node2D = $Obstacle
 @onready var obstacle_sprite: Sprite2D = $Obstacle/Sprite2D
 
-const PLAYER_START := Vector2(600, 360)
-const EMOTION_POS := Vector2(880, 300)
-const OBSTACLE_POS := Vector2(860, 360)
+const PLAYER_START := Vector2(620, 420)
+const EMOTION_POS := Vector2(940, 360)
+const OBSTACLE_POS := Vector2(920, 420)
 
-const PLAYER_SCALE := Vector2.ONE * 1.7
-const EMOTION_SCALE := Vector2.ONE * 1.6
+const PLAYER_SCALE := Vector2.ONE * 2.35
+const EMOTION_SCALE := Vector2.ONE * 1.9
 const OBSTACLE_SCALE := Vector2.ONE * 3.0
 
 const EMOTION_TEXTURES := {
@@ -20,7 +20,7 @@ const EMOTION_TEXTURES := {
 	"tristeza": preload("res://assets/emociones/spritesheets/emocion_tristeza.png"),
 	"enojo": preload("res://assets/emociones/spritesheets/emocion_enojo.png"),
 	"desagrado": preload("res://assets/emociones/spritesheets/emocion_desagrado.png"),
-	"miedo": preload("res://assets/emociones/spritesheets/emocion_ansiedad.png"),
+	"sorpresa": preload("res://assets/emociones/spritesheets/emocion_asombro.png"),
 }
 
 var _active_tweens: Array[Tween] = []
@@ -57,7 +57,7 @@ func show_emotion(tipo: String) -> void:
 	if base_texture:
 		var atlas := AtlasTexture.new()
 		atlas.atlas = base_texture
-		atlas.region = Rect2(0, 0, 100, 100)
+		atlas.region = Rect2(200, 0, 100, 100) if tipo == "sorpresa" else Rect2(0, 0, 100, 100)
 		
 		emotion_sprite.texture = atlas
 	

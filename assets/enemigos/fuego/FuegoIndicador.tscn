@@ -1,13 +1,91 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8cb4bvrdo8hf"]
+[gd_scene load_steps=12 format=3 uid="uid://c8cb4bvrdo8hf"]
 
 [ext_resource type="Script" uid="uid://cr72sy4u6fusf" path="res://src/gameplay/enemigos/fuego/fuego_indicador.gd" id="1_i1"]
-[ext_resource type="Texture2D" uid="uid://cy6t3dc8k03rt" path="res://assets/enemigos/fuego/blue/loops/burning_loop_1.png" id="2_yif03"]
+[ext_resource type="Texture2D" path="res://assets/enemigos/fuego/orange/loops/burning_loop_1.png" id="2_fire"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_warning_1"]
+atlas = ExtResource("2_fire")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_warning_2"]
+atlas = ExtResource("2_fire")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_warning_3"]
+atlas = ExtResource("2_fire")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_warning_4"]
+atlas = ExtResource("2_fire")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_warning_5"]
+atlas = ExtResource("2_fire")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_warning_6"]
+atlas = ExtResource("2_fire")
+region = Rect2(120, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_warning_7"]
+atlas = ExtResource("2_fire")
+region = Rect2(144, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_warning_8"]
+atlas = ExtResource("2_fire")
+region = Rect2(168, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_warning"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_warning_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_warning_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_warning_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_warning_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_warning_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_warning_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_warning_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_warning_8")
+}],
+"loop": true,
+"name": &"warning",
+"speed": 9.0
+}]
 
 [node name="FuegoIndicador" type="Node2D"]
 script = ExtResource("1_i1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.05, 1.05)
-texture = ExtResource("2_yif03")
-region_enabled = true
-region_rect = Rect2(144, 0, 24, 32)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+scale = Vector2(1.55, 1.55)
+sprite_frames = SubResource("SpriteFrames_warning")
+animation = &"warning"
+autoplay = "warning"
+
+[node name="Warning" type="Label" parent="."]
+z_index = 2
+offset_left = -9.0
+offset_top = -43.0
+offset_right = 9.0
+offset_bottom = -17.0
+theme_override_colors/font_color = Color(1, 0.89, 0.48, 1)
+theme_override_colors/font_outline_color = Color(0.25, 0.04, 0.01, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 22
+text = "!"
+horizontal_alignment = 1

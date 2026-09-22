@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dr4vbuueuu56w"]
+[gd_scene load_steps=54 format=3 uid="uid://dr4vbuueuu56w"]
 
 [ext_resource type="Script" uid="uid://diq5t1l7eecp5" path="res://scenes/mision_2_memorias/cuadro_memoria.gd" id="1_p8cra"]
 [ext_resource type="Script" uid="uid://c6atu0ejscdo5" path="res://scenes/mision_2_memorias/memorias_eternas_gameplay.gd" id="1_uus5q"]
@@ -91,6 +91,42 @@ region_rect = Rect2(0, 16, 16, 16)
 texture = ExtResource("32_trrj2")
 region_rect = Rect2(0, 16, 16, 16)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_retroalimentacion"]
+bg_color = Color(0.047, 0.035, 0.102, 0.94)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.965, 0.78, 0.345, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+content_margin_left = 28.0
+content_margin_top = 16.0
+content_margin_right = 28.0
+content_margin_bottom = 16.0
+shadow_color = Color(0, 0, 0, 0.65)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_contador"]
+bg_color = Color(0.055, 0.035, 0.102, 0.88)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.949, 0.733, 0.337, 0.95)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+content_margin_left = 28.0
+content_margin_top = 10.0
+content_margin_right = 28.0
+content_margin_bottom = 10.0
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 8
+
 [node name="MemoriasEternasGameplay" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -110,16 +146,26 @@ grow_vertical = 2
 texture = ExtResource("2_trrj2")
 
 [node name="Contador" type="Label" parent="."]
+z_index = 5
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -525.0
-offset_right = 525.0
-offset_bottom = 113.0
+offset_left = -570.0
+offset_top = 18.0
+offset_right = 570.0
+offset_bottom = 112.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 82
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.94, 0.78, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_contador")
 text = "0 / 7 recuerdos explorados"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CuadrosContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -397,20 +443,23 @@ escena_cuestionario = ExtResource("37_t272c")
 escena_siguiente = ExtResource("38_xwnhn")
 
 [node name="Retroalimentacion" type="Label" parent="."]
+z_index = 20
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -697.0
-offset_top = 866.0
-offset_right = 303.0
-offset_bottom = 1001.0
+offset_top = 840.0
+offset_right = 697.0
+offset_bottom = 1020.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.164706, 0.109804, 0.0509804, 1)
-theme_override_colors/font_shadow_color = Color(1, 0.968627, 0.827451, 0.8)
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.976, 0.902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
-theme_override_font_sizes/font_size = 44
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_retroalimentacion")
 text = "Qué interesante..."
 horizontal_alignment = 1
 vertical_alignment = 1

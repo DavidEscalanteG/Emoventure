@@ -5,7 +5,7 @@ extends Control
 	"tristeza": $HBoxContainer/TristezaIcon,
 	"enojo": $HBoxContainer/EnojoIcon,
 	"desagrado": $HBoxContainer/DesagradoIcon,
-	"miedo": $HBoxContainer/MiedoIcon
+	"sorpresa": $HBoxContainer/SorpresaIcon
 }
 
 func _ready() -> void:

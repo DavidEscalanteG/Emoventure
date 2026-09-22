@@ -21,27 +21,27 @@ const UMBRALES_MENSAJES_POR_GENERO: Dictionary[String, Dictionary] = {
 			"bajo_max": 21,
 			"medio_max": 32,
 			"mensajes": {
-				"bajo": "Debe mejorar su atención: presta poca atención.",
-				"medio": "Adecuada atención.",
-				"alto": "Debe mejorar su atención: presta demasiada atención."
+				"bajo": "Tus respuestas reflejan una atención emocional selectiva.",
+				"medio": "Tus respuestas reflejan una atención emocional frecuente.",
+				"alto": "Tus respuestas reflejan una atención emocional muy constante."
 			}
 		},
 		"claridad": {
 			"bajo_max": 25,
 			"medio_max": 35,
 			"mensajes": {
-				"bajo": "Debe mejorar su claridad emocional.",
-				"medio": "Adecuada claridad emocional.",
-				"alto": "Excelente claridad emocional."
+				"bajo": "Estás comenzando a distinguir lo que sientes.",
+				"medio": "Sueles reconocer y comprender lo que sientes.",
+				"alto": "Reconoces tus emociones con mucha frecuencia."
 			}
 		},
 		"reparacion": {
 			"bajo_max": 23,
 			"medio_max": 35,
 			"mensajes": {
-				"bajo": "Debe mejorar su reparación de las emociones.",
-				"medio": "Adecuada reparación de las emociones.",
-				"alto": "Excelente reparación de las emociones."
+				"bajo": "Usas estrategias de regulación en algunas situaciones.",
+				"medio": "Usas estrategias de regulación con frecuencia.",
+				"alto": "Usas estrategias de regulación muy frecuentemente."
 			}
 		}
 	},
@@ -50,27 +50,27 @@ const UMBRALES_MENSAJES_POR_GENERO: Dictionary[String, Dictionary] = {
 			"bajo_max": 24,
 			"medio_max": 35,
 			"mensajes": {
-				"bajo": "Debe mejorar su atención: presta poca atención.",
-				"medio": "Adecuada atención.",
-				"alto": "Debe mejorar su atención: presta demasiada atención."
+				"bajo": "Tus respuestas reflejan una atención emocional selectiva.",
+				"medio": "Tus respuestas reflejan una atención emocional frecuente.",
+				"alto": "Tus respuestas reflejan una atención emocional muy constante."
 			}
 		},
 		"claridad": {
 			"bajo_max": 23,
 			"medio_max": 34,
 			"mensajes": {
-				"bajo": "Debe mejorar su claridad emocional.",
-				"medio": "Adecuada claridad emocional.",
-				"alto": "Excelente claridad emocional."
+				"bajo": "Estás comenzando a distinguir lo que sientes.",
+				"medio": "Sueles reconocer y comprender lo que sientes.",
+				"alto": "Reconoces tus emociones con mucha frecuencia."
 			}
 		},
 		"reparacion": {
 			"bajo_max": 23,
 			"medio_max": 34,
 			"mensajes": {
-				"bajo": "Debe mejorar su reparación de las emociones.",
-				"medio": "Adecuada reparación de las emociones.",
-				"alto": "Excelente reparación de las emociones."
+				"bajo": "Usas estrategias de regulación en algunas situaciones.",
+				"medio": "Usas estrategias de regulación con frecuencia.",
+				"alto": "Usas estrategias de regulación muy frecuentemente."
 			}
 		}
 	}
@@ -99,7 +99,7 @@ var cuenta_regresiva_descarga_activa: bool = false
 
 
 func _ready() -> void:
-	label_narrativa.text = "Ahora te revelaré quién eres"
+	label_narrativa.text = "Una mirada a las tendencias que aparecieron durante tu aventura"
 	_renderizar_resumen()
 	boton_descargar_pdf.text = TEXTO_BOTON_DESCARGA_POR_DEFECTO
 	boton_descargar_pdf.pressed.connect(_on_boton_descargar_pdf_pressed)
@@ -160,7 +160,7 @@ func _construir_texto_perfil_final(puntajes: Dictionary[String, int], total_glob
 			dimension_dominante = dimension
 
 	var etiqueta_dominante: String = NOMBRES_DIMENSION.get(dimension_dominante, "tu dimensión principal")
-	return "Tu energía emocional dominante está en %s. Puntaje total acumulado: %d puntos.\n\nSigue explorando, porque cada emoción comprendida te vuelve más fuerte." % [etiqueta_dominante, total_global]
+	return "La dimensión con mayor presencia fue %s. Total registrado: %d puntos.\nEstos resultados describen tendencias personales y no una calificación." % [etiqueta_dominante, total_global]
 
 
 func _on_boton_descargar_pdf_pressed() -> void:

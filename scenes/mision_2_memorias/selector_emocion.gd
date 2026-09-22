@@ -11,6 +11,7 @@ var emoji_seleccionado: TextureButton = null
 @onready var visor: TextureRect = $VisorImagen
 @onready var emojis_container: Control = $EmojisContainer
 @onready var emoji_grande: AnimatedSprite2D = $VisorImagen/EmojiGrande
+@onready var boton_confirmar: Button = $BotonConfirmar
 
 var colores_emociones: Dictionary[String, Color] = {
 	"felicidad": Color("#FFD966"),
@@ -57,8 +58,7 @@ func mostrar(cuadro: CuadroMemoria) -> void:
 	visor.scale = Vector2(0.7, 0.7)
 	visor.modulate.a = 1.0
 
-	var boton_confirmar: Button = $BotonConfirmar
-	boton_confirmar.disabled = false
+	boton_confirmar.disabled = true
 
 	var visor_tween: Tween = create_tween()
 	visor_tween.set_trans(Tween.TRANS_SINE)
@@ -99,6 +99,7 @@ func seleccionar_emocion(emocion_id: String, emoji: TextureButton) -> void:
 	emocion_seleccionada = emocion_id
 	emoji_seleccionado = emoji
 	emoji_grande.play(emocion_id)
+	boton_confirmar.disabled = false
 
 	for emoji_actual in emojis_container.get_children():
 		var boton_emoji: TextureButton = emoji_actual as TextureButton
