@@ -189,6 +189,10 @@ func _mostrar_puerta() -> void:
 
 
 func _on_cuadro_seleccionado(cuadro: CuadroMemoria) -> void:
+	# La retroalimentación pertenece al recuerdo que acaba de cerrarse. Si el
+	# jugador abre otro antes de que termine la animación, no debe quedar detrás
+	# del selector ni competir visualmente con la nueva fotografía.
+	_ocultar_retroalimentacion_inmediata()
 	selector.call("mostrar", cuadro)
 
 

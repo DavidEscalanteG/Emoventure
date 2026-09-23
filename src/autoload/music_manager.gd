@@ -182,6 +182,8 @@ func _actualizar_musica_escena_actual(forzar_restauracion: bool = false) -> void
 	_ultima_ruta_escena = ruta_escena
 
 	var clave: String = _pistas_por_escena.get(ruta_escena, "")
+	if ruta_escena.begins_with("res://scenes/mision_3_hachas/nivel"):
+		clave = "mision_3"
 	if clave.is_empty():
 		return
 

@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://src/ui/mobile_controls.gd" id="1"]
+
+[ext_resource type="Texture2D" path="res://assets/ui/controles/up.svg" id="2_up"]
+[ext_resource type="Texture2D" path="res://assets/ui/controles/down.svg" id="2_down"]
+[ext_resource type="Texture2D" path="res://assets/ui/controles/left.svg" id="2_left"]
+[ext_resource type="Texture2D" path="res://assets/ui/controles/right.svg" id="2_right"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_touch"]
+size = Vector2(84, 84)
 
 [node name="MobileControls" type="CanvasLayer"]
 layer = 100
@@ -27,20 +35,28 @@ offset_right = 290.0
 offset_bottom = -20.0
 
 [node name="BtnUp" type="TouchScreenButton" parent="UI/Cruceta"]
+texture_normal = ExtResource("2_up")
+shape = SubResource("RectangleShape2D_touch")
 position = Vector2(90, 0)
-shape_centered = false
+shape_centered = true
 
 [node name="BtnDown" type="TouchScreenButton" parent="UI/Cruceta"]
+texture_normal = ExtResource("2_down")
+shape = SubResource("RectangleShape2D_touch")
 position = Vector2(90, 180)
-shape_centered = false
+shape_centered = true
 
 [node name="BtnLeft" type="TouchScreenButton" parent="UI/Cruceta"]
+texture_normal = ExtResource("2_left")
+shape = SubResource("RectangleShape2D_touch")
 position = Vector2(0, 90)
-shape_centered = false
+shape_centered = true
 
 [node name="BtnRight" type="TouchScreenButton" parent="UI/Cruceta"]
+texture_normal = ExtResource("2_right")
+shape = SubResource("RectangleShape2D_touch")
 position = Vector2(180, 90)
-shape_centered = false
+shape_centered = true
 
 [node name="Joystick" type="Control" parent="UI"]
 layout_mode = 1

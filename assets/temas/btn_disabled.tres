@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://tnmjt6mhj7dv"]
+
+[ext_resource type="Texture2D" uid="uid://doj3kenfi4r02" path="res://assets/botones/Gray_Buttons_Pixel.png" id="1_hh4yf"]
+
+[resource]
+texture = ExtResource("1_hh4yf")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 16, 16)

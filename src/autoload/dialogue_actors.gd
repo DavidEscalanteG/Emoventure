@@ -15,6 +15,13 @@ var cinematica_activa: bool = false
 var _registro_actores: RefCounted = RegistryService.new()
 var _animaciones_actores: RefCounted = AnimationService.new()
 var _movimiento_actores: RefCounted = MovementService.new(_animaciones_actores)
+
+
+func reiniciar_estado_cinematica() -> void:
+	# Una escena puede liberar al actor mientras un tween está siendo esperado.
+	# En ese caso `finished` no se emite y la bandera global quedaría bloqueada.
+	cinematica_activa = false
+	cinematic_action_finished.emit()
  
 
 # =========================

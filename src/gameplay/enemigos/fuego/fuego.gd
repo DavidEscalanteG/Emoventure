@@ -8,6 +8,7 @@ signal fuego_extinguido(interseccion: Node2D)
 
 var interseccion: Node2D = null
 var _desactivado: bool = false
+var _ciclo_vida: Tween
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var colision: CollisionShape2D = $CollisionShape2D
@@ -29,36 +30,36 @@ func bloquear_movimiento() -> void:
 		return
 	_desactivado = true
 	colision.set_deferred("disabled", true)
+	if _ciclo_vida != null:
+		_ciclo_vida.kill()
 	sprite.stop()
 
 
 func _iniciar_ciclo_vida() -> void:
-	await get_tree().create_timer(tiempo_activo).timeout
+	_ciclo_vida = create_tween()
+	_ciclo_vida.tween_interval(tiempo_activo)
+	var intervalo := maxf(intervalo_parpadeo, 0.01)
+	var restante := tiempo_parpadeo_final
+	while restante > 0.0:
+		_ciclo_vida.tween_callback(func(): sprite.visible = not sprite.visible)
+		_ciclo_vida.tween_interval(minf(intervalo, restante))
+		restante -= intervalo
+	_ciclo_vida.tween_callback(_terminar_ciclo)
+
+
+func _terminar_ciclo() -> void:
 	if _desactivado:
 		return
-
-	await _parpadear(tiempo_parpadeo_final)
-	if _desactivado:
-		return
-
 	colision.set_deferred("disabled", true)
-	sprite.play("end")
-	await sprite.animation_finished
-	_emitir_extincion_y_liberar()
-
-
-func _parpadear(duracion: float) -> void:
-	var tiempo_transcurrido: float = 0.0
-	while tiempo_transcurrido < duracion and not _desactivado:
-		sprite.visible = not sprite.visible
-		await get_tree().create_timer(intervalo_parpadeo).timeout
-		tiempo_transcurrido += intervalo_parpadeo
 	sprite.visible = true
+	sprite.play("end")
 
 
 func _on_animacion_terminada() -> void:
 	if sprite.animation == "start":
 		sprite.play("loop")
+	elif sprite.animation == "end":
+		_emitir_extincion_y_liberar()
 
 
 func _on_body_entered(body: Node) -> void:

@@ -50,7 +50,7 @@ const EMOCIONES_TOTALES: Array[String] = [
 	"tristeza",
 	"enojo",
 	"desagrado",
-	"miedo"
+	"sorpresa"
 ]
 
 var emociones_recolectadas: Array[String] = []
@@ -78,7 +78,13 @@ func registrar_emocion(emocion: String) -> void:
 		todas_las_emociones_recolectadas.emit()
 
 func tiene_todas_las_emociones() -> bool:
-	return emociones_recolectadas.size() == EMOCIONES_TOTALES.size()
+	if emociones_recolectadas.size() != EMOCIONES_TOTALES.size():
+		return false
+
+	for emocion in EMOCIONES_TOTALES:
+		if not emociones_recolectadas.has(emocion):
+			return false
+	return true
 
 var apariencia: AparienciaJugador = AparienciaJugador.new()
 var mascota: MascotaSeleccion = MascotaSeleccion.new()

@@ -7,12 +7,12 @@ class_name Minijuego1TutorialDemo
 @onready var obstacle: Node2D = $Obstacle
 @onready var obstacle_sprite: Sprite2D = $Obstacle/Sprite2D
 
-const PLAYER_START := Vector2(240, 360)
-const EMOTION_POS := Vector2(650, 300)
-const OBSTACLE_POS := Vector2(500, 360)
+const PLAYER_START := Vector2(620, 420)
+const EMOTION_POS := Vector2(940, 360)
+const OBSTACLE_POS := Vector2(920, 420)
 
-const PLAYER_SCALE := Vector2.ONE * 1.7
-const EMOTION_SCALE := Vector2.ONE * 1.6
+const PLAYER_SCALE := Vector2.ONE * 2.35
+const EMOTION_SCALE := Vector2.ONE * 1.9
 const OBSTACLE_SCALE := Vector2.ONE * 3.0
 
 const EMOTION_TEXTURES := {
@@ -20,10 +20,15 @@ const EMOTION_TEXTURES := {
 	"tristeza": preload("res://assets/emociones/spritesheets/emocion_tristeza.png"),
 	"enojo": preload("res://assets/emociones/spritesheets/emocion_enojo.png"),
 	"desagrado": preload("res://assets/emociones/spritesheets/emocion_desagrado.png"),
-	"miedo": preload("res://assets/emociones/spritesheets/emocion_ansiedad.png"),
+	"sorpresa": preload("res://assets/emociones/spritesheets/emocion_asombro.png"),
 }
 
+var _active_tweens: Array[Tween] = []
+
 func reset_world() -> void:
+	# Las animaciones de la página anterior pueden seguir escribiendo posiciones
+	# después de navegar. Se detienen antes de restaurar el estado base.
+	_cancel_active_tweens()
 	player.position = PLAYER_START
 	player.modulate = Color.WHITE
 	player.scale = PLAYER_SCALE
@@ -39,7 +44,7 @@ func reset_world() -> void:
 
 func move_player(offset: Vector2, duration: float = 0.5) -> Tween:
 	_set_player_movement_state("walk", offset)
-	var tween := create_tween()
+	var tween := _track_tween(create_tween())
 	tween.tween_property(player, "position", player.position + offset, duration)
 	tween.finished.connect(func() -> void:
 		_set_player_movement_state("idle", offset)
@@ -52,7 +57,7 @@ func show_emotion(tipo: String) -> void:
 	if base_texture:
 		var atlas := AtlasTexture.new()
 		atlas.atlas = base_texture
-		atlas.region = Rect2(0, 0, 100, 100)
+		atlas.region = Rect2(200, 0, 100, 100) if tipo == "sorpresa" else Rect2(0, 0, 100, 100)
 		
 		emotion_sprite.texture = atlas
 	
@@ -62,7 +67,7 @@ func show_emotion(tipo: String) -> void:
 	emotion.position = EMOTION_POS
 
 func play_emotion_capture_effect() -> Tween:
-	var tween := create_tween()
+	var tween := _track_tween(create_tween())
 	tween.parallel().tween_property(player, "modulate", Color(1, 0.95, 0.7), 0.2)
 	tween.parallel().tween_property(emotion, "position", player.position + Vector2(8, -22), 0.25)
 	tween.parallel().tween_property(emotion, "scale", Vector2.ONE * 0.2, 0.25)
@@ -73,12 +78,25 @@ func show_obstacle() -> void:
 	obstacle.visible = true
 
 func play_obstacle_hit_effect() -> Tween:
-	var tween := create_tween()
+	var tween := _track_tween(create_tween())
 	tween.tween_property(player, "modulate", Color(1, 0.4, 0.4), 0.1)
 	tween.tween_property(player, "modulate", Color.WHITE, 0.22)
 	tween.parallel().tween_property(obstacle_sprite, "modulate", Color(1, 0.6, 0.6), 0.12)
 	tween.parallel().tween_property(obstacle_sprite, "modulate", Color.WHITE, 0.2)
 	return tween
+
+func _track_tween(tween: Tween) -> Tween:
+	_active_tweens.append(tween)
+	tween.finished.connect(func() -> void:
+		_active_tweens.erase(tween)
+	)
+	return tween
+
+func _cancel_active_tweens() -> void:
+	for tween in _active_tweens:
+		if tween.is_valid():
+			tween.kill()
+	_active_tweens.clear()
 
 func _set_player_movement_state(state: String, direction_vector: Vector2) -> void:
 	var appearance: Node = player.get_node_or_null("PlayerAppearance")

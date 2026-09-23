@@ -16,7 +16,7 @@ texture = ExtResource("2_ghis4")
 frame_progress = 0.0055711325
 
 [node name="Meta" parent="." index="3"]
-siguiente_escena = "uid://c6lromkr5aop0"
+siguiente_escena = "res://scenes/mision_3_hachas/nivel6.tscn"
 
 [node name="Hacha" parent="." index="4" instance=ExtResource("2_oi53l")]
 position = Vector2(-162, -223)

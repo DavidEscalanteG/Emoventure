@@ -13,8 +13,8 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_uow8i")
 
 [node name="Meta" parent="." index="3"]
-position = Vector2(940, -20)
-siguiente_escena = "uid://dwmknq6dd5wxb"
+position = Vector2(904, 247)
+siguiente_escena = "res://scenes/mision_3_hachas/nivel7.tscn"
 
 [node name="Lanzallamas" parent="." index="5" instance=ExtResource("2_xreua")]
 position = Vector2(-515, 467)
@@ -29,5 +29,3 @@ scale = Vector2(1, 1)
 
 [node name="Parca2" parent="." index="9"]
 dialogo_nivel = " [wave amp=50 freq=5] ¿Qué camino prefieres ahora? [/wave]"
-
-[connection signal="body_entered" from="Meta" to="Meta" method="_on_body_entered"]

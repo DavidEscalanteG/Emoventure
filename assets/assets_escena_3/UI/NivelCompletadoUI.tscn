@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://xirhg56731lh"]
+[gd_scene load_steps=29 format=3 uid="uid://xirhg56731lh"]
 
 [ext_resource type="Script" uid="uid://l6wswws2bnvk" path="res://src/ui/nivel_completado_ui.gd" id="1_2e01h"]
 [ext_resource type="PackedScene" uid="uid://bgjfcq8bkynuh" path="res://scenes/cuestionarios/EscenaCuestionario.tscn" id="2_tg12r"]
@@ -9,12 +9,52 @@
 [ext_resource type="Texture2D" uid="uid://dak4m8tmu7fqp" path="res://assets/emociones/spritesheets/emocion_enojo.png" id="6_3m343"]
 [ext_resource type="Texture2D" uid="uid://dakbba4p8b1b3" path="res://pruebas/assets_temporales/corazon_lleno.png" id="7_3m343"]
 [ext_resource type="Texture2D" uid="uid://bf1xbh4xdr7or" path="res://assets/emociones/spritesheets/emocion_desagrado.png" id="7_cj4g5"]
-[ext_resource type="Texture2D" uid="uid://b1fk1ss2e3x4d" path="res://assets/emociones/spritesheets/emocion_ansiedad.png" id="8_bmrmj"]
+[ext_resource type="Texture2D" uid="uid://ceig5b4edl2j4" path="res://assets/emociones/spritesheets/emocion_asombro.png" id="8_bmrmj"]
 [ext_resource type="Texture2D" uid="uid://diko1vyjoakh1" path="res://pruebas/assets_temporales/serpiente png.png" id="8_cj4g5"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="9_n5g63"]
 [ext_resource type="Texture2D" uid="uid://d1lodo36peyik" path="res://assets/botones/Blue_Buttons_Pixel.png" id="13_6w4pf"]
 [ext_resource type="Texture2D" uid="uid://k0weo1vvbnpk" path="res://assets/botones/Green_Buttons_Pixel.png" id="14_cj4g5"]
 [ext_resource type="Texture2D" uid="uid://bishv70yvv71n" path="res://assets/botones/Yellow_Buttons_Pixel.png" id="15_bmrmj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_resplandor"]
+bg_color = Color(0.149, 0.337, 0.49, 0.52)
+corner_radius_top_left = 34
+corner_radius_top_right = 34
+corner_radius_bottom_right = 34
+corner_radius_bottom_left = 34
+shadow_color = Color(0.19, 0.64, 0.83, 0.28)
+shadow_size = 34
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_victoria"]
+content_margin_left = 22.0
+content_margin_top = 22.0
+content_margin_right = 22.0
+content_margin_bottom = 22.0
+bg_color = Color(0.055, 0.1, 0.18, 0.98)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.969, 0.714, 0.345, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_color = Color(0, 0, 0, 0.7)
+shadow_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cabecera"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.11, 0.22, 0.34, 1)
+border_width_bottom = 3
+border_color = Color(0.969, 0.714, 0.345, 0.85)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y520g"]
 atlas = ExtResource("4_tg12r")
@@ -34,7 +74,23 @@ region = Rect2(100, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0h5ht"]
 atlas = ExtResource("8_bmrmj")
-region = Rect2(0, 0, 100, 100)
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="Shader" id="Shader_halo_personaje"]
+code = "shader_type canvas_item;
+
+void fragment() {
+    vec2 centered = (UV - vec2(0.5)) * 2.0;
+    float radius = length(centered);
+    float glow = (1.0 - smoothstep(0.12, 0.96, radius)) * 0.32;
+    float ring = (1.0 - smoothstep(0.01, 0.038, abs(radius - 0.73))) * 0.45;
+    float inner_ring = (1.0 - smoothstep(0.01, 0.024, abs(radius - 0.57))) * 0.12;
+    float alpha = (glow + ring + inner_ring) * (1.0 - smoothstep(0.88, 1.0, radius));
+    COLOR = vec4(0.27, 0.74, 0.89, alpha);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_halo_personaje"]
+shader = SubResource("Shader_halo_personaje")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3m343"]
 texture = ExtResource("13_6w4pf")
@@ -60,28 +116,58 @@ escena_cuestionario = ExtResource("2_tg12r")
 escena_siguiente = ExtResource("3_tg12r")
 
 [node name="FondoOscuro" type="ColorRect" parent="Control"]
-visible = false
 layout_mode = 0
-offset_right = 589.0
-offset_bottom = 1054.0
+offset_left = -700.0
+offset_right = 1220.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0.012, 0.03, 0.065, 0.78)
+
+[node name="ResplandorPanel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = -13.0
+offset_right = 604.0
+offset_bottom = 1067.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_resplandor")
 
 [node name="Panel" type="PanelContainer" parent="Control"]
 layout_mode = 1
 offset_right = 589.0
 offset_bottom = 1054.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_victoria")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="Titulo" type="Label" parent="Control/Panel/VBoxContainer"]
+[node name="Cabecera" type="PanelContainer" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cabecera")
+
+[node name="Titulo" type="Label" parent="Control/Panel/VBoxContainer/Cabecera"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.886, 0.612, 1)
+theme_override_colors/font_shadow_color = Color(0.025, 0.045, 0.085, 0.85)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
 theme_override_fonts/font = ExtResource("4_6w4pf")
 theme_override_font_sizes/font_size = 45
 text = "Nivel Superado"
 horizontal_alignment = 1
 
+[node name="TextoEmociones" type="Label" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.855, 0.943, 1)
+theme_override_fonts/font = ExtResource("4_6w4pf")
+theme_override_font_sizes/font_size = 23
+text = "EMOCIONES RECOLECTADAS"
+horizontal_alignment = 1
+
 [node name="Emociones" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 4
 alignment = 1
 
 [node name="Alegria" type="TextureRect" parent="Control/Panel/VBoxContainer/Emociones"]
@@ -100,12 +186,20 @@ texture = SubResource("AtlasTexture_c1fu3")
 layout_mode = 2
 texture = SubResource("AtlasTexture_6qj2d")
 
-[node name="Ansiedad" type="TextureRect" parent="Control/Panel/VBoxContainer/Emociones"]
+[node name="Sorpresa" type="TextureRect" parent="Control/Panel/VBoxContainer/Emociones"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_0h5ht")
 
 [node name="Separador" type="HSeparator" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2
+
+[node name="TextoVidas" type="Label" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.855, 0.943, 1)
+theme_override_fonts/font = ExtResource("4_6w4pf")
+theme_override_font_sizes/font_size = 23
+text = "VIDAS RESTANTES"
+horizontal_alignment = 1
 
 [node name="Vidas" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2
@@ -130,22 +224,74 @@ layout_mode = 2
 texture = ExtResource("8_cj4g5")
 
 [node name="ControlJugador" type="Control" parent="Control/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 611)
+custom_minimum_size = Vector2(0, 475)
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="MensajeVictoria" type="Label" parent="Control/Panel/VBoxContainer/ControlJugador"]
+layout_mode = 0
+offset_left = -250.0
+offset_top = 50.0
+offset_right = 250.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(0.847, 0.914, 0.969, 1)
+theme_override_fonts/font = ExtResource("4_6w4pf")
+theme_override_font_sizes/font_size = 25
+text = "¡Cada emoción es parte de tu aventura!"
+horizontal_alignment = 1
+
+[node name="OrnamentoIzquierdo" type="ColorRect" parent="Control/Panel/VBoxContainer/ControlJugador"]
+layout_mode = 0
+offset_left = -198.0
+offset_top = 106.0
+offset_right = -34.0
+offset_bottom = 109.0
+mouse_filter = 2
+color = Color(0.969, 0.714, 0.345, 0.68)
+
+[node name="EstrellaCentral" type="Label" parent="Control/Panel/VBoxContainer/ControlJugador"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = 91.0
+offset_right = 30.0
+offset_bottom = 130.0
+theme_override_colors/font_color = Color(1, 0.82, 0.45, 1)
+theme_override_fonts/font = ExtResource("4_6w4pf")
+theme_override_font_sizes/font_size = 30
+text = "✦"
+horizontal_alignment = 1
+
+[node name="OrnamentoDerecho" type="ColorRect" parent="Control/Panel/VBoxContainer/ControlJugador"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 106.0
+offset_right = 198.0
+offset_bottom = 109.0
+mouse_filter = 2
+color = Color(0.969, 0.714, 0.345, 0.68)
+
+[node name="HaloPersonaje" type="ColorRect" parent="Control/Panel/VBoxContainer/ControlJugador"]
+material = SubResource("ShaderMaterial_halo_personaje")
+layout_mode = 0
+offset_left = -205.0
+offset_top = 92.0
+offset_right = 205.0
+offset_bottom = 460.0
+mouse_filter = 2
+
 [node name="JugadorCinematico" parent="Control/Panel/VBoxContainer/ControlJugador" instance=ExtResource("9_n5g63")]
-position = Vector2(0, 305)
+position = Vector2(0, 255)
 
 [node name="ControlBoton" type="Control" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2
 
 [node name="BotonContinuar" type="Button" parent="Control/Panel/VBoxContainer/ControlBoton"]
 layout_mode = 0
-offset_left = 250.0
-offset_top = 4.0
-offset_right = 314.0
-offset_bottom = 68.0
+offset_left = 214.0
+offset_top = -60.0
+offset_right = 278.0
+offset_bottom = 4.0
+scale = Vector2(1.84, 1.84)
 theme_override_styles/normal = SubResource("StyleBoxTexture_3m343")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y520g")
 theme_override_styles/hover = SubResource("StyleBoxTexture_y1pxu")

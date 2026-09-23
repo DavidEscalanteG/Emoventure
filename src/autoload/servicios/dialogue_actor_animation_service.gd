@@ -5,8 +5,8 @@ const NODE_ANIMATED_SPRITE: String = "AnimatedSprite2D"
 const NODE_PLAYER_APPEARANCE: String = "PlayerAppearance"
 
 # Interfaz mínima esperada para actores con apariencia compleja.
-const METHOD_SET_ESTADO_MOVIMIENTO: String = "set_estado_movimiento"
-const METHOD_SET_DIRECCION_ES: String = "set_direccion"
+const METHOD_SET_ESTADO_MOVIMIENTO: String = "establecer_estado_movimiento"
+const METHOD_SET_DIRECCION_ES: String = "establecer_direccion"
 const METHOD_SET_DIRECCION_EN: String = "set_direction"
 
 const ESTADO_IDLE: String = "idle"
@@ -54,7 +54,7 @@ func establecer_animacion(actor_id: String, actor: Node, estado: String, direcci
 		return
 
 	if actor.has_node(NODE_PLAYER_APPEARANCE):
-		_apply_player_appearance_animation(actor_id, actor, estado, direccion)
+		_apply_player_appearance_animation(actor_id, actor, estado_normalizado, direccion_normalizada)
 
 
 func reproducir_animacion_y_esperar(actor_id: String, actor: Node, estado: String, direccion: String) -> void:

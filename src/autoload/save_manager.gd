@@ -243,7 +243,8 @@ func _debe_redirigir_mapa_rejugabilidad(partida: Dictionary, escena_guardada: St
 	if not bool(partida.get("progreso_historia_bloqueado_100", false)):
 		return false
 
-	return ESCENAS_MINIJUEGOS_REJUGABLES.has(escena_guardada)
+	return ESCENAS_MINIJUEGOS_REJUGABLES.has(escena_guardada) \
+		or escena_guardada.begins_with("res://scenes/mision_3_hachas/nivel")
 	
 	
 func _serializar_apariencia(apariencia: AparienciaJugador) -> Dictionary:
