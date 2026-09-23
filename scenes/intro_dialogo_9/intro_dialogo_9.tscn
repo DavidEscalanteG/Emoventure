@@ -54,11 +54,11 @@ texture = ExtResource("2_c4kbv")
 [node name="personajes" type="Node2D" parent="."]
 
 [node name="gitana" parent="personajes" instance=ExtResource("3_fhho6")]
-position = Vector2(1494.9999, 555.99994)
+position = Vector2(1708, 336)
 scale = Vector2(1, 1)
 
 [node name="JugadorCinematico" parent="personajes" instance=ExtResource("4_qgqr6")]
-position = Vector2(492, 616)
+position = Vector2(288, 628)
 
 [node name="FondoNegro" type="Sprite2D" parent="."]
 visible = false

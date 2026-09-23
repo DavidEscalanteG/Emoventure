@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccrvaf1ne2mck"]
+[gd_scene load_steps=8 format=3 uid="uid://ccrvaf1ne2mck"]
 
 [ext_resource type="Script" uid="uid://d1hasiswqfrpj" path="res://scenes/intro_dialogo_5/intro_dialogo_5.gd" id="1_0460w"]
 [ext_resource type="Texture2D" uid="uid://bsahjm4tfsptl" path="res://assets/fondo10.jpg" id="2_426k2"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="3_45dby"]
 [ext_resource type="PackedScene" uid="uid://b4t1ghb0ibdtf" path="res://assets/personajes/mascota/mascota.tscn" id="4_vap0x"]
 [ext_resource type="Texture2D" uid="uid://ditrkwnyrhv8i" path="res://assets/jaula.png" id="5_c85ek"]
+[ext_resource type="Texture2D" uid="uid://bvk2y2xpjtxr5" path="res://assets/ringmaster.png" id="6_426k2"]
 [ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui.tscn" id="6_i8dg2"]
 
 [node name="Escena7" type="Node2D"]
@@ -18,7 +19,7 @@ texture = ExtResource("2_426k2")
 [node name="Personajes" type="Node2D" parent="."]
 
 [node name="JugadorCinematico" parent="Personajes" instance=ExtResource("3_45dby")]
-position = Vector2(251.99998, 634.99994)
+position = Vector2(460, 933)
 
 [node name="Mascota" parent="Personajes" instance=ExtResource("4_vap0x")]
 position = Vector2(1003.99994, 637.00006)
@@ -28,6 +29,11 @@ scale = Vector2(7, 7)
 position = Vector2(1399.9998, 901.0001)
 scale = Vector2(14.139999, 14.139999)
 texture = ExtResource("5_c85ek")
+
+[node name="Ringmaster" type="Sprite2D" parent="Personajes"]
+texture_filter = 1
+position = Vector2(1588, 727)
+texture = ExtResource("6_426k2")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

@@ -59,7 +59,8 @@ position = Vector2(1494.9999, 555.99994)
 scale = Vector2(1, 1)
 
 [node name="JugadorCinematico" parent="personajes" instance=ExtResource("4_f504s")]
-position = Vector2(492, 616)
+position = Vector2(708, 840)
+scale = Vector2(10, 10)
 
 [node name="FondoNegro" type="Sprite2D" parent="."]
 visible = false

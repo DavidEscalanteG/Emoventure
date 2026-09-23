@@ -3,7 +3,6 @@
 # El protagonista se acerca a la gitana con curiosidad.
 # Se usan funciones "do" para cambiar expresiones.
 
-do DatosJugador.jugador.bloquear_movimiento()
 
 Director de feria: ¡Bienvenidas! ¡Bienvenidos! A la mágica tierra de EmoVenture. Dejen que sus emociones los lleven a lo más recóndito de su ser, y quién sabe, quizás encuentres más de lo que esperabas.
 *Deambulando por este parque de diversiones, sus colores, sonidos y olores atrapan tus sentidos, como si cada parte del parque invitara a tu ser a una extraña danza de emociones internas, una extraña montaña rusa interior.

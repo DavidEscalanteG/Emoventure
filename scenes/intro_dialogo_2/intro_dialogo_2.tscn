@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b5celn7qra5dj" path="res://scenes/intro_dialogo_2/intro_dialogo_2.gd" id="1_wnj6t"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="2_d78l7"]
-[ext_resource type="Texture2D" uid="uid://cbmfw2qjg8j1p" path="res://assets/assets_escena_2/fondo/dentro_carpa.png" id="2_k1oe6"]
+[ext_resource type="Texture2D" uid="uid://bhdrom82ags35" path="res://scenes/intro_dialogo_2/fondo.jpg" id="2_rsi55"]
 [ext_resource type="PackedScene" uid="uid://dgbvgfgvxkfgn" path="res://assets/personajes/gitana/gitana.tscn" id="3_ohtjw"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="4_bu4yu"]
 [ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui.tscn" id="6_bu4yu"]
@@ -46,19 +46,26 @@ _data = {
 [node name="escena_2" type="Node2D"]
 script = ExtResource("1_wnj6t")
 
-[node name="DentroCarpa" type="Sprite2D" parent="."]
-position = Vector2(903.3863, 537.6587)
-scale = Vector2(2.867082, 2.137365)
-texture = ExtResource("2_k1oe6")
+[node name="Fondo" type="Sprite2D" parent="."]
+position = Vector2(970.0001, 538)
+scale = Vector2(0.7011718, 0.7011719)
+texture = ExtResource("2_rsi55")
 
 [node name="personajes" type="Node2D" parent="."]
 
 [node name="gitana" parent="personajes" instance=ExtResource("3_ohtjw")]
-position = Vector2(1494.9999, 555.99994)
+position = Vector2(972, 663)
 scale = Vector2(1, 1)
 
+[node name="mesa" type="Polygon2D" parent="personajes"]
+position = Vector2(5, -4.7683716e-07)
+scale = Vector2(0.7011718, 0.7011719)
+texture = ExtResource("2_rsi55")
+polygon = PackedVector2Array(1244.1577, 1053.33, 1241.3925, 1136.7472, 1332.1836, 1172.234, 1478.2789, 1177.7644, 1509.1571, 1150.5732, 1508.6963, 1106.7908, 1497.1746, 1061.1648, 1499.018, 1054.7125, 1430.3486, 1053.7908, 1435.4181, 1040.8865, 1438.6442, 1034.8953, 1437.2616, 1005.8605, 1433.1138, 998.48663, 1415.6008, 975.90405, 1404.0791, 968.53015, 1388.8704, 963.4606, 1358.914, 963.92145, 1348.314, 969.4519, 1334.4879, 978.66925, 1323.427, 993.41705, 1317.4358, 1007.704, 1315.1315, 1037.1996, 1325.7314, 1057.0168, 1325.2705, 1053.33)
+uv = PackedVector2Array(1244.1577, 1053.33, 1241.3925, 1136.7472, 1332.1836, 1172.234, 1478.2789, 1177.7644, 1509.1571, 1150.5732, 1508.6963, 1106.7908, 1497.1746, 1061.1648, 1499.018, 1054.7125, 1430.3486, 1053.7908, 1435.4181, 1040.8865, 1438.6442, 1034.8953, 1437.2616, 1005.8605, 1433.1138, 998.48663, 1415.6008, 975.90405, 1404.0791, 968.53015, 1388.8704, 963.4606, 1358.914, 963.92145, 1348.314, 969.4519, 1334.4879, 978.66925, 1323.427, 993.41705, 1317.4358, 1007.704, 1315.1315, 1037.1996, 1325.7314, 1057.0168, 1325.2705, 1053.33)
+
 [node name="JugadorCinematico" parent="personajes" instance=ExtResource("4_bu4yu")]
-position = Vector2(492, 616)
+position = Vector2(970, 851)
 
 [node name="FondoNegro" type="Sprite2D" parent="."]
 visible = false

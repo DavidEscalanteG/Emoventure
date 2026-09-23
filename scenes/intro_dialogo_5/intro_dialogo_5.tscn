@@ -17,11 +17,19 @@ scale = Vector2(0.7512019, 0.75120187)
 texture = ExtResource("2_khas6")
 
 [node name="JugadorCinematico" parent="Personajes" instance=ExtResource("2_8jlpt")]
-position = Vector2(251.99998, 634.99994)
+position = Vector2(310, 798)
+scale = Vector2(14.21, 14.21)
 
 [node name="Mascota" parent="Personajes" instance=ExtResource("3_8jlpt")]
-position = Vector2(2121, 500)
+position = Vector2(1932.0001, 760)
 scale = Vector2(7, 7)
+
+[node name="Puerta" type="Polygon2D" parent="Personajes"]
+position = Vector2(-3, -116)
+scale = Vector2(0.7512019, 0.75120187)
+texture = ExtResource("2_khas6")
+polygon = PackedVector2Array(2320.055, 1512.7634, 2328.843, 809.7328, 2530.964, 821.45, 2633.4895, 830.23785, 2653.9946, 1559.6322)
+uv = PackedVector2Array(2320.055, 1512.7634, 2328.843, 809.7328, 2530.964, 821.45, 2633.4895, 830.23785, 2653.9946, 1559.6322)
 
 [node name="UI" type="CanvasLayer" parent="."]
 

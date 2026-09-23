@@ -13,12 +13,19 @@ const MENU_PRINCIPAL_SCENE := "res://scenes/menu_principal/menu_principal.tscn"
 	{
 		"rol": "Arte",
 		"personas": ["Evan
-		Jose"]
+		Jose
+		Fausto"]
 	},
 	{
 		"rol": "QA / Testing",
 		"personas": ["David Ernesto Escalante García"]
-	}
+	},
+	#{
+		#"rol": "Música",
+		#"personas": ["Music track: Turn It Louder by Aylex
+#Source: https://freetouse.com/music
+#No Copyright Music for Video (Free)"]
+	#},
 ]
 
 @onready var titulo_label: Label = %TituloLabel
