@@ -5,27 +5,22 @@ var img_normal: Texture2D = load("res://assets/assets_escena_payaso/pngtree-clow
 var img_golpeado: Texture2D = load("res://assets/assets_escena_payaso/payaso_golpeado.png")
 
 # Variables de movimiento vertical puro
-var altura_escondido: float = 120.0 # Ajusta este valor si necesitas que baje más o menos
+var altura_escondido: float = 120.0
 var posicion_original: Vector2
-var tiempo_bajada_lenta: float = 0.8  # Más lento que el aparecer
+var tiempo_bajada_lenta: float = 0.8
 
-signal golpe_recibido # La señal que enviará el payaso
+var fue_golpeado: bool = false # NUEVO: Variable para saber si ya le pegamos en este turno
 
+signal golpe_recibido 
 
 func _ready() -> void:
-	# 1. Guardamos la posición exacta en la que colocaste el payaso en el editor
 	posicion_original = $Sprite2D.position
-	
-	# 2. Colocamos el sprite en la posición de "abajo" antes de que se vea
 	$Sprite2D.position = posicion_original + Vector2(0, altura_escondido)
-	
-	# 3. Nos aseguramos de que empiece con la imagen normal
 	$Sprite2D.texture = img_normal
-	
-	# 4. Lo ocultamos completamente
 	hide()
 	
 func reset_estado() -> void:
+	fue_golpeado = false # NUEVO: Reiniciamos la variable al resetear
 	$Timer.stop()
 	$Sprite2D.position = posicion_original + Vector2(0, altura_escondido)
 	$Sprite2D.texture = img_normal
@@ -33,33 +28,36 @@ func reset_estado() -> void:
 	
 func aparecer() -> void:
 	if visible: return
-	$Sprite2D.texture = img_normal # Reset a imagen normal
+	fue_golpeado = false # NUEVO: El payaso sale fresco y listo para recibir un golpe
+	$Sprite2D.texture = img_normal
 	show()
 	
 	var tween: Tween = create_tween()
-	# Sube exactamente a la posición donde lo diseñaste, respetando su eje X
 	tween.tween_property($Sprite2D, "position", posicion_original, 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	
 	$Timer.start()
 
 func golpeado() -> void:
-	if visible:
-		golpe_recibido.emit() # Avisamos que hubo un punto
-		$Timer.stop()
-		$Sprite2D.texture = img_golpeado
-		# REPRODUCIR SONIDO
-		# Cambia el tono ligeramente (entre 0.9 y 1.2) para que no canse el oído
-		$AudioStreamPlayer2D.pitch_scale = randf_range(.8, 1.2)
-		$AudioStreamPlayer2D.play()
+	# NUEVO: Si ya fue golpeado o no está visible, cancelamos todo el código de abajo
+	if fue_golpeado or not visible: 
+		return
 		
-		var tween: Tween = create_tween()
-		tween.tween_property($Sprite2D, "position", posicion_original + Vector2(0, altura_escondido), tiempo_bajada_lenta)
-		
-		await tween.finished
-		hide()
+	fue_golpeado = true # NUEVO: Registramos que ya recibió el golpe
+	
+	golpe_recibido.emit()
+	$Timer.stop()
+	$Sprite2D.texture = img_golpeado
+	
+	$AudioStreamPlayer2D.pitch_scale = randf_range(.8, 1.2)
+	$AudioStreamPlayer2D.play()
+	
+	var tween: Tween = create_tween()
+	tween.tween_property($Sprite2D, "position", posicion_original + Vector2(0, altura_escondido), tiempo_bajada_lenta)
+	
+	await tween.finished
+	hide()
 
 func _on_timer_timeout() -> void:
-	# Si nadie le pegó, baja normal
 	var tween: Tween = create_tween()
 	tween.tween_property($Sprite2D, "position", posicion_original + Vector2(0, altura_escondido), 0.05)
 	await tween.finished

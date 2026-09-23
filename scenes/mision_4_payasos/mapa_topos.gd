@@ -2,14 +2,15 @@ extends Node2D
 
 var cursor_normal: Texture2D = load("res://assets/assets_escena_payaso/martillo.png")
 var cursor_golpe: Texture2D = load("res://assets/assets_escena_payaso/martillo_pegando.png")
+@onready var cursor_martillo: Sprite2D = $CursorMartillo
 
 @export var escena_cuestionario: PackedScene = preload("res://scenes/cuestionarios/EscenaCuestionario.tscn")
 @export var escena_cierre: PackedScene
 @export var numero_mision_cuestionario: int = 2
 
-@export var umbral_puntos_victoria: int = 20
-@export_range(0.0, 1.0, 0.01) var umbral_porcentaje_aciertos_victoria: float = 0.45
-@export var puntos_maximos_derrota: int = 5
+@export var umbral_puntos_victoria: int = 50
+@export_range(0.0, 1.0, 0.01) var umbral_porcentaje_aciertos_victoria: float = 0.50
+@export var puntos_maximos_derrota: int = 20
 @export_range(0.0, 1.0, 0.01) var umbral_porcentaje_aciertos_derrota: float = 0.20
 
 @export_multiline var narrativa_previa_rescate: String = "¡Misión completada! Escuchaste las emociones del entorno y encontraste la pista de tu mascota. Antes de rescatarla, responde el cuestionario para estabilizar tus emociones."
@@ -28,7 +29,7 @@ enum EstadoResultado {
 var estado_resultado_actual: EstadoResultado = EstadoResultado.NINGUNO
 
 var dificultad: float = 1.0
-var velocidad_minima: float = 0.4
+var velocidad_minima: float = 0.8 # Límite de velocidad corregido
 
 @onready var pantalla_resultado: PanelContainer = %PantallaResultado
 @onready var titulo_resultado: Label = %TituloResultado
@@ -50,11 +51,21 @@ func _ready() -> void:
 
 	boton_principal.pressed.connect(_on_boton_principal_presionado)
 	boton_secundario.pressed.connect(_on_boton_secundario_presionado)
-	Input.set_custom_mouse_cursor(cursor_normal)
+	
+	# Configuramos el cursor de software al iniciar
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	if cursor_martillo:
+		cursor_martillo.texture = cursor_normal
+		cursor_martillo.visible = true
 	_actualizar_marcador()
 
 func _exit_tree() -> void:
 	_restaurar_cursor_predeterminado()
+
+func _process(_delta: float) -> void:
+	# El cursor sigue al ratón en todo momento mientras se juega
+	if not mision_finalizada and cursor_martillo:
+		cursor_martillo.global_position = get_global_mouse_position()
 
 func _input(event: InputEvent) -> void:
 	if mision_finalizada:
@@ -62,9 +73,11 @@ func _input(event: InputEvent) -> void:
 		
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			Input.set_custom_mouse_cursor(cursor_golpe)
+			if cursor_martillo:
+				cursor_martillo.texture = cursor_golpe
 		else:
-			Input.set_custom_mouse_cursor(cursor_normal)
+			if cursor_martillo:
+				cursor_martillo.texture = cursor_normal
 
 func _al_sumar_punto() -> void:
 	if mision_finalizada:
@@ -95,7 +108,7 @@ func _on_spawn_timer_timeout() -> void:
 	if $SpawnTimer.wait_time > velocidad_minima:
 		$SpawnTimer.wait_time -= 0.05
 	
-	if dificultad < 5:
+	if dificultad < 3: # Límite de topos simultáneos corregido
 		dificultad += 0.1
 
 func _on_timer_juego_timeout() -> void:
@@ -180,9 +193,15 @@ func _reiniciar_mision() -> void:
 			topo.reset_estado()
 	_actualizar_marcador()
 	pantalla_resultado.visible = false
+	
+	# Reactivamos el cursor de software para el nuevo intento
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	if cursor_martillo:
+		cursor_martillo.visible = true
+		cursor_martillo.texture = cursor_normal
+		
 	$SpawnTimer.start()
 	$TimerJuego.start()
-	Input.set_custom_mouse_cursor(cursor_normal)
 	Logs.log_debug("Misión de topos reiniciada")
 
 func _iniciar_cuestionario() -> void:
@@ -216,4 +235,7 @@ func _iniciar_cuestionario() -> void:
 	get_tree().current_scene = cuestionario
 
 func _restaurar_cursor_predeterminado() -> void:
-	Input.set_custom_mouse_cursor(null)
+	# Muestra el ratón normal y oculta nuestro Sprite de martillo
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if cursor_martillo:
+		cursor_martillo.visible = false

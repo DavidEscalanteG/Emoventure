@@ -202,9 +202,13 @@ layout_mode = 2
 text = "Continuar"
 
 [node name="TimerJuego" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 60.0
 one_shot = true
 autostart = true
+
+[node name="CursorMartillo" type="Sprite2D" parent="."]
+z_index = 100
+position = Vector2(510, 370)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="TimerJuego" to="." method="_on_timer_juego_timeout"]

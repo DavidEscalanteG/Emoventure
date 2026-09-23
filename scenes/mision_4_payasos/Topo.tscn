@@ -35,8 +35,8 @@ position = Vector2(117.49418, 114.861)
 scale = Vector2(0.22044183, 0.22044183)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
-position = Vector2(150, 150)
-scale = Vector2(15.24, 15.24)
+position = Vector2(150, 71.72)
+scale = Vector2(21.94, 21.94)
 shape = SubResource("CircleShape2D_sgxqq")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
