@@ -31,7 +31,7 @@ corazon_vacio = ExtResource("3_5xt6r")
 
 [node name="Panel" type="PanelContainer" parent="Control"]
 layout_mode = 0
-offset_right = 236.0
+offset_right = 265.0
 offset_bottom = 84.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hud_vidas")
