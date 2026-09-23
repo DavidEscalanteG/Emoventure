@@ -1136,7 +1136,6 @@ scale = Vector2(0.605, 0.605)
 transform = Transform2D(0.605, 0, 0, 0.605, 880, 18)
 
 [node name="NivelCompletadoUI" parent="." instance=ExtResource("14_837fn")]
-visible = false
 offset = Vector2(700, 0)
 transform = Transform2D(1, 0, 0, 1, 700, 0)
 

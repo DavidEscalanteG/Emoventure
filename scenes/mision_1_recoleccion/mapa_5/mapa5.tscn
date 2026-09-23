@@ -1051,7 +1051,6 @@ offset = Vector2(900.025, 116.115)
 transform = Transform2D(1, 0, 0, 1, 900.025, 116.115)
 
 [node name="NivelCompletadoUI" parent="." instance=ExtResource("14_wdtp6")]
-visible = false
 offset = Vector2(700, 0)
 transform = Transform2D(1, 0, 0, 1, 700, 0)
 
