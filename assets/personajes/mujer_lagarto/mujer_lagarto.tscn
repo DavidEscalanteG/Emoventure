@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://xhl3vkcuplpl"]
+[gd_scene load_steps=16 format=3 uid="uid://xhl3vkcuplpl"]
 
 [ext_resource type="Texture2D" uid="uid://bugi6k7ume388" path="res://assets/personajes/mujer_lagarto/character-spritesheet (2).png" id="1_jfwck"]
 
@@ -26,6 +26,10 @@ region = Rect2(256, 960, 64, 64)
 atlas = ExtResource("1_jfwck")
 region = Rect2(320, 960, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7il67"]
+atlas = ExtResource("1_jfwck")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_d7b8y"]
 atlas = ExtResource("1_jfwck")
 region = Rect2(0, 896, 64, 64)
@@ -50,34 +54,6 @@ region = Rect2(256, 896, 64, 64)
 atlas = ExtResource("1_jfwck")
 region = Rect2(320, 896, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7il67"]
-atlas = ExtResource("1_jfwck")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sliu1"]
-atlas = ExtResource("1_jfwck")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_flql0"]
-atlas = ExtResource("1_jfwck")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qi07v"]
-atlas = ExtResource("1_jfwck")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fbwob"]
-atlas = ExtResource("1_jfwck")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g4smc"]
-atlas = ExtResource("1_jfwck")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p1rd5"]
-atlas = ExtResource("1_jfwck")
-region = Rect2(384, 0, 64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_4146p"]
 animations = [{
 "frames": [{
@@ -98,10 +74,33 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5w2yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6lt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hg2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpn1f")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"apenada",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7il67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7il67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7il67")
+}],
+"loop": true,
+"name": &"espalda",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -125,32 +124,6 @@ animations = [{
 "loop": true,
 "name": &"seria",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7il67")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sliu1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_flql0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qi07v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fbwob")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g4smc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p1rd5")
-}],
-"loop": true,
-"name": &"sonrisa",
-"speed": 10.0
 }]
 
 [node name="MujerLagarto" type="Node2D"]
@@ -158,5 +131,6 @@ scale = Vector2(8, 8)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4146p")
-animation = &"sonrisa"
+animation = &"espalda"
+frame_progress = 0.9431995
 offset = Vector2(-6, -18.385)

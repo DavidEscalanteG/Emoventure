@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://dew4nw73t2ccw"]
 
-[ext_resource type="Script" uid="uid://d1hasiswqfrpj" path="res://scenes/intro_dialogo_5/intro_dialogo_5.gd" id="1_0x0a6"]
+[ext_resource type="Script" uid="uid://yvv1shga8gc0" path="res://scenes/intro_dialogo_12/intro_dialogo_12.gd" id="1_h1w7v"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="3_guk6u"]
 [ext_resource type="PackedScene" uid="uid://b4t1ghb0ibdtf" path="res://assets/personajes/mascota/mascota.tscn" id="4_fn15n"]
 [ext_resource type="Texture2D" uid="uid://cflm6l5tfcile" path="res://assets/fondo12.jpg" id="5_03drm"]
 [ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui.tscn" id="5_d2j2f"]
 
 [node name="Escena7" type="Node2D"]
-script = ExtResource("1_0x0a6")
+script = ExtResource("1_h1w7v")
 
 [node name="Personajes" type="Node2D" parent="."]
 

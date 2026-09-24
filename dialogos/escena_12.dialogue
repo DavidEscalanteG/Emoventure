@@ -1,0 +1,43 @@
+~ despertar_y_panico
+# — ESCENA: El despertar tras el desmayo —
+
+Narrador: La cabeza da vueltas. El suelo se siente extremadamente frío y húmedo. Poco a poco, la vista se aclara tras el repentino desmayo.
+Narrador: Al intentar reincorporarse, un silencio sepulcral envuelve el ambiente. Algo falta.
+Narrador: Un escalofrío recorre todo el cuerpo al notar la ausencia. {{DatosJugador.nombre_mascota}} ya no está.
+Narrador: El pánico comienza a apoderarse de la situación, ahogando la respiración. Hay que hacer algo, y rápido.
+
+- [Gritar el nombre de {{DatosJugador.nombre_mascota}} con todas tus fuerzas]
+	Narrador: El grito retumba contra las paredes lejanas de la feria, pero la única respuesta es un eco vacío. Nadie contesta.
+	
+	- [Volver a gritar, esta vez con más desesperación]
+		Narrador: La garganta duele por el esfuerzo. El silencio que sigue es aún más pesado y aterrador que el anterior. Sigue sin haber rastro de la mascota.
+		
+		- [Lanzar un tercer y último grito desgarrador]
+			Narrador: El eco se apaga lentamente... y entonces, unos pasos gigantes y pesados hacen temblar el suelo cercano.
+			
+			do DialogueActors.animacion_establecer_animacion("frankenstein", "reposo", "izquierda")
+			# Una figura gigantesca y llena de cicatrices sale de entre las sombras.
+			
+			Frankenstein: Uuuurgh... No grites tan fuerte... Me duelen las costuras de la cabeza...
+			
+			# El protagonista retrocede un paso de golpe, alerta ante el enorme monstruo.
+			
+			Frankenstein: Tranquilo... Yo no como gente. Es malo para la digestión.
+			Frankenstein: Escuché que buscas a esa cosita peluda... Yo vi lo que pasó mientras dormías en el suelo.
+			Frankenstein: Un hombre muy malo. Llevaba un látigo y un sombrero brillante. Un domador.
+			Frankenstein: Lo metió en una jaula de metal y se lo llevó arrastrando hacia la carpa principal.
+			
+			do DialogueActors.animacion_establecer_animacion("frankenstein", "hablando", "izquierda")
+			Frankenstein: Esa cosita me agradó... No me gruñó como los demás. Te ayudaré a recuperarlo. Romperemos su jaula en pedazos.
+			
+			# El protagonista asiente con determinación, sintiendo un gran alivio por la inesperada ayuda.
+			
+			Narrador: De repente, la tierra bajo los pies comienza a sacudirse violentamente. Un coro de risas distorsionadas brota desde el subsuelo.
+			
+			do DialogueActors.animacion_establecer_animacion("frankenstein", "alerta", "izquierda")
+			Frankenstein: Uuuurgh... Problemas. Los payasos subterráneos están despertando.
+			Frankenstein: ¡Cuidado a tus pies! ¡Están saliendo de la tierra!
+			
+			# do disappear("frankenstein")
+			# do start_gameplay("minijuego_payasos")
+=> END

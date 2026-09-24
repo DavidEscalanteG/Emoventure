@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://neu10y8m8x1m"]
 
-[ext_resource type="Script" uid="uid://bi38yoj8ftjob" path="res://scenes/mision_2_memorias/tutorial/scripts/minijuego2_tutorial_controller.gd" id="1_ctrl"]
-[ext_resource type="Script" uid="uid://bb1hbw7efiad8" path="res://scenes/mision_2_memorias/tutorial/scripts/minijuego2_tutorial_demo.gd" id="2_demo"]
-[ext_resource type="Script" uid="uid://cxvfusydandn3" path="res://scenes/mision_2_memorias/tutorial/scripts/minijuego2_tutorial_ui.gd" id="3_ui"]
-[ext_resource type="Texture2D" uid="uid://vv72wrpq6vdm" path="res://scenes/mision_2_memorias/fondo_escena_9.png" id="4_bg"]
-[ext_resource type="Theme" uid="uid://dwacxx3nxjf5c" path="res://assets/temas/tema_botones.tres" id="5_bvad7"]
+[ext_resource type="Script" uid="uid://bi38yoj8ftjob" path="res://scenes/mision_2_memorias/tutorial/scripts/minijuego2_tutorial_controller.gd" id="1_fxcqd"]
+[ext_resource type="Texture2D" uid="uid://vv72wrpq6vdm" path="res://scenes/mision_2_memorias/fondo_escena_9.png" id="2_0qwi8"]
+[ext_resource type="Script" uid="uid://bb1hbw7efiad8" path="res://scenes/mision_2_memorias/tutorial/scripts/minijuego2_tutorial_demo.gd" id="3_bewum"]
+[ext_resource type="Script" uid="uid://cxvfusydandn3" path="res://scenes/mision_2_memorias/tutorial/scripts/minijuego2_tutorial_ui.gd" id="4_0d8db"]
+[ext_resource type="Theme" uid="uid://dwacxx3nxjf5c" path="res://assets/temas/tema_botones.tres" id="5_lisqe"]
 
 [node name="Minijuego2Tutorial" type="Control"]
 layout_mode = 3
@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ctrl")
+script = ExtResource("1_fxcqd")
 mission_scene_path = "uid://dr4vbuueuu56w"
 
 [node name="Background" type="TextureRect" parent="."]
@@ -28,7 +28,7 @@ offset_bottom = 999.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.64, 0.64)
-texture = ExtResource("4_bg")
+texture = ExtResource("2_0qwi8")
 stretch_mode = 6
 
 [node name="TutorialDemo" type="Control" parent="."]
@@ -38,7 +38,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_demo")
+script = ExtResource("3_bewum")
 
 [node name="PhotosGrid" type="GridContainer" parent="TutorialDemo"]
 layout_mode = 1
@@ -344,7 +344,7 @@ text = "0 / 7 cuadros completados"
 horizontal_alignment = 1
 
 [node name="TutorialUI" type="CanvasLayer" parent="."]
-script = ExtResource("3_ui")
+script = ExtResource("4_0d8db")
 
 [node name="Overlay" type="Control" parent="TutorialUI"]
 layout_mode = 3
@@ -423,13 +423,13 @@ alignment = 1
 
 [node name="PreviousButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow"]
 layout_mode = 2
-theme = ExtResource("5_bvad7")
+theme = ExtResource("5_lisqe")
 theme_override_font_sizes/font_size = 32
 text = "← Anterior"
 
 [node name="NextButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow"]
 layout_mode = 2
-theme = ExtResource("5_bvad7")
+theme = ExtResource("5_lisqe")
 theme_override_font_sizes/font_size = 32
 text = "Siguiente →"
 

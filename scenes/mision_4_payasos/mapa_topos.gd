@@ -5,16 +5,14 @@ var cursor_golpe: Texture2D = load("res://assets/assets_escena_payaso/martillo_p
 @onready var cursor_martillo: Sprite2D = $CursorMartillo
 
 @export var escena_cuestionario: PackedScene = preload("res://scenes/cuestionarios/EscenaCuestionario.tscn")
-@export var escena_cierre: PackedScene
+# Se asigna directamente la escena del diálogo 10 como cierre tras el cuestionario
+@export var escena_cierre: PackedScene = preload("res://scenes/intro_dialogo_10/intro_dialogo_10.tscn")
 @export var numero_mision_cuestionario: int = 2
 
 @export var umbral_puntos_victoria: int = 50
 @export_range(0.0, 1.0, 0.01) var umbral_porcentaje_aciertos_victoria: float = 0.50
 @export var puntos_maximos_derrota: int = 20
 @export_range(0.0, 1.0, 0.01) var umbral_porcentaje_aciertos_derrota: float = 0.20
-
-@export_multiline var narrativa_previa_rescate: String = "¡Misión completada! Escuchaste las emociones del entorno y encontraste la pista de tu mascota. Antes de rescatarla, responde el cuestionario para estabilizar tus emociones."
-@export_multiline var narrativa_posterior_rescate: String = "¡Lo lograste! Gracias a tus respuestas, recuperaste la calma y rescataste a tu mascota. Es momento de continuar la aventura."
 
 var puntos: int = 0
 var topos_jugables: Array[Node] = []
@@ -29,7 +27,7 @@ enum EstadoResultado {
 var estado_resultado_actual: EstadoResultado = EstadoResultado.NINGUNO
 
 var dificultad: float = 1.0
-var velocidad_minima: float = 0.8 # Límite de velocidad corregido
+var velocidad_minima: float = 0.8 
 
 @onready var pantalla_resultado: PanelContainer = %PantallaResultado
 @onready var titulo_resultado: Label = %TituloResultado
@@ -52,7 +50,6 @@ func _ready() -> void:
 	boton_principal.pressed.connect(_on_boton_principal_presionado)
 	boton_secundario.pressed.connect(_on_boton_secundario_presionado)
 	
-	# Configuramos el cursor de software al iniciar
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	if cursor_martillo:
 		cursor_martillo.texture = cursor_normal
@@ -63,14 +60,12 @@ func _exit_tree() -> void:
 	_restaurar_cursor_predeterminado()
 
 func _process(_delta: float) -> void:
-	# El cursor sigue al ratón en todo momento mientras se juega
 	if not mision_finalizada and cursor_martillo:
 		cursor_martillo.global_position = get_global_mouse_position()
 
 func _input(event: InputEvent) -> void:
 	if mision_finalizada:
 		return
-		
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			if cursor_martillo:
@@ -88,7 +83,7 @@ func _al_sumar_punto() -> void:
 
 func _actualizar_marcador() -> void:
 	marcador_puntos.text = "Puntos: " + str(puntos)
-	
+
 func _on_spawn_timer_timeout() -> void:
 	if mision_finalizada or topos_jugables.is_empty():
 		return
@@ -96,7 +91,6 @@ func _on_spawn_timer_timeout() -> void:
 	var disponibles: Array = topos_jugables.filter(func(topo: Node) -> bool: return topo.has_method("aparecer"))
 	if disponibles.is_empty():
 		return
-	
 	var cantidad_a_salir: int = min(int(dificultad), disponibles.size())
 	for i in range(cantidad_a_salir):
 		var indice_aleatorio: int = randi() % disponibles.size()
@@ -107,8 +101,7 @@ func _on_spawn_timer_timeout() -> void:
 
 	if $SpawnTimer.wait_time > velocidad_minima:
 		$SpawnTimer.wait_time -= 0.05
-	
-	if dificultad < 3: # Límite de topos simultáneos corregido
+	if dificultad < 3: 
 		dificultad += 0.1
 
 func _on_timer_juego_timeout() -> void:
@@ -155,7 +148,8 @@ func _mostrar_victoria(resultado: Dictionary) -> void:
 	var porcentaje: float = resultado.porcentaje_aciertos * 100.0
 	estado_resultado_actual = EstadoResultado.VICTORIA
 	titulo_resultado.text = "Misión completada"
-	detalle_resultado.text = "Puntos: %d | Aciertos: %.0f%%\n\n%s" % [puntos, porcentaje, narrativa_previa_rescate]
+	# Se eliminó la narrativa_previa_rescate del texto
+	detalle_resultado.text = "Puntos: %d | Aciertos: %.0f%%" % [puntos, porcentaje]
 	boton_principal.text = "Ir al cuestionario"
 	boton_secundario.visible = false
 	pantalla_resultado.visible = true
@@ -164,7 +158,8 @@ func _mostrar_derrota(resultado: Dictionary) -> void:
 	var porcentaje: float = resultado.porcentaje_aciertos * 100.0
 	estado_resultado_actual = EstadoResultado.DERROTA
 	titulo_resultado.text = "Misión fallida"
-	detalle_resultado.text = "Puntos: %d | Aciertos: %.0f%%\nNecesitas mejorar tu precisión para rescatar a tu mascota." % [puntos, porcentaje]
+	# Se ajustó el texto descriptivo
+	detalle_resultado.text = "Puntos: %d | Aciertos: %.0f%%\nNecesitas mejorar tu precisión para continuar." % [puntos, porcentaje]
 	boton_principal.text = "Reintentar misión"
 	boton_secundario.visible = false
 	pantalla_resultado.visible = true
@@ -193,13 +188,10 @@ func _reiniciar_mision() -> void:
 			topo.reset_estado()
 	_actualizar_marcador()
 	pantalla_resultado.visible = false
-	
-	# Reactivamos el cursor de software para el nuevo intento
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	if cursor_martillo:
 		cursor_martillo.visible = true
 		cursor_martillo.texture = cursor_normal
-		
 	$SpawnTimer.start()
 	$TimerJuego.start()
 	Logs.log_debug("Misión de topos reiniciada")
@@ -209,7 +201,6 @@ func _iniciar_cuestionario() -> void:
 		_restaurar_cursor_predeterminado()
 		get_tree().change_scene_to_file(GameManager.ESCENA_MAPA_REJUGABILIDAD)
 		return
-		
 	if escena_cuestionario == null:
 		push_error("No se asignó escena_cuestionario")
 		return
@@ -223,8 +214,7 @@ func _iniciar_cuestionario() -> void:
 	cuestionario.preguntas = Cuestionarios.obtener_preguntas_para_mision(numero_mision_cuestionario)
 	cuestionario.dimension = dimension
 	cuestionario.escena_siguiente = escena_cierre
-	cuestionario.narrativa_post_cuestionario = narrativa_posterior_rescate
-	cuestionario.titulo_narrativa_post = "Rescate de mascota completado"
+	# Ya no pasamos la narrativa posterior, así el cuestionario cargará directo a la escena_cierre al terminar
 
 	var root: Window = get_tree().root
 	var escena_actual: Node = get_tree().current_scene
@@ -235,7 +225,6 @@ func _iniciar_cuestionario() -> void:
 	get_tree().current_scene = cuestionario
 
 func _restaurar_cursor_predeterminado() -> void:
-	# Muestra el ratón normal y oculta nuestro Sprite de martillo
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if cursor_martillo:
 		cursor_martillo.visible = false

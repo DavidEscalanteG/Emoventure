@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://dbmv5d1qatej7"]
+
+[ext_resource type="Texture2D" uid="uid://cvqooju3fd66d" path="res://assets/frankstein.png" id="1_c76vm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3nr6"]
+atlas = ExtResource("1_c76vm")
+region = Rect2(0, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lysp6"]
+atlas = ExtResource("1_c76vm")
+region = Rect2(64, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clv75"]
+atlas = ExtResource("1_c76vm")
+region = Rect2(128, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxhif"]
+atlas = ExtResource("1_c76vm")
+region = Rect2(192, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mupr"]
+atlas = ExtResource("1_c76vm")
+region = Rect2(256, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kih51"]
+atlas = ExtResource("1_c76vm")
+region = Rect2(320, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx2c3"]
+atlas = ExtResource("1_c76vm")
+region = Rect2(384, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxuo7"]
+atlas = ExtResource("1_c76vm")
+region = Rect2(448, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olwqr"]
+atlas = ExtResource("1_c76vm")
+region = Rect2(512, 640, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gsujw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3nr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lysp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_clv75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxhif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mupr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kih51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx2c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxuo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olwqr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Fran" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gsujw")

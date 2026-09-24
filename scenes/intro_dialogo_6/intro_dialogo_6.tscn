@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bmofexse0koq0"]
 
-[ext_resource type="Script" uid="uid://b5celn7qra5dj" path="res://scenes/intro_dialogo_2/intro_dialogo_2.gd" id="1_1g022"]
+[ext_resource type="Script" uid="uid://d3e2lp5qfq04w" path="res://scenes/intro_dialogo_6/intro_dialogo_6.gd" id="1_a6ftw"]
 [ext_resource type="Texture2D" uid="uid://ulay5r7klbyw" path="res://assets/fondo6.jpg" id="2_a6ftw"]
-[ext_resource type="PackedScene" uid="uid://dgbvgfgvxkfgn" path="res://assets/personajes/gitana/gitana.tscn" id="3_n5ke8"]
+[ext_resource type="PackedScene" uid="uid://b4t1ghb0ibdtf" path="res://assets/personajes/mascota/mascota.tscn" id="4_a6ftw"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="4_gajsk"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="5_nuuv4"]
 [ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui.tscn" id="6_w6ilm"]
@@ -44,7 +44,7 @@ _data = {
 }
 
 [node name="escena_6" type="Node2D"]
-script = ExtResource("1_1g022")
+script = ExtResource("1_a6ftw")
 
 [node name="DentroCarpa" type="Sprite2D" parent="."]
 position = Vector2(960.6041, 537.5)
@@ -53,14 +53,13 @@ texture = ExtResource("2_a6ftw")
 
 [node name="personajes" type="Node2D" parent="."]
 
-[node name="gitana" parent="personajes" instance=ExtResource("3_n5ke8")]
-visible = false
-position = Vector2(1494.9999, 555.99994)
-scale = Vector2(1, 1)
-
 [node name="JugadorCinematico" parent="personajes" instance=ExtResource("4_gajsk")]
 position = Vector2(681, 787)
 scale = Vector2(14.735, 14.735)
+
+[node name="Mascota" parent="personajes" instance=ExtResource("4_a6ftw")]
+position = Vector2(1273, 760.00006)
+scale = Vector2(9, 9)
 
 [node name="FondoNegro" type="Sprite2D" parent="."]
 visible = false

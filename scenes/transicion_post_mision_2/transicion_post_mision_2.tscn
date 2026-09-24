@@ -74,7 +74,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sb04r")
-siguiente_escena = "res://scenes/mision_3_hachas/mision_3_hachas.tscn"
+siguiente_escena = "res://scenes/intro_dialogo_6/intro_dialogo_6.tscn"
 
 [node name="FondoLlave" type="Sprite2D" parent="."]
 position = Vector2(958.99994, 539)

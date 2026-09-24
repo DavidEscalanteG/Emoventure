@@ -1,7 +1,7 @@
 extends Node2D
 
-const DIALOGO_ESCENA_2 := preload("uid://43a3ofv6np6u") #escena_2.dialogue"
-const ESCENA_TUTORIAL_MINIJUEGO_1 := "res://scenes/mision_1_recoleccion/tutorial/Minijuego1_Tutorial.tscn"
+const DIALOGO_ESCENA_2 := preload("res://dialogos/escena_10.dialogue") #escena_2.dialogue"
+const ESCENA_TUTORIAL_MINIJUEGO_1 := "res://scenes/mision_3_nuevo/minijuego3.tscn"
 
 #@onready var personajes := $personajes
 @onready var dialogue_ui: Node = $DialogueUI/Balloon

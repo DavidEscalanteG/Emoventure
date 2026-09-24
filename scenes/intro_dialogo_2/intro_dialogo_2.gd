@@ -1,9 +1,8 @@
 extends Node2D
 
 # 1. Solo cambias estas dos líneas en cada escena nueva:
-const ARCHIVO_DIALOGO := preload("res://dialogos/escena_2.dialogue") 
-const ESCENA_SIGUIENTE := "res://scenes/mision_1_recoleccion/tutorial/Minijuego1_Tutorial.tscn"
-
+const ARCHIVO_DIALOGO := preload("res://dialogos/escena_12.dialogue") 
+const ESCENA_SIGUIENTE := "res://scenes/mision_4_payasos/mapa_topos.tscn"
 @onready var dialogue_ui: Node = $DialogueUI/Balloon
 
 func _ready() -> void:

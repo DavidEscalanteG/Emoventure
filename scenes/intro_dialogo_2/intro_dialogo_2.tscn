@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ojuxji1qnqno"]
 
-[ext_resource type="Script" uid="uid://b5celn7qra5dj" path="res://scenes/intro_dialogo_2/intro_dialogo_2.gd" id="1_wnj6t"]
+[ext_resource type="Script" uid="uid://ephak7f1o6cq" path="res://scenes/intro_dialogo_2/intro_dialogo_22.gd" id="1_rsi55"]
 [ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="2_d78l7"]
 [ext_resource type="Texture2D" uid="uid://bhdrom82ags35" path="res://scenes/intro_dialogo_2/fondo.jpg" id="2_rsi55"]
 [ext_resource type="PackedScene" uid="uid://dgbvgfgvxkfgn" path="res://assets/personajes/gitana/gitana.tscn" id="3_ohtjw"]
@@ -44,7 +44,7 @@ _data = {
 }
 
 [node name="escena_2" type="Node2D"]
-script = ExtResource("1_wnj6t")
+script = ExtResource("1_rsi55")
 
 [node name="Fondo" type="Sprite2D" parent="."]
 position = Vector2(970.0001, 538)

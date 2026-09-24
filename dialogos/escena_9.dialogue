@@ -1,0 +1,24 @@
+~ siguiente_puerta
+# — ESCENA: El descenso hacia la siguiente puerta —
+
+Tras dejar atrás el parpadeo de las fotografías, el camino desciende por un pasillo estrecho y húmedo que huele a viejo y a metal oxidado.
+El eco de los pasos resuena con fuerza en la penumbra, marcando un ritmo pesado mientras el aire se vuelve cada vez más frío.
+ {{DatosJugador.nombre_mascota}}: (olfatea el suelo con desconfianza).
+{{DatosJugador.nombre_mascota}}: (se pega cerca de tus pies).
+
+Al fondo del pasillo, una enorme puerta de madera  bloquea el paso, cerrada con un cerrojo antiguo y macizo que aguarda la llave.
+
+# El protagonista se detiene frente a la pesada cerradura, sosteniendo la llave con firmeza.
+
+- [Forzar la cerradura de un golpe seco con la llave]
+	El metal choca con fuerza, y el pestillo cede bruscamente entre chispas metálicas. La puerta se abre de golpe con un estruendo metálico.
+	 {{DatosJugador.nombre_mascota}}: (se asusta).
+
+- [Girar la llave con extrema lentitud, buscando el punto exacto del mecanismo]
+	El mecanismo cruje de forma silenciosa, liberando los seguros uno a uno con precisión hasta que la puerta se desliza suavemente hacia un lado.
+	{{DatosJugador.nombre_mascota}}: (se adelanta un poco para mirar hacia adentro).
+
+# — TRANSICIÓN AL NUEVO NIVEL —
+Un suspiro de concentración y el peso de lo que aguarda al otro lado. El viaje emocional continúa.
+
+# do start_gameplay("siguiente_nivel")

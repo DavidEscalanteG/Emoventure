@@ -1,6 +1,6 @@
 extends Node2D
 
-const DIALOGO_ESCENA_6 := preload("uid://4uhkfxb2ak8d") #escena_6.dialogue
+const DIALOGO_ESCENA_6 := preload("res://dialogos/escena_4.dialogue")
 const SIGUIENTE_ESCENA := "uid://c7ncdodlaop87" #intro_dialogo_5.tscn
 
 #@onready var personajes := $personajes

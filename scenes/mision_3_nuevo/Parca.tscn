@@ -1,10 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://dx78vx0sg3hw3"]
+[gd_scene load_steps=24 format=3 uid="uid://dx78vx0sg3hw3"]
 
 [ext_resource type="Script" uid="uid://c7wsy1y34i4eg" path="res://scenes/mision_3_hachas/parca.gd" id="1_8g62m"]
-[ext_resource type="FontFile" uid="uid://bkvak4ksmjeuu" path="res://assets/fuentes/PlainPixel-Regular.ttf" id="2_uw7rd"]
-
-[sub_resource type="Resource" id="Resource_p0bj7"]
-metadata/__load_path__ = "res://scenes/mision_3_hachas/calaca xd.png"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5mf6t"]
 region = Rect2(0, 896, 64, 64)
@@ -158,25 +154,9 @@ script = ExtResource("1_8g62m")
 visible = false
 texture_filter = 1
 position = Vector2(422, 174)
-texture = SubResource("Resource_p0bj7")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-texture_filter = 1
-offset_left = 319.92188
-offset_top = 19.921875
-offset_right = 538.9219
-offset_bottom = 140.92188
-theme_override_constants/line_separation = -16
-theme_override_fonts/normal_font = ExtResource("2_uw7rd")
-bbcode_enabled = true
-fit_content = true
-autowrap_mode = 2
-horizontal_alignment = 1
-vertical_alignment = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(421.875, 169.92188)
 sprite_frames = SubResource("SpriteFrames_amgey")
 animation = &"jojopose"
 autoplay = "jojopose"
-frame_progress = 0.4932142

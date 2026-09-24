@@ -2,102 +2,36 @@
 # — ESCENA: Entrada a la Carpa —
 # El protagonista decide entrar a la carpa.
 # Introducción narrativa antes del primer gameplay.
-do DialogueActors.animacion_establecer_expresion("gitana", "sentada")
+
 Gitana: ...
 do DialogueActors.animacion_establecer_expresion("gitana", "iddle")
-Gitana: Sin miedo
+Gitana: Sin miedo.
 
 do DialogueActors.animacion_establecer_expresion("gitana", "risa")
-Gitana: Wuajaaa. 
+Gitana: ¡Wuajaaa! 
 do DialogueActors.animacion_establecer_expresion("gitana", "iddle")
-Gitana: Bienvenido a la primera prueba.
-Gitana: Para conocerte es necesario entender tus emociones. 
-Gitana: Tu primera prueba será: atrapar cada una de tus emociones y ser consciente de ellas.
-Gitana: Pero cuidado con mis serpientes y fogones. 
-do DialogueActors.animacion_establecer_expresion("gitana", "risa")
-Gitana: Wuajaaa. 
+Gitana: Has cruzado el umbral. Bienvenido a la primera prueba.
+Gitana: Para conocerte es necesario aprender a dominar lo que sientes, no huir de ello.
+
 do DialogueActors.animacion_establecer_expresion("gitana", "adivina")
-Gitana: Mucha suerte
-#Gitana: [[Hoy tu vida puede cambiar|El destino te ha traído hasta aquí|No todos se atreven a acercarse]], viajero.
+Gitana: Dime, viajero... ¿Estás listo para enfrentar lo que tu propia mente ha liberado, o prefieres dar media vuelta?
 
-#
-#Gitana: Si decides realmente conocerte…
-#Gitana: este es el lugar indicado.
-#
-#Gitana: Acércate.
-#Gitana: Descubre tus emociones y sentimientos.
-#
-#Protagonista: (Piensa) Hay algo extraño en este lugar…
-#Protagonista: pero también siento curiosidad.
-#
-#Gitana: *Jejeje…*  
-#Gitana: La curiosidad es la primera señal de que estás listo.
-##do DialogueActors.animacion_establecer_expresion("gitana", "sonrisa")
-#
-#Gitana: Dime, ¿qué sientes ahora mismo?
-#Protagonista: Un poco de miedo… y emoción al mismo tiempo.
-#
-#Gitana: Exactamente.
-#Gitana: Las emociones nunca vienen solas.
-#
-#Gitana: Antes de continuar, debo preguntarte algo.
-#Gitana: ¿Deseas entrar a la carpa y enfrentarte a lo que llevas dentro?
-#
-#- Sí, quiero entrar.
-#	do DialogueActors.animacion_establecer_expresion("gitana", "adivina")
-#	Gitana: Sabia decisión.
-#	Gitana: Has dado el primer paso hacia ti mismo.
-#	Gitana: Sígueme… y no mires atrás.
-#
-#- No estoy seguro…
-#	#do DialogueActors.animacion_establecer_expresion("gitana", "neutral")
-#	Gitana: Dudar es humano.
-#	Gitana: Incluso la duda es una emoción que merece ser escuchada.
-#	Gitana: Pero si estás aquí, es porque una parte de ti quiere avanzar.
-#	Gitana: Ven. Yo te guiaré.
-#
-## — TRANSICIÓN AL INTERIOR DE LA CARPA —
-#
-#Gitana: Muy bien…
-#Gitana: Ahora observa con atención.
-#
-##do DialogueActors.fade_out("feria")
-##do DialogueActors.fade_in("interior_carpa")
-##do DialogueActors.animacion_establecer_expresion("gitana", "oscura")
-#
-#Protagonista: ¿Qué sucede…?
-#Protagonista: Siento mi cuerpo extraño…
-#Protagonista: como si algo me faltara.
-#
-#Gitana: Has cruzado el umbral.
-#Gitana: Aquí, tus emociones ya no te acompañan.
-#
-#Gitana: ¿Lo notas?
-#Gitana: Tu color… se desvanece.
-#
-#Gitana: *Wuajajaja…*
-##do DialogueActors.animacion_establecer_expresion("gitana", "demonio")
-#
-#Gitana: Bienvenido a tu primera misión.
-#Gitana: **El cazador de las bestias despiertas**.
-#
-#Gitana: Para conocerte…
-#Gitana: primero deberás reconocer lo que sientes.
-#
-#Gitana: Tus emociones han tomado forma.
-#Gitana: Alegría, tristeza, enojo, desagrado y sorpresa…
-#
-#Gitana: Están sueltas.
-#Gitana: Y deberás atraparlas una a una.
-#
-#Gitana: El camino no será sencillo.
-#Gitana: Habrá obstáculos que intentarán detenerte.
-#
-#Gitana: Pero recuerda esto:
-#Gitana: ignorar una emoción solo la hace más peligrosa.
-#
-#Gitana: Ya es momento.
-#Gitana: Puedes comenzar. jajajajja
+- Estoy listo, no le temo a lo que siento.
+	do DialogueActors.animacion_establecer_expresion("gitana", "risa")
+	Gitana: ¡Eso me gusta! Veremos si tu valentía se mantiene cuando veas lo que te espera.
 
-#do disappear("gitana")
-#do start_gameplay("primera_mision")
+- No estoy seguro de poder con esto, pero debo intentarlo.
+	do DialogueActors.animacion_establecer_expresion("gitana", "iddle")
+	Gitana: El miedo y la duda también son valiosos. Te mantendrán con los ojos bien abiertos.
+
+do DialogueActors.animacion_establecer_expresion("gitana", "iddle")
+Gitana: Tu misión es clara: deberás atrapar cada una de tus emociones y volver a ser consciente de ellas.
+Gitana: Pero ten mucho cuidado con mis serpientes y los fogones del camino... 
+
+do DialogueActors.animacion_establecer_expresion("gitana", "risa")
+Gitana: ¡Wuajaaa! 
+do DialogueActors.animacion_establecer_expresion("gitana", "adivina")
+Gitana: ¿Qué esperas? ¡Mucha suerte!
+Gitana: ¡Mucha suerte!
+# do disappear("gitana")
+# do start_gameplay("primera_mision")

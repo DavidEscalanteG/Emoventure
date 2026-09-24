@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cbru7m0qjscpi"
+path="res://.godot/imported/escena_4.dialogue-4088cdfa8aa751df126c1caca7758fda.tres"
+
+[deps]
+
+source_file="res://dialogos/escena_4.dialogue"
+dest_files=["res://.godot/imported/escena_4.dialogue-4088cdfa8aa751df126c1caca7758fda.tres"]
+
+[params]
+
+defaults=true

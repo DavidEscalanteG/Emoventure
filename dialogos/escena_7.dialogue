@@ -1,9 +1,15 @@
 ~ start
-{{DatosJugador.nombre_jugador}}: Que es este lugar?
-{{DatosJugador.nombre_jugador}}: Que es eso del fondo?
+# — ESCENA: Interior de la Casa del Terror —
+# El protagonista avanza hacia el interior mientras el ambiente se vuelve opresivo.
+
+El silencio dentro de la estructura es absoluto, interrumpido únicamente por el eco de los propios pasos sobre el suelo polvoriento.
+A lo lejos, entre las sombras más profundas del fondo, una silueta estática comienza a definirse.
+Unos pasos extraños y ligeros resuenan de pronto contra el suelo, acercándose con rapidez desde la oscuridad
 do DialogueActors.animacion_establecer_animacion("mascota", "caminar", "izquierda")
 do DialogueActors.movimiento_mover_y_esperar("mascota", Vector2(-621,0), 5)
 do DialogueActors.animacion_establecer_animacion("mascota", "reposo", "izquierda")
-{{DatosJugador.nombre_jugador}}: Owwwww que lindooo
-{{DatosJugador.nombre_jugador}}: Ven aqui, {{DatosJugador.nombre_mascota}}
+
+Wow es un adorable animal, de verdad pensé que era tu fin jaja
+La criatura avanza con confianza, saludando con alegría y acercándose sin vacilar.
+{{DatosJugador.nombre_mascota}}
 => END

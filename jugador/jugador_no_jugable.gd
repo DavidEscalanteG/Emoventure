@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 # --- Camuflaje para evitar que el nivel crashee ---
-signal sin_vidas
 var nivel_terminado: bool = false
 var vidas_actuales: int = 3 
 
