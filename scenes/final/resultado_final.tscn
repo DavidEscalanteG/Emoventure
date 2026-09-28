@@ -16,6 +16,20 @@ corner_radius_bottom_left = 18
 shadow_color = Color(0, 0, 0, 0.28)
 shadow_size = 7
 
+[sub_resource type="StyleBoxFlat" id="StyleBarraFondo"]
+bg_color = Color(0.02, 0.035, 0.073, 0.75)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBarraAtencion"]
+bg_color = Color(0.294, 0.639, 0.902, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [sub_resource type="StyleBoxFlat" id="StyleCardClaridad"]
 bg_color = Color(0.137, 0.102, 0.239, 0.96)
 border_width_left = 3
@@ -29,6 +43,13 @@ corner_radius_bottom_right = 18
 corner_radius_bottom_left = 18
 shadow_color = Color(0, 0, 0, 0.28)
 shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBarraClaridad"]
+bg_color = Color(0.663, 0.471, 0.91, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleCardReparacion"]
 bg_color = Color(0.235, 0.153, 0.075, 0.96)
@@ -44,27 +65,6 @@ corner_radius_bottom_left = 18
 shadow_color = Color(0, 0, 0, 0.28)
 shadow_size = 7
 
-[sub_resource type="StyleBoxFlat" id="StyleBarraFondo"]
-bg_color = Color(0.02, 0.035, 0.073, 0.75)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBarraAtencion"]
-bg_color = Color(0.294, 0.639, 0.902, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
-[sub_resource type="StyleBoxFlat" id="StyleBarraClaridad"]
-bg_color = Color(0.663, 0.471, 0.91, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-
 [sub_resource type="StyleBoxFlat" id="StyleBarraReparacion"]
 bg_color = Color(0.91, 0.651, 0.353, 1)
 corner_radius_top_left = 12
@@ -73,30 +73,30 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleButtonPrimary"]
+content_margin_left = 28.0
+content_margin_right = 28.0
 bg_color = Color(0.212, 0.463, 0.784, 1)
 corner_radius_top_left = 14
 corner_radius_top_right = 14
 corner_radius_bottom_right = 14
 corner_radius_bottom_left = 14
-content_margin_left = 28.0
-content_margin_right = 28.0
+
+[sub_resource type="StyleBoxFlat" id="StyleButtonHover"]
+bg_color = Color(0.333, 0.573, 0.878, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleButtonSecondary"]
+content_margin_left = 32.0
+content_margin_right = 32.0
 bg_color = Color(0.255, 0.196, 0.431, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.663, 0.471, 0.91, 0.8)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
-content_margin_left = 32.0
-content_margin_right = 32.0
-
-[sub_resource type="StyleBoxFlat" id="StyleButtonHover"]
-bg_color = Color(0.333, 0.573, 0.878, 1)
 corner_radius_top_left = 14
 corner_radius_top_right = 14
 corner_radius_bottom_right = 14
@@ -171,14 +171,14 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.761, 0.839, 0.949, 1)
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 28
 text = "Una mirada a las tendencias que aparecieron durante tu aventura"
 horizontal_alignment = 1
 
 [node name="NotaNeutral" type="Label" parent="MarginContainer/VBoxPrincipal"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.91, 0.878, 0.996, 1)
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 25
 text = "No hay resultados correctos o incorrectos: cada barra describe una dimensión diferente."
 horizontal_alignment = 1
 
@@ -224,7 +224,7 @@ show_percentage = false
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.922, 0.957, 1, 1)
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 32
 autowrap_mode = 3
 
 [node name="TarjetaClaridad" type="PanelContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer"]
@@ -260,7 +260,7 @@ show_percentage = false
 [node name="MensajeClaridad" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaClaridad/Margen/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.955, 0.929, 1, 1)
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 32
 autowrap_mode = 3
 
 [node name="TarjetaReparacion" type="PanelContainer" parent="MarginContainer/VBoxPrincipal/TarjetasContainer"]
@@ -296,7 +296,7 @@ show_percentage = false
 [node name="MensajeReparacion" type="Label" parent="MarginContainer/VBoxPrincipal/TarjetasContainer/TarjetaReparacion/Margen/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.949, 0.878, 1)
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 32
 autowrap_mode = 3
 
 [node name="PerfilFinalLabel" type="Label" parent="MarginContainer/VBoxPrincipal"]
@@ -304,7 +304,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 68)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.875, 0.906, 0.961, 1)
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 35
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
