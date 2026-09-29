@@ -22,6 +22,9 @@ func _ready() -> void:
 	responses_menu.hide()
 
 func iniciar_dialogo(resource: DialogueResource) -> void:
+	# Cada diálogo empieza con un estado limpio. Esto permite reanudar una partida
+	# aunque la escena anterior se haya cerrado durante una acción cinemática.
+	DialogueActors.reiniciar_estado_cinematica()
 	dialogue_resource = resource
 	current_line = await DialogueManager.get_next_dialogue_line(dialogue_resource)
 	_mostrar_linea()

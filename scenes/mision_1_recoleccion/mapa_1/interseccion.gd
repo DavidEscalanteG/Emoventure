@@ -4,7 +4,7 @@ extends Area2D
 @export var cooldown_interseccion: float = 1.0
 
 # Enemigos que ya cambiaron ruta en esta intersección
-var enemigos_bloqueados: Dictionary = {}
+var enemigos_bloqueados: Dictionary[int, bool] = {}
 
 func _on_body_entered(body: Node) -> void:
 	if not (body is CharacterBody2D):
@@ -14,10 +14,10 @@ func _on_body_entered(body: Node) -> void:
 	
 	enemigo.en_interseccion = true
 
-	if enemigos_bloqueados.has(enemigo):
+	if enemigos_bloqueados.has(enemigo.get_instance_id()):
 		return
 
-	enemigos_bloqueados[enemigo] = true
+	enemigos_bloqueados[enemigo.get_instance_id()] = true
 
 	var path_follow: PathFollow2D = enemigo.get_parent() as PathFollow2D
 	if path_follow == null:
@@ -41,10 +41,10 @@ func _on_body_entered(body: Node) -> void:
 	_desbloquear_despues(enemigo)
 
 func _desbloquear_despues(enemigo: CharacterBody2D) -> void:
-	await get_tree().create_timer(cooldown_interseccion).timeout
-
-	if enemigos_bloqueados.has(enemigo):
-		enemigos_bloqueados.erase(enemigo)
+	var enemigo_id := enemigo.get_instance_id()
+	var cooldown := create_tween()
+	cooldown.tween_interval(cooldown_interseccion)
+	cooldown.tween_callback(func(): enemigos_bloqueados.erase(enemigo_id))
 
 func _on_body_exited(body: Node2D) -> void:
 	if not body is CharacterBody2D:

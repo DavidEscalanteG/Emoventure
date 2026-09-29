@@ -19,6 +19,7 @@ var _pressed_actions: Dictionary[String, bool] = {}
 var _joy_pointer: int = -1
 var _joystick_vector: Vector2 = Vector2.ZERO
 var _knob_center: Vector2
+var _last_mode: String = ""
 
 
 func _ready() -> void:
@@ -29,10 +30,10 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	_apply_mode()
 	if not visible:
 		_release_all()
 		return
-	_apply_mode()
 
 
 func _apply_mode() -> void:
@@ -40,10 +41,12 @@ func _apply_mode() -> void:
 	visible = OS.has_feature("mobile") and MobileControlsSettings.controls_enabled
 	cruceta.visible = mode == MobileControlsSettings.MODE_CRUCETA
 	joystick.visible = mode == MobileControlsSettings.MODE_JOYSTICK
-	if mode != MobileControlsSettings.MODE_JOYSTICK:
+	if mode != _last_mode:
+		_last_mode = mode
+		_release_all()
+		_joy_pointer = -1
 		_joystick_vector = Vector2.ZERO
 		joystick_knob.position = _knob_center
-		_apply_axis_to_actions(Vector2.ZERO)
 
 
 func _on_btn_up_button_down() -> void: _press_action(ACTION_MOVE_UP)
@@ -129,3 +132,7 @@ func _release_all() -> void:
 	for action: String in _pressed_actions.keys():
 		Input.action_release(action)
 	_pressed_actions.clear()
+
+
+func _exit_tree() -> void:
+	_release_all()

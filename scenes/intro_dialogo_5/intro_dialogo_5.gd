@@ -27,6 +27,9 @@ func _on_dialogo_finalizado() -> void:
 
 
 func _exit_tree() -> void:
+	DialogueActors.reiniciar_estado_cinematica()
+	DialogueActors.registro_desregistrar_actor("jugador")
+	DialogueActors.registro_desregistrar_actor("mascota")
 	MusicManager.finalizar_override_dialogo()
 
 

@@ -1,17 +1,63 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1fbuvpiej7a8"]
+[gd_scene load_steps=14 format=3 uid="uid://b1fbuvpiej7a8"]
 
 [ext_resource type="Script" uid="uid://dx0msb5cskx6d" path="res://scenes/menu_guardados/menu_guardados.gd" id="1_d6fpn"]
 [ext_resource type="Texture2D" uid="uid://dcfbcs5obnba6" path="res://assets/assets_menu_principal/fondo/fondo_menu_pixel.jpeg" id="2_ard82"]
 [ext_resource type="Shader" uid="uid://cmegfkrqjhxo8" path="res://scenes/configuracion/configuracion.gdshader" id="3_h5ocq"]
-[ext_resource type="Texture2D" uid="uid://c52cu0ywfn0xw" path="res://assets/ui/Tiles/Large tiles/Thin outline/tile_0005.png" id="4_3auta"]
 [ext_resource type="Theme" uid="uid://dwacxx3nxjf5c" path="res://assets/temas/tema_botones.tres" id="4_h5ocq"]
+[ext_resource type="Texture2D" path="res://assets/llaves/key1.png" id="5_key1"]
+[ext_resource type="Texture2D" path="res://assets/llaves/key2.png" id="6_key2"]
+[ext_resource type="Texture2D" path="res://assets/llaves/key3.png" id="7_key3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3auta"]
 shader = ExtResource("3_h5ocq")
-shader_parameter/blur_amount = 2.170000103075
-shader_parameter/darken_amount = 0.830000039425
+shader_parameter/blur_amount = 1.35
+shader_parameter/darken_amount = 0.66
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3auta"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_main"]
+bg_color = Color(0.027, 0.047, 0.102, 0.95)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.929, 0.706, 0.286, 0.95)
+corner_radius_top_left = 26
+corner_radius_top_right = 26
+corner_radius_bottom_right = 26
+corner_radius_bottom_left = 26
+shadow_color = Color(0, 0, 0, 0.68)
+shadow_size = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_empty"]
+bg_color = Color(0.047, 0.082, 0.157, 0.86)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.31, 0.459, 0.659, 0.9)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+content_margin_left = 32.0
+content_margin_top = 28.0
+content_margin_right = 32.0
+content_margin_bottom = 28.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scroll"]
+bg_color = Color(0.012, 0.024, 0.059, 0.55)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_separator"]
+bg_color = Color(0.929, 0.706, 0.286, 0.55)
+content_margin_top = 2.0
+content_margin_bottom = 2.0
 
 [node name="MenuGuardados" type="Control"]
 layout_mode = 3
@@ -22,10 +68,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d6fpn")
 
-[node name="FondoMenuPixel" type="Sprite2D" parent="."]
-position = Vector2(959, 536.25)
-scale = Vector2(1.8867188, 1.9561718)
+[node name="FondoMenuPixel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_ard82")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="BlurOverlay" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_3auta")
@@ -35,21 +88,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="Tile0005" type="Sprite2D" parent="."]
-position = Vector2(951, 551)
-scale = Vector2(50.6875, 35)
-texture = ExtResource("4_3auta")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
+[node name="AmbientTint" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0941176, 0.0862745, 0.239216, 1)
+mouse_filter = 2
+color = Color(0.025, 0.055, 0.14, 0.28)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -60,66 +109,117 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(1000, 760)
+custom_minimum_size = Vector2(1380, 960)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_3auta")
+theme_override_styles/panel = SubResource("StyleBoxFlat_main")
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 46
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 46
+theme_override_constants/margin_bottom = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 12
+
+[node name="KeyStrip" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Key1" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/KeyStrip"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+texture = ExtResource("5_key1")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Key2" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/KeyStrip"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+texture = ExtResource("6_key2")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Key3" type="TextureRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/KeyStrip"]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+texture = ExtResource("7_key3")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="Titulo" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 64
-text = "Selecciona una partida"
+theme_override_colors/font_color = Color(1, 0.879, 0.57, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 58
+text = "Tus aventuras"
 horizontal_alignment = 1
+
+[node name="Subtitulo" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.702, 0.8, 0.929, 1)
+theme_override_font_sizes/font_size = 24
+text = "Elige una partida para continuar descubriendo tus emociones"
+horizontal_alignment = 1
+
+[node name="Separador" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_separator")
 
 [node name="EtiquetaVacio" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 460)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 54
-text = "No tienes partidas guardadas.
-Crea una nueva para comenzar."
+theme_override_colors/font_color = Color(0.859, 0.91, 0.988, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.75)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_empty")
+text = "Aún no hay aventuras guardadas.\nCrea una nueva partida para comenzar tu viaje."
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 540)
+custom_minimum_size = Vector2(0, 590)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_scroll")
 
 [node name="ContenedorPartidas" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 10
+theme_override_constants/separation = 14
 
 [node name="BotonesInferiores" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 22
 alignment = 1
 
 [node name="BotonNuevaPartida" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BotonesInferiores"]
-custom_minimum_size = Vector2(320, 60)
+custom_minimum_size = Vector2(360, 66)
 layout_mode = 2
 theme = ExtResource("4_h5ocq")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.08, 0.055, 0.12, 1)
+theme_override_colors/font_hover_color = Color(0.08, 0.055, 0.12, 1)
+theme_override_colors/font_pressed_color = Color(0.08, 0.055, 0.12, 1)
+theme_override_font_sizes/font_size = 31
 text = "Crear nueva partida"
 
 [node name="BotonVolver" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BotonesInferiores"]
-custom_minimum_size = Vector2(180, 60)
+custom_minimum_size = Vector2(210, 66)
 layout_mode = 2
 theme = ExtResource("4_h5ocq")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.08, 0.055, 0.12, 1)
+theme_override_colors/font_hover_color = Color(0.08, 0.055, 0.12, 1)
+theme_override_colors/font_pressed_color = Color(0.08, 0.055, 0.12, 1)
+theme_override_font_sizes/font_size = 31
 text = "Volver"
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BotonesInferiores/BotonNuevaPartida" to="." method="_on_boton_nueva_partida_pressed"]

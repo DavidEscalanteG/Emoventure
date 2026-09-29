@@ -11,6 +11,14 @@ var seleccionado: bool = false
 func _ready() -> void:
 	if emocion_id == "":
 		push_warning("EmojiButton sin emocion_id asignado")
+		return
+
+	var nombre_visible := emocion_id.capitalize()
+	tooltip_text = nombre_visible
+	accessibility_name = "Emoción %s" % nombre_visible
+	focus_mode = Control.FOCUS_ALL
+	focus_entered.connect(_on_focus_entered)
+	focus_exited.connect(_on_focus_exited)
 
 
 func _on_mouse_entered() -> void:
@@ -32,6 +40,14 @@ func _on_mouse_exited() -> void:
 
 	if selector != null:
 		selector.call("restaurar_preview_emocion")
+
+
+func _on_focus_entered() -> void:
+	_on_mouse_entered()
+
+
+func _on_focus_exited() -> void:
+	_on_mouse_exited()
 
 
 func _on_pressed() -> void:

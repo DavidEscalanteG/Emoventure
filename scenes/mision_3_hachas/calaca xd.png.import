@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:scenes/mision_3_hachas/calaca xd.png.import
 uid="uid://cdqhmqyg804h3"
 path="res://.godot/imported/calaca xd.png-b85cf7db0ef038fa6d8341eaf2ff5e42.ctex"
-========
-uid="uid://nc123j875llg"
-path="res://.godot/imported/tilemap.png-dd8a6d06aca21a031b916041b6f72e8d.ctex"
->>>>>>>> main:assets/ui/Tilesheets/Small tiles/Thin outline/tilemap.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<<< HEAD:scenes/mision_3_hachas/calaca xd.png.import
 source_file="res://scenes/mision_3_hachas/calaca xd.png"
 dest_files=["res://.godot/imported/calaca xd.png-b85cf7db0ef038fa6d8341eaf2ff5e42.ctex"]
-========
-source_file="res://assets/ui/Tilesheets/Small tiles/Thin outline/tilemap.png"
-dest_files=["res://.godot/imported/tilemap.png-dd8a6d06aca21a031b916041b6f72e8d.ctex"]
->>>>>>>> main:assets/ui/Tilesheets/Small tiles/Thin outline/tilemap.png.import
 
 [params]
 

@@ -36,6 +36,9 @@ var velocidad_base: int = 0
 # --------------------------------------------------
 var timer_emocion: Timer
 var timer_congelar: Timer
+var _duracion_emocion: float = 0.0
+var _color_emocion: Color = Color.WHITE
+var _ultimo_estado_indicador: bool = false
 
 
 # --------------------------------------------------
@@ -123,6 +126,8 @@ func aplicar_emocion(tipo: String, color: Color, duracion: float) -> void:
 	terminar_emocion()
 
 	emocion_actual = tipo
+	_duracion_emocion = maxf(duracion, 0.01)
+	_color_emocion = color
 	_aplicar_efecto(tipo)
 
 	DatosJugador.registrar_emocion(tipo)
@@ -159,6 +164,7 @@ func _terminar_emocion() -> void:
 
 func terminar_emocion() -> void:
 	emocion_actual = ""
+	_duracion_emocion = 0.0
 	speed = velocidad_base
 	controles_invertidos = false
 
@@ -166,13 +172,16 @@ func terminar_emocion() -> void:
 	timer_congelar.stop()
 
 	puede_moverse = not nivel_terminado
+	apariencia.modulate.a = 1.0
 	apariencia.restaurar_colores()
+	queue_redraw()
 
 
 # --------------------------------------------------
 # MOVIMIENTO
 # --------------------------------------------------
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	_actualizar_indicador_emocion(delta)
 	if not puede_moverse:
 		velocity = Vector2.ZERO
 		move_and_slide()
@@ -199,6 +208,37 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 	_actualizar_apariencia(direction)
+
+
+func _actualizar_indicador_emocion(_delta: float) -> void:
+	var efecto_activo := emocion_actual != "" and timer_emocion != null and not timer_emocion.is_stopped()
+	if efecto_activo:
+		var restante := timer_emocion.time_left
+		if restante <= minf(1.5, _duracion_emocion * 0.35):
+			# El pulso se acelera al acercarse el final del efecto.
+			apariencia.modulate.a = 0.4 if fmod(restante, 0.24) < 0.12 else 1.0
+		else:
+			apariencia.modulate.a = 1.0
+		queue_redraw()
+	elif _ultimo_estado_indicador:
+		apariencia.modulate.a = 1.0
+		queue_redraw()
+	_ultimo_estado_indicador = efecto_activo
+
+
+func _draw() -> void:
+	if emocion_actual == "" or timer_emocion == null or timer_emocion.is_stopped():
+		return
+	var progreso := clampf(timer_emocion.time_left / maxf(_duracion_emocion, 0.01), 0.0, 1.0)
+	var barra := Rect2(Vector2(-25, -53), Vector2(50, 7))
+	draw_rect(barra.grow(2.0), Color("#08101ddd"), true)
+	draw_rect(barra, Color("#273548"), true)
+	draw_rect(Rect2(barra.position, Vector2(barra.size.x * progreso, barra.size.y)), _color_emocion, true)
+	draw_rect(barra.grow(1.0), Color("#eaf2ff"), false, 1.0)
+	# Tres marcas convierten la barra en un temporizador legible de un vistazo.
+	for marca in [0.25, 0.5, 0.75]:
+		var x: float = barra.position.x + barra.size.x * float(marca)
+		draw_line(Vector2(x, barra.position.y), Vector2(x, barra.end.y), Color(0.05, 0.08, 0.12, 0.65), 1.0)
 
 
 func _actualizar_apariencia(direction: Vector2) -> void:
@@ -237,4 +277,4 @@ func _ensure_mobile_controls() -> void:
 		return
 	var controls := MOBILE_CONTROLS_SCENE.instantiate()
 	controls.name = "MobileControls"
-	get_tree().root.add_child(controls)
+	get_tree().root.add_child.call_deferred(controls)
