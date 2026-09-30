@@ -64,8 +64,7 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lchrj"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_myv1p"]
 
 [sub_resource type="Animation" id="Animation_nlsx6"]
 length = 0.001
@@ -128,11 +127,14 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer"]
-self_modulate = Color(1, 1, 0, 0.5411765)
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_lchrj")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_myv1p")
+
+[node name="ColorRect" type="ColorRect" parent="Balloon/MarginContainer/PanelContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.2627451)
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer"]
 layout_mode = 2
@@ -149,6 +151,8 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "Character"
@@ -159,6 +163,8 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_font_sizes/normal_font_size = 43
 text = "Dialogue..."
 

@@ -823,7 +823,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="Jugador" type="CharacterBody2D" parent="." groups=["jugador"]]
-position = Vector2(16474, 754)
+position = Vector2(88, 783)
 scale = Vector2(1.35, 1.35)
 script = ExtResource("3_4i633")
 fuerza_salto = -300.0
@@ -841,7 +841,7 @@ scale = Vector2(1.8849999, 1.8849999)
 shape = SubResource("CapsuleShape2D_4i633")
 
 [node name="Camera2D" type="Camera2D" parent="Jugador"]
-position = Vector2(268.8889, -85.925865)
+position = Vector2(244.44444, -104.44443)
 zoom = Vector2(2.48, 2.48)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." groups=["musica_nivel"]]

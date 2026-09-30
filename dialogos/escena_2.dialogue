@@ -2,6 +2,8 @@
 # — ESCENA: Entrada a la Carpa —
 # El protagonista decide entrar a la carpa.
 # Introducción narrativa antes del primer gameplay.
+do DialogueActors.animacion_establecer_animacion("jugador", "iddle", "arriba")
+
 do DialogueActors.animacion_establecer_expresion("gitana", "iddle")
 Gitana: ...
 do DialogueActors.animacion_establecer_expresion("gitana", "iddle")

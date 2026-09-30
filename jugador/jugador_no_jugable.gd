@@ -58,7 +58,7 @@ func confirmar_emocion_visual() -> void:
 
 func _reproducir_idle_normal() -> void:
 	var appearance := $PlayerAppearance
-	var anim := "idle_down"
+	var anim := "idle_up"
 
 	if appearance.cuerpo.sprite_frames \
 	and appearance.cuerpo.sprite_frames.has_animation(anim):

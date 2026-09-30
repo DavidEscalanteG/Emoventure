@@ -5,7 +5,6 @@ var cursor_golpe: Texture2D = load("res://assets/assets_escena_payaso/martillo_p
 @onready var cursor_martillo: Sprite2D = $CursorMartillo
 
 @export var escena_cuestionario: PackedScene = preload("res://scenes/cuestionarios/EscenaCuestionario.tscn")
-# Se asigna directamente la escena del diálogo 10 como cierre tras el cuestionario
 @export var escena_cierre: PackedScene = preload("res://scenes/intro_dialogo_10/intro_dialogo_10.tscn")
 @export var numero_mision_cuestionario: int = 2
 
@@ -66,7 +65,18 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if mision_finalizada:
 		return
+		
+	# Detectar clic izquierdo en PC
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			if cursor_martillo:
+				cursor_martillo.texture = cursor_golpe
+		else:
+			if cursor_martillo:
+				cursor_martillo.texture = cursor_normal
+				
+	# Detectar toque directo en pantalla de celular
+	elif event is InputEventScreenTouch:
 		if event.pressed:
 			if cursor_martillo:
 				cursor_martillo.texture = cursor_golpe
@@ -148,7 +158,6 @@ func _mostrar_victoria(resultado: Dictionary) -> void:
 	var porcentaje: float = resultado.porcentaje_aciertos * 100.0
 	estado_resultado_actual = EstadoResultado.VICTORIA
 	titulo_resultado.text = "Misión completada"
-	# Se eliminó la narrativa_previa_rescate del texto
 	detalle_resultado.text = "Puntos: %d | Aciertos: %.0f%%" % [puntos, porcentaje]
 	boton_principal.text = "Ir al cuestionario"
 	boton_secundario.visible = false
@@ -158,7 +167,6 @@ func _mostrar_derrota(resultado: Dictionary) -> void:
 	var porcentaje: float = resultado.porcentaje_aciertos * 100.0
 	estado_resultado_actual = EstadoResultado.DERROTA
 	titulo_resultado.text = "Misión fallida"
-	# Se ajustó el texto descriptivo
 	detalle_resultado.text = "Puntos: %d | Aciertos: %.0f%%\nNecesitas mejorar tu precisión para continuar." % [puntos, porcentaje]
 	boton_principal.text = "Reintentar misión"
 	boton_secundario.visible = false
@@ -214,7 +222,6 @@ func _iniciar_cuestionario() -> void:
 	cuestionario.preguntas = Cuestionarios.obtener_preguntas_para_mision(numero_mision_cuestionario)
 	cuestionario.dimension = dimension
 	cuestionario.escena_siguiente = escena_cierre
-	# Ya no pasamos la narrativa posterior, así el cuestionario cargará directo a la escena_cierre al terminar
 
 	var root: Window = get_tree().root
 	var escena_actual: Node = get_tree().current_scene

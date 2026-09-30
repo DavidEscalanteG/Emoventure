@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhkqfini0qkqf"]
+[gd_scene load_steps=6 format=3 uid="uid://dhkqfini0qkqf"]
 
 [ext_resource type="Script" uid="uid://ccvcog8q2kj57" path="res://scenes/mision_4_payasos/topo.gd" id="1_16sdh"]
 [ext_resource type="Texture2D" uid="uid://d3610aie68mm4" path="res://assets/assets_escena_payaso/pngtree-clown-icon-simple-style-png-image_15810983.png" id="3_odsfl"]
 [ext_resource type="AudioStream" uid="uid://cjyixa1g6r3ce" path="res://audios/sfx/golpe.mp3" id="3_usqv1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sgxqq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_odsfl"]
+radius = 48.77
 
 [node name="Topo" type="Control"]
 custom_minimum_size = Vector2(300, 300)
@@ -38,6 +41,10 @@ scale = Vector2(0.22044183, 0.22044183)
 position = Vector2(150, 71.72)
 scale = Vector2(21.94, 21.94)
 shape = SubResource("CircleShape2D_sgxqq")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Sprite2D"]
+position = Vector2(151.66267, 130.95325)
+shape = SubResource("CircleShape2D_odsfl")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="input_event" from="Sprite2D/Area2D" to="." method="_on_area_2d_input_event"]

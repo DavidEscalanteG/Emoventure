@@ -26,41 +26,4 @@ scale = Vector2(3, 3)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="PanelNombreMascota" type="PanelContainer" parent="UI"]
-offset_left = 551.0
-offset_top = 753.0
-offset_right = 1368.0
-offset_bottom = 1042.0
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/PanelNombreMascota"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelNombreMascota/MarginContainer"]
-layout_mode = 2
-
-[node name="TituloNombreMascota" type="Label" parent="UI/PanelNombreMascota/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "¿Cómo quieres llamar a tu mascota?"
-
-[node name="InputNombreMascota" type="LineEdit" parent="UI/PanelNombreMascota/MarginContainer/VBoxContainer"]
-layout_mode = 2
-placeholder_text = "Escribe el nombre de tu mascota"
-max_length = 20
-
-[node name="ErrorNombreMascota" type="Label" parent="UI/PanelNombreMascota/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.329412, 0.329412, 1)
-autowrap_mode = 3
-
-[node name="BtnConfirmarNombreMascota" type="Button" parent="UI/PanelNombreMascota/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Confirmar nombre"
-
 [node name="DialogueUI" parent="." instance=ExtResource("5_d2j2f")]
-
-[connection signal="pressed" from="UI/PanelNombreMascota/MarginContainer/VBoxContainer/BtnConfirmarNombreMascota" to="." method="_on_btn_confirmar_nombre_mascota_pressed"]

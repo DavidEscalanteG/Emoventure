@@ -60,7 +60,7 @@ size_flags_horizontal = 4
 
 [node name="PreguntaRichTextLabel" type="RichTextLabel" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(1000, 170)
+custom_minimum_size = Vector2(901.65, 189.545)
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("2_3yix8")

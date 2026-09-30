@@ -13,6 +13,8 @@ var fue_golpeado: bool = false # NUEVO: Variable para saber si ya le pegamos en 
 
 signal golpe_recibido 
 
+
+
 func _ready() -> void:
 	posicion_original = $Sprite2D.position
 	$Sprite2D.position = posicion_original + Vector2(0, altura_escondido)
