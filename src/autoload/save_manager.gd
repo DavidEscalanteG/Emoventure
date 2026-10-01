@@ -12,7 +12,7 @@ const ESCENAS_MINIJUEGOS_REJUGABLES: Array[String] = [
 	"res://scenes/mision_1_recoleccion/mapa_4/mapa4.tscn",
 	"res://scenes/mision_1_recoleccion/mapa_5/mapa5.tscn",
 	"res://scenes/mision_2_memorias/mision_2_memorias.tscn",
-	"res://scenes/mision_3_hachas/mision_3_hachas.tscn",
+	"res://scenes/mision_3_nuevo/minijuego3.tscn",
 	"res://scenes/mision_4_payasos/mapa_topos.tscn"
 ]
 const ESCENAS_EXCLUIDAS_GUARDADO: Array[String] = [
@@ -244,7 +244,7 @@ func _debe_redirigir_mapa_rejugabilidad(partida: Dictionary, escena_guardada: St
 		return false
 
 	return ESCENAS_MINIJUEGOS_REJUGABLES.has(escena_guardada) \
-		or escena_guardada.begins_with("res://scenes/mision_3_hachas/nivel")
+		or escena_guardada.begins_with("res://scenes/mision_3_nuevo/minijuego3.tscn")
 	
 	
 func _serializar_apariencia(apariencia: AparienciaJugador) -> Dictionary:
