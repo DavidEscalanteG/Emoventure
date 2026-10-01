@@ -27,7 +27,7 @@ func set_message(text: String) -> void:
 	message_label.text = text
 
 func set_step_indicator(current_step: int, total_steps: int) -> void:
-	step_label.text = "RECUERDO %02d  •  PASO %d DE %d" % [current_step + 1, current_step + 1, total_steps]
+	step_label.text = "MEMORIAS ETERNAS  •  PASO %d DE %d" % [current_step + 1, total_steps]
 
 func set_navigation(step_index: int, _step_count: int, is_last_step: bool) -> void:
 	previous_button.disabled = step_index <= 0
@@ -49,6 +49,7 @@ func _apply_visual_style() -> void:
 		Color("#281c39f2"), Color("#efc56b"), 4, 18
 	))
 	message_label.add_theme_color_override("font_color", Color("#fff8e7"))
+	message_label.add_theme_font_size_override("font_size", 26)
 	message_label.add_theme_color_override("font_shadow_color", Color("#160d21"))
 	message_label.add_theme_constant_override("shadow_offset_x", 3)
 	message_label.add_theme_constant_override("shadow_offset_y", 3)
@@ -61,6 +62,11 @@ func _apply_visual_style() -> void:
 	))
 	for button in [previous_button, next_button, start_button]:
 		button.custom_minimum_size.y = 52.0
+		button.add_theme_color_override("font_color", Color("#fff8e7"))
+		button.add_theme_color_override("font_hover_color", Color.WHITE)
+		button.add_theme_color_override("font_pressed_color", Color("#f3ce7a"))
+		button.add_theme_color_override("font_disabled_color", Color("#bbb0c8"))
+		button.add_theme_font_size_override("font_size", 24)
 
 func _panel_style(fill: Color, border: Color, width: int, radius: int) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
