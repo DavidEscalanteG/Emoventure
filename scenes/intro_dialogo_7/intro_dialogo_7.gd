@@ -1,7 +1,7 @@
 extends Node2D
 
 const DIALOGO_ESCENA_2 := preload("res://dialogos/escena_10.dialogue") #escena_2.dialogue"
-const ESCENA_TUTORIAL_MINIJUEGO_1 := "res://scenes/mision_3_nuevo/minijuego3.tscn"
+const ESCENA_TUTORIAL_MINIJUEGO_3 := "res://scenes/mision_3_nuevo/tutorial/Minijuego3_Tutorial.tscn"
 
 #@onready var personajes := $personajes
 @onready var dialogue_ui: Node = $DialogueUI/Balloon
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _on_dialogo_finalizado() -> void:
 	MusicManager.finalizar_override_dialogo()
-	get_tree().change_scene_to_file(ESCENA_TUTORIAL_MINIJUEGO_1)
+	get_tree().change_scene_to_file(ESCENA_TUTORIAL_MINIJUEGO_3)
 
 
 func _exit_tree() -> void:
