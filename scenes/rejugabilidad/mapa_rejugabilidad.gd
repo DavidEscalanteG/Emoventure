@@ -5,7 +5,7 @@ const ESCENA_MENU_PRINCIPAL: String = "res://scenes/menu_principal/menu_principa
 
 const MINIJUEGOS: Dictionary[String, String] = {
 	"Minijuego2": "res://scenes/mision_2_memorias/mision_2_memorias.tscn",
-	"Minijuego3": "res://scenes/mision_3_hachas/mision_3_hachas.tscn",
+	"Minijuego3": "res://scenes/mision_3_nuevo/minijuego3.tscn",
 	"Minijuego4": "res://scenes/mision_4_payasos/mapa_topos.tscn"
 }
 
