@@ -260,11 +260,8 @@ visible = false
 [node name="CanvasLayer" parent="Selección de personaje" index="0"]
 visible = false
 
-[node name="PanelContainer" parent="Selección de personaje/CanvasLayer" index="0"]
+[node name="PanelContainer" parent="Selección de personaje/CanvasLayer" index="1"]
 offset_right = 320.0
-
-[node name="BoxContainer5" parent="Selección de personaje/CanvasLayer/PanelContainer/VBoxContainer" index="4"]
-visible = false
 
 [node name="Label" parent="Selección de personaje/CanvasLayer/HSVColorEditor/HSVEditorPiel" index="3"]
 visible = false
