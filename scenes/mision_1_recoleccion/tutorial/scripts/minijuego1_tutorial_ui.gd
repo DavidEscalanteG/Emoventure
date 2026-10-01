@@ -33,7 +33,7 @@ func set_message(text: String) -> void:
 	message_label.text = text
 
 func set_step_indicator(current_step: int, total_steps: int) -> void:
-	step_label.text = "GUÍA DE CAMPO  •  %02d / %02d" % [current_step + 1, total_steps]
+	step_label.text = "GUÍA DE CAMPO  •  PASO %02d DE %02d" % [current_step + 1, total_steps]
 
 func set_navigation(step_index: int, _step_count: int, is_last_step: bool) -> void:
 	previous_button.disabled = step_index <= 0
@@ -77,6 +77,11 @@ func _apply_visual_style() -> void:
 	))
 	for button in [previous_button, next_button, start_button]:
 		button.custom_minimum_size.y = 52.0
+		button.add_theme_color_override("font_color", Color("#f5f7ff"))
+		button.add_theme_color_override("font_hover_color", Color.WHITE)
+		button.add_theme_color_override("font_pressed_color", Color("#ffd978"))
+		button.add_theme_color_override("font_disabled_color", Color("#aeb8cc"))
+		button.add_theme_font_size_override("font_size", 24)
 
 func _panel_style(fill: Color, border: Color, width: int, radius: int) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()

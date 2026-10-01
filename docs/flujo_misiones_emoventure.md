@@ -48,7 +48,7 @@ Documento de referencia del flujo narrativo/jugable según scripts y escenas act
 
 - Existe una ruta narrativa disponible de forma independiente en scripts:
   - `intro_mision_4.tscn` → `mision_4_payasos/mapa_topos.tscn`.
-- Los tutoriales de minijuego (`Minijuego1_Tutorial.tscn`, `Minijuego2_Tutorial.tscn`) forman parte del flujo principal antes de cada minijuego.
+- Los tutoriales de minijuego (`Minijuego1_Tutorial.tscn` a `Minijuego4_Tutorial.tscn`) forman parte del flujo principal antes de cada minijuego.
 - En rejugabilidad se entra directo al minijuego (sin pasar por tutorial).
 
 ## 5) Reglas técnicas clave del flujo

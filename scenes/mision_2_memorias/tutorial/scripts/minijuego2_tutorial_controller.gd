@@ -16,6 +16,7 @@ const STEP_CONFIRM := 3
 const STEP_PROGRESS := 4
 const STEP_CLOSURE := 5
 const STEP_COUNT := 6
+const STEP_END_DELAY := 0.3
 
 const PHOTO_INDEX_DEMO := 2
 const EMOTION_INDEX_DEMO := 0
@@ -46,7 +47,8 @@ func _go_to_step(step: int) -> void:
 	demo.reset_visual_state()
 	ui.set_step_indicator(_current_step, STEP_COUNT)
 	ui.set_navigation(_current_step, STEP_COUNT, _current_step == STEP_CLOSURE)
-	ui.set_continue_enabled(_can_continue_step(_current_step))
+	# Bloquear navegación hasta que la explicación visible haya terminado.
+	ui.set_continue_enabled(false)
 	ui.set_overlay_alpha(0.30)
 
 	match _current_step:
@@ -87,6 +89,9 @@ func _play_intro(token: int) -> void:
 	if not _is_token_valid(token):
 		return
 	await get_tree().create_timer(0.15).timeout
+	if _is_token_valid(token):
+		await get_tree().create_timer(STEP_END_DELAY).timeout
+		ui.set_continue_enabled(true)
 
 func _play_select_photo(token: int) -> void:
 	demo.show_photos_as_disabled()
@@ -95,7 +100,7 @@ func _play_select_photo(token: int) -> void:
 	if not _is_token_valid(token):
 		return
 
-	ui.set_continue_enabled(_has_completed_step_once(STEP_SELECT_PHOTO))
+	ui.set_continue_enabled(false)
 
 	var tween := demo.pulse_photo(PHOTO_INDEX_DEMO)
 	await tween.finished
@@ -103,6 +108,9 @@ func _play_select_photo(token: int) -> void:
 		return
 
 	_mark_step_completed_once(STEP_SELECT_PHOTO)
+	await get_tree().create_timer(STEP_END_DELAY).timeout
+	if not _is_token_valid(token):
+		return
 	ui.set_continue_enabled(true)
 
 func _play_select_emotion(token: int) -> void:
@@ -117,7 +125,7 @@ func _play_select_emotion(token: int) -> void:
 	if not _is_token_valid(token):
 		return
 
-	ui.set_continue_enabled(_has_completed_step_once(STEP_SELECT_EMOTION))
+	ui.set_continue_enabled(false)
 
 	var tween := demo.pulse_emotion(EMOTION_INDEX_DEMO)
 	await tween.finished
@@ -125,6 +133,9 @@ func _play_select_emotion(token: int) -> void:
 		return
 
 	_mark_step_completed_once(STEP_SELECT_EMOTION)
+	await get_tree().create_timer(STEP_END_DELAY).timeout
+	if not _is_token_valid(token):
+		return
 	ui.set_continue_enabled(true)
 
 func _play_confirm(token: int) -> void:
@@ -137,7 +148,7 @@ func _play_confirm(token: int) -> void:
 	if not _is_token_valid(token):
 		return
 
-	ui.set_continue_enabled(_has_completed_step_once(STEP_CONFIRM))
+	ui.set_continue_enabled(false)
 
 	var tween := demo.pulse_accept_button()
 	await tween.finished
@@ -147,6 +158,9 @@ func _play_confirm(token: int) -> void:
 	demo.mark_photo_completed(PHOTO_INDEX_DEMO)
 	demo.set_progress(1)
 	_mark_step_completed_once(STEP_CONFIRM)
+	await get_tree().create_timer(STEP_END_DELAY).timeout
+	if not _is_token_valid(token):
+		return
 	ui.set_continue_enabled(true)
 
 func _play_progress(token: int) -> void:
@@ -158,7 +172,7 @@ func _play_progress(token: int) -> void:
 	if not _is_token_valid(token):
 		return
 
-	ui.set_continue_enabled(_has_completed_step_once(STEP_PROGRESS))
+	ui.set_continue_enabled(false)
 
 	for index in range(Minijuego2TutorialDemo.TOTAL_FOTOS):
 		if not _is_token_valid(token):
@@ -174,6 +188,9 @@ func _play_progress(token: int) -> void:
 		return
 
 	_mark_step_completed_once(STEP_PROGRESS)
+	await get_tree().create_timer(STEP_END_DELAY).timeout
+	if not _is_token_valid(token):
+		return
 	ui.set_continue_enabled(true)
 
 func _play_closure(token: int) -> void:

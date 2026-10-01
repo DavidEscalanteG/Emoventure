@@ -19,6 +19,7 @@ const STEP_CLOSURE := 11
 const STEP_COUNT := 12
 
 const STEP_LOOP_DELAY := 1.1
+const STEP_END_DELAY := 0.3
 const ESCENA_FALLBACK_MINIJUEGO_1 := "res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn"
 
 var _current_step: int = STEP_INTRO
@@ -48,6 +49,7 @@ func _go_to_step(step: int) -> void:
 	ui.show_keys(false)
 	ui.set_step_indicator(_current_step, STEP_COUNT)
 	ui.set_navigation(_current_step, STEP_COUNT, _current_step == STEP_CLOSURE)
+	ui.set_continue_enabled(false)
 	dark_overlay.color = Color(0, 0, 0, 0.35)
 
 	match _current_step:
@@ -86,14 +88,16 @@ func _mark_step_completed_once(step: int) -> void:
 	_completed_steps_once[step] = true
 
 func _play_intro(token: int) -> void:
-	ui.set_message("En esta misión capturarás emociones, cada una altera tus controles de forma distinta.")
-	ui.set_continue_enabled(true)
+	ui.set_message("En esta misión capturarás emociones; cada una altera tus controles de forma distinta.")
 	if not _is_token_valid(token):
 		return
-	await get_tree().create_timer(0.15).timeout
+	await get_tree().create_timer(0.6).timeout
+	if _is_token_valid(token):
+		ui.set_continue_enabled(true)
 
 func _play_looped_step(token: int, step_id: int, callback: Callable) -> void:
-	var should_block_next_first_run := not _has_completed_step_once(step_id)
+	# Cada visita reproduce la demostración completa antes de permitir avanzar.
+	var should_block_next_first_run := true
 	while _is_token_valid(token):
 		demo.reset_world()
 		if should_block_next_first_run:
@@ -104,6 +108,9 @@ func _play_looped_step(token: int, step_id: int, callback: Callable) -> void:
 
 		if should_block_next_first_run:
 			_mark_step_completed_once(step_id)
+			await get_tree().create_timer(STEP_END_DELAY).timeout
+			if not _is_token_valid(token):
+				return
 			ui.set_continue_enabled(true)
 			should_block_next_first_run = false
 
