@@ -33,40 +33,48 @@ jobs:
         run: godot --version
 
       - name: Prepare CI logs
-        run: mkdir -p .ci-logs
+        run: mkdir -p ci-logs
+
+      - name: Import project resources
+        shell: bash
+        run: |
+          set -o pipefail
+          godot --headless --path . --editor --import --quit \
+            --log-file ci-logs/import-engine.log \
+            2>&1 | tee ci-logs/import.log
 
       - name: Validate scripts, scenes and resources
         shell: bash
         run: |
           set -o pipefail
           godot --headless --path . \
-            --log-file .ci-logs/resources-engine.log \
+            --log-file ci-logs/resources-engine.log \
             --script res://pruebas/validacion/validar_recursos.gd \
-            2>&1 | tee .ci-logs/resources.log
+            2>&1 | tee ci-logs/resources.log
 
       - name: Run gameplay integration tests
         shell: bash
         run: |
           set -o pipefail
           godot --headless --path . \
-            --log-file .ci-logs/gameplay-engine.log \
+            --log-file ci-logs/gameplay-engine.log \
             --script res://pruebas/validacion/probar_funcionamiento.gd \
-            2>&1 | tee .ci-logs/gameplay.log
+            2>&1 | tee ci-logs/gameplay.log
 
       - name: Validate questionnaire layout
         shell: bash
         run: |
           set -o pipefail
           godot --headless --path . \
-            --log-file .ci-logs/questionnaire-engine.log \
+            --log-file ci-logs/questionnaire-engine.log \
             res://pruebas/validacion/validar_legibilidad_cuestionarios.tscn \
-            2>&1 | tee .ci-logs/questionnaire.log
+            2>&1 | tee ci-logs/questionnaire.log
 
       - name: Upload diagnostic logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: godot-ci-logs-${{ github.run_number }}
-          path: .ci-logs/
+          path: ci-logs/
           if-no-files-found: warn
           retention-days: 14
