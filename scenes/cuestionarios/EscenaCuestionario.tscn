@@ -25,9 +25,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -783.0
-offset_top = -390.0
+offset_top = -478.0
 offset_right = 783.0
-offset_bottom = 566.0
+offset_bottom = 478.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_3yix8")
@@ -42,8 +42,9 @@ layout_mode = 2
 [node name="TituloLabel" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(1566, 106)
+custom_minimum_size = Vector2(900, 250)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 52
 text = "Para finalizar la misión, responde "
 horizontal_alignment = 1
@@ -52,21 +53,22 @@ autowrap_mode = 3
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 200
+theme_override_constants/separation = 150
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/margin_top = 30
 
 [node name="PreguntaRichTextLabel" type="RichTextLabel" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(901.65, 189.545)
+custom_minimum_size = Vector2(900, 200)
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("2_3yix8")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_constants/line_separation = -45
-theme_override_font_sizes/normal_font_size = 54
+theme_override_constants/line_separation = 6
+theme_override_font_sizes/normal_font_size = 58
 text = "1. Presto mucha atención a los sentimientos"
 scroll_active = false
 tab_size = 1
@@ -75,7 +77,7 @@ vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 19
+theme_override_constants/separation = 0
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]

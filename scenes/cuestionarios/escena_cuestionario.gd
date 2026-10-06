@@ -25,9 +25,10 @@ var indice: int = 0
 var puntaje_local: int = 0
 var finalizando: bool = false
 
-const FUENTE_PREGUNTA_BASE := 58
-const FUENTE_PREGUNTA_MEDIA := 58
-const FUENTE_PREGUNTA_LARGA := 58
+const FUENTE_PREGUNTA_MAXIMA := 58
+const FUENTE_PREGUNTA_MINIMA := 44
+const PASO_AJUSTE_FUENTE := 2
+const MARGEN_VERTICAL_PREGUNTA := 12.0
 
 @onready var panel_narrativa_post: PanelContainer = %PanelNarrativaPost
 @onready var label_titulo_narrativa_post: Label = %TituloNarrativaPost
@@ -98,19 +99,21 @@ func _restaurar_estado_desde_guardado_si_aplica() -> void:
 
 func mostrar_pregunta() -> void:
 	var pregunta_actual := preguntas[indice]
-	label_pregunta.add_theme_font_size_override("normal_font_size", _obtener_tamano_fuente_para_pregunta(pregunta_actual))
 	label_pregunta.text = pregunta_actual
+	_ajustar_tamano_pregunta(pregunta_actual)
 
 
-func _obtener_tamano_fuente_para_pregunta(pregunta: String) -> int:
-	var longitud := pregunta.length()
+func _ajustar_tamano_pregunta(pregunta: String) -> void:
+	var alto_disponible: float = maxf(1.0, label_pregunta.size.y - MARGEN_VERTICAL_PREGUNTA)
+	var tamano := FUENTE_PREGUNTA_MAXIMA
 
-	if longitud >= 120:
-		return FUENTE_PREGUNTA_LARGA
-	if longitud >= 90:
-		return FUENTE_PREGUNTA_MEDIA
+	while tamano >= FUENTE_PREGUNTA_MINIMA:
+		label_pregunta.add_theme_font_size_override("normal_font_size", tamano)
+		if label_pregunta.get_content_height() <= alto_disponible:
+			break
+		tamano -= PASO_AJUSTE_FUENTE
 
-	return FUENTE_PREGUNTA_BASE
+	label_pregunta.add_theme_font_size_override("normal_font_size", maxi(tamano, FUENTE_PREGUNTA_MINIMA))
 
 
 func responder(valor: int) -> void:
