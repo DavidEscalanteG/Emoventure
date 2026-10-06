@@ -20,14 +20,15 @@ func _scan(path: String) -> void:
 		if file.get_extension() not in ["gd", "tscn", "tres"]:
 			continue
 		var resource_path := path.path_join(file)
-		print("CHECK ", resource_path)
 		var resource := load(resource_path)
 		checked += 1
 		if resource == null:
+			print("FALLO AL CARGAR: ", resource_path)
 			failures += 1
 		elif resource is PackedScene:
 			var instance := (resource as PackedScene).instantiate()
 			if instance == null:
+				print("FALLO AL INSTANCIAR: ", resource_path)
 				failures += 1
 			else:
 				instance.free()
