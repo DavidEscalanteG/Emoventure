@@ -87,7 +87,7 @@ func _run() -> void:
 		_check(current_scene.preguntas.size() == 4, "Cuatro preguntas de la misión 3")
 		_check(current_scene.escena_siguiente != null, "El cuestionario tiene recompensa")
 	var saves := root.get_node("SaveManager")
-	_check(saves._debe_redirigir_mapa_rejugabilidad({"progreso_historia_bloqueado_100": true}, "res://scenes/mision_3_hachas/nivel7.tscn"), "Guardado completado redirige al mapa al cargar un subnivel")
+	_check(saves._debe_redirigir_mapa_rejugabilidad({"progreso_historia_bloqueado_100": true}, "res://scenes/mision_3_nuevo/minijuego3.tscn"), "Guardado completado redirige al mapa al cargar el minijuego 3 actual")
 	root.get_node("GameManager").activar_modo_rejugabilidad()
 	await _open("res://scenes/mision_3_hachas/nivel10.tscn")
 	current_scene.get_node("Meta")._on_body_entered(current_scene.get_node("Jugador"))
