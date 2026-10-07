@@ -38,11 +38,12 @@ func _iniciar_cuestionario() -> void:
 	# La escena que sigue después del cuestionario será la de la LLAVE
 	cuestionario.escena_siguiente = escena_llave
 
-	# Cambiamos la escena actual por el cuestionario
+# Cambiamos la escena actual por el cuestionario de forma segura
 	var root: Window = get_tree().root
 	var escena_actual: Node = get_tree().current_scene
-	if escena_actual:
-		escena_actual.queue_free()
 
 	root.add_child(cuestionario)
 	get_tree().current_scene = cuestionario
+
+	if escena_actual:
+		escena_actual.queue_free()

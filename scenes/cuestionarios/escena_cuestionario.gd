@@ -26,7 +26,7 @@ var puntaje_local: int = 0
 var finalizando: bool = false
 
 const FUENTE_PREGUNTA_MAXIMA := 58
-const FUENTE_PREGUNTA_MINIMA := 44
+const FUENTE_PREGUNTA_MINIMA := 32 # Reducido ligeramente para permitir mayor margen en textos muy largos
 const PASO_AJUSTE_FUENTE := 2
 const MARGEN_VERTICAL_PREGUNTA := 12.0
 
@@ -100,10 +100,12 @@ func _restaurar_estado_desde_guardado_si_aplica() -> void:
 func mostrar_pregunta() -> void:
 	var pregunta_actual := preguntas[indice]
 	label_pregunta.text = pregunta_actual
-	_ajustar_tamano_pregunta(pregunta_actual)
+	
+	# Usamos call_deferred para asegurarnos de que Godot calcule el tamaño del contenedor tras pintar el texto
+	call_deferred("_ajustar_tamano_pregunta", pregunta_actual)
 
 
-func _ajustar_tamano_pregunta(pregunta: String) -> void:
+func _ajustar_tamano_pregunta(_pregunta: String) -> void:
 	var alto_disponible: float = maxf(1.0, label_pregunta.size.y - MARGEN_VERTICAL_PREGUNTA)
 	var tamano := FUENTE_PREGUNTA_MAXIMA
 
@@ -153,6 +155,7 @@ func _finalizar() -> void:
 		var tree := get_tree()
 		if tree:
 			tree.change_scene_to_packed(escena_siguiente)
+
 
 func _mostrar_narrativa_post() -> void:
 	label_titulo_narrativa_post.text = titulo_narrativa_post
