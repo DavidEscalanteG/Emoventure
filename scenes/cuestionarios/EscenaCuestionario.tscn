@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgjfcq8bkynuh"]
+[gd_scene load_steps=7 format=3 uid="uid://bgjfcq8bkynuh"]
 
 [ext_resource type="Script" uid="uid://b6an8n502wk8v" path="res://scenes/cuestionarios/escena_cuestionario.gd" id="1_7itg5"]
 [ext_resource type="Theme" uid="uid://cc5n1x65884ar" path="res://assets/temas/tema_cuestionario.tres" id="2_3yix8"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://d3pi8n2c5rt3b" path="res://assets/assets_escena_pregunta/fondo_preguntas_pixel.jpeg" id="4_252um"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_252um"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twn3w"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -54,6 +56,7 @@ autowrap_mode = 3
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 150
+theme_override_styles/separator = SubResource("StyleBoxEmpty_twn3w")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -70,6 +73,7 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = 6
 theme_override_font_sizes/normal_font_size = 58
 text = "1. Presto mucha atención a los sentimientos"
+fit_content = true
 scroll_active = false
 tab_size = 1
 horizontal_alignment = 1

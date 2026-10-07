@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://27sqmmi5kd5e"
+uid="uid://barprevpsprkk"
 path="res://.godot/imported/mision_4.mp3-8cf82fb5e2d3a04c9f6a5dbd3d9b87be.mp3str"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/mision_4.mp3-8cf82fb5e2d3a04c9f6a5dbd3d9b87be
 [params]
 
 loop=false
-loop_offset=0.0
-bpm=0.0
+loop_offset=0
+bpm=0
 beat_count=0
 bar_beats=4

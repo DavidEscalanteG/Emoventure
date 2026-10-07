@@ -27,6 +27,9 @@ func aplicar_mascota_desde_global() -> void:
 	if coleccion_mascotas.is_empty():
 		return
 
+	# 1. FUERZA AL GATO PARA PRUEBAS:
+	# Comenta tu línea original y asigna el índice manualmente.
+	# Asumo que el gato está en la posición 1 de tu array 'coleccion_mascotas'.
 	var indice: int = DatosJugador.obtener_indice_mascota()
 
 	if indice < 0 or indice >= coleccion_mascotas.size():
@@ -34,6 +37,12 @@ func aplicar_mascota_desde_global() -> void:
 		DatosJugador.set_indice_mascota(indice)
 
 	sprite.sprite_frames = coleccion_mascotas[indice]
+
+	# 2. AJUSTE DE ALTURA AUTOMÁTICO (OPCIÓN 1):
+	if indice in [3, 4, 5]: 
+		sprite.position.y = 7 # Baja a todos los gatos
+	else:
+		sprite.position.y = 0  # Todos los perros se quedan en el centro
 
 	# 👇 FORZAMOS ESTADO INICIAL
 	estado_actual = "idle"
@@ -71,3 +80,4 @@ func _actualizar_animacion() -> void:
 
 	sprite.play(anim)
 	sprite.frame = 0
+	

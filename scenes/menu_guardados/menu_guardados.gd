@@ -4,12 +4,42 @@ const ESCENA_SELECCION_GENERO: String = "res://scenes/intro_seleccion_genero/int
 const ESCENA_MENU_PRINCIPAL: String = "res://scenes/menu_principal/menu_principal.tscn"
 const ESCENA_JUGADOR_PREVIEW: PackedScene = preload("res://jugador/jugador.tscn")
 const ANIMACION_PREVIEW: String = "idle_down"
+
+# Aquí están mapeadas TODAS las escenas y carpetas de tu lista cronológica
 const HITOS_PROGRESO: Array[Dictionary] = [
-	{"porcentaje": 100, "prefijos": ["res://scenes/rejugabilidad/"]},
-	{"porcentaje": 80, "prefijos": ["res://scenes/mision_4_payasos/", "res://scenes/intro_mision_4/"]},
-	{"porcentaje": 60, "prefijos": ["res://scenes/mision_3_hachas/", "res://scenes/intro_dialogo_5/"]},
-	{"porcentaje": 40, "prefijos": ["res://scenes/mision_2_memorias/", "res://scenes/intro_mision_2/", "res://scenes/intro_dialogo_4/"]},
-	{"porcentaje": 20, "prefijos": ["res://scenes/mision_1_recoleccion/", "res://scenes/transicion_post_mision_1/", "res://scenes/intro_dialogo_3/"]}
+	{"porcentaje": 100, "prefijos": [
+		"res://scenes/final/", 
+		"res://scenes/rejugabilidad/"
+	]},
+	{"porcentaje": 80, "prefijos": [
+		"res://scenes/intro_dialogo_10/", 
+		"res://scenes/intro_dialogo_12/"
+	]},
+	{"porcentaje": 60, "prefijos": [
+		"res://scenes/recompensa_mision_3/", 
+		"res://scenes/intro_dialogo_8/", 
+		"res://scenes/intro_dialogo_9/", 
+		"res://scenes/mision_4_payasos/"
+	]},
+	{"porcentaje": 40, "prefijos": [
+		"res://scenes/transicion_post_mision_2/", 
+		"res://scenes/intro_dialogo_6/", 
+		"res://scenes/intro_dialogo_7/", 
+		"res://scenes/mision_3_nuevo/"
+	]},
+	{"porcentaje": 20, "prefijos": [
+		"res://scenes/transicion_post_mision_1/", 
+		"res://scenes/intro_dialogo_3/", 
+		"res://scenes/intro_dialogo_4/", 
+		"res://scenes/intro_dialogo_5/", 
+		"res://scenes/intro_mision_2/", 
+		"res://scenes/mision_2_memorias/"
+	]},
+	{"porcentaje": 0, "prefijos": [
+		"res://scenes/intro_dialogo_1/", 
+		"res://scenes/intro_dialogo_2/", 
+		"res://scenes/mision_1_recoleccion/"
+	]}
 ]
 
 @onready var contenedor_partidas: VBoxContainer = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/ContenedorPartidas
@@ -258,13 +288,13 @@ func _descripcion_progreso(progreso: int) -> String:
 		100:
 			return "Aventura completada"
 		80:
-			return "Misión final"
+			return "El rescate final"
 		60:
-			return "Pasillo de la lengua filosa"
+			return "Cementerio de los payasos"
 		40:
-			return "Memorias eternas"
+			return "Pasillo de la lengua filosa"
 		20:
-			return "Laberinto emocional"
+			return "La casa embrujada"
 		_:
 			return "Inicio de la aventura"
 

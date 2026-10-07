@@ -1,12 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1fbuvpiej7a8"]
+[gd_scene load_steps=13 format=3 uid="uid://b1fbuvpiej7a8"]
 
 [ext_resource type="Script" uid="uid://dx0msb5cskx6d" path="res://scenes/menu_guardados/menu_guardados.gd" id="1_d6fpn"]
 [ext_resource type="Texture2D" uid="uid://dcfbcs5obnba6" path="res://assets/assets_menu_principal/fondo/fondo_menu_pixel.jpeg" id="2_ard82"]
 [ext_resource type="Shader" uid="uid://cmegfkrqjhxo8" path="res://scenes/configuracion/configuracion.gdshader" id="3_h5ocq"]
 [ext_resource type="Theme" uid="uid://dwacxx3nxjf5c" path="res://assets/temas/tema_botones.tres" id="4_h5ocq"]
-[ext_resource type="Texture2D" path="res://assets/llaves/key1.png" id="5_key1"]
-[ext_resource type="Texture2D" path="res://assets/llaves/key2.png" id="6_key2"]
-[ext_resource type="Texture2D" path="res://assets/llaves/key3.png" id="7_key3"]
+[ext_resource type="Texture2D" uid="uid://blr8oeiiwb0ht" path="res://assets/llaves/key1.png" id="5_key1"]
+[ext_resource type="Texture2D" uid="uid://d07lutkmy7x0p" path="res://assets/llaves/key2.png" id="6_key2"]
+[ext_resource type="Texture2D" uid="uid://dkh83chg32xlb" path="res://assets/llaves/key3.png" id="7_key3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3auta"]
 shader = ExtResource("3_h5ocq")
@@ -27,7 +27,16 @@ corner_radius_bottom_left = 26
 shadow_color = Color(0, 0, 0, 0.68)
 shadow_size = 18
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_separator"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.929, 0.706, 0.286, 0.55)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_empty"]
+content_margin_left = 32.0
+content_margin_top = 28.0
+content_margin_right = 32.0
+content_margin_bottom = 28.0
 bg_color = Color(0.047, 0.082, 0.157, 0.86)
 border_width_left = 2
 border_width_top = 2
@@ -38,26 +47,17 @@ corner_radius_top_left = 18
 corner_radius_top_right = 18
 corner_radius_bottom_right = 18
 corner_radius_bottom_left = 18
-content_margin_left = 32.0
-content_margin_top = 28.0
-content_margin_right = 32.0
-content_margin_bottom = 28.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scroll"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
 bg_color = Color(0.012, 0.024, 0.059, 0.55)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
-content_margin_left = 12.0
-content_margin_top = 12.0
-content_margin_right = 12.0
-content_margin_bottom = 12.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_separator"]
-bg_color = Color(0.929, 0.706, 0.286, 0.55)
-content_margin_top = 2.0
-content_margin_bottom = 2.0
 
 [node name="MenuGuardados" type="Control"]
 layout_mode = 3
@@ -181,7 +181,8 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = SubResource("StyleBoxFlat_empty")
-text = "Aún no hay aventuras guardadas.\nCrea una nueva partida para comenzar tu viaje."
+text = "Aún no hay aventuras guardadas.
+Crea una nueva partida para comenzar tu viaje."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -207,8 +208,8 @@ custom_minimum_size = Vector2(360, 66)
 layout_mode = 2
 theme = ExtResource("4_h5ocq")
 theme_override_colors/font_color = Color(0.08, 0.055, 0.12, 1)
-theme_override_colors/font_hover_color = Color(0.08, 0.055, 0.12, 1)
 theme_override_colors/font_pressed_color = Color(0.08, 0.055, 0.12, 1)
+theme_override_colors/font_hover_color = Color(0.08, 0.055, 0.12, 1)
 theme_override_font_sizes/font_size = 31
 text = "Crear nueva partida"
 
@@ -217,8 +218,8 @@ custom_minimum_size = Vector2(210, 66)
 layout_mode = 2
 theme = ExtResource("4_h5ocq")
 theme_override_colors/font_color = Color(0.08, 0.055, 0.12, 1)
-theme_override_colors/font_hover_color = Color(0.08, 0.055, 0.12, 1)
 theme_override_colors/font_pressed_color = Color(0.08, 0.055, 0.12, 1)
+theme_override_colors/font_hover_color = Color(0.08, 0.055, 0.12, 1)
 theme_override_font_sizes/font_size = 31
 text = "Volver"
 

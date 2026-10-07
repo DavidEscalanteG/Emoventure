@@ -99,7 +99,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_7il67")
 }],
 "loop": true,
-"name": &"espalda",
+"name": &"espalda_down",
 "speed": 10.0
 }, {
 "frames": [{
@@ -131,6 +131,5 @@ scale = Vector2(8, 8)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4146p")
-animation = &"espalda"
-frame_progress = 0.9431995
+animation = &"seria"
 offset = Vector2(-6, -18.385)

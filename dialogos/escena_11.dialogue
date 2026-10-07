@@ -1,28 +1,27 @@
 ~ start
 ~ escena_puerta_exterior
 # — ESCENA: El umbral hacia el exterior —
-El pasillo subterraneo termina de repente, abriéndose hacia una salida que da nuevamente al exterior, bajo un cielo crepuscular y un viento fresco que sacude el ambiente.
+# El personaje se detiene frente a la última cerradura, respirando hondo con la absoluta certeza de que el final está al alcance de la mano.
 
-El aire libre golpea el rostro con fuerza, trayendo de vuelta los lejanos sonidos del parque de diversiones y el eco de una música de carrusel que empieza a escucharse de fondo.
-Una extraña mezcla de alivio y adrenalina recorre el cuerpo; la recta final está cerca y cada paso se siente más ligero que el anterior.
+Narrador: El pasillo subterráneo termina de repente, abriéndose hacia una salida que da nuevamente al exterior, bajo un cielo crepuscular y un viento fresco que sacude el ambiente.
+Narrador: El aire libre golpea el rostro con fuerza, trayendo de vuelta los lejanos sonidos del parque de diversiones y el eco de una música de carrusel que empieza a escucharse de fondo.
+Narrador: Una extraña mezcla de alivio y adrenalina recorre el cuerpo; la recta final está cerca y cada paso se siente más ligero que el anterior.
 
 {{DatosJugador.nombre_mascota}}: (da un par de saltos alegres)
 
-Frente a ti se alza una última puerta. 
-La llave en tu mano pulsa con un calor reconfortante, sabiendo que este es el umbral definitivo.
-
-# El protagonista se detiene frente a la última cerradura, respirando hondo con la absoluta certeza de que el final está al alcance de la mano.
+Narrador: Frente a ti se alza una última puerta. 
+Narrador: La llave en tu mano pulsa con un calor reconfortante, sabiendo que este es el umbral definitivo.
 
 - [Girar la llave con decisión y abrir de par en par]
-	La cerradura cede con un sonido melodioso y limpio. La gran puerta se abre dejando pasar una luz brillante que ilumina todo el camino por delante.
+	Narrador: La cerradura cede con un sonido melodioso y limpio. La gran puerta se abre dejando pasar una luz brillante que ilumina todo el camino por delante.
 	{{DatosJugador.nombre_mascota}}: (corre hacia adelante)
 
 - [Contemplar el horizonte un segundo antes de abrir con cuidado]
-	Una última mirada atrás para reconocer el largo camino recorrido, antes de girar la llave suavemente y permitir que la luz del exterior lo envuelva todo.
+	Narrador: Una última mirada atrás para reconocer el largo camino recorrido, antes de girar la llave suavemente y permitir que la luz del exterior lo envuelva todo.
 	{{DatosJugador.nombre_mascota}}: (se sienta a tu lado un instante, observando el camino antes de avanzar contigo)
 
 # — TRANSICIÓN A LA ESCENA FINAL —
-El corazón late con fuerza. El viaje emocional está a punto de concluir.
+Narrador: El corazón late con fuerza. El viaje emocional está a punto de concluir.
 
 # do start_gameplay("nivel_final")
 => END

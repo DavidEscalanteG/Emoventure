@@ -75,7 +75,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_olwqr")
 }],
 "loop": true,
-"name": &"default",
+"name": &"default_down",
 "speed": 5.0
 }]
 
@@ -141,6 +141,7 @@ texture_filter = 1
 position = Vector2(1156.7213, 271.47543)
 scale = Vector2(3.348362, 3.348362)
 sprite_frames = SubResource("SpriteFrames_u2od3")
+animation = &"default_down"
 
 [node name="FondoNegro" type="Sprite2D" parent="."]
 visible = false

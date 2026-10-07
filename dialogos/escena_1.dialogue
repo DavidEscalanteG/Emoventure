@@ -3,31 +3,25 @@
 # El protagonista se acerca a la gitana con curiosidad.
 # Se usan funciones "do" para cambiar expresiones.
 
+Narrador: ¡Bienvenidas! ¡Bienvenidos! A la mágica tierra de EmoVenture. Dejen que sus emociones los lleven a lo más recóndito de su ser, y quién sabe, quizás encuentres más de lo que esperabas.
+Narrador: Deambulando por este parque de diversiones, sus colores, sonidos y olores atrapan tus sentidos, como si cada parte del parque invitara a tu ser a una extraña danza de emociones internas, una extraña montaña rusa interior.
+Narrador: De repente, una voz cautivadora rompe tu tren de pensamiento y te trae de vuelta.
 
-¡Bienvenidas! ¡Bienvenidos! A la mágica tierra de EmoVenture. Dejen que sus emociones los lleven a lo más recóndito de su ser, y quién sabe, quizás encuentres más de lo que esperabas.
-Deambulando por este parque de diversiones, sus colores, sonidos y olores atrapan tus sentidos, como si cada parte del parque invitara a tu ser a una extraña danza de emociones internas, una extraña montaña rusa interior.
- De repente, una voz cautivadora rompe tu tren de pensamiento y te trae de vuelta.
-
-#Gitana: [[Bienvenido|Oh, mira nada más|Al fin llegaste]], viajero de las emociones.
+#Gitana: [[Te damos la bienvenida|Oh, mira nada más|Al fin llegaste]], alma viajera de las emociones.
 #do DialogueActors.animacion_establecer_expresion("gitana", "adivina")
 
 ???: Acércate oh intrépida alma. ¿Te atreves a conocer tu mundo interno? ¿A develar el secreto que yace en tu mundo interior? Sígueme si no temes escuchar aquello que tus emociones tienen que decirte.
 
 #do DialogueActors.animacion_establecer_expresion("gitana", "neutral")
 
-
-
-- Sí, ¿Por qué no?
+- Sí, ¿por qué no?
 	#do DialogueActors.animacion_establecer_expresion("gitana", "adivina")
-	???: Sabia desición, adelante, pasa.
+	???: Sabia decisión, adelante, pasa.
 
-- No estoy seguro…
+- Tengo mis dudas…
 	#do DialogueActors.animacion_establecer_expresion("gitana", "neutral")
-	???: Ánimate, sólo para tí hoy será gratis la experiencia, entra.
+	???: Anímate, solo para ti hoy será gratis la experiencia, entra.
 
-
- do DialogueActors.animacion_establecer_animacion("jugador", "caminar", "derecha")
 
 do DialogueActors.animacion_establecer_animacion("jugador", "caminar", "derecha")
 do DialogueActors.movimiento_mover_y_esperar("jugador", Vector2(470,0), 3)
-

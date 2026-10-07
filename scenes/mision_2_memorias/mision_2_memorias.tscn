@@ -39,6 +39,24 @@
 [ext_resource type="SpriteFrames" uid="uid://mlosoquap83h" path="res://assets/assets_memorias_eternas/animacion/animacion_emociones.tres" id="39_emojis"]
 [ext_resource type="PackedScene" uid="uid://b72vpjuxw3fg2" path="res://scenes/mision_2_memorias/estela_particulas.tscn" id="40_estela"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_contador"]
+content_margin_left = 28.0
+content_margin_top = 10.0
+content_margin_right = 28.0
+content_margin_bottom = 10.0
+bg_color = Color(0.055, 0.035, 0.102, 0.88)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.949, 0.733, 0.337, 0.95)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 8
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1imss"]
 atlas = ExtResource("21_s0bfu")
 region = Rect2(0, 0, 96, 100)
@@ -92,6 +110,10 @@ texture = ExtResource("32_trrj2")
 region_rect = Rect2(0, 16, 16, 16)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_retroalimentacion"]
+content_margin_left = 28.0
+content_margin_top = 16.0
+content_margin_right = 28.0
+content_margin_bottom = 16.0
 bg_color = Color(0.047, 0.035, 0.102, 0.94)
 border_width_left = 4
 border_width_top = 4
@@ -102,30 +124,8 @@ corner_radius_top_left = 18
 corner_radius_top_right = 18
 corner_radius_bottom_right = 18
 corner_radius_bottom_left = 18
-content_margin_left = 28.0
-content_margin_top = 16.0
-content_margin_right = 28.0
-content_margin_bottom = 16.0
 shadow_color = Color(0, 0, 0, 0.65)
 shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_contador"]
-bg_color = Color(0.055, 0.035, 0.102, 0.88)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.949, 0.733, 0.337, 0.95)
-corner_radius_top_left = 18
-corner_radius_top_right = 18
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 18
-content_margin_left = 28.0
-content_margin_top = 10.0
-content_margin_right = 28.0
-content_margin_bottom = 10.0
-shadow_color = Color(0, 0, 0, 0.5)
-shadow_size = 8
 
 [node name="MemoriasEternasGameplay" type="Control"]
 layout_mode = 3
@@ -156,7 +156,6 @@ offset_top = 18.0
 offset_right = 570.0
 offset_bottom = 112.0
 grow_horizontal = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(1, 0.94, 0.78, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
 theme_override_constants/shadow_offset_x = 3
@@ -453,7 +452,6 @@ offset_top = 840.0
 offset_right = 697.0
 offset_bottom = 1020.0
 grow_horizontal = 2
-mouse_filter = 2
 theme_override_colors/font_color = Color(1, 0.976, 0.902, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
 theme_override_constants/shadow_offset_x = 3
