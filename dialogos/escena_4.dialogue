@@ -1,19 +1,19 @@
 ~ start
 # — ESCENA: Exterior de la primera carpa (Frente al portón) —
-# El protagonista se encuentra frente al pesado portón de la siguiente atracción. 
+# Tu personaje se encuentra frente al pesado portón de la siguiente atracción. 
 
-El aire alrededor del portón se siente frío y denso. La llave vibra levemente en la mano, reconociendo la pesada cerradura que bloquea el camino. 
-El bullicio habitual de la feria se desvanece por completo, dejando un silencio absoluto que invita a la duda.
+Narrador: El aire alrededor del portón se siente frío y denso. La llave vibra levemente en la mano, reconociendo la pesada cerradura que bloquea el camino. 
+Narrador: El bullicio habitual de la feria se desvanece por completo, dejando un silencio absoluto que invita a la duda.
 
-# El protagonista se acerca a la gran estructura para usar la llave obtenida tras el primer reto.
+# Tu personaje se acerca a la gran estructura para usar la llave obtenida tras el primer reto.
 
 - [Insertar la llave con firmeza y girarla de golpe]
-	El mecanismo cede con un chasquido seco y pesado. La puerta comienza a abrirse de par en par, revelando la oscuridad.
+	Narrador: El mecanismo cede con un chasquido seco y pesado. La puerta comienza a abrirse de par en par, revelando la oscuridad.
 
 - [Acercar la llave con cautela y tantear el mecanismo lentamente]
-	El pestillo cede con un movimiento suave pero firme. El acceso queda abierto, invitando a dar el siguiente paso hacia el interior.
+	Narrador: El pestillo cede con un movimiento suave pero firme. El acceso queda abierto, invitando a dar el siguiente paso hacia el interior.
 
 # — TRANSICIÓN A LA CASA DEL TERROR —
-Una respiración profunda antes de cruzar el umbral. El camino continua.
+Narrador: Una respiración profunda antes de cruzar el umbral. El camino continúa.
 
 # do start_gameplay("casa_del_terror")

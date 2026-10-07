@@ -1,9 +1,10 @@
 ~ final_aventura
 # — ESCENA: La Salida de la Feria —
+do DialogueActors.animacion_establecer_expresion("gitana", "iddle")
 
-La brisa fresca del exterior acaricia el rostro. Atrás han quedado las carpas oscuras, los payasos subterráneos y los laberintos de la memoria.
+Narrador: La brisa fresca del exterior acaricia el rostro. Atrás han quedado las carpas oscuras, los payasos subterráneos y los laberintos de la memoria.
 
-do DialogueActors.animacion_establecer_animacion("gitana", "sonrisa", "izquierda")
+#do DialogueActors.animacion_establecer_animacion("gitana", "sonrisa", "izquierda")
 Gitana: Sabía que lo lograrías. Nadie sale de esta feria siendo la misma persona que entró.
 Gitana: Te enfrentaste a tus miedos, reconociste tus emociones y no dejaste que la oscuridad te consumiera. Has hecho un trabajo excepcional.
 
@@ -11,10 +12,10 @@ Gitana: Te enfrentaste a tus miedos, reconociste tus emociones y no dejaste que 
 
 Gitana: Y veo que no sales con las manos vacías. Has recuperado a tu pequeña compañía.
 
- El viaje ha sido largo y agotador, pero el peso en el pecho por fin ha desaparecido por completo. El alivio es inmenso.
+Narrador: El viaje ha sido largo y agotador, pero el peso en el pecho por fin ha desaparecido por completo. El alivio es inmenso.
 
 - [Agacharte y darle un abrazo enorme a {{DatosJugador.nombre_mascota}}]
-	Te pones de rodillas y rodeas con tus brazos a tu fiel compañero, apretándolo contra ti. Saber que está a salvo es la mejor recompensa de toda la aventura.
+	Narrador: Te pones de rodillas y rodeas con tus brazos a tu fiel acompañante, apretándole contra ti. Saber que por fin está a salvo es la mejor recompensa de toda la aventura.
 	{{DatosJugador.nombre_mascota}}: (se acurruca en tu pecho, cerrando los ojos y emitiendo un sonido de pura felicidad)
 
 # do start_gameplay("creditos_finales")

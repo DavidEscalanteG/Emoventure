@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dew4nw73t2ccw"]
+[gd_scene load_steps=7 format=3 uid="uid://dew4nw73t2ccw"]
 
 [ext_resource type="Script" uid="uid://yvv1shga8gc0" path="res://scenes/intro_dialogo_12/intro_dialogo_12.gd" id="1_h1w7v"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="3_guk6u"]
 [ext_resource type="PackedScene" uid="uid://b4t1ghb0ibdtf" path="res://assets/personajes/mascota/mascota.tscn" id="4_fn15n"]
 [ext_resource type="Texture2D" uid="uid://cflm6l5tfcile" path="res://assets/fondo12.jpg" id="5_03drm"]
 [ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui.tscn" id="5_d2j2f"]
+[ext_resource type="PackedScene" uid="uid://dgbvgfgvxkfgn" path="res://assets/personajes/gitana/gitana.tscn" id="5_uhkre"]
 
 [node name="Escena7" type="Node2D"]
 script = ExtResource("1_h1w7v")
@@ -23,6 +24,10 @@ scale = Vector2(5, 5)
 [node name="Mascota" parent="Personajes" instance=ExtResource("4_fn15n")]
 position = Vector2(951, 934.00006)
 scale = Vector2(3, 3)
+
+[node name="gitana" parent="Personajes" instance=ExtResource("5_uhkre")]
+position = Vector2(1003.465, 818.915)
+scale = Vector2(0.75, 0.75)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
