@@ -8,7 +8,7 @@ const ESCENA_TUTORIAL_MINIJUEGO_3 := "res://scenes/mision_3_nuevo/tutorial/Minij
 
 func _ready() -> void:
 	
-	DialogueActors.registro_registrar_actor("gitana", $personajes/gitana)
+	DialogueActors.registro_registrar_actor("parca", $personajes/Parca)
 	dialogue_ui.dialogo_finalizado.connect(_on_dialogo_finalizado)
 
 	#await get_tree().create_timer(1.0).timeout

@@ -17,7 +17,7 @@ Narrador: El pánico comienza a apoderarse de la situación, ahogando la respira
 			
 			#do DialogueActors.animacion_establecer_animacion("frankenstein", "reposo", "izquierda")
 			# Una figura gigantesca y llena de cicatrices sale de entre las sombras.
-			
+			do DialogueActors.animacion_establecer_animacion("fran", "default", "abajo")
 			Frankenstein: Uuuurgh... No grites tan fuerte... Me duelen las costuras de la cabeza...
 			
 			# El protagonista retrocede un paso de golpe, alerta ante el enorme monstruo.

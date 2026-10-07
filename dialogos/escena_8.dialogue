@@ -2,9 +2,7 @@
 # — ESCENA: Cuarto de las Memorias Eternas —
 # El ambiente está rodeado de fotografías antiguas y una atmósfera inquietante.
 
-do DialogueActors.animacion_establecer_animacion("payaso", "risa", "izquierda")
 Payaso: ¡JA, JA, JA, JAAA! ¡Mirémosle la cara al tiempo! ¡Bienvenido, viajero, a la trituradora de la nostalgia!
-do DialogueActors.animacion_establecer_animacion("payaso", "reposo", "izquierda")
 
 *El cuarto se ilumina con destellos parpadeantes. Cientos de fotografías antiguas cubren las paredes, retorciéndose levemente como si respiraran.
 
@@ -13,12 +11,10 @@ do DialogueActors.animacion_establecer_animacion("payaso", "reposo", "izquierda"
 
 Payaso: ¡Uy, mira nada más a nuestra pequeña bestia, a {{DatosJugador.nombre_mascota}}! ¡Ese pelaje huele a miedo fresco, me encanta! ¡JA, JA!
 
-do DialogueActors.animacion_establecer_animacion("payaso", "hablando", "izquierda")
 Payaso: Estás en el Cuarto de las Memorias Eternas. ¡Aquí los recuerdos no descansan, *gritan*! Se quedan atrapados, pudriéndose bonitos.
 Payaso: Y tú... tú estás rodeado de tus propias cicatrices de papel. Son tus fotos, ¿ves? ¡Tus pequeños trozos de pasado!
 
 - (Examinar una de las fotografías con inquietud)
-	do DialogueActors.animacion_establecer_animacion("payaso", "risa", "izquierda")
 	Payaso: ¡Eso es! ¡Ábrete los ojos por la fuerza! Cada foto encierra una emoción que te carcome por dentro.
 {{DatosJugador.nombre_mascota}}: (se encoge un poco)
 

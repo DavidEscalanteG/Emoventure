@@ -2,7 +2,7 @@
 # — ESCENA: Exterior de la primera carpa —
 # El protagonista sale exhausto, mirando la llave que acaba de conseguir.
 
-do DialogueActors.animacion_establecer_animacion("mujer_lagarto", "espalda")
+do DialogueActors.animacion_establecer_animacion("mujer_lagarto", "espalda","abajo")
 # La Mujer Lagarto está de espaldas, intentando pasar desapercibida o dándole pena mirar directamente.
 
 ...

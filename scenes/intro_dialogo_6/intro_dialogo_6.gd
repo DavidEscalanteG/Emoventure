@@ -7,7 +7,6 @@ const ESCENA_TUTORIAL_MINIJUEGO_1 := "res://scenes/intro_dialogo_7/intro_dialogo
 @onready var dialogue_ui: Node = $DialogueUI/Balloon
 
 func _ready() -> void:	
-	DialogueActors.registro_registrar_actor("gitana", $personajes/gitana)
 	dialogue_ui.dialogo_finalizado.connect(_on_dialogo_finalizado)
 
 	#await get_tree().create_timer(1.0).timeout

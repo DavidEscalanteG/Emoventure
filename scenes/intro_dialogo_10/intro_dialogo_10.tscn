@@ -76,7 +76,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_olwqr")
 }],
 "loop": true,
-"name": &"default",
+"name": &"default_down",
 "speed": 5.0
 }]
 
@@ -90,8 +90,19 @@ texture = ExtResource("2_426k2")
 
 [node name="Personajes" type="Node2D" parent="."]
 
+[node name="Fran" type="Node2D" parent="Personajes"]
+position = Vector2(0, 32.605)
+scale = Vector2(2.48, 2.48)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Personajes/Fran"]
+texture_filter = 1
+position = Vector2(237.50003, 292.49796)
+scale = Vector2(3.348362, 3.348362)
+sprite_frames = SubResource("SpriteFrames_vap0x")
+animation = &"default_down"
+
 [node name="JugadorCinematico" parent="Personajes" instance=ExtResource("3_45dby")]
-position = Vector2(460, 933)
+position = Vector2(460, 964.07)
 
 [node name="Mascota" parent="Personajes" instance=ExtResource("4_vap0x")]
 position = Vector2(1003.99994, 637.00006)
@@ -106,15 +117,6 @@ texture = ExtResource("5_c85ek")
 texture_filter = 1
 position = Vector2(1588, 727)
 texture = ExtResource("6_426k2")
-
-[node name="Fran" type="Node2D" parent="Personajes"]
-scale = Vector2(1.525, 1.525)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Personajes/Fran"]
-texture_filter = 1
-position = Vector2(389.5082, 520.6558)
-scale = Vector2(3.348362, 3.348362)
-sprite_frames = SubResource("SpriteFrames_vap0x")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

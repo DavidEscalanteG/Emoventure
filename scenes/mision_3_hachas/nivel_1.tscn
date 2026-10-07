@@ -5,15 +5,12 @@
 [ext_resource type="Script" uid="uid://jbnohsvm0qx2" path="res://scenes/mision_3_hachas/meta.gd" id="3_u4mhi"]
 [ext_resource type="Texture2D" uid="uid://bxbtofqd73e20" path="res://scenes/mision_3_hachas/Cat spreadsheets/1_Cat_Idle-Sheet.png" id="4_nsmxh"]
 [ext_resource type="Texture2D" uid="uid://coq3u4o4mvnf0" path="res://assets/assets_escena_3/paredes/Terrain (32x32).png" id="4_yoaq4"]
-
 [ext_resource type="Texture2D" uid="uid://dqbwfhjgiy266" path="res://scenes/mision_3_hachas/Cat spreadsheets/3_Cat_Jump-Sheet.png" id="5_qacqm"]
-[ext_resource type="PackedScene" uid="uid://ctvf8j26ibumk" path="res://scenes/mision_3_hachas/Parca.tscn" id="5_qj5pm"]
+[ext_resource type="PackedScene" uid="uid://ctvf8j26ibumk" path="res://assets/personajes/parca/Parca.tscn" id="5_qj5pm"]
 [ext_resource type="Texture2D" uid="uid://dnpqoke6a0h0b" path="res://scenes/mision_3_hachas/Cat spreadsheets/2_Cat_Run-Sheet.png" id="6_bam44"]
 [ext_resource type="Texture2D" uid="uid://cwwhe50r6pv8x" path="res://scenes/mision_3_hachas/Medieval_tiles_free_2.0.png" id="8_2ylfr"]
 [ext_resource type="Texture2D" uid="uid://dfudn0d5wgod1" path="res://scenes/mision_3_hachas/Medieval_props_free.png" id="10_nsmxh"]
-
-
-[ext_resource type="Script" path="res://scenes/mision_3_hachas/mision_3_hachas.gd" id="20_controller"]
+[ext_resource type="Script" uid="uid://dkxhswm124pb6" path="res://scenes/mision_3_hachas/mision_3_hachas.gd" id="20_controller"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tn4fu"]
 size = Vector2(109, 109)

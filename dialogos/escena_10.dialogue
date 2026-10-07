@@ -2,7 +2,7 @@
 # — ESCENA: Tras la puerta de hierro —
 # El ambiente se congela por completo al cruzar el umbral. Una figura encapuchada y tétrica aguarda en el centro de la sala.
 
-do DialogueActors.animacion_establecer_animacion("parca", "jojospose")
+do DialogueActors.animacion_establecer_animacion("parca", "jojopose", "abajo")
 # La Parca adopta una postura teatral y amenazante, rodeada de un aura fría.
 
 {{DatosJugador.nombre_mascota}}: (con los pelos de punta)
@@ -10,12 +10,12 @@ do DialogueActors.animacion_establecer_animacion("parca", "jojospose")
 Parca: ¡Vaya, vaya! Otro incauto que viene a entregar su alma al sufrimiento eterno. ¿Te crees muy valiente por haber llegado hasta aquí? ¡Prepárate, porque lo que sigue es una agonía sin fin! 
 Parca: Te vas a arrepentir de haber abierto esa puerta. ¡Vas a querer rendirte, llorar y suplicar clemencia cuando los obstáculos te destrocen uno a uno!
 
-do DialogueActors.animacion_establecer_animacion("parca", "emotiza")
+do DialogueActors.animacion_establecer_animacion("parca", "emotiza", "abajo")
 Parca: ¡Je, je, je! ¿Qué me dices? ¿Te rindes ahora mismo o prefieres pasar vergüenza antes de morir?
 
 # El protagonista duda ante la aterradora advertencia y abre la boca para intentar responder...
 
-do DialogueActors.animacion_establecer_animacion("parca", "bailecito")
+do DialogueActors.animacion_establecer_animacion("parca", "bailecito", "abajo")
 Parca: ¡Ay, da igual lo que vayas a decir! Me aburren las respuestas largas. 
 Parca: A ver... la verdad me das un poco de lástima. No durarías ni cinco segundos con esa forma tan torpe.
 

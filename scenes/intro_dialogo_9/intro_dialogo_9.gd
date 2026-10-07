@@ -8,8 +8,8 @@ const SIGUIENTE_ESCENA := "res://scenes/mision_4_payasos/tutorial/Minijuego4_Tut
 
 func _ready() -> void:
 	
-	DialogueActors.registro_registrar_actor("fran", $Personajes/Fran)
-	DialogueActors.registro_registrar_actor("jugador", $Personajes/JugadorCinematico)
+	DialogueActors.registro_registrar_actor("fran", $personajes/Fran)
+	DialogueActors.registro_registrar_actor("jugador", $personajes/JugadorCinematico)
 	dialogue_ui.dialogo_finalizado.connect(_on_dialogo_finalizado)
 	
 	#await get_tree().create_timer(1.0).timeout

@@ -1,8 +1,8 @@
 ~ rescate_mascota
 # — ESCENA: La Carpa Principal (El Rescate) —
 
-El interior de la carpa huele a aserrín y humedad. En el centro de la pista, el Domador alza su látigo con una sonrisa arrogante.
-A sus pies, una pesada jaula de metal reforzado aprisiona a la pequeña criatura, que tiembla en un rincón oscuro.
+Narrador: El interior de la carpa huele a aserrín y humedad. En el centro de la pista, el Domador alza su látigo con una sonrisa arrogante.
+Narrador: A sus pies, una pesada jaula de metal reforzado aprisiona a la pequeña criatura, que tiembla en un rincón oscuro.
 
 #do DialogueActors.animacion_establecer_animacion("domador", "arrogante", "izquierda")
 Domador: ¡Silencio, alimaña! A partir de hoy, serás la estrella principal de mi espectáculo de los horrores. ¡Aprenderás a obedecer al gran Domador!
@@ -20,4 +20,7 @@ Frankenstein: Uuuurgh... Hablas demasiado fuerte, hombre del sombrero. Me duelen
 
 Domador: ¡¿Qué?! ¡Tú deberías estar pudriéndote en la casa del terror, pedazo de chatarra cosida!
 
+do DialogueActors.animacion_establecer_animacion("fran", "default", "abajo")
+
 Frankenstein: Uuuurgh... No me gusta tu tono. Y no me gusta esa jaula.
+Narrador: El domador aterrorizado ve como Frankenstein se acerca a darle una paliza

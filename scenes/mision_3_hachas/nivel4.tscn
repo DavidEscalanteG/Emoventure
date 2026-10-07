@@ -1,8 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://1cghhy8e2xlw"]
 
 [ext_resource type="PackedScene" uid="uid://bvrro5sf275k5" path="res://scenes/mision_3_hachas/nivel3.tscn" id="1_gjk0e"]
-
-[ext_resource type="PackedScene" uid="uid://ctvf8j26ibumk" path="res://scenes/mision_3_hachas/Parca.tscn" id="2_parca"]
+[ext_resource type="PackedScene" uid="uid://ctvf8j26ibumk" path="res://assets/personajes/parca/Parca.tscn" id="2_parca"]
 
 [node name="Nivel 1" instance=ExtResource("1_gjk0e")]
 

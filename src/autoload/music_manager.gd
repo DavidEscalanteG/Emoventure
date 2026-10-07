@@ -325,7 +325,6 @@ func _validar_pistas_registradas() -> void:
 	for extension in faltantes.keys():
 		detalles.append("%s: [%s]" % [extension, ", ".join(faltantes[extension])])
 
-	push_warning("[MusicManager] Pistas faltantes al iniciar: %s" % " | ".join(detalles))
 
 
 func _obtener_bus_musica() -> String:
