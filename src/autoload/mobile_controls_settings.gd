@@ -1,5 +1,7 @@
 extends Node
 
+signal settings_changed
+
 const SETTINGS_PATH := "user://mobile_controls.cfg"
 
 const MODE_CRUCETA := "cruceta"
@@ -15,7 +17,12 @@ func _ready() -> void:
 
 func set_controls_enabled(enabled: bool) -> void:
 	controls_enabled = enabled
+	if not enabled:
+		control_mode = MODE_OFF
+	elif control_mode == MODE_OFF:
+		control_mode = MODE_CRUCETA
 	_save_settings()
+	settings_changed.emit()
 
 
 func set_control_mode(mode: String) -> void:
@@ -24,6 +31,15 @@ func set_control_mode(mode: String) -> void:
 	control_mode = mode
 	controls_enabled = mode != MODE_OFF
 	_save_settings()
+	settings_changed.emit()
+
+
+func should_show_touch_controls() -> bool:
+	return controls_enabled and is_touch_device()
+
+
+func is_touch_device() -> bool:
+	return OS.has_feature("mobile") or DisplayServer.is_touchscreen_available()
 
 
 func _save_settings() -> void:
@@ -39,5 +55,7 @@ func _load_settings() -> void:
 		return
 	controls_enabled = bool(config.get_value("mobile_controls", "enabled", true))
 	control_mode = String(config.get_value("mobile_controls", "mode", MODE_CRUCETA))
+	if control_mode not in [MODE_CRUCETA, MODE_JOYSTICK, MODE_OFF]:
+		control_mode = MODE_CRUCETA
 	if control_mode == MODE_OFF:
 		controls_enabled = false

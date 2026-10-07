@@ -8,7 +8,7 @@ const ACTION_UI_LEFT: String = "ui_left"
 const ACTION_UI_RIGHT: String = "ui_right"
 
 const JOYSTICK_MAX_RADIUS_FACTOR: float = 0.4
-const ACTION_STRENGTH_DEADZONE: float = 0.1
+const ACTION_STRENGTH_DEADZONE: float = 0.18
 
 @onready var cruceta: Control = $UI/Cruceta
 @onready var joystick: Control = $UI/Joystick
@@ -23,9 +23,11 @@ var _last_mode: String = ""
 
 
 func _ready() -> void:
-	visible = OS.has_feature("mobile") and MobileControlsSettings.controls_enabled
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	visible = MobileControlsSettings.should_show_touch_controls()
 	set_process(true)
 	_knob_center = joystick_knob.position
+	MobileControlsSettings.settings_changed.connect(_apply_mode)
 	_apply_mode()
 
 
@@ -38,7 +40,7 @@ func _process(_delta: float) -> void:
 
 func _apply_mode() -> void:
 	var mode: String = MobileControlsSettings.control_mode
-	visible = OS.has_feature("mobile") and MobileControlsSettings.controls_enabled
+	visible = MobileControlsSettings.should_show_touch_controls() and not get_tree().paused
 	cruceta.visible = mode == MobileControlsSettings.MODE_CRUCETA
 	joystick.visible = mode == MobileControlsSettings.MODE_JOYSTICK
 	if mode != _last_mode:
@@ -90,6 +92,8 @@ func _update_joystick(screen_pos: Vector2) -> void:
 		delta = delta.normalized() * radius
 
 	_joystick_vector = delta / radius
+	if _joystick_vector.length() < ACTION_STRENGTH_DEADZONE:
+		_joystick_vector = Vector2.ZERO
 	joystick_knob.global_position = center + delta - (joystick_knob.size / 2.0)
 	_apply_axis_to_actions(_joystick_vector)
 

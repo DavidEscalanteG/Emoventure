@@ -59,7 +59,7 @@ offset_right = 1286.0
 offset_bottom = 428.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 70
-text = "Configuración de Audio"
+text = "Configuración"
 horizontal_alignment = 1
 
 [node name="Master" type="HBoxContainer" parent="."]
@@ -155,22 +155,24 @@ step = 0.01
 value = 1.0
 
 [node name="Controles" type="HBoxContainer" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 634.0
-offset_top = 569.0
-offset_right = 1286.0
-offset_bottom = 600.0
+offset_left = 608.0
+offset_top = 754.0
+offset_right = 1260.0
+offset_bottom = 819.0
 
 [node name="LabelControles" type="Label" parent="Controles"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "Controles móvil"
 
 [node name="OptionControles" type="OptionButton" parent="Controles"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
 
 [node name="BotonesPrueba" type="HBoxContainer" parent="."]
 visible = false
@@ -196,9 +198,9 @@ text = "Probar SFX"
 [node name="BtnVolver" type="Button" parent="."]
 layout_mode = 0
 offset_left = 611.0
-offset_top = 784.0
+offset_top = 850.0
 offset_right = 1263.0
-offset_bottom = 853.0
+offset_bottom = 919.0
 theme = ExtResource("6_6w621")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32

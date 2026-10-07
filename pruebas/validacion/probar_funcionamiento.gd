@@ -108,6 +108,14 @@ func _run() -> void:
 	_check(not Input.is_action_pressed("move_right"), "La cruceta libera la pulsación")
 	var touch: TouchScreenButton = controls.get_node("UI/Cruceta/BtnRight")
 	_check(touch.texture_normal != null and touch.shape != null, "La cruceta tiene imagen y zona táctil")
+	settings.control_mode = settings.MODE_JOYSTICK
+	controls._apply_mode()
+	var joystick_base: Control = controls.get_node("UI/Joystick/JoystickBase")
+	var joystick_center := joystick_base.global_position + joystick_base.size / 2.0
+	controls._update_joystick(joystick_center + Vector2(80.0, 0.0))
+	_check(Input.get_action_strength("move_right") > 0.5, "El joystick conserva movimiento analógico")
+	controls._reset_joystick()
+	_check(not Input.is_action_pressed("move_right"), "El joystick vuelve a neutro al soltar")
 	controls.free()
 	settings.control_mode = previous_mode
 
