@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://do2t7m1fedhak"
+uid="uid://b53ys7adtrcaf"
 path="res://.godot/imported/casa_embrujada.mp3-ac0fa6ca7bd138d82de8538123fde597.mp3str"
 
 [deps]
@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/casa_embrujada.mp3-ac0fa6ca7bd138d82de8538123
 
 [params]
 
-loop=true
-loop_offset=0.0
-bpm=0.0
+loop=false
+loop_offset=0
+bpm=0
 beat_count=0
 bar_beats=4

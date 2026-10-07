@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://cl4a2b4f3l6de"
+uid="uid://c3fbv73p37fee"
 path="res://.godot/imported/transicion_llave.mp3-5d90d531b45167be18de2f6a305d7c0a.mp3str"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/transicion_llave.mp3-5d90d531b45167be18de2f6a
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

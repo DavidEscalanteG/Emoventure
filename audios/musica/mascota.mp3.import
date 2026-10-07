@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://ld3ixhuhpogm"
+uid="uid://b7353ourbaqed"
 path="res://.godot/imported/mascota.mp3-ca1c6994e1bdea7c0cd999c9344d2bb9.mp3str"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/mascota.mp3-ca1c6994e1bdea7c0cd999c9344d2bb9.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

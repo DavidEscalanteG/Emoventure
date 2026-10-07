@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://bpb2clwp3iwy0"
+uid="uid://drxb4ehw3m866"
 path="res://.godot/imported/puerta.mp3-ed0ebfa6da0c20e3b15c1e862f7ed94a.mp3str"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/puerta.mp3-ed0ebfa6da0c20e3b15c1e862f7ed94a.m
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0

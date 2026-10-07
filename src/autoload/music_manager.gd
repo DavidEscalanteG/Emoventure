@@ -299,7 +299,12 @@ func _actualizar_musica_escena_actual(forzar_restauracion: bool = false) -> void
 		return
 
 	# Al cambiar de escena, el script llama automáticamente a reproducir con el Fade predeterminado de 1.0 seg
-	reproducir_clave(clave)
+	# Si la escena es una transición de llave, la ponemos con 0.0 segundos de fade (entra de golpe)
+	if clave == "transicion_llave":
+		reproducir_clave(clave, 0.0, 0.0)
+	else:
+		# Para cualquier otra escena, usa el fade normal de 1 segundo
+		reproducir_clave(clave)
 
 
 func _validar_pistas_registradas() -> void:
