@@ -15,7 +15,7 @@ Narrador: El pánico comienza a apoderarse de la situación, ahogando la respira
 		- [Lanzar un tercer y último grito desgarrador]
 			Narrador: El eco se apaga lentamente... y entonces, unos pasos gigantes y pesados hacen temblar el suelo cercano.
 			
-			do DialogueActors.animacion_establecer_animacion("frankenstein", "reposo", "izquierda")
+			#do DialogueActors.animacion_establecer_animacion("frankenstein", "reposo", "izquierda")
 			# Una figura gigantesca y llena de cicatrices sale de entre las sombras.
 			
 			Frankenstein: Uuuurgh... No grites tan fuerte... Me duelen las costuras de la cabeza...
@@ -27,14 +27,14 @@ Narrador: El pánico comienza a apoderarse de la situación, ahogando la respira
 			Frankenstein: Un hombre muy malo. Llevaba un látigo y un sombrero brillante. Un domador.
 			Frankenstein: Lo metió en una jaula de metal y se lo llevó arrastrando hacia la carpa principal.
 			
-			do DialogueActors.animacion_establecer_animacion("frankenstein", "hablando", "izquierda")
+			#do DialogueActors.animacion_establecer_animacion("frankenstein", "hablando", "izquierda")
 			Frankenstein: Esa cosita me agradó... No me gruñó como los demás. Te ayudaré a recuperarlo. Romperemos su jaula en pedazos.
 			
 			# El protagonista asiente con determinación, sintiendo un gran alivio por la inesperada ayuda.
 			
 			Narrador: De repente, la tierra bajo los pies comienza a sacudirse violentamente. Un coro de risas distorsionadas brota desde el subsuelo.
 			
-			do DialogueActors.animacion_establecer_animacion("frankenstein", "alerta", "izquierda")
+			#do DialogueActors.animacion_establecer_animacion("frankenstein", "alerta", "izquierda")
 			Frankenstein: Uuuurgh... Problemas. Los payasos subterráneos están despertando.
 			Frankenstein: ¡Cuidado a tus pies! ¡Están saliendo de la tierra!
 			

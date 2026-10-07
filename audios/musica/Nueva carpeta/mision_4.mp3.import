@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://barprevpsprkk"
+path="res://.godot/imported/mision_4.mp3-049b7a1f82c9c11c46b48cb182ebaf5a.mp3str"
+
+[deps]
+
+source_file="res://audios/musica/Nueva carpeta/mision_4.mp3"
+dest_files=["res://.godot/imported/mision_4.mp3-049b7a1f82c9c11c46b48cb182ebaf5a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

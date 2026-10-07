@@ -3,7 +3,7 @@
 
 La brisa fresca del exterior acaricia el rostro. Atrás han quedado las carpas oscuras, los payasos subterráneos y los laberintos de la memoria.
 
-do DialogueActors.animacion_establecer_animacion("gitana", "sonrisa", "izquierda")
+#do DialogueActors.animacion_establecer_animacion("gitana", "sonrisa", "izquierda")
 Gitana: Sabía que lo lograrías. Nadie sale de esta feria siendo la misma persona que entró.
 Gitana: Te enfrentaste a tus miedos, reconociste tus emociones y no dejaste que la oscuridad te consumiera. Has hecho un trabajo excepcional.
 

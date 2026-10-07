@@ -6,7 +6,6 @@ const SIGUIENTE_ESCENA := "res://scenes/intro_dialogo_12/intro_dialogo_12.tscn"
 @onready var dialogue_ui: Node = $DialogueUI/Balloon
 
 func _ready() -> void:
-	MusicManager.iniciar_override_dialogo(MusicManager.AMBIENTE_TIERNURA)
 	
 	DialogueActors.registro_registrar_actor("jugador", $Personajes/JugadorCinematico)
 	DialogueActors.registro_registrar_actor("mascota", $Personajes/Mascota)
@@ -16,6 +15,3 @@ func _ready() -> void:
 	
 func _on_dialogo_finalizado() -> void:
 	get_tree().change_scene_to_file(SIGUIENTE_ESCENA)
-
-func _exit_tree() -> void:
-	MusicManager.finalizar_override_dialogo()

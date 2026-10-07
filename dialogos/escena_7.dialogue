@@ -6,6 +6,7 @@ El silencio dentro de la estructura es absoluto, interrumpido únicamente por el
 A lo lejos, entre las sombras más profundas del fondo, una silueta estática comienza a definirse.
 Unos pasos extraños y ligeros resuenan de pronto contra el suelo, acercándose con rapidez desde la oscuridad
 do DialogueActors.animacion_establecer_animacion("mascota", "caminar", "izquierda")
+do MusicManager.reproducir_clave("mascota", 0.0, 2.0)
 do DialogueActors.movimiento_mover_y_esperar("mascota", Vector2(-621,0), 5)
 do DialogueActors.animacion_establecer_animacion("mascota", "reposo", "izquierda")
 

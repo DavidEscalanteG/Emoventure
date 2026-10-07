@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/personalizacion.mp3-494b3704a85871bff0099b989
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

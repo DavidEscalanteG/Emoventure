@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmbfa36lubrqa"
+path="res://.godot/imported/mision_3.mp3-1cea0c9ed82f969b46cafa86cc92eef5.mp3str"
+
+[deps]
+
+source_file="res://audios/musica/Nueva carpeta/mision_3.mp3"
+dest_files=["res://.godot/imported/mision_3.mp3-1cea0c9ed82f969b46cafa86cc92eef5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

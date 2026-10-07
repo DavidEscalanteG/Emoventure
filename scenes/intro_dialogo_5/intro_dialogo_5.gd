@@ -9,7 +9,7 @@ const SIGUIENTE_ESCENA := "uid://607ynm435j8g" #escena_8.tcsn
 @onready var error_nombre_mascota: Label = $UI/PanelNombreMascota/MarginContainer/VBoxContainer/ErrorNombreMascota
 
 func _ready() -> void:
-	MusicManager.iniciar_override_dialogo(MusicManager.AMBIENTE_TIERNURA)
+	MusicManager.iniciar_override_dialogo(MusicManager.AMBIENTE_TENSION)
 	_inicializar_nombre_mascota()
 	panel_nombre_mascota.visible = false
 	

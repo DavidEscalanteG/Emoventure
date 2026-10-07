@@ -235,3 +235,17 @@ func _restaurar_cursor_predeterminado() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if cursor_martillo:
 		cursor_martillo.visible = false
+		
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PAUSED:
+		# Al pausar el juego, mostramos el cursor real de la computadora y ocultamos el sprite del martillo
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		if cursor_martillo:
+			cursor_martillo.visible = false
+			
+	elif what == NOTIFICATION_UNPAUSED:
+		# Al quitar la pausa, si la misión sigue activa, volvemos a ocultar el cursor y mostramos el martillo
+		if not mision_finalizada:
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+			if cursor_martillo:
+				cursor_martillo.visible = true

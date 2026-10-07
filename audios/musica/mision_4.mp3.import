@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/mision_4.mp3-8cf82fb5e2d3a04c9f6a5dbd3d9b87be
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0.0
 bpm=0.0
 beat_count=0

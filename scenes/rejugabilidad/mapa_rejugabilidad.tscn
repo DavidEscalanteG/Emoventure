@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl0a7l4a8s7m1"]
+[gd_scene load_steps=5 format=3 uid="uid://dl0a7l4a8s7m1"]
 
 [ext_resource type="Script" uid="uid://bg8bgryahy6s5" path="res://scenes/rejugabilidad/mapa_rejugabilidad.gd" id="1_ahxk8"]
 [ext_resource type="Script" uid="uid://d0obgr25i075h" path="res://src/ui/effects/hover_pulse_button.gd" id="2_likm8"]
 [ext_resource type="Texture2D" uid="uid://6qtwykxeov1l" path="res://assets/assets_escena_1/fondo/Fondo_Feria_Emoventure.png" id="3_6nhqu"]
 [ext_resource type="Texture2D" uid="uid://cv1evutocpvyv" path="res://assets/assets_rejugabilidad/mini_carpa.png" id="3_asvx7"]
-[ext_resource type="AudioStream" uid="uid://crpnlwdhq0jo2" path="res://audios/musica/dialogo_misterio.mp3" id="5_not"]
 
 [node name="MapaRejugabilidad" type="Control"]
 layout_mode = 3
@@ -299,7 +298,3 @@ offset_right = 1890.0
 offset_bottom = 1046.0
 theme_override_font_sizes/font_size = 28
 text = "Salir al menú principal"
-
-[node name="MusicaAmbiente" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_not")
-autoplay = true
