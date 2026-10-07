@@ -14,5 +14,4 @@ do DialogueActors.animacion_establecer_animacion("mascota", "reposo", "izquierda
 Narrador: ¡Wow! Es un adorable animal, de verdad pensé que era tu fin, jaja.
 Narrador: La criatura avanza con confianza, saludando con alegría y acercándose sin vacilar.
 
-{{DatosJugador.nombre_mascota}}: (da un pequeño salto de emoción al reconocerte)
 => END

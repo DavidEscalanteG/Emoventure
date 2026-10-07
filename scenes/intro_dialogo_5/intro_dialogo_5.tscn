@@ -21,7 +21,7 @@ position = Vector2(310, 798)
 scale = Vector2(14.21, 14.21)
 
 [node name="Mascota" parent="Personajes" instance=ExtResource("3_8jlpt")]
-position = Vector2(1932.0001, 760)
+position = Vector2(1932, 787.695)
 scale = Vector2(7, 7)
 
 [node name="Puerta" type="Polygon2D" parent="Personajes"]
