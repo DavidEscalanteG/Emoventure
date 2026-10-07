@@ -30,8 +30,7 @@ func aplicar_mascota_desde_global() -> void:
 	# 1. FUERZA AL GATO PARA PRUEBAS:
 	# Comenta tu línea original y asigna el índice manualmente.
 	# Asumo que el gato está en la posición 1 de tu array 'coleccion_mascotas'.
-	# var indice: int = DatosJugador.obtener_indice_mascota()
-	var indice: int = 0
+	var indice: int = DatosJugador.obtener_indice_mascota()
 
 	if indice < 0 or indice >= coleccion_mascotas.size():
 		indice = 0
