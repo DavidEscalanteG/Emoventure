@@ -8,7 +8,26 @@
 [ext_resource type="Texture2D" path="res://assets/ui/controles/right.svg" id="2_right"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_touch"]
-size = Vector2(84, 84)
+size = Vector2(104, 104)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_joystick"]
+bg_color = Color(0.125, 0.145, 0.204, 0.68)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.902, 0.918, 0.961, 0.75)
+corner_radius_top_left = 110
+corner_radius_top_right = 110
+corner_radius_bottom_right = 110
+corner_radius_bottom_left = 110
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_knob"]
+bg_color = Color(0.902, 0.918, 0.961, 0.82)
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
 
 [node name="MobileControls" type="CanvasLayer"]
 layer = 100
@@ -30,59 +49,59 @@ anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
 offset_left = 30.0
-offset_top = -260.0
-offset_right = 290.0
+offset_top = -290.0
+offset_right = 320.0
 offset_bottom = -20.0
 
 [node name="BtnUp" type="TouchScreenButton" parent="UI/Cruceta"]
 texture_normal = ExtResource("2_up")
 shape = SubResource("RectangleShape2D_touch")
-position = Vector2(90, 0)
+position = Vector2(100, 10)
 shape_centered = true
 
 [node name="BtnDown" type="TouchScreenButton" parent="UI/Cruceta"]
 texture_normal = ExtResource("2_down")
 shape = SubResource("RectangleShape2D_touch")
-position = Vector2(90, 180)
+position = Vector2(100, 190)
 shape_centered = true
 
 [node name="BtnLeft" type="TouchScreenButton" parent="UI/Cruceta"]
 texture_normal = ExtResource("2_left")
 shape = SubResource("RectangleShape2D_touch")
-position = Vector2(0, 90)
+position = Vector2(10, 100)
 shape_centered = true
 
 [node name="BtnRight" type="TouchScreenButton" parent="UI/Cruceta"]
 texture_normal = ExtResource("2_right")
 shape = SubResource("RectangleShape2D_touch")
-position = Vector2(180, 90)
+position = Vector2(190, 100)
 shape_centered = true
 
 [node name="Joystick" type="Control" parent="UI"]
 layout_mode = 1
 anchors_preset = 3
-anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -300.0
-offset_top = -300.0
-offset_right = -40.0
-offset_bottom = -40.0
+offset_left = 40.0
+offset_top = -280.0
+offset_right = 300.0
+offset_bottom = -20.0
 
-[node name="JoystickBase" type="ColorRect" parent="UI/Joystick"]
+[node name="JoystickBase" type="Panel" parent="UI/Joystick"]
 custom_minimum_size = Vector2(220, 220)
 layout_mode = 2
-color = Color(1, 1, 1, 0.25)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_joystick")
 
-[node name="Knob" type="ColorRect" parent="UI/Joystick/JoystickBase"]
+[node name="Knob" type="Panel" parent="UI/Joystick/JoystickBase"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 0
 offset_left = 65.0
 offset_top = 65.0
 offset_right = 155.0
 offset_bottom = 155.0
-color = Color(1, 1, 1, 0.55)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_knob")
 
 [connection signal="pressed" from="UI/Cruceta/BtnUp" to="." method="_on_btn_up_button_down"]
 [connection signal="released" from="UI/Cruceta/BtnUp" to="." method="_on_btn_up_button_up"]
