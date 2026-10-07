@@ -7,13 +7,13 @@ do DialogueActors.animacion_establecer_animacion("parca", "jojopose", "abajo")
 
 {{DatosJugador.nombre_mascota}}: (con los pelos de punta)
 
-Parca: ¡Vaya, vaya! Otro incauto que viene a entregar su alma al sufrimiento eterno. ¿Te crees muy valiente por haber llegado hasta aquí? ¡Prepárate, porque lo que sigue es una agonía sin fin! 
+Parca: ¡Vaya, vaya! Otra pobre alma incauta que viene a entregar su esencia al sufrimiento eterno. ¿Te crees con gran valentía por haber llegado hasta aquí? ¡Prepárate, porque lo que sigue es una agonía sin fin! 
 Parca: Te vas a arrepentir de haber abierto esa puerta. ¡Vas a querer rendirte, llorar y suplicar clemencia cuando los obstáculos te destrocen uno a uno!
 
 do DialogueActors.animacion_establecer_animacion("parca", "emotiza", "abajo")
-Parca: ¡Je, je, je! ¿Qué me dices? ¿Te rindes ahora mismo o prefieres pasar vergüenza antes de morir?
+Parca: ¡Je, je, je! ¿Qué me dices? ¿Te rindes ahora mismo o prefieres pasar vergüenza antes de perecer?
 
-# El protagonista duda ante la aterradora advertencia y abre la boca para intentar responder...
+# Tu personaje duda ante la aterradora advertencia y abre la boca para intentar responder...
 
 do DialogueActors.animacion_establecer_animacion("parca", "bailecito", "abajo")
 Parca: ¡Ay, da igual lo que vayas a decir! Me aburren las respuestas largas. 
@@ -21,8 +21,6 @@ Parca: A ver... la verdad me das un poco de lástima. No durarías ni cinco segu
 
 Parca: Así que, por esta única vez, haré una excepción. Te daré una oportunidad real para sobrevivir a lo que viene. ¡Un poco de magia y agilidad felina te vendrán bien!
 
-
-Un destello de luz extraña envuelve al protagonista por completo, transformando su cuerpo en un ágil y veloz felino acróbata, perfectamente equipado para esquivar cualquier peligro.
-
+Narrador: Un destello de luz extraña te envuelve por completo, transformando tu forma en una ágil y veloz criatura felina, perfectamente capaz de esquivar cualquier peligro.
 
 # do start_gameplay("prueba_felino")

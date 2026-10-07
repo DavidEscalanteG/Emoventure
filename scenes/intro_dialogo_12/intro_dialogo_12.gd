@@ -6,7 +6,7 @@ const SIGUIENTE_ESCENA := "res://scenes/final/resultado_final.tscn"
 @onready var dialogue_ui: Node = $DialogueUI/Balloon
 
 func _ready() -> void:
-	
+	DialogueActors.registro_registrar_actor("gitana", $Personajes/gitana)
 	DialogueActors.registro_registrar_actor("jugador", $Personajes/JugadorCinematico)
 	DialogueActors.registro_registrar_actor("mascota", $Personajes/Mascota)
 	dialogue_ui.dialogo_finalizado.connect(_on_dialogo_finalizado)

@@ -2,30 +2,29 @@
 # — ESCENA: Cuarto de las Memorias Eternas —
 # El ambiente está rodeado de fotografías antiguas y una atmósfera inquietante.
 
-Payaso: ¡JA, JA, JA, JAAA! ¡Mirémosle la cara al tiempo! ¡Bienvenido, viajero, a la trituradora de la nostalgia!
+Payaso: ¡JA, JA, JA, JAAA! ¡Mirémosle la cara al tiempo! ¡Te doy la bienvenida, alma viajera, a la trituradora de la nostalgia!
 
-*El cuarto se ilumina con destellos parpadeantes. Cientos de fotografías antiguas cubren las paredes, retorciéndose levemente como si respiraran.
-
+Narrador: El cuarto se ilumina con destellos parpadeantes. Cientos de fotografías antiguas cubren las paredes, retorciéndose levemente como si respiraran.
 
 {{DatosJugador.nombre_mascota}}: (gruñe bajito, observando las sombras con desconfianza)
 
 Payaso: ¡Uy, mira nada más a nuestra pequeña bestia, a {{DatosJugador.nombre_mascota}}! ¡Ese pelaje huele a miedo fresco, me encanta! ¡JA, JA!
 
-Payaso: Estás en el Cuarto de las Memorias Eternas. ¡Aquí los recuerdos no descansan, *gritan*! Se quedan atrapados, pudriéndose bonitos.
-Payaso: Y tú... tú estás rodeado de tus propias cicatrices de papel. Son tus fotos, ¿ves? ¡Tus pequeños trozos de pasado!
+Payaso: Estás en el Cuarto de las Memorias Eternas. ¡Aquí los recuerdos no descansan, gritan! 
+Payaso: Y tú... tú estás entre tus propias cicatrices de papel. Son tus fotos, ¿ves? ¡Tus pequeños trozos de pasado!
 
-- (Examinar una de las fotografías con inquietud)
+- [Examinar una de las fotografías con inquietud]
 	Payaso: ¡Eso es! ¡Ábrete los ojos por la fuerza! Cada foto encierra una emoción que te carcome por dentro.
-{{DatosJugador.nombre_mascota}}: (se encoge un poco)
+	{{DatosJugador.nombre_mascota}}: (se encoge un poco)
 
-- (Retroceder un paso con cautela)
-	Payaso: ¡¿A dónde huyes?! ¡El pasado no muerde... te devora entero! ¡JA, JA, JAAA!
+- [Retroceder un paso con cautela]
+	Payaso: ¡¿A dónde huyes?! ¡No hay vuelta atrás! ¡JA, JA, JAAA!
 	{{DatosJugador.nombre_mascota}}: (se pega a ti)
 
 Payaso: Tu misión es muy simple, o tan compleja como tu mente quiera. Toca cada fotografía...
-Payaso: Y dime antes de que expire el hechizo: ¿qué emoción vivía en tu corazón en ese instante?
-Payaso: ¿No estás seguro? ¡JA! No hay respuestas falsas, solo verdades que duelen más.
-Payaso: Lo importante no es acertar... ¡sino atreverse a sentir el ardor!
+Payaso: Y dime: ¿qué emoción vivía en tu corazón en ese instante?
+Payaso: ¿Tienes dudas? ¡JA! No hay respuestas falsas, solo verdades que duelen más.
+Payaso: Lo importante no es acertar... ¡sino atreverse a sentir!
 
 Payaso: ¡A tocar las fotos se ha dicho! ¡Que empiece el desfile de los recuerdos!
 
