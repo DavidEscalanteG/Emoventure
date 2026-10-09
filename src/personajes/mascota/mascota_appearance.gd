@@ -27,9 +27,6 @@ func aplicar_mascota_desde_global() -> void:
 	if coleccion_mascotas.is_empty():
 		return
 
-	# 1. FUERZA AL GATO PARA PRUEBAS:
-	# Comenta tu línea original y asigna el índice manualmente.
-	# Asumo que el gato está en la posición 1 de tu array 'coleccion_mascotas'.
 	var indice: int = DatosJugador.obtener_indice_mascota()
 
 	if indice < 0 or indice >= coleccion_mascotas.size():
@@ -81,3 +78,16 @@ func _actualizar_animacion() -> void:
 	sprite.play(anim)
 	sprite.frame = 0
 	
+	# ----------------------------------------------------
+	# TRUCO PARA LOS GATOS (Índices 3, 4 y 5)
+	# Como sus sprites solo miran a la derecha, los volteamos 
+	# horizontalmente de forma automática cuando van a la izquierda.
+	# ----------------------------------------------------
+	var indice: int = DatosJugador.obtener_indice_mascota()
+	if indice in [3, 4, 5]:
+		if direccion_actual == "left":
+			sprite.flip_h = true  # Espejo para que mire a la izquierda
+		else:
+			sprite.flip_h = false # Normal para la derecha (u otras direcciones)
+	else:
+		sprite.flip_h = false # Los perros usan sus animaciones normales
