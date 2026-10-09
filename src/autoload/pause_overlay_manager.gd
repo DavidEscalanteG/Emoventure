@@ -1,9 +1,18 @@
 extends Node
 
 const PAUSE_OVERLAY_SCENE := preload("res://src/ui/pause_overlay.tscn")
+const PAUSABLE_PREFIXES: Array[String] = [
+	"res://scenes/intro_",
+	"res://scenes/mision_",
+	"res://scenes/transicion_",
+	"res://scenes/recompensa_",
+	"res://scenes/rejugabilidad/",
+	"res://scenes/cuestionarios/",
+]
 
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().node_added.connect(_on_node_added)
 	call_deferred("_inyectar_en_escena_actual")
 
@@ -21,16 +30,20 @@ func _inyectar_en_escena_actual() -> void:
 		return
 	if escena_actual.has_node("PauseOverlay"):
 		return
+	_crear_overlay(escena_actual)
+
+
+func _crear_overlay(escena_actual: Node) -> Node:
 	var overlay := PAUSE_OVERLAY_SCENE.instantiate()
 	overlay.name = "PauseOverlay"
 	escena_actual.add_child(overlay)
+	return overlay
 
 
 func _debe_tener_pausa(scene_path: String) -> bool:
 	if scene_path.is_empty():
 		return false
-	# Los tutoriales de minijuegos usan su propia UI y no deben mostrar el botón de pausa.
-	if scene_path.contains("/tutorial/"):
-		return false
-	return scene_path.begins_with("res://scenes/intro_") \
-		or scene_path.begins_with("res://scenes/mision_")
+	for prefix: String in PAUSABLE_PREFIXES:
+		if scene_path.begins_with(prefix):
+			return true
+	return false

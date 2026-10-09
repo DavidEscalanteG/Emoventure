@@ -62,6 +62,7 @@ color = Color(0.35, 0.35, 0.35, 1)
 
 [node name="Label" type="Label" parent="TutorialDemo/PhotosGrid/Photo1"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Foto 1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -88,6 +89,7 @@ color = Color(0.43, 0.35, 0.35, 1)
 
 [node name="Label" type="Label" parent="TutorialDemo/PhotosGrid/Photo2"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Foto 2"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -114,6 +116,7 @@ color = Color(0.35, 0.43, 0.35, 1)
 
 [node name="Label" type="Label" parent="TutorialDemo/PhotosGrid/Photo3"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Foto 3"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -140,6 +143,7 @@ color = Color(0.35, 0.35, 0.43, 1)
 
 [node name="Label" type="Label" parent="TutorialDemo/PhotosGrid/Photo4"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Foto 4"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -166,6 +170,7 @@ color = Color(0.45, 0.42, 0.35, 1)
 
 [node name="Label" type="Label" parent="TutorialDemo/PhotosGrid/Photo5"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Foto 5"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -192,6 +197,7 @@ color = Color(0.35, 0.45, 0.44, 1)
 
 [node name="Label" type="Label" parent="TutorialDemo/PhotosGrid/Photo6"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Foto 6"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -218,6 +224,7 @@ color = Color(0.43, 0.35, 0.43, 1)
 
 [node name="Label" type="Label" parent="TutorialDemo/PhotosGrid/Photo7"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Foto 7"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -242,68 +249,76 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -220.0
-offset_top = 90.0
-offset_right = 220.0
-offset_bottom = 285.0
+offset_left = 280.0
+offset_top = -385.0
+offset_right = 920.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TutorialDemo/EmotionPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 22
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TutorialDemo/EmotionPanel/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 18
+
+[node name="TitleLabel" type="Label" parent="TutorialDemo/EmotionPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.945098, 0.768627, 1)
+theme_override_font_sizes/font_size = 32
+text = "¿Qué emoción te provoca?"
+horizontal_alignment = 1
 
 [node name="EmotionsGrid" type="GridContainer" parent="TutorialDemo/EmotionPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 8
-theme_override_constants/v_separation = 8
-columns = 4
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 14
+columns = 2
 
 [node name="Felicidad" type="Button" parent="TutorialDemo/EmotionPanel/MarginContainer/VBoxContainer/EmotionsGrid"]
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(280, 64)
 layout_mode = 2
 text = "Felicidad"
 
 [node name="Tristeza" type="Button" parent="TutorialDemo/EmotionPanel/MarginContainer/VBoxContainer/EmotionsGrid"]
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(280, 64)
 layout_mode = 2
 text = "Tristeza"
 
 [node name="Enojo" type="Button" parent="TutorialDemo/EmotionPanel/MarginContainer/VBoxContainer/EmotionsGrid"]
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(280, 64)
 layout_mode = 2
 text = "Enojo"
 
 [node name="Asombro" type="Button" parent="TutorialDemo/EmotionPanel/MarginContainer/VBoxContainer/EmotionsGrid"]
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(280, 64)
 layout_mode = 2
 text = "Asombro"
 
 [node name="Ansiedad" type="Button" parent="TutorialDemo/EmotionPanel/MarginContainer/VBoxContainer/EmotionsGrid"]
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(280, 64)
 layout_mode = 2
 text = "Ansiedad"
 
 [node name="Desagrado" type="Button" parent="TutorialDemo/EmotionPanel/MarginContainer/VBoxContainer/EmotionsGrid"]
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(280, 64)
 layout_mode = 2
 text = "Desagrado"
 
 [node name="Amor" type="Button" parent="TutorialDemo/EmotionPanel/MarginContainer/VBoxContainer/EmotionsGrid"]
-custom_minimum_size = Vector2(90, 40)
+custom_minimum_size = Vector2(280, 64)
 layout_mode = 2
 text = "Amor"
 
 [node name="AcceptButton" type="Button" parent="TutorialDemo/EmotionPanel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 46)
+custom_minimum_size = Vector2(0, 72)
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Aceptar"
 
 [node name="TopInfo" type="PanelContainer" parent="TutorialDemo"]
@@ -391,25 +406,25 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
-offset_top = -235.0
+offset_top = -305.0
 offset_right = -40.0
-offset_bottom = -30.0
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="TutorialUI/Overlay/BottomPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 18
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 18
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 22
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TutorialUI/Overlay/BottomPanel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="MessageLabel" type="Label" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 62)
+custom_minimum_size = Vector2(0, 92)
 layout_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -417,7 +432,7 @@ autowrap_mode = 2
 
 [node name="StepLabel" type="Label" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 34
 text = "Paso 1 de 6"
 horizontal_alignment = 1
 
@@ -429,13 +444,13 @@ alignment = 1
 [node name="PreviousButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow"]
 layout_mode = 2
 theme = ExtResource("5_bvad7")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 30
 text = "← Anterior"
 
 [node name="NextButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow"]
 layout_mode = 2
 theme = ExtResource("5_bvad7")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 30
 text = "Siguiente →"
 
 [node name="StartButton" type="Button" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow"]

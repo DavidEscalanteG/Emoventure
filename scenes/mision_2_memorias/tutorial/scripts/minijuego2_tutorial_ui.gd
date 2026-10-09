@@ -49,7 +49,7 @@ func _apply_visual_style() -> void:
 		Color("#281c39f2"), Color("#efc56b"), 4, 18
 	))
 	message_label.add_theme_color_override("font_color", Color("#fff8e7"))
-	message_label.add_theme_font_size_override("font_size", 26)
+	message_label.add_theme_font_size_override("font_size", 36)
 	message_label.add_theme_color_override("font_shadow_color", Color("#160d21"))
 	message_label.add_theme_constant_override("shadow_offset_x", 3)
 	message_label.add_theme_constant_override("shadow_offset_y", 3)
@@ -61,12 +61,12 @@ func _apply_visual_style() -> void:
 		Color("#4b3269f2"), Color("#f3ce7a"), 2, 10
 	))
 	for button in [previous_button, next_button, start_button]:
-		button.custom_minimum_size.y = 52.0
+		button.custom_minimum_size = Vector2(220.0, 62.0)
 		button.add_theme_color_override("font_color", Color("#fff8e7"))
 		button.add_theme_color_override("font_hover_color", Color.WHITE)
 		button.add_theme_color_override("font_pressed_color", Color("#f3ce7a"))
 		button.add_theme_color_override("font_disabled_color", Color("#bbb0c8"))
-		button.add_theme_font_size_override("font_size", 24)
+		button.add_theme_font_size_override("font_size", 30)
 
 func _panel_style(fill: Color, border: Color, width: int, radius: int) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()

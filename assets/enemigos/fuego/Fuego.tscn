@@ -143,7 +143,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1"]
-radius = 16.0
+radius = 19.026299
 
 [node name="Fuego" type="Area2D" groups=["enemigos"]]
 collision_layer = 0
