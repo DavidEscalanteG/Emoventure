@@ -41,7 +41,7 @@ offset_right = -260.0
 offset_bottom = 108.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.78, 0.72, 0.84, 1)
-theme_override_font_sizes/font_size = 21
+theme_override_font_sizes/font_size = 28
 text = "Observa la demostración y aprende los controles antes de comenzar"
 
 [node name="Arena" type="Control" parent="."]
@@ -52,11 +52,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -520.0
-offset_top = -225.0
+offset_top = -250.0
 offset_right = 520.0
-offset_bottom = 215.0
+offset_bottom = 190.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(520, 220)
+scale = Vector2(1.15, 1.1)
 
 [node name="ArenaFrame" type="Panel" parent="Arena"]
 unique_name_in_owner = true
@@ -160,7 +162,7 @@ offset_top = 28.0
 offset_right = 390.0
 offset_bottom = 68.0
 theme_override_colors/font_color = Color(0.78, 0.72, 0.84, 1)
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 26
 text = "DEMOSTRACIÓN DE RECORRIDO"
 
 [node name="Direction" type="Label" parent="Arena"]
@@ -194,7 +196,7 @@ offset_right = -260.0
 offset_bottom = 72.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.82, 0.4, 1)
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 42
 text = "MISIÓN 3  ·  EL CAMINO DE LAS TRAMPAS"
 
 [node name="SkipButton" type="Button" parent="."]
@@ -206,9 +208,10 @@ anchor_right = 1.0
 offset_left = -240.0
 offset_top = 20.0
 offset_right = -25.0
-offset_bottom = 72.0
+offset_bottom = 82.0
 grow_horizontal = 0
 theme = ExtResource("2")
+theme_override_font_sizes/font_size = 30
 text = "Omitir tutorial"
 
 [node name="Bottom" type="PanelContainer" parent="."]
@@ -218,7 +221,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
-offset_top = -225.0
+offset_top = -295.0
 offset_right = -40.0
 offset_bottom = -25.0
 grow_horizontal = 2
@@ -230,9 +233,9 @@ theme_override_constants/separation = 10
 
 [node name="MessageLabel" type="Label" parent="Bottom/VBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 70)
+custom_minimum_size = Vector2(0, 92)
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 36
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -241,7 +244,7 @@ autowrap_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.82, 0.4, 1)
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 
 [node name="Navigation" type="HBoxContainer" parent="Bottom/VBox"]
@@ -251,21 +254,21 @@ alignment = 1
 
 [node name="PreviousButton" type="Button" parent="Bottom/VBox/Navigation"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(180, 50)
+custom_minimum_size = Vector2(220, 62)
 layout_mode = 2
 theme = ExtResource("2")
 text = "← Anterior"
 
 [node name="NextButton" type="Button" parent="Bottom/VBox/Navigation"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(180, 50)
+custom_minimum_size = Vector2(220, 62)
 layout_mode = 2
 theme = ExtResource("2")
 text = "Siguiente →"
 
 [node name="StartButton" type="Button" parent="Bottom/VBox/Navigation"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(210, 50)
+custom_minimum_size = Vector2(250, 62)
 layout_mode = 2
 theme = ExtResource("2")
 text = "Iniciar misión"

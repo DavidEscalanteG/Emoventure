@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const MOBILE_CONTROLS_SCENE := preload("res://src/ui/mobile_controls.tscn")
+
 @export var velocidad_avance: float = 300.0
 @export var fuerza_salto: float = -450.0
 @export var desplazamiento_camara: float = 250.0
@@ -23,6 +25,7 @@ var altura_inicial: float
 const SFX_MUERTE = "res://audios/sfx/Taco Bell Bong SFX_160k.mp3"
 
 func _ready() -> void:
+	_ensure_mobile_controls()
 	MusicManager.reproducir_clave("mision_3", 0.0, 0.0, true)
 	altura_inicial = camara.global_position.y
 	camara.top_level = true 
@@ -61,7 +64,7 @@ func _physics_process(delta: float) -> void:
 
 	# --- LÓGICA DE SALTO (Ahora usa el Coyote Time en lugar de is_on_floor) ---
 	if temporizador_coyote > 0.0:
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or Input.is_action_pressed("ui_accept") or Input.is_action_pressed("ui_up") or tocando_pantalla:
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or Input.is_action_pressed("ui_accept") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("move_up") or tocando_pantalla:
 			velocity.y = fuerza_salto
 			# IMPORTANTE: Vaciamos el temporizador al saltar para evitar que 
 			# el jugador haga un "doble salto" en el aire usando el tiempo restante.
@@ -85,6 +88,17 @@ func _physics_process(delta: float) -> void:
 			morir()
 
 	_actualizar_animaciones()
+
+
+func _ensure_mobile_controls() -> void:
+	if not MobileControlsSettings.is_mobile_device():
+		return
+	var scene := get_tree().current_scene
+	if scene == null or scene.has_node("MobileControls"):
+		return
+	var controls := MOBILE_CONTROLS_SCENE.instantiate()
+	controls.name = "MobileControls"
+	scene.add_child.call_deferred(controls)
 
 func _actualizar_animaciones() -> void:
 	if is_on_floor():

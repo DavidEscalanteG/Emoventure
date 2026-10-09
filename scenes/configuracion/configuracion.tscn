@@ -12,7 +12,19 @@ shader = ExtResource("3_3h3dg")
 shader_parameter/blur_amount = 2.170000103075
 shader_parameter/darken_amount = 0.830000039425
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_erp7v"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxEmpty_erp7v"]
+bg_color = Color(0.025, 0.045, 0.094, 0.98)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.760784, 0.25098, 0.95)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 12
 
 [node name="Configuracion" type="Control"]
 layout_mode = 3
@@ -162,6 +174,7 @@ offset_right = 1260.0
 offset_bottom = 819.0
 
 [node name="LabelControles" type="Label" parent="Controles"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -173,6 +186,125 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 28
+
+[node name="BtnTeclado" type="Button" parent="Controles"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "Personalizar"
+
+[node name="PanelTeclado" type="PopupPanel" parent="."]
+unique_name_in_owner = true
+exclusive = true
+theme_override_styles/panel = SubResource("StyleBoxEmpty_erp7v")
+
+[node name="Margen" type="MarginContainer" parent="PanelTeclado"]
+offset_right = 780.0
+offset_bottom = 480.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 28
+
+[node name="VBox" type="VBoxContainer" parent="PanelTeclado/Margen"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Titulo" type="Label" parent="PanelTeclado/Margen/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "Teclas adicionales"
+horizontal_alignment = 1
+
+[node name="EstadoTeclado" type="Label" parent="PanelTeclado/Margen/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "WASD y flechas siempre permanecen activos. Puedes agregar una tecla extra."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Arriba" type="HBoxContainer" parent="PanelTeclado/Margen/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelTeclado/Margen/VBox/Arriba"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "Arriba"
+
+[node name="TeclaArriba" type="Button" parent="PanelTeclado/Margen/VBox/Arriba"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Agregar tecla"
+
+[node name="Abajo" type="HBoxContainer" parent="PanelTeclado/Margen/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelTeclado/Margen/VBox/Abajo"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "Abajo"
+
+[node name="TeclaAbajo" type="Button" parent="PanelTeclado/Margen/VBox/Abajo"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Agregar tecla"
+
+[node name="Izquierda" type="HBoxContainer" parent="PanelTeclado/Margen/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelTeclado/Margen/VBox/Izquierda"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "Izquierda"
+
+[node name="TeclaIzquierda" type="Button" parent="PanelTeclado/Margen/VBox/Izquierda"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Agregar tecla"
+
+[node name="Derecha" type="HBoxContainer" parent="PanelTeclado/Margen/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelTeclado/Margen/VBox/Derecha"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "Derecha"
+
+[node name="TeclaDerecha" type="Button" parent="PanelTeclado/Margen/VBox/Derecha"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Agregar tecla"
+
+[node name="Acciones" type="HBoxContainer" parent="PanelTeclado/Margen/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="RestaurarTeclas" type="Button" parent="PanelTeclado/Margen/VBox/Acciones"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Quitar adicionales"
+
+[node name="CerrarTeclado" type="Button" parent="PanelTeclado/Margen/VBox/Acciones"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Listo"
 
 [node name="BotonesPrueba" type="HBoxContainer" parent="."]
 visible = false
@@ -240,6 +372,14 @@ theme_override_constants/separation = 14
 [connection signal="value_changed" from="SFX/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
 [connection signal="value_changed" from="Voz/SliderVoz" to="." method="_on_slider_voz_value_changed"]
 [connection signal="item_selected" from="Controles/OptionControles" to="." method="_on_option_controles_item_selected"]
+[connection signal="pressed" from="Controles/BtnTeclado" to="." method="_on_btn_teclado_pressed"]
+[connection signal="window_input" from="PanelTeclado" to="." method="_on_panel_teclado_window_input"]
+[connection signal="pressed" from="PanelTeclado/Margen/VBox/Arriba/TeclaArriba" to="." method="_on_tecla_arriba_pressed"]
+[connection signal="pressed" from="PanelTeclado/Margen/VBox/Abajo/TeclaAbajo" to="." method="_on_tecla_abajo_pressed"]
+[connection signal="pressed" from="PanelTeclado/Margen/VBox/Izquierda/TeclaIzquierda" to="." method="_on_tecla_izquierda_pressed"]
+[connection signal="pressed" from="PanelTeclado/Margen/VBox/Derecha/TeclaDerecha" to="." method="_on_tecla_derecha_pressed"]
+[connection signal="pressed" from="PanelTeclado/Margen/VBox/Acciones/RestaurarTeclas" to="." method="_on_restaurar_teclas_pressed"]
+[connection signal="pressed" from="PanelTeclado/Margen/VBox/Acciones/CerrarTeclado" to="." method="_on_cerrar_teclado_pressed"]
 [connection signal="pressed" from="BotonesPrueba/BtnProbarMusica" to="." method="_on_btn_probar_musica_pressed"]
 [connection signal="pressed" from="BotonesPrueba/BtnProbarSFX" to="." method="_on_btn_probar_sfx_pressed"]
 [connection signal="pressed" from="BtnVolver" to="." method="_on_btn_volver_pressed"]
