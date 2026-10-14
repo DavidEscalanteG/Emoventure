@@ -7,10 +7,13 @@ const SIGUIENTE_ESCENA := "uid://607ynm435j8g" #escena_8.tcsn
 @onready var panel_nombre_mascota: Control = $UI/PanelNombreMascota
 @onready var input_nombre_mascota: LineEdit = $UI/PanelNombreMascota/MarginContainer/VBoxContainer/InputNombreMascota
 @onready var error_nombre_mascota: Label = $UI/PanelNombreMascota/MarginContainer/VBoxContainer/ErrorNombreMascota
+@onready var titulo_nombre_mascota: Label = $UI/PanelNombreMascota/MarginContainer/VBoxContainer/TituloNombreMascota
+@onready var boton_confirmar_nombre_mascota: Button = $UI/PanelNombreMascota/MarginContainer/VBoxContainer/BtnConfirmarNombreMascota
 
 func _ready() -> void:
 	MusicManager.iniciar_override_dialogo(MusicManager.AMBIENTE_TENSION)
 	_inicializar_nombre_mascota()
+	_aplicar_estilo_panel_nombre()
 	panel_nombre_mascota.visible = false
 	
 	DialogueActors.registro_registrar_actor("jugador", $Personajes/JugadorCinematico)
@@ -51,3 +54,19 @@ func _inicializar_nombre_mascota() -> void:
 		DatosJugador.nombre_mascota = DatosJugador.NOMBRE_MASCOTA_PREDETERMINADO
 	input_nombre_mascota.text = DatosJugador.nombre_mascota
 	error_nombre_mascota.text = ""
+
+
+func _aplicar_estilo_panel_nombre() -> void:
+	var panel_style := StyleBoxFlat.new()
+	panel_style.bg_color = Color("#14243ff5")
+	panel_style.border_color = Color("#f1c765")
+	panel_style.set_border_width_all(4)
+	panel_style.set_corner_radius_all(22)
+	panel_style.shadow_color = Color(0.01, 0.02, 0.05, 0.8)
+	panel_style.shadow_size = 14
+	panel_nombre_mascota.add_theme_stylebox_override("panel", panel_style)
+	titulo_nombre_mascota.add_theme_color_override("font_color", Color("#ffe39a"))
+	titulo_nombre_mascota.add_theme_color_override("font_shadow_color", Color("#07101f"))
+	titulo_nombre_mascota.add_theme_constant_override("shadow_offset_x", 3)
+	titulo_nombre_mascota.add_theme_constant_override("shadow_offset_y", 3)
+	boton_confirmar_nombre_mascota.add_theme_color_override("font_color", Color("#fff8e7"))

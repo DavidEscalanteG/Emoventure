@@ -24,7 +24,8 @@ region_rect = Rect2(16, 16, 16, 16)
 texture = ExtResource("4_40aqf")
 region_rect = Rect2(16, 16, 16, 16)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n2kuu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxEmpty_n2kuu"]
+bg_color = Color(0.015, 0.027, 0.055, 0.97)
 
 [node name="PauseOverlay" type="CanvasLayer"]
 layer = 100
@@ -115,16 +116,18 @@ step = 0.01
 value = 1.0
 
 [node name="Controles" type="VBoxContainer" parent="PanelPausa/CenterContainer/VBox"]
-visible = false
 layout_mode = 2
 
 [node name="LabelControles" type="Label" parent="PanelPausa/CenterContainer/VBox/Controles"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Controles táctiles"
 
 [node name="OptionControles" type="OptionButton" parent="PanelPausa/CenterContainer/VBox/Controles"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.72, 0.76, 0.84, 1)
+theme_override_font_sizes/font_size = 22
 
 [node name="Botones" type="HBoxContainer" parent="PanelPausa/CenterContainer/VBox"]
 layout_mode = 2

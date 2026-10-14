@@ -1,10 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://g120rogpki5q"]
+[gd_scene load_steps=8 format=3 uid="uid://g120rogpki5q"]
 
 [ext_resource type="Script" uid="uid://ct1uvjy0gac0u" path="res://scenes/recompensa_mision_3/recompensa_mision_3.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cdwy1g5ff3psh" path="res://scenes/recompensa_mision_3/fondo llave.jpg" id="2_fd6p5"]
 [ext_resource type="Texture2D" uid="uid://dkh83chg32xlb" path="res://assets/llaves/key3.png" id="2_mk1uc"]
 [ext_resource type="Texture2D" uid="uid://bjy1778uwb80f" path="res://assets/assets_escena_payaso/martillo.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://dtvbvblxrod3d" path="res://assets/botones/boton_play.png" id="4_mk1uc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleRewardPanel"]
+bg_color = Color(0.025, 0.045, 0.094, 0.88)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.760784, 0.25098, 0.95)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleRewardButton"]
+bg_color = Color(0.212, 0.463, 0.784, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.85098, 0.929412, 1, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [node name="RecompensaMision3" type="Control"]
 layout_mode = 3
@@ -31,6 +57,22 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.06, 0.33, 0.34, 1)
 
+[node name="PanelContenido" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -405.0
+offset_right = 500.0
+offset_bottom = 405.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleRewardPanel")
+
 [node name="Contenido" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -50,12 +92,18 @@ alignment = 1
 [node name="Titulo" type="Label" parent="Contenido"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 54
+theme_override_colors/font_color = Color(1, 0.827451, 0.384314, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 8
 text = "¡Misión 3 completada!"
 horizontal_alignment = 1
 
 [node name="Subtitulo" type="Label" parent="Contenido"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.94, 0.968, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 6
 text = "Has obtenido llave y mazo"
 horizontal_alignment = 1
 
@@ -79,9 +127,13 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="BotonContinuar" type="Button" parent="Contenido"]
+custom_minimum_size = Vector2(340, 76)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleRewardButton")
+theme_override_styles/hover = SubResource("StyleRewardButton")
 text = "Continuar"
-icon = ExtResource("4_mk1uc")
-icon_alignment = 1
 
 [connection signal="pressed" from="Contenido/BotonContinuar" to="." method="_on_boton_continuar_pressed"]

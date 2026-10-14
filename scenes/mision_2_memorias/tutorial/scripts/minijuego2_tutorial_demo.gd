@@ -29,8 +29,10 @@ var _photo_frames: Array[PanelContainer] = []
 var _photo_highlights: Array[ColorRect] = []
 var _photo_checks: Array[Label] = []
 var _emotion_buttons: Array[Button] = []
+var _photos_grid_default_position := Vector2.ZERO
 
 func _ready() -> void:
+	_photos_grid_default_position = photos_grid.position
 	for child in photos_grid.get_children():
 		var frame := child as PanelContainer
 		if frame == null:
@@ -51,6 +53,7 @@ func _ready() -> void:
 	reset_visual_state()
 
 func reset_visual_state() -> void:
+	photos_grid.position = _photos_grid_default_position
 	for index in range(_photo_frames.size()):
 		var frame := _photo_frames[index]
 		frame.modulate = Color(1, 1, 1, 0.85)
@@ -88,6 +91,7 @@ func pulse_photo(index: int) -> Tween:
 	return tween
 
 func show_emotion_panel() -> void:
+	photos_grid.position.x = 80.0
 	emotion_panel.visible = true
 
 func highlight_emotion(button_index: int) -> void:
@@ -176,7 +180,7 @@ func _decorate_emotion_button(button: Button, index: int) -> void:
 		button.add_theme_stylebox_override(state, style)
 	button.add_theme_color_override("font_color", Color("#201529"))
 	button.add_theme_color_override("font_disabled_color", Color("#201529"))
-	button.add_theme_font_size_override("font_size", 18)
+	button.add_theme_font_size_override("font_size", 30)
 
 func _apply_panel_styles() -> void:
 	var panel_style := StyleBoxFlat.new()

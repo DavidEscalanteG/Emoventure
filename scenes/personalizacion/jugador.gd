@@ -271,10 +271,11 @@ func permitir_movimiento() -> void:
 
 
 func _ensure_mobile_controls() -> void:
-	if not OS.has_feature("mobile"):
+	if not MobileControlsSettings.is_touch_device():
 		return
-	if get_tree().root.has_node("MobileControls"):
+	var scene := get_tree().current_scene
+	if scene == null or scene.has_node("MobileControls"):
 		return
 	var controls := MOBILE_CONTROLS_SCENE.instantiate()
 	controls.name = "MobileControls"
-	get_tree().root.add_child.call_deferred(controls)
+	scene.add_child.call_deferred(controls)

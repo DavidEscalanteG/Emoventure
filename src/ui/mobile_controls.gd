@@ -6,9 +6,11 @@ const ACTION_MOVE_LEFT: String = "move_left"
 const ACTION_MOVE_RIGHT: String = "move_right"
 const ACTION_UI_LEFT: String = "ui_left"
 const ACTION_UI_RIGHT: String = "ui_right"
+const ACTION_UI_UP: String = "ui_up"
+const ACTION_UI_DOWN: String = "ui_down"
 
 const JOYSTICK_MAX_RADIUS_FACTOR: float = 0.4
-const ACTION_STRENGTH_DEADZONE: float = 0.1
+const ACTION_STRENGTH_DEADZONE: float = 0.18
 
 @onready var cruceta: Control = $UI/Cruceta
 @onready var joystick: Control = $UI/Joystick
@@ -23,9 +25,11 @@ var _last_mode: String = ""
 
 
 func _ready() -> void:
-	visible = OS.has_feature("mobile") and MobileControlsSettings.controls_enabled
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	visible = MobileControlsSettings.should_show_touch_controls()
 	set_process(true)
 	_knob_center = joystick_knob.position
+	MobileControlsSettings.settings_changed.connect(_apply_mode)
 	_apply_mode()
 
 
@@ -38,7 +42,7 @@ func _process(_delta: float) -> void:
 
 func _apply_mode() -> void:
 	var mode: String = MobileControlsSettings.control_mode
-	visible = OS.has_feature("mobile") and MobileControlsSettings.controls_enabled
+	visible = MobileControlsSettings.should_show_touch_controls() and not get_tree().paused
 	cruceta.visible = mode == MobileControlsSettings.MODE_CRUCETA
 	joystick.visible = mode == MobileControlsSettings.MODE_JOYSTICK
 	if mode != _last_mode:
@@ -49,14 +53,14 @@ func _apply_mode() -> void:
 		joystick_knob.position = _knob_center
 
 
-func _on_btn_up_button_down() -> void: _press_action(ACTION_MOVE_UP)
-func _on_btn_up_button_up() -> void: _release_action(ACTION_MOVE_UP)
-func _on_btn_down_button_down() -> void: _press_action(ACTION_MOVE_DOWN)
-func _on_btn_down_button_up() -> void: _release_action(ACTION_MOVE_DOWN)
-func _on_btn_left_button_down() -> void: _press_action(ACTION_MOVE_LEFT)
-func _on_btn_left_button_up() -> void: _release_action(ACTION_MOVE_LEFT)
-func _on_btn_right_button_down() -> void: _press_action(ACTION_MOVE_RIGHT)
-func _on_btn_right_button_up() -> void: _release_action(ACTION_MOVE_RIGHT)
+func _on_btn_up_button_down() -> void: _press_direction(ACTION_MOVE_UP, ACTION_UI_UP)
+func _on_btn_up_button_up() -> void: _release_direction(ACTION_MOVE_UP, ACTION_UI_UP)
+func _on_btn_down_button_down() -> void: _press_direction(ACTION_MOVE_DOWN, ACTION_UI_DOWN)
+func _on_btn_down_button_up() -> void: _release_direction(ACTION_MOVE_DOWN, ACTION_UI_DOWN)
+func _on_btn_left_button_down() -> void: _press_direction(ACTION_MOVE_LEFT, ACTION_UI_LEFT)
+func _on_btn_left_button_up() -> void: _release_direction(ACTION_MOVE_LEFT, ACTION_UI_LEFT)
+func _on_btn_right_button_down() -> void: _press_direction(ACTION_MOVE_RIGHT, ACTION_UI_RIGHT)
+func _on_btn_right_button_up() -> void: _release_direction(ACTION_MOVE_RIGHT, ACTION_UI_RIGHT)
 
 
 func _input(event: InputEvent) -> void:
@@ -90,6 +94,8 @@ func _update_joystick(screen_pos: Vector2) -> void:
 		delta = delta.normalized() * radius
 
 	_joystick_vector = delta / radius
+	if _joystick_vector.length() < ACTION_STRENGTH_DEADZONE:
+		_joystick_vector = Vector2.ZERO
 	joystick_knob.global_position = center + delta - (joystick_knob.size / 2.0)
 	_apply_axis_to_actions(_joystick_vector)
 
@@ -107,6 +113,18 @@ func _apply_axis_to_actions(direction: Vector2) -> void:
 	_set_action_strength(ACTION_MOVE_DOWN, maxf(0.0, direction.y))
 	_set_action_strength(ACTION_UI_LEFT, maxf(0.0, -direction.x))
 	_set_action_strength(ACTION_UI_RIGHT, maxf(0.0, direction.x))
+	_set_action_strength(ACTION_UI_UP, maxf(0.0, -direction.y))
+	_set_action_strength(ACTION_UI_DOWN, maxf(0.0, direction.y))
+
+
+func _press_direction(move_action: String, ui_action: String) -> void:
+	_press_action(move_action)
+	_press_action(ui_action)
+
+
+func _release_direction(move_action: String, ui_action: String) -> void:
+	_release_action(move_action)
+	_release_action(ui_action)
 
 
 func _set_action_strength(action: String, strength: float) -> void:

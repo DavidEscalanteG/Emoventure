@@ -21,6 +21,7 @@ const MESSAGES: Array[String] = [
 @onready var hammer: Control = %Hammer
 @onready var score: Label = %Score
 @onready var speed_label: Label = %SpeedLabel
+@onready var aim_hint: Label = %AimHint
 @onready var arena_frame: Panel = %ArenaFrame
 @onready var bottom_panel: PanelContainer = $Bottom
 @onready var title_label: Label = $Title
@@ -64,6 +65,7 @@ func _reset_demo() -> void:
 	hammer.rotation = -0.35
 	score.text = "Puntos: 0"
 	speed_label.visible = false
+	aim_hint.visible = false
 
 func _play_demo(token: int) -> void:
 	var tween: Tween
@@ -74,11 +76,13 @@ func _play_demo(token: int) -> void:
 			tween.tween_interval(0.4)
 			tween.tween_property(clown, "position:y", 180.0, 0.25)
 		1:
+			aim_hint.visible = true
 			tween = create_tween().set_loops(2)
 			tween.tween_property(hammer, "position", Vector2(520, 185), 0.45)
 			tween.tween_property(hammer, "rotation", 0.25, 0.14)
 			tween.tween_property(hammer, "rotation", -0.35, 0.14)
 		2:
+			aim_hint.visible = true
 			clown_sprite.texture = CLOWN_HIT
 			score.text = "Puntos: 1  ✓"
 			tween = _pulse(score)
@@ -135,7 +139,7 @@ func _style_navigation_buttons() -> void:
 		button.add_theme_color_override("font_hover_color", Color.WHITE)
 		button.add_theme_color_override("font_pressed_color", Color("#ffe49a"))
 		button.add_theme_color_override("font_disabled_color", Color("#d4c3d1"))
-		button.add_theme_font_size_override("font_size", 24)
+		button.add_theme_font_size_override("font_size", 30)
 
 func _panel_style(fill: Color, border: Color, width: int, radius: int) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()

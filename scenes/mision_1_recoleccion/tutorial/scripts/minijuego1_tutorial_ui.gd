@@ -76,12 +76,12 @@ func _apply_visual_style() -> void:
 		Color("#22446eee"), Color("#ffd978"), 2, 10
 	))
 	for button in [previous_button, next_button, start_button]:
-		button.custom_minimum_size.y = 52.0
+		button.custom_minimum_size = Vector2(220.0, 64.0)
 		button.add_theme_color_override("font_color", Color("#f5f7ff"))
 		button.add_theme_color_override("font_hover_color", Color.WHITE)
 		button.add_theme_color_override("font_pressed_color", Color("#ffd978"))
 		button.add_theme_color_override("font_disabled_color", Color("#aeb8cc"))
-		button.add_theme_font_size_override("font_size", 24)
+		button.add_theme_font_size_override("font_size", 32)
 
 func _panel_style(fill: Color, border: Color, width: int, radius: int) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
