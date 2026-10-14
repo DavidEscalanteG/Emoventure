@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/adivina.mp3-937a281513c0449804a7d7be49a301a0.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

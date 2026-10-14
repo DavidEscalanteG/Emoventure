@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/triste.mp3-e3633a68ec4b6c665431294125f189c4.m
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

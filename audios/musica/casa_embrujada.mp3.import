@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/casa_embrujada.mp3-ac0fa6ca7bd138d82de8538123
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

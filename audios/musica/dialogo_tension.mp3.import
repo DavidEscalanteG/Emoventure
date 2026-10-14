@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/dialogo_tension.mp3-dabebc45ccd1b9601c38fe3e5
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

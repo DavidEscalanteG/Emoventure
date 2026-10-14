@@ -44,12 +44,23 @@ func _ready() -> void:
 			boton_saltar.pressed.connect(_on_boton_saltar_pressed)
 	# ---------------------------------
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
+	# Usamos _unhandled_input para que si presionas el botón de pausa, la UI consuma el clic primero
+	# y NUNCA active el estado de tocando_pantalla para el salto.
+	if get_tree().paused or esta_muerto:
+		tocando_pantalla = false
+		return
+
 	if event is InputEventScreenTouch:
 		tocando_pantalla = event.pressed
 
 func _physics_process(delta: float) -> void:
 	if esta_muerto:
+		return
+
+	# Si el juego se pausa en este frame, reseteamos el toque para evitar saltos fantasma
+	if get_tree().paused:
+		tocando_pantalla = false
 		return
 
 	# --- LÓGICA DE COYOTE TIME Y GRAVEDAD ---
@@ -62,9 +73,14 @@ func _physics_process(delta: float) -> void:
 		# Aplicamos gravedad normal porque estamos en el aire
 		velocity.y += gravedad * delta 
 
-	# --- LÓGICA DE SALTO (Ahora usa el Coyote Time en lugar de is_on_floor) ---
-	if temporizador_coyote > 0.0:
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or Input.is_action_pressed("ui_accept") or Input.is_action_pressed("ui_up") or Input.is_action_pressed("move_up") or tocando_pantalla:
+	# --- LÓGICA DE SALTO ---
+	if temporizador_coyote > 0.0 and not get_tree().paused:
+		var quiere_saltar := Input.is_action_pressed("ui_accept") \
+			or Input.is_action_pressed("ui_up") \
+			or tocando_pantalla \
+			or (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not _clic_es_en_ui())
+
+		if quiere_saltar:
 			velocity.y = fuerza_salto
 			# IMPORTANTE: Vaciamos el temporizador al saltar para evitar que 
 			# el jugador haga un "doble salto" en el aire usando el tiempo restante.
@@ -88,6 +104,12 @@ func _physics_process(delta: float) -> void:
 			morir()
 
 	_actualizar_animaciones()
+
+
+# Función auxiliar para saber si el clic del mouse cayó sobre algún elemento de UI (como el botón de Pausa)
+func _clic_es_en_ui() -> bool:
+	var control_enfocado := get_viewport().gui_get_hovered_control()
+	return control_enfocado != null
 
 
 func _ensure_mobile_controls() -> void:

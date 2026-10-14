@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/puerta3.mp3-c7524d4276b52f0e040d554777362cc4.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

@@ -813,12 +813,12 @@ offset_left = 319.92188
 offset_top = 19.921875
 offset_right = 538.9219
 offset_bottom = 140.92188
-theme_override_constants/line_separation = -16
 theme_override_colors/default_color = Color(1, 0.827451, 0.384314, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = -16
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/normal_font_size = 18
 theme_override_fonts/normal_font = ExtResource("4_gh7xm")
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "¡No escaparás!"
 fit_content = true
@@ -827,6 +827,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="Jugador" type="CharacterBody2D" parent="." node_paths=PackedStringArray("boton_saltar", "meta_del_nivel") groups=["jugador"]]
+process_mode = 1
 position = Vector2(88, 783)
 scale = Vector2(1.35, 1.35)
 script = ExtResource("3_4i633")

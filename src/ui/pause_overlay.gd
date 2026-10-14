@@ -141,5 +141,11 @@ func _on_option_controles_item_selected(index: int) -> void:
 func _set_pausa_activa(estado: bool) -> void:
 	get_tree().paused = estado
 	panel_pausa.visible = estado
+	
+	# --- CORRECCIÓN CLAVE ---
+	# Consumimos la entrada para que el clic o la tecla ESC 
+	# no sigan propagándose hasta el personaje y provoquen el salto.
+	get_viewport().set_input_as_handled()
+	
 	if estado:
 		AudioManager.play_ui_click()
