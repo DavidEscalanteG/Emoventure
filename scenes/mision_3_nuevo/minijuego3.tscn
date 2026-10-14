@@ -1,10 +1,11 @@
-[gd_scene load_steps=40 format=4 uid="uid://dg5ha2royb1j4"]
+[gd_scene load_steps=41 format=4 uid="uid://dg5ha2royb1j4"]
 
 [ext_resource type="Texture2D" uid="uid://buydsigs7de4s" path="res://scenes/mision_3_nuevo/Medieval_props_free.png" id="1_dn2vn"]
 [ext_resource type="Texture2D" uid="uid://dcm4rydc8jasc" path="res://scenes/mision_3_nuevo/Medieval_tiles_free_2.0.png" id="2_gfnh3"]
 [ext_resource type="Script" uid="uid://dtolgq6dswhos" path="res://scenes/mision_3_nuevo/jugador.gd" id="3_4i633"]
 [ext_resource type="Texture2D" uid="uid://bj7p6ckggcs3c" path="res://scenes/mision_3_nuevo/Cat spreadsheets/4_Cat_Fall-Sheet.png" id="4_5domi"]
 [ext_resource type="FontFile" uid="uid://bkvak4ksmjeuu" path="res://assets/fuentes/PlainPixel-Regular.ttf" id="4_gh7xm"]
+[ext_resource type="Texture2D" uid="uid://c6prvc77xl20p" path="res://scenes/mision_3_hachas/puerta.png" id="5_7dcpf"]
 [ext_resource type="Texture2D" uid="uid://brux4eqsrv1f5" path="res://scenes/mision_3_nuevo/Cat spreadsheets/2_Cat_Run-Sheet.png" id="5_ckk7g"]
 [ext_resource type="Texture2D" uid="uid://oig7r7p0o84g" path="res://scenes/mision_3_nuevo/Cat spreadsheets/3_Cat_Jump-Sheet.png" id="6_gh7xm"]
 [ext_resource type="PackedScene" uid="uid://ctvf8j26ibumk" path="res://assets/personajes/parca/Parca.tscn" id="8_ckk7g"]
@@ -14,6 +15,28 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1fmj7"]
 texture = ExtResource("1_dn2vn")
 use_texture_padding = false
+15:1/0 = 0
+15:2/0 = 0
+16:2/0 = 0
+17:3/0 = 0
+18:4/0 = 0
+18:5/0 = 0
+15:3/0 = 0
+15:4/0 = 0
+16:3/0 = 0
+17:2/0 = 0
+16:4/0 = 0
+16:5/0 = 0
+17:4/0 = 0
+17:5/0 = 0
+18:3/0 = 0
+18:2/0 = 0
+16:1/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+15:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5domi"]
 texture = ExtResource("2_gfnh3")
@@ -826,6 +849,11 @@ autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="Puerta" type="Sprite2D" parent="TilemapLayers"]
+position = Vector2(18830, 758.355)
+scale = Vector2(1.96, 1.96)
+texture = ExtResource("5_7dcpf")
+
 [node name="Jugador" type="CharacterBody2D" parent="." node_paths=PackedStringArray("boton_saltar", "meta_del_nivel") groups=["jugador"]]
 process_mode = 1
 position = Vector2(88, 783)
@@ -857,7 +885,7 @@ script = ExtResource("10_beomm")
 escena_llave = ExtResource("11_7dcpf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Meta"]
-position = Vector2(19802, 482)
+position = Vector2(19804, 485)
 shape = SubResource("RectangleShape2D_7dcpf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
