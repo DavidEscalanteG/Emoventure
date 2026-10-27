@@ -81,7 +81,7 @@ vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
@@ -106,7 +106,7 @@ alignment = 1
 [node name="Boton_1" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaIzquierda"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Nada de acuerdo "
+text = "Nada de acuerdo"
 
 [node name="Boton_3" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaIzquierda"]
 layout_mode = 2

@@ -1,0 +1,156 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/personalizacion/hsv_color_editor.gd" id="1_editor"]
+[ext_resource type="Theme" path="res://assets/temas/tema_personalizacion.tres" id="2_tema"]
+
+[sub_resource type="StyleBoxFlat" id="MuestraColor"]
+bg_color = Color(0.8, 0.6, 0.3, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.96, 0.82, 0.54, 1)
+
+[sub_resource type="StyleBoxEmpty" id="SinPanel"]
+
+[node name="EditorColor" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 0)
+theme_override_styles/panel = SubResource("SinPanel")
+theme = ExtResource("2_tema")
+script = ExtResource("1_editor")
+
+[node name="Contenido" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Encabezado" type="HBoxContainer" parent="Contenido"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Titulo" type="Label" parent="Contenido/Encabezado"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.36, 0.16, 0.05, 1)
+theme_override_font_sizes/font_size = 36
+text = "Color"
+
+[node name="Tono" type="VBoxContainer" parent="Contenido"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Encabezado" type="HBoxContainer" parent="Contenido/Tono"]
+layout_mode = 2
+
+[node name="Nombre" type="Label" parent="Contenido/Tono/Encabezado"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Color"
+
+theme_override_font_sizes/font_size = 36
+[node name="Valor" type="Label" parent="Contenido/Tono/Encabezado"]
+visible = false
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.16, 0.05, 1)
+text = "0°"
+horizontal_alignment = 2
+
+[node name="Muestra" type="Panel" parent="Contenido/Tono/Encabezado"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MuestraColor")
+
+[node name="Explicacion" type="Label" parent="Contenido/Tono"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.28, 0.18, 0.11, 1)
+theme_override_font_sizes/font_size = 38
+text = "Elige el color: rojo, verde, azul..."
+autowrap_mode = 3
+
+[node name="HSliderHue" type="HSlider" parent="Contenido/Tono"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+tooltip_text = "Tono: elige el color, como rojo, verde o azul. Usa las flechas del teclado para un ajuste preciso."
+max_value = 1.0
+step = 0.001
+
+[node name="Saturacion" type="VBoxContainer" parent="Contenido"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Encabezado" type="HBoxContainer" parent="Contenido/Saturacion"]
+layout_mode = 2
+
+[node name="Nombre" type="Label" parent="Contenido/Saturacion/Encabezado"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Intensidad"
+
+theme_override_font_sizes/font_size = 36
+[node name="Valor" type="Label" parent="Contenido/Saturacion/Encabezado"]
+theme_override_font_sizes/font_size = 32
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.16, 0.05, 1)
+text = "0%"
+horizontal_alignment = 2
+
+[node name="Explicacion" type="Label" parent="Contenido/Saturacion"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.28, 0.18, 0.11, 1)
+theme_override_font_sizes/font_size = 38
+text = "Izquierda: gris. Derecha: color vivo."
+autowrap_mode = 3
+
+[node name="HSliderSat" type="HSlider" parent="Contenido/Saturacion"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+tooltip_text = "Saturación: a la izquierda el color es gris; a la derecha es más intenso."
+max_value = 1.0
+step = 0.001
+
+[node name="Brillo" type="VBoxContainer" parent="Contenido"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Encabezado" type="HBoxContainer" parent="Contenido/Brillo"]
+layout_mode = 2
+
+[node name="Nombre" type="Label" parent="Contenido/Brillo/Encabezado"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Brillo"
+
+theme_override_font_sizes/font_size = 36
+[node name="Valor" type="Label" parent="Contenido/Brillo/Encabezado"]
+theme_override_font_sizes/font_size = 32
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.16, 0.05, 1)
+text = "100%"
+horizontal_alignment = 2
+
+[node name="Explicacion" type="Label" parent="Contenido/Brillo"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.28, 0.18, 0.11, 1)
+theme_override_font_sizes/font_size = 38
+text = "Izquierda: oscuro. Derecha: claro."
+autowrap_mode = 3
+
+[node name="HSliderVal" type="HSlider" parent="Contenido/Brillo"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+tooltip_text = "Brillo: a la izquierda el color es más oscuro; a la derecha es más claro."
+min_value = 0.125
+max_value = 1.0
+step = 0.001
+value = 1.0

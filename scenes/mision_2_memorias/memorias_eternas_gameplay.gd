@@ -155,9 +155,6 @@ func _on_cuadro_completado(cuadro: CuadroMemoria, emocion: String) -> void:
 	actualizar_contador()
 	_mostrar_retroalimentacion(emocion)
 
-	if cuadros_completados >= TOTAL_CUADROS:
-		_mostrar_puerta()
-
 
 func _guardar_respuesta(cuadro: CuadroMemoria, emocion: String) -> void:
 	if cuadro == null:
@@ -182,10 +179,7 @@ func _guardar_respuesta(cuadro: CuadroMemoria, emocion: String) -> void:
 
 func _mostrar_puerta() -> void:
 	Logs.log_debug("[DEBUG] Todas las emociones reconocidas. Mostrando puerta.")
-	puerta.disabled = false
-
-	var tween: Tween = create_tween()
-	tween.tween_property(puerta, "modulate:a", 1.0, 0.8)
+	puerta.call("revelar")
 
 
 func _on_cuadro_seleccionado(cuadro: CuadroMemoria) -> void:
@@ -240,6 +234,8 @@ func _mostrar_retroalimentacion(emocion: String) -> void:
 	tween_retroalimentacion.tween_property(texto_retroalimentacion, "modulate:a", 0.0, 0.3)
 	tween_retroalimentacion.tween_callback(func() -> void:
 		texto_retroalimentacion.visible = false
+		if cuadros_completados >= TOTAL_CUADROS:
+			_mostrar_puerta()
 	)
 
 

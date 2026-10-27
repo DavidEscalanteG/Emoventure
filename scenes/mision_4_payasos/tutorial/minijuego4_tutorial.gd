@@ -139,7 +139,7 @@ func _style_navigation_buttons() -> void:
 		button.add_theme_color_override("font_hover_color", Color.WHITE)
 		button.add_theme_color_override("font_pressed_color", Color("#ffe49a"))
 		button.add_theme_color_override("font_disabled_color", Color("#d4c3d1"))
-		button.add_theme_font_size_override("font_size", 30)
+		button.add_theme_font_size_override("font_size", 32)
 
 func _panel_style(fill: Color, border: Color, width: int, radius: int) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
