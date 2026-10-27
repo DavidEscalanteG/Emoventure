@@ -47,7 +47,8 @@ const MARGEN_VERTICAL_PREGUNTA := 12.0
 # CICLO DE VIDA
 # ==================================================
 func _ready() -> void:
-	InteractiveButtonFX.aplicar_a_botones_en(self)
+	# El tema ya distingue hover y pulsación. Mantener la escala fija evita que
+	# las opciones invadan otras filas o salgan del pergamino al recibir foco.
 	if not boton_narrativa_post.pressed.is_connected(_on_boton_narrativa_post_pressed):
 		boton_narrativa_post.pressed.connect(_on_boton_narrativa_post_pressed)
 		

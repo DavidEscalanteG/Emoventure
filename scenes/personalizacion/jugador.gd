@@ -14,6 +14,7 @@ signal sin_vidas
 @export var speed: int = 300
 @export var vidas_maximas: int = 3
 @export var duracion_invulnerabilidad: float = 1.2
+@export var mostrar_controles_moviles: bool = true
 
 
 # --------------------------------------------------
@@ -80,7 +81,7 @@ func _ready() -> void:
 # VIDA / DAÑO
 # --------------------------------------------------
 func recibir_danio() -> void:
-	if invulnerable:
+	if invulnerable or nivel_terminado or vidas_actuales <= 0:
 		return
 
 	vidas_actuales -= 1
@@ -115,6 +116,9 @@ func _activar_invulnerabilidad() -> void:
 
 
 func _morir() -> void:
+	# Los temporizadores de emoción no deben reactivar al jugador tras morir.
+	nivel_terminado = true
+	terminar_emocion()
 	bloquear_movimiento()
 	Logs.log_debug("☠️ Jugador muerto")
 
@@ -123,6 +127,8 @@ func _morir() -> void:
 # EMOCIONES
 # --------------------------------------------------
 func aplicar_emocion(tipo: String, color: Color, duracion: float) -> void:
+	if nivel_terminado or vidas_actuales <= 0:
+		return
 	terminar_emocion()
 
 	emocion_actual = tipo
@@ -155,6 +161,8 @@ func _aplicar_efecto(tipo: String) -> void:
 
 
 func _alternar_congelamiento() -> void:
+	if nivel_terminado or vidas_actuales <= 0:
+		return
 	puede_moverse = not puede_moverse
 
 
@@ -163,6 +171,7 @@ func _terminar_emocion() -> void:
 
 
 func terminar_emocion() -> void:
+	timer_emocion.stop()
 	emocion_actual = ""
 	_duracion_emocion = 0.0
 	speed = velocidad_base
@@ -171,7 +180,7 @@ func terminar_emocion() -> void:
 	congelando = false
 	timer_congelar.stop()
 
-	puede_moverse = not nivel_terminado
+	puede_moverse = not nivel_terminado and vidas_actuales > 0
 	apariencia.modulate.a = 1.0
 	apariencia.restaurar_colores()
 	queue_redraw()
@@ -267,11 +276,11 @@ func bloquear_movimiento() -> void:
 
 
 func permitir_movimiento() -> void:
-	puede_moverse = true
+	puede_moverse = not nivel_terminado and vidas_actuales > 0
 
 
 func _ensure_mobile_controls() -> void:
-	if not MobileControlsSettings.is_touch_device():
+	if not mostrar_controles_moviles or not MobileControlsSettings.is_touch_device():
 		return
 	var scene := get_tree().current_scene
 	if scene == null or scene.has_node("MobileControls"):

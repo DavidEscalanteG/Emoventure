@@ -44,6 +44,10 @@ func _validar() -> void:
 
 	if errores.is_empty():
 		print("VALIDACIÓN OK: %d preguntas legibles, sin recortes ni solapamientos." % total)
+		cuestionario.queue_free()
+		await get_tree().process_frame
+		MusicManager.detener()
+		await get_tree().create_timer(0.3).timeout
 		get_tree().quit(0)
 		return
 

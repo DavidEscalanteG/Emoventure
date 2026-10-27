@@ -257,16 +257,10 @@ offset_bottom = 208.0
 [node name="Selección de personaje" parent="." instance=ExtResource("10_b3f8t")]
 visible = false
 
-[node name="CanvasLayer" parent="Selección de personaje" index="0"]
+[node name="CanvasLayer" parent="Selección de personaje" index="5"]
 visible = false
 
-[node name="PanelContainer" parent="Selección de personaje/CanvasLayer" index="1"]
-offset_right = 320.0
-
-[node name="Label" parent="Selección de personaje/CanvasLayer/HSVColorEditor/HSVEditorPiel" index="3"]
-visible = false
-
-[node name="Jugador" parent="Selección de personaje" index="1"]
+[node name="Jugador" parent="Selección de personaje" index="3"]
 position = Vector2(1280, 587)
 scale = Vector2(3, 3)
 

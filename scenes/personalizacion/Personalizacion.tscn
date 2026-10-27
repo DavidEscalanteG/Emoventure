@@ -1,534 +1,321 @@
-[gd_scene load_steps=25 format=3 uid="uid://cxv23v4515m48"]
+[gd_scene load_steps=10 format=3 uid="uid://cxv23v4515m48"]
 
-[ext_resource type="Script" uid="uid://6uymohbocc55" path="res://scenes/personalizacion/Personalizador.gd" id="1_n5qyn"]
-[ext_resource type="Texture2D" uid="uid://diq400vp6pnqb" path="res://assets/assets_personalizacion/fondo/fondo_personalizacion.png" id="2_eo7kl"]
-[ext_resource type="Script" uid="uid://dck5qqh46f0cm" path="res://scenes/personalizacion/hsv_color_editor.gd" id="2_rysy1"]
-[ext_resource type="PackedScene" uid="uid://b4t1ghb0ibdtf" path="res://assets/personajes/mascota/mascota.tscn" id="4_ngfm0"]
-[ext_resource type="Texture2D" uid="uid://d1lodo36peyik" path="res://assets/botones/Blue_Buttons_Pixel.png" id="6_v1tqj"]
-[ext_resource type="Texture2D" uid="uid://k0weo1vvbnpk" path="res://assets/botones/Green_Buttons_Pixel.png" id="7_5xbqv"]
-[ext_resource type="Texture2D" uid="uid://bishv70yvv71n" path="res://assets/botones/Yellow_Buttons_Pixel.png" id="8_7a7x5"]
-[ext_resource type="PackedScene" uid="uid://c14jtphj2d6kf" path="res://jugador/jugador.tscn" id="13_3x2dh"]
-[ext_resource type="Texture2D" uid="uid://bpeib7ua44uax" path="res://assets/transiciones/fondo_negro.jpg" id="13_qeg4c"]
-[ext_resource type="Script" uid="uid://c46nol38d8qcv" path="res://scenes/personalizacion/comenzar.gd" id="17_tydmf"]
+[ext_resource type="Script" path="res://scenes/personalizacion/Personalizador.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/personalizacion/editor_color.tscn" id="2"]
+[ext_resource type="Texture2D" path="res://assets/assets_personalizacion/fondo/fondo_personalizacion.png" id="3"]
+[ext_resource type="PackedScene" path="res://assets/personajes/mascota/mascota.tscn" id="4"]
+[ext_resource type="Texture2D" path="res://assets/botones/Blue_Buttons_Pixel.png" id="5"]
+[ext_resource type="PackedScene" path="res://jugador/jugador.tscn" id="6"]
+[ext_resource type="Theme" path="res://assets/temas/tema_personalizacion.tres" id="7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4m3r"]
-bg_color = Color(0, 0, 0, 0)
-border_color = Color(0, 0, 0, 0)
+[sub_resource type="StyleBoxEmpty" id="SinPanel"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rysy1"]
-bg_color = Color(0, 0, 0, 0)
-border_color = Color(0, 0, 0, 0)
+[sub_resource type="AtlasTexture" id="IconoJugar"]
+atlas = ExtResource("5")
+region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjs3j"]
-bg_color = Color(0, 0, 0, 0)
-border_color = Color(0, 0, 0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70rkc"]
-bg_color = Color(0, 0, 0, 0)
-border_color = Color(0, 0, 0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qeg4c"]
-bg_color = Color(0, 0, 0, 0)
-border_color = Color(0, 0, 0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbqfp"]
-bg_color = Color(0, 0, 0, 0)
-border_color = Color(0, 0, 0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fmof"]
-bg_color = Color(0, 0, 0, 0)
-border_color = Color(0, 0, 0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleNamePanel"]
-bg_color = Color(0.025, 0.045, 0.094, 0.9)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 0.760784, 0.25098, 0.92)
-corner_radius_top_left = 14
-corner_radius_top_right = 14
-corner_radius_bottom_right = 14
-corner_radius_bottom_left = 14
-shadow_color = Color(0, 0, 0, 0.45)
-shadow_size = 8
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ojtl8"]
-texture = ExtResource("6_v1tqj")
-region_rect = Rect2(16, 0, 16, 16)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q5t2n"]
-texture = ExtResource("7_5xbqv")
-region_rect = Rect2(16, 0, 16, 16)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r0h5y"]
-texture = ExtResource("8_7a7x5")
-region_rect = Rect2(16, 0, 16, 16)
-
-[sub_resource type="Animation" id="Animation_byxo4"]
-resource_name = "Desvanecido_Fuera"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_n1516"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2krm"]
-_data = {
-&"Desvanecido_Fuera": SubResource("Animation_byxo4"),
-&"RESET": SubResource("Animation_n1516")
-}
 
 [node name="Selección de personaje" type="Node2D"]
-script = ExtResource("1_n5qyn")
+script = ExtResource("1")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fondo" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(967.00006, 540)
+[node name="MargenOscuro" type="ColorRect" parent="Fondo"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0.015, 0.008, 0.01, 1)
+
+
+[node name="Sprite2D" type="Sprite2D" parent="Fondo"]
+position = Vector2(900, 540)
 scale = Vector2(1.9, 1.9)
-texture = ExtResource("2_eo7kl")
+texture = ExtResource("3")
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
-custom_minimum_size = Vector2(0.535, 0)
-offset_left = 1400.0
-offset_top = 60.0
-offset_right = 1514.0
-offset_bottom = 320.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_x4m3r")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
+[node name="SombraJugador" type="Polygon2D" parent="."]
+position = Vector2(560, 935)
+color = Color(0.12, 0.055, 0.025, 0.35)
+polygon = PackedVector2Array(-94, -6, -48, -14, 48, -14, 94, -6, 94, 6, 48, 14, -48, 14, -94, 6)
+
+
+[node name="SombraMascota" type="Polygon2D" parent="."]
+position = Vector2(350, 940)
+color = Color(0.12, 0.055, 0.025, 0.35)
+polygon = PackedVector2Array(-76, -6, -48, -14, 48, -14, 76, -6, 76, 6, 48, 14, -48, 14, -76, 6)
+
+
+[node name="Jugador" parent="." instance=ExtResource("6")]
+position = Vector2(560, 810)
+scale = Vector2(10, 10)
+mostrar_controles_moviles = false
+
+
+[node name="Mascota" parent="." instance=ExtResource("4")]
+position = Vector2(350, 840)
+scale = Vector2(4, 4)
+
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+
+
+[node name="TituloPersonalizacion" type="Label" parent="CanvasLayer"]
+offset_left = 48.0
+offset_top = 36.0
+offset_right = 1240.0
+offset_bottom = 124.0
+mouse_filter = 2
+theme = ExtResource("7")
+theme_override_colors/font_color = Color(1, 0.86, 0.55, 1)
+theme_override_colors/font_shadow_color = Color(0.04, 0.02, 0.01, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 72
+text = "Personaliza tu personaje"
+
+
+[node name="PanelLateral" type="PanelContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 1288.0
+offset_top = 48.0
+offset_right = 1872.0
+offset_bottom = 1032.0
+theme = ExtResource("7")
+
+
+[node name="Contenido" type="VBoxContainer" parent="CanvasLayer/PanelLateral"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+
+[node name="PanelNombreJugador" type="PanelContainer" parent="CanvasLayer/PanelLateral/Contenido"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 144)
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("SinPanel")
 
-[node name="BtnCabelloAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelLateral/Contenido/PanelNombreJugador"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "<"
+theme_override_constants/separation = 8
 
-[node name="Cabello" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
+
+[node name="TituloNombreJugador" type="Label" parent="CanvasLayer/PanelLateral/Contenido/PanelNombreJugador/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "Cabello"
+text = "Tu nombre"
+theme_override_font_sizes/font_size = 38
 
-[node name="BtnCabelloSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer"]
+
+[node name="InputNombreJugador" type="LineEdit" parent="CanvasLayer/PanelLateral/Contenido/PanelNombreJugador/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 68)
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = ">"
-
-[node name="BoxContainer2" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="BtnCabezaAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2"]
-layout_mode = 2
-text = "<"
-
-[node name="Cabeza" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2"]
-layout_mode = 2
-text = "Gorro"
-
-[node name="BtnCabezaSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2"]
-layout_mode = 2
-text = ">"
-
-[node name="ColorPickerButtonCabeza" type="ColorPickerButton" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2"]
-layout_mode = 2
-
-[node name="BoxContainer3" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-
-[node name="BtnOjosAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3"]
-layout_mode = 2
-text = "<"
-
-[node name="Ojos" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3"]
-layout_mode = 2
-text = "Ojos"
-
-[node name="BtnOjosSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3"]
-layout_mode = 2
-text = ">"
-
-[node name="ColorPickerButtonOjos" type="ColorPickerButton" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3"]
-layout_mode = 2
-
-[node name="BoxContainer4" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-
-[node name="BtnNarizAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer4"]
-layout_mode = 2
-text = "<"
-
-[node name="Nariz" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer4"]
-layout_mode = 2
-text = "Nariz"
-
-[node name="BtnNarizSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer4"]
-layout_mode = 2
-text = ">"
-
-[node name="BoxContainer5" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="BtnBocaAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5"]
-layout_mode = 2
-text = "<"
-
-[node name="Boca" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5"]
-layout_mode = 2
-text = "Ropa"
-
-[node name="BtnBocaSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5"]
-layout_mode = 2
-text = ">"
-
-[node name="ColorPickerButtonBoca" type="ColorPickerButton" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5"]
-layout_mode = 2
-
-[node name="BoxContainer6" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="BtnCuerpoAtras" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6"]
-layout_mode = 2
-text = "<"
-
-[node name="Cuerpo" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6"]
-layout_mode = 2
-text = "Color"
-
-[node name="BtnCuerpoSiguiente" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6"]
-layout_mode = 2
-text = ">"
-
-[node name="ColorPickerButtonCuerpo" type="ColorPickerButton" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6"]
-layout_mode = 2
-
-[node name="BoxContainer7" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-
-[node name="Altura" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer7"]
-layout_mode = 2
-text = "Altura"
-
-[node name="HSlider" type="HSlider" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer7"]
-layout_mode = 2
-min_value = 0.8
-max_value = 1.2
-value = 0.8
-
-[node name="BoxContainer8" type="BoxContainer" parent="CanvasLayer/PanelContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-
-[node name="Peso" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer8"]
-layout_mode = 2
-text = "Peso"
-
-[node name="HSlider" type="HSlider" parent="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer8"]
-layout_mode = 2
-min_value = 0.8
-max_value = 1.2
-value = 0.8
-
-[node name="PanelNombreJugador" type="PanelContainer" parent="CanvasLayer"]
-offset_left = 620.0
-offset_top = 150.0
-offset_right = 1272.9998
-offset_bottom = 286.0
-theme_override_styles/panel = SubResource("StyleNamePanel")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelNombreJugador"]
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelNombreJugador/MarginContainer"]
-layout_mode = 2
-
-[node name="TituloNombreJugador" type="Label" parent="CanvasLayer/PanelNombreJugador/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 26
-theme_override_colors/font_color = Color(1, 0.827451, 0.384314, 1)
-text = "¿Cómo te llamas?"
-horizontal_alignment = 1
-
-[node name="InputNombreJugador" type="LineEdit" parent="CanvasLayer/PanelNombreJugador/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-theme_override_colors/font_color = Color(0.94, 0.968, 1, 1)
-theme_override_colors/font_placeholder_color = Color(0.75, 0.8, 0.88, 0.9)
+theme_override_font_sizes/font_size = 40
 placeholder_text = "Escribe tu nombre"
 alignment = 1
 max_length = 20
 
-[node name="ErrorNombreJugador" type="Label" parent="CanvasLayer/PanelNombreJugador/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 5)
+
+[node name="ErrorNombreJugador" type="Label" parent="CanvasLayer/PanelLateral/Contenido/PanelNombreJugador/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.329412, 0.329412, 1)
+theme_override_colors/font_color = Color(0.64, 0.08, 0.06, 1)
+theme_override_font_sizes/font_size = 28
 autowrap_mode = 3
 
-[node name="HSVColorEditor" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1770.0
-offset_top = 54.0
-offset_right = -1499.0
-offset_bottom = 417.0
-grow_horizontal = 0
-scale = Vector2(1.5, 1.5)
-theme_override_constants/separation = 18
 
-[node name="HSVEditorCabello" type="VBoxContainer" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
+[node name="SelectorPeinado" type="HBoxContainer" parent="CanvasLayer/PanelLateral/Contenido"]
 layout_mode = 2
-size_flags_horizontal = 4
-script = ExtResource("2_rysy1")
-clave_color_global = "color_cabello"
-apariencia = NodePath("../../../Jugador/PlayerAppearance")
+theme_override_constants/separation = 12
 
-[node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
-layout_mode = 2
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
-max_value = 1.0
-step = 0.01
 
-[node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
+[node name="Etiqueta" type="Label" parent="CanvasLayer/PanelLateral/Contenido/SelectorPeinado"]
 layout_mode = 2
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
-max_value = 1.0
-step = 0.01
-
-[node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
-layout_mode = 2
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
-min_value = 0.125
-max_value = 1.0
-step = 0.01
-value = 0.125
-
-[node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorCabello"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 35
-text = "Color de cabello"
-horizontal_alignment = 1
+text = "Peinado"
+custom_minimum_size = Vector2(148, 0)
+theme_override_font_sizes/font_size = 36
 vertical_alignment = 1
 
-[node name="HSVEditorGorro" type="VBoxContainer" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
-visible = false
+
+[node name="BtnCabelloAtras" type="Button" parent="CanvasLayer/PanelLateral/Contenido/SelectorPeinado"]
 layout_mode = 2
-size_flags_horizontal = 4
-script = ExtResource("2_rysy1")
-clave_color_global = "color_cabeza"
-apariencia = NodePath("../../../Jugador/PlayerAppearance")
-
-[node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
-layout_mode = 2
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
-max_value = 1.0
-step = 0.01
-
-[node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
-layout_mode = 2
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
-max_value = 1.0
-step = 0.01
-
-[node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
-layout_mode = 2
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
-min_value = 0.125
-max_value = 1.0
-step = 0.01
-value = 0.125
-
-[node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorGorro"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 35
-text = "Color de gorro"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSVEditorRopa" type="VBoxContainer" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
-layout_mode = 2
-size_flags_horizontal = 4
-script = ExtResource("2_rysy1")
-clave_color_global = "color_boca"
-apariencia = NodePath("../../../Jugador/PlayerAppearance")
-
-[node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
-layout_mode = 2
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
-max_value = 1.0
-step = 0.01
-
-[node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
-layout_mode = 2
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
-max_value = 1.0
-step = 0.01
-
-[node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
-layout_mode = 2
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
-min_value = 0.125
-max_value = 1.0
-step = 0.01
-value = 0.125
-
-[node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorRopa"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 35
-text = "  Color de ropa  "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSVEditorPiel" type="VBoxContainer" parent="CanvasLayer/HSVColorEditor" node_paths=PackedStringArray("apariencia")]
-layout_mode = 2
-size_flags_horizontal = 4
-script = ExtResource("2_rysy1")
-clave_color_global = "color_cuerpo"
-apariencia = NodePath("../../../Jugador/PlayerAppearance")
-
-[node name="HSliderHue" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
-layout_mode = 2
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_rysy1")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_fjs3j")
-max_value = 1.0
-step = 0.01
-
-[node name="HSliderSat" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
-layout_mode = 2
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_70rkc")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qeg4c")
-max_value = 1.0
-step = 0.01
-
-[node name="HSliderVal" type="HSlider" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
-layout_mode = 2
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gbqfp")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_4fmof")
-min_value = 0.125
-max_value = 1.0
-step = 0.01
-value = 0.125
-
-[node name="Label" type="Label" parent="CanvasLayer/HSVColorEditor/HSVEditorPiel"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 35
-text = "  Color de piel  "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Jugador" parent="." instance=ExtResource("13_3x2dh")]
-position = Vector2(990, 675)
-scale = Vector2(16, 16)
-
-[node name="Mascota" parent="." instance=ExtResource("4_ngfm0")]
-position = Vector2(1568, 895)
-scale = Vector2(6, 6)
-
-[node name="Comenzar" type="Button" parent="."]
-offset_left = 911.0
-offset_top = 912.0
-offset_right = 1011.0
-offset_bottom = 1012.0
-scale = Vector2(1.5, 1.5)
-theme_override_styles/normal = SubResource("StyleBoxTexture_ojtl8")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_q5t2n")
-theme_override_styles/hover = SubResource("StyleBoxTexture_r0h5y")
-script = ExtResource("17_tydmf")
-
-[node name="FondoNegro" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(960, 540)
-texture = ExtResource("13_qeg4c")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FondoNegro"]
-libraries = {
-&"": SubResource("AnimationLibrary_v2krm")
-}
-autoplay = "Desvanecido_Fuera"
-
-[node name="MascotaSiguiente" type="Button" parent="."]
-offset_left = 1719.0001
-offset_top = 878.0
-offset_right = 1737.0001
-offset_bottom = 909.0
-scale = Vector2(5, 5)
-text = ">"
-
-[node name="MascotaAnterior" type="Button" parent="."]
-offset_left = 1276.0
-offset_top = 879.0
-offset_right = 1294.0
-offset_bottom = 910.0
-scale = Vector2(5, 5)
 text = "<"
+unique_name_in_owner = true
+custom_minimum_size = Vector2(76, 88)
+tooltip_text = "Peinado anterior"
 
-[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer/BtnCabelloAtras" to="." method="_on_btn_cabello_atras_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer/BtnCabelloSiguiente" to="." method="_on_btn_cabello_siguiente_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2/BtnCabezaAtras" to="." method="_on_btn_cabeza_atras_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2/BtnCabezaSiguiente" to="." method="_on_btn_cabeza_siguiente_pressed"]
-[connection signal="color_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer2/ColorPickerButtonCabeza" to="." method="_on_color_picker_button_cabeza_color_changed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3/BtnOjosAtras" to="." method="_on_btn_ojos_atras_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3/BtnOjosSiguiente" to="." method="_on_btn_ojos_siguiente_pressed"]
-[connection signal="color_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer3/ColorPickerButtonOjos" to="." method="_on_color_picker_button_ojos_color_changed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer4/BtnNarizAtras" to="." method="_on_btn_nariz_atras_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer4/BtnNarizSiguiente" to="." method="_on_btn_nariz_siguiente_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5/BtnBocaAtras" to="." method="_on_btn_boca_atras_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5/BtnBocaSiguiente" to="." method="_on_btn_boca_siguiente_pressed"]
-[connection signal="color_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer5/ColorPickerButtonBoca" to="." method="_on_color_picker_button_boca_color_changed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6/BtnCuerpoAtras" to="." method="_on_btn_cuerpo_atras_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6/BtnCuerpoSiguiente" to="." method="_on_btn_cuerpo_siguiente_pressed"]
-[connection signal="color_changed" from="CanvasLayer/PanelContainer/VBoxContainer/BoxContainer6/ColorPickerButtonCuerpo" to="." method="_on_color_picker_button_cuerpo_color_changed"]
-[connection signal="pressed" from="Comenzar" to="." method="_on_comenzar_pressed"]
-[connection signal="pressed" from="MascotaSiguiente" to="." method="_on_mascota_siguiente_pressed"]
-[connection signal="pressed" from="MascotaAnterior" to="." method="_on_mascota_anterior_pressed"]
 
-[editable path="Mascota"]
+[node name="RetratoPeinado" type="Control" parent="CanvasLayer/PanelLateral/Contenido/SelectorPeinado"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(144, 112)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+
+[node name="Retrato" type="Node2D" parent="CanvasLayer/PanelLateral/Contenido/SelectorPeinado/RetratoPeinado"]
+unique_name_in_owner = true
+position = Vector2(72, 44)
+scale = Vector2(4, 4)
+
+
+[node name="Cuerpo" type="Sprite2D" parent="CanvasLayer/PanelLateral/Contenido/SelectorPeinado/RetratoPeinado/Retrato"]
+unique_name_in_owner = true
+
+
+[node name="Cabello" type="Sprite2D" parent="CanvasLayer/PanelLateral/Contenido/SelectorPeinado/RetratoPeinado/Retrato"]
+unique_name_in_owner = true
+
+
+[node name="BtnCabelloSiguiente" type="Button" parent="CanvasLayer/PanelLateral/Contenido/SelectorPeinado"]
+layout_mode = 2
+text = ">"
+unique_name_in_owner = true
+custom_minimum_size = Vector2(76, 88)
+tooltip_text = "Peinado siguiente"
+
+
+[node name="SelectorMascota" type="HBoxContainer" parent="CanvasLayer/PanelLateral/Contenido"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+
+[node name="Etiqueta" type="Label" parent="CanvasLayer/PanelLateral/Contenido/SelectorMascota"]
+layout_mode = 2
+text = "Mascota"
+custom_minimum_size = Vector2(148, 0)
+theme_override_font_sizes/font_size = 36
+vertical_alignment = 1
+
+
+[node name="MascotaAnterior" type="Button" parent="CanvasLayer/PanelLateral/Contenido/SelectorMascota"]
+layout_mode = 2
+text = "<"
+unique_name_in_owner = true
+custom_minimum_size = Vector2(76, 88)
+tooltip_text = "Mascota anterior"
+
+
+[node name="MiniaturaMascota" type="TextureRect" parent="CanvasLayer/PanelLateral/Contenido/SelectorMascota"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(144, 88)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+
+[node name="MascotaSiguiente" type="Button" parent="CanvasLayer/PanelLateral/Contenido/SelectorMascota"]
+layout_mode = 2
+text = ">"
+unique_name_in_owner = true
+custom_minimum_size = Vector2(76, 88)
+tooltip_text = "Mascota siguiente"
+
+
+[node name="Separador" type="HSeparator" parent="CanvasLayer/PanelLateral/Contenido"]
+layout_mode = 2
+mouse_filter = 2
+
+
+[node name="HSVColorEditor" type="VBoxContainer" parent="CanvasLayer/PanelLateral/Contenido"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+
+
+[node name="PestanasColor" type="HBoxContainer" parent="CanvasLayer/PanelLateral/Contenido/HSVColorEditor"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+
+[node name="Cabello" type="Button" parent="CanvasLayer/PanelLateral/Contenido/HSVColorEditor/PestanasColor"]
+layout_mode = 2
+text = "Cabello"
+custom_minimum_size = Vector2(0, 76)
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 34
+toggle_mode = true
+
+
+[node name="Ropa" type="Button" parent="CanvasLayer/PanelLateral/Contenido/HSVColorEditor/PestanasColor"]
+layout_mode = 2
+text = "Ropa"
+custom_minimum_size = Vector2(0, 76)
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 34
+toggle_mode = true
+
+
+[node name="Piel" type="Button" parent="CanvasLayer/PanelLateral/Contenido/HSVColorEditor/PestanasColor"]
+layout_mode = 2
+text = "Piel"
+custom_minimum_size = Vector2(0, 76)
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 34
+toggle_mode = true
+
+
+[node name="HSVEditorCabello" parent="CanvasLayer/PanelLateral/Contenido/HSVColorEditor" node_paths=PackedStringArray("apariencia") instance=ExtResource("2")]
+layout_mode = 2
+clave_color_global = "color_cabello"
+titulo = "Cabello"
+apariencia = NodePath("../../../../../Jugador/PlayerAppearance")
+
+
+[node name="HSVEditorGorro" parent="CanvasLayer/PanelLateral/Contenido/HSVColorEditor" node_paths=PackedStringArray("apariencia") instance=ExtResource("2")]
+visible = false
+layout_mode = 2
+clave_color_global = "color_cabeza"
+titulo = "Gorro"
+apariencia = NodePath("../../../../../Jugador/PlayerAppearance")
+
+
+[node name="HSVEditorRopa" parent="CanvasLayer/PanelLateral/Contenido/HSVColorEditor" node_paths=PackedStringArray("apariencia") instance=ExtResource("2")]
+visible = false
+layout_mode = 2
+clave_color_global = "color_boca"
+titulo = "Ropa"
+apariencia = NodePath("../../../../../Jugador/PlayerAppearance")
+
+
+[node name="HSVEditorPiel" parent="CanvasLayer/PanelLateral/Contenido/HSVColorEditor" node_paths=PackedStringArray("apariencia") instance=ExtResource("2")]
+visible = false
+layout_mode = 2
+clave_color_global = "color_cuerpo"
+titulo = "Piel"
+apariencia = NodePath("../../../../../Jugador/PlayerAppearance")
+
+
+[node name="Espacio" type="Control" parent="CanvasLayer/PanelLateral/Contenido"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+
+[node name="Comenzar" type="Button" parent="CanvasLayer/PanelLateral/Contenido"]
+layout_mode = 2
+text = "Comenzar aventura"
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+theme_type_variation = &"BotonPrincipal"
+theme_override_constants/icon_max_width = 36
+theme_override_font_sizes/font_size = 38
+icon = SubResource("IconoJugar")
+expand_icon = true
+
+
+[connection signal="pressed" from="CanvasLayer/PanelLateral/Contenido/SelectorPeinado/BtnCabelloAtras" to="." method="_on_btn_cabello_atras_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/PanelLateral/Contenido/SelectorPeinado/BtnCabelloSiguiente" to="." method="_on_btn_cabello_siguiente_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/PanelLateral/Contenido/SelectorMascota/MascotaAnterior" to="." method="_on_mascota_anterior_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/PanelLateral/Contenido/SelectorMascota/MascotaSiguiente" to="." method="_on_mascota_siguiente_pressed"]
+
+[connection signal="pressed" from="CanvasLayer/PanelLateral/Contenido/Comenzar" to="." method="_on_comenzar_pressed"]
