@@ -81,3 +81,41 @@ func movimiento_mover_derecha(actor_id: String, distancia: float, tiempo: float 
 
 func movimiento_mover_izquierda(actor_id: String, distancia: float, tiempo: float = 0.6) -> void:
 	movimiento_mover_por(actor_id, Vector2(-distancia, 0), tiempo)
+
+func movimiento_mover_girar_y_esperar(
+	nombre_actor: String, 
+	delta: Vector2, 
+	grados_antihorario: float, 
+	duracion: float = 0.6, 
+	ruta_sfx: String = ""
+) -> void:
+	var actor: Node2D = _registro_actores.obtener_actor(nombre_actor) as Node2D
+	if actor == null:
+		push_warning("[DialogueActors] No se encontró el actor (o no es Node2D): %s" % nombre_actor)
+		return
+
+	cinematica_activa = true
+
+	if not ruta_sfx.is_empty() and AudioManager != null:
+		AudioManager.play_sfx(ruta_sfx)
+
+	# 1. Calculamos la posición destino en línea recta relativa a donde está ahora
+	var posicion_destino: Vector2 = actor.global_position + delta
+
+	# 2. Creamos el Tween con interpolación lineal constante
+	var tween: Tween = actor.create_tween()
+	tween.set_parallel(true)
+	
+	# Desplazamiento en línea recta
+	tween.tween_property(actor, "global_position", posicion_destino, duracion)\
+		.set_trans(Tween.TRANS_LINEAR)
+	
+	# Giro sobre su propio eje (en sentido antihorario)
+	var rotacion_destino: float = actor.rotation - deg_to_rad(grados_antihorario)
+	tween.tween_property(actor, "rotation", rotacion_destino, duracion)\
+		.set_trans(Tween.TRANS_LINEAR)
+
+	await tween.finished
+
+	cinematica_activa = false
+	cinematic_action_finished.emit()

@@ -10,6 +10,9 @@ func _ready() -> void:
 	DialogueActors.registro_registrar_actor("jugador", $Personajes/JugadorCinematico)
 	DialogueActors.registro_registrar_actor("mascota", $Personajes/Mascota)
 	DialogueActors.registro_registrar_actor("fran", $Personajes/Fran)
+	DialogueActors.registro_registrar_actor("jaula", $Personajes/Jaula)
+	DialogueActors.registro_registrar_actor("domador", $Personajes/Ringmaster)
+
 
 	dialogue_ui.dialogo_finalizado.connect(_on_dialogo_finalizado)
 	

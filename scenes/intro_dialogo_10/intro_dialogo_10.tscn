@@ -1,84 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://ccrvaf1ne2mck"]
+[gd_scene load_steps=9 format=3 uid="uid://ccrvaf1ne2mck"]
 
 [ext_resource type="Script" uid="uid://bqjq8qgtnytbs" path="res://scenes/intro_dialogo_10/intro_dialogo_10.gd" id="1_426k2"]
 [ext_resource type="Texture2D" uid="uid://bsahjm4tfsptl" path="res://assets/fondo10.jpg" id="2_426k2"]
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="3_45dby"]
+[ext_resource type="PackedScene" uid="uid://dbmv5d1qatej7" path="res://assets/personajes/fran/fran.tscn" id="3_vap0x"]
 [ext_resource type="PackedScene" uid="uid://b4t1ghb0ibdtf" path="res://assets/personajes/mascota/mascota.tscn" id="4_vap0x"]
 [ext_resource type="Texture2D" uid="uid://ditrkwnyrhv8i" path="res://assets/jaula.png" id="5_c85ek"]
 [ext_resource type="Texture2D" uid="uid://bvk2y2xpjtxr5" path="res://assets/ringmaster.png" id="6_426k2"]
 [ext_resource type="PackedScene" uid="uid://cr25spw1cxdt4" path="res://dialogos/ManagerDialogos/dialogue_ui.tscn" id="6_i8dg2"]
-[ext_resource type="Texture2D" uid="uid://cvqooju3fd66d" path="res://assets/frankstein.png" id="7_45dby"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3nr6"]
-atlas = ExtResource("7_45dby")
-region = Rect2(0, 640, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lysp6"]
-atlas = ExtResource("7_45dby")
-region = Rect2(64, 640, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_clv75"]
-atlas = ExtResource("7_45dby")
-region = Rect2(128, 640, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mxhif"]
-atlas = ExtResource("7_45dby")
-region = Rect2(192, 640, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1mupr"]
-atlas = ExtResource("7_45dby")
-region = Rect2(256, 640, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kih51"]
-atlas = ExtResource("7_45dby")
-region = Rect2(320, 640, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gx2c3"]
-atlas = ExtResource("7_45dby")
-region = Rect2(384, 640, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lxuo7"]
-atlas = ExtResource("7_45dby")
-region = Rect2(448, 640, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_olwqr"]
-atlas = ExtResource("7_45dby")
-region = Rect2(512, 640, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vap0x"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x3nr6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lysp6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_clv75")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mxhif")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1mupr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kih51")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gx2c3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lxuo7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_olwqr")
-}],
-"loop": true,
-"name": &"default_down",
-"speed": 5.0
-}]
 
 [node name="Escena7" type="Node2D"]
 script = ExtResource("1_426k2")
@@ -89,20 +18,6 @@ scale = Vector2(1.5983194, 1.3987381)
 texture = ExtResource("2_426k2")
 
 [node name="Personajes" type="Node2D" parent="."]
-
-[node name="Fran" type="Node2D" parent="Personajes"]
-position = Vector2(0, 32.605)
-scale = Vector2(2.48, 2.48)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Personajes/Fran"]
-texture_filter = 1
-position = Vector2(237.50003, 292.49796)
-scale = Vector2(3.348362, 3.348362)
-sprite_frames = SubResource("SpriteFrames_vap0x")
-animation = &"default_down"
-
-[node name="JugadorCinematico" parent="Personajes" instance=ExtResource("3_45dby")]
-position = Vector2(460, 964.07)
 
 [node name="Mascota" parent="Personajes" instance=ExtResource("4_vap0x")]
 position = Vector2(1003.99994, 637.00006)
@@ -117,6 +32,13 @@ texture = ExtResource("5_c85ek")
 texture_filter = 1
 position = Vector2(1588, 727)
 texture = ExtResource("6_426k2")
+
+[node name="Fran" parent="Personajes" instance=ExtResource("3_vap0x")]
+position = Vector2(577.99994, 776.99994)
+scale = Vector2(8.495, 8.495)
+
+[node name="JugadorCinematico" parent="Personajes" instance=ExtResource("3_45dby")]
+position = Vector2(460.00003, 964.06995)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
