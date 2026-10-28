@@ -91,7 +91,7 @@ func _play_demo(token: int) -> void:
 			speed_label.visible = true
 			tween = _pulse(speed_label)
 		4:
-			score.text = "Puntos: 50  ✓"
+			score.text = "Puntos: 40"
 			tween = _pulse(clown)
 	if tween != null:
 		await tween.finished

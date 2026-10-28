@@ -177,7 +177,7 @@ offset_right = 700.0
 offset_bottom = 117.0
 theme_override_colors/font_color = Color(0.93, 0.79, 0.84, 0.8)
 theme_override_font_sizes/font_size = 26
-text = "APUNTA  •  GOLPEA  •  SUMA PUNTOS"
+text = "APUNTA  -  GOLPEA  -  SUMA PUNTOS"
 horizontal_alignment = 1
 
 [node name="Title" type="Label" parent="."]
@@ -191,7 +191,7 @@ offset_bottom = 72.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.86, 0.42, 1)
 theme_override_font_sizes/font_size = 42
-text = "MISIÓN 4  ·  GOLPEA A LOS PAYASOS"
+text = "MISIÓN 4  -  GOLPEA A LOS PAYASOS"
 
 [node name="SkipButton" type="Button" parent="."]
 unique_name_in_owner = true

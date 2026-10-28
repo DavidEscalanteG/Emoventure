@@ -125,6 +125,7 @@ text = "El cazador de las bestias despiertas"
 horizontal_alignment = 1
 
 [node name="Check" type="Label" parent="MapaContainer/Minijuego1"]
+visible = false
 layout_mode = 0
 offset_left = 64.0
 offset_top = 74.0
@@ -160,6 +161,7 @@ text = "Memorias eternas"
 horizontal_alignment = 1
 
 [node name="Check" type="Label" parent="MapaContainer/Minijuego2"]
+visible = false
 layout_mode = 0
 offset_left = 64.0
 offset_top = 74.0
@@ -195,6 +197,7 @@ text = "El pasillo de la lengua filosa"
 horizontal_alignment = 1
 
 [node name="Check" type="Label" parent="MapaContainer/Minijuego3"]
+visible = false
 layout_mode = 0
 offset_left = 64.0
 offset_top = 74.0
@@ -230,6 +233,7 @@ text = "Pega al payaso"
 horizontal_alignment = 1
 
 [node name="Check" type="Label" parent="MapaContainer/Minijuego4"]
+visible = false
 layout_mode = 0
 offset_left = 64.0
 offset_top = 74.0
@@ -267,6 +271,7 @@ text = "Resultados"
 horizontal_alignment = 1
 
 [node name="Icono" type="Label" parent="MapaContainer/CarpaResultados"]
+visible = false
 layout_mode = 0
 offset_left = 33.0
 offset_top = 31.0
