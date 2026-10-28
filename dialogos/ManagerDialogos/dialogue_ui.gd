@@ -35,12 +35,36 @@ func _mostrar_linea() -> void:
 		character_label.text = current_line.character
 		character_label.show()
 		match current_line.character:
-			"Carlos":
-				type_sound.pitch_scale = 1.0
-				character_label.modulate = Color.WHITE
 			"Gitana":
 				type_sound.pitch_scale = 0.85
 				character_label.modulate = Color.CRIMSON
+			"???":
+				type_sound.pitch_scale = 0.85
+				character_label.modulate = Color.CRIMSON
+			"Mujer Lagarto":
+				type_sound.pitch_scale = 1.0
+				character_label.modulate = Color.YELLOW
+			"{{DatosJugador.nombre_mascota}}":
+				# La mascota suena un poco más aguda
+				type_sound.pitch_scale = 1.2 
+				character_label.modulate = Color.PINK
+			"Frankenstein":
+				# Voz lenta y muy grave
+				type_sound.pitch_scale = 0.6 
+				character_label.modulate = Color.DARK_GREEN
+			"Narrador":
+				type_sound.pitch_scale = 1.0
+				character_label.modulate = Color.PURPLE
+			"Domador":
+				type_sound.pitch_scale = 0.95
+				character_label.modulate = Color.ORANGE
+			"Parca":
+				# Voz casi de ultratumba
+				type_sound.pitch_scale = 0.5 
+				character_label.modulate = Color.DARK_GRAY
+			_: # Para cualquier otro personaje que no esté en la lista
+				type_sound.pitch_scale = 1.0
+				character_label.modulate = Color.WHITE
 
 	else:
 		character_label.hide()

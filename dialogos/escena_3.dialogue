@@ -9,28 +9,28 @@ Narrador: ...
 # Tu personaje se detiene al notar una presencia cercana y guarda silencio, observándola con intriga.
 
 do DialogueActors.animacion_establecer_expresion("mujer_lagarto", "seria")
-MujerLagarto: E-ejem... Hola. 
-MujerLagarto: Veo que... bueno, que saliste de ahí con vida. No muchos lo consiguen en su primer intento.
+Mujer Lagarto: E-ejem... Hola. 
+Mujer Lagarto: Veo que... bueno, que saliste de ahí con vida. No muchos lo consiguen en su primer intento.
 
 # Tu personaje asiente lentamente, mostrando la llave en su mano con algo de fatiga.
 
-MujerLagarto: Ah, esa... esa llave. 
+Mujer Lagarto: Ah, esa... esa llave. 
 do DialogueActors.animacion_establecer_expresion("mujer_lagarto", "apenada")
-MujerLagarto: Perdón si hablo muy bajito o si te asusté. Es que... no suelo hablar mucho con quienes visitan el parque, la verdad prefiero mantenerme al margen.
-MujerLagarto: Pero... ya que la tienes, supongo que debo decirte cómo usarla. No sirve para cerraduras normales. Tienes que acercarla al portón de la siguiente atracción.
+Mujer Lagarto: Perdón si hablo muy bajito o si te asusté. Es que... no suelo hablar mucho con quienes visitan el parque, la verdad prefiero mantenerme al margen.
+Mujer Lagarto: Pero... ya que la tienes, supongo que debo decirte cómo usarla. No sirve para cerraduras normales. Tienes que acercarla al portón de la siguiente atracción.
 
 - [Acercarse con curiosidad y preguntar por señas qué lugar es el que sigue]
 	do DialogueActors.animacion_establecer_expresion("mujer_lagarto", "apenada")
-	MujerLagarto: ¿Qué si a dónde te lleva? ...Es la Casa del Terror. Es un poco ruidosa y caótica, lo sé.
-	MujerLagarto: A mí me da un poco de pena pasar por ahí, pero... tus recuerdos te están esperando dentro.
+	Mujer Lagarto: ¿Qué si a dónde te lleva? ...Es la Casa del Terror. Es un poco ruidosa y caótica, lo sé.
+	Mujer Lagarto: A mí me da un poco de pena pasar por ahí, pero... tus recuerdos te están esperando dentro.
 
 - [Tomar aire, mirar la llave con determinación y asentir con la cabeza aceptando ir]
 	do DialogueActors.animacion_establecer_expresion("mujer_lagarto", "seria")
-	MujerLagarto: Me agrada tu actitud... aunque a mí me darían mil nervios entrar. 
-	MujerLagarto: Te toca ir a la Casa del Terror. Mucho cuidado con lo que guardas en la memoria.
+	Mujer Lagarto: Me agrada tu actitud... aunque a mí me darían mil nervios entrar. 
+	Mujer Lagarto: Te toca ir a la Casa del Terror. Mucho cuidado con lo que guardas en la memoria.
 
 do DialogueActors.animacion_establecer_expresion("mujer_lagarto", "apenada")
-MujerLagarto: En fin... yo solo pasaba a avisarte. Mucha suerte, yo estaré por aquí... intentando no llamar la atención.
+Mujer Lagarto: En fin... yo solo pasaba a avisarte. Mucha suerte, yo estaré por aquí... intentando no llamar la atención.
 
 # do disappear("mujer_lagarto")
 # do start_gameplay("casa_del_terror")
