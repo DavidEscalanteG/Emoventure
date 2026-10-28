@@ -8,10 +8,14 @@ var cursor_golpe: Texture2D = load("res://assets/assets_escena_payaso/martillo_p
 @export var escena_cierre: PackedScene = preload("res://scenes/intro_dialogo_10/intro_dialogo_10.tscn")
 @export var numero_mision_cuestionario: int = 2
 
-@export var umbral_puntos_victoria: int = 50
+@export var umbral_puntos_victoria: int = 40
 @export_range(0.0, 1.0, 0.01) var umbral_porcentaje_aciertos_victoria: float = 0.50
 @export var puntos_maximos_derrota: int = 20
 @export_range(0.0, 1.0, 0.01) var umbral_porcentaje_aciertos_derrota: float = 0.20
+
+@export var boton_saltar_hud: Button
+# Variable estática para conservar el conteo entre reinicios
+static var intentos_mision_4: int = 0
 
 var puntos: int = 0
 var topos_jugables: Array[Node] = []
@@ -37,6 +41,9 @@ var velocidad_minima: float = 0.8
 
 func _ready() -> void:
 	randomize()
+	
+	# --- NUEVO: Sumar el primer intento al entrar a la escena ---
+	intentos_mision_4 += 1 
 
 	for topo in get_children():
 		if topo.has_method("aparecer") or topo.has_signal("golpe_recibido"):
@@ -53,6 +60,14 @@ func _ready() -> void:
 	if cursor_martillo:
 		cursor_martillo.texture = cursor_normal
 		cursor_martillo.visible = true
+		
+	# --- LÓGICA DEL BOTÓN DE SALTO DEL HUD ---
+	if boton_saltar_hud != null:
+		boton_saltar_hud.visible = (intentos_mision_4 >= 4)
+		if not boton_saltar_hud.pressed.is_connected(_on_boton_saltar_hud_pressed):
+			boton_saltar_hud.pressed.connect(_on_boton_saltar_hud_pressed)
+	# -----------------------------------------
+	
 	_actualizar_marcador()
 
 func _exit_tree() -> void:
@@ -185,6 +200,9 @@ func _on_boton_secundario_presionado() -> void:
 	pantalla_resultado.visible = false
 
 func _reiniciar_mision() -> void:
+	# --- NUEVO: Sumar un intento cada vez que le dan a "Reintentar" ---
+	intentos_mision_4 += 1
+	
 	mision_finalizada = false
 	puntos = 0
 	total_topos_aparecidos = 0
@@ -202,9 +220,16 @@ func _reiniciar_mision() -> void:
 		cursor_martillo.texture = cursor_normal
 	$SpawnTimer.start()
 	$TimerJuego.start()
-	Logs.log_debug("Misión de topos reiniciada")
+	Logs.log_debug("Misión de topos reiniciada. Intento actual: " + str(intentos_mision_4))
+	
+	# --- NUEVO: Mostrar el botón del HUD instantáneamente si ya estamos en el intento 4 ---
+	if boton_saltar_hud != null:
+		boton_saltar_hud.visible = (intentos_mision_4 >= 4)
 
 func _iniciar_cuestionario() -> void:
+	# --- NUEVO: Reseteamos los intentos a 0 por si el jugador vuelve a jugar este nivel después ---
+	intentos_mision_4 = 0
+	
 	if GameManager.consumir_modo_rejugabilidad():
 		_restaurar_cursor_predeterminado()
 		get_tree().change_scene_to_file(GameManager.ESCENA_MAPA_REJUGABILIDAD)
@@ -249,3 +274,13 @@ func _notification(what: int) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 			if cursor_martillo:
 				cursor_martillo.visible = true
+
+func _on_boton_saltar_hud_pressed() -> void:
+	if AudioManager:
+		AudioManager.play_ui_click()
+	
+	# Ocultamos el botón al hacer clic para que el jugador no lo presione dos veces
+	boton_saltar_hud.visible = false
+	
+	# Llamamos directo a la función que finaliza el nivel y carga el cuestionario
+	_iniciar_cuestionario()

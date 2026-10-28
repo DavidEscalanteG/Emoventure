@@ -5,9 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://bonwv5f02ix4d" path="res://scenes/mision_4_payasos/fondo_topos.jpg" id="3_bywb4"]
 [ext_resource type="Texture2D" uid="uid://cx27ju4tduufo" path="res://assets/assets_escena_payaso/images.png" id="3_h0xfj"]
 
-[node name="MapaTopos" type="Node2D"]
+[node name="MapaTopos" type="Node2D" node_paths=PackedStringArray("boton_saltar_hud")]
 script = ExtResource("1_motkv")
 numero_mision_cuestionario = 4
+boton_saltar_hud = NodePath("CanvasLayer2/Button")
 
 [node name="FondoTopos" type="Sprite2D" parent="."]
 position = Vector2(953.2467, 477.62503)
@@ -207,6 +208,18 @@ autostart = true
 [node name="CursorMartillo" type="Sprite2D" parent="."]
 z_index = 100
 position = Vector2(510, 370)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+scale = Vector2(3.035, 3.035)
+transform = Transform2D(3.035, 0, 0, 3.035, 0, 0)
+
+[node name="Button" type="Button" parent="CanvasLayer2"]
+offset_left = 9.225698
+offset_top = 38.879738
+offset_right = 107.2257
+offset_bottom = 77.87974
+text = "Saltar nivel"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="TimerJuego" to="." method="_on_timer_juego_timeout"]

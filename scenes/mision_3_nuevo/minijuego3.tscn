@@ -848,6 +848,7 @@ fit_content = true
 autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Puerta" type="Sprite2D" parent="TilemapLayers"]
 position = Vector2(18830, 758.355)
@@ -898,3 +899,4 @@ offset_top = 12.191104
 offset_right = 110.1911
 offset_bottom = 51.191105
 text = "Saltar nivel"
+metadata/_edit_use_anchors_ = true
