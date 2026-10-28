@@ -48,6 +48,9 @@ func _mostrar_linea() -> void:
 				# La mascota suena un poco más aguda
 				type_sound.pitch_scale = 1.2 
 				character_label.modulate = Color.PINK
+			"Payaso": # Ejemplo de otro personaje
+				type_sound.pitch_scale = 1.1
+				character_label.modulate = Color.DEEP_SKY_BLUE
 			"Frankenstein":
 				# Voz lenta y muy grave
 				type_sound.pitch_scale = 0.6 

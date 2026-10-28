@@ -361,3 +361,8 @@ func _obtener_bus_musica() -> String:
 	if AudioManager.BUS_MUSICA != BUS_MUSICA:
 		push_warning("[MusicManager] BUS_MUSICA no coincide con AudioManager (%s != %s). Se usará '%s'." % [BUS_MUSICA, AudioManager.BUS_MUSICA, AudioManager.BUS_MUSICA])
 	return AudioManager.BUS_MUSICA
+
+func obtener_posicion_reproduccion() -> float:
+	if _reproductor != null and _reproductor.playing:
+		return _reproductor.get_playback_position()
+	return 0.0

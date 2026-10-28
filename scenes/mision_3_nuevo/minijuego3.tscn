@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://dg5ha2royb1j4"]
+[gd_scene load_steps=42 format=4 uid="uid://dg5ha2royb1j4"]
 
 [ext_resource type="Texture2D" uid="uid://buydsigs7de4s" path="res://scenes/mision_3_nuevo/Medieval_props_free.png" id="1_dn2vn"]
 [ext_resource type="Texture2D" uid="uid://dcm4rydc8jasc" path="res://scenes/mision_3_nuevo/Medieval_tiles_free_2.0.png" id="2_gfnh3"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://oig7r7p0o84g" path="res://scenes/mision_3_nuevo/Cat spreadsheets/3_Cat_Jump-Sheet.png" id="6_gh7xm"]
 [ext_resource type="PackedScene" uid="uid://ctvf8j26ibumk" path="res://assets/personajes/parca/Parca.tscn" id="8_ckk7g"]
 [ext_resource type="Script" uid="uid://drvldfa15faj8" path="res://scenes/mision_3_nuevo/meta.gd" id="10_beomm"]
+[ext_resource type="PackedScene" uid="uid://cikwgada80nqv" path="res://scenes/Checkpoint.tscn" id="10_effmt"]
 [ext_resource type="PackedScene" uid="uid://g120rogpki5q" path="res://scenes/recompensa_mision_3/recompensa_mision_3.tscn" id="11_7dcpf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1fmj7"]
@@ -878,7 +879,7 @@ scale = Vector2(1.8849999, 1.8849999)
 shape = SubResource("CapsuleShape2D_4i633")
 
 [node name="Camera2D" type="Camera2D" parent="Jugador"]
-position = Vector2(244.44444, -104.44443)
+position = Vector2(245.18518, -104.44443)
 zoom = Vector2(2.48, 2.48)
 
 [node name="Meta" type="Area2D" parent="."]
@@ -900,3 +901,11 @@ offset_right = 110.1911
 offset_bottom = 51.191105
 text = "Saltar nivel"
 metadata/_edit_use_anchors_ = true
+
+[node name="Checkpoint" parent="." instance=ExtResource("10_effmt")]
+position = Vector2(6296, 457.99997)
+scale = Vector2(1.35, 1.35)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("10_effmt")]
+position = Vector2(12392, 457.99997)
+scale = Vector2(1.35, 1.35)

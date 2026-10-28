@@ -1,25 +1,43 @@
 ~ inicio_memorias
 # — ESCENA: Cuarto de las Memorias Eternas —
 # El ambiente está rodeado de fotografías antiguas y una atmósfera inquietante.
-
-Payaso: ¡JA, JA, JA, JAAA! ¡Mirémosle la cara al tiempo! ¡Te doy la bienvenida, alma viajera, a la trituradora de la nostalgia!
+do DialogueActors.animacion_establecer_expresion("payaso", "risa_izquierda")
+Payaso: ¡JA, JA, JA, JAAA! 
+do DialogueActors.animacion_establecer_expresion("payaso", "hablando_izquierda")
+Payaso: ¡Mirémosle la cara al tiempo! ¡Te doy la bienvenida, alma viajera, a la trituradora de la nostalgia!
+do DialogueActors.animacion_establecer_expresion("payaso", "nariz_izquierda")
 
 Narrador: El cuarto se ilumina con destellos parpadeantes. Cientos de fotografías antiguas cubren las paredes, retorciéndose levemente como si respiraran.
 
+do DialogueActors.animacion_establecer_expresion("payaso", "pastel_izquierda")
 {{DatosJugador.nombre_mascota}}: (gruñe bajito, observando las sombras con desconfianza)
+
+do DialogueActors.animacion_establecer_expresion("payaso", "hablando_izquierda")
 
 Payaso: ¡Uy, mira nada más a nuestra pequeña bestia, a {{DatosJugador.nombre_mascota}}! ¡Ese pelaje huele a miedo fresco, me encanta! ¡JA, JA!
 
 Payaso: Estás en el Cuarto de las Memorias Eternas. ¡Aquí los recuerdos no descansan, gritan! 
 Payaso: Y tú... tú estás entre tus propias cicatrices de papel. Son tus fotos, ¿ves? ¡Tus pequeños trozos de pasado!
 
+do DialogueActors.animacion_establecer_expresion("payaso", "te_izquierda")
+
 - [Examinar una de las fotografías con inquietud]
+	do DialogueActors.animacion_establecer_expresion("payaso", "hablando_izquierda")
+
 	Payaso: ¡Eso es! ¡Ábrete los ojos por la fuerza! Cada foto encierra una emoción que te carcome por dentro.
+	do DialogueActors.animacion_establecer_expresion("payaso", "flor_izquierda")
+
 	{{DatosJugador.nombre_mascota}}: (se encoge un poco)
 
 - [Retroceder un paso con cautela]
+	do DialogueActors.animacion_establecer_expresion("payaso", "hablando_izquierda")
+
 	Payaso: ¡¿A dónde huyes?! ¡No hay vuelta atrás! ¡JA, JA, JAAA!
+	do DialogueActors.animacion_establecer_expresion("payaso", "flor_izquierda")
+
 	{{DatosJugador.nombre_mascota}}: (se pega a ti)
+
+do DialogueActors.animacion_establecer_expresion("payaso", "hablando_izquierda")
 
 Payaso: Tu misión es muy simple, o tan compleja como tu mente quiera. Toca cada fotografía...
 Payaso: Y dime: ¿qué emoción vivía en tu corazón en ese instante?
@@ -28,6 +46,7 @@ Payaso: Lo importante no es acertar... ¡sino atreverse a sentir!
 
 Payaso: ¡A tocar las fotos se ha dicho! ¡Que empiece el desfile de los recuerdos!
 
-Narrador: El payaso da una carcajada ensordecedora, salta sobre su biciclo y se aleja pedaleando a toda velocidad, perdiéndose de golpe entre las sombras del techo.
+do DialogueActors.animacion_establecer_expresion("payaso", "equilibrio_derecha")
+do DialogueActors.movimiento_mover_y_esperar("payaso", Vector2(800,800), 5)
 
 => END
