@@ -6,9 +6,10 @@ extends Node2D
 
 @onready var apariencia: Node2D = $Jugador/PlayerAppearance
 @onready var mascota: Node2D = $Mascota
-@onready var panel_nombre_jugador: Control = $CanvasLayer/PanelNombreJugador
-@onready var input_nombre_jugador: LineEdit = $CanvasLayer/PanelNombreJugador/MarginContainer/VBoxContainer/InputNombreJugador
-@onready var label_error_nombre_jugador: Label = $CanvasLayer/PanelNombreJugador/MarginContainer/VBoxContainer/ErrorNombreJugador
+@onready var panel_nombre_jugador: Control = %PanelNombreJugador
+@onready var input_nombre_jugador: LineEdit = %InputNombreJugador
+@onready var label_error_nombre_jugador: Label = %ErrorNombreJugador
+@onready var editor_colores: VBoxContainer = %HSVColorEditor
 
 # --------------------------------------------------
 # ESTADO TEMPORAL (índices del menú)
@@ -21,13 +22,14 @@ var indice_cuerpo: int = 0
 var indice_nariz: int = 0
 var indice_cabeza: int = 0
 
-const ESCALA_PULSO_HOVER: float = 1.13
+const ESCALA_PULSO_HOVER: float = 1.03
 const DURACION_PULSO_HOVER: float = 0.89
-const ESCALA_PRESION_BOTON: float = 0.94
+const ESCALA_PRESION_BOTON: float = 0.97
 const OSCURECIMIENTO_PRESION_BOTON: float = 0.82
 const DURACION_SACUDIDA_PANEL_NOMBRE: float = 0.08
 const DISTANCIA_SACUDIDA_PANEL_NOMBRE: float = 16.0
 const REPETICIONES_SACUDIDA_PANEL_NOMBRE: int = 4
+const MARGEN_RETRATO: Vector2 = Vector2(12, 8)
 
 var _escala_base_botones: Dictionary = {}
 var _tweens_hover_botones: Dictionary = {}
@@ -35,20 +37,77 @@ var _modulate_base_botones: Dictionary = {}
 var _botones_presionados: Dictionary = {}
 var _tween_sacudida_panel_nombre: Tween = null
 var _posicion_base_panel_nombre: Vector2 = Vector2.ZERO
+var _limites_retrato: Rect2 = Rect2()
 
 # --------------------------------------------------
 # CICLO DE VIDA
 # --------------------------------------------------
 
 func _ready() -> void:
+	_aplicar_marcos_pixelados()
 	cargar_desde_global()
 	_validar_cabello_por_genero()
 	refrescar_preview()
 	_inicializar_nombre_jugador()
 	_inicializar_posicion_panel_nombre()
 	configurar_hover_botones()
+	_configurar_pestanas_color()
 	
 	mascota.aplicar_mascota_desde_global()
+	_actualizar_miniatura_mascota()
+	%RetratoPeinado.resized.connect(_ajustar_retrato_peinado)
+	_ajustar_retrato_peinado.call_deferred()
+
+
+func _aplicar_marcos_pixelados() -> void:
+	var tema_base: Theme = preload("res://assets/temas/tema_personalizacion.tres")
+	var tema: Theme = tema_base.duplicate() as Theme
+	var estilos_ampliados: Dictionary = {}
+	# Los mismos tiles de 16/32 px del menú y configuración, ampliados sin
+	# suavizado para que el relieve y los bordes sigan viéndose en esta pantalla.
+	for tipo: StringName in [&"Button", &"BotonPrincipal", &"Panel", &"PanelContainer", &"LineEdit"]:
+		for nombre: StringName in tema_base.get_stylebox_list(tipo):
+			var origen: StyleBox = tema_base.get_stylebox(nombre, tipo)
+			if not origen is StyleBoxTexture:
+				continue
+			if not estilos_ampliados.has(origen):
+				var estilo: StyleBoxTexture = origen.duplicate() as StyleBoxTexture
+				var imagen: Image = estilo.texture.get_image().get_region(Rect2i(estilo.region_rect))
+				imagen.resize(imagen.get_width() * 3, imagen.get_height() * 3, Image.INTERPOLATE_NEAREST)
+				estilo.texture = ImageTexture.create_from_image(imagen)
+				estilo.region_rect = Rect2(Vector2.ZERO, imagen.get_size())
+				for lado: Side in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]:
+					estilo.set_texture_margin(lado, estilo.get_texture_margin(lado) * 3.0)
+				estilos_ampliados[origen] = estilo
+			tema.set_stylebox(nombre, tipo, estilos_ampliados[origen])
+	for nodo: Node in find_children("*", "Control", true, false):
+		var control: Control = nodo as Control
+		if control.theme == tema_base:
+			control.theme = tema
+
+
+func _configurar_pestanas_color() -> void:
+	var grupo: ButtonGroup = ButtonGroup.new()
+	for seccion: String in ["Cabello", "Ropa", "Piel"]:
+		var boton: Button = editor_colores.get_node("PestanasColor/" + seccion)
+		boton.button_group = grupo
+		boton.pressed.connect(func() -> void:
+			AudioManager.play_ui_click()
+			seleccionar_seccion_color(seccion)
+		)
+		var editor: PanelContainer = editor_colores.get_node("HSVEditor" + seccion)
+		editor.color_actualizado.connect(_actualizar_colores_retrato)
+	seleccionar_seccion_color("Cabello")
+
+
+func seleccionar_seccion_color(seccion: String) -> void:
+	if seccion not in ["Cabello", "Ropa", "Piel"]:
+		return
+	for nombre: String in ["Cabello", "Ropa", "Piel"]:
+		var editor: Control = editor_colores.get_node("HSVEditor" + nombre)
+		var boton: Button = editor_colores.get_node("PestanasColor/" + nombre)
+		editor.visible = nombre == seccion
+		boton.set_pressed_no_signal(nombre == seccion)
 
 
 # --------------------------------------------------
@@ -76,6 +135,97 @@ func guardar_en_global() -> void:
 func refrescar_preview() -> void:
 	guardar_en_global()
 	apariencia.aplicar_apariencia_desde_global()
+	_actualizar_retrato_peinado()
+
+
+func _actualizar_retrato_peinado() -> void:
+	# Cada capa conserva sus coordenadas originales. Solo la piel se limita a
+	# la cabeza; el cabello puede extenderse por debajo de la barbilla.
+	var regiones: Dictionary = {}
+	var texturas: Dictionary = {}
+	_limites_retrato = Rect2()
+	for pieza: String in ["Cuerpo", "Cabello"]:
+		var origen: AnimatedSprite2D = apariencia.get_node(pieza)
+		var retrato: Sprite2D = get_node("%" + pieza)
+		retrato.texture = null
+		retrato.visible = false
+		if not origen.sprite_frames.has_animation("idle_down") or origen.sprite_frames.get_frame_count("idle_down") == 0:
+			continue
+		var fotograma: Texture2D = origen.sprite_frames.get_frame_texture("idle_down", 0)
+		# La opción sin cabello contiene un fotograma vacío.
+		if fotograma == null:
+			continue
+		var imagen: Image = fotograma.get_image()
+		if pieza == "Cuerpo":
+			imagen = _extraer_cabeza_retrato(imagen)
+			fotograma = ImageTexture.create_from_image(imagen)
+		var region: Rect2 = Rect2(imagen.get_used_rect())
+		if not region.has_area():
+			continue
+		regiones[pieza] = region
+		texturas[pieza] = fotograma
+		_limites_retrato = region if _limites_retrato.size == Vector2.ZERO else _limites_retrato.merge(region)
+	for pieza: String in ["Cuerpo", "Cabello"]:
+		if not regiones.has(pieza):
+			continue
+		var retrato: Sprite2D = get_node("%" + pieza)
+		var region: Rect2 = regiones[pieza]
+		var textura: AtlasTexture = AtlasTexture.new()
+		textura.atlas = texturas[pieza]
+		textura.region = region
+		retrato.texture = textura
+		retrato.visible = true
+		retrato.offset = region.get_center() - _limites_retrato.get_center()
+		retrato.material = apariencia.get_node(pieza).material
+	_ajustar_retrato_peinado()
+	_actualizar_colores_retrato()
+
+
+func _extraer_cabeza_retrato(origen: Image) -> Image:
+	# La cabeza del idle_down comparte hoja con el cuerpo. A partir de la fila
+	# 26, seguimos la mandíbula para conservar nariz y barbilla sin hombros.
+	var cabeza: Image = Image.create(origen.get_width(), origen.get_height(), false, Image.FORMAT_RGBA8)
+	cabeza.fill(Color.TRANSPARENT)
+	cabeza.blit_rect(origen, Rect2i(0, 0, origen.get_width(), 26), Vector2i.ZERO)
+	for franja: Rect2i in [Rect2i(28, 26, 9, 1), Rect2i(29, 27, 7, 1), Rect2i(30, 28, 5, 1)]:
+		cabeza.blit_rect(origen, franja, franja.position)
+	return cabeza
+
+
+func _ajustar_retrato_peinado() -> void:
+	if _limites_retrato.size == Vector2.ZERO:
+		return
+	var area: Control = %RetratoPeinado
+	var disponible: Vector2 = area.size - MARGEN_RETRATO
+	# Escala entera para mantener nítido el pixel art, incluso con pelo largo.
+	var factor: float = maxf(1.0, floorf(minf(disponible.x / _limites_retrato.size.x, disponible.y / _limites_retrato.size.y)))
+	%Retrato.scale = Vector2.ONE * factor
+	%Retrato.position = (area.size * 0.5).floor()
+
+
+func _actualizar_colores_retrato() -> void:
+	%Cuerpo.self_modulate = apariencia.cuerpo.self_modulate
+	%Cabello.self_modulate = apariencia.cabello.self_modulate
+
+
+func _actualizar_miniatura_mascota() -> void:
+	# Usa la misma orientación en el escenario y en su selector.
+	var fotogramas: SpriteFrames = mascota.sprite.sprite_frames
+	var animacion: StringName = &"idle_right"
+	mascota.sprite.flip_h = false
+	if not fotogramas.has_animation(animacion) or fotogramas.get_frame_count(animacion) == 0:
+		# Algunas hojas de gato solo tienen el reposo hacia la izquierda.
+		animacion = &"idle_left"
+		mascota.set_direccion("left")
+		mascota.sprite.flip_h = true
+	else:
+		mascota.set_direccion("right")
+	var fotograma: Texture2D = fotogramas.get_frame_texture(animacion, 0)
+	var textura: AtlasTexture = AtlasTexture.new()
+	textura.atlas = fotograma
+	textura.region = Rect2(fotograma.get_image().get_used_rect())
+	%MiniaturaMascota.texture = textura
+	%MiniaturaMascota.flip_h = mascota.sprite.flip_h
 
 
 # --------------------------------------------------
@@ -191,7 +341,7 @@ func _on_comenzar_pressed() -> void:
 	AudioManager.play_ui_click()
 	var validacion: Dictionary = DatosJugador.validar_nombre(input_nombre_jugador.text)
 	if not validacion.ok:
-		label_error_nombre_jugador.text = validacion.mensaje
+		label_error_nombre_jugador.text = "Escribe tu nombre para continuar." if DatosJugador.limpiar_nombre(input_nombre_jugador.text).is_empty() else "Ese nombre no está permitido."
 		_sacudir_panel_nombre_jugador()
 		return
 
@@ -229,6 +379,7 @@ func _actualizar_indice_mascota(delta: int) -> void:
 
 	DatosJugador.set_indice_mascota(indice)
 	mascota.aplicar_mascota_desde_global()
+	_actualizar_miniatura_mascota()
 
 func _validar_cabello_por_genero() -> void:
 	if DatosJugador.genero == "":
@@ -371,6 +522,9 @@ func _sacudir_panel_nombre_jugador() -> void:
 
 	if _tween_sacudida_panel_nombre != null and _tween_sacudida_panel_nombre.is_running():
 		_tween_sacudida_panel_nombre.kill()
+	else:
+		# El contenedor calcula esta posición después de _ready y al redimensionar.
+		_posicion_base_panel_nombre = panel_nombre_jugador.position
 
 	panel_nombre_jugador.position = _posicion_base_panel_nombre
 	

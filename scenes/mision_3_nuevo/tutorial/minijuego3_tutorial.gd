@@ -4,7 +4,7 @@ const MISSION_SCENE := "res://scenes/mision_3_nuevo/minijuego3.tscn"
 const MESSAGES: Array[String] = [
 	"Tu personaje avanza automáticamente. Tu tarea es elegir el momento correcto para saltar.",
 	"Presiona ESPACIO, flecha arriba o haz clic para saltar los pinchos. En celular, toca la pantalla.",
-	"Evita pinchos, fuego y obstáculos. Si los tocas, el nivel comenzará de nuevo.",
+	"Evita pinchos y más obstáculos. Si los tocas, el nivel comenzará de nuevo.",
 	"Llega hasta la puerta al final del recorrido para completar la misión.",
 	"¡Todo listo! Mantén la calma, observa el camino y salta en el momento preciso."
 ]
@@ -132,7 +132,7 @@ func _style_navigation_buttons() -> void:
 		button.add_theme_color_override("font_hover_color", Color.WHITE)
 		button.add_theme_color_override("font_pressed_color", Color("#ffe49a"))
 		button.add_theme_color_override("font_disabled_color", Color("#cbc5d6"))
-		button.add_theme_font_size_override("font_size", 30)
+		button.add_theme_font_size_override("font_size", 32)
 
 func _panel_style(fill: Color, border: Color, width: int, radius: int) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()

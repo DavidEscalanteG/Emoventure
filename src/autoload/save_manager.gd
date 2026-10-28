@@ -273,11 +273,11 @@ func _aplicar_apariencia_desde_diccionario(data: Dictionary) -> void:
 	DatosJugador.apariencia.indice_cabeza = int(data.get("indice_cabeza", 0))
 
 	DatosJugador.apariencia.color_cabeza = Color(data.get("color_cabeza", "ffffffff"))
-	DatosJugador.apariencia.color_cabello = Color(data.get("color_cabello", "ffffffff"))
+	DatosJugador.apariencia.color_cabello = Color(data.get("color_cabello", AparienciaJugador.COLOR_CABELLO_INICIAL.to_html(true)))
 	DatosJugador.apariencia.color_ojos = Color(data.get("color_ojos", "ffffffff"))
-	DatosJugador.apariencia.color_cuerpo = Color(data.get("color_cuerpo", "ffffffff"))
+	DatosJugador.apariencia.color_cuerpo = Color(data.get("color_cuerpo", AparienciaJugador.COLOR_PIEL_INICIAL.to_html(true)))
 	DatosJugador.apariencia.color_nariz = Color(data.get("color_nariz", "ffffffff"))
-	DatosJugador.apariencia.color_boca = Color(data.get("color_boca", "ffffffff"))
+	DatosJugador.apariencia.color_boca = Color(data.get("color_boca", AparienciaJugador.COLOR_ROPA_INICIAL.to_html(true)))
 
 
 func _obtener_escena_actual_path() -> String:

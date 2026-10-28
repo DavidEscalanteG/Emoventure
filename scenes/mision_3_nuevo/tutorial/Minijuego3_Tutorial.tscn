@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://d31uffq4knvtw"]
 
-[ext_resource type="Script" path="res://scenes/mision_3_nuevo/tutorial/minijuego3_tutorial.gd" id="1"]
-[ext_resource type="Theme" path="res://assets/temas/tema_botones.tres" id="2"]
-[ext_resource type="Texture2D" path="res://scenes/mision_3_nuevo/Cat spreadsheets/2_Cat_Run-Sheet.png" id="3_cat"]
-[ext_resource type="Texture2D" path="res://scenes/mision_3_nuevo/Medieval_tiles_free_2.0.png" id="4_tiles"]
+[ext_resource type="Script" uid="uid://dx5o6uxg8om67" path="res://scenes/mision_3_nuevo/tutorial/minijuego3_tutorial.gd" id="1"]
+[ext_resource type="Theme" uid="uid://dwacxx3nxjf5c" path="res://assets/temas/tema_botones.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://brux4eqsrv1f5" path="res://scenes/mision_3_nuevo/Cat spreadsheets/2_Cat_Run-Sheet.png" id="3_cat"]
+[ext_resource type="Texture2D" uid="uid://dcm4rydc8jasc" path="res://scenes/mision_3_nuevo/Medieval_tiles_free_2.0.png" id="4_tiles"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cat"]
 atlas = ExtResource("3_cat")
@@ -57,8 +57,8 @@ offset_right = 520.0
 offset_bottom = 190.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(520, 220)
 scale = Vector2(1.15, 1.1)
+pivot_offset = Vector2(520, 220)
 
 [node name="ArenaFrame" type="Panel" parent="Arena"]
 unique_name_in_owner = true
@@ -95,7 +95,7 @@ texture = SubResource("AtlasTexture_cat")
 
 [node name="Danger" type="Control" parent="Arena"]
 unique_name_in_owner = true
-layout_mode = 0
+anchors_preset = 0
 offset_left = 490.0
 offset_top = 298.0
 offset_right = 650.0
@@ -114,7 +114,7 @@ stretch_mode = 5
 
 [node name="Goal" type="Control" parent="Arena"]
 unique_name_in_owner = true
-layout_mode = 0
+anchors_preset = 0
 offset_left = 790.0
 offset_top = 210.0
 offset_right = 925.0
@@ -139,7 +139,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.86, 0.35, 1)
 theme_override_font_sizes/font_size = 25
-text = "META\n▣"
+text = "META
+▣"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -192,7 +193,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_left = 30.0
 offset_top = 20.0
-offset_right = -260.0
+offset_right = -370.0
 offset_bottom = 72.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.82, 0.4, 1)
@@ -205,13 +206,13 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -240.0
+offset_left = -340.0
 offset_top = 20.0
 offset_right = -25.0
 offset_bottom = 82.0
 grow_horizontal = 0
 theme = ExtResource("2")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 34
 text = "Omitir tutorial"
 
 [node name="Bottom" type="PanelContainer" parent="."]
@@ -221,7 +222,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
-offset_top = -295.0
+offset_top = -325.0
 offset_right = -40.0
 offset_bottom = -25.0
 grow_horizontal = 2
@@ -235,7 +236,7 @@ theme_override_constants/separation = 10
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 92)
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 42
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -244,7 +245,7 @@ autowrap_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.82, 0.4, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 26
 horizontal_alignment = 1
 
 [node name="Navigation" type="HBoxContainer" parent="Bottom/VBox"]

@@ -69,10 +69,10 @@ offset_top = 24.0
 offset_right = 235.5
 offset_bottom = 79.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 40
 theme_override_colors/font_color = Color(1, 0.827451, 0.384314, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
 theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40
 text = "Felicidades"
 horizontal_alignment = 1
 
@@ -86,10 +86,10 @@ offset_top = 78.0
 offset_right = 512.0
 offset_bottom = 124.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 33
 theme_override_colors/font_color = Color(0.94, 0.968, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
 theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 33
 text = "Explora cualquier misión y vuelve a jugar sin afectar tu progreso global"
 horizontal_alignment = 1
 
@@ -106,10 +106,10 @@ horizontal_alignment = 1
 
 [node name="Minijuego1" type="TextureButton" parent="MapaContainer"]
 layout_mode = 0
-offset_left = 303.345
-offset_top = 280.0
-offset_right = 407.34485
-offset_bottom = 383.0
+offset_left = 320.0
+offset_top = 300.0
+offset_right = 423.99985
+offset_bottom = 403.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("3_asvx7")
 ignore_texture_size = true
@@ -141,10 +141,10 @@ etiqueta_hover_path = NodePath("../Nombre")
 
 [node name="Minijuego2" type="TextureButton" parent="MapaContainer"]
 layout_mode = 0
-offset_left = 300.0
-offset_top = 650.0
-offset_right = 404.0
-offset_bottom = 753.0
+offset_left = 320.0
+offset_top = 700.0
+offset_right = 424.0
+offset_bottom = 803.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("3_asvx7")
 ignore_texture_size = true
@@ -176,10 +176,10 @@ etiqueta_hover_path = NodePath("../Nombre")
 
 [node name="Minijuego3" type="TextureButton" parent="MapaContainer"]
 layout_mode = 0
-offset_left = 1400.0
-offset_top = 300.0
-offset_right = 1504.0
-offset_bottom = 403.0
+offset_left = 1450.0
+offset_top = 340.0
+offset_right = 1554.0
+offset_bottom = 443.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("3_asvx7")
 ignore_texture_size = true
@@ -211,10 +211,10 @@ etiqueta_hover_path = NodePath("../Nombre")
 
 [node name="Minijuego4" type="TextureButton" parent="MapaContainer"]
 layout_mode = 0
-offset_left = 1400.0
-offset_top = 650.0
-offset_right = 1504.0
-offset_bottom = 753.0
+offset_left = 1440.0
+offset_top = 700.0
+offset_right = 1544.0
+offset_bottom = 803.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("3_asvx7")
 ignore_texture_size = true
@@ -248,10 +248,10 @@ etiqueta_hover_path = NodePath("../Nombre")
 unique_name_in_owner = true
 modulate = Color(0.94902, 1, 0.788235, 1)
 layout_mode = 0
-offset_left = 822.0
-offset_top = 400.0
-offset_right = 926.0
-offset_bottom = 503.0
+offset_left = 880.0
+offset_top = 420.0
+offset_right = 984.0
+offset_bottom = 523.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("3_asvx7")
 ignore_texture_size = true

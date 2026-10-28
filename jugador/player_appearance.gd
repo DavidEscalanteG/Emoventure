@@ -1,5 +1,8 @@
 extends Node2D
 
+const MATERIAL_COLOR_NEUTRO: ShaderMaterial = preload("res://assets/temas/color_personaje.tres")
+const MATERIAL_COLOR_PIEL: ShaderMaterial = preload("res://assets/temas/color_piel.tres")
+
 # ==================================================
 # ESTADO
 # ==================================================
@@ -41,6 +44,9 @@ var estado_actual: String = "idle" # idle | walk
 
 
 func _ready() -> void:
+	for pieza: AnimatedSprite2D in [cabello, cabeza, boca]:
+		pieza.material = MATERIAL_COLOR_NEUTRO
+	cuerpo.material = MATERIAL_COLOR_PIEL
 	cuerpo.frame_changed.connect(_sincronizar_partes)
 	cuerpo.animation_changed.connect(_sincronizar_partes)
 	_sincronizar_partes()

@@ -1,6 +1,7 @@
 extends Control
 
 const MAPA_REJUGABILIDAD_SCENE: String = "res://scenes/rejugabilidad/mapa_rejugabilidad.tscn"
+const REPORTE_PDF = preload("res://src/ui/reporte_resultados_pdf.gd")
 const DIMENSIONES: Array[String] = ["atencion", "claridad", "reparacion"]
 const TEXTO_BOTON_DESCARGA_POR_DEFECTO: String = "Descargar resultados en PDF"
 const TEXTO_BOTON_DESCARGA_EXITOSA: String = "¡Archivo descargado exitosamente en tu carpeta de descargas!"
@@ -183,8 +184,7 @@ func _on_dialogo_guardar_pdf_file_selected(path: String) -> void:
 
 
 func _guardar_reporte_pdf(path: String) -> bool:
-	var lineas: PackedStringArray = _construir_lineas_reporte()
-	var pdf_data: PackedByteArray = _construir_pdf_simple(lineas)
+	var pdf_data: PackedByteArray = _construir_reporte_pdf()
 	var archivo: FileAccess = FileAccess.open(path, FileAccess.WRITE)
 	if archivo == null:
 		push_warning("No se pudo crear el PDF en: %s" % path)
@@ -195,58 +195,22 @@ func _guardar_reporte_pdf(path: String) -> bool:
 	return true
 
 
-func _construir_lineas_reporte() -> PackedStringArray:
+func _construir_reporte_pdf() -> PackedByteArray:
 	var puntajes: Dictionary[String, int] = GameManager.obtener_puntajes_por_dimension()
-	var total_global: int = 0
-	for dimension in DIMENSIONES:
-		total_global += puntajes.get(dimension, 0)
-
-	var lineas: PackedStringArray = [
-		"Reporte de resultados emocionales",
-		"",
-		"Nombre: %s" % str(DatosJugador.nombre_jugador),
-		"Género: %s" % str(DatosJugador.genero),
-		"Puntaje total: %d" % total_global,
-		""
-	]
-
-	for dimension in DIMENSIONES:
+	var dimensiones: Array[Dictionary] = []
+	var total: int = 0
+	for dimension: String in DIMENSIONES:
 		var puntaje: int = puntajes.get(dimension, 0)
-		lineas.append("%s: %d/40" % [NOMBRES_DIMENSION.get(dimension, dimension), puntaje])
-		lineas.append(_obtener_mensaje_dimension(dimension, puntaje))
-		lineas.append("")
-
-	lineas.append(label_perfil_final.text)
-	return lineas
-
-
-func _construir_pdf_simple(lineas: PackedStringArray) -> PackedByteArray:
-	var objetos: Array[String] = []
-	objetos.append("<< /Type /Catalog /Pages 2 0 R >>")
-	objetos.append("<< /Type /Pages /Kids [3 0 R] /Count 1 >>")
-	objetos.append("<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>")
-	objetos.append("<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>")
-
-	var contenido: String = "BT\n/F1 12 Tf\n50 790 Td\n"
-	for linea in lineas:
-		contenido += "(%s) Tj\n0 -18 Td\n" % _texto_a_pdf_winansi(linea)
-	contenido += "ET\n"
-	objetos.append("<< /Length %d >>\nstream\n%sendstream" % [contenido.to_utf8_buffer().size(), contenido])
-
-	var pdf: String = "%PDF-1.4\n"
-	var offsets: Array[int] = [0]
-	for i in range(objetos.size()):
-		offsets.append(pdf.to_utf8_buffer().size())
-		pdf += "%d 0 obj\n%s\nendobj\n" % [i + 1, objetos[i]]
-
-	var inicio_xref: int = pdf.to_utf8_buffer().size()
-	pdf += "xref\n0 %d\n" % (objetos.size() + 1)
-	pdf += "0000000000 65535 f \n"
-	for i in range(1, offsets.size()):
-		pdf += "%010d 00000 n \n" % offsets[i]
-
-	pdf += "trailer\n<< /Size %d /Root 1 0 R >>\nstartxref\n%d\n%%%%EOF" % [objetos.size() + 1, inicio_xref]
-	return pdf.to_utf8_buffer()
+		total += puntaje
+		dimensiones.append({
+			"nombre": NOMBRES_DIMENSION[dimension],
+			"puntaje": puntaje,
+			"mensaje": _obtener_mensaje_dimension(dimension, puntaje)
+		})
+	return REPORTE_PDF.new().construir(
+		str(DatosJugador.nombre_jugador), str(DatosJugador.genero), dimensiones,
+		_construir_texto_perfil_final(puntajes, total)
+	)
 
 
 func _construir_ruta_pdf_sugerida() -> String:
@@ -291,63 +255,6 @@ func _sanitizar_nombre_archivo(valor: String) -> String:
 	if salida.is_empty():
 		return "jugador"
 	return salida
-
-
-func _texto_a_pdf_winansi(texto: String) -> String:
-	var escapado: String = ""
-	for caracter in texto:
-		match caracter:
-			"\\":
-				escapado += "\\\\"
-			"(":
-				escapado += "\\("
-			")":
-				escapado += "\\)"
-			_:
-				escapado += _caracter_a_octal_pdf(caracter)
-	return escapado
-
-
-func _caracter_a_octal_pdf(caracter: String) -> String:
-	var codigo_unicode: int = caracter.unicode_at(0)
-	var codigo_winansi: int = codigo_unicode
-	if codigo_unicode > 255:
-		codigo_winansi = _mapear_unicode_a_winansi(codigo_unicode)
-	var octal: String = String.num_int64(codigo_winansi, 8)
-	return "\\" + octal.pad_zeros(3)
-
-
-func _mapear_unicode_a_winansi(codigo_unicode: int) -> int:
-	var mapa: Dictionary[int, int] = {
-		8364: 128, # €
-		8218: 130, # ‚
-		402: 131, # ƒ
-		8222: 132, # „
-		8230: 133, # …
-		8224: 134, # †
-		8225: 135, # ‡
-		710: 136, # ˆ
-		8240: 137, # ‰
-		352: 138, # Š
-		8249: 139, # ‹
-		338: 140, # Œ
-		381: 142, # Ž
-		8216: 145, # ‘
-		8217: 146, # ’
-		8220: 147, # “
-		8221: 148, # ”
-		8226: 149, # •
-		8211: 150, # –
-		8212: 151, # —
-		732: 152, # ˜
-		8482: 153, # ™
-		353: 154, # š
-		8250: 155, # ›
-		339: 156, # œ
-		382: 158, # ž
-		376: 159 # Ÿ
-	}
-	return int(mapa.get(codigo_unicode, 63)) # ? cuando no se puede mapear
 
 
 func _iniciar_cooldown_boton_descarga() -> void:

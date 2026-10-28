@@ -22,6 +22,7 @@ var _intersecciones_disponibles: Array[Node2D] = []
 var _fuegos_activos: Dictionary = {}
 var _intersecciones_reservadas: Dictionary = {}
 var _timer_generacion_fuego: Timer
+var _partida_finalizada: bool = false
 
 func _ready() -> void:
 	_crear_fondo_ambiente()
@@ -42,6 +43,9 @@ func _ready() -> void:
 	_inicializar_fuego_dinamico()
 
 func _on_todas_las_emociones_recolectadas() -> void:
+	if _partida_finalizada:
+		return
+	_partida_finalizada = true
 
 	DatosJugador.todas_las_emociones_recolectadas.disconnect(_on_todas_las_emociones_recolectadas)
 	Logs.log_debug("Nivel completado")
@@ -70,6 +74,9 @@ func _on_todas_las_emociones_recolectadas() -> void:
 	)
 
 func _on_jugador_sin_vidas() -> void:
+	if _partida_finalizada:
+		return
+	_partida_finalizada = true
 	AudioManager.play_sfx(SFX_GAME_OVER)
 	
 	if DatosJugador.jugador.has_method("bloquear_movimiento"):
