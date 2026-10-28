@@ -28,6 +28,7 @@ Logs="*res://src/autoload/Logs.gd"
 DialogueActors="*res://src/autoload/dialogue_actors.gd"
 Cuestionarios="*res://src/autoload/cuestionarios.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+MobileInputFix="*res://src/autoload/mobile_input_fix.gd.gd"
 
 [dialogue_manager]
 
