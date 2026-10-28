@@ -1,5 +1,6 @@
 ~ rescate_mascota
 # — ESCENA: La Carpa Principal (El Rescate) —
+do DialogueActors.animacion_establecer_expresion("fran", "default")
 
 Narrador: El interior de la carpa huele a aserrín y humedad. En el centro de la pista, el Domador alza su látigo con una sonrisa arrogante.
 Narrador: En frente de él, una pesada jaula de metal reforzado aprisiona a la pequeña criatura, que tiembla en un rincón oscuro.
@@ -19,7 +20,21 @@ Frankenstein: Uuuurgh... Hablas demasiado fuerte, hombre del sombrero. Me duelen
 
 Domador: ¡¿Qué?! ¡Tú deberías estar pudriéndote en la casa del terror, pedazo de chatarra cosida!
 
-do DialogueActors.animacion_establecer_animacion("fran", "default", "abajo")
 
 Frankenstein: Uuuurgh... No me gusta tu tono. Y no me gusta esa jaula.
-Narrador: El domador aterrorizado ve cómo Frankenstein se acerca a darle una paliza.
+
+do DialogueActors.animacion_establecer_expresion("fran", "caminar_derecha")
+do DialogueActors.movimiento_mover_y_esperar("fran", Vector2(100,0), 1)
+do DialogueActors.animacion_establecer_expresion("fran", "golpe_derecha")
+do DialogueActors.movimiento_mover_y_esperar("jaula", Vector2(0,0), 0.3)
+do DialogueActors.movimiento_mover_girar_y_esperar("jaula", Vector2(1000, -1000), 0, 0.7, "res://audios/sfx/universfield-cartoon-rocket-whoosh-229207.mp3")
+Frankenstein: ¡¡¡Tomaaaaa!!!
+do DialogueActors.animacion_establecer_expresion("fran", "caminar_derecha")
+do DialogueActors.movimiento_mover_y_esperar("fran", Vector2(750,0), 4)
+do DialogueActors.animacion_establecer_expresion("fran", "golpe_derecha")
+do DialogueActors.movimiento_mover_y_esperar("domador", Vector2(0,0), 0.3)
+do DialogueActors.movimiento_mover_girar_y_esperar("domador", Vector2(1000, -1000), 0, 0.7, "res://audios/sfx/universfield-cartoon-rocket-whoosh-229207.mp3")
+Frankenstein: ¡¡¡Tomaaaaa tú también!!!
+
+
+

@@ -2,30 +2,62 @@ extends Control
 
 const MENU_PRINCIPAL_SCENE := "res://scenes/menu_principal/menu_principal.tscn"
 
-@export var titulo_principal: String = "Créditos"
-@export var subtitulo: String = "Gracias por jugar Emoventure"
+@export var titulo_principal: String = "EMOVENTURE"
+@export var subtitulo: String = "Créditos del videojuego - Versión 1.0"
+
 @export var creditos: Array[Dictionary] = [
 	{
-		"rol": "Desarrollo",
-		"personas": ["David Ernesto Escalante García
-		Emiliano Orduño"]
+		"rol": "Dirección General",
+		"personas": ["Dr. Carlos Andrés Miranda Palma", "Dra. Lizzie Edmea Narváez Díaz"]
 	},
 	{
-		"rol": "Arte",
-		"personas": ["Evan
-		Jose
-		Fausto"]
+		"rol": "Producción",
+		"personas": ["VISEE, UADY"]
 	},
 	{
-		"rol": "QA / Testing",
-		"personas": ["David Ernesto Escalante García"]
+		"rol": "Diseño del Juego (GDD y Storyboard)",
+		"personas": ["P/LE. Marcos Abraham Rendón Couoh", "P/LE. Sandy Marilyn Monforte Loria"]
 	},
-	#{
-		#"rol": "Música",
-		#"personas": ["Music track: Turn It Louder by Aylex
-#Source: https://freetouse.com/music
-#No Copyright Music for Video (Free)"]
-	#},
+	{
+		"rol": "Diseño de Narrativa y Guion",
+		"personas": [
+			"P/LE. Marcos Abraham Rendón Couoh",
+			"P/LE. Sandy Marilyn Monforte Loria",
+			"Br. Buntarou Emiliano Orduño Hara"
+		]
+	},
+	{
+		"rol": "Diseño de Interfaz y Experiencia de Usuario",
+		"personas": ["Dr. Carlos Andrés Miranda Palma", "Dra. Lizzie Edmea Narváez Díaz"]
+	},
+	{
+		"rol": "Programación",
+		"personas": ["Br. David Ernesto Escalante García", "Br. Buntarou Emiliano Orduño Hara"]
+	},
+	{
+		"rol": "Motor de Desarrollo",
+		"personas": ["Godot 4.5"]
+	},
+	{
+		"rol": "Apoyo en Diseño Gráfico",
+		"personas": ["Br. José Antonio Mendoza Vázquez"]
+	},
+	{
+		"rol": "Información Institucional",
+		"personas": [
+			"Proyecto: VISEE",
+			"Instagram: visee.umt",
+			"Facebook: VISEE UMT",
+			"Soporte técnico: cmiranda@correo.uady.mx"
+		]
+	},
+	{
+		"rol": "Agradecimientos",
+		"personas": [
+			"¡Gracias por jugar EmoVenture!",
+			"Esperamos que esta experiencia te ayude a reconocer, comprender y fortalecer tus habilidades socioemocionales."
+		]
+	}
 ]
 
 @onready var titulo_label: Label = %TituloLabel

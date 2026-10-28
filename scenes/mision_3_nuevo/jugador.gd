@@ -13,6 +13,11 @@ static var contador_muertes: int = 0
 @export var coyote_time_maximo: float = 0.15 # 0.15 segundos es el estándar en muchos juegos
 var temporizador_coyote: float = 0.0
 # ---------------------------------------------
+# --- VARIABLES DE CHECKPOINT ---
+static var hay_checkpoint: bool = false
+static var pos_checkpoint: Vector2 = Vector2.ZERO
+static var tiempo_musica_checkpoint: float = 0.0
+# -------------------------------
 
 var gravedad: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var esta_muerto: bool = false
@@ -26,23 +31,27 @@ const SFX_MUERTE = "res://audios/sfx/Taco Bell Bong SFX_160k.mp3"
 
 func _ready() -> void:
 	_ensure_mobile_controls()
-	MusicManager.reproducir_clave("mision_3", 0.0, 0.0, true)
-	altura_inicial = camara.global_position.y
-	camara.top_level = true 
 	
-	# Forzamos la posición inicial exacta
+	# 1. MÚSICA: Usamos la variable guardada en lugar de 0.0
+	MusicManager.reproducir_clave("mision_3", tiempo_musica_checkpoint, 0.0, true)
+
+	# 2. CÁMARA: Guardamos la altura original del nivel ANTES de mover al personaje
+	altura_inicial = camara.global_position.y
+	camara.top_level = true
+
+	# 3. CHECKPOINT: Movemos al personaje a la posición guardada
+	if hay_checkpoint:
+		global_position = pos_checkpoint
+
+	# 4. POSICIONAR CÁMARA: La colocamos en el X del personaje pero respetando la altura inicial original del mapa
 	camara.global_position = Vector2(global_position.x + desplazamiento_camara, altura_inicial)
 	camara.make_current()
 
 	# --- LÓGICA DEL BOTÓN DE SALTO ---
 	if boton_saltar != null:
-		# Solo se hace visible si el contador llega a 10 o más
 		boton_saltar.visible = (contador_muertes >= 10)
-		
-		# Conectamos el clic del botón por código
 		if not boton_saltar.pressed.is_connected(_on_boton_saltar_pressed):
 			boton_saltar.pressed.connect(_on_boton_saltar_pressed)
-	# ---------------------------------
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Usamos _unhandled_input para que si presionas el botón de pausa, la UI consuma el clic primero
@@ -159,15 +168,25 @@ func morir() -> void:
 	get_tree().call_deferred("reload_current_scene")
 
 # --- FUNCIÓN QUE SE EJECUTA AL PRESIONAR EL BOTÓN ---
+# Esta función la llamará el objeto Checkpoint al tocarlo
+func registrar_checkpoint(posicion: Vector2, tiempo_musica: float) -> void:
+	hay_checkpoint = true
+	pos_checkpoint = posicion
+	tiempo_musica_checkpoint = tiempo_musica
+	print("[JUGADOR] Guardando posición en: ", posicion)
+
 func _on_boton_saltar_pressed() -> void:
 	if AudioManager.has_method("play_ui_click"):
 		AudioManager.play_ui_click()
 		
-	# Reiniciamos el contador por si rejugamos el nivel después
 	contador_muertes = 0 
 	
+	# Limpiamos el checkpoint para futuras partidas
+	hay_checkpoint = false
+	tiempo_musica_checkpoint = 0.0
+	
 	if meta_del_nivel != null and meta_del_nivel.has_method("_iniciar_cuestionario"):
-		# Usamos la misma función de tu meta para que siga el flujo normal de la historia
 		meta_del_nivel._iniciar_cuestionario()
 	else:
-		push_warning("Falta asignar la meta_del_nivel en el Inspector del jugador")
+		push_warning("Falta asignar la meta_del_nivel en el Inspector")
+		

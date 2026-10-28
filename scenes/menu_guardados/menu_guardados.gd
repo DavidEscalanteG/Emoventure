@@ -121,7 +121,7 @@ func _crear_fila_partida(indice_visual: int, slot: Dictionary) -> Control:
 	var progreso: int = _calcular_progreso_historia(slot)
 
 	var detalle: Label = Label.new()
-	detalle.text = "%s  •  %d%% completado" % [_descripcion_progreso(progreso), progreso]
+	detalle.text = "%s  -  %d%% completado" % [_descripcion_progreso(progreso), progreso]
 	detalle.add_theme_font_size_override("font_size", 25)
 	_aplicar_texto_claro(detalle, Color("#d9e8ff"))
 	info.add_child(detalle)
@@ -146,7 +146,7 @@ func _crear_fila_partida(indice_visual: int, slot: Dictionary) -> Control:
 	else:
 		nombre_mascota = "Compañero: %s" % nombre_mascota
 	var metadata: Label = Label.new()
-	metadata.text = "%s   •   Puntaje: %d   •   Última sesión: %s" % [
+	metadata.text = "%s   -   Puntaje: %d   -   Última sesión: %s" % [
 		nombre_mascota,
 		int(slot.get("puntaje_total", 0)),
 		_formatear_fecha(slot.get("updated_at", slot.get("created_at", "")))

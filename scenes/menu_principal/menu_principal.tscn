@@ -125,11 +125,11 @@ offset_bottom = 16.319946
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(2, 2)
+tooltip_text = "Jugar"
 theme_override_styles/normal = SubResource("StyleBoxTexture_noekw")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_mqmoq")
 theme_override_styles/hover = SubResource("StyleBoxTexture_f5qc2")
 script = ExtResource("5_otvbs")
-tooltip_text = "Jugar"
 
 [node name="Configuracion" type="Button" parent="."]
 layout_mode = 1
@@ -145,11 +145,11 @@ offset_bottom = -74.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(2, 2)
+tooltip_text = "Configuración"
 theme_override_styles/normal = SubResource("StyleBoxTexture_eqv07")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_b5s1v")
 theme_override_styles/hover = SubResource("StyleBoxTexture_8kbuk")
 script = ExtResource("9_otvbs")
-tooltip_text = "Configuración"
 
 [node name="Creditos" type="Button" parent="."]
 layout_mode = 1

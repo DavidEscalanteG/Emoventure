@@ -18,7 +18,7 @@ Narrador: De repente, una voz cautivadora rompe tu tren de pensamiento y te trae
 	#do DialogueActors.animacion_establecer_expresion("gitana", "adivina")
 	???: Sabia decisión, adelante, pasa.
 
-- Tengo mis dudas…
+- Tengo mis dudas...
 	#do DialogueActors.animacion_establecer_expresion("gitana", "neutral")
 	???: Anímate, solo para ti hoy será gratis la experiencia, entra.
 

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ckp8x3ekwhl47" path="res://jugador/jugador_no_jugable.tscn" id="5"]
 [ext_resource type="Texture2D" uid="uid://duxyu3k01oec3" path="res://assets/enemigos/serpiente/spritesheets/snake spritesheet calciumtrice.png" id="7"]
 [ext_resource type="Theme" uid="uid://dwacxx3nxjf5c" path="res://assets/temas/tema_botones.tres" id="8_f27vv"]
-[ext_resource type="Script" path="res://scenes/mision_1_recoleccion/tutorial/scripts/tutorial_arena.gd" id="9_arena"]
+[ext_resource type="Script" uid="uid://b27gnci2wbnnm" path="res://scenes/mision_1_recoleccion/tutorial/scripts/tutorial_arena.gd" id="9_arena"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_56t3q"]
 texture = ExtResource("2_l3j6a")
@@ -432,7 +432,7 @@ theme_override_colors/font_shadow_color = Color(0.02, 0.04, 0.09, 1)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 42
-text = "MISIÓN 1  ·  LABERINTO EMOCIONAL"
+text = "MISIÓN 1  -  LABERINTO EMOCIONAL"
 
 [node name="SkipButton" type="Button" parent="TutorialUI/Overlay/TopBar"]
 layout_mode = 2
@@ -474,7 +474,6 @@ autowrap_mode = 3
 [node name="StepLabel" type="Label" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
-text = "GUÍA DE CAMPO  •  01 / 12"
 horizontal_alignment = 1
 
 [node name="KeysRow" type="HBoxContainer" parent="TutorialUI/Overlay/BottomPanel/MarginContainer/VBoxContainer"]

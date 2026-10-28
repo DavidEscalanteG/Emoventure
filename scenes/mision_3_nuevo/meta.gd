@@ -11,6 +11,17 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("jugador"):
+		
+		# --- NUEVO: LIMPIEZA DE CHECKPOINTS Y MUERTES ---
+		# Verificamos que el jugador tenga estas variables antes de cambiarlas
+		if "hay_checkpoint" in body:
+			body.hay_checkpoint = false
+			body.tiempo_musica_checkpoint = 0.0
+		
+		if "contador_muertes" in body:
+			body.contador_muertes = 0
+		# ------------------------------------------------
+		
 		call_deferred("_iniciar_cuestionario")
 
 func _iniciar_cuestionario() -> void:
@@ -38,7 +49,7 @@ func _iniciar_cuestionario() -> void:
 	# La escena que sigue después del cuestionario será la de la LLAVE
 	cuestionario.escena_siguiente = escena_llave
 
-# Cambiamos la escena actual por el cuestionario de forma segura
+	# Cambiamos la escena actual por el cuestionario de forma segura
 	var root: Window = get_tree().root
 	var escena_actual: Node = get_tree().current_scene
 

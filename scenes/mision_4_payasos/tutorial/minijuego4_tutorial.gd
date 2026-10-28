@@ -84,14 +84,14 @@ func _play_demo(token: int) -> void:
 		2:
 			aim_hint.visible = true
 			clown_sprite.texture = CLOWN_HIT
-			score.text = "Puntos: 1  ✓"
+			score.text = "Puntos: 1 "
 			tween = _pulse(score)
 		3:
 			score.text = "Puntos: 12"
 			speed_label.visible = true
 			tween = _pulse(speed_label)
 		4:
-			score.text = "Puntos: 50  ✓"
+			score.text = "Puntos: 40"
 			tween = _pulse(clown)
 	if tween != null:
 		await tween.finished

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://d2buj3h2mn868"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://lwi0wuk5emhb"]
 
 [ext_resource type="FontFile" uid="uid://bkvak4ksmjeuu" path="res://assets/fuentes/PlainPixel-Regular.ttf" id="1_fuente"]
 [ext_resource type="Texture2D" uid="uid://d1lodo36peyik" path="res://assets/botones/Blue_Buttons_Pixel.png" id="2_azul"]

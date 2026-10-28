@@ -392,7 +392,7 @@ theme_override_colors/font_shadow_color = Color(0.08, 0.03, 0.12, 1)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 36
-text = "MISIÓN 2  ·  MEMORIAS ETERNAS"
+text = "MISIÓN 2  -z MEMORIAS ETERNAS"
 
 [node name="SkipButton" type="Button" parent="TutorialUI/Overlay/TopBar"]
 layout_mode = 2

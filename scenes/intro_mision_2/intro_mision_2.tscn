@@ -22,7 +22,7 @@ position = Vector2(391, 729)
 scale = Vector2(12, 12)
 
 [node name="Payaso" parent="Personajes" instance=ExtResource("3_ntaao")]
-position = Vector2(1562, 678)
+position = Vector2(1560.125, 678)
 scale = Vector2(6, 6)
 
 [node name="Mascota" parent="Personajes" instance=ExtResource("4_o2m3e")]
