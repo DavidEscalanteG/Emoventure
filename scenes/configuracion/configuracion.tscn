@@ -201,8 +201,10 @@ exclusive = true
 theme_override_styles/panel = SubResource("StyleBoxEmpty_erp7v")
 
 [node name="Margen" type="MarginContainer" parent="PanelTeclado"]
-offset_right = 780.0
-offset_bottom = 480.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 97.0
+offset_bottom = 97.0
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 28
 theme_override_constants/margin_right = 32

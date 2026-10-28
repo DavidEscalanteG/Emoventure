@@ -84,7 +84,7 @@ func _play_demo(token: int) -> void:
 		2:
 			aim_hint.visible = true
 			clown_sprite.texture = CLOWN_HIT
-			score.text = "Puntos: 1  ✓"
+			score.text = "Puntos: 1 "
 			tween = _pulse(score)
 		3:
 			score.text = "Puntos: 12"

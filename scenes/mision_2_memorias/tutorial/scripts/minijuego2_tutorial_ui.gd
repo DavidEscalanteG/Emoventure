@@ -27,7 +27,7 @@ func set_message(text: String) -> void:
 	message_label.text = text
 
 func set_step_indicator(current_step: int, total_steps: int) -> void:
-	step_label.text = "MEMORIAS ETERNAS  •  PASO %d DE %d" % [current_step + 1, total_steps]
+	step_label.text = "MEMORIAS ETERNAS  -  PASO %d DE %d" % [current_step + 1, total_steps]
 
 func set_navigation(step_index: int, _step_count: int, is_last_step: bool) -> void:
 	previous_button.disabled = step_index <= 0
