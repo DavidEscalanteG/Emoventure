@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Emoventure"
-run/main_scene="res://scenes/menu_principal/menu_principal.tscn"
+run/main_scene="uid://bfta3gpgwiyt7"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://scenes/mision_3_hachas/icon.svg"
 
@@ -108,4 +108,5 @@ locale/translations_pot_files=PackedStringArray("res://dialogos/escena_1.dialogu
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true

@@ -14,7 +14,7 @@ var _advertencias_emitidas: Dictionary[String, bool] = {}
 var _ultima_ruta_escena: String = ""
 
 var _pistas_por_clave: Dictionary[String, String] = {
-	"menu_principal": "res://audios/musica/menu_principal.mp3",
+	"menu_principal": "res://audios/musica/menu_principal.ogg",
 	"personalizacion": "res://audios/musica/personalizacion.mp3",
 	"mision_1": "res://audios/musica/mision_1.mp3",
 	"mision_2": "res://audios/musica/mision_2.mp3",
@@ -78,14 +78,14 @@ var _pistas_por_escena: Dictionary[String, String] = {
 	# ==========================================
 	# 5. CASA EMBRUJADA Y PERRO
 	# ==========================================
-	"res://scenes/intro_dialogo_3/intro_dialogo_3.tscn": "casa_embrujada", # Casa embrujada (id3)
-	"res://scenes/intro_dialogo_4/intro_dialogo_4.tscn": "puerta1", # Puerta embrujada (id4)
-	"res://scenes/intro_dialogo_5/intro_dialogo_5.tscn": AMBIENTE_TENSION, # Perro encuentro (id5)
+	"res://scenes/intro_dialogo_3/intro_dialogo_3.tscn": "casa_embrujada", 
+	"res://scenes/intro_dialogo_4/intro_dialogo_4.tscn": "puerta1", 
+	"res://scenes/intro_dialogo_5/intro_dialogo_5.tscn": AMBIENTE_TENSION, 
 
 	# ==========================================
 	# 6. MISIÓN 2: EMOCIONES
 	# ==========================================
-	"res://scenes/intro_mision_2/intro_mision_2.tscn": "payaso", # Misión emociones intro
+	"res://scenes/intro_mision_2/intro_mision_2.tscn": "payaso", 
 	"res://scenes/mision_2_memorias/tutorial/scripts/Minijuego2_Tutorial.tscn": "tutorial",
 	"res://scenes/mision_2_memorias/mision_2_memorias.tscn": "mision_2",
 	
@@ -97,10 +97,10 @@ var _pistas_por_escena: Dictionary[String, String] = {
 	# ==========================================
 	# 8. MAZMORRA Y HACHAS
 	# ==========================================
-	"res://scenes/intro_dialogo_6/intro_dialogo_6.tscn": "puerta", # Puerta mazmorra (id6)
-	"res://scenes/intro_dialogo_7/intro_dialogo_7.tscn": "tunel", # Pasillo con parca (id7)
-	"res://scenes/mision_3_nuevo/tutorial/Minijuego3_Tutorial.tscn": "tutorial", # Tuto hachas
-	"res://scenes/mision_3_nuevo/minijuego3.tscn": "mision_3", # Minijuego hachas
+	"res://scenes/intro_dialogo_6/intro_dialogo_6.tscn": "puerta", 
+	"res://scenes/intro_dialogo_7/intro_dialogo_7.tscn": "tunel", 
+	"res://scenes/mision_3_nuevo/tutorial/Minijuego3_Tutorial.tscn": "tutorial", 
+	"res://scenes/mision_3_nuevo/minijuego3.tscn": "mision_3", 
 
 	# ==========================================
 	# 9. LLAVE 3
@@ -110,16 +110,16 @@ var _pistas_por_escena: Dictionary[String, String] = {
 	# ==========================================
 	# 10. CEMENTERIO Y TOPOS
 	# ==========================================
-	"res://scenes/intro_dialogo_8/intro_dialogo_8.tscn": "puerta3", # Puerta cementerio (id8)
-	"res://scenes/intro_dialogo_9/intro_dialogo_9.tscn": "triste", # Cementerio (id9)
-	"res://scenes/mision_4_payasos/tutorial/Minijuego4_Tutorial.tscn": "tutorial", # Tuto topos
-	"res://scenes/mision_4_payasos/mapa_topos.tscn": "mision_4", # Minijuego topos
+	"res://scenes/intro_dialogo_8/intro_dialogo_8.tscn": "puerta3", 
+	"res://scenes/intro_dialogo_9/intro_dialogo_9.tscn": "triste", 
+	"res://scenes/mision_4_payasos/tutorial/Minijuego4_Tutorial.tscn": "tutorial", 
+	"res://scenes/mision_4_payasos/mapa_topos.tscn": "mision_4", 
 
 	# ==========================================
 	# 11. CIERRE: ROBO Y REUNIÓN
 	# ==========================================
-	"res://scenes/intro_dialogo_10/intro_dialogo_10.tscn": "showman", # Mago roba Perro (id10)
-	"res://scenes/intro_dialogo_12/intro_dialogo_12.tscn": "sentimental", # Reunion con Perro (id12)
+	"res://scenes/intro_dialogo_10/intro_dialogo_10.tscn": "showman", 
+	"res://scenes/intro_dialogo_12/intro_dialogo_12.tscn": "sentimental", 
 
 	# ==========================================
 	# 12. FINAL Y REJUGABILIDAD
@@ -132,6 +132,8 @@ func _ready() -> void:
 	_reproductor = AudioStreamPlayer.new()
 	_reproductor.name = "MusicPlayer"
 	_reproductor.bus = _obtener_bus_musica()
+	
+	_reproductor.autoplay = false 
 	add_child(_reproductor)
 	
 	_validar_pistas_registradas()
@@ -139,8 +141,43 @@ func _ready() -> void:
 	if get_tree().has_signal("current_scene_changed"):
 		get_tree().current_scene_changed.connect(_on_current_scene_changed)
 
-	_actualizar_musica_escena_actual()
+	if not OS.has_feature("web"):
+		_actualizar_musica_escena_actual()
+		
+	# ========================================================
+	# --- NUEVO PARCHE: FORZAR VOLUMEN EN LA WEB ---
+	# ========================================================
+	if OS.has_feature("web"):
+		var bus_master := AudioServer.get_bus_index("Master")
+		var indice_musica := AudioServer.get_bus_index(BUS_MUSICA)
+		
+		# 1. Quitamos el estado de "Silenciado" (Mute)
+		AudioServer.set_bus_mute(bus_master, false)
+		if indice_musica >= 0:
+			AudioServer.set_bus_mute(indice_musica, false)
+			
+		# 2. Restauramos el volumen a 0.0 dB (equivale al 100% normal)
+		AudioServer.set_bus_volume_db(bus_master, 0.0)
+		if indice_musica >= 0:
+			AudioServer.set_bus_volume_db(indice_musica, 0.0)
+	# ========================================================
+
 	set_process(true)
+
+
+func iniciar_musica_web() -> void:
+	# TRUCO WEB: Reproducimos un sonido "vacío" forzado en el canal Master.
+	# Al reproducir esto durante el clic, el navegador web se ve obligado 
+	# a desbloquear todo el sistema de sonido permanentemente.
+	var desbloqueador := AudioStreamPlayer.new()
+	desbloqueador.bus = "Master"
+	desbloqueador.stream = AudioStreamGenerator.new() # Crea silencio puro
+	add_child(desbloqueador)
+	desbloqueador.play()
+
+	# Ahora sí, continuamos con tu lógica original
+	if not _reproductor.playing:
+		_actualizar_musica_escena_actual(true)
 
 
 func reproducir_dialogo_por_ambiente(ambiente: String) -> void:
@@ -170,7 +207,6 @@ func iniciar_override_dialogo(ambiente: String) -> void:
 		return
 
 	_override_dialogo_activo = ambiente
-	# Usamos la función original de reproducir_clave, pero con fade
 	reproducir_clave(ambiente)
 
 
@@ -187,7 +223,6 @@ func restaurar_tema_escena_actual() -> void:
 	_actualizar_musica_escena_actual(true)
 
 
-# --- NUEVA VERSIÓN CON FADE ---
 func reproducir_desde_ruta(ruta_pista: String, from_position: float = 0.0, tiempo_fade: float = 1.0, forzar_reinicio: bool = false) -> void:
 	if ruta_pista.is_empty():
 		return
@@ -208,9 +243,7 @@ func reproducir_desde_ruta(ruta_pista: String, from_position: float = 0.0, tiemp
 	_transicionar_musica(stream, from_position, tiempo_fade)
 
 
-# --- NUEVA VERSIÓN CON FADE ---
 func reproducir_clave(clave: String, from_position: float = 0.0, tiempo_fade: float = 1.0, forzar_reinicio: bool = false) -> void:
-	# Si forzamos reinicio, ignoramos que sea la misma clave
 	if _clave_actual == clave and not forzar_reinicio:
 		return
 
@@ -234,7 +267,6 @@ func reproducir_clave(clave: String, from_position: float = 0.0, tiempo_fade: fl
 	_transicionar_musica(stream, from_position, tiempo_fade)
 
 
-# --- FUNCIÓN INTERNA DE TRANSICIÓN SUAVE ---
 func _transicionar_musica(nuevo_stream: AudioStream, from_position: float, tiempo_fade: float) -> void:
 	if tiempo_fade <= 0.0:
 		_reproductor.volume_db = 0.0
@@ -258,13 +290,12 @@ func _transicionar_musica(nuevo_stream: AudioStream, from_position: float, tiemp
 		tween.tween_property(_reproductor, "volume_db", 0.0, tiempo_fade)
 
 
-# Detiene la música cortando de golpe
 func detener() -> void:
 	_clave_actual = ""
 	_override_dialogo_activo = ""
 	_reproductor.stop()
 
-# Apaga la música suavemente
+
 func detener_suave(tiempo_fade: float = 1.0) -> void:
 	if _reproductor.playing:
 		_clave_actual = ""
@@ -298,12 +329,9 @@ func _actualizar_musica_escena_actual(forzar_restauracion: bool = false) -> void
 	if not _override_dialogo_activo.is_empty() and not forzar_restauracion:
 		return
 
-	# Al cambiar de escena, el script llama automáticamente a reproducir con el Fade predeterminado de 1.0 seg
-	# Si la escena es una transición de llave, la ponemos con 0.0 segundos de fade (entra de golpe)
 	if clave == "transicion_llave":
 		reproducir_clave(clave, 0.0, 0.0)
 	else:
-		# Para cualquier otra escena, usa el fade normal de 1 segundo
 		reproducir_clave(clave)
 
 
@@ -324,7 +352,6 @@ func _validar_pistas_registradas() -> void:
 	var detalles := PackedStringArray()
 	for extension in faltantes.keys():
 		detalles.append("%s: [%s]" % [extension, ", ".join(faltantes[extension])])
-
 
 
 func _obtener_bus_musica() -> String:

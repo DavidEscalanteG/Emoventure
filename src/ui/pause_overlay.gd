@@ -90,6 +90,14 @@ func _set_pause_button_rect(rect: Rect2, viewport_size: Vector2) -> void:
 
 
 func _configurar_audio() -> void:
+	# 1. CORRECCIÓN: Forzamos a los sliders a usar la escala matemática correcta (0.0 a 1.0)
+	slider_musica.max_value = 1.0
+	slider_musica.step = 0.01
+	
+	slider_sfx.max_value = 1.0
+	slider_sfx.step = 0.01
+
+	# 2. Ahora sí, leemos y aplicamos el volumen guardado
 	slider_musica.value = AudioManager.get_volumen(AudioManager.BUS_MUSICA)
 	slider_sfx.value = AudioManager.get_volumen(AudioManager.BUS_SFX)
 
