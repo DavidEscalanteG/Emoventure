@@ -1,0 +1,40 @@
+{
+  "fecha": "2026-11-03",
+  "resoluciones": [
+    "854x480",
+    "640x360"
+  ],
+  "composicion": {
+    "comprobaciones": 604,
+    "capturas": 86,
+    "fallos": 0
+  },
+  "presentacion": {
+    "fallos": 0,
+    "comprobaciones": 689
+  },
+  "personalizacion_escritorio": {
+    "fallos": 0,
+    "comprobaciones": 517
+  },
+  "cuestionarios": {
+    "fallos": 0,
+    "movil": 24,
+    "escritorio": 24
+  },
+  "auditoria_general": {
+    "resolucion": "Marca de verificación del tutorial 2 elevada a 44; ver auditoria_tutorial_2.json",
+    "textos": 3008,
+    "casos": 650,
+    "fuente_pequena": 1,
+    "recortes": 0,
+    "fuera_sin_scroll": 0
+  },
+  "auditoria_tutorial_2": {
+    "casos": 12,
+    "capturas": 12,
+    "incidencias": 0,
+    "textos": 154
+  },
+  "limite": "Simulación móvil horizontal en PC; falta teléfono físico."
+}

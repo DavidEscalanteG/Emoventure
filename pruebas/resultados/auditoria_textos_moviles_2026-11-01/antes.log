@@ -1,0 +1,144 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 - Build 32.0.101.8132 - Compatibility - Using Device: Intel - Intel(R) Graphics
+
+MOBILE_PC user_data=C:/Users/david/OneDrive/Desktop/Juegos Godot/emoventure/Juego-Emoventure-Godot/.tmp_godot_mobile_pc/text_audit_userdata/Godot/app_userdata/Emoventure
+MOBILE_PC simulated_mobile=true
+MOBILE_PC SCENE res://scenes/menu_principal/menu_principal.tscn
+MOBILE_PC SCENE res://scenes/configuracion/configuracion.tscn
+MOBILE_PC SCENE res://scenes/creditos/creditos.tscn
+MOBILE_PC SCENE res://scenes/final/resultado_final.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_1/intro_dialogo_1.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_10/intro_dialogo_10.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_11/intro_dialogo_11.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_12/intro_dialogo_10.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_12/intro_dialogo_12.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_2/intro_dialogo_2.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_3/intro_dialogo_3.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_4/intro_dialogo_4.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_5/intro_dialogo_5.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_6/intro_dialogo_6.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_7/intro_dialogo_7.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_8/intro_dialogo_8.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_9/intro_dialogo_9.tscn
+MOBILE_PC SCENE res://scenes/intro_mision_2/intro_mision_2.tscn
+WARNING: [MusicManager] Falta archivo de música para 'calma': res://audios/musica/dialogo_calma.mp3
+   at: push_warning (core/variant/variant_utility.cpp:1033)
+   GDScript backtrace (most recent call first):
+       [0] reproducir_clave (res://src/autoload/music_manager.gd:258)
+       [1] iniciar_override_dialogo (res://src/autoload/music_manager.gd:210)
+       [2] _ready (res://scenes/intro_mision_4/intro_mision_4.gd:10)
+WARNING: [DialogueActors] Actor no registrado: fran
+   at: push_warning (core/variant/variant_utility.cpp:1033)
+   GDScript backtrace (most recent call first):
+       [0] obtener_actor (res://src/autoload/servicios/dialogue_actor_registry_service.gd:17)
+       [1] animacion_establecer_expresion (res://src/autoload/dialogue_actors.gd:39)
+       [2] _resolve_thing_method (res://addons/dialogue_manager/dialogue_manager.gd:1521)
+       [3] _resolve (res://addons/dialogue_manager/dialogue_manager.gd:976)
+       [4] _mutate (res://addons/dialogue_manager/dialogue_manager.gd:769)
+       [5] _get_next_dialogue_line (res://addons/dialogue_manager/dialogue_manager.gd:127)
+       [6] get_next_dialogue_line (res://addons/dialogue_manager/dialogue_manager.gd:89)
+       [7] iniciar_dialogo (res://dialogos/ManagerDialogos/dialogue_ui.gd:29)
+       [8] _ready (res://scenes/intro_mision_4/intro_mision_4.gd:15)
+WARNING: [DialogueActors] Actor no registrado: fran
+   at: push_warning (core/variant/variant_utility.cpp:1033)
+   GDScript backtrace (most recent call first):
+       [0] establecer_expresion (res://src/autoload/servicios/dialogue_actor_animation_service.gd:34)
+       [1] animacion_establecer_expresion (res://src/autoload/dialogue_actors.gd:39)
+       [2] _resolve_thing_method (res://addons/dialogue_manager/dialogue_manager.gd:1521)
+       [3] _resolve (res://addons/dialogue_manager/dialogue_manager.gd:976)
+       [4] _mutate (res://addons/dialogue_manager/dialogue_manager.gd:769)
+       [5] _get_next_dialogue_line (res://addons/dialogue_manager/dialogue_manager.gd:127)
+       [6] get_next_dialogue_line (res://addons/dialogue_manager/dialogue_manager.gd:89)
+       [7] iniciar_dialogo (res://dialogos/ManagerDialogos/dialogue_ui.gd:29)
+       [8] _ready (res://scenes/intro_mision_4/intro_mision_4.gd:15)
+MOBILE_PC SCENE res://scenes/intro_mision_4/intro_mision_4.tscn
+MOBILE_PC SCENE res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn
+MOBILE_PC SCENE res://scenes/menu_guardados/menu_guardados.tscn
+MOBILE_PC SCENE res://scenes/menu_principal/menu_principal.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/mapa_2/mapa2.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/mapa_3/mapa3.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/mapa_4/mapa4.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/mapa_5/mapa5.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/tutorial/scripts/Minijuego1_Tutorial.tscn
+MOBILE_PC SCENE res://scenes/mision_2_memorias/mision_2_memorias.tscn
+MOBILE_PC SCENE res://scenes/mision_2_memorias/tutorial/scripts/Minijuego2_Tutorial.tscn
+MOBILE_PC SCENE res://scenes/mision_3_nuevo/minijuego3.tscn
+MOBILE_PC SCENE res://scenes/mision_3_nuevo/tutorial/Minijuego3_Tutorial.tscn
+MOBILE_PC SCENE res://scenes/mision_4_payasos/mapa_topos.tscn
+MOBILE_PC SCENE res://scenes/mision_4_payasos/tutorial/Minijuego4_Tutorial.tscn
+MOBILE_PC SCENE res://scenes/personalizacion/Personalizacion.tscn
+MOBILE_PC SCENE res://scenes/recompensa_mision_3/recompensa_mision_3.tscn
+MOBILE_PC SCENE res://scenes/rejugabilidad/mapa_rejugabilidad.tscn
+MOBILE_PC SCENE res://scenes/transicion_post_mision_1/transicion_post_mision_1.tscn
+MOBILE_PC SCENE res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn
+MOBILE_PC SCENE res://scenes/cuestionarios/EscenaCuestionario.tscn
+MOBILE_PC SCENE res://dialogos/ManagerDialogos/dialogue_ui.tscn
+TEXT_AUDIT resolution_done=(854, 480) cases=227 texts=880
+MOBILE_PC SCENE res://scenes/menu_principal/menu_principal.tscn
+MOBILE_PC SCENE res://scenes/configuracion/configuracion.tscn
+MOBILE_PC SCENE res://scenes/creditos/creditos.tscn
+MOBILE_PC SCENE res://scenes/final/resultado_final.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_1/intro_dialogo_1.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_10/intro_dialogo_10.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_11/intro_dialogo_11.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_12/intro_dialogo_10.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_12/intro_dialogo_12.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_2/intro_dialogo_2.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_3/intro_dialogo_3.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_4/intro_dialogo_4.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_5/intro_dialogo_5.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_6/intro_dialogo_6.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_7/intro_dialogo_7.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_8/intro_dialogo_8.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_9/intro_dialogo_9.tscn
+MOBILE_PC SCENE res://scenes/intro_mision_2/intro_mision_2.tscn
+WARNING: [DialogueActors] Actor no registrado: fran
+   at: push_warning (core/variant/variant_utility.cpp:1033)
+   GDScript backtrace (most recent call first):
+       [0] obtener_actor (res://src/autoload/servicios/dialogue_actor_registry_service.gd:17)
+       [1] animacion_establecer_expresion (res://src/autoload/dialogue_actors.gd:39)
+       [2] _resolve_thing_method (res://addons/dialogue_manager/dialogue_manager.gd:1521)
+       [3] _resolve (res://addons/dialogue_manager/dialogue_manager.gd:976)
+       [4] _mutate (res://addons/dialogue_manager/dialogue_manager.gd:769)
+       [5] _get_next_dialogue_line (res://addons/dialogue_manager/dialogue_manager.gd:127)
+       [6] get_next_dialogue_line (res://addons/dialogue_manager/dialogue_manager.gd:89)
+       [7] iniciar_dialogo (res://dialogos/ManagerDialogos/dialogue_ui.gd:29)
+       [8] _ready (res://scenes/intro_mision_4/intro_mision_4.gd:15)
+WARNING: [DialogueActors] Actor no registrado: fran
+   at: push_warning (core/variant/variant_utility.cpp:1033)
+   GDScript backtrace (most recent call first):
+       [0] establecer_expresion (res://src/autoload/servicios/dialogue_actor_animation_service.gd:34)
+       [1] animacion_establecer_expresion (res://src/autoload/dialogue_actors.gd:39)
+       [2] _resolve_thing_method (res://addons/dialogue_manager/dialogue_manager.gd:1521)
+       [3] _resolve (res://addons/dialogue_manager/dialogue_manager.gd:976)
+       [4] _mutate (res://addons/dialogue_manager/dialogue_manager.gd:769)
+       [5] _get_next_dialogue_line (res://addons/dialogue_manager/dialogue_manager.gd:127)
+       [6] get_next_dialogue_line (res://addons/dialogue_manager/dialogue_manager.gd:89)
+       [7] iniciar_dialogo (res://dialogos/ManagerDialogos/dialogue_ui.gd:29)
+       [8] _ready (res://scenes/intro_mision_4/intro_mision_4.gd:15)
+MOBILE_PC SCENE res://scenes/intro_mision_4/intro_mision_4.tscn
+MOBILE_PC SCENE res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn
+MOBILE_PC SCENE res://scenes/menu_guardados/menu_guardados.tscn
+MOBILE_PC SCENE res://scenes/menu_principal/menu_principal.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/mapa_2/mapa2.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/mapa_3/mapa3.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/mapa_4/mapa4.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/mapa_5/mapa5.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/tutorial/scripts/Minijuego1_Tutorial.tscn
+MOBILE_PC SCENE res://scenes/mision_2_memorias/mision_2_memorias.tscn
+MOBILE_PC SCENE res://scenes/mision_2_memorias/tutorial/scripts/Minijuego2_Tutorial.tscn
+MOBILE_PC SCENE res://scenes/mision_3_nuevo/minijuego3.tscn
+MOBILE_PC SCENE res://scenes/mision_3_nuevo/tutorial/Minijuego3_Tutorial.tscn
+MOBILE_PC SCENE res://scenes/mision_4_payasos/mapa_topos.tscn
+MOBILE_PC SCENE res://scenes/mision_4_payasos/tutorial/Minijuego4_Tutorial.tscn
+MOBILE_PC SCENE res://scenes/personalizacion/Personalizacion.tscn
+MOBILE_PC SCENE res://scenes/recompensa_mision_3/recompensa_mision_3.tscn
+MOBILE_PC SCENE res://scenes/rejugabilidad/mapa_rejugabilidad.tscn
+MOBILE_PC SCENE res://scenes/transicion_post_mision_1/transicion_post_mision_1.tscn
+MOBILE_PC SCENE res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn
+MOBILE_PC SCENE res://scenes/cuestionarios/EscenaCuestionario.tscn
+MOBILE_PC SCENE res://dialogos/ManagerDialogos/dialogue_ui.tscn
+TEXT_AUDIT resolution_done=(640, 360) cases=454 texts=1760
+TEXT_AUDIT DONE cases=454 texts=1760 captures=246

@@ -91,7 +91,7 @@ func pulse_photo(index: int) -> Tween:
 	return tween
 
 func show_emotion_panel() -> void:
-	photos_grid.position.x = 80.0
+	photos_grid.position.x = 0.0 if MobileControlsSettings.is_mobile_device() else 80.0
 	emotion_panel.visible = true
 
 func highlight_emotion(button_index: int) -> void:

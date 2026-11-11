@@ -109,14 +109,15 @@ func mostrar_pregunta() -> void:
 func _ajustar_tamano_pregunta(_pregunta: String) -> void:
 	var alto_disponible: float = maxf(1.0, label_pregunta.size.y - MARGEN_VERTICAL_PREGUNTA)
 	var tamano := FUENTE_PREGUNTA_MAXIMA
+	var minimo := 48 if MobileControlsSettings.is_mobile_device() else FUENTE_PREGUNTA_MINIMA
 
-	while tamano >= FUENTE_PREGUNTA_MINIMA:
+	while tamano >= minimo:
 		label_pregunta.add_theme_font_size_override("normal_font_size", tamano)
 		if label_pregunta.get_content_height() <= alto_disponible:
 			break
 		tamano -= PASO_AJUSTE_FUENTE
 
-	label_pregunta.add_theme_font_size_override("normal_font_size", maxi(tamano, FUENTE_PREGUNTA_MINIMA))
+	label_pregunta.add_theme_font_size_override("normal_font_size", maxi(tamano, minimo))
 
 
 func responder(valor: int) -> void:

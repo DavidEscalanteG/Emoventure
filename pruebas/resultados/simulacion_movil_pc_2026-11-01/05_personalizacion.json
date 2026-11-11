@@ -1,0 +1,253 @@
+{
+	"mobile_mode": "joystick",
+	"nodes": [
+		{
+			"class": "ColorRect",
+			"path": "/root/Selección de personaje/Fondo/MargenOscuro",
+			"rect": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]"
+		},
+		{
+			"path": "/root/Selección de personaje/Jugador",
+			"position": "(560.0, 810.0)",
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Selección de personaje/CanvasLayer/TituloPersonalizacion",
+			"rect": "[P: (48.0, 36.0), S: (1192.0, 100.0)]",
+			"text": "Personaliza tu personaje"
+		},
+		{
+			"class": "PanelContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral",
+			"rect": "[P: (1288.0, 48.0), S: (584.0, 984.0)]"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido",
+			"rect": "[P: (1316.0, 68.0), S: (528.0, 944.0)]"
+		},
+		{
+			"class": "PanelContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/PanelNombreJugador",
+			"rect": "[P: (1316.0, 68.0), S: (528.0, 157.0)]"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/PanelNombreJugador/VBoxContainer",
+			"rect": "[P: (1316.0, 68.0), S: (528.0, 157.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/PanelNombreJugador/VBoxContainer/TituloNombreJugador",
+			"rect": "[P: (1316.0, 68.0), S: (528.0, 36.0)]",
+			"text": "Tu nombre"
+		},
+		{
+			"class": "LineEdit",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/PanelNombreJugador/VBoxContainer/InputNombreJugador",
+			"rect": "[P: (1316.0, 112.0), S: (528.0, 71.0)]",
+			"text": ""
+		},
+		{
+			"class": "Label",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/PanelNombreJugador/VBoxContainer/ErrorNombreJugador",
+			"rect": "[P: (1316.0, 191.0), S: (528.0, 34.0)]",
+			"text": "Escribe tu nombre para continuar."
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/SelectorPeinado",
+			"rect": "[P: (1316.0, 235.0), S: (528.0, 112.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/SelectorPeinado/Etiqueta",
+			"rect": "[P: (1316.0, 275.0), S: (148.0, 32.0)]",
+			"text": "Peinado"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/SelectorPeinado/BtnCabelloAtras",
+			"rect": "[P: (1476.0, 235.0), S: (76.0, 112.0)]",
+			"text": "<"
+		},
+		{
+			"class": "Control",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/SelectorPeinado/RetratoPeinado",
+			"rect": "[P: (1564.0, 235.0), S: (192.0, 112.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/SelectorPeinado/BtnCabelloSiguiente",
+			"rect": "[P: (1768.0, 235.0), S: (76.0, 112.0)]",
+			"text": ">"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/SelectorMascota",
+			"rect": "[P: (1316.0, 357.0), S: (528.0, 88.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/SelectorMascota/Etiqueta",
+			"rect": "[P: (1316.0, 385.0), S: (148.0, 32.0)]",
+			"text": "Mascota"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/SelectorMascota/MascotaAnterior",
+			"rect": "[P: (1476.0, 357.0), S: (76.0, 88.0)]",
+			"text": "<"
+		},
+		{
+			"class": "TextureRect",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/SelectorMascota/MiniaturaMascota",
+			"rect": "[P: (1564.0, 357.0), S: (192.0, 88.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/SelectorMascota/MascotaSiguiente",
+			"rect": "[P: (1768.0, 357.0), S: (76.0, 88.0)]",
+			"text": ">"
+		},
+		{
+			"class": "HSeparator",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/Separador",
+			"rect": "[P: (1316.0, 455.0), S: (528.0, 4.0)]"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor",
+			"rect": "[P: (1316.0, 469.0), S: (528.0, 400.0)]"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/PestanasColor",
+			"rect": "[P: (1316.0, 469.0), S: (528.0, 76.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/PestanasColor/Cabello",
+			"rect": "[P: (1316.0, 469.0), S: (170.0, 76.0)]",
+			"text": "Cabello"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/PestanasColor/Ropa",
+			"rect": "[P: (1494.0, 469.0), S: (171.0, 76.0)]",
+			"text": "Ropa"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/PestanasColor/Piel",
+			"rect": "[P: (1673.0, 469.0), S: (171.0, 76.0)]",
+			"text": "Piel"
+		},
+		{
+			"class": "PanelContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello",
+			"rect": "[P: (1316.0, 557.0), S: (528.0, 312.0)]"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido",
+			"rect": "[P: (1316.0, 557.0), S: (528.0, 312.0)]"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Tono",
+			"rect": "[P: (1316.0, 557.0), S: (528.0, 96.0)]"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Tono/Encabezado",
+			"rect": "[P: (1316.0, 557.0), S: (528.0, 32.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Tono/Encabezado/Nombre",
+			"rect": "[P: (1316.0, 557.0), S: (476.0, 32.0)]",
+			"text": "Color"
+		},
+		{
+			"class": "Panel",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Tono/Encabezado/Muestra",
+			"rect": "[P: (1796.0, 557.0), S: (48.0, 32.0)]"
+		},
+		{
+			"class": "HSlider",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Tono/HSliderHue",
+			"rect": "[P: (1316.0, 589.0), S: (528.0, 64.0)]"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Saturacion",
+			"rect": "[P: (1316.0, 665.0), S: (528.0, 96.0)]"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Saturacion/Encabezado",
+			"rect": "[P: (1316.0, 665.0), S: (528.0, 32.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Saturacion/Encabezado/Nombre",
+			"rect": "[P: (1316.0, 665.0), S: (414.0, 32.0)]",
+			"text": "Intensidad"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Saturacion/Encabezado/Valor",
+			"rect": "[P: (1734.0, 668.0), S: (110.0, 25.0)]",
+			"text": "74%"
+		},
+		{
+			"class": "HSlider",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Saturacion/HSliderSat",
+			"rect": "[P: (1316.0, 697.0), S: (528.0, 64.0)]"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Brillo",
+			"rect": "[P: (1316.0, 773.0), S: (528.0, 96.0)]"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Brillo/Encabezado",
+			"rect": "[P: (1316.0, 773.0), S: (528.0, 32.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Brillo/Encabezado/Nombre",
+			"rect": "[P: (1316.0, 773.0), S: (414.0, 32.0)]",
+			"text": "Brillo"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Brillo/Encabezado/Valor",
+			"rect": "[P: (1734.0, 776.0), S: (110.0, 25.0)]",
+			"text": "35%"
+		},
+		{
+			"class": "HSlider",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/HSVColorEditor/HSVEditorCabello/Contenido/Brillo/HSliderVal",
+			"rect": "[P: (1316.0, 805.0), S: (528.0, 64.0)]"
+		},
+		{
+			"class": "Control",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/Espacio",
+			"rect": "[P: (1316.0, 879.0), S: (528.0, 23.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Selección de personaje/CanvasLayer/PanelLateral/Contenido/Comenzar",
+			"rect": "[P: (1316.0, 912.0), S: (528.0, 100.0)]",
+			"text": "Comenzar aventura"
+		}
+	],
+	"paused": false,
+	"scene": "res://scenes/personalizacion/Personalizacion.tscn",
+	"viewport": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]",
+	"window": "(960, 540)"
+}

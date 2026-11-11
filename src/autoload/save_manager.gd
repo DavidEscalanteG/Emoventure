@@ -52,6 +52,7 @@ func hay_partidas() -> bool:
 
 
 func preparar_nueva_partida() -> void:
+	_reiniciar_estado_entre_partidas()
 	current_slot_id = ""
 	_crear_nueva_partida = true
 	DatosJugador.reiniciar_estado_temporal()
@@ -84,6 +85,7 @@ func cargar_partida(slot_id: String) -> bool:
 	if partida.is_empty():
 		return false
 
+	_reiniciar_estado_entre_partidas()
 	current_slot_id = slot_id
 	_crear_nueva_partida = false
 	_aplicar_datos_partida(partida)
@@ -98,6 +100,13 @@ func cargar_partida(slot_id: String) -> bool:
 
 	get_tree().change_scene_to_file(escena_guardada)
 	return true
+
+
+func _reiniciar_estado_entre_partidas() -> void:
+	_estado_cuestionario_pendiente.clear()
+	GameManager.desactivar_modo_rejugabilidad()
+	GameManager.reiniciar_rotacion_mapas_minijuego_1()
+	GameManager.reiniciar_estado_minijuegos()
 
 
 func eliminar_partida(slot_id: String) -> void:

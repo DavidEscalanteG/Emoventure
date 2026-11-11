@@ -1,0 +1,58 @@
+{
+	"mobile_mode": "cruceta",
+	"nodes": [
+		{
+			"class": "RichTextLabel",
+			"path": "/root/Minijuego3/TilemapLayers/Parca/RichTextLabel",
+			"rect": "[P: (216.0703, 524.0703), S: (363.54, 200.86)]",
+			"text": ""
+		},
+		{
+			"class": "RichTextLabel",
+			"path": "/root/Minijuego3/TilemapLayers/Parca/RichTextLabel2",
+			"rect": "[P: (216.0703, 524.0703), S: (363.54, 200.86)]",
+			"text": "¡No escaparás!"
+		},
+		{
+			"path": "/root/Minijuego3/Jugador",
+			"position": "(358.8372, 722.4737)",
+			"velocity": "(250.0, -88.66665)"
+		},
+		{
+			"class": "ColorRect",
+			"path": "/root/Minijuego3/PauseOverlay/BlurOverlay",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]"
+		},
+		{
+			"class": "MarginContainer",
+			"path": "/root/Minijuego3/PauseOverlay/MarginTopRight",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Minijuego3/PauseOverlay/MarginTopRight/BtnPausa",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]",
+			"text": ""
+		},
+		{
+			"actions": {},
+			"joy_pointer": -1,
+			"path": "/root/Minijuego3/MobileControls",
+			"visible": true
+		},
+		{
+			"class": "Control",
+			"path": "/root/Minijuego3/MobileControls/UI",
+			"rect": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]"
+		},
+		{
+			"class": "Control",
+			"path": "/root/Minijuego3/MobileControls/UI/Cruceta",
+			"rect": "[P: (30.0, 790.0), S: (290.0, 270.0)]"
+		}
+	],
+	"paused": false,
+	"scene": "res://scenes/mision_3_nuevo/minijuego3.tscn",
+	"viewport": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]",
+	"window": "(1100, 495)"
+}

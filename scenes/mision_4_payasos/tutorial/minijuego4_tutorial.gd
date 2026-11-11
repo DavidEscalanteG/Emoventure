@@ -46,6 +46,8 @@ func _show_step(value: int) -> void:
 	_animation_token += 1
 	var token := _animation_token
 	message_label.text = MESSAGES[_step]
+	if MobileControlsSettings.is_mobile_device() and _step == 1:
+		message_label.text = "Toca directamente al payaso para golpearlo con el martillo antes de que se esconda."
 	step_label.text = "%s   PASO %d DE %d" % [_progress_dots(), _step + 1, MESSAGES.size()]
 	previous_button.disabled = true
 	next_button.visible = _step < MESSAGES.size() - 1
@@ -66,6 +68,8 @@ func _reset_demo() -> void:
 	score.text = "Puntos: 0"
 	speed_label.visible = false
 	aim_hint.visible = false
+	if MobileControlsSettings.is_mobile_device():
+		aim_hint.text = "TOCA AL PAYASO"
 
 func _play_demo(token: int) -> void:
 	var tween: Tween

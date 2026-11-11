@@ -1,0 +1,167 @@
+{
+	"mobile_mode": "joystick",
+	"nodes": [
+		{
+			"class": "Control",
+			"path": "/root/SeleccionGenero",
+			"rect": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/SeleccionGenero/Label",
+			"rect": "[P: (124.0, 429.0), S: (1705.0, 84.0)]",
+			"text": "Me identifico como"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/SeleccionGenero/VBoxContainer",
+			"rect": "[P: (233.055, 525.0), S: (1480.0, 548.0)]"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/SeleccionGenero/VBoxContainer/HBoxContainer",
+			"rect": "[P: (233.055, 525.0), S: (1480.0, 300.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/SeleccionGenero/VBoxContainer/HBoxContainer/ContenedorHombre",
+			"rect": "[P: (233.055, 525.0), S: (480.0, 300.0)]",
+			"text": ""
+		},
+		{
+			"path": "/root/SeleccionGenero/VBoxContainer/HBoxContainer/ContenedorHombre/JugadorHombre",
+			"position": "(250.0, 200.0)",
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"class": "Label",
+			"path": "/root/SeleccionGenero/VBoxContainer/HBoxContainer/ContenedorHombre/LabelHombre",
+			"rect": "[P: (233.055, 818.0), S: (480.0, 112.0)]",
+			"text": "Hombre"
+		},
+		{
+			"class": "Button",
+			"path": "/root/SeleccionGenero/VBoxContainer/HBoxContainer/ContenedorMujer",
+			"rect": "[P: (1233.055, 525.0), S: (480.0, 300.0)]",
+			"text": ""
+		},
+		{
+			"path": "/root/SeleccionGenero/VBoxContainer/HBoxContainer/ContenedorMujer/JugadorMujer",
+			"position": "(250.0, 200.0)",
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"class": "Label",
+			"path": "/root/SeleccionGenero/VBoxContainer/HBoxContainer/ContenedorMujer/LabelMujer",
+			"rect": "[P: (1233.0, 818.0), S: (480.0, 112.0)]",
+			"text": "Mujer"
+		},
+		{
+			"class": "ColorRect",
+			"path": "/root/SeleccionGenero/PauseOverlay/BlurOverlay",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]"
+		},
+		{
+			"class": "MarginContainer",
+			"path": "/root/SeleccionGenero/PauseOverlay/MarginTopRight",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/SeleccionGenero/PauseOverlay/MarginTopRight/BtnPausa",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]",
+			"text": ""
+		},
+		{
+			"class": "Panel",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa",
+			"rect": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]"
+		},
+		{
+			"class": "CenterContainer",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer",
+			"rect": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer/VBox",
+			"rect": "[P: (620.0, 254.0), S: (680.0, 572.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer/VBox/Titulo",
+			"rect": "[P: (620.0, 254.0), S: (680.0, 121.0)]",
+			"text": "Menú de pausa"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer/VBox/Musica",
+			"rect": "[P: (620.0, 393.0), S: (680.0, 92.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer/VBox/Musica/LabelMusica",
+			"rect": "[P: (620.0, 393.0), S: (680.0, 72.0)]",
+			"text": "Música"
+		},
+		{
+			"class": "HSlider",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer/VBox/Musica/SliderMusica",
+			"rect": "[P: (620.0, 469.0), S: (680.0, 16.0)]"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer/VBox/Sfx",
+			"rect": "[P: (620.0, 503.0), S: (680.0, 92.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer/VBox/Sfx/LabelSfx",
+			"rect": "[P: (620.0, 503.0), S: (680.0, 72.0)]",
+			"text": "Sonidos"
+		},
+		{
+			"class": "HSlider",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer/VBox/Sfx/SliderSFX",
+			"rect": "[P: (620.0, 579.0), S: (680.0, 16.0)]"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer/VBox/Controles",
+			"rect": "[P: (620.0, 613.0), S: (680.0, 115.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer/VBox/Controles/LabelControles",
+			"rect": "[P: (620.0, 613.0), S: (680.0, 61.0)]",
+			"text": "Controles táctiles"
+		},
+		{
+			"class": "OptionButton",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer/VBox/Controles/OptionControles",
+			"rect": "[P: (620.0, 678.0), S: (680.0, 50.0)]",
+			"text": "Joystick"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer/VBox/Botones",
+			"rect": "[P: (620.0, 746.0), S: (680.0, 80.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer/VBox/Botones/BtnReanudar",
+			"rect": "[P: (704.0, 746.0), S: (129.0, 80.0)]",
+			"text": "Reanudar"
+		},
+		{
+			"class": "Button",
+			"path": "/root/SeleccionGenero/PauseOverlay/PanelPausa/CenterContainer/VBox/Botones/BtnMenuPrincipal",
+			"rect": "[P: (857.0, 746.0), S: (358.0, 80.0)]",
+			"text": "Salir al menú principal"
+		}
+	],
+	"paused": true,
+	"scene": "res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn",
+	"viewport": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]",
+	"window": "(960, 540)"
+}

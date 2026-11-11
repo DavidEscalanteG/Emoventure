@@ -10,6 +10,7 @@ var posicion_original: Vector2
 var tiempo_bajada_lenta: float = 0.8
 
 var fue_golpeado: bool = false # NUEVO: Variable para saber si ya le pegamos en este turno
+var _tween_movimiento: Tween
 
 signal golpe_recibido 
 
@@ -22,22 +23,29 @@ func _ready() -> void:
 	hide()
 	
 func reset_estado() -> void:
+	_cancelar_movimiento()
 	fue_golpeado = false # NUEVO: Reiniciamos la variable al resetear
 	$Timer.stop()
 	$Sprite2D.position = posicion_original + Vector2(0, altura_escondido)
 	$Sprite2D.texture = img_normal
 	hide()
 	
-func aparecer() -> void:
-	if visible: return
+func esta_disponible() -> bool:
+	return not visible
+
+func aparecer() -> bool:
+	if not esta_disponible():
+		return false
+	_cancelar_movimiento()
 	fue_golpeado = false # NUEVO: El payaso sale fresco y listo para recibir un golpe
 	$Sprite2D.texture = img_normal
 	show()
 	
-	var tween: Tween = create_tween()
-	tween.tween_property($Sprite2D, "position", posicion_original, 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	_tween_movimiento = create_tween()
+	_tween_movimiento.tween_property($Sprite2D, "position", posicion_original, 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	
 	$Timer.start()
+	return true
 
 func golpeado() -> void:
 	# NUEVO: Si ya fue golpeado o no está visible, cancelamos todo el código de abajo
@@ -45,6 +53,7 @@ func golpeado() -> void:
 		return
 		
 	fue_golpeado = true # NUEVO: Registramos que ya recibió el golpe
+	_cancelar_movimiento()
 	
 	golpe_recibido.emit()
 	$Timer.stop()
@@ -53,17 +62,20 @@ func golpeado() -> void:
 	$AudioStreamPlayer2D.pitch_scale = randf_range(.8, 1.2)
 	$AudioStreamPlayer2D.play()
 	
-	var tween: Tween = create_tween()
-	tween.tween_property($Sprite2D, "position", posicion_original + Vector2(0, altura_escondido), tiempo_bajada_lenta)
-	
-	await tween.finished
-	hide()
+	_tween_movimiento = create_tween()
+	_tween_movimiento.tween_property($Sprite2D, "position", posicion_original + Vector2(0, altura_escondido), tiempo_bajada_lenta)
+	_tween_movimiento.tween_callback(hide)
 
 func _on_timer_timeout() -> void:
-	var tween: Tween = create_tween()
-	tween.tween_property($Sprite2D, "position", posicion_original + Vector2(0, altura_escondido), 0.05)
-	await tween.finished
-	hide()
+	_cancelar_movimiento()
+	_tween_movimiento = create_tween()
+	_tween_movimiento.tween_property($Sprite2D, "position", posicion_original + Vector2(0, altura_escondido), 0.05)
+	_tween_movimiento.tween_callback(hide)
+
+func _cancelar_movimiento() -> void:
+	if _tween_movimiento != null:
+		_tween_movimiento.kill()
+		_tween_movimiento = null
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:

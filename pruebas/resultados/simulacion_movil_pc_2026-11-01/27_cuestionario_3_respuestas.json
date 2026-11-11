@@ -1,0 +1,113 @@
+{
+	"mobile_mode": "joystick",
+	"nodes": [
+		{
+			"class": "Control",
+			"path": "/root/Control",
+			"rect": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]"
+		},
+		{
+			"class": "PanelContainer",
+			"path": "/root/Control/CanvasLayer/PanelContainer",
+			"rect": "[P: (177.0, 61.5), S: (1566.0, 957.0)]"
+		},
+		{
+			"class": "MarginContainer",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer",
+			"rect": "[P: (177.0, 61.5), S: (1566.0, 957.0)]"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer",
+			"rect": "[P: (177.0, 61.5), S: (1566.0, 957.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/TituloLabel",
+			"rect": "[P: (510.0, 61.5), S: (900.0, 250.0)]",
+			"text": "Para finalizar la misión, responde "
+		},
+		{
+			"class": "HSeparator",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/HSeparator",
+			"rect": "[P: (177.0, 315.5), S: (1566.0, 150.0)]"
+		},
+		{
+			"class": "MarginContainer",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer",
+			"rect": "[P: (510.0, 469.5), S: (900.0, 230.0)]"
+		},
+		{
+			"class": "RichTextLabel",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/PreguntaRichTextLabel",
+			"rect": "[P: (510.0, 499.5), S: (900.0, 200.0)]",
+			"text": "Pienso que merece la pena prestar atención a mis emociones y estado de ánimo."
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer",
+			"rect": "[P: (177.0, 703.5), S: (1566.0, 315.0)]"
+		},
+		{
+			"class": "MarginContainer",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer",
+			"rect": "[P: (611.0, 703.5), S: (698.0, 206.0)]"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer",
+			"rect": "[P: (611.0, 703.5), S: (698.0, 206.0)]"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer",
+			"rect": "[P: (611.0, 703.5), S: (698.0, 206.0)]"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaIzquierda",
+			"rect": "[P: (611.0, 703.5), S: (347.0, 206.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaIzquierda/Boton_1",
+			"rect": "[P: (611.0, 703.5), S: (347.0, 93.0)]",
+			"text": "Nada de acuerdo"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaIzquierda/Boton_3",
+			"rect": "[P: (611.0, 816.5), S: (347.0, 93.0)]",
+			"text": "Bastante de acuerdo"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaDerecha",
+			"rect": "[P: (1017.0, 703.5), S: (292.0, 206.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaDerecha/Boton_2",
+			"rect": "[P: (1017.0, 703.5), S: (292.0, 93.0)]",
+			"text": "Algo de acuerdo"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/OpcionesVBoxContainer/HBoxContainer/ColumnaDerecha/Boton_4",
+			"rect": "[P: (1017.0, 816.5), S: (292.0, 93.0)]",
+			"text": "Muy de acuerdo"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Control/CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Boton_5",
+			"rect": "[P: (773.0, 925.5), S: (374.0, 93.0)]",
+			"text": "Totalmente de acuerdo"
+		}
+	],
+	"paused": false,
+	"question_index": 3,
+	"question_score": 6,
+	"scene": "res://scenes/cuestionarios/EscenaCuestionario.tscn",
+	"viewport": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]",
+	"window": "(960, 540)"
+}

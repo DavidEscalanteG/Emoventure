@@ -1,0 +1,46 @@
+{
+	"mobile_mode": "joystick",
+	"nodes": [
+		{
+			"class": "Control",
+			"path": "/root/MapaTopos/Topo4",
+			"rect": "[P: (341.0, 392.0), S: (300.0, 300.0)]"
+		},
+		{
+			"class": "Control",
+			"path": "/root/MapaTopos/Topo7",
+			"rect": "[P: (315.0, 752.0), S: (300.0, 300.0)]"
+		},
+		{
+			"class": "Control",
+			"path": "/root/MapaTopos/Topo9",
+			"rect": "[P: (1204.0, 738.0), S: (300.0, 300.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/MapaTopos/CanvasLayer/MarcadorPuntos",
+			"rect": "[P: (32.0, 24.0), S: (1856.0, 84.0)]",
+			"text": "Puntos: 2"
+		},
+		{
+			"class": "ColorRect",
+			"path": "/root/MapaTopos/PauseOverlay/BlurOverlay",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]"
+		},
+		{
+			"class": "MarginContainer",
+			"path": "/root/MapaTopos/PauseOverlay/MarginTopRight",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/MapaTopos/PauseOverlay/MarginTopRight/BtnPausa",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]",
+			"text": ""
+		}
+	],
+	"paused": false,
+	"scene": "res://scenes/mision_4_payasos/mapa_topos.tscn",
+	"viewport": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]",
+	"window": "(960, 540)"
+}

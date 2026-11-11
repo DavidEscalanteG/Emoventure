@@ -1,0 +1,46 @@
+{
+	"mobile_mode": "joystick",
+	"nodes": [
+		{
+			"class": "Control",
+			"path": "/root/MemoriasEternasGameplay",
+			"rect": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]"
+		},
+		{
+			"class": "TextureRect",
+			"path": "/root/MemoriasEternasGameplay/Fondo",
+			"rect": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/MemoriasEternasGameplay/Contador",
+			"rect": "[P: (390.0, 18.0), S: (1140.0, 129.0)]",
+			"text": "1 / 7 recuerdos explorados"
+		},
+		{
+			"class": "GridContainer",
+			"path": "/root/MemoriasEternasGameplay/CuadrosContainer",
+			"rect": "[P: (336.0, 237.0), S: (1241.24, 525.525)]"
+		},
+		{
+			"class": "ColorRect",
+			"path": "/root/MemoriasEternasGameplay/PauseOverlay/BlurOverlay",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]"
+		},
+		{
+			"class": "MarginContainer",
+			"path": "/root/MemoriasEternasGameplay/PauseOverlay/MarginTopRight",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/MemoriasEternasGameplay/PauseOverlay/MarginTopRight/BtnPausa",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]",
+			"text": ""
+		}
+	],
+	"paused": false,
+	"scene": "res://scenes/mision_2_memorias/mision_2_memorias.tscn",
+	"viewport": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]",
+	"window": "(960, 540)"
+}

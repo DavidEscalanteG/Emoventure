@@ -42,7 +42,11 @@ func _process(_delta: float) -> void:
 
 func _apply_mode() -> void:
 	var mode: String = MobileControlsSettings.control_mode
-	visible = MobileControlsSettings.should_show_touch_controls() and not get_tree().paused
+	var scene := get_tree().current_scene
+	# La carrera avanza sola y recibe el salto tocando el escenario. Una cruceta
+	# allí taparía el recorrido y sugeriría movimientos que no existen.
+	var jump_only := scene != null and scene.scene_file_path == "res://scenes/mision_3_nuevo/minijuego3.tscn"
+	visible = MobileControlsSettings.should_show_touch_controls() and not get_tree().paused and not jump_only
 	cruceta.visible = mode == MobileControlsSettings.MODE_CRUCETA
 	joystick.visible = mode == MobileControlsSettings.MODE_JOYSTICK
 	if mode != _last_mode:

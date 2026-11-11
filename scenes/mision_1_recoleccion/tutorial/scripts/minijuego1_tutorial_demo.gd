@@ -31,7 +31,7 @@ func reset_world() -> void:
 	_cancel_active_tweens()
 	player.position = PLAYER_START
 	player.modulate = Color.WHITE
-	player.scale = PLAYER_SCALE
+	player.scale = Vector2.ONE * 3.4 if MobileControlsSettings.is_mobile_device() else PLAYER_SCALE
 	_set_player_movement_state("idle", Vector2.DOWN)
 	emotion.position = EMOTION_POS
 	emotion.visible = false

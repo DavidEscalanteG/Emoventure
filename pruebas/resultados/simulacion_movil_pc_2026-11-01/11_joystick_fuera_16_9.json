@@ -1,0 +1,156 @@
+{
+	"mobile_mode": "joystick",
+	"nodes": [
+		{
+			"path": "/root/Node2D/Caminos/Path2D/@PathFollow2D@291/Enemigo",
+			"position": "(0.0, 0.0)",
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"path": "/root/Node2D/Caminos/Path2D2/@PathFollow2D@289/Enemigo",
+			"position": "(0.0, 0.0)",
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"path": "/root/Node2D/Caminos/Path2D6/@PathFollow2D@269/Enemigo",
+			"position": "(0.0, 0.0)",
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"path": "/root/Node2D/Caminos/Path2D61/@PathFollow2D@290/Enemigo",
+			"position": "(0.0, 0.0)",
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"path": "/root/Node2D/Jugador",
+			"position": "(1094.0, 511.0)",
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"class": "Control",
+			"path": "/root/Node2D/EmocionesUI/Control",
+			"rect": "[P: (0.0, 0.0), S: (524.0, 124.0)]"
+		},
+		{
+			"class": "PanelContainer",
+			"path": "/root/Node2D/EmocionesUI/Control/Panel",
+			"rect": "[P: (0.0, 0.0), S: (524.0, 124.0)]"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/Node2D/EmocionesUI/Control/HBoxContainer",
+			"rect": "[P: (12.0, 12.0), S: (516.0, 100.0)]"
+		},
+		{
+			"class": "TextureRect",
+			"path": "/root/Node2D/EmocionesUI/Control/HBoxContainer/AlegriaIcon",
+			"rect": "[P: (12.0, 12.0), S: (100.0, 100.0)]"
+		},
+		{
+			"class": "TextureRect",
+			"path": "/root/Node2D/EmocionesUI/Control/HBoxContainer/TristezaIcon",
+			"rect": "[P: (116.0, 12.0), S: (100.0, 100.0)]"
+		},
+		{
+			"class": "TextureRect",
+			"path": "/root/Node2D/EmocionesUI/Control/HBoxContainer/EnojoIcon",
+			"rect": "[P: (220.0, 12.0), S: (100.0, 100.0)]"
+		},
+		{
+			"class": "TextureRect",
+			"path": "/root/Node2D/EmocionesUI/Control/HBoxContainer/DesagradoIcon",
+			"rect": "[P: (324.0, 12.0), S: (100.0, 100.0)]"
+		},
+		{
+			"class": "TextureRect",
+			"path": "/root/Node2D/EmocionesUI/Control/HBoxContainer/SorpresaIcon",
+			"rect": "[P: (428.0, 12.0), S: (100.0, 100.0)]"
+		},
+		{
+			"class": "Control",
+			"path": "/root/Node2D/VidasUI/Control",
+			"rect": "[P: (0.0, 0.0), S: (236.0, 84.0)]"
+		},
+		{
+			"class": "PanelContainer",
+			"path": "/root/Node2D/VidasUI/Control/Panel",
+			"rect": "[P: (0.0, 0.0), S: (265.0, 84.0)]"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/Node2D/VidasUI/Control/HBoxContainer",
+			"rect": "[P: (13.0, 10.0), S: (240.0, 64.0)]"
+		},
+		{
+			"class": "TextureRect",
+			"path": "/root/Node2D/VidasUI/Control/HBoxContainer/Vida1",
+			"rect": "[P: (13.0, 10.0), S: (74.0, 64.0)]"
+		},
+		{
+			"class": "TextureRect",
+			"path": "/root/Node2D/VidasUI/Control/HBoxContainer/Vida2",
+			"rect": "[P: (96.0, 10.0), S: (74.0, 64.0)]"
+		},
+		{
+			"class": "TextureRect",
+			"path": "/root/Node2D/VidasUI/Control/HBoxContainer/Vida3",
+			"rect": "[P: (179.0, 10.0), S: (74.0, 64.0)]"
+		},
+		{
+			"path": "/root/Node2D/NivelCompletadoUI/Control/Panel/VBoxContainer/ControlJugador/JugadorCinematico",
+			"position": "(0.0, 255.0)",
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"class": "ColorRect",
+			"path": "/root/Node2D/FondoAmbiente/CieloPixelado",
+			"rect": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]"
+		},
+		{
+			"class": "ColorRect",
+			"path": "/root/Node2D/PauseOverlay/BlurOverlay",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]"
+		},
+		{
+			"class": "MarginContainer",
+			"path": "/root/Node2D/PauseOverlay/MarginTopRight",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Node2D/PauseOverlay/MarginTopRight/BtnPausa",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]",
+			"text": ""
+		},
+		{
+			"actions": {},
+			"joy_pointer": -1,
+			"path": "/root/Node2D/MobileControls",
+			"visible": true
+		},
+		{
+			"class": "Control",
+			"path": "/root/Node2D/MobileControls/UI",
+			"rect": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]"
+		},
+		{
+			"class": "Control",
+			"path": "/root/Node2D/MobileControls/UI/Joystick",
+			"rect": "[P: (1960.0, 800.0), S: (260.0, 260.0)]"
+		},
+		{
+			"class": "Panel",
+			"path": "/root/Node2D/MobileControls/UI/Joystick/JoystickBase",
+			"rect": "[P: (1960.0, 800.0), S: (220.0, 220.0)]"
+		},
+		{
+			"class": "Panel",
+			"path": "/root/Node2D/MobileControls/UI/Joystick/JoystickBase/Knob",
+			"rect": "[P: (2025.0, 865.0), S: (90.0, 90.0)]"
+		}
+	],
+	"paused": false,
+	"scene": "res://scenes/mision_1_recoleccion/mapa_2/mapa2.tscn",
+	"viewport": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]",
+	"window": "(960, 540)"
+}
