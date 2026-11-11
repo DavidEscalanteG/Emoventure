@@ -6,6 +6,19 @@ const SFX_GAME_OVER := "res://audios/sfx/game_over.mp3"
 const FUEGO_SCENE: PackedScene = preload("res://assets/enemigos/fuego/Fuego.tscn")
 const FUEGO_INDICADOR_SCENE: PackedScene = preload("res://assets/enemigos/fuego/FuegoIndicador.tscn")
 
+# --- LISTA FIJA CON LOS 5 MAPAS (Inmune a cambios en el Inspector) ---
+const MAPAS_MISION: Array[String] = [
+	"res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn",
+	"res://scenes/mision_1_recoleccion/mapa_2/mapa2.tscn",
+	"res://scenes/mision_1_recoleccion/mapa_3/mapa3.tscn",
+	"res://scenes/mision_1_recoleccion/mapa_4/mapa4.tscn",
+	"res://scenes/mision_1_recoleccion/mapa_5/mapa5.tscn"
+]
+
+# --- VARIABLES ESTÁTICAS PARA LA BOLSA TIPO TETRIS ---
+static var _bolsa_mapas: Array[String] = []
+static var _primera_bolsa_inicializada: bool = false
+
 @export_group("Fuego dinámico")
 @export var intervalo_generacion_fuego: float = 6.9
 @export var cantidad_fuegos_por_oleada: int = 10
@@ -25,6 +38,7 @@ var _timer_generacion_fuego: Timer
 var _partida_finalizada: bool = false
 
 func _ready() -> void:
+	_inicializar_bolsa_si_es_necesario()
 	_crear_fondo_ambiente()
 
 	# COMPROBACIÓN 1: ¿El jugador puede moverse?
@@ -42,6 +56,7 @@ func _ready() -> void:
 		
 	_inicializar_fuego_dinamico()
 
+
 func _on_todas_las_emociones_recolectadas() -> void:
 	if _partida_finalizada:
 		return
@@ -50,6 +65,10 @@ func _on_todas_las_emociones_recolectadas() -> void:
 	DatosJugador.todas_las_emociones_recolectadas.disconnect(_on_todas_las_emociones_recolectadas)
 	Logs.log_debug("Nivel completado")
 	AudioManager.play_sfx(SFX_NIVEL_COMPLETADO)
+
+	# Reiniciamos la bolsa al completar el nivel
+	_bolsa_mapas.clear()
+	_primera_bolsa_inicializada = false
 
 	# COMPROBACIONES: Solo ejecutamos esto si es el jugador real
 	if "nivel_terminado" in DatosJugador.jugador:
@@ -72,6 +91,7 @@ func _on_todas_las_emociones_recolectadas() -> void:
 		DatosJugador.emociones_recolectadas,
 		vidas
 	)
+
 
 func _on_jugador_sin_vidas() -> void:
 	if _partida_finalizada:
@@ -117,7 +137,6 @@ func _detener_fuego_dinamico() -> void:
 
 
 func _intentar_generar_fuegos() -> void:
-	# COMPROBACIÓN SEGURA: Usamos get() para que no crashee si la variable no existe
 	if DatosJugador.jugador == null or DatosJugador.jugador.get("nivel_terminado") == true:
 		return
 
@@ -153,8 +172,6 @@ func _crear_indicador_y_programar_fuego(interseccion: Node2D) -> void:
 
 
 func _crear_fuego(interseccion: Node2D) -> void:
-
-	# COMPROBACIÓN SEGURA aquí también
 	if DatosJugador.jugador == null or DatosJugador.jugador.get("nivel_terminado") == true:
 		_intersecciones_reservadas.erase(interseccion)
 		return
@@ -182,8 +199,6 @@ func _on_fuego_extinguido(interseccion: Node2D) -> void:
 
 
 func _crear_fondo_ambiente() -> void:
-	# Cubre las zonas sin TileMap en todos los mapas que comparten este script.
-	# El patrón grande conserva el aspecto pixel art sin competir con el laberinto.
 	var canvas := CanvasLayer.new()
 	canvas.name = "FondoAmbiente"
 	canvas.layer = -100
@@ -206,7 +221,70 @@ func _crear_fondo_ambiente() -> void:
 			COLOR = vec4(base, 1.0);
 		}
 	"""
-	var material := ShaderMaterial.new()
-	material.shader = shader
-	fondo.material = material
+	var shader_material := ShaderMaterial.new()
+	shader_material.shader = shader
+	fondo.material = shader_material
 	canvas.add_child(fondo)
+
+
+# ==========================================
+# SISTEMA DE BOLSA DE MAPAS (ESTILO TETRIS)
+# ==========================================
+func _obtener_mapas_validos() -> Array[String]:
+	var validos: Array[String] = []
+	for ruta in MAPAS_MISION:
+		if ResourceLoader.exists(ruta):
+			validos.append(ruta)
+		else:
+			push_warning("⚠ No se encontró el mapa en la ruta: %s" % ruta)
+	return validos
+
+
+func _inicializar_bolsa_si_es_necesario() -> void:
+	if _primera_bolsa_inicializada:
+		return
+
+	var validos: Array[String] = _obtener_mapas_validos()
+	if validos.size() <= 1:
+		return
+
+	_primera_bolsa_inicializada = true
+	var ruta_actual: String = scene_file_path
+	if ruta_actual.is_empty() and get_tree().current_scene != null:
+		ruta_actual = get_tree().current_scene.scene_file_path
+
+	_bolsa_mapas = validos.duplicate()
+	# Quitamos el mapa con el que arrancó la partida para no repetirlo antes que los otros 4
+	_bolsa_mapas.erase(ruta_actual)
+	_bolsa_mapas.shuffle()
+
+
+func cargar_mapa_aleatorio() -> void:
+	var validos: Array[String] = _obtener_mapas_validos()
+	if validos.size() <= 1:
+		get_tree().reload_current_scene()
+		return
+
+	var ruta_actual: String = scene_file_path
+	if ruta_actual.is_empty() and get_tree().current_scene != null:
+		ruta_actual = get_tree().current_scene.scene_file_path
+
+	# Cuando ya salieron los 4 mapas restantes, se rellena la bolsa con los 5 mapas (incluido el Mapa 1)
+	if _bolsa_mapas.is_empty():
+		_bolsa_mapas = validos.duplicate()
+		_bolsa_mapas.shuffle()
+
+		# Si por azar el primero que va a salir de la bolsa nueva es el mismo donde acabas de morir, lo intercambiamos
+		if _bolsa_mapas.size() > 1 and _bolsa_mapas.back() == ruta_actual:
+			var temp: String = _bolsa_mapas[0]
+			_bolsa_mapas[0] = _bolsa_mapas[_bolsa_mapas.size() - 1]
+			_bolsa_mapas[_bolsa_mapas.size() - 1] = temp
+
+	var mapa_elegido: String = _bolsa_mapas.pop_back()
+	Logs.log_debug("Cargando mapa: %s (Restantes en la bolsa actual: %d)" % [mapa_elegido, _bolsa_mapas.size()])
+
+	var nueva_escena: PackedScene = load(mapa_elegido) as PackedScene
+	if nueva_escena != null:
+		get_tree().change_scene_to_packed(nueva_escena)
+	else:
+		get_tree().change_scene_to_file(mapa_elegido)
