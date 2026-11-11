@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Emoventure"
-run/main_scene="uid://bfta3gpgwiyt7"
+run/main_scene="uid://co64vr8dggawo"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://scenes/mision_3_hachas/icon.svg"
 

@@ -8,6 +8,7 @@ const AMBIENTE_CALMA := "calma"
 const AMBIENTE_TIERNURA := "ternura"
 
 var _reproductor: AudioStreamPlayer
+var _tween_musica: Tween = null
 var _clave_actual: String = ""
 var _override_dialogo_activo: String = ""
 var _advertencias_emitidas: Dictionary[String, bool] = {}
@@ -29,8 +30,6 @@ var _pistas_por_clave: Dictionary[String, String] = {
 	AMBIENTE_TIERNURA: "res://audios/musica/dialogo_ternura.mp3",
 	"mascota": "res://audios/musica/mascota.mp3",
 	"inicio": "res://audios/musica/inicio.mp3",
-	
-	# --- NUEVAS CANCIONES REGISTRADAS ---
 	"adivina": "res://audios/musica/adivina.mp3",
 	"tutorial": "res://audios/musica/tutorial.mp3",
 	"casa_embrujada": "res://audios/musica/casa_embrujada.mp3",
@@ -45,95 +44,51 @@ var _pistas_por_clave: Dictionary[String, String] = {
 }
 
 var _pistas_por_escena: Dictionary[String, String] = {
-	
-	# ==========================================
-	# 1. MENÚS Y SELECCIÓN
-	# ==========================================
 	"res://scenes/menu_principal/menu_principal.tscn": "menu_principal",
 	"res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn": "personalizacion",
-
-	# ==========================================
-	# 2. INTRODUCCIÓN A LA FERIA
-	# ==========================================
 	"res://scenes/intro_dialogo_1/intro_dialogo_1.tscn": "inicio",
 	"res://scenes/intro_dialogo_2/intro_dialogo_2.tscn": "adivina",
-
-	# ==========================================
-	# 3. MISIÓN 1: PACMAN
-	# ==========================================
 	"res://scenes/mision_1_recoleccion/tutorial/scripts/Minijuego1_Tutorial.tscn": "tutorial",
-	# (Mapas internos del Pacman)
 	"res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn": "mision_1",
 	"res://scenes/mision_1_recoleccion/mapa_2/mapa2.tscn": "mision_1",
 	"res://scenes/mision_1_recoleccion/mapa_3/mapa3.tscn": "mision_1",
 	"res://scenes/mision_1_recoleccion/mapa_4/mapa4.tscn": "mision_1",
 	"res://scenes/mision_1_recoleccion/mapa_5/mapa5.tscn": "mision_1",
-
-	# ==========================================
-	# 4. CUESTIONARIOS Y LLAVE 1
-	# ==========================================
 	"res://scenes/cuestionarios/EscenaCuestionario.tscn": "cuestionario",
 	"res://scenes/transicion_post_mision_1/transicion_post_mision_1.tscn": "transicion_llave",
-
-	# ==========================================
-	# 5. CASA EMBRUJADA Y PERRO
-	# ==========================================
-	"res://scenes/intro_dialogo_3/intro_dialogo_3.tscn": "casa_embrujada", 
-	"res://scenes/intro_dialogo_4/intro_dialogo_4.tscn": "puerta1", 
-	"res://scenes/intro_dialogo_5/intro_dialogo_5.tscn": AMBIENTE_TENSION, 
-
-	# ==========================================
-	# 6. MISIÓN 2: EMOCIONES
-	# ==========================================
-	"res://scenes/intro_mision_2/intro_mision_2.tscn": "payaso", 
+	"res://scenes/intro_dialogo_3/intro_dialogo_3.tscn": "casa_embrujada",
+	"res://scenes/intro_dialogo_4/intro_dialogo_4.tscn": "puerta1",
+	"res://scenes/intro_dialogo_5/intro_dialogo_5.tscn": AMBIENTE_TENSION,
+	"res://scenes/intro_mision_2/intro_mision_2.tscn": "payaso",
 	"res://scenes/mision_2_memorias/tutorial/scripts/Minijuego2_Tutorial.tscn": "tutorial",
 	"res://scenes/mision_2_memorias/mision_2_memorias.tscn": "mision_2",
-	
-	# ==========================================
-	# 7. LLAVE 2
-	# ==========================================
 	"res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn": "transicion_llave",
-
-	# ==========================================
-	# 8. MAZMORRA Y HACHAS
-	# ==========================================
-	"res://scenes/intro_dialogo_6/intro_dialogo_6.tscn": "puerta", 
-	"res://scenes/intro_dialogo_7/intro_dialogo_7.tscn": "tunel", 
-	"res://scenes/mision_3_nuevo/tutorial/Minijuego3_Tutorial.tscn": "tutorial", 
-	"res://scenes/mision_3_nuevo/minijuego3.tscn": "mision_3", 
-
-	# ==========================================
-	# 9. LLAVE 3
-	# ==========================================
+	"res://scenes/intro_dialogo_6/intro_dialogo_6.tscn": "puerta",
+	"res://scenes/intro_dialogo_7/intro_dialogo_7.tscn": "tunel",
+	"res://scenes/mision_3_nuevo/tutorial/Minijuego3_Tutorial.tscn": "tutorial",
+	"res://scenes/mision_3_nuevo/minijuego3.tscn": "mision_3",
 	"res://scenes/recompensa_mision_3/recompensa_mision_3.tscn": "transicion_llave",
-
-	# ==========================================
-	# 10. CEMENTERIO Y TOPOS
-	# ==========================================
-	"res://scenes/intro_dialogo_8/intro_dialogo_8.tscn": "puerta3", 
-	"res://scenes/intro_dialogo_9/intro_dialogo_9.tscn": "triste", 
-	"res://scenes/mision_4_payasos/tutorial/Minijuego4_Tutorial.tscn": "tutorial", 
-	"res://scenes/mision_4_payasos/mapa_topos.tscn": "mision_4", 
-
-	# ==========================================
-	# 11. CIERRE: ROBO Y REUNIÓN
-	# ==========================================
-	"res://scenes/intro_dialogo_10/intro_dialogo_10.tscn": "showman", 
-	"res://scenes/intro_dialogo_12/intro_dialogo_12.tscn": "sentimental", 
-
-	# ==========================================
-	# 12. FINAL Y REJUGABILIDAD
-	# ==========================================
+	"res://scenes/intro_dialogo_8/intro_dialogo_8.tscn": "puerta3",
+	"res://scenes/intro_dialogo_9/intro_dialogo_9.tscn": "triste",
+	"res://scenes/mision_4_payasos/tutorial/Minijuego4_Tutorial.tscn": "tutorial",
+	"res://scenes/mision_4_payasos/mapa_topos.tscn": "mision_4",
+	"res://scenes/intro_dialogo_10/intro_dialogo_10.tscn": "showman",
+	"res://scenes/intro_dialogo_12/intro_dialogo_12.tscn": "sentimental",
 	"res://scenes/final/resultado_final.tscn": "resultado_final",
 	"res://scenes/rejugabilidad/mapa_rejugabilidad.tscn": "tutorial"
 }
 
+
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
 	_reproductor = AudioStreamPlayer.new()
 	_reproductor.name = "MusicPlayer"
+	_reproductor.process_mode = Node.PROCESS_MODE_ALWAYS
+	_reproductor.set_meta("_ignorar_audio_manager", true)
 	_reproductor.bus = _obtener_bus_musica()
-	
-	_reproductor.autoplay = false 
+	_reproductor.volume_db = _obtener_volumen_musica_db()
+	_reproductor.autoplay = false
 	add_child(_reproductor)
 	
 	_validar_pistas_registradas()
@@ -143,39 +98,30 @@ func _ready() -> void:
 
 	if not OS.has_feature("web"):
 		_actualizar_musica_escena_actual()
-		
-	# ========================================================
-	# --- NUEVO PARCHE: FORZAR VOLUMEN EN LA WEB ---
-	# ========================================================
-	if OS.has_feature("web"):
-		var bus_master := AudioServer.get_bus_index("Master")
-		var indice_musica := AudioServer.get_bus_index(BUS_MUSICA)
-		
-		# 1. Quitamos el estado de "Silenciado" (Mute)
-		AudioServer.set_bus_mute(bus_master, false)
-		if indice_musica >= 0:
-			AudioServer.set_bus_mute(indice_musica, false)
-			
-		# 2. Restauramos el volumen a 0.0 dB (equivale al 100% normal)
-		AudioServer.set_bus_volume_db(bus_master, 0.0)
-		if indice_musica >= 0:
-			AudioServer.set_bus_volume_db(indice_musica, 0.0)
-	# ========================================================
 
 	set_process(true)
 
 
+func _obtener_volumen_musica_db() -> float:
+	if AudioManager != null and AudioManager.has_method("get_volumen_db"):
+		return AudioManager.get_volumen_db(BUS_MUSICA)
+	return 0.0
+
+
+func actualizar_volumen_musica() -> void:
+	if _reproductor == null:
+		return
+	_detener_tween_musica()
+	_reproductor.volume_db = _obtener_volumen_musica_db()
+
+
 func iniciar_musica_web() -> void:
-	# TRUCO WEB: Reproducimos un sonido "vacío" forzado en el canal Master.
-	# Al reproducir esto durante el clic, el navegador web se ve obligado 
-	# a desbloquear todo el sistema de sonido permanentemente.
 	var desbloqueador := AudioStreamPlayer.new()
 	desbloqueador.bus = "Master"
-	desbloqueador.stream = AudioStreamGenerator.new() # Crea silencio puro
+	desbloqueador.stream = AudioStreamGenerator.new()
 	add_child(desbloqueador)
 	desbloqueador.play()
 
-	# Ahora sí, continuamos con tu lógica original
 	if not _reproductor.playing:
 		_actualizar_musica_escena_actual(true)
 
@@ -199,6 +145,7 @@ func _actualizar_musica_si_cambio_escena() -> void:
 		return
 
 	_ultima_ruta_escena = ruta_escena
+	_override_dialogo_activo = ""
 	_actualizar_musica_escena_actual(false)
 
 
@@ -223,6 +170,12 @@ func restaurar_tema_escena_actual() -> void:
 	_actualizar_musica_escena_actual(true)
 
 
+func _detener_tween_musica() -> void:
+	if _tween_musica != null and _tween_musica.is_valid():
+		_tween_musica.kill()
+	_tween_musica = null
+
+
 func reproducir_desde_ruta(ruta_pista: String, from_position: float = 0.0, tiempo_fade: float = 1.0, forzar_reinicio: bool = false) -> void:
 	if ruta_pista.is_empty():
 		return
@@ -244,7 +197,7 @@ func reproducir_desde_ruta(ruta_pista: String, from_position: float = 0.0, tiemp
 
 
 func reproducir_clave(clave: String, from_position: float = 0.0, tiempo_fade: float = 1.0, forzar_reinicio: bool = false) -> void:
-	if _clave_actual == clave and not forzar_reinicio:
+	if _clave_actual == clave and _reproductor.playing and not forzar_reinicio:
 		return
 
 	var ruta_pista: String = _pistas_por_clave.get(clave, "")
@@ -263,34 +216,43 @@ func reproducir_clave(clave: String, from_position: float = 0.0, tiempo_fade: fl
 		push_warning("[MusicManager] No se pudo cargar el AudioStream: %s" % ruta_pista)
 		return
 
+	if clave == "transicion_llave" and "loop" in stream:
+		stream.set("loop", false)
+
 	_clave_actual = clave
 	_transicionar_musica(stream, from_position, tiempo_fade)
 
 
 func _transicionar_musica(nuevo_stream: AudioStream, from_position: float, tiempo_fade: float) -> void:
+	_detener_tween_musica()
+	var volumen_objetivo_db: float = _obtener_volumen_musica_db()
+
 	if tiempo_fade <= 0.0:
-		_reproductor.volume_db = 0.0
+		_reproductor.volume_db = volumen_objetivo_db
 		_reproductor.stream = nuevo_stream
 		_reproductor.play(from_position)
 		return
 		
 	if _reproductor.playing:
-		var tween = create_tween()
-		tween.tween_property(_reproductor, "volume_db", -60.0, tiempo_fade / 2.0)
-		tween.tween_callback(func():
+		_tween_musica = create_tween()
+		_tween_musica.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		_tween_musica.tween_property(_reproductor, "volume_db", -60.0, tiempo_fade / 2.0)
+		_tween_musica.tween_callback(func():
 			_reproductor.stream = nuevo_stream
 			_reproductor.play(from_position)
 		)
-		tween.tween_property(_reproductor, "volume_db", 0.0, tiempo_fade / 2.0)
+		_tween_musica.tween_property(_reproductor, "volume_db", _obtener_volumen_musica_db(), tiempo_fade / 2.0)
 	else:
 		_reproductor.volume_db = -60.0
 		_reproductor.stream = nuevo_stream
 		_reproductor.play(from_position)
-		var tween = create_tween()
-		tween.tween_property(_reproductor, "volume_db", 0.0, tiempo_fade)
+		_tween_musica = create_tween()
+		_tween_musica.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		_tween_musica.tween_property(_reproductor, "volume_db", volumen_objetivo_db, tiempo_fade)
 
 
 func detener() -> void:
+	_detener_tween_musica()
 	_clave_actual = ""
 	_override_dialogo_activo = ""
 	_reproductor.stop()
@@ -298,14 +260,17 @@ func detener() -> void:
 
 func detener_suave(tiempo_fade: float = 1.0) -> void:
 	if _reproductor.playing:
+		_detener_tween_musica()
 		_clave_actual = ""
 		_override_dialogo_activo = ""
-		var tween = create_tween()
-		tween.tween_property(_reproductor, "volume_db", -60.0, tiempo_fade)
-		tween.tween_callback(_reproductor.stop)
+		_tween_musica = create_tween()
+		_tween_musica.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		_tween_musica.tween_property(_reproductor, "volume_db", -60.0, tiempo_fade)
+		_tween_musica.tween_callback(_reproductor.stop)
 
 
 func _on_current_scene_changed(_nueva_escena: Node) -> void:
+	_override_dialogo_activo = ""
 	_actualizar_musica_escena_actual(false)
 
 
@@ -330,9 +295,9 @@ func _actualizar_musica_escena_actual(forzar_restauracion: bool = false) -> void
 		return
 
 	if clave == "transicion_llave":
-		reproducir_clave(clave, 0.0, 0.0)
+		reproducir_clave(clave, 0.0, 0.0, true)
 	else:
-		reproducir_clave(clave)
+		reproducir_clave(clave, 0.0, 1.0, forzar_restauracion)
 
 
 func _validar_pistas_registradas() -> void:
@@ -361,6 +326,7 @@ func _obtener_bus_musica() -> String:
 	if AudioManager.BUS_MUSICA != BUS_MUSICA:
 		push_warning("[MusicManager] BUS_MUSICA no coincide con AudioManager (%s != %s). Se usará '%s'." % [BUS_MUSICA, AudioManager.BUS_MUSICA, AudioManager.BUS_MUSICA])
 	return AudioManager.BUS_MUSICA
+
 
 func obtener_posicion_reproduccion() -> float:
 	if _reproductor != null and _reproductor.playing:

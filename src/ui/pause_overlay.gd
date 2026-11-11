@@ -28,8 +28,6 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	# Se consulta el estado físico para que Escape funcione aunque un Control o
-	# un diálogo haya consumido el evento antes de llegar a _input.
 	var escape_presionado := Input.is_physical_key_pressed(KEY_ESCAPE)
 	if escape_presionado and not _escape_estaba_presionado:
 		_alternar_pausa_por_escape()
@@ -57,16 +55,12 @@ func _adaptar_posicion_a_interfaz() -> void:
 		if not (control is BaseButton or control is Label):
 			continue
 		var rect := control.get_global_rect()
-		# Los paneles de texto de ancho completo suelen alinear su contenido al
-		# lado opuesto. Sólo los elementos compactos son obstáculos reales.
 		if rect.size.x <= 0.0 or rect.size.x > viewport_size.x * 0.5:
 			continue
 		if rect.position.y > 150.0 or rect.end.y < 0.0:
 			continue
 		blockers.append(rect)
 
-	# Desplaza hacia la izquierda tantas veces como sea necesario, de modo que
-	# también funciona si una futura escena añade varios controles en la esquina.
 	var moved := true
 	while moved:
 		moved = false
@@ -90,16 +84,21 @@ func _set_pause_button_rect(rect: Rect2, viewport_size: Vector2) -> void:
 
 
 func _configurar_audio() -> void:
-	# 1. CORRECCIÓN: Forzamos a los sliders a usar la escala matemática correcta (0.0 a 1.0)
+	slider_musica.min_value = 0.0
 	slider_musica.max_value = 1.0
 	slider_musica.step = 0.01
 	
+	slider_sfx.min_value = 0.0
 	slider_sfx.max_value = 1.0
 	slider_sfx.step = 0.01
 
-	# 2. Ahora sí, leemos y aplicamos el volumen guardado
-	slider_musica.value = AudioManager.get_volumen(AudioManager.BUS_MUSICA)
-	slider_sfx.value = AudioManager.get_volumen(AudioManager.BUS_SFX)
+	if not slider_musica.value_changed.is_connected(_on_slider_musica_value_changed):
+		slider_musica.value_changed.connect(_on_slider_musica_value_changed)
+	if not slider_sfx.value_changed.is_connected(_on_slider_sfx_value_changed):
+		slider_sfx.value_changed.connect(_on_slider_sfx_value_changed)
+
+	slider_musica.set_value_no_signal(AudioManager.get_volumen(AudioManager.BUS_MUSICA))
+	slider_sfx.set_value_no_signal(AudioManager.get_volumen(AudioManager.BUS_SFX))
 
 
 func _configurar_controles_moviles() -> void:
@@ -150,10 +149,9 @@ func _set_pausa_activa(estado: bool) -> void:
 	get_tree().paused = estado
 	panel_pausa.visible = estado
 	
-	# --- CORRECCIÓN CLAVE ---
-	# Consumimos la entrada para que el clic o la tecla ESC 
-	# no sigan propagándose hasta el personaje y provoquen el salto.
-	get_viewport().set_input_as_handled()
-	
 	if estado:
+		slider_musica.set_value_no_signal(AudioManager.get_volumen(AudioManager.BUS_MUSICA))
+		slider_sfx.set_value_no_signal(AudioManager.get_volumen(AudioManager.BUS_SFX))
 		AudioManager.play_ui_click()
+
+	get_viewport().set_input_as_handled()

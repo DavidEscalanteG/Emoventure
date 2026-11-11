@@ -105,51 +105,50 @@ func iniciar_dialogo(resource: DialogueResource) -> void:
 	dialogue_resource = resource
 	current_line = await DialogueManager.get_next_dialogue_line(dialogue_resource)
 	_mostrar_linea()
-
+	
 func _mostrar_linea() -> void:
 
 	if current_line.character != "":
 		character_label.text = current_line.character
 		character_label.show()
+		
+		var nombre_mascota: String = String(DatosJugador.get("nombre_mascota")).strip_edges()
+		
 		match current_line.character:
-			"Gitana":
+			"Gitana", "???":
 				type_sound.pitch_scale = 0.85
-				character_label.modulate = Color.CRIMSON
-			"???":
-				type_sound.pitch_scale = 0.85
-				character_label.modulate = Color.CRIMSON
+				character_label.modulate = Color("#ff8a9a") # Carmesí muy claro / Rosa coral
 			"Mujer Lagarto":
 				type_sound.pitch_scale = 1.0
-				character_label.modulate = Color.YELLOW
-			"{{DatosJugador.nombre_mascota}}":
+				character_label.modulate = Color("#fff59d") # Amarillo claro brillante
+			nombre_mascota, "{{DatosJugador.nombre_mascota}}", "Mascota":
 				# La mascota suena un poco más aguda
-				type_sound.pitch_scale = 1.2 
-				character_label.modulate = Color.PINK
-			"Payaso": # Ejemplo de otro personaje
+				type_sound.pitch_scale = 1.2
+				character_label.modulate = Color("#ffb8e0") # Rosa pastel claro
+			"Payaso":
 				type_sound.pitch_scale = 1.1
-				character_label.modulate = Color.DEEP_SKY_BLUE
+				character_label.modulate = Color("#80d8ff") # Azul cielo muy claro
 			"Frankenstein":
 				# Voz lenta y muy grave
-				type_sound.pitch_scale = 0.6 
-				character_label.modulate = Color.DARK_GREEN
+				type_sound.pitch_scale = 0.6
+				character_label.modulate = Color("#98fb98") # Verde pálido / Menta claro
 			"Narrador":
 				type_sound.pitch_scale = 1.0
-				character_label.modulate = Color.PURPLE
+				character_label.modulate = Color("#e1a5ff") # Morado / Lavanda muy claro
 			"Domador":
 				type_sound.pitch_scale = 0.95
-				character_label.modulate = Color.ORANGE
+				character_label.modulate = Color("#ffcc80") # Naranja durazno claro
 			"Parca":
 				# Voz casi de ultratumba
-				type_sound.pitch_scale = 0.5 
-				character_label.modulate = Color.DARK_GRAY
-			_: # Para cualquier otro personaje que no esté en la lista
+				type_sound.pitch_scale = 0.5
+				character_label.modulate = Color("#e0e0e0") # Gris muy claro / Plata
+			_:
 				type_sound.pitch_scale = 1.0
 				character_label.modulate = Color.WHITE
-
 	else:
 		character_label.hide()
+
 	if _mobile_scroll != null:
-		character_label.modulate = Color(character_label.modulate.lightened(0.55), 1.0)
 		_mobile_scroll.scroll_vertical = 0
 
 	label.text = current_line.text

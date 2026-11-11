@@ -16,17 +16,33 @@ extends Control
 	"move_right": %TeclaDerecha,
 }
 
-const MUSIC_PREVIEW := "res://audios/musica/menu_principal.mp3"
+const MUSIC_PREVIEW := "res://audios/musica/menu_principal.ogg"
 const SFX_PREVIEW := "res://audios/sfx/ui_click.mp3"
 var _accion_esperando_tecla: String = ""
 
 
 func _ready() -> void:
 	InteractiveButtonFX.aplicar_a_botones_en(self)
-	slider_master.value = AudioManager.get_volumen(AudioManager.BUS_MASTER)
-	slider_musica.value = AudioManager.get_volumen(AudioManager.BUS_MUSICA)
-	slider_sfx.value = AudioManager.get_volumen(AudioManager.BUS_SFX)
-	slider_voz.value = AudioManager.get_volumen(AudioManager.BUS_VOZ)
+
+	for slider: HSlider in [slider_master, slider_musica, slider_sfx, slider_voz]:
+		slider.min_value = 0.0
+		slider.max_value = 1.0
+		slider.step = 0.01
+
+	if not slider_master.value_changed.is_connected(_on_slider_master_value_changed):
+		slider_master.value_changed.connect(_on_slider_master_value_changed)
+	if not slider_musica.value_changed.is_connected(_on_slider_musica_value_changed):
+		slider_musica.value_changed.connect(_on_slider_musica_value_changed)
+	if not slider_sfx.value_changed.is_connected(_on_slider_sfx_value_changed):
+		slider_sfx.value_changed.connect(_on_slider_sfx_value_changed)
+	if not slider_voz.value_changed.is_connected(_on_slider_voz_value_changed):
+		slider_voz.value_changed.connect(_on_slider_voz_value_changed)
+
+	slider_master.set_value_no_signal(AudioManager.get_volumen(AudioManager.BUS_MASTER))
+	slider_musica.set_value_no_signal(AudioManager.get_volumen(AudioManager.BUS_MUSICA))
+	slider_sfx.set_value_no_signal(AudioManager.get_volumen(AudioManager.BUS_SFX))
+	slider_voz.set_value_no_signal(AudioManager.get_volumen(AudioManager.BUS_VOZ))
+
 	_configurar_selector_controles()
 
 
@@ -107,8 +123,6 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 
 func _on_panel_teclado_window_input(event: InputEvent) -> void:
-	# PopupPanel tiene su propio Viewport; por eso las teclas pulsadas dentro de
-	# esta ventana no llegan al _unhandled_key_input de la escena principal.
 	if _capturar_tecla_personalizada(event):
 		panel_teclado.set_input_as_handled()
 
