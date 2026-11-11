@@ -6,10 +6,17 @@ const DIMENSIONES: Array[String] = ["atencion", "claridad", "reparacion"]
 const TEXTO_BOTON_DESCARGA_POR_DEFECTO: String = "Descargar resultados en PDF"
 const TEXTO_BOTON_DESCARGA_EXITOSA: String = "¡Archivo descargado exitosamente en tu carpeta de descargas!"
 const SEGUNDOS_REACTIVAR_DESCARGA: int = 10
+
 const NOMBRES_DIMENSION: Dictionary[String, String] = {
 	"atencion": "Atención emocional",
 	"claridad": "Claridad emocional",
 	"reparacion": "Reparación emocional"
+}
+
+const DEFINICIONES_DIMENSION: Dictionary[String, String] = {
+	"atencion": "Se refiere a la percepción de las propias emociones, es decir, a la capacidad para sentir y expresar las emociones de forma adecuada.",
+	"claridad": "Alude a la percepción que se tiene sobre la comprensión de los propios estados emocionales.",
+	"reparacion": "Se refiere a la capacidad percibida para regular los propios estados emocionales de forma correcta."
 }
 
 const GENERO_HOMBRE: String = "hombre"
@@ -77,6 +84,8 @@ const UMBRALES_MENSAJES_POR_GENERO: Dictionary[String, Dictionary] = {
 	}
 }
 
+@onready var margin_container: Control = $MarginContainer
+@onready var vbox_principal: VBoxContainer = $MarginContainer/VBoxPrincipal
 @onready var label_narrativa: Label = %NarrativaLabel
 @onready var tarjetas_container: VBoxContainer = %TarjetasContainer
 @onready var label_perfil_final: Label = %PerfilFinalLabel
@@ -101,11 +110,54 @@ var cuenta_regresiva_descarga_activa: bool = false
 
 func _ready() -> void:
 	label_narrativa.text = "Una mirada a las tendencias que aparecieron durante tu aventura"
+	_compactar_espaciado_interfaz()
 	_renderizar_resumen()
+
+	boton_descargar_pdf.visible = true
+	boton_menu_principal.visible = true
 	boton_descargar_pdf.text = TEXTO_BOTON_DESCARGA_POR_DEFECTO
-	boton_descargar_pdf.pressed.connect(_on_boton_descargar_pdf_pressed)
-	boton_menu_principal.pressed.connect(_on_boton_rejugabilidad_pressed)
-	dialogo_guardar_pdf.file_selected.connect(_on_dialogo_guardar_pdf_file_selected)
+
+	if not boton_descargar_pdf.pressed.is_connected(_on_boton_descargar_pdf_pressed):
+		boton_descargar_pdf.pressed.connect(_on_boton_descargar_pdf_pressed)
+	if not boton_menu_principal.pressed.is_connected(_on_boton_rejugabilidad_pressed):
+		boton_menu_principal.pressed.connect(_on_boton_rejugabilidad_pressed)
+	if not dialogo_guardar_pdf.file_selected.is_connected(_on_dialogo_guardar_pdf_file_selected):
+		dialogo_guardar_pdf.file_selected.connect(_on_dialogo_guardar_pdf_file_selected)
+
+	if not get_viewport().size_changed.is_connected(_ajustar_escala_a_pantalla):
+		get_viewport().size_changed.connect(_ajustar_escala_a_pantalla)
+	call_deferred("_ajustar_escala_a_pantalla")
+
+
+func _compactar_espaciado_interfaz() -> void:
+	if vbox_principal != null:
+		vbox_principal.add_theme_constant_override("separation", 6)
+	if tarjetas_container != null:
+		tarjetas_container.add_theme_constant_override("separation", 6)
+
+	var tamano_perfil: int = label_perfil_final.get_theme_font_size("font_size")
+	if tamano_perfil > 14:
+		label_perfil_final.add_theme_font_size_override("font_size", max(tamano_perfil - 3, 13))
+
+
+func _ajustar_escala_a_pantalla() -> void:
+	await get_tree().process_frame
+	if margin_container == null or boton_menu_principal == null:
+		return
+
+	margin_container.scale = Vector2.ONE
+	margin_container.position = Vector2.ZERO
+	await get_tree().process_frame
+
+	var alto_pantalla: float = get_viewport_rect().size.y
+	var ancho_pantalla: float = get_viewport_rect().size.x
+	var borde_inferior_boton: float = boton_menu_principal.get_global_rect().end.y
+	var margen_inferior: float = 16.0
+
+	if borde_inferior_boton > alto_pantalla - margen_inferior and borde_inferior_boton > 0.0:
+		var factor: float = clampf((alto_pantalla - margen_inferior) / borde_inferior_boton, 0.65, 1.0)
+		margin_container.scale = Vector2(factor, factor)
+		margin_container.position.x = (ancho_pantalla - (ancho_pantalla * factor)) * 0.5
 
 
 func _renderizar_resumen() -> void:
@@ -118,15 +170,43 @@ func _renderizar_resumen() -> void:
 	_actualizar_tarjeta_dimension("claridad", puntajes.get("claridad", 0), titulo_claridad, barra_claridad, mensaje_claridad)
 	_actualizar_tarjeta_dimension("reparacion", puntajes.get("reparacion", 0), titulo_reparacion, barra_reparacion, mensaje_reparacion)
 
-	label_perfil_final.text = _construir_texto_perfil_final(puntajes, total_global)
+	label_perfil_final.text = _construir_texto_perfil_final(puntajes, total_global, true)
 
 
 func _actualizar_tarjeta_dimension(dimension: String, puntaje: int, titulo: Label, barra: ProgressBar, mensaje: Label) -> void:
 	titulo.text = "%s · %d/40" % [NOMBRES_DIMENSION.get(dimension, dimension.capitalize()), puntaje]
+	_insertar_definicion_en_tarjeta(dimension, titulo, barra, mensaje)
 	barra.min_value = 0
 	barra.max_value = 40
 	barra.value = puntaje
 	mensaje.text = _obtener_mensaje_dimension(dimension, puntaje)
+
+
+func _insertar_definicion_en_tarjeta(dimension: String, titulo: Label, barra: ProgressBar, mensaje: Label) -> void:
+	var contenedor: VBoxContainer = titulo.get_parent() as VBoxContainer
+	if contenedor == null:
+		return
+
+	contenedor.add_theme_constant_override("separation", 2)
+	var margen_nodo: MarginContainer = contenedor.get_parent() as MarginContainer
+	if margen_nodo != null:
+		margen_nodo.add_theme_constant_override("margin_top", 6)
+		margen_nodo.add_theme_constant_override("margin_bottom", 6)
+
+	var nombre_nodo: String = "Definicion_" + dimension
+	var label_def: Label = contenedor.get_node_or_null(nombre_nodo) as Label
+	if label_def == null:
+		label_def = Label.new()
+		label_def.name = nombre_nodo
+		label_def.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		label_def.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		var tamano_base: int = mensaje.get_theme_font_size("font_size")
+		label_def.add_theme_font_size_override("font_size", clampi(tamano_base - 4, 11, 14))
+		label_def.modulate = Color(1.0, 1.0, 1.0, 0.82)
+		contenedor.add_child(label_def)
+
+	label_def.text = DEFINICIONES_DIMENSION.get(dimension, "")
+	contenedor.move_child(label_def, barra.get_index())
 
 
 func _obtener_mensaje_dimension(dimension: String, puntaje: int) -> String:
@@ -145,12 +225,14 @@ func _obtener_mensaje_dimension(dimension: String, puntaje: int) -> String:
 
 func _obtener_umbrales_genero() -> Dictionary:
 	var genero: String = str(DatosJugador.genero).to_lower().strip_edges()
-	if not UMBRALES_MENSAJES_POR_GENERO.has(genero):
+	if (genero.begins_with("m") and not genero.contains("masc")) or genero.begins_with("f") or genero == "niña" or genero == "nina" or genero == "chica":
+		genero = GENERO_MUJER
+	elif not UMBRALES_MENSAJES_POR_GENERO.has(genero):
 		genero = GENERO_HOMBRE
 	return UMBRALES_MENSAJES_POR_GENERO.get(genero, {})
 
 
-func _construir_texto_perfil_final(puntajes: Dictionary[String, int], total_global: int) -> String:
+func _construir_texto_perfil_final(puntajes: Dictionary[String, int], total_global: int, incluir_citas_pie: bool = true) -> String:
 	var dimensiones_mayores: Array[String] = []
 	var puntaje_mayor: int = -1
 
@@ -171,11 +253,23 @@ func _construir_texto_perfil_final(puntajes: Dictionary[String, int], total_glob
 		resumen = "La puntuación más alta se comparte entre %s." % " y ".join(dimensiones_mayores)
 	else:
 		resumen = "La puntuación más alta fue en %s." % dimensiones_mayores[0]
-	return "%s Total registrado: %d puntos.\nEstos resultados describen tendencias personales y no una calificación." % [resumen, total_global]
+
+	var texto_base: String = "%s Total registrado: %d puntos. Estos resultados describen tendencias personales y no una calificación." % [resumen, total_global]
+	if incluir_citas_pie:
+		texto_base += "\nDefiniciones: (Oliva Delgado et al., 2011) | Baremo TMMS-24 por sexo: (Sánchez et al., 2024, p. 120)."
+	return texto_base
 
 
 func _on_boton_descargar_pdf_pressed() -> void:
 	AudioManager.play_ui_click()
+
+	if OS.has_feature("web"):
+		var pdf_data: PackedByteArray = _construir_reporte_pdf()
+		if not pdf_data.is_empty():
+			JavaScriptBridge.download_buffer(pdf_data, _construir_nombre_pdf(), "application/pdf")
+			_iniciar_cooldown_boton_descarga()
+		return
+
 	var ruta_pdf_sugerida: String = _construir_ruta_pdf_sugerida()
 	if _guardar_reporte_pdf(ruta_pdf_sugerida):
 		_iniciar_cooldown_boton_descarga()
@@ -218,8 +312,10 @@ func _construir_reporte_pdf() -> PackedByteArray:
 			"mensaje": _obtener_mensaje_dimension(dimension, puntaje)
 		})
 	return REPORTE_PDF.new().construir(
-		str(DatosJugador.nombre_jugador), str(DatosJugador.genero), dimensiones,
-		_construir_texto_perfil_final(puntajes, total)
+		str(DatosJugador.nombre_jugador),
+		str(DatosJugador.genero),
+		dimensiones,
+		_construir_texto_perfil_final(puntajes, total, false)
 	)
 
 
