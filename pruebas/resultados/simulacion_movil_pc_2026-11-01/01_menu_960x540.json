@@ -1,0 +1,38 @@
+{
+	"mobile_mode": "cruceta",
+	"nodes": [
+		{
+			"class": "Control",
+			"path": "/root/MenuPrincipal",
+			"rect": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/MenuPrincipal/Comenzar",
+			"rect": "[P: (843.0, 729.0), S: (160.0, 160.0)]",
+			"text": ""
+		},
+		{
+			"class": "Button",
+			"path": "/root/MenuPrincipal/Configuracion",
+			"rect": "[P: (1759.0, 919.0), S: (116.0, 116.0)]",
+			"text": ""
+		},
+		{
+			"class": "Button",
+			"path": "/root/MenuPrincipal/Creditos",
+			"rect": "[P: (841.0, 937.0), S: (200.0, 125.0)]",
+			"text": "Créditos"
+		},
+		{
+			"class": "Button",
+			"path": "/root/MenuPrincipal/Salir",
+			"rect": "[P: (24.0, 950.0), S: (218.0, 102.0)]",
+			"text": "Salir"
+		}
+	],
+	"paused": false,
+	"scene": "res://scenes/menu_principal/menu_principal.tscn",
+	"viewport": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]",
+	"window": "(960, 540)"
+}

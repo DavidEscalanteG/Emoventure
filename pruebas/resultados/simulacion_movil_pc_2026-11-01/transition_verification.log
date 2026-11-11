@@ -1,0 +1,11 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+MOBILE_PC user_data=C:/Users/david/OneDrive/Desktop/Juegos Godot/emoventure/Juego-Emoventure-Godot/.tmp_godot_mobile_pc/verification_userdata/Godot/app_userdata/Emoventure
+MOBILE_PC simulated_mobile=true
+MOBILE_PC SCENE res://scenes/mision_3_nuevo/minijuego3.tscn
+VERIFY mobile=true
+VERIFY pause_before=true
+MOBILE_PC SCENE res://scenes/cuestionarios/EscenaCuestionario.tscn
+VERIFY current_scene=res://scenes/cuestionarios/EscenaCuestionario.tscn
+VERIFY pause_after=false
+VERIFY questions=4

@@ -1,6 +1,8 @@
 extends Control
 
 const EMOCION_NEUTRA: String = "neutro"
+# El dibujo neutro mide 48 px; las demás emociones alcanzan 94 px de alto.
+const FACTOR_TAMANO_EMOCIONES: float = 48.0 / 94.0
 
 var cuadro_actual: CuadroMemoria = null
 var emocion_preview: String = ""
@@ -50,8 +52,7 @@ func mostrar(cuadro: CuadroMemoria) -> void:
 	var tween_mostrar: Tween = create_tween()
 	tween_mostrar.tween_property(self, "modulate:a", 1.0, 0.3)
 
-	emoji_grande.scale = Vector2(4.0, 4.0)
-	emoji_grande.play(EMOCION_NEUTRA)
+	_reproducir_emoji(EMOCION_NEUTRA)
 
 	visor.texture = cuadro.texture_normal
 	visor.visible = true
@@ -66,6 +67,13 @@ func mostrar(cuadro: CuadroMemoria) -> void:
 	visor_tween.tween_property(visor, "scale", Vector2.ONE, 0.4)
 
 
+func _reproducir_emoji(emocion_id: String) -> void:
+	var escala_base: float = 2.5 if MobileControlsSettings.is_mobile_device() else 4.0
+	var factor: float = 1.0 if emocion_id == EMOCION_NEUTRA else FACTOR_TAMANO_EMOCIONES
+	emoji_grande.scale = Vector2.ONE * escala_base * factor
+	emoji_grande.play(emocion_id)
+
+
 func actualizar_preview_emocion(emocion_id: String) -> void:
 	if emocion_confirmada:
 		return
@@ -74,7 +82,7 @@ func actualizar_preview_emocion(emocion_id: String) -> void:
 		return
 
 	emocion_preview = emocion_id
-	emoji_grande.play(emocion_id)
+	_reproducir_emoji(emocion_id)
 
 
 func restaurar_preview_emocion() -> void:
@@ -83,11 +91,11 @@ func restaurar_preview_emocion() -> void:
 
 	if emocion_seleccionada != "":
 		emocion_preview = emocion_seleccionada
-		emoji_grande.play(emocion_seleccionada)
+		_reproducir_emoji(emocion_seleccionada)
 		return
 
 	emocion_preview = ""
-	emoji_grande.play(EMOCION_NEUTRA)
+	_reproducir_emoji(EMOCION_NEUTRA)
 
 
 func seleccionar_emocion(emocion_id: String, emoji: TextureButton) -> void:
@@ -98,7 +106,7 @@ func seleccionar_emocion(emocion_id: String, emoji: TextureButton) -> void:
 
 	emocion_seleccionada = emocion_id
 	emoji_seleccionado = emoji
-	emoji_grande.play(emocion_id)
+	_reproducir_emoji(emocion_id)
 	boton_confirmar.disabled = false
 
 	for emoji_actual in emojis_container.get_children():
@@ -139,7 +147,7 @@ func cancelar_seleccion() -> void:
 	emocion_seleccionada = ""
 	emocion_confirmada = false
 	emoji_seleccionado = null
-	emoji_grande.play(EMOCION_NEUTRA)
+	_reproducir_emoji(EMOCION_NEUTRA)
 
 	for emoji in emojis_container.get_children():
 		if emoji.has_method("set_seleccionado"):

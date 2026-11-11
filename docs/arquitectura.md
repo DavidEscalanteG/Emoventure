@@ -6,7 +6,8 @@ Estado actual de autoloads definidos en `project.godot`.
 | --- | --- | --- |
 | `DialogueManager` | `res://addons/dialogue_manager/dialogue_manager.gd` | Runtime del plugin de diálogos (dependencia externa). |
 | `DatosJugador` | `res://src/autoload/datos_jugador.gd` | Estado persistente del jugador (género, progreso, emociones recolectadas, etc.). |
-| `GameManager` | `res://src/autoload/game_manager.gd` | Puntajes globales, rotación de mapas de misión 1 y bandera de modo rejugabilidad. |
+| `GameManager` | `res://src/autoload/game_manager.gd` | Puntajes globales, rotación M1, bandera de rejugabilidad y reinicio del estado temporal de M3/M4 al comenzar otro recorrido. |
+| `SaveManager` | `res://src/autoload/save_manager.gd` | Slots, apariencia, puntajes y cuestionario pendiente. Nueva partida y carga limpian el estado temporal anterior; los checkpoints de M3 solo duran durante los reintentos del recorrido actual. |
 | `AudioManager` | `res://src/autoload/audio_manager.gd` | Buses, volúmenes persistentes y reproducción de SFX/UI. |
 | `DialogueActors` | `res://src/autoload/dialogue_actors.gd` | Registro, animación y movimiento de actores de diálogo (fachada canónica). |
 | `Logs` | `res://src/autoload/Logs.gd` | Canal centralizado de logs del proyecto. |

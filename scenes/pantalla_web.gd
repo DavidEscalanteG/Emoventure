@@ -4,7 +4,8 @@ const RUTA_MENU_PRINCIPAL := "res://scenes/menu_principal/menu_principal.tscn"
 
 func _ready() -> void:
 	if not OS.has_feature("web"):
-		get_tree().change_scene_to_file(RUTA_MENU_PRINCIPAL)
+		# _ready todavía está incorporando esta escena al árbol.
+		get_tree().change_scene_to_file.call_deferred(RUTA_MENU_PRINCIPAL)
 
 func _on_button_pressed() -> void:
 	if OS.has_feature("web"):

@@ -39,6 +39,8 @@ func _show_step(value: int) -> void:
 	_step = clampi(value, 0, MESSAGES.size() - 1)
 	_animation_token += 1
 	message_label.text = MESSAGES[_step]
+	if MobileControlsSettings.is_mobile_device() and _step == 1:
+		message_label.text = "Toca la pantalla para saltar los pinchos. Elige el momento antes de llegar al obstáculo."
 	step_label.text = "%s   PASO %d DE %d" % [_progress_dots(), _step + 1, MESSAGES.size()]
 	previous_button.disabled = true
 	next_button.visible = _step < MESSAGES.size() - 1
@@ -55,6 +57,8 @@ func _reset_demo() -> void:
 	player.rotation = 0.0
 	player.modulate = Color.WHITE
 	jump_hint.visible = false
+	if MobileControlsSettings.is_mobile_device():
+		jump_hint.text = "TOCA LA PANTALLA PARA SALTAR"
 	danger.modulate = Color(1, 1, 1, 0.45)
 	goal.modulate = Color(1, 1, 1, 0.45)
 

@@ -1,0 +1,69 @@
+{
+	"mobile_mode": "joystick",
+	"nodes": [
+		{
+			"class": "Label",
+			"path": "/root/MapaTopos/CanvasLayer/MarcadorPuntos",
+			"rect": "[P: (32.0, 24.0), S: (1856.0, 84.0)]",
+			"text": "Puntos: 2"
+		},
+		{
+			"class": "PanelContainer",
+			"path": "/root/MapaTopos/CanvasLayer/PantallaResultado",
+			"rect": "[P: (510.0, 370.0), S: (900.0, 340.0)]"
+		},
+		{
+			"class": "MarginContainer",
+			"path": "/root/MapaTopos/CanvasLayer/PantallaResultado/MarginContainer",
+			"rect": "[P: (510.0, 370.0), S: (900.0, 340.0)]"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/MapaTopos/CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado",
+			"rect": "[P: (538.0, 398.0), S: (844.0, 284.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/MapaTopos/CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado/TituloResultado",
+			"rect": "[P: (538.0, 398.0), S: (844.0, 83.0)]",
+			"text": "Misión fallida"
+		},
+		{
+			"class": "Label",
+			"path": "/root/MapaTopos/CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado/DetalleResultado",
+			"rect": "[P: (538.0, 497.0), S: (844.0, 120.0)]",
+			"text": "Puntos: 2 | Aciertos: 1%\nNecesitas mejorar tu precisión para continuar."
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/MapaTopos/CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado/HBoxAcciones",
+			"rect": "[P: (538.0, 633.0), S: (844.0, 39.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/MapaTopos/CanvasLayer/PantallaResultado/MarginContainer/VBoxResultado/HBoxAcciones/BotonPrincipalResultado",
+			"rect": "[P: (901.0, 633.0), S: (117.0, 39.0)]",
+			"text": "Reintentar misión"
+		},
+		{
+			"class": "ColorRect",
+			"path": "/root/MapaTopos/PauseOverlay/BlurOverlay",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]"
+		},
+		{
+			"class": "MarginContainer",
+			"path": "/root/MapaTopos/PauseOverlay/MarginTopRight",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/MapaTopos/PauseOverlay/MarginTopRight/BtnPausa",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]",
+			"text": ""
+		}
+	],
+	"paused": false,
+	"scene": "res://scenes/mision_4_payasos/mapa_topos.tscn",
+	"viewport": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]",
+	"window": "(1100, 495)"
+}

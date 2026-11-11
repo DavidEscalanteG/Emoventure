@@ -1,0 +1,96 @@
+{
+	"mobile_mode": "joystick",
+	"nodes": [
+		{
+			"class": "Control",
+			"path": "/root/Configuracion",
+			"rect": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]"
+		},
+		{
+			"class": "ColorRect",
+			"path": "/root/Configuracion/BlurOverlay",
+			"rect": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Configuracion/Titulo",
+			"rect": "[P: (634.0, 297.0), S: (652.0, 131.0)]",
+			"text": "Configuración"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/Configuracion/Master",
+			"rect": "[P: (613.0, 541.0), S: (652.0, 65.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Configuracion/Master/LabelMaster",
+			"rect": "[P: (613.0, 541.0), S: (324.0, 65.0)]",
+			"text": "Volumen general"
+		},
+		{
+			"class": "HSlider",
+			"path": "/root/Configuracion/Master/SliderMaster",
+			"rect": "[P: (941.0, 565.0), S: (324.0, 16.0)]"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/Configuracion/Musica",
+			"rect": "[P: (612.0, 614.0), S: (652.0, 65.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Configuracion/Musica/LabelMusica",
+			"rect": "[P: (612.0, 614.0), S: (324.0, 65.0)]",
+			"text": "Música"
+		},
+		{
+			"class": "HSlider",
+			"path": "/root/Configuracion/Musica/SliderMusica",
+			"rect": "[P: (940.0, 638.0), S: (324.0, 16.0)]"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/Configuracion/SFX",
+			"rect": "[P: (608.0, 679.0), S: (652.0, 65.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Configuracion/SFX/LabelSFX",
+			"rect": "[P: (608.0, 679.0), S: (324.0, 65.0)]",
+			"text": "Efectos"
+		},
+		{
+			"class": "HSlider",
+			"path": "/root/Configuracion/SFX/SliderSFX",
+			"rect": "[P: (936.0, 703.0), S: (324.0, 16.0)]"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/Configuracion/Controles",
+			"rect": "[P: (608.0, 754.0), S: (652.0, 65.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/Configuracion/Controles/LabelControles",
+			"rect": "[P: (608.0, 758.0), S: (324.0, 56.0)]",
+			"text": "Controles móvil"
+		},
+		{
+			"class": "OptionButton",
+			"path": "/root/Configuracion/Controles/OptionControles",
+			"rect": "[P: (936.0, 754.0), S: (324.0, 65.0)]",
+			"text": "Joystick"
+		},
+		{
+			"class": "Button",
+			"path": "/root/Configuracion/BtnVolver",
+			"rect": "[P: (575.5941, 846.2531), S: (722.8118, 76.49389)]",
+			"text": "Volver al menú"
+		}
+	],
+	"paused": false,
+	"scene": "res://scenes/configuracion/configuracion.tscn",
+	"viewport": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]",
+	"window": "(960, 540)"
+}

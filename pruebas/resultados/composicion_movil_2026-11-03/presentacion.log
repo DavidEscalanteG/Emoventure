@@ -1,0 +1,11 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+MOBILE_PC user_data=C:/Users/david/OneDrive/Desktop/Juegos Godot/emoventure/Juego-Emoventure-Godot/.tmp_godot_mobile_pc/mobile_regression_final/Godot/app_userdata/Emoventure
+MOBILE_PC simulated_mobile=true
+MOBILE_PC SCENE res://scenes/configuracion/configuracion.tscn
+MOBILE_PC SCENE res://scenes/cuestionarios/EscenaCuestionario.tscn
+MOBILE_PC SCENE res://scenes/final/resultado_final.tscn
+MOBILE_PC SCENE res://scenes/personalizacion/Personalizacion.tscn
+MOBILE_PC SCENE res://scenes/mision_2_memorias/mision_2_memorias.tscn
+MOBILE_PC SCENE res://dialogos/ManagerDialogos/dialogue_ui.tscn
+PRESENTACION_MOVIL: 689 comprobaciones, 0 fallos

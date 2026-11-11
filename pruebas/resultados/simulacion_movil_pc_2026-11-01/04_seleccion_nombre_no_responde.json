@@ -1,0 +1,80 @@
+{
+	"mobile_mode": "joystick",
+	"nodes": [
+		{
+			"class": "Control",
+			"path": "/root/SeleccionGenero",
+			"rect": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]"
+		},
+		{
+			"class": "Label",
+			"path": "/root/SeleccionGenero/Label",
+			"rect": "[P: (124.0, 429.0), S: (1705.0, 84.0)]",
+			"text": "Me identifico como"
+		},
+		{
+			"class": "VBoxContainer",
+			"path": "/root/SeleccionGenero/VBoxContainer",
+			"rect": "[P: (233.055, 525.0), S: (1480.0, 548.0)]"
+		},
+		{
+			"class": "HBoxContainer",
+			"path": "/root/SeleccionGenero/VBoxContainer/HBoxContainer",
+			"rect": "[P: (233.055, 525.0), S: (1480.0, 300.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/SeleccionGenero/VBoxContainer/HBoxContainer/ContenedorHombre",
+			"rect": "[P: (233.055, 525.0), S: (480.0, 300.0)]",
+			"text": ""
+		},
+		{
+			"path": "/root/SeleccionGenero/VBoxContainer/HBoxContainer/ContenedorHombre/JugadorHombre",
+			"position": "(250.0, 200.0)",
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"class": "Label",
+			"path": "/root/SeleccionGenero/VBoxContainer/HBoxContainer/ContenedorHombre/LabelHombre",
+			"rect": "[P: (233.055, 818.0), S: (480.0, 112.0)]",
+			"text": "Hombre"
+		},
+		{
+			"class": "Button",
+			"path": "/root/SeleccionGenero/VBoxContainer/HBoxContainer/ContenedorMujer",
+			"rect": "[P: (1233.055, 525.0), S: (480.0, 300.0)]",
+			"text": ""
+		},
+		{
+			"path": "/root/SeleccionGenero/VBoxContainer/HBoxContainer/ContenedorMujer/JugadorMujer",
+			"position": "(250.0, 200.0)",
+			"velocity": "(0.0, 0.0)"
+		},
+		{
+			"class": "Label",
+			"path": "/root/SeleccionGenero/VBoxContainer/HBoxContainer/ContenedorMujer/LabelMujer",
+			"rect": "[P: (1233.0, 818.0), S: (480.0, 112.0)]",
+			"text": "Mujer"
+		},
+		{
+			"class": "ColorRect",
+			"path": "/root/SeleccionGenero/PauseOverlay/BlurOverlay",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]"
+		},
+		{
+			"class": "MarginContainer",
+			"path": "/root/SeleccionGenero/PauseOverlay/MarginTopRight",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]"
+		},
+		{
+			"class": "Button",
+			"path": "/root/SeleccionGenero/PauseOverlay/MarginTopRight/BtnPausa",
+			"rect": "[P: (1800.0, 24.0), S: (80.0, 80.0)]",
+			"text": ""
+		}
+	],
+	"paused": false,
+	"scene": "res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn",
+	"viewport": "[P: (0.0, 0.0), S: (1920.0, 1080.0)]",
+	"window": "(960, 540)"
+}

@@ -45,6 +45,7 @@ mouse_filter = 2
 [node name="Cruceta" type="Control" parent="UI"]
 layout_mode = 1
 anchors_preset = 3
+anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
@@ -80,7 +81,9 @@ shape_centered = true
 [node name="Joystick" type="Control" parent="UI"]
 layout_mode = 1
 anchors_preset = 3
+anchor_left = 0.0
 anchor_top = 1.0
+anchor_right = 0.0
 anchor_bottom = 1.0
 offset_left = 40.0
 offset_top = -280.0

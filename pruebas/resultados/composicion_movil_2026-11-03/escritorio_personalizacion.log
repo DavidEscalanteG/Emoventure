@@ -1,0 +1,520 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+OK: La piel inicial usa el tono medio de los sprites originales
+OK: Conserva el color de ropa inicial configurado
+OK: Conserva el color de cabello inicial configurado
+OK: Cargar respeta los colores elegidos, incluido el blanco
+OK: Un guardado sin colores usa los nuevos valores iniciales
+OK: El preview no añade una cruceta sobre la personalización en móvil
+OK: HSVEditorCabello: usa el material de color de su sección
+OK: HSVEditorCabello: recupera el tono existente
+OK: HSVEditorCabello: recupera la saturación existente
+OK: HSVEditorCabello: recupera el brillo existente
+OK: HSVEditorCabello: actualiza la apariencia global
+OK: HSVEditorCabello: actualiza el personaje en tiempo real
+OK: HSVEditorCabello: conserva color_boca
+OK: HSVEditorCabello: conserva color_cuerpo
+OK: HSVEditorCabello: conserva color_cabeza
+OK: HSVEditorCabello: muestra los valores actuales
+OK: HSVEditorCabello: muestra el color elegido
+OK: HSVEditorCabello: mantiene el límite de brillo
+OK: HSVEditorCabello: panel completo dentro de pantalla
+OK: HSVEditorRopa: usa el material de color de su sección
+OK: HSVEditorRopa: recupera el tono existente
+OK: HSVEditorRopa: recupera la saturación existente
+OK: HSVEditorRopa: recupera el brillo existente
+OK: HSVEditorRopa: actualiza la apariencia global
+OK: HSVEditorRopa: actualiza el personaje en tiempo real
+OK: HSVEditorRopa: conserva color_cabello
+OK: HSVEditorRopa: conserva color_cuerpo
+OK: HSVEditorRopa: conserva color_cabeza
+OK: HSVEditorRopa: muestra los valores actuales
+OK: HSVEditorRopa: muestra el color elegido
+OK: HSVEditorRopa: mantiene el límite de brillo
+OK: HSVEditorPiel: usa el material de color de su sección
+OK: HSVEditorPiel: recupera el tono existente
+OK: HSVEditorPiel: recupera la saturación existente
+OK: HSVEditorPiel: recupera el brillo existente
+OK: HSVEditorPiel: actualiza la apariencia global
+OK: HSVEditorPiel: actualiza el personaje en tiempo real
+OK: HSVEditorPiel: conserva color_cabello
+OK: HSVEditorPiel: conserva color_boca
+OK: HSVEditorPiel: conserva color_cabeza
+OK: HSVEditorPiel: muestra los valores actuales
+OK: HSVEditorPiel: muestra el color elegido
+OK: HSVEditorPiel: mantiene el límite de brillo
+OK: HSVEditorGorro: usa el material de color de su sección
+OK: HSVEditorGorro: recupera el tono existente
+OK: HSVEditorGorro: recupera la saturación existente
+OK: HSVEditorGorro: recupera el brillo existente
+OK: HSVEditorGorro: actualiza la apariencia global
+OK: HSVEditorGorro: actualiza el personaje en tiempo real
+OK: HSVEditorGorro: conserva color_cabello
+OK: HSVEditorGorro: conserva color_boca
+OK: HSVEditorGorro: conserva color_cuerpo
+OK: HSVEditorGorro: muestra los valores actuales
+OK: HSVEditorGorro: muestra el color elegido
+OK: HSVEditorGorro: mantiene el límite de brillo
+OK: El teclado permite ajustar la barra enfocada
+OK: El arrastre modifica el color
+OK: El arrastre actualiza el personaje
+OK: Al reabrir recupera el color editado
+OK: Panel lateral completo dentro de (1920, 1080)
+OK: Al menos el 65% de la escena queda libre de paneles
+OK: Control dentro del panel lateral: InputNombreJugador
+OK: Control dentro del panel lateral: BtnCabelloAtras
+OK: Control dentro del panel lateral: BtnCabelloSiguiente
+OK: Control dentro del panel lateral: MascotaAnterior
+OK: Control dentro del panel lateral: MascotaSiguiente
+OK: Control dentro del panel lateral: Comenzar
+OK: (1920, 1080): clic abre Cabello
+OK: Solo se muestra un editor de color a la vez
+OK: El editor completo cabe en (1920, 1080)
+OK: Etiqueta legible y dentro de pantalla: Tono
+OK: Etiqueta legible y dentro de pantalla: Saturacion
+OK: Etiqueta legible y dentro de pantalla: Brillo
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Comenzar siempre visible
+OK: (1920, 1080): clic abre Ropa
+OK: Solo se muestra un editor de color a la vez
+OK: El editor completo cabe en (1920, 1080)
+OK: Etiqueta legible y dentro de pantalla: Tono
+OK: Etiqueta legible y dentro de pantalla: Saturacion
+OK: Etiqueta legible y dentro de pantalla: Brillo
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Comenzar siempre visible
+OK: (1920, 1080): clic abre Piel
+OK: Solo se muestra un editor de color a la vez
+OK: El editor completo cabe en (1920, 1080)
+OK: Etiqueta legible y dentro de pantalla: Tono
+OK: Etiqueta legible y dentro de pantalla: Saturacion
+OK: Etiqueta legible y dentro de pantalla: Brillo
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Comenzar siempre visible
+OK: La validación del nombre sigue activa
+OK: El mensaje de nombre cabe en su panel
+OK: La validación no desplaza el panel fuera de pantalla
+OK: El clic cambia el peinado
+OK: El botón anterior recupera el peinado
+OK: La cabeza conserva la nariz y la barbilla originales
+OK: La miniatura excluye hombros y brazos
+OK: Miniatura conserva el color elegido: Cuerpo
+OK: Miniatura usa el cabello elegido
+OK: Miniatura conserva el color elegido: Cabello
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: Ambos selectores de mascota completan el ciclo
+OK: Panel lateral completo dentro de (854, 480)
+OK: Al menos el 65% de la escena queda libre de paneles
+OK: Control dentro del panel lateral: InputNombreJugador
+OK: Control dentro del panel lateral: BtnCabelloAtras
+OK: Control dentro del panel lateral: BtnCabelloSiguiente
+OK: Control dentro del panel lateral: MascotaAnterior
+OK: Control dentro del panel lateral: MascotaSiguiente
+OK: Control dentro del panel lateral: Comenzar
+OK: (854, 480): clic abre Cabello
+OK: Solo se muestra un editor de color a la vez
+OK: El editor completo cabe en (854, 480)
+OK: Etiqueta legible y dentro de pantalla: Tono
+OK: Etiqueta legible y dentro de pantalla: Saturacion
+OK: Etiqueta legible y dentro de pantalla: Brillo
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Comenzar siempre visible
+OK: (854, 480): clic abre Ropa
+OK: Solo se muestra un editor de color a la vez
+OK: El editor completo cabe en (854, 480)
+OK: Etiqueta legible y dentro de pantalla: Tono
+OK: Etiqueta legible y dentro de pantalla: Saturacion
+OK: Etiqueta legible y dentro de pantalla: Brillo
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Comenzar siempre visible
+OK: (854, 480): clic abre Piel
+OK: Solo se muestra un editor de color a la vez
+OK: El editor completo cabe en (854, 480)
+OK: Etiqueta legible y dentro de pantalla: Tono
+OK: Etiqueta legible y dentro de pantalla: Saturacion
+OK: Etiqueta legible y dentro de pantalla: Brillo
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Comenzar siempre visible
+OK: La validación del nombre sigue activa
+OK: El mensaje de nombre cabe en su panel
+OK: La validación no desplaza el panel fuera de pantalla
+OK: El clic cambia el peinado
+OK: El botón anterior recupera el peinado
+OK: La cabeza conserva la nariz y la barbilla originales
+OK: La miniatura excluye hombros y brazos
+OK: Miniatura conserva el color elegido: Cuerpo
+OK: Miniatura usa el cabello elegido
+OK: Miniatura conserva el color elegido: Cabello
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: Ambos selectores de mascota completan el ciclo
+OK: Panel lateral completo dentro de (640, 360)
+OK: Al menos el 65% de la escena queda libre de paneles
+OK: Control dentro del panel lateral: InputNombreJugador
+OK: Control dentro del panel lateral: BtnCabelloAtras
+OK: Control dentro del panel lateral: BtnCabelloSiguiente
+OK: Control dentro del panel lateral: MascotaAnterior
+OK: Control dentro del panel lateral: MascotaSiguiente
+OK: Control dentro del panel lateral: Comenzar
+OK: (640, 360): clic abre Cabello
+OK: Solo se muestra un editor de color a la vez
+OK: El editor completo cabe en (640, 360)
+OK: Etiqueta legible y dentro de pantalla: Tono
+OK: Etiqueta legible y dentro de pantalla: Saturacion
+OK: Etiqueta legible y dentro de pantalla: Brillo
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Comenzar siempre visible
+OK: (640, 360): clic abre Ropa
+OK: Solo se muestra un editor de color a la vez
+OK: El editor completo cabe en (640, 360)
+OK: Etiqueta legible y dentro de pantalla: Tono
+OK: Etiqueta legible y dentro de pantalla: Saturacion
+OK: Etiqueta legible y dentro de pantalla: Brillo
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Comenzar siempre visible
+OK: (640, 360): clic abre Piel
+OK: Solo se muestra un editor de color a la vez
+OK: El editor completo cabe en (640, 360)
+OK: Etiqueta legible y dentro de pantalla: Tono
+OK: Etiqueta legible y dentro de pantalla: Saturacion
+OK: Etiqueta legible y dentro de pantalla: Brillo
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Barra accesible y dentro del panel
+OK: La explicación sigue disponible al señalar la barra
+OK: Comenzar siempre visible
+OK: La validación del nombre sigue activa
+OK: El mensaje de nombre cabe en su panel
+OK: La validación no desplaza el panel fuera de pantalla
+OK: El clic cambia el peinado
+OK: El botón anterior recupera el peinado
+OK: La cabeza conserva la nariz y la barbilla originales
+OK: La miniatura excluye hombros y brazos
+OK: Miniatura conserva el color elegido: Cuerpo
+OK: Miniatura usa el cabello elegido
+OK: Miniatura conserva el color elegido: Cabello
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: El selector cambia de mascota
+OK: Perros y gatos tienen miniatura visible
+OK: Miniatura y escenario muestran la misma mascota
+OK: Ambos selectores de mascota completan el ciclo
+OK: Retrato completo sin recortes: hombre 0 Cuerpo
+OK: Retrato completo sin recortes: hombre 0 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: El retrato inicial aprovecha la altura disponible
+OK: Retrato completo sin recortes: hombre 1 Cuerpo
+OK: Retrato completo sin recortes: hombre 1 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 2 Cuerpo
+OK: Retrato completo sin recortes: hombre 2 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 3 Cuerpo
+OK: Retrato completo sin recortes: hombre 3 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 4 Cuerpo
+OK: Retrato completo sin recortes: hombre 4 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 5 Cuerpo
+OK: Retrato completo sin recortes: hombre 5 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 6 Cuerpo
+OK: Retrato completo sin recortes: hombre 6 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 7 Cuerpo
+OK: Retrato completo sin recortes: hombre 7 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 8 Cuerpo
+OK: Retrato completo sin recortes: hombre 8 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 9 Cuerpo
+OK: Retrato completo sin recortes: hombre 9 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 10 Cuerpo
+OK: Retrato completo sin recortes: hombre 10 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 11 Cuerpo
+OK: Retrato completo sin recortes: hombre 11 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 12 Cuerpo
+OK: Retrato completo sin recortes: hombre 12 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 13 Cuerpo
+OK: Retrato completo sin recortes: hombre 13 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 14 Cuerpo
+OK: Retrato completo sin recortes: hombre 14 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 15 Cuerpo
+OK: Retrato completo sin recortes: hombre 15 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 16 Cuerpo
+OK: Retrato completo sin recortes: hombre 16 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: hombre 17 Cuerpo
+OK: La opción sin cabello no reutiliza el peinado anterior
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: Retrato completo sin recortes: mujer 18 Cuerpo
+OK: Retrato completo sin recortes: mujer 18 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: El retrato inicial aprovecha la altura disponible
+OK: Retrato completo sin recortes: mujer 19 Cuerpo
+OK: Retrato completo sin recortes: mujer 19 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 20 Cuerpo
+OK: Retrato completo sin recortes: mujer 20 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 21 Cuerpo
+OK: Retrato completo sin recortes: mujer 21 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 22 Cuerpo
+OK: Retrato completo sin recortes: mujer 22 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 23 Cuerpo
+OK: Retrato completo sin recortes: mujer 23 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 24 Cuerpo
+OK: Retrato completo sin recortes: mujer 24 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 25 Cuerpo
+OK: Retrato completo sin recortes: mujer 25 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 26 Cuerpo
+OK: Retrato completo sin recortes: mujer 26 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 27 Cuerpo
+OK: Retrato completo sin recortes: mujer 27 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 28 Cuerpo
+OK: Retrato completo sin recortes: mujer 28 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 29 Cuerpo
+OK: Retrato completo sin recortes: mujer 29 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 30 Cuerpo
+OK: Retrato completo sin recortes: mujer 30 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 31 Cuerpo
+OK: Retrato completo sin recortes: mujer 31 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 32 Cuerpo
+OK: Retrato completo sin recortes: mujer 32 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 33 Cuerpo
+OK: Retrato completo sin recortes: mujer 33 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+OK: Retrato completo sin recortes: mujer 34 Cuerpo
+OK: Retrato completo sin recortes: mujer 34 Cabello
+OK: Cabeza y cabello se centran juntos
+OK: El retrato usa escala entera sin desenfoque
+OK: El cabello largo conserva todos sus píxeles
+PERSONALIZACION: 517 comprobaciones, 0 fallos

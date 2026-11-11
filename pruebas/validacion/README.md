@@ -1,5 +1,69 @@
 # Validación de Emoventure (Godot 4.5)
 
+## Composición móvil — 3 de noviembre de 2026
+
+`probar_composicion_movil.gd` verifica el espacio de los actores, restauración
+del encuadre, 28 pasos de tutorial, navegación fija, siete emociones con sus
+rótulos y aumento de selección, joystick y salto por contacto. Usar la copia
+móvil aislada descrita debajo, sincronizando allí los archivos editados.
+
+```powershell
+$testProject = Join-Path (Get-Location) ".tmp_godot_mobile_pc"
+$env:APPDATA = Join-Path $testProject "perfil_composicion"
+$env:EMO_COMPOSITION_DIR = Join-Path $testProject "capturas_composicion"
+godot_console --path $testProject --rendering-method gl_compatibility --script res://pruebas/validacion/probar_composicion_movil.gd
+```
+
+Resultado: 604 comprobaciones, 86 capturas, cero fallos. La suite de
+presentación comprueba además toques en respuestas y nombres de emociones:
+689 comprobaciones, cero fallos. Cuestionarios: 24 aprobados en cada perfil.
+Personalización de escritorio: 517 comprobaciones aprobadas.
+
+La auditoría admite `EMO_TEXT_AUDIT_SCENE` con una ruta `res://...tscn` para
+revisar una escena y sus pasos. Dejarla vacía para la pasada general. Esta
+revisión conserva 650 casos generales y 12 casos focalizados tras el último
+ajuste del tutorial de Memorias. Ver
+`docs/revision_composicion_movil_2026-11-03.md` para capturas y límites.
+
+## Presentación móvil — 1 de noviembre de 2026
+
+`auditar_textos_moviles.gd` renderiza las escenas activas, pasos de tutorial,
+diálogos, respuestas, preguntas cargadas desde cero y casos de textos dinámicos
+a 854×480 y 640×360. Guarda medidas en `audit.json` y capturas con render real.
+`probar_presentacion_movil.gd` comprueba cajas y solapamientos, acceso a botones,
+conexiones y campos, desplazamiento táctil y respuestas de diálogo.
+
+Usar una **copia aislada** con la detección móvil activa. La copia preparada en
+esta revisión está en `.tmp_godot_mobile_pc`: sustituye únicamente el autoload
+`MobileControlsSettings` por una subclase cuyo `is_mobile_device()` devuelve
+`true`. Sincronizar allí los archivos cambiados antes de repetir una prueba.
+Los scripts canónicos permanecen en `pruebas/validacion/`.
+
+```powershell
+$testProject = Join-Path (Get-Location) ".tmp_godot_mobile_pc"
+$env:APPDATA = Join-Path $testProject "perfil_validacion_textos"
+$env:EMO_TEXT_AUDIT_DIR = Join-Path $testProject "auditoria_textos"
+godot_console --path $testProject --rendering-method gl_compatibility --script res://pruebas/validacion/auditar_textos_moviles.gd
+godot_console --headless --path $testProject --script res://pruebas/validacion/probar_presentacion_movil.gd
+```
+
+Resultado: 634 escenarios, 24 preguntas desde cero, las 134 líneas/respuestas
+de 14 archivos de diálogo, 28 pasos de tutorial y 73 mensajes de memorias.
+Suite móvil: 685 comprobaciones, 0 fallos. Cuestionarios en escritorio: 24
+aprobados. Personalización en escritorio: 517 comprobaciones, 0 fallos.
+Ver `docs/revision_textos_moviles_2026-11-01.md` para capturas y límites.
+
+## Cierre del GDD — 28 de octubre de 2026
+
+`probar_cierre_gdd.gd` verifica aislamiento entre partidas y rejugabilidad, conservación de checkpoints durante reintentos, apariciones reales y golpes únicos en M4, omisión desde el cuarto intento, los 198 casos válidos de puntuación/género/dimensión, empates y arranque fuera de Web. Ver `docs/revision_cierre_gdd.md` para acuerdos de diseño y resultados.
+
+```powershell
+$env:APPDATA = Join-Path (Get-Location) ".tmp_godot_cierre/perfil"
+godot_console --headless --path . --script res://pruebas/validacion/probar_cierre_gdd.gd
+```
+
+Resultado: 240 comprobaciones aprobadas en headless; 241 con render OpenGL y la variable opcional `CODEX_CIERRE_CAPTURA` para guardar una captura. No escribe slots; el perfil aislado evita leer partidas reales.
+
 Ejecutar desde la raíz del proyecto con Python y el ejecutable de consola de Godot 4.5:
 
 ```powershell

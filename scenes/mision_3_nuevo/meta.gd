@@ -11,20 +11,11 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("jugador"):
-		
-		# --- NUEVO: LIMPIEZA DE CHECKPOINTS Y MUERTES ---
-		# Verificamos que el jugador tenga estas variables antes de cambiarlas
-		if "hay_checkpoint" in body:
-			body.hay_checkpoint = false
-			body.tiempo_musica_checkpoint = 0.0
-		
-		if "contador_muertes" in body:
-			body.contador_muertes = 0
-		# ------------------------------------------------
-		
 		call_deferred("_iniciar_cuestionario")
 
 func _iniciar_cuestionario() -> void:
+	var jugador: Node = get_parent().get_node("Jugador")
+	jugador.reiniciar_estado_mision()
 	# Verificamos si estamos en modo rejugabilidad (opcional, según tu sistema)
 	if GameManager.has_method("consumir_modo_rejugabilidad") and GameManager.consumir_modo_rejugabilidad():
 		get_tree().change_scene_to_file(GameManager.ESCENA_MAPA_REJUGABILIDAD)

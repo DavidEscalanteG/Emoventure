@@ -1,0 +1,25 @@
+{
+  "antes": {
+    "configuracion": "640x360_0228",
+    "creditos": "640x360_0229",
+    "dialogo": "640x360_0231",
+    "tutorial_1": "640x360_0260",
+    "personalizacion": "640x360_0291",
+    "cuestionario_largo": "640x360_0299",
+    "resultados": "640x360_0230"
+  },
+  "despues": {
+    "configuracion": "640x360_0318",
+    "creditos": "640x360_0319",
+    "dialogo": "640x360_0321",
+    "tutorial_1": "640x360_0350",
+    "personalizacion": "640x360_0381",
+    "cuestionario_largo": "640x360_0479",
+    "guardado_largo": "640x360_0386",
+    "resultados": "640x360_0320",
+    "resultados_descarga": "640x360_0400",
+    "payasos_victoria": "640x360_0474",
+    "payasos_derrota": "640x360_0475",
+    "memoria_larga": "640x360_0404"
+  }
+}

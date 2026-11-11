@@ -22,27 +22,27 @@ const UMBRALES_MENSAJES_POR_GENERO: Dictionary[String, Dictionary] = {
 			"bajo_max": 21,
 			"medio_max": 32,
 			"mensajes": {
-				"bajo": "Tus respuestas reflejan una atención emocional selectiva.",
-				"medio": "Tus respuestas reflejan una atención emocional frecuente.",
-				"alto": "Tus respuestas reflejan una atención emocional muy constante."
+				"bajo": "Debe mejorar su atención: presta poca atención.",
+				"medio": "Adecuada atención.",
+				"alto": "Debe mejorar su atención: presta demasiada atención."
 			}
 		},
 		"claridad": {
 			"bajo_max": 25,
 			"medio_max": 35,
 			"mensajes": {
-				"bajo": "Estás comenzando a distinguir lo que sientes.",
-				"medio": "Sueles reconocer y comprender lo que sientes.",
-				"alto": "Reconoces tus emociones con mucha frecuencia."
+				"bajo": "Debe mejorar su claridad emocional.",
+				"medio": "Adecuada claridad emocional.",
+				"alto": "Excelente claridad emocional."
 			}
 		},
 		"reparacion": {
 			"bajo_max": 23,
 			"medio_max": 35,
 			"mensajes": {
-				"bajo": "Usas estrategias de regulación en algunas situaciones.",
-				"medio": "Usas estrategias de regulación con frecuencia.",
-				"alto": "Usas estrategias de regulación muy frecuentemente."
+				"bajo": "Debe mejorar su reparación de las emociones.",
+				"medio": "Adecuada reparación de las emociones.",
+				"alto": "Excelente reparación de las emociones."
 			}
 		}
 	},
@@ -51,27 +51,27 @@ const UMBRALES_MENSAJES_POR_GENERO: Dictionary[String, Dictionary] = {
 			"bajo_max": 24,
 			"medio_max": 35,
 			"mensajes": {
-				"bajo": "Tus respuestas reflejan una atención emocional selectiva.",
-				"medio": "Tus respuestas reflejan una atención emocional frecuente.",
-				"alto": "Tus respuestas reflejan una atención emocional muy constante."
+				"bajo": "Debe mejorar su atención: presta poca atención.",
+				"medio": "Adecuada atención.",
+				"alto": "Debe mejorar su atención: presta demasiada atención."
 			}
 		},
 		"claridad": {
 			"bajo_max": 23,
 			"medio_max": 34,
 			"mensajes": {
-				"bajo": "Estás comenzando a distinguir lo que sientes.",
-				"medio": "Sueles reconocer y comprender lo que sientes.",
-				"alto": "Reconoces tus emociones con mucha frecuencia."
+				"bajo": "Debe mejorar su claridad emocional.",
+				"medio": "Adecuada claridad emocional.",
+				"alto": "Excelente claridad emocional."
 			}
 		},
 		"reparacion": {
 			"bajo_max": 23,
 			"medio_max": 34,
 			"mensajes": {
-				"bajo": "Usas estrategias de regulación en algunas situaciones.",
-				"medio": "Usas estrategias de regulación con frecuencia.",
-				"alto": "Usas estrategias de regulación muy frecuentemente."
+				"bajo": "Debe mejorar su reparación de las emociones.",
+				"medio": "Adecuada reparación de las emociones.",
+				"alto": "Excelente reparación de las emociones."
 			}
 		}
 	}
@@ -151,17 +151,27 @@ func _obtener_umbrales_genero() -> Dictionary:
 
 
 func _construir_texto_perfil_final(puntajes: Dictionary[String, int], total_global: int) -> String:
-	var dimension_dominante: String = ""
+	var dimensiones_mayores: Array[String] = []
 	var puntaje_mayor: int = -1
 
 	for dimension in DIMENSIONES:
 		var actual: int = puntajes.get(dimension, 0)
 		if actual > puntaje_mayor:
 			puntaje_mayor = actual
-			dimension_dominante = dimension
+			dimensiones_mayores = [NOMBRES_DIMENSION[dimension]]
+		elif actual == puntaje_mayor:
+			dimensiones_mayores.append(NOMBRES_DIMENSION[dimension])
 
-	var etiqueta_dominante: String = NOMBRES_DIMENSION.get(dimension_dominante, "tu dimensión principal")
-	return "La dimensión con mayor presencia fue %s. Total registrado: %d puntos.\nEstos resultados describen tendencias personales y no una calificación." % [etiqueta_dominante, total_global]
+	var resumen: String
+	if puntaje_mayor <= 0:
+		resumen = "Aún no se han registrado respuestas."
+	elif dimensiones_mayores.size() == DIMENSIONES.size():
+		resumen = "Las tres dimensiones tienen la misma puntuación."
+	elif dimensiones_mayores.size() > 1:
+		resumen = "La puntuación más alta se comparte entre %s." % " y ".join(dimensiones_mayores)
+	else:
+		resumen = "La puntuación más alta fue en %s." % dimensiones_mayores[0]
+	return "%s Total registrado: %d puntos.\nEstos resultados describen tendencias personales y no una calificación." % [resumen, total_global]
 
 
 func _on_boton_descargar_pdf_pressed() -> void:

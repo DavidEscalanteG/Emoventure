@@ -21,6 +21,7 @@ var puntos: int = 0
 var topos_jugables: Array[Node] = []
 var total_topos_aparecidos: int = 0
 var mision_finalizada: bool = false
+var _en_transicion: bool = false
 
 enum EstadoResultado {
 	NINGUNO,
@@ -38,6 +39,9 @@ var velocidad_minima: float = 0.8
 @onready var boton_principal: Button = %BotonPrincipalResultado
 @onready var boton_secundario: Button = %BotonSecundarioResultado
 @onready var marcador_puntos: Label = %MarcadorPuntos
+
+static func reiniciar_estado_mision() -> void:
+	intentos_mision_4 = 0
 
 func _ready() -> void:
 	randomize()
@@ -113,19 +117,21 @@ func _on_spawn_timer_timeout() -> void:
 	if mision_finalizada or topos_jugables.is_empty():
 		return
 
-	var disponibles: Array = topos_jugables.filter(func(topo: Node) -> bool: return topo.has_method("aparecer"))
+	var disponibles: Array = topos_jugables.filter(func(topo: Node) -> bool:
+		return topo.has_method("esta_disponible") and topo.esta_disponible()
+	)
 	if disponibles.is_empty():
 		return
 	var cantidad_a_salir: int = min(int(dificultad), disponibles.size())
 	for i in range(cantidad_a_salir):
 		var indice_aleatorio: int = randi() % disponibles.size()
 		var topo_aleatorio: Node = disponibles[indice_aleatorio]
-		topo_aleatorio.aparecer()
-		total_topos_aparecidos += 1
+		if topo_aleatorio.aparecer():
+			total_topos_aparecidos += 1
 		disponibles.remove_at(indice_aleatorio)
 
 	if $SpawnTimer.wait_time > velocidad_minima:
-		$SpawnTimer.wait_time -= 0.05
+		$SpawnTimer.wait_time = maxf(velocidad_minima, $SpawnTimer.wait_time - 0.05)
 	if dificultad < 3: 
 		dificultad += 0.1
 
@@ -227,8 +233,16 @@ func _reiniciar_mision() -> void:
 		boton_saltar_hud.visible = (intentos_mision_4 >= 4)
 
 func _iniciar_cuestionario() -> void:
-	# --- NUEVO: Reseteamos los intentos a 0 por si el jugador vuelve a jugar este nivel después ---
-	intentos_mision_4 = 0
+	if _en_transicion:
+		return
+	_en_transicion = true
+	mision_finalizada = true
+	$SpawnTimer.stop()
+	$TimerJuego.stop()
+	for topo: Node in topos_jugables:
+		topo.reset_estado()
+	_restaurar_cursor_predeterminado()
+	reiniciar_estado_mision()
 	
 	if GameManager.consumir_modo_rejugabilidad():
 		_restaurar_cursor_predeterminado()

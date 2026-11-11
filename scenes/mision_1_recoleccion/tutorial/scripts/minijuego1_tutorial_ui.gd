@@ -13,6 +13,7 @@ signal start_pressed
 @onready var next_button: Button = $Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow/NextButton
 @onready var skip_button: Button = $Overlay/TopBar/SkipButton
 @onready var start_button: Button = $Overlay/BottomPanel/MarginContainer/VBoxContainer/NavigationRow/StartButton
+@onready var keys_row: Control = $Overlay/BottomPanel/MarginContainer/VBoxContainer/KeysRow
 @onready var key_map := {
 	"W": $Overlay/BottomPanel/MarginContainer/VBoxContainer/KeysRow/WKey,
 	"A": $Overlay/BottomPanel/MarginContainer/VBoxContainer/KeysRow/AKey,
@@ -28,8 +29,20 @@ func _ready() -> void:
 	skip_button.pressed.connect(func() -> void: skip_pressed.emit())
 	start_button.pressed.connect(func() -> void: start_pressed.emit())
 	reset_keys()
+	if MobileControlsSettings.is_mobile_device():
+		for key: String in key_map:
+			key_map[key].key_text = {"W": "↑", "A": "←", "S": "↓", "D": "→"}[key]
 
 func set_message(text: String) -> void:
+	if MobileControlsSettings.is_mobile_device():
+		var directions := {"la derecha": "la derecha", "la izquierda": "la izquierda", "arriba": "arriba", "abajo": "abajo"}
+		if text.begins_with("Para moverte"):
+			for direction: String in directions:
+				if text.contains(direction):
+					text = "Mueve la cruceta o el joystick hacia %s." % directions[direction]
+					break
+		elif text.begins_with("Enojo invierte tus controles:"):
+			text = "Enojo invierte tus controles: al indicar derecha con la cruceta o el joystick, avanzarás hacia la izquierda."
 	message_label.text = text
 
 func set_step_indicator(current_step: int, total_steps: int) -> void:
@@ -48,7 +61,7 @@ func set_continue_enabled(is_enabled: bool) -> void:
 		next_button.disabled = not is_enabled
 
 func show_keys(is_visible: bool) -> void:
-	$Overlay/BottomPanel/MarginContainer/VBoxContainer/KeysRow.visible = is_visible
+	keys_row.visible = is_visible
 	if not is_visible:
 		reset_keys()
 

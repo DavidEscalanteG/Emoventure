@@ -29,6 +29,12 @@ var altura_inicial: float
 
 const SFX_MUERTE = "res://audios/sfx/Taco Bell Bong SFX_160k.mp3"
 
+static func reiniciar_estado_mision() -> void:
+	contador_muertes = 0
+	hay_checkpoint = false
+	pos_checkpoint = Vector2.ZERO
+	tiempo_musica_checkpoint = 0.0
+
 func _ready() -> void:
 	_ensure_mobile_controls()
 	
@@ -179,11 +185,7 @@ func _on_boton_saltar_pressed() -> void:
 	if AudioManager.has_method("play_ui_click"):
 		AudioManager.play_ui_click()
 		
-	contador_muertes = 0 
-	
-	# Limpiamos el checkpoint para futuras partidas
-	hay_checkpoint = false
-	tiempo_musica_checkpoint = 0.0
+	reiniciar_estado_mision()
 	
 	if meta_del_nivel != null and meta_del_nivel.has_method("_iniciar_cuestionario"):
 		meta_del_nivel._iniciar_cuestionario()

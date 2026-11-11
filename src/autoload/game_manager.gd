@@ -88,6 +88,7 @@ func reiniciar_rotacion_mapas_minijuego_1() -> void:
 
 
 func activar_modo_rejugabilidad() -> void:
+	reiniciar_estado_minijuegos()
 	_modo_rejugabilidad_activo = true
 
 
@@ -99,3 +100,11 @@ func consumir_modo_rejugabilidad() -> bool:
 	var estaba_activo: bool = _modo_rejugabilidad_activo
 	_modo_rejugabilidad_activo = false
 	return estaba_activo
+
+
+func reiniciar_estado_minijuegos() -> void:
+	# Carga diferida: estos scripts usan autoloads y no deben precargarse al iniciar.
+	var jugador_mision_3: GDScript = load("res://scenes/mision_3_nuevo/jugador.gd")
+	var mision_4: GDScript = load("res://scenes/mision_4_payasos/mapa_topos.gd")
+	jugador_mision_3.reiniciar_estado_mision()
+	mision_4.reiniciar_estado_mision()

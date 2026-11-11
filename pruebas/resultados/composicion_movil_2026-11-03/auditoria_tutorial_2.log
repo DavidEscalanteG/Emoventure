@@ -1,0 +1,9 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 - Build 32.0.101.8132 - Compatibility - Using Device: Intel - Intel(R) Graphics
+
+MOBILE_PC user_data=C:/Users/david/OneDrive/Desktop/Juegos Godot/emoventure/Juego-Emoventure-Godot/.tmp_godot_mobile_pc/focused_release_userdata/Godot/app_userdata/Emoventure
+MOBILE_PC simulated_mobile=true
+MOBILE_PC SCENE res://scenes/mision_2_memorias/tutorial/scripts/Minijuego2_Tutorial.tscn
+TEXT_AUDIT resolution_done=(854, 480) cases=6 texts=77
+TEXT_AUDIT resolution_done=(640, 360) cases=12 texts=154
+TEXT_AUDIT DONE cases=12 texts=154 captures=12
