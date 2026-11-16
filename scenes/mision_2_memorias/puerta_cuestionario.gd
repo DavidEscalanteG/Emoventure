@@ -14,6 +14,8 @@ var _tween_resaltado: Tween
 
 
 func _ready() -> void:
+	# La puerta transparente no debe bloquear Confirmar en el selector móvil.
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	tooltip_text = "Continuar al cuestionario"
 	accessibility_name = "Puerta para continuar al cuestionario"
 	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
@@ -40,6 +42,7 @@ func revelar() -> void:
 	tween.tween_property(self, "modulate:a", 1.0, 0.8)
 	tween.tween_callback(func() -> void:
 		disabled = false
+		mouse_filter = Control.MOUSE_FILTER_STOP
 		_guia.iniciar(_zona_visible)
 		_actualizar_resaltado()
 	)
@@ -90,7 +93,7 @@ func _on_pressed() -> void:
 	tween.parallel().tween_property(luz, "modulate:a", 1.0, 0.45)
 	await tween.finished
 	if es_rejugabilidad:
-		get_tree().change_scene_to_file(GameManager.ESCENA_MAPA_REJUGABILIDAD)
+		get_tree().change_scene_to_file.call_deferred(GameManager.ESCENA_MAPA_REJUGABILIDAD)
 		return
 
 	var cuestionario: EscenaCuestionario = escena_cuestionario.instantiate()

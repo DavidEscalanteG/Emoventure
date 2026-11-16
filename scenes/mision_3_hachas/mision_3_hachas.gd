@@ -41,7 +41,7 @@ func completar_mision() -> void:
 	_completando = true
 	$Jugador.set_physics_process(false)
 	if GameManager.consumir_modo_rejugabilidad():
-		get_tree().change_scene_to_file(GameManager.ESCENA_MAPA_REJUGABILIDAD)
+		get_tree().change_scene_to_file.call_deferred(GameManager.ESCENA_MAPA_REJUGABILIDAD)
 		return
 	if not Cuestionarios.validar_mision(3):
 		_completando = false

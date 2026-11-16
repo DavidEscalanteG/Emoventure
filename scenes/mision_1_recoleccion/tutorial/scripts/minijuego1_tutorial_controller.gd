@@ -241,4 +241,4 @@ func _start_real_mission() -> void:
 	var escena_destino: String = GameManager.obtener_siguiente_mapa_minijuego_1()
 	if escena_destino.is_empty():
 		escena_destino = ESCENA_FALLBACK_MINIJUEGO_1
-	get_tree().change_scene_to_file(escena_destino)
+	get_tree().change_scene_to_file.call_deferred(escena_destino)

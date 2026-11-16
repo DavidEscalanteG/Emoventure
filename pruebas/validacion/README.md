@@ -1,5 +1,47 @@
 # Validación de Emoventure (Godot 4.5)
 
+## Advertencias y reposo de NPC — 15 de noviembre de 2026
+
+`probar_reposo_npc.gd` verifica el reposo del payaso en ambos lados, los
+desplazamientos de Fran y la variante de la escena 9. Resultado en Godot 4.5.2:
+21 comprobaciones, cero fallos y cero advertencias inesperadas. Conserva un
+control negativo que comprueba la detección de animaciones ausentes. Ver
+`docs/correccion_warnings_2026-11-15.md` para cambios, pruebas y límites.
+
+## Transiciones y can_process — 15 de noviembre de 2026
+
+`probar_cambios_escena.gd` se ejecuta en la copia móvil y con APPDATA temporal.
+Comprueba 30 condiciones en transiciones activadas por contactos, incluida la
+salida desde pausa y desde un diálogo. El recorrido de teléfono produjo nueve
+avisos can_process con Godot 4.5.2 antes del ajuste y cero después. Ver registros,
+límites y explicación en `docs/correccion_cambios_escena_2026-11-15.md`.
+
+## Botones móviles fijos y cuadrados — 15 de noviembre de 2026
+
+La suite de presentación comprueba que Comenzar está fuera del ScrollContainer,
+permanece fijo al arrastrar y conserva la validación del nombre. Resultado:
+696 comprobaciones aprobadas; personalización de escritorio: 517. El flujo
+móvil comprueba además la forma cuadrada de Continuar: 189 comprobaciones
+aprobadas. Capturas y límites en `docs/mejoras_interfaz_movil_2026-11-15.md`.
+
+## Recuerdos y gestos de diálogo — 15 de noviembre de 2026
+
+`probar_recuerdos_dialogos_movil.gd` completa los siete recuerdos mediante
+contactos y verifica el avance al cuestionario. Prueba también desplazamiento
+del diálogo sin avance, Continuar explícito y opciones largas que se seleccionan
+al soltar sin confundir arrastres. Resultado: 163 comprobaciones móviles,
+5 de escritorio y 689 de presentación existente, cero fallos. Ver capturas e
+instrucciones en `docs/revision_recuerdos_dialogos_2026-11-15.md`.
+
+## Flujo de teléfono — 15 de noviembre de 2026
+
+`probar_flujo_telefono.gd` revisa configuración, victoria del laberinto sin
+desplazamiento y avance por cuestionario, primera llave y segunda llave.
+Comprueba además una animación interrumpida y pausa/reanudación. Resultado:
+186 comprobaciones móviles y 23 de escritorio, cero fallos. La suite existente
+de presentación mantiene 689 comprobaciones aprobadas. Instrucciones,
+capturas y límites en `docs/revision_telefono_2026-11-15.md`.
+
 ## Composición móvil — 3 de noviembre de 2026
 
 `probar_composicion_movil.gd` verifica el espacio de los actores, restauración

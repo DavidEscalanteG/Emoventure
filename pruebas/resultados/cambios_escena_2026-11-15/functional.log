@@ -1,0 +1,48 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+OK: El suelo normal no mata al jugador
+OK: Movimiento mediante acciones de entrada
+OK: El salto despega del suelo
+OK: La pausa detiene el movimiento
+OK: Reanudar libera la pausa
+OK: La muerte reinicia una sola escena
+OK: El nivel contiene púas con colisión de daño
+OK: Las púas reinician el nivel al tocarlas
+OK: Secuencia del nivel 1
+OK: Spawn estable del nivel 1
+OK: Secuencia del nivel 2
+OK: Spawn estable del nivel 2
+OK: Secuencia del nivel 3
+OK: Spawn estable del nivel 3
+OK: Secuencia del nivel 4
+OK: Spawn estable del nivel 4
+OK: Secuencia del nivel 5
+OK: Spawn estable del nivel 5
+OK: Secuencia del nivel 6
+OK: Spawn estable del nivel 6
+OK: Secuencia del nivel 7
+OK: Spawn estable del nivel 7
+OK: Secuencia del nivel 8
+OK: Spawn estable del nivel 8
+OK: Secuencia del nivel 9
+OK: Spawn estable del nivel 9
+OK: Secuencia del nivel 10
+OK: Spawn estable del nivel 10
+OK: El nivel 10 abre el cuestionario
+OK: Cuatro preguntas de la misión 3
+OK: El cuestionario tiene recompensa
+OK: Guardado completado redirige al mapa al cargar el minijuego 3 actual
+OK: Rejugabilidad vuelve al mapa sin repetir cuestionario
+OK: La cruceta mantiene la pulsación
+OK: La cruceta libera la pulsación
+OK: La cruceta tiene imagen y zona táctil
+OK: El joystick conserva movimiento analógico
+OK: El joystick vuelve a neutro al soltar
+OK: El indicador genera un fuego
+OK: La pausa detiene el ciclo del fuego
+OK: El fuego se extingue y libera su intersección
+FUNCIONAMIENTO: 0 fallos
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+ERROR: 2 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:804)

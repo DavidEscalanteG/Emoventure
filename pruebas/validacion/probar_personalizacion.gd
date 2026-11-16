@@ -165,7 +165,7 @@ func _probar_distribucion() -> void:
 				_comprobar(etiqueta.get_theme_font_size("font_size") >= 36 and pantalla.encloses(etiqueta.get_global_rect()), "Etiqueta legible y dentro de pantalla: " + grupo)
 			for barra: HSlider in [editor.slider_h, editor.slider_s, editor.slider_v]:
 				_comprobar(barra.size.y >= 64 and panel.get_global_rect().encloses(barra.get_global_rect()), "Barra accesible y dentro del panel")
-				_comprobar(not barra.tooltip_text.is_empty(), "La explicación sigue disponible al señalar la barra")
+				_comprobar(barra.tooltip_text.is_empty(), "La barra no muestra explicaciones adicionales")
 			_comprobar(pantalla.encloses(current_scene.get_node("%Comenzar").get_global_rect()), "Comenzar siempre visible")
 			if not capturas.is_empty() and DisplayServer.get_name() != "headless":
 				# Deja completar el primer dibujado de los controles antes de leer la GPU.

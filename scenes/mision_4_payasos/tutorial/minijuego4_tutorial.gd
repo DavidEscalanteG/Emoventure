@@ -170,4 +170,4 @@ func _hole_style() -> StyleBoxFlat:
 	return style
 
 func _start_mission() -> void:
-	get_tree().change_scene_to_file(MISSION_SCENE)
+	get_tree().change_scene_to_file.call_deferred(MISSION_SCENE)

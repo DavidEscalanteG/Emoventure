@@ -13,15 +13,15 @@ func _ready() -> void:
 	queue_redraw()
 
 func _draw() -> void:
-	var size := get_rect().size
-	_draw_floor_grid(size)
+	var arena_size := get_rect().size
+	_draw_floor_grid(arena_size)
 	_draw_corridors()
 	_draw_maze_walls()
 
-func _draw_floor_grid(size: Vector2) -> void:
-	for y in range(24, int(size.y), 48):
-		for x in range(24, int(size.x), 48):
-			var alternating: int = int(x / 48) + int(y / 48)
+func _draw_floor_grid(arena_size: Vector2) -> void:
+	for y in range(24, int(arena_size.y), 48):
+		for x in range(24, int(arena_size.x), 48):
+			var alternating: int = floori(x / 48.0) + floori(y / 48.0)
 			var tile_color := Color("#10283f") if alternating % 2 == 0 else Color("#0d2339")
 			draw_rect(Rect2(x - 20, y - 20, 40, 40), tile_color, true)
 

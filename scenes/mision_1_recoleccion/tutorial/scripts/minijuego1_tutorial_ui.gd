@@ -60,9 +60,9 @@ func set_continue_enabled(is_enabled: bool) -> void:
 	if next_button.visible:
 		next_button.disabled = not is_enabled
 
-func show_keys(is_visible: bool) -> void:
-	keys_row.visible = is_visible
-	if not is_visible:
+func show_keys(should_show: bool) -> void:
+	keys_row.visible = should_show
+	if not should_show:
 		reset_keys()
 
 func animate_key(key_name: String) -> void:

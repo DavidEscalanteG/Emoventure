@@ -156,7 +156,7 @@ func _finalizar() -> void:
 	if escena_siguiente and is_inside_tree():
 		var tree := get_tree()
 		if tree:
-			tree.change_scene_to_packed(escena_siguiente)
+			tree.change_scene_to_packed.call_deferred(escena_siguiente)
 
 
 func _mostrar_narrativa_post() -> void:

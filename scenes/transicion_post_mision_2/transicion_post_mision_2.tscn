@@ -10,54 +10,30 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Contenido:scale")
+tracks/0/path = NodePath("Contenido/Llave:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Contenido/BotonContinuar:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_tei6f"]
 resource_name = "mostrar_llave"
-length = 2.0
+length = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Contenido:scale")
+tracks/0/path = NodePath("Contenido/Llave:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Contenido/BotonContinuar:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(2),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [0.35, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lxnae"]
@@ -89,12 +65,16 @@ offset_bottom = 1080.0
 color = Color(2.117753e-06, 0.51306957, 0.51369035, 1)
 
 [node name="Contenido" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 600.0
-offset_top = 200.0
-offset_right = 1270.001
-offset_bottom = 1478.0
-scale = Vector2(1e-05, 1e-05)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -335.0
+offset_top = 260.0
+offset_right = 335.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+theme_override_constants/separation = 24
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Contenido"]
 visible = false
@@ -110,14 +90,16 @@ tab_size = 24
 horizontal_alignment = 1
 
 [node name="Llave" type="TextureRect" parent="Contenido"]
-custom_minimum_size = Vector2(670, 670)
+custom_minimum_size = Vector2(670, 560)
 layout_mode = 2
 texture = ExtResource("2_hsskj")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="BotonContinuar" type="Button" parent="Contenido"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
+tooltip_text = "Continuar"
 icon = ExtResource("3_hsskj")
 icon_alignment = 1
 

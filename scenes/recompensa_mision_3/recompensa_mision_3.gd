@@ -9,4 +9,4 @@ func _on_boton_continuar_pressed() -> void:
 	if destino.is_empty():
 		push_warning("No se configuró destino para la recompensa de misión 3")
 		return
-	get_tree().change_scene_to_file(destino)
+	get_tree().change_scene_to_file.call_deferred(destino)

@@ -29,6 +29,8 @@ func _ready() -> void:
 
 
 func _crear_interfaz_movil() -> void:
+	responses_menu.select_on_release = true
+	responses_menu.auto_focus_first_item = false
 	label.add_theme_font_size_override("normal_font_size", 54)
 	label.add_theme_constant_override("outline_size", 2)
 	character_label.add_theme_font_size_override("normal_font_size", 48)
@@ -69,7 +71,7 @@ func _crear_interfaz_movil() -> void:
 	_mobile_responses.name = "MobileResponseScroll"
 	_mobile_responses.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	_mobile_responses.custom_minimum_size.x = 780
-	_mobile_responses.follow_focus = true
+	_mobile_responses.follow_focus = false
 	body.add_child(_mobile_responses)
 	responses_menu.reparent(_mobile_responses, false)
 	responses_menu.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
@@ -94,7 +96,11 @@ func _ajustar_caja_movil() -> void:
 		return
 	_mobile_responses.visible = responses_menu.visible
 	_mobile_continue.visible = not responses_menu.visible
-	_mobile_hint.text = "Elige una respuesta" if responses_menu.visible else ("Desliza para leer" if label.get_content_height() > 250 else "")
+	if responses_menu.visible:
+		var bar := _mobile_responses.get_v_scroll_bar()
+		_mobile_hint.text = "Desliza y elige" if bar.max_value > bar.page else "Elige una respuesta"
+	else:
+		_mobile_hint.text = "Desliza para leer" if label.get_content_height() > 250 else ""
 	# Altura constante: ni las líneas largas ni las opciones invaden el escenario.
 	$MarginContainer.offset_top = -430
 
@@ -151,6 +157,7 @@ func _mostrar_linea() -> void:
 	if _mobile_scroll != null:
 		character_label.modulate = Color(character_label.modulate.lightened(0.55), 1.0)
 		_mobile_scroll.scroll_vertical = 0
+		_mobile_responses.scroll_vertical = 0
 
 	label.text = current_line.text
 	label.visible_characters = 0
@@ -185,6 +192,8 @@ func _mostrar_respuestas() -> void:
 	#responses_menu.grab_focus()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if _mobile_continue != null:
+		return
 	
 	if DialogueActors.cinematica_activa:
 		return
@@ -193,6 +202,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		_gestionar_avance()
 
 func _gui_input(event: InputEvent) -> void:
+	# En teléfono el cuerpo sólo sirve para leer y desplazar. El avance se
+	# conecta exclusivamente al botón, nunca al inicio de un gesto.
+	if _mobile_continue != null:
+		return
 	if DialogueActors.cinematica_activa:
 		return
 	

@@ -116,10 +116,7 @@ func _prepare_scene(scene: Node) -> void:
 			_scroll_content(scene.get_node("MarginContainer/VBoxPrincipal"))
 			_vertical_actions(scene.get_node("MarginContainer/MobileScroll/VBoxPrincipal/Botones"))
 		elif path.ends_with("/Personalizacion.tscn"):
-			scene.get_node("CanvasLayer/PanelLateral").offset_left = 1168
-			_scroll_content(scene.get_node("CanvasLayer/PanelLateral/Contenido"))
-			for explanation: Node in scene.find_children("Explicacion", "Label", true, false):
-				explanation.show()
+			_prepare_personalization(scene)
 		elif path.ends_with("/menu_guardados.tscn"):
 			_prepare_saved_games(scene)
 		elif path.ends_with("/intro_seleccion_genero.tscn"):
@@ -196,20 +193,23 @@ func _vertical_actions(row: Control) -> void:
 	row.queue_free()
 
 func _prepare_settings(scene: Node) -> void:
-	scene.get_node("Fondo_Config").scale = Vector2(37.5, 23.0)
-	scene.get_node("Fondo_Config").position = Vector2(960, 690)
+	scene.get_node("Fondo_Config").scale = Vector2(37.5, 26.0)
+	scene.get_node("Fondo_Config").position = Vector2(960, 650)
+	scene.get_node("Fondo_Titulo").position.y = 271
+	scene.get_node("Titulo").position.y = 217
 	var index := 0
 	for row_name: String in ["Master", "Musica", "SFX", "Controles"]:
 		var row: Control = scene.get_node(row_name)
-		row.position = Vector2(480, 450 + index * 120)
-		row.size = Vector2(960, 104)
+		row.position = Vector2(540, 360 + index * 120)
+		row.size = Vector2(840, 104)
+		row.add_theme_constant_override("separation", 32)
 		for child: Node in row.get_children():
 			if child is Label:
 				child.size_flags_stretch_ratio = 1.25
 		index += 1
 	var back: Control = scene.get_node("BtnVolver")
-	back.position = Vector2(480, 950)
-	back.size = Vector2(960, 104)
+	back.position = Vector2(580, 850)
+	back.size = Vector2(760, 104)
 	back.add_theme_font_size_override("font_size", BODY_SIZE)
 
 func _prepare_saved_games(scene: Node) -> void:
@@ -222,6 +222,20 @@ func _prepare_saved_games(scene: Node) -> void:
 	# El marco conserva su altura; el contenido de las filas puede crecer.
 	var empty: Label = scene.etiqueta_vacio
 	empty.custom_minimum_size.y = 360
+
+func _prepare_personalization(scene: Node) -> void:
+	var panel: PanelContainer = scene.get_node("CanvasLayer/PanelLateral")
+	panel.offset_left = 1168
+	panel.offset_bottom = 880
+	var content: VBoxContainer = panel.get_node("Contenido")
+	var start: Button = scene.get_node("%Comenzar")
+	# Conserva el mismo botón, tema y señal, fuera del área que se desplaza.
+	start.theme = panel.theme
+	start.reparent(scene.get_node("CanvasLayer"), false)
+	start.custom_minimum_size.y = 120
+	_place(start, Rect2(1168, 912, 704, 120))
+	content.get_node("Espacio").hide()
+	_scroll_content(content)
 
 func _prepare_clown_result(scene: Node) -> void:
 	var panel: Control = scene.get_node("%PantallaResultado")
@@ -238,29 +252,44 @@ func _prepare_clown_result(scene: Node) -> void:
 
 func _prepare_collection_result(layer: CanvasLayer) -> void:
 	layer.set_meta(PREPARED, true)
-	layer.offset = Vector2(510, 0)
+	layer.offset = Vector2(360, 40)
 	var backdrop: Control = layer.get_node("Control/FondoOscuro")
-	backdrop.offset_left = -510
-	backdrop.offset_right = 1410
-	layer.get_node("Control/ResplandorPanel").offset_right = 916
+	_place(backdrop, Rect2(-360, -40, 1920, 1080))
+	_place(layer.get_node("Control/ResplandorPanel"), Rect2(-15, -13, 1230, 1026))
 	var panel: Control = layer.get_node("Control/Panel")
-	panel.size = Vector2(900, 1060)
-	_scroll_content(panel.get_node("VBoxContainer"))
-	var preview: Control = layer.get_node("Control/Panel/MobileScroll/VBoxContainer/ControlJugador")
+	panel.size = Vector2(1200, 1000)
+	var content: VBoxContainer = panel.get_node("VBoxContainer")
+	content.add_theme_constant_override("separation", 8)
+	# Presupuesto vertical fijo: resumen, personaje y acción caben juntos.
+	# Las texturas no deben imponer su resolución original como tamaño mínimo.
+	for row_name: String in ["Emociones", "Vidas"]:
+		for icon: TextureRect in content.get_node(row_name).get_children():
+			var side := 88.0 if row_name == "Emociones" else 80.0
+			icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			icon.custom_minimum_size = Vector2(side, side)
+	var preview: Control = content.get_node("ControlJugador")
+	preview.custom_minimum_size.y = 240
 	var message: Label = preview.get_node("MensajeVictoria")
-	message.offset_left = -390
-	message.offset_right = 390
-	message.offset_top = 8
-	message.offset_bottom = 150
+	_place(message, Rect2(-550, 0, 1100, 60))
 	message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_place(preview.get_node("HaloPersonaje"), Rect2(-150, 45, 300, 190))
+	var actor: Node2D = preview.get_node("JugadorCinematico")
+	actor.position = Vector2(0, 140)
+	actor.scale *= 0.75
 	for decoration: String in ["OrnamentoIzquierdo", "OrnamentoDerecho", "EstrellaCentral"]:
 		preview.get_node(decoration).hide()
-	var action: Control = layer.get_node("Control/Panel/MobileScroll/VBoxContainer/ControlBoton")
-	action.custom_minimum_size.y = 140
+	var action: Control = content.get_node("ControlBoton")
+	action.custom_minimum_size.y = 180
 	var button: Control = action.get_node("BotonContinuar")
 	button.scale = Vector2.ONE
-	button.position = Vector2(310, 10)
-	button.size = Vector2(240, 120)
+	button.custom_minimum_size = Vector2(160, 160)
+	button.set_meta(InteractiveButtonFX.META_CLAVE_ESCALA_BASE, Vector2.ONE)
+	button.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
+	button.offset_left = -80
+	button.offset_right = 80
+	button.offset_top = 10
+	button.offset_bottom = 170
 
 func _prepare_quiz(scene: Node) -> void:
 	for index in range(scene.botones_opciones.size()):
