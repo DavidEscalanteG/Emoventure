@@ -99,4 +99,4 @@ func _agregar_seccion(rol: String, personas: Array) -> void:
 
 func _on_boton_volver_pressed() -> void:
 	AudioManager.play_ui_click()
-	get_tree().change_scene_to_file(MENU_PRINCIPAL_SCENE)
+	get_tree().change_scene_to_file.call_deferred(MENU_PRINCIPAL_SCENE)

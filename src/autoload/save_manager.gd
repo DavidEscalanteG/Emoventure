@@ -98,7 +98,7 @@ func cargar_partida(slot_id: String) -> bool:
 	if not ResourceLoader.exists(escena_guardada):
 		escena_guardada = ESCENA_FALLBACK
 
-	get_tree().change_scene_to_file(escena_guardada)
+	get_tree().change_scene_to_file.call_deferred(escena_guardada)
 	return true
 
 

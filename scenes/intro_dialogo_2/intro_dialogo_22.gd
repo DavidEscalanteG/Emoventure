@@ -13,4 +13,4 @@ func _ready() -> void:
 	dialogue_ui.iniciar_dialogo(ARCHIVO_DIALOGO) # Ya no tienes que cambiar el nombre aquí
 
 func _on_dialogo_finalizado() -> void:
-	get_tree().change_scene_to_file(ESCENA_SIGUIENTE) # Ni cambiar el nombre aquí
+	get_tree().change_scene_to_file.call_deferred(ESCENA_SIGUIENTE) # Ni cambiar el nombre aquí

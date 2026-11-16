@@ -1,5 +1,40 @@
 # Prueba Android con One-click deploy
 
+## Reconfiguración para Godot 4.5.2 — 15 de noviembre de 2026
+
+El cambio de editor conservó las rutas del SDK, Java y la clave de depuración.
+Faltaban las plantillas `android_debug.apk` y `android_release.apk` de la versión
+nueva. Se instalaron desde el paquete oficial de Godot 4.5.2, verificando la
+versión y el CRC de los archivos, en:
+
+`C:/Users/david/AppData/Roaming/Godot/export_templates/4.5.2.stable/`
+
+El ejecutable `C:/Users/david/OneDrive/Desktop/Godot_4.5.exe` devuelve
+`4.5.2.stable.official.6ce3de25a`. El preset Android mantiene `runnable=true`,
+arquitectura `arm64-v8a` y la firma existente.
+
+Se generó `.tmp_godot_deploy/Emoventure-4.5.2-debug.apk` (158 MiB), se verificó
+su firma con `apksigner` y se actualizó la aplicación mediante `adb install -r`:
+`Success`. El arranque de `com.example.emoventure/com.godot.game.GodotApp`
+devolvió `Status: ok`; se confirmó que el proceso seguía activo y se guardó
+`.tmp_godot_deploy/telefono_4.5.2.png`. No se desinstaló la aplicación.
+
+La validación usó exportación por CLI y ADB; no se pulsó el botón One-click
+del editor. El teléfono estaba conectado por USB y autorizado.
+
+El registro de arranque confirma Godot 4.5.2 y OpenGL ES Compatibility en
+Adreno 710. Volvió a aparecer `can_process: !is_inside_tree()` durante esta
+ejecución: actualizar el motor no resolvió ese aviso en este proyecto.
+
+La revisión posterior lo reprodujo durante contactos que cambian de escena y
+aplazó esas transiciones en el código. Ver
+`docs/correccion_cambios_escena_2026-11-15.md`. La instalación aquí documentada
+es anterior a ese ajuste.
+
+- [Paquete oficial de plantillas 4.5.2](https://godotengine.org/download/archive/4.5.2-stable/)
+
+## Verificación anterior
+
 Verificación realizada el 28 de octubre de 2026 con el POCO X6 5G físico del usuario.
 
 ## Estado comprobado

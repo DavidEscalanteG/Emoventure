@@ -73,7 +73,7 @@ func _on_localizacion_pressed(nombre_boton: String) -> void:
 
 	var boton: Control = get_node_or_null("MapaContainer/%s" % nombre_boton)
 	if boton == null:
-		get_tree().change_scene_to_file(destino)
+		get_tree().change_scene_to_file.call_deferred(destino)
 		return
 
 	_en_transicion = true
@@ -108,7 +108,7 @@ func _realizar_transicion_a_minijuego(boton_objetivo: Control, destino: String) 
 	fade_tween.tween_property(fade_negro, "color", Color(0, 0, 0, 1), 0.4)
 	await fade_tween.finished
 
-	get_tree().change_scene_to_file(destino)
+	get_tree().change_scene_to_file.call_deferred(destino)
 
 
 func _bloquear_localizaciones(bloquear: bool) -> void:
@@ -123,7 +123,7 @@ func _on_boton_volver_resultados_pressed() -> void:
 		return
 	GameManager.desactivar_modo_rejugabilidad()
 	AudioManager.play_ui_click()
-	get_tree().change_scene_to_file(ESCENA_RESULTADO_FINAL)
+	get_tree().change_scene_to_file.call_deferred(ESCENA_RESULTADO_FINAL)
 
 
 func _on_boton_salir_menu_pressed() -> void:
@@ -135,7 +135,7 @@ func _on_boton_salir_menu_pressed() -> void:
 	GameManager.reiniciar_rotacion_mapas_minijuego_1()
 	DatosJugador.reiniciar_estado_temporal()
 	AudioManager.play_ui_click()
-	get_tree().change_scene_to_file(ESCENA_MENU_PRINCIPAL)
+	get_tree().change_scene_to_file.call_deferred(ESCENA_MENU_PRINCIPAL)
 
 
 func _on_carpa_resultados_pressed() -> void:

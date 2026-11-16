@@ -206,7 +206,7 @@ func _crear_fondo_ambiente() -> void:
 			COLOR = vec4(base, 1.0);
 		}
 	"""
-	var material := ShaderMaterial.new()
-	material.shader = shader
-	fondo.material = material
+	var background_material := ShaderMaterial.new()
+	background_material.shader = shader
+	fondo.material = background_material
 	canvas.add_child(fondo)

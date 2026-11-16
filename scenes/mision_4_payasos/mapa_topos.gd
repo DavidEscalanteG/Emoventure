@@ -246,7 +246,7 @@ func _iniciar_cuestionario() -> void:
 	
 	if GameManager.consumir_modo_rejugabilidad():
 		_restaurar_cursor_predeterminado()
-		get_tree().change_scene_to_file(GameManager.ESCENA_MAPA_REJUGABILIDAD)
+		get_tree().change_scene_to_file.call_deferred(GameManager.ESCENA_MAPA_REJUGABILIDAD)
 		return
 	if escena_cuestionario == null:
 		push_error("No se asignó escena_cuestionario")

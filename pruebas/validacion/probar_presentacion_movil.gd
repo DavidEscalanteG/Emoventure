@@ -69,8 +69,13 @@ func run_tests() -> void:
 	check(results.boton_menu_principal.pressed.get_connections().size() > 0, "Se perdió la señal Continuar")
 	await open_scene("res://scenes/personalizacion/Personalizacion.tscn")
 	var personal := current_scene
+	var start: Button = personal.get_node("%Comenzar")
+	var initial_start := start.get_global_rect()
+	check(root.get_visible_rect().encloses(initial_start), "Comenzar aventura visible desde el inicio")
 	personal.input_nombre_jugador.text = "Prueba Movil"
 	var sidebar: ScrollContainer = personal.get_node("CanvasLayer/PanelLateral/MobileScroll")
+	check(not sidebar.is_ancestor_of(start), "Comenzar aventura queda fuera del área desplazable")
+	check(not sidebar.get_global_rect().intersects(initial_start), "El botón fijo no tapa los controles de personalización")
 	var touch_point: Vector2 = root.get_final_transform() * (sidebar.get_global_position() + Vector2(12, 200))
 	var press := InputEventScreenTouch.new()
 	press.pressed = true
@@ -87,12 +92,28 @@ func run_tests() -> void:
 	Input.parse_input_event(release)
 	await frames(2)
 	check(sidebar.scroll_vertical > 0, "El panel no responde al arrastre de un contacto táctil")
+	check(start.get_global_rect().is_equal_approx(initial_start), "Comenzar no se mueve al arrastrar el menú")
 	sidebar.scroll_vertical = 100000
 	await frames()
-	var start: Button = personal.get_node("%Comenzar")
+	check(start.get_global_rect().is_equal_approx(initial_start), "Comenzar permanece fijo al final del menú")
+	var last_slider: HSlider = personal.editor_colores.get_node("HSVEditorCabello").slider_v
+	check(sidebar.get_global_rect().encloses(last_slider.get_global_rect()), "El último ajuste de color permanece accesible")
 	check(root.get_visible_rect().encloses(start.get_global_rect()), "Comenzar aventura inaccesible al desplazar personalización")
 	check(start.pressed.get_connections().size() > 0, "Se perdió la señal Comenzar aventura")
 	check(personal.input_nombre_jugador.text == "Prueba Movil", "Se perdió el nombre durante la redistribución")
+	# Comprueba la pulsación del botón fijo sin escribir una partida de prueba.
+	personal.input_nombre_jugador.text = ""
+	var start_point: Vector2 = root.get_final_transform() * initial_start.get_center()
+	var start_touch := InputEventScreenTouch.new()
+	start_touch.position = start_point
+	start_touch.pressed = true
+	Input.parse_input_event(start_touch)
+	await frames(2)
+	start_touch = InputEventScreenTouch.new()
+	start_touch.position = start_point
+	Input.parse_input_event(start_touch)
+	await frames()
+	check(not personal.label_error_nombre_jugador.text.is_empty(), "El botón fijo conserva la validación del nombre")
 	await open_scene("res://scenes/mision_2_memorias/mision_2_memorias.tscn")
 	var selector: Control = current_scene.get_node("SelectorEmocion")
 	selector.mostrar(current_scene.get_node("CuadrosContainer/CuadroMemoria_00"))

@@ -138,10 +138,34 @@ func establecer_idle(actor_id: String, actor: Node) -> void:
 			warn(actor_id, actor, "NPC sin SpriteFrames")
 			return
 
-		if sprite.sprite_frames.has_animation("idle"):
-			sprite.play("idle")
+		var idle_animation := _npc_idle_animation(sprite)
+		if not idle_animation.is_empty():
+			sprite.play(idle_animation)
 		else:
 			warn(actor_id, actor, "NPC sin animación idle")
+
+
+func _npc_idle_animation(sprite: AnimatedSprite2D) -> String:
+	var candidates: Array[String] = [ESTADO_IDLE]
+	# Los NPC usan tanto nombres ingleses como españoles. Conservar el lado
+	# de la animación actual evita que el payaso cambie de orientación al parar.
+	var parts := String(sprite.animation).split("_")
+	var direction := _normalizar_direccion(parts[-1])
+	var spanish_directions := {
+		DIRECCION_DOWN: "abajo", DIRECCION_UP: "arriba",
+		DIRECCION_LEFT: "izquierda", DIRECCION_RIGHT: "derecha",
+	}
+	if spanish_directions.has(direction):
+		candidates.append(_anim_name(ESTADO_IDLE, direction))
+		candidates.append("idle_" + String(spanish_directions[direction]))
+		candidates.append("default_" + direction)
+		candidates.append("default_" + String(spanish_directions[direction]))
+	# Fran llama default a su postura neutra.
+	candidates.append("default")
+	for candidate: String in candidates:
+		if sprite.sprite_frames.has_animation(candidate) and sprite.sprite_frames.get_frame_count(candidate) > 0:
+			return candidate
+	return ""
 
 
 func _play_npc_animation(actor_id: String, actor: Node, estado: String, direccion: String) -> void:

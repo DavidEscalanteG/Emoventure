@@ -153,4 +153,4 @@ func _panel_style(fill: Color, border: Color, width: int, radius: int) -> StyleB
 	return style
 
 func _start_mission() -> void:
-	get_tree().change_scene_to_file(MISSION_SCENE)
+	get_tree().change_scene_to_file.call_deferred(MISSION_SCENE)
