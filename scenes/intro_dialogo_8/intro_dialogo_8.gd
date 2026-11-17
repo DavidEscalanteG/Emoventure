@@ -14,4 +14,4 @@ func _ready() -> void:
 	dialogue_ui.iniciar_dialogo(DIALOGO_ESCENA_2)
 
 func _on_dialogo_finalizado() -> void:
-	get_tree().change_scene_to_file(ESCENA_TUTORIAL_MINIJUEGO_1)
+	get_tree().change_scene_to_file.call_deferred(ESCENA_TUTORIAL_MINIJUEGO_1)

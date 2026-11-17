@@ -128,7 +128,7 @@ func _on_btn_reanudar_pressed() -> void:
 func _on_btn_menu_principal_pressed() -> void:
 	_set_pausa_activa(false)
 	AudioManager.play_ui_click()
-	get_tree().change_scene_to_file(MENU_PRINCIPAL_PATH)
+	get_tree().change_scene_to_file.call_deferred(MENU_PRINCIPAL_PATH)
 
 
 func _on_slider_musica_value_changed(value: float) -> void:

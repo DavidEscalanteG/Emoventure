@@ -7,7 +7,10 @@ extends Control
 @onready var boton: Button = $Contenido/BotonContinuar
 
 func _ready() -> void:
-	boton.visible = false
+	# La recompensa y la salida existen desde el primer cuadro. La animación
+	# sólo decora la llave; nunca debe ser necesaria para poder continuar.
+	$Contenido.scale = Vector2.ONE
+	boton.show()
 	anim.play("mostrar_llave")
 
 func _on_boton_continuar_pressed() -> void:
@@ -16,4 +19,4 @@ func _on_boton_continuar_pressed() -> void:
 	if destino.is_empty():
 		push_warning("No se configuró destino para la transición post misión 1")
 		return
-	get_tree().change_scene_to_file(destino)
+	get_tree().change_scene_to_file.call_deferred(destino)

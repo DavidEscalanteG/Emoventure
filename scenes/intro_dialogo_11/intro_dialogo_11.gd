@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _on_dialogo_finalizado() -> void:
 	MusicManager.finalizar_override_dialogo()
-	get_tree().change_scene_to_file(ESCENA_TUTORIAL_MINIJUEGO_1)
+	get_tree().change_scene_to_file.call_deferred(ESCENA_TUTORIAL_MINIJUEGO_1)
 
 
 func _exit_tree() -> void:

@@ -7,7 +7,8 @@ extends Control
 @onready var boton: Button = $Contenido/BotonContinuar
 
 func _ready() -> void:
-	boton.visible = false
+	$Contenido.scale = Vector2.ONE
+	boton.show()
 	anim.play("mostrar_llave")
 
 func _on_boton_continuar_pressed() -> void:
@@ -16,4 +17,4 @@ func _on_boton_continuar_pressed() -> void:
 	if destino.is_empty():
 		push_warning("No se configuró destino para la transición post misión 2")
 		return
-	get_tree().change_scene_to_file(destino)
+	get_tree().change_scene_to_file.call_deferred(destino)

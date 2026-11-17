@@ -16,4 +16,4 @@ func _ready() -> void:
 	
 func _on_dialogo_finalizado() -> void:
 	# Al terminar el diálogo, cambiamos de escena inmediatamente
-	get_tree().change_scene_to_file(SIGUIENTE_ESCENA)
+	get_tree().change_scene_to_file.call_deferred(SIGUIENTE_ESCENA)

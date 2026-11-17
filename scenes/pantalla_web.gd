@@ -25,4 +25,4 @@ func _on_button_pressed() -> void:
 		MusicManager.reproducir_clave("menu_principal", 0.0, 0.0, true)
 
 	# 5. Cambiamos de escena. Como la canción ya arrancó, el MusicManager no la reiniciará
-	get_tree().change_scene_to_file(RUTA_MENU_PRINCIPAL)
+	get_tree().change_scene_to_file.call_deferred(RUTA_MENU_PRINCIPAL)

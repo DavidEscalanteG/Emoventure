@@ -208,4 +208,4 @@ func _start_real_mission() -> void:
 		push_warning("mission_scene_path no configurado en Minijuego2_Tutorial")
 		return
 
-	get_tree().change_scene_to_file(mission_scene_path)
+	get_tree().change_scene_to_file.call_deferred(mission_scene_path)

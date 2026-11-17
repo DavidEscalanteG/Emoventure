@@ -9,4 +9,4 @@ func _on_btn_jugar_pressed() -> void:
 		MusicManager.iniciar_musica_web()
 		
 	# Continúa con tu código normal para cambiar de escena
-	get_tree().change_scene_to_file("res://scenes/tu_siguiente_escena.tscn")
+	get_tree().change_scene_to_file.call_deferred("res://scenes/tu_siguiente_escena.tscn")

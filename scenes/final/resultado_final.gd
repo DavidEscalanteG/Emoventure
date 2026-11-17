@@ -380,4 +380,4 @@ func _iniciar_cooldown_boton_descarga() -> void:
 
 func _on_boton_rejugabilidad_pressed() -> void:
 	AudioManager.play_ui_click()
-	get_tree().change_scene_to_file(MAPA_REJUGABILIDAD_SCENE)
+	get_tree().change_scene_to_file.call_deferred(MAPA_REJUGABILIDAD_SCENE)

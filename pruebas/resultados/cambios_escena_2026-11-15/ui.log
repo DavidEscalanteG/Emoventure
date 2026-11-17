@@ -1,0 +1,30 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+MOBILE_PC user_data=C:/Users/david/OneDrive/Desktop/Juegos Godot/emoventure/Juego-Emoventure-Godot/.tmp_godot_transitions/userdata_ui/Godot/app_userdata/Emoventure
+MOBILE_PC simulated_mobile=true
+MOBILE_PC SCENE res://scenes/menu_principal/menu_principal.tscn
+MOBILE_PC SCENE res://scenes/configuracion/configuracion.tscn
+CAMBIO_ESCENA destino=res://scenes/configuracion/configuracion.tscn fallos=0
+MOBILE_PC SCENE res://scenes/menu_principal/menu_principal.tscn
+CAMBIO_ESCENA destino=res://scenes/menu_principal/menu_principal.tscn fallos=0
+MOBILE_PC SCENE res://scenes/creditos/creditos.tscn
+CAMBIO_ESCENA destino=res://scenes/creditos/creditos.tscn fallos=0
+MOBILE_PC SCENE res://scenes/menu_principal/menu_principal.tscn
+CAMBIO_ESCENA destino=res://scenes/menu_principal/menu_principal.tscn fallos=0
+MOBILE_PC SCENE res://scenes/menu_guardados/menu_guardados.tscn
+CAMBIO_ESCENA destino=res://scenes/menu_guardados/menu_guardados.tscn fallos=0
+MOBILE_PC SCENE res://scenes/menu_principal/menu_principal.tscn
+CAMBIO_ESCENA destino=res://scenes/menu_principal/menu_principal.tscn fallos=0
+MOBILE_PC SCENE res://scenes/menu_guardados/menu_guardados.tscn
+MOBILE_PC SCENE res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn
+CAMBIO_ESCENA destino=res://scenes/intro_seleccion_genero/intro_seleccion_genero.tscn fallos=0
+MOBILE_PC SCENE res://scenes/personalizacion/Personalizacion.tscn
+CAMBIO_ESCENA destino=res://scenes/personalizacion/Personalizacion.tscn fallos=0
+MOBILE_PC SCENE res://scenes/intro_dialogo_1/intro_dialogo_1.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_2/intro_dialogo_2.tscn
+MOBILE_PC SCENE res://scenes/menu_principal/menu_principal.tscn
+CAMBIOS_ESCENA: 30 comprobaciones, 0 fallos
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+ERROR: 2 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:804)

@@ -1,0 +1,33 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+MOBILE_PC user_data=C:/Users/david/OneDrive/Desktop/Juegos Godot/emoventure/Juego-Emoventure-Godot/.tmp_godot_transitions/userdata_deferred/Godot/app_userdata/Emoventure
+MOBILE_PC simulated_mobile=true
+MOBILE_PC SCENE res://scenes/configuracion/configuracion.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn
+MOBILE_PC SCENE res://scenes/cuestionarios/EscenaCuestionario.tscn
+MOBILE_PC SCENE res://scenes/transicion_post_mision_1/transicion_post_mision_1.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_3/intro_dialogo_3.tscn
+MOBILE_PC SCENE res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_6/intro_dialogo_6.tscn
+PHONE resolución=(640, 360) móvil=true fallos=0
+MOBILE_PC SCENE res://scenes/configuracion/configuracion.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn
+MOBILE_PC SCENE res://scenes/cuestionarios/EscenaCuestionario.tscn
+MOBILE_PC SCENE res://scenes/transicion_post_mision_1/transicion_post_mision_1.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_3/intro_dialogo_3.tscn
+MOBILE_PC SCENE res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_6/intro_dialogo_6.tscn
+PHONE resolución=(854, 480) móvil=true fallos=0
+MOBILE_PC SCENE res://scenes/configuracion/configuracion.tscn
+MOBILE_PC SCENE res://scenes/mision_1_recoleccion/mapa_1/mision_1_recoleccion.tscn
+MOBILE_PC SCENE res://scenes/cuestionarios/EscenaCuestionario.tscn
+MOBILE_PC SCENE res://scenes/transicion_post_mision_1/transicion_post_mision_1.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_3/intro_dialogo_3.tscn
+MOBILE_PC SCENE res://scenes/transicion_post_mision_2/transicion_post_mision_2.tscn
+MOBILE_PC SCENE res://scenes/intro_dialogo_6/intro_dialogo_6.tscn
+PHONE resolución=(1280, 576) móvil=true fallos=0
+FLUJO_TELEFONO: 189 comprobaciones, 0 fallos
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2514)
+ERROR: 1 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:804)

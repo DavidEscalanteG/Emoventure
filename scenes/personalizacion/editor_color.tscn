@@ -63,19 +63,9 @@ size_flags_vertical = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("MuestraColor")
 
-[node name="Explicacion" type="Label" parent="Contenido/Tono"]
-visible = false
-layout_mode = 2
-mouse_filter = 2
-theme_override_colors/font_color = Color(0.28, 0.18, 0.11, 1)
-theme_override_font_sizes/font_size = 38
-text = "Elige el color: rojo, verde, azul..."
-autowrap_mode = 3
-
 [node name="HSliderHue" type="HSlider" parent="Contenido/Tono"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-tooltip_text = "Tono: elige el color, como rojo, verde o azul. Usa las flechas del teclado para un ajuste preciso."
 max_value = 1.0
 step = 0.001
 
@@ -100,19 +90,9 @@ theme_override_colors/font_color = Color(0.36, 0.16, 0.05, 1)
 text = "0%"
 horizontal_alignment = 2
 
-[node name="Explicacion" type="Label" parent="Contenido/Saturacion"]
-visible = false
-layout_mode = 2
-mouse_filter = 2
-theme_override_colors/font_color = Color(0.28, 0.18, 0.11, 1)
-theme_override_font_sizes/font_size = 38
-text = "Izquierda: gris. Derecha: color vivo."
-autowrap_mode = 3
-
 [node name="HSliderSat" type="HSlider" parent="Contenido/Saturacion"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-tooltip_text = "Saturación: a la izquierda el color es gris; a la derecha es más intenso."
 max_value = 1.0
 step = 0.001
 
@@ -137,19 +117,9 @@ theme_override_colors/font_color = Color(0.36, 0.16, 0.05, 1)
 text = "100%"
 horizontal_alignment = 2
 
-[node name="Explicacion" type="Label" parent="Contenido/Brillo"]
-visible = false
-layout_mode = 2
-mouse_filter = 2
-theme_override_colors/font_color = Color(0.28, 0.18, 0.11, 1)
-theme_override_font_sizes/font_size = 38
-text = "Izquierda: oscuro. Derecha: claro."
-autowrap_mode = 3
-
 [node name="HSliderVal" type="HSlider" parent="Contenido/Brillo"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-tooltip_text = "Brillo: a la izquierda el color es más oscuro; a la derecha es más claro."
 min_value = 0.125
 max_value = 1.0
 step = 0.001

@@ -349,7 +349,7 @@ func _on_comenzar_pressed() -> void:
 	label_error_nombre_jugador.text = ""
 	guardar_en_global()
 	SaveManager.confirmar_guardado_inicial("res://scenes/intro_dialogo_1/intro_dialogo_1.tscn")
-	get_tree().change_scene_to_file("uid://dlfpd1a8lfh5") #intro_dialogo_1.tscn
+	get_tree().change_scene_to_file.call_deferred("uid://dlfpd1a8lfh5") #intro_dialogo_1.tscn
 
 
 func _on_mascota_siguiente_pressed() -> void:

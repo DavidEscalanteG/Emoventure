@@ -405,12 +405,12 @@ func _on_eliminar_partida_pressed(slot_id: String) -> void:
 func _on_boton_nueva_partida_pressed() -> void:
 	AudioManager.play_ui_click()
 	SaveManager.preparar_nueva_partida()
-	get_tree().change_scene_to_file(ESCENA_SELECCION_GENERO)
+	get_tree().change_scene_to_file.call_deferred(ESCENA_SELECCION_GENERO)
 
 
 func _on_boton_volver_pressed() -> void:
 	AudioManager.play_ui_click()
-	get_tree().change_scene_to_file(ESCENA_MENU_PRINCIPAL)
+	get_tree().change_scene_to_file.call_deferred(ESCENA_MENU_PRINCIPAL)
 
 
 func _calcular_progreso_historia(slot: Dictionary) -> int:

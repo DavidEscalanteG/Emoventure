@@ -46,7 +46,7 @@ func _on_btn_confirmar_nombre_mascota_pressed() -> void:
 	DatosJugador.nombre_mascota = validacion.nombre
 	error_nombre_mascota.text = ""
 	MusicManager.finalizar_override_dialogo()
-	get_tree().change_scene_to_file(SIGUIENTE_ESCENA)
+	get_tree().change_scene_to_file.call_deferred(SIGUIENTE_ESCENA)
 
 
 func _inicializar_nombre_mascota() -> void:
